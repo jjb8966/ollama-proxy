@@ -6,8 +6,8 @@ services:
     ports:
       - "5002:5002"
     environment:
-      - GOOGLE_API_KEYS=""
-      - OPENROUTER_API_KEYS=""
-      - AKASH_API_KEYS=""
+      - GOOGLE_API_KEYS=${GOOGLE_API_KEYS}
+      - OPENROUTER_API_KEYS=${OPENROUTER_API_KEYS}
+      - AKASH_API_KEYS=${AKASH_API_KEYS}
     restart: always
     container_name: ollama-proxy
