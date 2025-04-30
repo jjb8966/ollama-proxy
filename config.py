@@ -30,7 +30,8 @@ class ApiConfig:
             return {
                 "model": requested_model.replace('google:', ''),
                 "base_url": self.GOOGLE_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX]
+                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index" : ApiConfig._API_KEY_INDEX
             }
         elif requested_model.startswith("openrouter:"):
             self.API_KEYS = [key.strip() for key in self.OPENROUTER_API_KEYS.split(',')]
@@ -38,7 +39,8 @@ class ApiConfig:
             return {
                 "model": requested_model.replace("openrouter:", ""),
                 "base_url": self.OPENROUTER_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX]
+                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index" : ApiConfig._API_KEY_INDEX
             }
         elif requested_model.startswith("akash:"):
             self.API_KEYS = [key.strip() for key in self.AKASH_API_KEYS.split(',')]
@@ -46,7 +48,8 @@ class ApiConfig:
             return {
                 "model": requested_model.replace("akash:", ""),
                 "base_url": self.AKASH_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX]
+                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index" : ApiConfig._API_KEY_INDEX
             }
         else:
             return {
@@ -55,12 +58,12 @@ class ApiConfig:
                 "api_key": None
             }
 
-    def get_next_api_key(self):
+    def get_next_api_key(self) -> dict :
         # API 키를 순환하며 반환하는 메서드
         if not self.API_KEYS:
             raise ValueError("No API keys available.")
 
-        api_key = self.API_KEYS[ApiConfig._API_KEY_INDEX]
         ApiConfig._API_KEY_INDEX = (ApiConfig._API_KEY_INDEX + 1) % len(self.API_KEYS)
+        api_key = self.API_KEYS[ApiConfig._API_KEY_INDEX]
 
-        return api_key
+        return (api_key, ApiConfig._API_KEY_INDEX)
