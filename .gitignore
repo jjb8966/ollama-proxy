@@ -41,3 +41,5 @@ src/main/generated/
 
 ### application-local
 src/main/resources/application-local.yml
+
+.env
