@@ -1,5 +1,6 @@
 import os
 
+
 class ApiConfig:
     _API_KEY_INDEX = 0
 
@@ -23,33 +24,37 @@ class ApiConfig:
         self.API_KEYS = ['A', 'B', 'C']
 
     def get_api_config(self, requested_model):
+        ApiConfig._API_KEY_INDEX = 0
         # API 설정을 가져오는 메서드
         if requested_model.startswith("google:"):
             self.API_KEYS = [key.strip() for key in self.GOOGLE_API_KEYS.split(',')]
+            print('GOOGLE_API_KEYS Count =', len(self.API_KEYS))
 
             return {
                 "model": requested_model.replace('google:', ''),
                 "base_url": self.GOOGLE_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
-                "api_key_index" : ApiConfig._API_KEY_INDEX
+                "api_key": self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index": ApiConfig._API_KEY_INDEX
             }
         elif requested_model.startswith("openrouter:"):
             self.API_KEYS = [key.strip() for key in self.OPENROUTER_API_KEYS.split(',')]
+            print('OPENROUTER_API_KEYS Count =', len(self.API_KEYS))
 
             return {
                 "model": requested_model.replace("openrouter:", ""),
                 "base_url": self.OPENROUTER_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
-                "api_key_index" : ApiConfig._API_KEY_INDEX
+                "api_key": self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index": ApiConfig._API_KEY_INDEX
             }
         elif requested_model.startswith("akash:"):
             self.API_KEYS = [key.strip() for key in self.AKASH_API_KEYS.split(',')]
+            print('AKASH_API_KEYS Count =', len(self.API_KEYS))
 
             return {
                 "model": requested_model.replace("akash:", ""),
                 "base_url": self.AKASH_BASE_URL,
-                "api_key" : self.API_KEYS[ApiConfig._API_KEY_INDEX],
-                "api_key_index" : ApiConfig._API_KEY_INDEX
+                "api_key": self.API_KEYS[ApiConfig._API_KEY_INDEX],
+                "api_key_index": ApiConfig._API_KEY_INDEX
             }
         else:
             return {
@@ -58,7 +63,7 @@ class ApiConfig:
                 "api_key": None
             }
 
-    def get_next_api_key(self) -> dict :
+    def get_next_api_key(self) -> dict:
         # API 키를 순환하며 반환하는 메서드
         if not self.API_KEYS:
             raise ValueError("No API keys available.")

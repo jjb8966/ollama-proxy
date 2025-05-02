@@ -1,15 +1,18 @@
-import os
-import logging
 import json
-from chat_handler import ChatHandler
-from response_handler import ResponseHandler
+import logging
+import os
+
 from flask import Flask, request, Response, stream_with_context
 
+from chat_handler import ChatHandler
+from response_handler import ResponseHandler
+
 # 로깅 설정
-logging.basicConfig(level=logging.DEBUG) # 로깅 레벨을 DEBUG로 변경
+logging.basicConfig(level=logging.DEBUG)  # 로깅 레벨을 DEBUG로 변경
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
@@ -90,7 +93,8 @@ def get_tags():
     }
     return Response(json.dumps(available_models), status=200, mimetype='application/json')
 
-@app.route('/', methods=['GET']) # 루트 경로 추가
+
+@app.route('/', methods=['GET'])  # 루트 경로 추가
 @app.route('/api/version', methods=['GET'])
 def get_version():
     """
@@ -101,7 +105,7 @@ def get_version():
     logger.info("Received request for / or /api/version")
     # Ollama의 버전 엔드포인트를 모방
     version_response = {
-        "version": "0.1.0-openai-proxy" # 프록시 버전 정보 명시
+        "version": "0.1.0-openai-proxy"  # 프록시 버전 정보 명시
     }
     return Response(json.dumps(version_response), status=200, mimetype='application/json')
 
