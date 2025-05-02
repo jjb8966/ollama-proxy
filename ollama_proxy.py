@@ -50,14 +50,6 @@ def get_tags():
                 "model": "google:gemini-2.5-pro-exp-03-25"
             },
             {
-                "name": "google:gemini-2.0-flash-thinking-exp-01-21",
-                "model": "google:gemini-2.0-flash-thinking-exp-01-21"
-            },
-            {
-                "name": "google:gemini-2.0-flash-exp",
-                "model": "google:gemini-2.0-flash-exp"
-            },
-            {
                 "name": "openrouter:meta-llama/llama-4-maverick:free",
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
@@ -70,24 +62,12 @@ def get_tags():
                 "model": "openrouter:deepseek-chat-v3-0324:free"
             },
             {
-                "name": "openrouter:deepseek/deepseek-r1:free",
-                "model": "openrouter:deepseek/deepseek-r1:free"
-            },
-            {
                 "name": "openrouter:microsoft/mai-ds-r1:free",
                 "model": "openrouter:microsoft/mai-ds-r1:free"
             },
             {
-                "name": "openrouter:microsoft/phi-4-reasoning-plus:free",
-                "model": "openrouter:microsoft/phi-4-reasoning-plus:free"
-            },
-            {
                 "name": "akash:DeepSeek-R1",
                 "model": "akash:DeepSeek-R1"
-            },
-            {
-                "name": "akash:Meta-Llama-3-3-70B-Instruct",
-                "model": "akash:Meta-Llama-3-3-70B-Instruct"
             },
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
