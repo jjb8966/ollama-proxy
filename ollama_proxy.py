@@ -78,6 +78,10 @@ def get_tags():
                 "model": "openrouter:microsoft/mai-ds-r1:free"
             },
             {
+                "name": "openrouter:microsoft/phi-4-reasoning-plus:free",
+                "model": "openrouter:microsoft/phi-4-reasoning-plus:free"
+            },
+            {
                 "name": "akash:DeepSeek-R1",
                 "model": "akash:DeepSeek-R1"
             },
