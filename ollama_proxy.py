@@ -109,7 +109,7 @@ if __name__ == '__main__':
         logger.warning(f"Example creation: python3 -m venv {venv_path}")
         logger.warning(f"Example activation: source {venv_path}/bin/activate")
 
-    # 환경 변수에서 포트 번호 가져오기 (기본값 5002)
+    # 환경 변수에서 포트 번호 가져오기 (개발 포트 5005)
     port = int(os.environ.get("PORT", 5005))
     # 디버그 모드는 환경 변수 `FLASK_DEBUG` 또는 기본값 False 사용
     debug_mode = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
