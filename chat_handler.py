@@ -5,7 +5,6 @@ import requests
 
 from config import ApiConfig
 
-
 class ChatHandler:
     def __init__(self):
         self.api_config = ApiConfig()
@@ -15,6 +14,33 @@ class ChatHandler:
         messages = req.get('messages')
         stream = req.get('stream', True)
         requested_model = req.get('model')
+
+        if messages:
+            for message in messages:
+                # cline 이미지 요청 처리 로직
+                if message['role'] == 'user' and 'data:image' in message['content']:
+                    split1 = message['content'].split('data')
+                    split2 = split1[1].split('<environment_details>')
+
+                    text_data = split1[0] + split2[1]
+                    image_data = 'data' + split2[0]
+
+                    text_content = {
+                        'type': 'text',
+                        'text': text_data
+                    }
+
+                    image_content = {
+                        'type': 'image_url',
+                        'image_url': {
+                            'url': image_data
+                        }
+                    }
+
+                    content = [text_content, image_content]
+                    message['content'] = content
+        else:
+            logging.warning("No messages found in the request.")
 
         api_config = self.api_config.get_api_config(requested_model)
         model = api_config['model']
@@ -52,8 +78,6 @@ class ChatHandler:
 
                 api_key, api_key_index = self.api_config.get_next_api_key()  # 다음 키 가져오기
                 try_count += 1
-
-                time.sleep(1) # 1초 대기 추가
 
                 continue
 
