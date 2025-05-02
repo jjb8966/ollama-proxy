@@ -1,9 +1,9 @@
 import logging
-import time
 
 import requests
 
 from config import ApiConfig
+
 
 class ChatHandler:
     def __init__(self):
@@ -64,10 +64,17 @@ class ChatHandler:
                     'Authorization': 'Bearer ' + api_key  # 가져온 키로 헤더 설정
                 }
 
-                logging.info(f"API 요청 시도: {end_point} (Key: ...{api_key[-10:]}, Index:{api_key_index})")  # 어떤 키를 사용하는지 로깅 (선택 사항)
+                logging.info(
+                    f"API 요청 시도: {end_point} (Key: ...{api_key[-10:]}, Index:{api_key_index})")  # 어떤 키를 사용하는지 로깅 (선택 사항)
 
                 resp = requests.post(end_point, headers=headers, json=payload, stream=stream, timeout=(50, 300))
-                resp.raise_for_status()  # HTTP 오류 발생 시 예외 발생
+
+                # HTTP 오류 발생 시 예외 발생
+                resp.raise_for_status()
+
+                # (OpenRouter) Rate limit exceeded 예외 발생
+                if b'Rate limit exceeded' in resp.content:
+                    raise requests.exceptions.RequestException
 
                 logging.info("API 요청 성공")  # 성공 로깅 (선택 사항)
                 return resp  # 성공 시 응답 반환 및 루프 종료
