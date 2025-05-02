@@ -3,6 +3,7 @@ version: '3.8'
 services:
   ollama-proxy:
     build: .
+    image: jjb000000/ollama-proxy:latest
     ports:
       - "5002:5002"
     environment:
