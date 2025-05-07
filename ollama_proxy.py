@@ -70,6 +70,10 @@ def get_tags():
                 "model": "akash:DeepSeek-R1"
             },
             {
+                "name": "akash:Qwen3-235B-A22B-FP8",
+                "model": "akash:Qwen3-235B-A22B-FP8"
+            },
+            {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
                 "model": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8"
             }
