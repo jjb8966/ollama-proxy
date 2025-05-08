@@ -73,14 +73,17 @@ class ApiConfig:
         # API 키를 순환하며 반환하는 메서드
         if base_url == self.GOOGLE_BASE_URL:
             api_key = self.GOOGLE_API_KEYS[ApiConfig._GOOGLE_API_KEY_INDEX]
+            api_key_index = ApiConfig._GOOGLE_API_KEY_INDEX
             ApiConfig._GOOGLE_API_KEY_INDEX = (ApiConfig._GOOGLE_API_KEY_INDEX + 1) % len(self.GOOGLE_API_KEYS)
 
         elif base_url == self.OPENROUTER_BASE_URL:
             api_key = self.OPENROUTER_API_KEYS[ApiConfig._OPENROUTER_API_KEY_INDEX]
+            api_key_index = ApiConfig._OPENROUTER_API_KEY_INDEX
             ApiConfig._OPENROUTER_API_KEY_INDEX = (ApiConfig._OPENROUTER_API_KEY_INDEX + 1) % len(self.OPENROUTER_API_KEYS)
 
         elif base_url == self.AKASH_BASE_URL:
             api_key = self.AKASH_API_KEYS[ApiConfig._AKASH_API_KEY_INDEX]
+            api_key_index = ApiConfig._AKASH_API_KEY_INDEX
             ApiConfig._AKASH_API_KEY_INDEX = (ApiConfig._AKASH_API_KEY_INDEX + 1) % len(self.AKASH_API_KEYS)
 
-        return (api_key, ApiConfig._API_KEY_INDEX)
+        return (api_key, api_key_index)
