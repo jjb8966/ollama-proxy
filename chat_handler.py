@@ -19,11 +19,11 @@ class ChatHandler:
             for message in messages:
                 # cline 이미지 요청 처리 로직
                 if message['role'] == 'user' and 'data:image' in message['content']:
-                    split1 = message['content'].split('data')
+                    split1 = message['content'].split('data:image')
                     split2 = split1[1].split('<environment_details>')
 
                     text_data = split1[0] + split2[1]
-                    image_data = 'data' + split2[0]
+                    image_data = 'data:image' + split2[0]
 
                     text_content = {
                         'type': 'text',
