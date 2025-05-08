@@ -71,9 +71,6 @@ class ApiConfig:
 
     def get_next_api_key(self, base_url) -> dict:
         # API 키를 순환하며 반환하는 메서드
-        if not self.API_KEYS:
-            raise ValueError("No API keys available.")
-
         if base_url == self.GOOGLE_BASE_URL:
             api_key = self.GOOGLE_API_KEYS[ApiConfig._GOOGLE_API_KEY_INDEX]
             ApiConfig._GOOGLE_API_KEY_INDEX = (ApiConfig._GOOGLE_API_KEY_INDEX + 1) % len(self.GOOGLE_API_KEYS)
