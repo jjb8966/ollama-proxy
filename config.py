@@ -52,7 +52,7 @@ class ApiConfig:
             model = requested_model.replace('akash:', '')
             base_url = self.AKASH_BASE_URL
             api_key = self.AKASH_API_KEYS[ApiConfig._AKASH_API_KEY_INDEX]
-            api_key_index = ApiConfig._API_KEY_INDEX
+            api_key_index = ApiConfig._AKASH_API_KEY_INDEX
 
             ApiConfig._AKASH_API_KEY_INDEX = (api_key_index + 1) % len(self.AKASH_API_KEYS)
 
