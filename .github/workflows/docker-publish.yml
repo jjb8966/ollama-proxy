@@ -27,6 +27,7 @@ jobs:
         uses: docker/build-push-action@v4                      # 빌드 및 푸시 :contentReference[oaicite:7]{index=7}
         with:
           context: .
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ollama-proxy:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/ollama-proxy:cache
