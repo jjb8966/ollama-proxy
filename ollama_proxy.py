@@ -50,20 +50,24 @@ def get_tags():
                 "model": "google:gemini-2.5-pro-exp-03-25"
             },
             {
-                "name": "openrouter:meta-llama/llama-4-maverick:free",
-                "model": "openrouter:meta-llama/llama-4-maverick:free"
-            },
-            {
-                "name": "openrouter:google/gemini-2.0-flash-exp:free",
-                "model": "openrouter:google/gemini-2.0-flash-exp:free"
+                "name": "google:gemini-2.0-flash-thinking-exp-01-21",
+                "model": "google:gemini-2.0-flash-thinking-exp-01-21"
             },
             {
                 "name": "openrouter:deepseek-chat-v3-0324:free",
                 "model": "openrouter:deepseek-chat-v3-0324:free"
             },
             {
+                "name": "openrouter:qwen/qwen3-235b-a22b:free",
+                "model": "openrouter:qwen/qwen3-235b-a22b:free"
+            },
+            {
                 "name": "openrouter:microsoft/mai-ds-r1:free",
                 "model": "openrouter:microsoft/mai-ds-r1:free"
+            },
+            {
+                "name": "openrouter:meta-llama/llama-4-maverick:free",
+                "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
             {
                 "name": "akash:DeepSeek-R1",
