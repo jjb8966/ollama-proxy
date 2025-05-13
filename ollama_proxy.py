@@ -54,8 +54,8 @@ def get_tags():
                 "model": "google:gemini-2.0-flash-thinking-exp-01-21"
             },
             {
-                "name": "openrouter:deepseek-chat-v3-0324:free",
-                "model": "openrouter:deepseek-chat-v3-0324:free"
+                "name": "openrouter:deepseek/deepseek-chat-v3-0324:free",
+                "model": "openrouter:deepseek/deepseek-chat-v3-0324:free"
             },
             {
                 "name": "openrouter:qwen/qwen3-235b-a22b:free",
