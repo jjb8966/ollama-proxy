@@ -46,12 +46,12 @@ def get_tags():
     available_models = {
         "models": [
             {
-                "name": "google:gemini-2.5-pro-exp-03-25",
-                "model": "google:gemini-2.5-pro-exp-03-25"
-            },
-            {
                 "name": "google:gemini-2.0-flash-thinking-exp-01-21",
                 "model": "google:gemini-2.0-flash-thinking-exp-01-21"
+            },
+            {
+                "name": "google:gemini-2.0-flash-exp",
+                "model": "google:gemini-2.0-flash-exp"
             },
             {
                 "name": "openrouter:deepseek/deepseek-chat-v3-0324:free",
