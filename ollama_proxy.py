@@ -78,6 +78,10 @@ def get_tags():
                 "model": "akash:Qwen3-235B-A22B-FP8"
             },
             {
+                "name": "akash:Meta-Llama-3-3-70B-Instruct",
+                "model": "akash:Meta-Llama-3-3-70B-Instruct"
+            },
+            {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
                 "model": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8"
             }
