@@ -46,6 +46,10 @@ def get_tags():
     available_models = {
         "models": [
             {
+                "name": "google:gemini-2.5-flash-preview-04-17",
+                "model": "google:gemini-2.5-flash-preview-04-17"
+            },
+            {
                 "name": "google:gemini-2.0-flash-thinking-exp-01-21",
                 "model": "google:gemini-2.0-flash-thinking-exp-01-21"
             },
