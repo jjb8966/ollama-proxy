@@ -58,20 +58,16 @@ def get_tags():
                 "model": "google:gemini-2.0-flash-exp"
             },
             {
-                "name": "openrouter:deepseek/deepseek-chat-v3-0324:free",
-                "model": "openrouter:deepseek/deepseek-chat-v3-0324:free"
-            },
-            {
                 "name": "openrouter:qwen/qwen3-235b-a22b:free",
                 "model": "openrouter:qwen/qwen3-235b-a22b:free"
             },
             {
-                "name": "openrouter:microsoft/mai-ds-r1:free",
-                "model": "openrouter:microsoft/mai-ds-r1:free"
-            },
-            {
                 "name": "openrouter:meta-llama/llama-4-maverick:free",
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
+            },
+            {
+                "name": "openrouter:tngtech/deepseek-r1t-chimera:free",
+                "model": "openrouter:tngtech/deepseek-r1t-chimera:free"
             },
             {
                 "name": "akash:DeepSeek-R1",
@@ -80,10 +76,6 @@ def get_tags():
             {
                 "name": "akash:Qwen3-235B-A22B-FP8",
                 "model": "akash:Qwen3-235B-A22B-FP8"
-            },
-            {
-                "name": "akash:Meta-Llama-3-3-70B-Instruct",
-                "model": "akash:Meta-Llama-3-3-70B-Instruct"
             },
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
