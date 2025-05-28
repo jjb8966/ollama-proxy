@@ -62,12 +62,16 @@ def get_tags():
                 "model": "openrouter:qwen/qwen3-235b-a22b:free"
             },
             {
+                "name": "openrouter:deepseek/deepseek-chat-v3-0324:free",
+                "model": "openrouter:deepseek/deepseek-chat-v3-0324:free"
+            },
+            {
                 "name": "openrouter:meta-llama/llama-4-maverick:free",
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
             {
-                "name": "openrouter:tngtech/deepseek-r1t-chimera:free",
-                "model": "openrouter:tngtech/deepseek-r1t-chimera:free"
+                "name": "openrouter:meta-llama/llama-4-scout:free",
+                "model": "openrouter:meta-llama/llama-4-scout:free"
             },
             {
                 "name": "akash:DeepSeek-R1",
