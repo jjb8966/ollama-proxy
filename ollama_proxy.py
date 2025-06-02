@@ -78,12 +78,16 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-scout:free"
             },
             {
-                "name": "akash:DeepSeek-R1",
-                "model": "akash:DeepSeek-R1"
+                "name": "akash:DeepSeek-R1-0528",
+                "model": "akash:DeepSeek-R1-0528"
             },
             {
                 "name": "akash:Qwen3-235B-A22B-FP8",
                 "model": "akash:Qwen3-235B-A22B-FP8"
+            },
+            {
+                "name": "akash:Meta-Llama-3-3-70B-Instruct",
+                "model": "akash:Meta-Llama-3-3-70B-Instruct"
             },
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
