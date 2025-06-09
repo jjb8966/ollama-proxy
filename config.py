@@ -1,10 +1,20 @@
 import os
+from multiprocessing import Manager, Lock
+
+_manager = Manager()
 
 
 class ApiConfig:
-    _GOOGLE_API_KEY_INDEX = 0
-    _OPENROUTER_API_KEY_INDEX = 0
-    _AKASH_API_KEY_INDEX = 0
+    _shared_indices = _manager.dict({
+        'GOOGLE': 0,
+        'OPENROUTER': 0,
+        'AKASH': 0
+    })
+    
+    # 각 API 키 인덱스에 대한 락 (multiprocessing locks)
+    _GOOGLE_LOCK = Lock()
+    _OPENROUTER_LOCK = Lock()
+    _AKASH_LOCK = Lock()
 
     def __init__(self):
         self.GOOGLE_API_KEYS_EXP = os.getenv('GOOGLE_API_KEYS', '')
@@ -35,26 +45,29 @@ class ApiConfig:
         if requested_model.startswith("google:"):
             model = requested_model.replace('google:', '')
             base_url = self.GOOGLE_BASE_URL
-            api_key = self.GOOGLE_API_KEYS[ApiConfig._GOOGLE_API_KEY_INDEX]
-            api_key_index = ApiConfig._GOOGLE_API_KEY_INDEX
-
-            ApiConfig._GOOGLE_API_KEY_INDEX = (api_key_index + 1) % len(self.GOOGLE_API_KEYS)
+            
+            with ApiConfig._GOOGLE_LOCK:
+                api_key_index = ApiConfig._shared_indices['GOOGLE']
+                api_key = self.GOOGLE_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['GOOGLE'] = (api_key_index + 1) % len(self.GOOGLE_API_KEYS)
 
         elif requested_model.startswith("openrouter:"):
             model = requested_model.replace('openrouter:', '')
             base_url = self.OPENROUTER_BASE_URL
-            api_key = self.OPENROUTER_API_KEYS[ApiConfig._OPENROUTER_API_KEY_INDEX]
-            api_key_index = ApiConfig._OPENROUTER_API_KEY_INDEX
-
-            ApiConfig._OPENROUTER_API_KEY_INDEX = (api_key_index + 1) % len(self.OPENROUTER_API_KEYS)
+            
+            with ApiConfig._OPENROUTER_LOCK:
+                api_key_index = ApiConfig._shared_indices['OPENROUTER']
+                api_key = self.OPENROUTER_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['OPENROUTER'] = (api_key_index + 1) % len(self.OPENROUTER_API_KEYS)
 
         elif requested_model.startswith("akash:"):
             model = requested_model.replace('akash:', '')
             base_url = self.AKASH_BASE_URL
-            api_key = self.AKASH_API_KEYS[ApiConfig._AKASH_API_KEY_INDEX]
-            api_key_index = ApiConfig._AKASH_API_KEY_INDEX
-
-            ApiConfig._AKASH_API_KEY_INDEX = (api_key_index + 1) % len(self.AKASH_API_KEYS)
+            
+            with ApiConfig._AKASH_LOCK:
+                api_key_index = ApiConfig._shared_indices['AKASH']
+                api_key = self.AKASH_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['AKASH'] = (api_key_index + 1) % len(self.AKASH_API_KEYS)
 
         else:
             model = requested_model
@@ -69,21 +82,24 @@ class ApiConfig:
             "api_key_index": api_key_index
         }
 
-    def get_next_api_key(self, base_url) -> dict:
+    def get_next_api_key(self, base_url) -> tuple:
         # API 키를 순환하며 반환하는 메서드
         if base_url == self.GOOGLE_BASE_URL:
-            api_key = self.GOOGLE_API_KEYS[ApiConfig._GOOGLE_API_KEY_INDEX]
-            api_key_index = ApiConfig._GOOGLE_API_KEY_INDEX
-            ApiConfig._GOOGLE_API_KEY_INDEX = (ApiConfig._GOOGLE_API_KEY_INDEX + 1) % len(self.GOOGLE_API_KEYS)
+            with ApiConfig._GOOGLE_LOCK:
+                api_key_index = ApiConfig._shared_indices['GOOGLE']
+                api_key = self.GOOGLE_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['GOOGLE'] = (ApiConfig._shared_indices['GOOGLE'] + 1) % len(self.GOOGLE_API_KEYS)
 
         elif base_url == self.OPENROUTER_BASE_URL:
-            api_key = self.OPENROUTER_API_KEYS[ApiConfig._OPENROUTER_API_KEY_INDEX]
-            api_key_index = ApiConfig._OPENROUTER_API_KEY_INDEX
-            ApiConfig._OPENROUTER_API_KEY_INDEX = (ApiConfig._OPENROUTER_API_KEY_INDEX + 1) % len(self.OPENROUTER_API_KEYS)
+            with ApiConfig._OPENROUTER_LOCK:
+                api_key_index = ApiConfig._shared_indices['OPENROUTER']
+                api_key = self.OPENROUTER_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['OPENROUTER'] = (ApiConfig._shared_indices['OPENROUTER'] + 1) % len(self.OPENROUTER_API_KEYS)
 
         elif base_url == self.AKASH_BASE_URL:
-            api_key = self.AKASH_API_KEYS[ApiConfig._AKASH_API_KEY_INDEX]
-            api_key_index = ApiConfig._AKASH_API_KEY_INDEX
-            ApiConfig._AKASH_API_KEY_INDEX = (ApiConfig._AKASH_API_KEY_INDEX + 1) % len(self.AKASH_API_KEYS)
+            with ApiConfig._AKASH_LOCK:
+                api_key_index = ApiConfig._shared_indices['AKASH']
+                api_key = self.AKASH_API_KEYS[api_key_index]
+                ApiConfig._shared_indices['AKASH'] = (ApiConfig._shared_indices['AKASH'] + 1) % len(self.AKASH_API_KEYS)
 
         return (api_key, api_key_index)

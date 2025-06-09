@@ -18,4 +18,4 @@ EXPOSE 5002
 # 컨테이너 실행 시 gunicorn을 사용하여 Flask 애플리케이션 실행
 # --bind 0.0.0.0:5002 모든 인터페이스의 5002 포트에서 요청 수신
 # ollama_proxy:app: ollama_proxy.py 파일의 Flask 앱 인스턴스(app)를 지정
-CMD ["gunicorn", "--workers=10", "--bind", "0.0.0.0:5002", "--timeout=300", "ollama_proxy:app"]
+CMD ["gunicorn", "--workers=10", "--preload", "--bind", "0.0.0.0:5002", "--timeout=300", "ollama_proxy:app"]
