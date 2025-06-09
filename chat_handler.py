@@ -1,4 +1,5 @@
 import logging
+import time
 
 import requests
 
@@ -82,6 +83,8 @@ class ChatHandler:
             except requests.exceptions.RequestException as e:
                 # 요청 실패 시 오류 로깅 (어떤 키에서 실패했는지 포함)
                 logging.warning(f"API 요청 실패 (Key: ...{api_key[:6]}, Index:{api_key_index})): {e}. 다음 키로 재시도합니다.")
+
+                time.sleep(1)  # 1초 대기
 
                 api_key, api_key_index = self.api_config.get_next_api_key(base_url)  # 다음 키 가져오기
                 try_count += 1
