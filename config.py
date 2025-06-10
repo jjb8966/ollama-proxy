@@ -1,5 +1,9 @@
 import os
+import multiprocessing
 from multiprocessing import Manager, Lock
+
+# multiprocessing 시작 방법 설정
+multiprocessing.set_start_method('fork')
 
 _manager = Manager()
 
