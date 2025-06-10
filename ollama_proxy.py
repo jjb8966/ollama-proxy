@@ -92,6 +92,10 @@ def get_tags():
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
                 "model": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8"
+            },
+            {
+                "name": "cohere:command-a-03-2025",
+                "model": "cohere:command-a-03-2025"
             }
         ]
     }
