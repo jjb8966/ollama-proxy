@@ -1,22 +1,25 @@
 import json
 import logging
 import os
+from dotenv import load_dotenv
 
 from flask import Flask, request, Response, stream_with_context
 
 from chat_handler import ChatHandler
 from response_handler import ResponseHandler
+from utils.logging_config import setup_logging
+from config import ApiConfig
+
+load_dotenv()
 
 # 로깅 설정
-logging.basicConfig(level=logging.DEBUG)  # 로깅 레벨을 DEBUG로 변경
-logger = logging.getLogger(__name__)
-
+logger = setup_logging()
 app = Flask(__name__)
-
+api_config = ApiConfig()
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    chat_handler = ChatHandler()
+    chat_handler = ChatHandler(api_config)
     response_handler = ResponseHandler()
 
     req = request.get_json(force=True)

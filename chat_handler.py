@@ -1,14 +1,28 @@
 import logging
-import time
-
-import requests
-
-from config import ApiConfig
-
+from utils.api_client import ApiClient
+from utils.error_handlers import ErrorHandler
 
 class ChatHandler:
-    def __init__(self):
-        self.api_config = ApiConfig()
+    def __init__(self, api_config):
+        self.api_config = api_config
+        # 각 제공업체별 ApiClient 인스턴스 생성
+        self.google_client = ApiClient(self.api_config.google_rotator)
+        self.openrouter_client = ApiClient(self.api_config.openrouter_rotator)
+        self.akash_client = ApiClient(self.api_config.akash_rotator)
+        self.cohere_client = ApiClient(self.api_config.cohere_rotator)
+
+    def _get_client(self, requested_model):
+        """요청 모델에 따라 적절한 ApiClient 반환"""
+        if requested_model.startswith("google:"):
+            return self.google_client
+        elif requested_model.startswith("openrouter:"):
+            return self.openrouter_client
+        elif requested_model.startswith("akash:"):
+            return self.akash_client
+        elif requested_model.startswith("cohere:"):
+            return self.cohere_client
+        else:
+            raise ValueError(f"지원되지 않는 모델: {requested_model}")
 
     def handle_chat_request(self, req):
         # '/api/chat' 요청을 처리하는 메서드
@@ -46,8 +60,6 @@ class ChatHandler:
         api_config = self.api_config.get_api_config(requested_model)
         model = api_config['model']
         base_url = api_config['base_url']
-        api_key = api_config['api_key']
-        api_key_index = api_config['api_key_index']
 
         payload = {
             "messages": messages,
@@ -56,40 +68,17 @@ class ChatHandler:
         }
 
         end_point = base_url + "/chat/completions"
+        headers = {'Content-Type': 'application/json'}
 
-        try_count = 0
-        while try_count < 100:
-            try:
-                headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + api_key  # 가져온 키로 헤더 설정
-                }
+        # 적절한 ApiClient 선택
+        client = self._get_client(requested_model)
+        
+        # API 요청 실행
+        resp = client.post_request(
+            url=end_point,
+            payload=payload,
+            headers=headers,
+            stream=stream
+        )
 
-                logging.info(
-                    f"API 요청 시도: {end_point} (Key: ...{api_key[-10:]}, Index:{api_key_index})")  # 어떤 키를 사용하는지 로깅 (선택 사항)
-
-                resp = requests.post(end_point, headers=headers, json=payload, stream=stream, timeout=(50, 300))
-
-                # HTTP 오류 발생 시 예외 발생
-                resp.raise_for_status()
-
-                # (OpenRouter) Rate limit exceeded 예외 발생
-                if b'Rate limit exceeded' in resp.content:
-                    raise requests.exceptions.RequestException
-
-                logging.info("API 요청 성공")  # 성공 로깅 (선택 사항)
-                return resp  # 성공 시 응답 반환 및 루프 종료
-
-            except requests.exceptions.RequestException as e:
-                # 요청 실패 시 오류 로깅 (어떤 키에서 실패했는지 포함)
-                logging.warning(f"API 요청 실패 (Key: ...{api_key[:6]}, Index:{api_key_index})): {e}. 다음 키로 재시도합니다.")
-
-                time.sleep(1)  # 1초 대기
-
-                api_key, api_key_index = self.api_config.get_next_api_key(base_url)  # 다음 키 가져오기
-                try_count += 1
-
-                continue
-
-        logging.error("모든 API 키 사용 실패")  # 모든 키 실패 시 오류 로깅
-        return None
+        return resp

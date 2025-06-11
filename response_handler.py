@@ -3,6 +3,7 @@ import logging
 import time
 from datetime import datetime
 from requests import Response  # requests.Response 타입 힌트를 위해 추가
+from utils.error_handlers import ErrorHandler
 
 logger = logging.getLogger(__name__)
 
@@ -89,13 +90,8 @@ class ResponseHandler:
 
     def _create_error_chunk_str(self, model: str, error: Exception) -> str:
         """오류 Ollama 청크 문자열을 생성합니다."""
-        chunk = self._build_base_chunk(model)
-        chunk.update({
-            "message": {"role": "assistant", "content": f"스트림 처리 중 오류 발생: {error}"},
-            "done": True,
-            "error": str(error)
-        })
-        return json.dumps(chunk) + "\n"
+        error_response = ErrorHandler.create_error_response(model, str(error))
+        return json.dumps(error_response) + "\n"
 
     # --- 비스트리밍 응답 처리 관련 헬퍼 메서드 ---
 
