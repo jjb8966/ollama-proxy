@@ -1,12 +1,13 @@
 import requests
 import time
+import logging
 from .error_handlers import ErrorHandler
 
 class ApiClient:
     def __init__(self, key_rotator):
         self.key_rotator = key_rotator
 
-    def post_request(self, url, payload, headers, stream=False, max_retries=100):
+    def post_request(self, url, payload, headers, stream=False, max_retries=10):
         """
         API POST 요청을 처리하고 응답을 반환합니다.
         :param url: 요청 URL
@@ -39,7 +40,22 @@ class ApiClient:
                     error=e,
                     api_key=api_key
                 )
-                print(error_msg)
+                # API 요청 실패 로깅 추가
+                # API 키 마스킹 (6자리 표시 + *** + 마지막 4자리)
+                masked_key = 'None'
+                if api_key:
+                    if len(api_key) > 10:
+                        masked_key = api_key[:6] + '***' + api_key[-4:]
+                    else:
+                        masked_key = '***'  # 짧은 키 처리
+                
+                logging.error(
+                    f"API 요청 실패 - URL: {url}, "
+                    f"에러: {str(e)}, "
+                    f"키: {masked_key}, "
+                    f"재시도: {try_count+1}/{max_retries}"
+                )
+                print(error_msg)  # 기존 출력 유지
                 time.sleep(1)
                 try_count += 1
         return None
