@@ -1,5 +1,5 @@
-import os
 from utils.key_rotator import KeyRotator
+
 
 class ApiConfig:
     def __init__(self):

@@ -1,6 +1,7 @@
 import logging
+
 from utils.api_client import ApiClient
-from utils.error_handlers import ErrorHandler
+
 
 class ChatHandler:
     def __init__(self, api_config):
@@ -72,7 +73,7 @@ class ChatHandler:
 
         # 적절한 ApiClient 선택
         client = self._get_client(requested_model)
-        
+
         # API 요청 실행
         resp = client.post_request(
             url=end_point,

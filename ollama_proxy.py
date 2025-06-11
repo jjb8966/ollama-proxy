@@ -1,14 +1,13 @@
 import json
-import logging
 import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from flask import Flask, request, Response, stream_with_context
 
 from chat_handler import ChatHandler
+from config import ApiConfig
 from response_handler import ResponseHandler
 from utils.logging_config import setup_logging
-from config import ApiConfig
 
 load_dotenv()
 
@@ -16,6 +15,7 @@ load_dotenv()
 logger = setup_logging()
 app = Flask(__name__)
 api_config = ApiConfig()
+
 
 @app.route('/api/chat', methods=['POST'])
 def chat():

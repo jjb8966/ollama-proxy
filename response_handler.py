@@ -2,19 +2,23 @@ import json
 import logging
 import time
 from datetime import datetime
+
 from requests import Response  # requests.Response 타입 힌트를 위해 추가
+
 from utils.error_handlers import ErrorHandler
 
 logger = logging.getLogger(__name__)
+
 
 class ResponseHandler:
     """
     API 응답을 처리하는 클래스 (스트리밍 및 비스트리밍).
     """
+
     def __init__(self):
         # 로거 초기화 (기존 코드와 동일하지만, 클래스 레벨 로거가 더 일반적입니다)
         # self.logger = logging.getLogger(__name__) # __init__ 밖으로 이동 가능
-        pass # 생성자에서 특별히 할 일이 없으면 pass 사용 가능
+        pass  # 생성자에서 특별히 할 일이 없으면 pass 사용 가능
 
     # --- 스트리밍 응답 처리 관련 헬퍼 메서드 ---
 
@@ -29,7 +33,7 @@ class ResponseHandler:
         """스트림에서 한 줄을 파싱합니다."""
         if not line:
             return None
-        
+
         s = line.decode('utf-8').strip()
 
         # 문자열이 "data: " 로 시작하는지 확인합니다. (Server-Sent Events 같은 스트리밍 형식에서 자주 사용됨)
@@ -54,7 +58,7 @@ class ResponseHandler:
             # 경고(warning) 수준의 로그 메시지를 기록합니다. 로그에는 잘못된 JSON 문자열 s의 내용이 포함됩니다.
             logger.warning(f"스트림에서 잘못된 JSON 수신: {s}")
             # 잘못된 JSON 데이터(청크)는 처리할 수 없으므로, None을 반환하여 이 청크를 무시하도록 합니다.
-            return None # 잘못된 청크는 무시
+            return None  # 잘못된 청크는 무시
 
     def _process_parsed_chunk(self, chunk: dict) -> tuple[str, str | None]:
         """파싱된 청크에서 텍스트 내용과 종료 이유를 추출합니다."""
@@ -84,7 +88,7 @@ class ResponseHandler:
             "message": {"role": "assistant", "content": ""},
             "done": True,
             "total_duration": duration,
-            "eval_duration": duration # 원본 코드와 동일하게 total_duration 사용
+            "eval_duration": duration  # 원본 코드와 동일하게 total_duration 사용
         })
         return json.dumps(chunk) + "\n"
 
@@ -126,9 +130,9 @@ class ResponseHandler:
             for line in resp.iter_lines():
                 parsed_data = self._parse_stream_line(line)
 
-                if parsed_data is None: # 빈 줄 또는 파싱 오류
+                if parsed_data is None:  # 빈 줄 또는 파싱 오류
                     continue
-                if parsed_data == "[DONE]": # 종료 신호
+                if parsed_data == "[DONE]":  # 종료 신호
                     break
 
                 # 유효한 JSON 청크 처리
@@ -140,7 +144,7 @@ class ResponseHandler:
                 if finish_reason == "stop":
                     yield self._create_final_chunk_str(response_model, start_time)
                     # "stop" 이후에는 더 이상 청크가 오지 않는다고 가정
-                    break # 명시적으로 루프 종료
+                    break  # 명시적으로 루프 종료
 
         except Exception as e:
             logger.error(f"스트림 처리 중 예외 발생: {e}", exc_info=True)
