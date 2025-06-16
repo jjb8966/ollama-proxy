@@ -81,6 +81,10 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-scout:free"
             },
             {
+                "name": "google:google/gemini-2.5-flash-preview-05-20",
+                "model": "google:google/gemini-2.5-flash-preview-05-20"
+            },
+            {
                 "name": "akash:DeepSeek-R1-0528",
                 "model": "akash:DeepSeek-R1-0528"
             },
