@@ -49,16 +49,12 @@ def get_tags():
     available_models = {
         "models": [
             {
+                "name": "google:gemini-2.5-flash",
+                "model": "google:gemini-2.5-flash"
+            },
+            {
                 "name": "google:gemini-2.5-flash-preview-05-20",
                 "model": "google:gemini-2.5-flash-preview-05-20"
-            },
-            {
-                "name": "google:gemini-2.0-flash-thinking-exp-01-21",
-                "model": "google:gemini-2.0-flash-thinking-exp-01-21"
-            },
-            {
-                "name": "google:gemini-2.0-flash-exp",
-                "model": "google:gemini-2.0-flash-exp"
             },
             {
                 "name": "openrouter:qwen/qwen3-235b-a22b:free",
