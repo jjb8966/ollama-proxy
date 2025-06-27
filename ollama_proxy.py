@@ -1,6 +1,5 @@
 import json
 import os
-
 from dotenv import load_dotenv
 from flask import Flask, request, Response, stream_with_context
 
@@ -99,6 +98,10 @@ def get_tags():
             {
                 "name": "cohere:command-a-03-2025",
                 "model": "cohere:command-a-03-2025"
+            },
+            {
+                "name": "codestral:codestral-2501",
+                "model": "codestral:codestral-2501"
             }
         ]
     }

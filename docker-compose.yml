@@ -11,5 +11,6 @@ services:
       - OPENROUTER_API_KEYS=${OPENROUTER_API_KEYS}
       - AKASH_API_KEYS=${AKASH_API_KEYS}
       - COHERE_API_KEYS=${COHERE_API_KEYS}
+      - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
     restart: always
     container_name: ollama-proxy

@@ -11,6 +11,7 @@ class ChatHandler:
         self.openrouter_client = ApiClient(self.api_config.openrouter_rotator)
         self.akash_client = ApiClient(self.api_config.akash_rotator)
         self.cohere_client = ApiClient(self.api_config.cohere_rotator)
+        self.codestral_client = ApiClient(self.api_config.codestral_rotator)
 
     def _get_client(self, requested_model):
         """요청 모델에 따라 적절한 ApiClient 반환"""
@@ -22,6 +23,8 @@ class ChatHandler:
             return self.akash_client
         elif requested_model.startswith("cohere:"):
             return self.cohere_client
+        elif requested_model.startswith("codestral:"):
+            return self.codestral_client
         else:
             raise ValueError(f"지원되지 않는 모델: {requested_model}")
 

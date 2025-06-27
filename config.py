@@ -12,12 +12,15 @@ class ApiConfig:
         self.akash_rotator.log_key_count()
         self.cohere_rotator = KeyRotator("Cohere", "COHERE_API_KEYS")
         self.cohere_rotator.log_key_count()
+        self.codestral_rotator = KeyRotator("Codestral", "CODESTRAL_API_KEYS")
+        self.codestral_rotator.log_key_count()
 
         # 기본 URL 설정
         self.GOOGLE_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
         self.OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
         self.AKASH_BASE_URL = "https://chatapi.akash.network/api/v1"
         self.COHERE_BASE_URL = "https://api.cohere.ai/compatibility/v1"
+        self.CODESTRAL_BASE_URL = "https://codestral.mistral.ai/v1"
 
     def get_api_config(self, requested_model):
         # API 설정을 가져오는 메서드
@@ -44,6 +47,12 @@ class ApiConfig:
             base_url = self.COHERE_BASE_URL
             api_key = self.cohere_rotator.get_next_key()
             api_key_index = self.cohere_rotator.get_current_index()
+
+        elif requested_model.startswith("codestral:"):
+            model = requested_model.replace('codestral:', '')
+            base_url = self.CODESTRAL_BASE_URL
+            api_key = self.codestral_rotator.get_next_key()
+            api_key_index = self.codestral_rotator.get_current_index()
 
         else:
             model = requested_model
@@ -72,6 +81,9 @@ class ApiConfig:
         elif base_url == self.COHERE_BASE_URL:
             api_key = self.cohere_rotator.get_next_key()
             api_key_index = self.cohere_rotator.get_current_index()
+        elif base_url == self.CODESTRAL_BASE_URL:
+            api_key = self.codestral_rotator.get_next_key()
+            api_key_index = self.codestral_rotator.get_current_index()
         else:
             api_key = None
             api_key_index = None
