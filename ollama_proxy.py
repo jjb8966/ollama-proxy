@@ -52,6 +52,10 @@ def get_tags():
                 "model": "google:gemini-2.5-flash"
             },
             {
+                "name": "google:gemini-2.5-pro",
+                "model": "google:gemini-2.5-pro"
+            },
+            {
                 "name": "google:gemini-2.5-flash-preview-05-20",
                 "model": "google:gemini-2.5-flash-preview-05-20"
             },
