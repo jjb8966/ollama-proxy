@@ -64,6 +64,10 @@ def get_tags():
                 "model": "openrouter:qwen/qwen3-235b-a22b:free"
             },
             {
+                "name": "openrouter:qwen/qwen3-coder:free",
+                "model": "openrouter:qwen/qwen3-coder:free"
+            },
+            {
                 "name": "openrouter:deepseek/deepseek-r1-0528:free",
                 "model": "openrouter:deepseek/deepseek-r1-0528:free"
             },
