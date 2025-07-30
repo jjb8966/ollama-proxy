@@ -27,32 +27,32 @@ class ApiConfig:
         if requested_model.startswith("google:"):
             model = requested_model.replace('google:', '')
             base_url = self.GOOGLE_BASE_URL
-            api_key = self.google_rotator.get_next_key()
-            api_key_index = self.google_rotator.get_current_index()
+            api_key = None
+            api_key_index = None
 
         elif requested_model.startswith("openrouter:"):
             model = requested_model.replace('openrouter:', '')
             base_url = self.OPENROUTER_BASE_URL
-            api_key = self.openrouter_rotator.get_next_key()
-            api_key_index = self.openrouter_rotator.get_current_index()
+            api_key = None
+            api_key_index = None
 
         elif requested_model.startswith("akash:"):
             model = requested_model.replace('akash:', '')
             base_url = self.AKASH_BASE_URL
-            api_key = self.akash_rotator.get_next_key()
-            api_key_index = self.akash_rotator.get_current_index()
+            api_key = None
+            api_key_index = None
 
         elif requested_model.startswith("cohere:"):
             model = requested_model.replace('cohere:', '')
             base_url = self.COHERE_BASE_URL
-            api_key = self.cohere_rotator.get_next_key()
-            api_key_index = self.cohere_rotator.get_current_index()
+            api_key = None
+            api_key_index = None
 
         elif requested_model.startswith("codestral:"):
             model = requested_model.replace('codestral:', '')
             base_url = self.CODESTRAL_BASE_URL
-            api_key = self.codestral_rotator.get_next_key()
-            api_key_index = self.codestral_rotator.get_current_index()
+            api_key = None
+            api_key_index = None
 
         else:
             model = requested_model
