@@ -84,6 +84,10 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-scout:free"
             },
             {
+                "name": "openrouter:moonshotai/kimi-k2:free",
+                "model": "openrouter:moonshotai/kimi-k2:free"
+            },
+            {
                 "name": "google:google/gemini-2.5-flash-preview-05-20",
                 "model": "google:google/gemini-2.5-flash-preview-05-20"
             },
