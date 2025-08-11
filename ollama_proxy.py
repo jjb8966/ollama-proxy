@@ -88,6 +88,10 @@ def get_tags():
                 "model": "openrouter:moonshotai/kimi-k2:free"
             },
             {
+                "name": "openrouter:openai/gpt-oss-20b:free",
+                "model": "openrouter:openai/gpt-oss-20b:free"
+            },
+            {
                 "name": "google:google/gemini-2.5-flash-preview-05-20",
                 "model": "google:google/gemini-2.5-flash-preview-05-20"
             },
