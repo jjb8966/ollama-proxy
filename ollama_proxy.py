@@ -56,10 +56,6 @@ def get_tags():
                 "model": "google:gemini-2.5-pro"
             },
             {
-                "name": "google:gemini-2.5-flash-preview-05-20",
-                "model": "google:gemini-2.5-flash-preview-05-20"
-            },
-            {
                 "name": "openrouter:qwen/qwen3-235b-a22b:free",
                 "model": "openrouter:qwen/qwen3-235b-a22b:free"
             },
@@ -76,6 +72,10 @@ def get_tags():
                 "model": "openrouter:deepseek/deepseek-chat-v3-0324:free"
             },
             {
+                "name": "openrouter:deepseek/deepseek-chat-v3.1:free",
+                "model": "openrouter:deepseek/deepseek-chat-v3.1:free"
+            },
+            {
                 "name": "openrouter:meta-llama/llama-4-maverick:free",
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
@@ -84,12 +84,8 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-scout:free"
             },
             {
-                "name": "openrouter:moonshotai/kimi-k2:free",
-                "model": "openrouter:moonshotai/kimi-k2:free"
-            },
-            {
-                "name": "openrouter:openai/gpt-oss-20b:free",
-                "model": "openrouter:openai/gpt-oss-20b:free"
+                "name": "openrouter:openai/gpt-oss-120b:free",
+                "model": "openrouter:openai/gpt-oss-120b:free"
             },
             {
                 "name": "google:google/gemini-2.5-flash-preview-05-20",
@@ -98,6 +94,10 @@ def get_tags():
             {
                 "name": "akash:DeepSeek-R1-0528",
                 "model": "akash:DeepSeek-R1-0528"
+            },
+            {
+                "name": "akash:gpt-oss-120b",
+                "model": "akash:gpt-oss-120b"
             },
             {
                 "name": "akash:Qwen3-235B-A22B-FP8",
