@@ -56,20 +56,12 @@ def get_tags():
                 "model": "google:gemini-2.5-pro"
             },
             {
-                "name": "openrouter:qwen/qwen3-235b-a22b:free",
-                "model": "openrouter:qwen/qwen3-235b-a22b:free"
-            },
-            {
                 "name": "openrouter:qwen/qwen3-coder:free",
                 "model": "openrouter:qwen/qwen3-coder:free"
             },
             {
                 "name": "openrouter:deepseek/deepseek-r1-0528:free",
                 "model": "openrouter:deepseek/deepseek-r1-0528:free"
-            },
-            {
-                "name": "openrouter:deepseek/deepseek-chat-v3-0324:free",
-                "model": "openrouter:deepseek/deepseek-chat-v3-0324:free"
             },
             {
                 "name": "openrouter:deepseek/deepseek-chat-v3.1:free",
@@ -80,16 +72,8 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
             {
-                "name": "openrouter:meta-llama/llama-4-scout:free",
-                "model": "openrouter:meta-llama/llama-4-scout:free"
-            },
-            {
-                "name": "openrouter:openai/gpt-oss-120b:free",
-                "model": "openrouter:openai/gpt-oss-120b:free"
-            },
-            {
-                "name": "google:google/gemini-2.5-flash-preview-05-20",
-                "model": "google:google/gemini-2.5-flash-preview-05-20"
+                "name": "openrouter:x-ai/grok-4-fast:free",
+                "model": "openrouter:x-ai/grok-4-fast:free"
             },
             {
                 "name": "akash:DeepSeek-R1-0528",
@@ -98,14 +82,6 @@ def get_tags():
             {
                 "name": "akash:gpt-oss-120b",
                 "model": "akash:gpt-oss-120b"
-            },
-            {
-                "name": "akash:Qwen3-235B-A22B-FP8",
-                "model": "akash:Qwen3-235B-A22B-FP8"
-            },
-            {
-                "name": "akash:Meta-Llama-3-3-70B-Instruct",
-                "model": "akash:Meta-Llama-3-3-70B-Instruct"
             },
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
