@@ -60,24 +60,12 @@ def get_tags():
                 "model": "openrouter:qwen/qwen3-coder:free"
             },
             {
-                "name": "openrouter:deepseek/deepseek-r1-0528:free",
-                "model": "openrouter:deepseek/deepseek-r1-0528:free"
-            },
-            {
-                "name": "openrouter:deepseek/deepseek-chat-v3.1:free",
-                "model": "openrouter:deepseek/deepseek-chat-v3.1:free"
-            },
-            {
                 "name": "openrouter:meta-llama/llama-4-maverick:free",
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
             {
-                "name": "openrouter:x-ai/grok-4-fast:free",
-                "model": "openrouter:x-ai/grok-4-fast:free"
-            },
-            {
-                "name": "akash:DeepSeek-R1-0528",
-                "model": "akash:DeepSeek-R1-0528"
+                "name": "akash:DeepSeek-R1-Distill-Qwen-32B",
+                "model": "akash:DeepSeek-R1-Distill-Qwen-32B"
             },
             {
                 "name": "akash:gpt-oss-120b",
