@@ -64,12 +64,24 @@ def get_tags():
                 "model": "openrouter:meta-llama/llama-4-maverick:free"
             },
             {
-                "name": "akash:DeepSeek-R1-Distill-Qwen-32B",
-                "model": "akash:DeepSeek-R1-Distill-Qwen-32B"
+                "name": "openrouter:minimax/minimax-m2:free",
+                "model": "openrouter:minimax/minimax-m2:free"
+            },
+            {
+                "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
+                "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
             },
             {
                 "name": "akash:gpt-oss-120b",
                 "model": "akash:gpt-oss-120b"
+            },
+            {
+                "name": "akash:DeepSeek-V3-1",
+                "model": "akash:DeepSeek-V3-1"
+            },
+            {
+                "name": "akash:DeepSeek-R1-Distill-Qwen-32B",
+                "model": "akash:DeepSeek-R1-Distill-Qwen-32B"
             },
             {
                 "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
