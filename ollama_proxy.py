@@ -56,16 +56,12 @@ def get_tags():
                 "model": "google:gemini-2.5-pro"
             },
             {
+                "name": "openrouter:qwen/qwen3-235b-a22b:free",
+                "model": "openrouter:qwen/qwen3-235b-a22b:free"
+            },
+            {
                 "name": "openrouter:qwen/qwen3-coder:free",
                 "model": "openrouter:qwen/qwen3-coder:free"
-            },
-            {
-                "name": "openrouter:meta-llama/llama-4-maverick:free",
-                "model": "openrouter:meta-llama/llama-4-maverick:free"
-            },
-            {
-                "name": "openrouter:minimax/minimax-m2:free",
-                "model": "openrouter:minimax/minimax-m2:free"
             },
             {
                 "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
@@ -80,12 +76,8 @@ def get_tags():
                 "model": "akash:DeepSeek-V3-1"
             },
             {
-                "name": "akash:DeepSeek-R1-Distill-Qwen-32B",
-                "model": "akash:DeepSeek-R1-Distill-Qwen-32B"
-            },
-            {
-                "name": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8",
-                "model": "akash:Meta-Llama-4-Maverick-17B-128E-Instruct-FP8"
+                "name": "akash:Qwen3-235B-A22B-Instruct-2507-FP8",
+                "model": "akash:Qwen3-235B-A22B-Instruct-2507-FP8"
             },
             {
                 "name": "cohere:command-a-03-2025",
