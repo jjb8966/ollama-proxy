@@ -68,6 +68,10 @@ def get_tags():
                 "model": "openrouter:qwen/qwen3-coder:free"
             },
             {
+                "name": "openrouter:minimax/minimax-m2:free",
+                "model": "openrouter:minimax/minimax-m2:free"
+            },
+            {
                 "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
                 "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
             },
