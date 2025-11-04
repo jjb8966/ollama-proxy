@@ -94,10 +94,6 @@ def get_tags():
             {
                 "name": "codestral:codestral-2501",
                 "model": "codestral:codestral-2501"
-            },
-            {
-                "name": "qwen:qwen3-coder-plus",
-                "model": "qwen:qwen3-coder-plus"
             }
         ]
     }
