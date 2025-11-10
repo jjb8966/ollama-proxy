@@ -92,8 +92,8 @@ def get_tags():
                 "model": "cohere:command-a-03-2025"
             },
             {
-                "name": "codestral:codestral-2501",
-                "model": "codestral:codestral-2501"
+                "name": "codestral:codestral-2508",
+                "model": "codestral:codestral-2508"
             },
             {
                 "name": "qwen:qwen3-coder-plus",
