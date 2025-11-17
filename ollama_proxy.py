@@ -76,6 +76,10 @@ def get_tags():
                 "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
             },
             {
+                "name": "openrouter:kwaipilot/kat-coder-pro:free",
+                "model": "openrouter:kwaipilot/kat-coder-pro:free"
+            },
+            {
                 "name": "akash:gpt-oss-120b",
                 "model": "akash:gpt-oss-120b"
             },
