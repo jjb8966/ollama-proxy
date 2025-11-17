@@ -38,6 +38,60 @@ def chat():
         return Response(json.dumps(ollama_response), mimetype='application/json')
 
 
+@app.route('/v1/chat/completions', methods=['POST'])
+def openai_chat_completions():
+    chat_handler = ChatHandler(api_config)
+
+    req = request.get_json(force=True)
+    requested_model = req.get('model')
+    if not requested_model:
+        error_body = {
+            "error": {
+                "message": "model is required",
+                "type": "invalid_request_error"
+            }
+        }
+        return Response(json.dumps(error_body), status=400, mimetype='application/json')
+
+    stream = req.get('stream', False)
+
+    proxied_req = {
+        "model": requested_model,
+        "messages": req.get('messages'),
+        "stream": stream
+    }
+
+    resp = chat_handler.handle_chat_request(proxied_req)
+    if resp is None:
+        error_body = {
+            "error": {
+                "message": "API request failed",
+                "type": "api_error"
+            }
+        }
+        return Response(json.dumps(error_body), status=500, mimetype='application/json')
+
+    if stream:
+        def generate():
+            try:
+                for chunk in resp.iter_content(chunk_size=None):
+                    if chunk:
+                        yield chunk
+            finally:
+                resp.close()
+
+        return Response(
+            stream_with_context(generate()),
+            mimetype=resp.headers.get('Content-Type', 'text/event-stream')
+        )
+    else:
+        return Response(
+            resp.content,
+            status=resp.status_code,
+            mimetype=resp.headers.get('Content-Type', 'application/json')
+        )
+
+
 @app.route('/api/tags', methods=['GET'])
 def get_tags():
     """
@@ -106,6 +160,35 @@ def get_tags():
         ]
     }
     return Response(json.dumps(available_models), status=200, mimetype='application/json')
+
+
+@app.route('/v1/models', methods=['GET'])
+def list_models():
+    tags_resp = get_tags()
+    try:
+        data = json.loads(tags_resp.get_data(as_text=True))
+    except Exception:
+        empty_body = {"object": "list", "data": []}
+        return Response(json.dumps(empty_body), status=200, mimetype='application/json')
+
+    models = data.get("models", [])
+    result = {
+        "object": "list",
+        "data": []
+    }
+
+    for m in models:
+        model_id = m.get("model") or m.get("name")
+        if not model_id:
+            continue
+        result["data"].append({
+            "id": model_id,
+            "object": "model",
+            "created": 0,
+            "owned_by": "proxy"
+        })
+
+    return Response(json.dumps(result), status=200, mimetype='application/json')
 
 
 @app.route('/', methods=['GET'])  # 루트 경로 추가
