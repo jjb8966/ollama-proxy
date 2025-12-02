@@ -134,6 +134,10 @@ def get_tags():
                 "model": "openrouter:kwaipilot/kat-coder-pro:free"
             },
             {
+                "name": "openrouter:x-ai/grok-4.1-fast:free",
+                "model": "openrouter:x-ai/grok-4.1-fast:free"
+            },
+            {
                 "name": "akash:gpt-oss-120b",
                 "model": "akash:gpt-oss-120b"
             },
