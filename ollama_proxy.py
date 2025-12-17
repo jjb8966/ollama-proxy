@@ -128,6 +128,22 @@ def get_tags():
             {
                 "name": "qwen:qwen3-coder-plus",
                 "model": "qwen:qwen3-coder-plus"
+            },
+            {
+                "name": "perplexity:sonar",
+                "model": "perplexity:sonar"
+            },
+            {
+                "name": "perplexity:sonar-pro",
+                "model": "perplexity:sonar-pro"
+            },
+            {
+                "name": "perplexity:sonar-reasoning-pro",
+                "model": "perplexity:sonar-reasoning-pro"
+            },
+            {
+                "name": "perplexity:sonar-deep-research",
+                "model": "perplexity:sonar-deep-research"
             }
         ]
     }

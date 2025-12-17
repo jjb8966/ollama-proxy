@@ -16,6 +16,8 @@ class ApiConfig:
         self.codestral_rotator.log_key_count()
         self.qwen_rotator = KeyRotator("Qwen", "QWEN_API_KEYS")
         self.qwen_rotator.log_key_count()
+        self.perplexity_rotator = KeyRotator("Perplexity", "PERPLEXITY_API_KEYS")
+        self.perplexity_rotator.log_key_count()
 
         # 기본 URL 설정
         self.GOOGLE_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai"
@@ -24,6 +26,7 @@ class ApiConfig:
         self.COHERE_BASE_URL = "https://api.cohere.ai/compatibility/v1"
         self.CODESTRAL_BASE_URL = "https://codestral.mistral.ai/v1"
         self.QWEN_BASE_URL = "https://portal.qwen.ai/v1"
+        self.PERPLEXITY_BASE_URL = "https://api.perplexity.ai"
 
     def get_api_config(self, requested_model):
         # API 설정을 가져오는 메서드
@@ -63,6 +66,12 @@ class ApiConfig:
             api_key = None
             api_key_index = None
 
+        elif requested_model.startswith("perplexity:"):
+            model = requested_model.replace('perplexity:', '')
+            base_url = self.PERPLEXITY_BASE_URL
+            api_key = None
+            api_key_index = None
+
         else:
             model = requested_model
             base_url = None
@@ -96,6 +105,9 @@ class ApiConfig:
         elif base_url == self.QWEN_BASE_URL:
             api_key = self.qwen_rotator.get_next_key()
             api_key_index = self.qwen_rotator.get_current_index()
+        elif base_url == self.PERPLEXITY_BASE_URL:
+            api_key = self.perplexity_rotator.get_next_key()
+            api_key_index = self.perplexity_rotator.get_current_index()
         else:
             api_key = None
             api_key_index = None

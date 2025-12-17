@@ -3,6 +3,64 @@ import logging
 from utils.api_client import ApiClient
 
 
+def normalize_messages_for_perplexity(messages):
+    """
+    Perplexity API용 메시지 정규화
+    - 연속된 같은 role의 메시지를 하나로 병합
+    - system 메시지는 맨 앞에 유지
+    - user와 assistant가 번갈아 나오도록 보장
+    """
+    if not messages:
+        return messages
+    
+    normalized = []
+    system_messages = []
+    
+    # system 메시지 분리
+    for msg in messages:
+        if msg.get('role') == 'system':
+            system_messages.append(msg)
+        else:
+            break
+    
+    # system 메시지 병합
+    if system_messages:
+        combined_system = '\n\n'.join([m.get('content', '') for m in system_messages])
+        normalized.append({'role': 'system', 'content': combined_system})
+    
+    # 나머지 메시지 처리 (system 이후)
+    remaining = messages[len(system_messages):]
+    
+    for msg in remaining:
+        role = msg.get('role')
+        content = msg.get('content', '')
+        
+        # content가 리스트인 경우 (이미지 등) 그대로 유지
+        if isinstance(content, list):
+            # 이미지가 포함된 경우 텍스트만 추출
+            text_parts = []
+            for part in content:
+                if isinstance(part, dict) and part.get('type') == 'text':
+                    text_parts.append(part.get('text', ''))
+            content = '\n'.join(text_parts) if text_parts else str(content)
+        
+        if not normalized:
+            # 첫 번째 메시지
+            normalized.append({'role': role, 'content': content})
+        elif normalized[-1]['role'] == role:
+            # 연속된 같은 role - 병합
+            prev_content = normalized[-1]['content']
+            normalized[-1]['content'] = f"{prev_content}\n\n{content}"
+        else:
+            # 다른 role - 추가
+            normalized.append({'role': role, 'content': content})
+    
+    # 마지막이 user가 아닌 경우 처리 (Perplexity는 마지막이 user여야 함)
+    # 단, assistant로 끝나면 그대로 유지 (일부 경우 허용)
+    
+    return normalized
+
+
 class ChatHandler:
     def __init__(self, api_config):
         self.api_config = api_config
@@ -13,6 +71,7 @@ class ChatHandler:
         self.cohere_client = ApiClient(self.api_config.cohere_rotator)
         self.codestral_client = ApiClient(self.api_config.codestral_rotator)
         self.qwen_client = ApiClient(self.api_config.qwen_rotator)
+        self.perplexity_client = ApiClient(self.api_config.perplexity_rotator)
 
     def _get_client(self, requested_model):
         """요청 모델에 따라 적절한 ApiClient 반환"""
@@ -28,6 +87,8 @@ class ChatHandler:
             return self.codestral_client
         elif requested_model.startswith("qwen:"):
             return self.qwen_client
+        elif requested_model.startswith("perplexity:"):
+            return self.perplexity_client
         else:
             raise ValueError(f"지원되지 않는 모델: {requested_model}")
 
@@ -67,6 +128,10 @@ class ChatHandler:
         api_config = self.api_config.get_api_config(requested_model)
         model = api_config['model']
         base_url = api_config['base_url']
+
+        # Perplexity 모델인 경우 메시지 정규화
+        if requested_model.startswith("perplexity:"):
+            messages = normalize_messages_for_perplexity(messages)
 
         payload = {
             "messages": messages,

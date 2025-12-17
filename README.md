@@ -1,6 +1,6 @@
 # Ollama Proxy Server
 
-이 프로젝트는 여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 변환해 주는 프록시 서버입니다.
+이 프로젝트는 여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen, Perplexity)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 변환해 주는 프록시 서버입니다.
 
 - Ollama 스타일 엔드포인트: `/api/chat`, `/api/tags`, `/api/version`
 - OpenAI 스타일 엔드포인트: `/v1/chat/completions`, `/v1/models`
@@ -36,6 +36,7 @@ AKASH_API_KEYS="key1,key2,..."
 COHERE_API_KEYS="key1,key2,..."
 CODESTRAL_API_KEYS="key1,key2,..."
 QWEN_API_KEYS="key1,key2,..."
+PERPLEXITY_API_KEYS="key1,key2,..."
 ```
 
 3. 서버 실행
@@ -106,7 +107,7 @@ PORT=5005 python ollama_proxy.py
   - `stream: false` 인 경우: 업스트림(OpenAI 호환 백엔드)의 JSON 응답을 그대로 반환
   - `stream: true` 인 경우: 업스트림의 SSE/스트리밍 응답을 그대로 프록시
 
-> 모델 이름은 `google:...`, `openrouter:...`, `akash:...`, `cohere:...`, `codestral:...`, `qwen:...` 과 같이 prefix 를 포함해 지정합니다.
+> 모델 이름은 `google:...`, `openrouter:...`, `akash:...`, `cohere:...`, `codestral:...`, `qwen:...`, `perplexity:...` 과 같이 prefix 를 포함해 지정합니다.
 
 #### `GET /v1/models`
 

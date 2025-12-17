@@ -49,10 +49,19 @@ class ApiClient:
                     else:
                         masked_key = '***'  # 짧은 키 처리
                 
+                # 응답 본문 추출 (에러 상세 정보 확인용)
+                response_body = ''
+                if hasattr(e, 'response') and e.response is not None:
+                    try:
+                        response_body = e.response.text
+                    except:
+                        response_body = 'Unable to read response body'
+                
                 logging.error(
                     f"API 요청 실패 - URL: {url}, "
                     f"에러: {str(e)}, "
                     f"키: {masked_key}, "
+                    f"응답: {response_body}, "
                     f"재시도: {try_count+1}/{max_retries}"
                 )
                 print(error_msg)  # 기존 출력 유지
