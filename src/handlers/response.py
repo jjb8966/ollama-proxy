@@ -82,10 +82,11 @@ class ResponseHandler:
             logger.warning(f"스트림에서 잘못된 JSON 수신: {decoded[:100]}")
             return None
 
-    @staticmethod
-    def _extract_chunk_content(chunk: Dict) -> tuple:
+    def _extract_chunk_content(self, chunk: Dict) -> tuple:
         """
         파싱된 청크에서 텍스트 내용과 종료 이유를 추출합니다.
+        
+        Gemini Thinking 모드에서 <thought>...</thought> 태그는 필터링합니다.
         
         Returns:
             (텍스트 내용, 종료 이유) 튜플
@@ -98,8 +99,47 @@ class ResponseHandler:
             delta = choice.get('delta', {})
             text_content = delta.get('content', '')
             finish_reason = choice.get('finish_reason')
+            
+            # 모든 응답 로그 출력
+            if text_content:
+                # <thought> 태그가 있는 경우에만 필터링
+                if '<thought>' in text_content or '</thought>' in text_content or self._in_thought_tag:
+                    logger.info("[Thinking Mode] thought 태그 감지 - 필터링 수행")
+                    text_content = self._filter_thought_tags(text_content)
         
         return text_content, finish_reason
+    
+    def _filter_thought_tags(self, text: str) -> str:
+        """
+        텍스트에서 <thought>...</thought> 태그 내용을 필터링합니다.
+        
+        스트리밍 응답에서는 태그가 여러 청크에 걸쳐 나뉘어 올 수 있으므로,
+        인스턴스 변수로 상태를 추적합니다.
+        """
+        result = []
+        i = 0
+        while i < len(text):
+            # </thought> 태그 종료 감지
+            if self._in_thought_tag:
+                end_tag = "</thought>"
+                if text[i:].startswith(end_tag):
+                    self._in_thought_tag = False
+                    i += len(end_tag)
+                    continue
+                i += 1
+                continue
+            
+            # <thought> 태그 시작 감지
+            start_tag = "<thought>"
+            if text[i:].startswith(start_tag):
+                self._in_thought_tag = True
+                i += len(start_tag)
+                continue
+            
+            result.append(text[i])
+            i += 1
+        
+        return ''.join(result)
 
     def _create_content_chunk(self, model: str, text: str) -> str:
         """컨텐츠 청크 JSON 문자열을 생성합니다."""
@@ -146,6 +186,9 @@ class ResponseHandler:
         """
         start_time = time.time()
         response_closed = False
+        
+        # Gemini Thinking 태그 필터링 상태 초기화
+        self._in_thought_tag = False
 
         try:
             for line in resp.iter_lines():

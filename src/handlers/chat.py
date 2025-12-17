@@ -226,6 +226,19 @@ class ChatHandler:
             "model": model,
             "stream": stream
         }
+        
+        # Google 모델에 Thinking 모드 활성화
+        # thinking_budget: 1~24576 (사고 토큰 예산)
+        # 응답에서 <thought> 태그는 ResponseHandler에서 필터링
+        if provider == 'google':
+            payload["extra_body"] = {
+                "google": {
+                    "thinking_config": {
+                        "include_thoughts": True,
+                        "thinking_budget": 24576  # 최대 추론 토큰
+                    }
+                }
+            }
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
