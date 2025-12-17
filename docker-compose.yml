@@ -12,5 +12,7 @@ services:
       - AKASH_API_KEYS=${AKASH_API_KEYS}
       - COHERE_API_KEYS=${COHERE_API_KEYS}
       - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
+    volumes:
+      - ~/.qwen:/root/.qwen:ro
     restart: always
     container_name: ollama-proxy
