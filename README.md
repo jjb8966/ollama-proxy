@@ -1,174 +1,161 @@
 # Ollama Proxy Server
 
-이 프로젝트는 여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen, Perplexity)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 변환해 주는 프록시 서버입니다.
-
-- Ollama 스타일 엔드포인트: `/api/chat`, `/api/tags`, `/api/version`
-- OpenAI 스타일 엔드포인트: `/v1/chat/completions`, `/v1/models`
+여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen, Perplexity)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 제공하는 프록시 서버입니다.
 
 ## 주요 기능
 
-- 다양한 LLM 제공업체에 대한 API 키 로테이션 및 에러 핸들링
-- Ollama 클라이언트가 사용할 수 있는 `/api/chat`, `/api/tags` 인터페이스 제공
-- OpenAI SDK 및 호환 클라이언트에서 사용할 수 있는 `/v1/chat/completions`, `/v1/models` 인터페이스 제공
-- 스트리밍/비스트리밍 요청 모두 지원
+| 기능 | 설명 |
+|------|------|
+| **다중 제공업체 지원** | 7개 LLM 제공업체를 단일 인터페이스로 사용 |
+| **API 키 자동 순환** | 여러 API 키를 라운드 로빈 방식으로 순환하여 rate limit 분산 |
+| **OAuth 토큰 관리** | Qwen의 OAuth 토큰 자동 갱신 |
+| **스트리밍 지원** | 스트리밍/비스트리밍 모두 지원 |
+| **이중 호환성** | Ollama 클라이언트와 OpenAI SDK 모두 사용 가능 |
 
-## 요구 사항
+## 엔드포인트
 
-- Python 3.10+ (권장)
-- pip 또는 호환되는 패키지 매니저
+| 스타일 | 엔드포인트 | 설명 |
+|--------|------------|------|
+| Ollama | `POST /api/chat` | 채팅 요청 |
+| Ollama | `GET /api/tags` | 모델 목록 |
+| Ollama | `GET /api/version` | 버전 정보 |
+| OpenAI | `POST /v1/chat/completions` | 채팅 완료 |
+| OpenAI | `GET /v1/models` | 모델 목록 |
+
+## 프로젝트 구조
+
+```
+ollama-proxy/
+├── app.py                 # 애플리케이션 진입점
+├── config.py              # API 설정 및 인증 관리
+├── models.json            # 사용 가능한 모델 목록
+├── src/
+│   ├── routes/            # API 라우트
+│   │   ├── ollama.py      # Ollama 호환 엔드포인트
+│   │   └── openai.py      # OpenAI 호환 엔드포인트
+│   ├── handlers/          # 요청/응답 핸들러
+│   │   ├── chat.py        # 채팅 요청 처리
+│   │   └── response.py    # 응답 변환
+│   ├── providers/         # API 클라이언트
+│   │   ├── base.py        # 베이스 클래스
+│   │   ├── standard.py    # 표준 API 클라이언트
+│   │   └── qwen.py        # Qwen OAuth 클라이언트
+│   ├── auth/              # 인증
+│   │   ├── key_rotator.py # API 키 순환
+│   │   └── qwen_oauth.py  # Qwen OAuth 관리
+│   └── core/              # 핵심 유틸리티
+│       ├── logging.py     # 로깅 설정
+│       └── errors.py      # 에러 처리
+├── Dockerfile             # Docker 빌드 설정
+├── docker-compose.yml     # Docker Compose 설정
+├── requirements.txt       # Python 의존성
+└── run.sh                 # 배포 스크립트
+```
 
 ## 설치 및 실행
 
-1. 의존성 설치
+### 1. 의존성 설치
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. 환경 변수 설정 (.env 파일 권장)
+### 2. 환경 변수 설정
 
-아래 환경 변수에 각 제공업체의 API 키를 설정합니다. 여러 키를 사용할 경우 `,` 로 구분하여 입력합니다.
+`.env` 파일을 생성하고 API 키를 설정합니다:
 
 ```env
-GOOGLE_API_KEYS="key1,key2,..."
-OPENROUTER_API_KEYS="key1,key2,..."
-AKASH_API_KEYS="key1,key2,..."
-COHERE_API_KEYS="key1,key2,..."
-CODESTRAL_API_KEYS="key1,key2,..."
-QWEN_API_KEYS="key1,key2,..."
-PERPLEXITY_API_KEYS="key1,key2,..."
+# 각 제공업체의 API 키 (쉼표로 구분하여 여러 개 설정 가능)
+GOOGLE_API_KEYS="key1,key2,key3"
+OPENROUTER_API_KEYS="key1,key2"
+AKASH_API_KEYS="key1"
+COHERE_API_KEYS="key1,key2"
+CODESTRAL_API_KEYS="key1"
+PERPLEXITY_API_KEYS="key1"
+
+# 선택적 설정
+PORT=5005
+LOG_LEVEL=INFO
+FLASK_DEBUG=false
 ```
 
-3. 서버 실행
+Qwen은 OAuth를 사용하므로 `~/.qwen/oauth_creds.json` 파일이 필요합니다:
+
+```json
+{
+  "access_token": "your_access_token",
+  "refresh_token": "your_refresh_token",
+  "expires_at": 1234567890
+}
+```
+
+### 3. 서버 실행
 
 ```bash
-python ollama_proxy.py
+# 개발 모드
+python app.py
+
+# 프로덕션 (gunicorn)
+gunicorn --workers=4 --bind 0.0.0.0:5005 --timeout=300 app:app
 ```
 
-기본 포트는 `5005` 이며, 환경 변수 `PORT` 로 변경할 수 있습니다.
+### 4. Docker로 실행
 
 ```bash
-PORT=5005 python ollama_proxy.py
+docker-compose up -d
 ```
 
-## 엔드포인트 설명
+## 사용 예시
 
-### 1. Ollama 스타일 API
+### Ollama 클라이언트 (curl)
 
-#### `POST /api/chat`
-
-- Ollama 호환 채팅 엔드포인트입니다.
-- 요청 예시
-
-```json
-{
-  "model": "google:gemini-2.5-pro",
-  "messages": [
-    {"role": "user", "content": "Hello!"}
-  ],
-  "stream": true
-}
+```bash
+curl -X POST http://localhost:5005/api/chat \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "google:gemini-2.5-flash",
+    "messages": [{"role": "user", "content": "Hello!"}],
+    "stream": false
+  }'
 ```
 
-- 응답
-  - `stream: true` 인 경우: `application/x-ndjson` 형식의 Ollama 스타일 스트리밍 청크
-  - `stream: false` 인 경우: 단일 Ollama 스타일 JSON 응답
-
-#### `GET /api/tags`
-
-- Ollama 의 `/api/tags` 를 모방하여, 사용 가능한 모델 목록을 반환합니다.
-
-#### `GET /` 및 `GET /api/version`
-
-- 프록시 서버 버전 정보를 반환합니다.
-
----
-
-### 2. OpenAI 스타일 API
-
-#### `POST /v1/chat/completions`
-
-- OpenAI Chat Completions 호환 엔드포인트입니다.
-- OpenAI SDK 또는 호환 클라이언트에서 `base_url` 만 이 프록시로 변경하면 사용할 수 있습니다.
-
-- 요청 예시
-
-```json
-{
-  "model": "google:gemini-2.5-pro",
-  "messages": [
-    {"role": "user", "content": "Hello!"}
-  ],
-  "stream": false
-}
-```
-
-- 동작 방식
-  - `stream: false` 인 경우: 업스트림(OpenAI 호환 백엔드)의 JSON 응답을 그대로 반환
-  - `stream: true` 인 경우: 업스트림의 SSE/스트리밍 응답을 그대로 프록시
-
-> 모델 이름은 `google:...`, `openrouter:...`, `akash:...`, `cohere:...`, `codestral:...`, `qwen:...`, `perplexity:...` 과 같이 prefix 를 포함해 지정합니다.
-
-#### `GET /v1/models`
-
-- OpenAI 의 `/v1/models` 형식을 모방하여, 현재 프록시가 노출하는 모델 목록을 반환합니다.
-
-응답 예시:
-
-```json
-{
-  "object": "list",
-  "data": [
-    {
-      "id": "google:gemini-2.5-pro",
-      "object": "model",
-      "created": 0,
-      "owned_by": "proxy"
-    }
-  ]
-}
-```
-
----
-
-## 구조 개요
-
-- `ollama_proxy.py`
-  - Flask 앱 진입점
-  - `/api/chat`, `/api/tags`, `/api/version`, `/v1/chat/completions`, `/v1/models` 라우트 정의
-- `chat_handler.py`
-  - 클라이언트 요청을 각 제공업체별 OpenAI 호환 백엔드로 전달하는 로직
-- `response_handler.py`
-  - OpenAI 호환 응답을 Ollama 스타일 응답으로 변환하는 로직
-- `config.py`
-  - 각 제공업체의 기본 URL 및 모델 prefix 처리, API 키 로테이션 설정
-- `utils/api_client.py`
-  - 실제 HTTP 요청 및 재시도, 키 로테이션 처리
-- `utils/key_rotator.py`
-  - 다수의 API 키를 순환하며 사용하도록 지원
-- `utils/error_handlers.py`, `utils/logging_config.py`
-  - 에러/로그 처리 유틸리티
-
-## OpenAI SDK에서 사용 예시 (Python)
+### OpenAI Python SDK
 
 ```python
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="dummy",  # 프록시 자체는 이 키를 사용하지 않습니다.
+    api_key="dummy",  # 프록시 자체는 이 키를 사용하지 않습니다
     base_url="http://localhost:5005/v1"
 )
 
-resp = client.chat.completions.create(
-    model="google:gemini-2.5-pro",
+response = client.chat.completions.create(
+    model="google:gemini-2.5-flash",
     messages=[{"role": "user", "content": "Hello!"}],
-    stream=False,
+    stream=False
 )
 
-print(resp.choices[0].message.content)
+print(response.choices[0].message.content)
 ```
+
+## 지원 모델
+
+모델 이름은 `제공업체:모델명` 형식으로 지정합니다:
+
+| 제공업체 | 예시 |
+|----------|------|
+| Google | `google:gemini-2.5-flash` |
+| OpenRouter | `openrouter:mistralai/devstral-2512:free` |
+| Cohere | `cohere:command-a-03-2025` |
+| Codestral | `codestral:codestral-2508` |
+| Qwen | `qwen:qwen3-coder-plus` |
+| Perplexity | `perplexity:sonar` |
+| Akash | `akash:Meta-Llama-3-1-8B-Instruct-FP8` |
+
+전체 모델 목록은 `models.json` 파일에서 확인하거나 `/api/tags` 엔드포인트를 호출하세요.
 
 ## 주의 사항
 
-- 실제 호출은 각 제공업체의 요금 정책과 제한에 따릅니다.
-- API 키는 절대 코드에 하드코딩하지 말고, 환경 변수 또는 .env 파일을 이용해 관리하세요.
+- API 호출은 각 제공업체의 요금 정책과 제한에 따릅니다.
+- API 키는 환경 변수나 `.env` 파일로 관리하세요. 코드에 하드코딩하지 마세요.
+- 프로덕션 환경에서는 gunicorn 등 WSGI 서버를 사용하세요.
