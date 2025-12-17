@@ -1,6 +1,7 @@
 import logging
 
 from utils.api_client import ApiClient
+from utils.qwen_api_client import QwenApiClient
 
 
 def normalize_messages_for_perplexity(messages):
@@ -70,7 +71,7 @@ class ChatHandler:
         self.akash_client = ApiClient(self.api_config.akash_rotator)
         self.cohere_client = ApiClient(self.api_config.cohere_rotator)
         self.codestral_client = ApiClient(self.api_config.codestral_rotator)
-        self.qwen_client = ApiClient(self.api_config.qwen_rotator)
+        self.qwen_client = QwenApiClient(self.api_config.qwen_oauth_manager)
         self.perplexity_client = ApiClient(self.api_config.perplexity_rotator)
 
     def _get_client(self, requested_model):

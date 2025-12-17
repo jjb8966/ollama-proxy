@@ -1,4 +1,5 @@
 from utils.key_rotator import KeyRotator
+from utils.qwen_oauth import QwenOAuthManager
 
 
 class ApiConfig:
@@ -14,8 +15,8 @@ class ApiConfig:
         self.cohere_rotator.log_key_count()
         self.codestral_rotator = KeyRotator("Codestral", "CODESTRAL_API_KEYS")
         self.codestral_rotator.log_key_count()
-        self.qwen_rotator = KeyRotator("Qwen", "QWEN_API_KEYS")
-        self.qwen_rotator.log_key_count()
+        self.qwen_oauth_manager = QwenOAuthManager()
+        self.qwen_oauth_manager.log_key_count()
         self.perplexity_rotator = KeyRotator("Perplexity", "PERPLEXITY_API_KEYS")
         self.perplexity_rotator.log_key_count()
 
@@ -103,8 +104,9 @@ class ApiConfig:
             api_key = self.codestral_rotator.get_next_key()
             api_key_index = self.codestral_rotator.get_current_index()
         elif base_url == self.QWEN_BASE_URL:
-            api_key = self.qwen_rotator.get_next_key()
-            api_key_index = self.qwen_rotator.get_current_index()
+            # Qwen은 QwenOAuthManager를 사용하므로 여기서는 None 반환
+            api_key = None
+            api_key_index = None
         elif base_url == self.PERPLEXITY_BASE_URL:
             api_key = self.perplexity_rotator.get_next_key()
             api_key_index = self.perplexity_rotator.get_current_index()

@@ -130,6 +130,10 @@ def get_tags():
                 "model": "qwen:qwen3-coder-plus"
             },
             {
+                "name": "qwen:qwen3-coder-flash",
+                "model": "qwen:qwen3-coder-flash"
+            },
+            {
                 "name": "perplexity:sonar",
                 "model": "perplexity:sonar"
             },
