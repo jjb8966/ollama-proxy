@@ -102,52 +102,20 @@ def get_tags():
     available_models = {
         "models": [
             {
-                "name": "google:gemini-2.5-pro",
-                "model": "google:gemini-2.5-pro"
-            },
-            {
-                "name": "google:gemini-2.5-flash-preview-09-2025",
-                "model": "google:gemini-2.5-flash-preview-09-2025"
-            },
-            {
                 "name": "google:gemini-2.5-flash",
                 "model": "google:gemini-2.5-flash"
             },
             {
-                "name": "openrouter:qwen/qwen3-235b-a22b:free",
-                "model": "openrouter:qwen/qwen3-235b-a22b:free"
-            },
-            {
-                "name": "openrouter:qwen/qwen3-coder:free",
-                "model": "openrouter:qwen/qwen3-coder:free"
-            },
-            {
-                "name": "openrouter:minimax/minimax-m2:free",
-                "model": "openrouter:minimax/minimax-m2:free"
-            },
-            {
-                "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
-                "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
+                "name": "openrouter:mistralai/devstral-2512:free",
+                "model": "openrouter:mistralai/devstral-2512:free"
             },
             {
                 "name": "openrouter:kwaipilot/kat-coder-pro:free",
                 "model": "openrouter:kwaipilot/kat-coder-pro:free"
             },
             {
-                "name": "openrouter:x-ai/grok-4.1-fast:free",
-                "model": "openrouter:x-ai/grok-4.1-fast:free"
-            },
-            {
-                "name": "akash:gpt-oss-120b",
-                "model": "akash:gpt-oss-120b"
-            },
-            {
-                "name": "akash:DeepSeek-V3-1",
-                "model": "akash:DeepSeek-V3-1"
-            },
-            {
-                "name": "akash:Qwen3-235B-A22B-Instruct-2507-FP8",
-                "model": "akash:Qwen3-235B-A22B-Instruct-2507-FP8"
+                "name": "cohere:command-a-reasoning-08-2025",
+                "model": "cohere:command-a-reasoning-08-2025"
             },
             {
                 "name": "cohere:command-a-03-2025",
