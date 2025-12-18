@@ -245,10 +245,16 @@ class ResponseHandler:
             # 응답에서 모델 이름 추출 (없으면 요청 모델 사용)
             response_model = data.get('model', requested_model)
             
+            # Gemini Thinking 태그 필터링
+            self._in_thought_tag = False
+            if text_content and ('<thought>' in text_content or '</thought>' in text_content):
+                logger.info("[Thinking Mode] 비스트리밍 응답에서 thought 태그 감지 - 필터링 수행")
+                text_content = self._filter_thought_tags(text_content)
+            
             # Ollama 형식 응답 생성
             response = self._build_base_chunk(response_model)
             response.update({
-                "message": {"role": "assistant", "content": text_content},
+                "message": {"role": "assistant", "content": text_content.strip()},
                 "done": True
             })
             return response

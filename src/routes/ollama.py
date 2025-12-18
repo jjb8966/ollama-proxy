@@ -67,6 +67,7 @@ def get_tags():
     # models.json이 없으면 기본 목록 반환
     if not models:
         models = [
+            {"name": "google:gemini-3-flash-preview", "model": "google:gemini-3-flash-preview"},
             {"name": "google:gemini-2.5-flash", "model": "google:gemini-2.5-flash"},
             {"name": "openrouter:mistralai/devstral-2512:free", "model": "openrouter:mistralai/devstral-2512:free"},
             {"name": "cohere:command-a-03-2025", "model": "cohere:command-a-03-2025"},
