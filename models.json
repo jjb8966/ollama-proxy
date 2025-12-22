@@ -17,6 +17,10 @@
       "model": "openrouter:kwaipilot/kat-coder-pro:free"
     },
     {
+      "name": "openrouter:xiaomi/mimo-v2-flash:free",
+      "model": "openrouter:xiaomi/mimo-v2-flash:free"
+    },
+    {
       "name": "cohere:command-a-reasoning-08-2025",
       "model": "cohere:command-a-reasoning-08-2025"
     },
