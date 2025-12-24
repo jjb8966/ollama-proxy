@@ -21,7 +21,7 @@ from flask import Flask
 
 from config import ApiConfig
 from src.core.logging import setup_logging
-from src.routes import ollama_bp, openai_bp
+from src.routes import ollama_bp, openai_bp, anthropic_bp
 
 
 def create_app() -> Flask:
@@ -52,6 +52,7 @@ def create_app() -> Flask:
     # Blueprint 등록
     app.register_blueprint(ollama_bp)
     app.register_blueprint(openai_bp)
+    app.register_blueprint(anthropic_bp)
     
     logger.info("Flask 애플리케이션 초기화 완료")
     return app
