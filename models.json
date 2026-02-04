@@ -13,6 +13,14 @@
       "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
     },
     {
+      "name": "openrouter:arcee-ai/trinity-large-preview:free",
+      "model": "openrouter:arcee-ai/trinity-large-preview:free"
+    },
+    {
+      "name": "openrouter:z-ai/glm-4.5-air:free",
+      "model": "openrouter:z-ai/glm-4.5-air:free"
+    },
+    {
       "name": "cohere:command-a-reasoning-08-2025",
       "model": "cohere:command-a-reasoning-08-2025"
     },
