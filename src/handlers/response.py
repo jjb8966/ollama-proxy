@@ -8,6 +8,7 @@ OpenAI 호환 API 응답을 Ollama 형식으로 변환합니다.
 
 import json
 import logging
+import os
 import time
 from datetime import datetime
 from typing import Generator, Optional, Dict, Any, Union
@@ -98,6 +99,10 @@ class ResponseHandler:
             choice = chunk['choices'][0]
             delta = choice.get('delta', {})
             text_content = delta.get('content', '')
+            if not text_content:
+                text_content = delta.get('text', '')
+            if not text_content:
+                text_content = delta.get('reasoning', '')
             finish_reason = choice.get('finish_reason')
             
             # 모든 응답 로그 출력
@@ -186,32 +191,89 @@ class ResponseHandler:
         """
         start_time = time.time()
         response_closed = False
-        
+        done_sent = False
+        debug_stream = os.getenv("DEBUG_STREAM", "false").lower() == "true"
+        line_count = 0
+        parsed_count = 0
+        yielded_count = 0
+
         # Gemini Thinking 태그 필터링 상태 초기화
         self._in_thought_tag = False
 
         try:
+            if debug_stream:
+                logger.info(
+                    "[DEBUG_STREAM] start model=%s status=%s content-type=%s",
+                    requested_model,
+                    getattr(resp, "status_code", "n/a"),
+                    resp.headers.get("Content-Type")
+                )
             for line in resp.iter_lines():
+                line_count += 1
                 parsed = self._parse_stream_line(line)
+
+                if debug_stream and line_count <= 20:
+                    try:
+                        preview = line.decode("utf-8", errors="replace").strip()
+                    except Exception:
+                        preview = str(line)[:200]
+                    logger.info(
+                        "[DEBUG_STREAM] line[%s] len=%s preview=%s",
+                        line_count,
+                        len(line) if line is not None else 0,
+                        preview[:200]
+                    )
 
                 if parsed is None:
                     continue
                 if parsed == "[DONE]":
+                    if not done_sent:
+                        yield self._create_final_chunk(requested_model, start_time)
+                        done_sent = True
                     break
+
+                if debug_stream and isinstance(parsed, dict) and parsed_count < 10:
+                    parsed_count += 1
+                    try:
+                        choice0 = parsed.get("choices", [{}])[0]
+                        delta = choice0.get("delta", {})
+                        logger.info(
+                            "[DEBUG_STREAM] delta keys=%s content_len=%s reasoning_len=%s text_len=%s finish=%s",
+                            list(delta.keys()),
+                            len(str(delta.get("content", ""))) if "content" in delta else 0,
+                            len(str(delta.get("reasoning", ""))) if "reasoning" in delta else 0,
+                            len(str(delta.get("text", ""))) if "text" in delta else 0,
+                            choice0.get("finish_reason")
+                        )
+                    except Exception as e:
+                        logger.info("[DEBUG_STREAM] delta inspect failed: %s", e)
 
                 text_content, finish_reason = self._extract_chunk_content(parsed)
 
                 if text_content:
                     yield self._create_content_chunk(requested_model, text_content)
+                    yielded_count += 1
 
                 if finish_reason == "stop":
                     yield self._create_final_chunk(requested_model, start_time)
+                    done_sent = True
                     break
+
+            if not done_sent:
+                yield self._create_final_chunk(requested_model, start_time)
 
         except Exception as e:
             logger.error(f"스트림 처리 중 예외 발생: {e}", exc_info=True)
             yield self._create_error_chunk(requested_model, e)
         finally:
+            if debug_stream:
+                logger.info(
+                    "[DEBUG_STREAM] end model=%s lines=%s yielded=%s done_sent=%s",
+                    requested_model,
+                    line_count,
+                    yielded_count,
+                    done_sent
+                )
             if resp and not response_closed:
                 resp.close()
                 response_closed = True
@@ -241,6 +303,10 @@ class ResponseHandler:
             if 'choices' in data and data['choices']:
                 message = data['choices'][0].get('message', {})
                 text_content = message.get('content', '')
+                if not text_content:
+                    text_content = message.get('text', '')
+                if not text_content:
+                    text_content = message.get('reasoning', '')
             
             # 응답에서 모델 이름 추출 (없으면 요청 모델 사용)
             response_model = data.get('model', requested_model)

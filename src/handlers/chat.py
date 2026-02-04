@@ -6,6 +6,7 @@
 """
 
 import logging
+import os
 from typing import Dict, Any, List, Optional
 
 import requests
@@ -188,6 +189,37 @@ class ChatHandler:
             except (IndexError, KeyError) as e:
                 logging.warning(f"이미지 처리 실패: {e}")
 
+    def _sanitize_messages(self, messages: List[Dict]) -> List[Dict]:
+        """
+        빈 content 메시지를 제거합니다.
+        
+        일부 클라이언트가 content 없이 assistant 메시지를 보내는 경우를 방지합니다.
+        """
+        sanitized = []
+        for msg in messages:
+            content = msg.get('content', None)
+            if content is None:
+                continue
+            if isinstance(content, str) and not content.strip():
+                continue
+            if isinstance(content, list):
+                has_text = any(
+                    isinstance(part, dict)
+                    and part.get('type') == 'text'
+                    and str(part.get('text', '')).strip()
+                    for part in content
+                )
+                has_image = any(
+                    isinstance(part, dict)
+                    and part.get('type') == 'image_url'
+                    and part.get('image_url', {}).get('url')
+                    for part in content
+                )
+                if not (has_text or has_image):
+                    continue
+            sanitized.append(msg)
+        return sanitized
+
     def handle_chat_request(self, req: Dict[str, Any]) -> Optional[requests.Response]:
         """
         채팅 요청을 처리합니다.
@@ -201,10 +233,12 @@ class ChatHandler:
         messages = req.get('messages')
         stream = req.get('stream', True)
         requested_model = req.get('model')
+        debug_proxy = os.getenv("DEBUG_PROXY", "false").lower() == "true"
 
         # 이미지 처리
         if messages:
             self._process_image_content(messages)
+            messages = self._sanitize_messages(messages)
         else:
             logging.warning("요청에 messages가 없습니다.")
             return None
@@ -215,6 +249,35 @@ class ChatHandler:
         if not base_url:
             logging.error(f"지원되지 않는 모델: {requested_model}")
             return None
+
+        if debug_proxy:
+            msg_summaries = []
+            for msg in messages:
+                content = msg.get('content', None)
+                if isinstance(content, str):
+                    ctype = "str"
+                    clen = len(content)
+                elif isinstance(content, list):
+                    ctype = "list"
+                    clen = len(content)
+                elif content is None:
+                    ctype = "none"
+                    clen = 0
+                else:
+                    ctype = type(content).__name__
+                    clen = 1
+                msg_summaries.append({
+                    "role": msg.get("role"),
+                    "content_type": ctype,
+                    "content_len": clen
+                })
+            logging.info(
+                "[DEBUG_PROXY] 요청 모델=%s provider=%s stream=%s messages=%s",
+                requested_model,
+                provider,
+                stream,
+                msg_summaries
+            )
 
         # Perplexity 메시지 정규화
         if provider == 'perplexity':

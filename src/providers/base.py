@@ -6,6 +6,7 @@ API 클라이언트 베이스 모듈
 """
 
 import logging
+import os
 import time
 from abc import ABC, abstractmethod
 from typing import Optional, Dict, Any
@@ -83,6 +84,8 @@ class BaseApiClient(ABC):
         try_count = 0
         auth_retry_done = False
         
+        debug_proxy = os.getenv("DEBUG_PROXY", "false").lower() == "true"
+
         while try_count < max_retries:
             api_key = self._get_api_key()
             if not api_key:
@@ -99,6 +102,14 @@ class BaseApiClient(ABC):
                     stream=stream,
                     timeout=self.REQUEST_TIMEOUT
                 )
+
+                if debug_proxy:
+                    logging.info(
+                        "[DEBUG_PROXY] %s 응답 status=%s content-type=%s",
+                        self.provider_name,
+                        resp.status_code,
+                        resp.headers.get("Content-Type")
+                    )
                 
                 # 401 인증 실패 처리
                 if resp.status_code == 401 and not auth_retry_done:
