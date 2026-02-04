@@ -36,6 +36,19 @@ def _load_models() -> list:
 
 
 @ollama_bp.route('/', methods=['GET'])
+def root_status():
+    """
+    루트 상태 응답.
+    
+    Ollama가 동작 중임을 알려주는 텍스트를 반환합니다.
+    """
+    return Response(
+        "Ollama is running",
+        status=200,
+        mimetype='text/plain'
+    )
+
+
 @ollama_bp.route('/api/version', methods=['GET'])
 def get_version():
     """
