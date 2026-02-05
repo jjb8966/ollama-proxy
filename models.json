@@ -5,6 +5,30 @@
       "model": "google:gemini-3-flash-preview"
     },
     {
+      "name": "openrouter:z-ai/glm-4.6v",
+      "model": "openrouter:z-ai/glm-4.6v"
+    },
+    {
+      "name": "openrouter:z-ai/glm-4.7-flash",
+      "model": "openrouter:z-ai/glm-4.7-flash"
+    },
+    {
+      "name": "openrouter:xiaomi/mimo-v2-flash",
+      "model": "openrouter:xiaomi/mimo-v2-flash"
+    },
+    {
+      "name": "openrouter:x-ai/grok-4.1-fast",
+      "model": "openrouter:x-ai/grok-4.1-fast"
+    },
+    {
+      "name": "openrouter:x-ai/grok-code-fast-1",
+      "model": "openrouter:x-ai/grok-code-fast-1"
+    },
+    {
+      "name": "openrouter:openai/gpt-oss-120b",
+      "model": "openrouter:openai/gpt-oss-120b"
+    },
+    {
       "name": "openrouter:deepseek/deepseek-r1",
       "model": "openrouter:deepseek/deepseek-r1"
     },
