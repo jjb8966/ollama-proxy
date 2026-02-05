@@ -5,8 +5,12 @@
       "model": "google:gemini-3-flash-preview"
     },
     {
-      "name": "openrouter:deepseek/deepseek-r1-0528:free",
-      "model": "openrouter:deepseek/deepseek-r1-0528:free"
+      "name": "openrouter:deepseek/deepseek-r1",
+      "model": "openrouter:deepseek/deepseek-r1"
+    },
+    {
+      "name": "openrouter:deepseek/deepseek-v3.2",
+      "model": "openrouter:deepseek/deepseek-v3.2"
     },
     {
       "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
