@@ -290,6 +290,23 @@ class ChatHandler:
         # 요청 페이로드 구성
         payload = {"messages": messages, "model": model, "stream": stream}
 
+        # 선택적 파라미터 전달 (Anthropic/OpenAI 공통)
+        optional_params = [
+            "max_tokens",
+            "temperature",
+            "top_p",
+            "top_k",
+            "stop",
+            "frequency_penalty",
+            "presence_penalty",
+            "n",
+            "seed",
+            "response_format",
+        ]
+        for param in optional_params:
+            if param in req:
+                payload[param] = req[param]
+
         # Google 모델에 Thinking 모드 활성화
         # thinking_budget: 1~24576 (사고 토큰 예산)
         # 응답에서 <thought> 태그는 ResponseHandler에서 필터링

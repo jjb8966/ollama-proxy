@@ -9,6 +9,22 @@
       "model": "nvidia:z-ai/glm4.7"
     },
     {
+      "name": "nvidia:qwen/qwen3.5-397b-a17b",
+      "model": "nvidia:qwen/qwen3.5-397b-a17b"
+    },
+    {
+      "name": "nvidia:z-ai/glm5",
+      "model": "nvidia:z-ai/glm5"
+    },
+    {
+      "name": "nvidia:minimaxai/minimax-m2.1",
+      "model": "nvidia:minimaxai/minimax-m2.1"
+    },
+    {
+      "name": "nvidia:moonshotai/kimi-k2.5",
+      "model": "nvidia:moonshotai/kimi-k2.5"
+    },
+    {
       "name": "openrouter:z-ai/glm-4.6v",
       "model": "openrouter:z-ai/glm-4.6v"
     },
