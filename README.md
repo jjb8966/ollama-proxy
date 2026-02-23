@@ -1,12 +1,12 @@
 # Ollama Proxy Server
 
-여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen, Perplexity)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 제공하는 프록시 서버입니다.
+여러 LLM 제공업체(Google, OpenRouter, Akash, Cohere, Codestral, Qwen, Perplexity, NVIDIA)의 OpenAI 호환 API를 **Ollama 호환 API** 및 **OpenAI 호환 API** 형태로 제공하는 프록시 서버입니다.
 
 ## 주요 기능
 
 | 기능 | 설명 |
 |------|------|
-| **다중 제공업체 지원** | 7개 LLM 제공업체를 단일 인터페이스로 사용 |
+| **다중 제공업체 지원** | 8개 LLM 제공업체를 단일 인터페이스로 사용 |
 | **API 키 자동 순환** | 여러 API 키를 라운드 로빈 방식으로 순환하여 rate limit 분산 |
 | **OAuth 토큰 관리** | Qwen의 OAuth 토큰 자동 갱신 |
 | **스트리밍 지원** | 스트리밍/비스트리밍 모두 지원 |
@@ -72,6 +72,7 @@ AKASH_API_KEYS="key1"
 COHERE_API_KEYS="key1,key2"
 CODESTRAL_API_KEYS="key1"
 PERPLEXITY_API_KEYS="key1"
+NVIDIA_API_KEYS="key1,key2"
 
 # 선택적 설정
 PORT=5005
@@ -151,6 +152,7 @@ print(response.choices[0].message.content)
 | Qwen | `qwen:qwen3-coder-plus` |
 | Perplexity | `perplexity:sonar` |
 | Akash | `akash:Meta-Llama-3-1-8B-Instruct-FP8` |
+| NVIDIA | `nvidia:z-ai/glm4.7` |
 
 전체 모델 목록은 `models.json` 파일에서 확인하거나 `/api/tags` 엔드포인트를 호출하세요.
 
