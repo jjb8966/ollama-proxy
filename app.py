@@ -16,13 +16,12 @@ Ollama Proxy Server - 메인 애플리케이션
 
 import os
 import logging
-from pathlib import Path
 from dotenv import load_dotenv
 from flask import Flask
 
 from config import ApiConfig
 from src.core.logging import setup_logging
-from src.routes import ollama_bp, openai_bp, anthropic_bp
+from src.routes import ollama_bp, openai_bp
 
 
 def create_app() -> Flask:
@@ -34,9 +33,8 @@ def create_app() -> Flask:
     Returns:
         설정된 Flask 앱 인스턴스
     """
-    # 환경 변수 로드 (IDE에서 CWD가 달라도 .env를 찾도록 절대 경로 사용)
-    dotenv_path = Path(__file__).resolve().parent / ".env"
-    load_dotenv(dotenv_path=dotenv_path, override=True)
+    # 환경 변수 로드
+    load_dotenv()
     
     # 로깅 설정
     setup_logging()
@@ -54,7 +52,6 @@ def create_app() -> Flask:
     # Blueprint 등록
     app.register_blueprint(ollama_bp)
     app.register_blueprint(openai_bp)
-    app.register_blueprint(anthropic_bp)
     
     logger.info("Flask 애플리케이션 초기화 완료")
     return app

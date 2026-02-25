@@ -5,68 +5,16 @@
       "model": "google:gemini-3-flash-preview"
     },
     {
-      "name": "nvidia:z-ai/glm4.7",
-      "model": "nvidia:z-ai/glm4.7"
+      "name": "google:gemini-2.5-flash",
+      "model": "google:gemini-2.5-flash"
     },
     {
-      "name": "nvidia:qwen/qwen3.5-397b-a17b",
-      "model": "nvidia:qwen/qwen3.5-397b-a17b"
+      "name": "openrouter:mistralai/devstral-2512:free",
+      "model": "openrouter:mistralai/devstral-2512:free"
     },
     {
-      "name": "nvidia:z-ai/glm5",
-      "model": "nvidia:z-ai/glm5"
-    },
-    {
-      "name": "nvidia:minimaxai/minimax-m2.1",
-      "model": "nvidia:minimaxai/minimax-m2.1"
-    },
-    {
-      "name": "nvidia:moonshotai/kimi-k2.5",
-      "model": "nvidia:moonshotai/kimi-k2.5"
-    },
-    {
-      "name": "openrouter:z-ai/glm-4.6v",
-      "model": "openrouter:z-ai/glm-4.6v"
-    },
-    {
-      "name": "openrouter:z-ai/glm-4.7-flash",
-      "model": "openrouter:z-ai/glm-4.7-flash"
-    },
-    {
-      "name": "openrouter:xiaomi/mimo-v2-flash",
-      "model": "openrouter:xiaomi/mimo-v2-flash"
-    },
-    {
-      "name": "openrouter:x-ai/grok-4.1-fast",
-      "model": "openrouter:x-ai/grok-4.1-fast"
-    },
-    {
-      "name": "openrouter:x-ai/grok-code-fast-1",
-      "model": "openrouter:x-ai/grok-code-fast-1"
-    },
-    {
-      "name": "openrouter:openai/gpt-oss-120b",
-      "model": "openrouter:openai/gpt-oss-120b"
-    },
-    {
-      "name": "openrouter:deepseek/deepseek-r1",
-      "model": "openrouter:deepseek/deepseek-r1"
-    },
-    {
-      "name": "openrouter:deepseek/deepseek-v3.2",
-      "model": "openrouter:deepseek/deepseek-v3.2"
-    },
-    {
-      "name": "openrouter:tngtech/deepseek-r1t2-chimera:free",
-      "model": "openrouter:tngtech/deepseek-r1t2-chimera:free"
-    },
-    {
-      "name": "openrouter:arcee-ai/trinity-large-preview:free",
-      "model": "openrouter:arcee-ai/trinity-large-preview:free"
-    },
-    {
-      "name": "openrouter:z-ai/glm-4.5-air:free",
-      "model": "openrouter:z-ai/glm-4.5-air:free"
+      "name": "openrouter:kwaipilot/kat-coder-pro:free",
+      "model": "openrouter:kwaipilot/kat-coder-pro:free"
     },
     {
       "name": "cohere:command-a-reasoning-08-2025",
@@ -79,6 +27,14 @@
     {
       "name": "codestral:codestral-2508",
       "model": "codestral:codestral-2508"
+    },
+    {
+      "name": "qwen:qwen3-coder-plus",
+      "model": "qwen:qwen3-coder-plus"
+    },
+    {
+      "name": "qwen:qwen3-coder-flash",
+      "model": "qwen:qwen3-coder-flash"
     },
     {
       "name": "perplexity:sonar",
