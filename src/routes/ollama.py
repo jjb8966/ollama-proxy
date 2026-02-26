@@ -5,6 +5,7 @@ Ollama 호환 API 라우트
 /api/chat, /api/tags, /api/version 등 Ollama 스타일 엔드포인트를 정의합니다.
 """
 
+import inspect
 import json
 import logging
 import os
@@ -109,6 +110,99 @@ def chat():
             json.dumps(error_response), 
             status=500, 
             mimetype='application/json'
+        )
+
+    if isinstance(resp, dict):
+        text_content = ""
+        if "choices" in resp and resp["choices"]:
+            text_content = resp["choices"][0].get("message", {}).get("content", "")
+        import datetime
+        ollama_response = {
+            "model": requested_model,
+            "created_at": datetime.datetime.utcnow().isoformat() + "Z",
+            "message": {"role": "assistant", "content": text_content},
+            "done": True
+        }
+        return Response(
+            json.dumps(ollama_response),
+            mimetype='application/json'
+        )
+
+    if stream and inspect.isgenerator(resp):
+        def google_stream_to_ollama():
+            start_time = __import__('time').time()
+            in_thought = False
+            for sse_line in resp:
+                if not sse_line.strip():
+                    continue
+                if sse_line.startswith("data: [DONE]"):
+                    duration_ns = int((__import__('time').time() - start_time) * 1e9)
+                    final = {
+                        "model": requested_model,
+                        "created_at": __import__('datetime').datetime.utcnow().isoformat() + "Z",
+                        "message": {"role": "assistant", "content": ""},
+                        "done": True,
+                        "total_duration": duration_ns,
+                        "eval_duration": duration_ns
+                    }
+                    yield json.dumps(final) + "\n"
+                    break
+                if sse_line.startswith("data: "):
+                    try:
+                        chunk = json.loads(sse_line[6:])
+                        choices = chunk.get("choices", [])
+                        if not choices:
+                            continue
+                        delta = choices[0].get("delta", {})
+                        text = delta.get("content", "")
+                        finish_reason = choices[0].get("finish_reason")
+
+                        filtered = []
+                        i = 0
+                        while i < len(text):
+                            if in_thought:
+                                end = text.find("</thought>", i)
+                                if end == -1:
+                                    break
+                                in_thought = False
+                                i = end + len("</thought>")
+                            else:
+                                start = text.find("<thought>", i)
+                                if start == -1:
+                                    filtered.append(text[i:])
+                                    break
+                                filtered.append(text[i:start])
+                                in_thought = True
+                                i = start + len("<thought>")
+                        text = "".join(filtered)
+
+                        if text:
+                            ollama_chunk = {
+                                "model": requested_model,
+                                "created_at": __import__('datetime').datetime.utcnow().isoformat() + "Z",
+                                "message": {"role": "assistant", "content": text},
+                                "done": False
+                            }
+                            yield json.dumps(ollama_chunk) + "\n"
+
+                        if finish_reason == "stop":
+                            duration_ns = int((__import__('time').time() - start_time) * 1e9)
+                            final = {
+                                "model": requested_model,
+                                "created_at": __import__('datetime').datetime.utcnow().isoformat() + "Z",
+                                "message": {"role": "assistant", "content": ""},
+                                "done": True,
+                                "total_duration": duration_ns,
+                                "eval_duration": duration_ns
+                            }
+                            yield json.dumps(final) + "\n"
+                            break
+                    except (json.JSONDecodeError, KeyError):
+                        continue
+
+        return Response(
+            stream_with_context(google_stream_to_ollama()),
+            mimetype='application/x-ndjson'
         )
 
     # 스트리밍/비스트리밍 응답 처리

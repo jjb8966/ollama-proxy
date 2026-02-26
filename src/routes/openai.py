@@ -5,6 +5,7 @@ OpenAI 호환 API 라우트
 /v1/chat/completions, /v1/models 등 OpenAI 스타일 엔드포인트를 정의합니다.
 """
 
+import inspect
 import json
 import logging
 from flask import Blueprint, request, Response, stream_with_context, current_app
@@ -123,6 +124,17 @@ def chat_completions():
             json.dumps(resp),
             status=200,
             mimetype='application/json'
+        )
+
+    if stream and inspect.isgenerator(resp):
+        def passthrough_generator():
+            for chunk in resp:
+                if chunk:
+                    yield chunk if isinstance(chunk, bytes) else chunk.encode()
+
+        return Response(
+            stream_with_context(passthrough_generator()),
+            mimetype='text/event-stream'
         )
 
     if stream:

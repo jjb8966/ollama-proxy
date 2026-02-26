@@ -99,12 +99,6 @@ class KeyRotator:
                 self._write_index(index_file, new_index)
 
         key = self.api_keys[new_index]
-        key_suffix = key[-8:] if len(key) >= 8 else "***"
-        
-        logging.info(
-            f"[KeyRotator] [{self.provider}] API_KEY_USED - "
-            f"key_ending: {key_suffix}, index: {new_index}, pid: {os.getpid()}"
-        )
         return key
     
     def _read_index(self, index_file: str) -> int:
