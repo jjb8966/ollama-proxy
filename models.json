@@ -51,6 +51,30 @@
     {
       "name": "perplexity:sonar-deep-research",
       "model": "perplexity:sonar-deep-research"
+    },
+    {
+      "name": "antigravity:claude-opus-4-6-thinking",
+      "model": "antigravity:claude-opus-4-6-thinking"
+    },
+    {
+      "name": "antigravity:claude-sonnet-4-6",
+      "model": "antigravity:claude-sonnet-4-6"
+    },
+    {
+      "name": "antigravity:gemini-3.1-pro-high",
+      "model": "antigravity:gemini-3.1-pro-high"
+    },
+    {
+      "name": "antigravity:gemini-3.1-pro-low",
+      "model": "antigravity:gemini-3.1-pro-low"
+    },
+    {
+      "name": "antigravity:gemini-3-flash",
+      "model": "antigravity:gemini-3-flash"
+    },
+    {
+      "name": "antigravity:gpt-oss-120b-medium",
+      "model": "antigravity:gpt-oss-120b-medium"
     }
   ]
 }

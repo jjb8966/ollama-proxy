@@ -6,6 +6,7 @@
 """
 
 import logging
+import os
 from typing import Dict, Any, List, Optional
 
 import requests
@@ -110,6 +111,10 @@ class ChatHandler:
         'perplexity': {
             'base_url': 'https://api.perplexity.ai',
             'client_attr': 'perplexity_client'
+        },
+        'antigravity': {
+            'base_url': os.getenv('ANTIGRAVITY_PROXY_URL', 'http://antigravity-proxy:5010/v1'),
+            'client_attr': 'antigravity_client'
         }
     }
     
@@ -128,6 +133,7 @@ class ChatHandler:
         self.codestral_client = StandardApiClient(api_config.codestral_rotator)
         self.qwen_client = QwenApiClient(api_config.qwen_oauth_manager)
         self.perplexity_client = StandardApiClient(api_config.perplexity_rotator)
+        self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
 
     def _parse_model(self, requested_model: str) -> tuple:
         """

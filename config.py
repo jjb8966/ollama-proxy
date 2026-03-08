@@ -45,3 +45,7 @@ class ApiConfig:
         # Qwen은 OAuth 토큰 사용
         self.qwen_oauth_manager = QwenOAuthManager()
         self.qwen_oauth_manager.log_key_count()
+
+        # Antigravity는 별도 프록시 컨테이너 (인증 불필요, dummy 키 사용)
+        self.antigravity_rotator = KeyRotator("Antigravity", "ANTIGRAVITY_API_KEYS")
+        self.antigravity_rotator.log_key_count()

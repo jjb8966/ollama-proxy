@@ -12,7 +12,24 @@ services:
       - AKASH_API_KEYS=${AKASH_API_KEYS}
       - COHERE_API_KEYS=${COHERE_API_KEYS}
       - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
+      - ANTIGRAVITY_API_KEYS=${ANTIGRAVITY_API_KEYS}
+      - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
     volumes:
       - ~/.qwen:/root/.qwen:ro
     restart: always
     container_name: ollama-proxy
+    depends_on:
+      - antigravity-proxy
+
+  antigravity-proxy:
+    build: ../antigravity-proxy
+    image: jjb000000/antigravity-proxy:latest
+    ports:
+      - "5010:5010"
+    environment:
+      - PORT=5010
+      - LOG_LEVEL=INFO
+    volumes:
+      - ~/.config/opencode:/root/.config/opencode:ro
+    restart: always
+    container_name: antigravity-proxy
