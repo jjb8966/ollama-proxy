@@ -15,9 +15,10 @@ Ollama Proxy Server - 메인 애플리케이션
 """
 
 import os
+import hmac
 import logging
 from dotenv import load_dotenv
-from flask import Flask
+from flask import Flask, request, Response
 
 from config import ApiConfig
 from src.core.logging import setup_logging
@@ -45,6 +46,33 @@ def create_app() -> Flask:
     
     # 업로드 파일 크기 제한 (50MB)
     app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+    
+    proxy_api_token = os.environ.get("PROXY_API_TOKEN", "")
+    app.config['PROXY_API_TOKEN'] = proxy_api_token
+    
+    @app.before_request
+    def require_api_token():
+        configured_token = app.config.get('PROXY_API_TOKEN', '')
+        if not configured_token:
+            logger.error("PROXY_API_TOKEN 이 설정되지 않았습니다.")
+            return Response(
+                '{"error":{"message":"server auth misconfigured","type":"server_error"}}',
+                status=503,
+                mimetype='application/json'
+            )
+
+        auth_header = request.headers.get('Authorization', '')
+        bearer_prefix = 'Bearer '
+        provided_token = ''
+        if auth_header.startswith(bearer_prefix):
+            provided_token = auth_header[len(bearer_prefix):]
+
+        if not provided_token or not hmac.compare_digest(provided_token, configured_token):
+            return Response(
+                '{"error":{"message":"unauthorized","type":"authentication_error"}}',
+                status=401,
+                mimetype='application/json'
+            )
     
     # API 설정 초기화 및 앱 컨텍스트에 저장
     app.config['api_config'] = ApiConfig()

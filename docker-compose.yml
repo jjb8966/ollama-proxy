@@ -14,6 +14,7 @@ services:
       - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
       - ANTIGRAVITY_API_KEYS=${ANTIGRAVITY_API_KEYS}
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
+      - PROXY_API_TOKEN=${PROXY_API_TOKEN}
     volumes:
       - ~/.qwen:/root/.qwen:ro
     restart: always
