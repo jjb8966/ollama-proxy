@@ -46,3 +46,7 @@ src/main/resources/application-local.yml
 .env
 venv/
 server.log
+
+# python cache
+__pycache__/
+*.pyc
