@@ -30,6 +30,6 @@ services:
       - PORT=5010
       - LOG_LEVEL=INFO
     volumes:
-      - ~/.config/opencode:/root/.config/opencode:ro
+      - ~/.config/opencode:/root/.config/opencode
     restart: always
     container_name: antigravity-proxy
