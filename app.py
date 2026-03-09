@@ -22,7 +22,7 @@ from flask import Flask, request, Response
 
 from config import ApiConfig
 from src.core.logging import setup_logging
-from src.routes import ollama_bp, openai_bp
+from src.routes import ollama_bp, openai_bp, anthropic_bp
 
 
 def create_app() -> Flask:
@@ -62,10 +62,13 @@ def create_app() -> Flask:
             )
 
         auth_header = request.headers.get('Authorization', '')
+        api_key_header = request.headers.get('x-api-key', '')
         bearer_prefix = 'Bearer '
         provided_token = ''
         if auth_header.startswith(bearer_prefix):
             provided_token = auth_header[len(bearer_prefix):]
+        elif api_key_header:
+            provided_token = api_key_header
 
         if not provided_token or not hmac.compare_digest(provided_token, configured_token):
             return Response(
@@ -80,6 +83,7 @@ def create_app() -> Flask:
     # Blueprint 등록
     app.register_blueprint(ollama_bp)
     app.register_blueprint(openai_bp)
+    app.register_blueprint(anthropic_bp)
     
     logger.info("Flask 애플리케이션 초기화 완료")
     return app

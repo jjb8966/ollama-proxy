@@ -1,0 +1,420 @@
+# -*- coding: utf-8 -*-
+"""
+Anthropic 호환 요청/응답 핸들러
+
+Claude Code 등 Anthropic Messages API 클라이언트와의 호환을 위해
+요청을 내부 ChatHandler 형식으로 변환하고, 응답을 Anthropic 형식으로 변환합니다.
+"""
+
+import inspect
+import json
+import re
+import uuid
+from typing import Any, Dict, Generator, Iterable, List, Optional, Union
+
+from requests import Response
+
+
+class AnthropicHandler:
+    """Anthropic Messages API 형식 변환 핸들러"""
+
+    @staticmethod
+    def normalize_model_name(model_name: Any) -> Any:
+        if not isinstance(model_name, str):
+            return model_name
+        if ":" in model_name:
+            return model_name
+        if "/" in model_name:
+            provider, rest = model_name.split("/", 1)
+            if provider and rest:
+                return f"{provider}:{rest}"
+        return model_name
+
+    @staticmethod
+    def _sanitize_tool_id(raw_id: Any) -> str:
+        candidate = str(raw_id or "")
+        candidate = re.sub(r"[^a-zA-Z0-9_-]", "_", candidate)
+        if not candidate:
+            candidate = f"toolu_{uuid.uuid4().hex[:24]}"
+        return candidate
+
+    @staticmethod
+    def _content_blocks_to_text(content: Any) -> str:
+        if isinstance(content, str):
+            return content
+        if not isinstance(content, list):
+            return ""
+
+        text_parts: List[str] = []
+        for block in content:
+            if not isinstance(block, dict):
+                continue
+            if block.get("type") == "text":
+                text_parts.append(str(block.get("text", "")))
+        return "".join(text_parts)
+
+    def _normalize_system_messages(self, system_value: Any) -> List[Dict[str, Any]]:
+        if system_value is None:
+            return []
+        if isinstance(system_value, str):
+            if not system_value:
+                return []
+            return [{"role": "system", "content": system_value}]
+        if isinstance(system_value, list):
+            text = self._content_blocks_to_text(system_value)
+            if not text:
+                return []
+            return [{"role": "system", "content": text}]
+        return []
+
+    def _normalize_messages(self, messages: Any) -> List[Dict[str, Any]]:
+        normalized: List[Dict[str, Any]] = []
+        if not isinstance(messages, list):
+            return normalized
+
+        for message in messages:
+            if not isinstance(message, dict):
+                continue
+
+            role = str(message.get("role", ""))
+            if role not in ("user", "assistant", "system"):
+                continue
+
+            content = message.get("content", "")
+            if isinstance(content, str):
+                normalized.append({"role": role, "content": content})
+                continue
+
+            if not isinstance(content, list):
+                normalized.append({"role": role, "content": ""})
+                continue
+
+            text_parts: List[str] = []
+            assistant_tool_calls: List[Dict[str, Any]] = []
+            tool_results: List[Dict[str, Any]] = []
+
+            for block in content:
+                if not isinstance(block, dict):
+                    continue
+                block_type = block.get("type")
+
+                if block_type == "text":
+                    text_parts.append(str(block.get("text", "")))
+                elif block_type == "tool_use" and role == "assistant":
+                    tool_id = self._sanitize_tool_id(block.get("id"))
+                    tool_name = str(block.get("name", ""))
+                    tool_input = block.get("input", {})
+                    if not isinstance(tool_input, dict):
+                        tool_input = {"input": tool_input}
+                    assistant_tool_calls.append({
+                        "id": tool_id,
+                        "type": "function",
+                        "function": {
+                            "name": tool_name,
+                            "arguments": json.dumps(tool_input, ensure_ascii=False)
+                        }
+                    })
+                elif block_type == "tool_result" and role == "user":
+                    tool_id = self._sanitize_tool_id(block.get("tool_use_id"))
+                    tool_content = block.get("content", "")
+                    if isinstance(tool_content, list):
+                        tool_text = self._content_blocks_to_text(tool_content)
+                    elif isinstance(tool_content, str):
+                        tool_text = tool_content
+                    else:
+                        tool_text = json.dumps(tool_content, ensure_ascii=False)
+                    tool_results.append({
+                        "role": "tool",
+                        "tool_call_id": tool_id,
+                        "content": tool_text
+                    })
+
+            combined_text = "".join(text_parts)
+            if combined_text or not assistant_tool_calls:
+                normalized.append({"role": role, "content": combined_text})
+
+            if assistant_tool_calls:
+                normalized.append({
+                    "role": "assistant",
+                    "content": combined_text or None,
+                    "tool_calls": assistant_tool_calls
+                })
+
+            normalized.extend(tool_results)
+
+        return normalized
+
+    @staticmethod
+    def _normalize_tools(tools: Any) -> List[Dict[str, Any]]:
+        normalized: List[Dict[str, Any]] = []
+        if not isinstance(tools, list):
+            return normalized
+
+        for tool in tools:
+            if not isinstance(tool, dict):
+                continue
+            name = str(tool.get("name", "")).strip()
+            if not name:
+                continue
+            normalized.append({
+                "type": "function",
+                "function": {
+                    "name": name,
+                    "description": tool.get("description", ""),
+                    "parameters": tool.get("input_schema", {"type": "object", "properties": {}})
+                }
+            })
+        return normalized
+
+    @staticmethod
+    def _normalize_tool_choice(tool_choice: Any) -> Any:
+        if not isinstance(tool_choice, dict):
+            return tool_choice
+
+        choice_type = tool_choice.get("type")
+        if choice_type == "auto":
+            return "auto"
+        if choice_type == "any":
+            return "required"
+        if choice_type == "tool":
+            name = tool_choice.get("name")
+            if name:
+                return {
+                    "type": "function",
+                    "function": {"name": name}
+                }
+        return tool_choice
+
+    def build_proxy_request(self, req: Dict[str, Any]) -> Dict[str, Any]:
+        system_messages = self._normalize_system_messages(req.get("system"))
+        chat_messages = self._normalize_messages(req.get("messages"))
+
+        return {
+            "model": self.normalize_model_name(req.get("model")),
+            "messages": system_messages + chat_messages,
+            "stream": bool(req.get("stream", False)),
+            "max_tokens": req.get("max_tokens"),
+            "thinking_level": req.get("thinking_level", "minimal"),
+            "tools": self._normalize_tools(req.get("tools")),
+            "tool_choice": self._normalize_tool_choice(req.get("tool_choice"))
+        }
+
+    @staticmethod
+    def _map_stop_reason(openai_reason: Optional[str]) -> str:
+        if openai_reason == "length":
+            return "max_tokens"
+        if openai_reason == "tool_calls":
+            return "tool_use"
+        return "end_turn"
+
+    def _build_anthropic_content(self, message: Dict[str, Any]) -> List[Dict[str, Any]]:
+        content_blocks: List[Dict[str, Any]] = []
+
+        text_content = message.get("content")
+        if isinstance(text_content, str) and text_content:
+            content_blocks.append({"type": "text", "text": text_content})
+
+        tool_calls = message.get("tool_calls", [])
+        for tool_call in tool_calls:
+            if not isinstance(tool_call, dict):
+                continue
+            function_info = tool_call.get("function", {})
+            args_raw = function_info.get("arguments", "{}")
+            try:
+                tool_input = json.loads(args_raw) if isinstance(args_raw, str) else args_raw
+            except json.JSONDecodeError:
+                tool_input = {}
+            if not isinstance(tool_input, dict):
+                tool_input = {"input": tool_input}
+
+            content_blocks.append({
+                "type": "tool_use",
+                "id": self._sanitize_tool_id(tool_call.get("id")),
+                "name": str(function_info.get("name", "")),
+                "input": tool_input
+            })
+
+        if not content_blocks:
+            content_blocks.append({"type": "text", "text": ""})
+        return content_blocks
+
+    def handle_non_streaming_response(
+        self,
+        resp: Union[Dict[str, Any], Response],
+        requested_model: str
+    ) -> Dict[str, Any]:
+        data = resp if isinstance(resp, dict) else resp.json()
+
+        usage = data.get("usage", {})
+        choices = data.get("choices", [])
+        finish_reason = None
+        message: Dict[str, Any] = {}
+        if choices:
+            finish_reason = choices[0].get("finish_reason")
+            message = choices[0].get("message", {})
+
+        response_model = str(data.get("model", requested_model))
+        return {
+            "id": f"msg_{uuid.uuid4().hex}",
+            "type": "message",
+            "role": "assistant",
+            "model": response_model,
+            "content": self._build_anthropic_content(message),
+            "stop_reason": self._map_stop_reason(finish_reason),
+            "stop_sequence": None,
+            "usage": {
+                "input_tokens": int(usage.get("prompt_tokens", 0)),
+                "output_tokens": int(usage.get("completion_tokens", 0))
+            }
+        }
+
+    @staticmethod
+    def _iter_stream_lines(resp: Union[Generator[str, None, None], Response]) -> Iterable[str]:
+        if inspect.isgenerator(resp):
+            for chunk in resp:
+                if chunk is None:
+                    continue
+                text = chunk.decode("utf-8", errors="ignore") if isinstance(chunk, bytes) else str(chunk)
+                for line in text.splitlines():
+                    yield line
+            return
+
+        for line in resp.iter_lines():
+            if not line:
+                yield ""
+                continue
+            yield line.decode("utf-8", errors="ignore")
+
+    def stream_anthropic_response(
+        self,
+        resp: Union[Generator[str, None, None], Response],
+        requested_model: str
+    ) -> Generator[str, None, None]:
+        message_id = f"msg_{uuid.uuid4().hex}"
+        response_model = requested_model
+        stop_reason = "end_turn"
+        current_index = 0
+        text_block_open = False
+        tool_block_state: Dict[int, Dict[str, Any]] = {}
+
+        def sse(event: str, data: Dict[str, Any]) -> str:
+            return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
+
+        try:
+            yield sse("message_start", {
+                "type": "message_start",
+                "message": {
+                    "id": message_id,
+                    "type": "message",
+                    "role": "assistant",
+                    "model": requested_model,
+                    "content": [],
+                    "stop_reason": None,
+                    "stop_sequence": None,
+                    "usage": {"input_tokens": 0, "output_tokens": 0}
+                }
+            })
+
+            for raw_line in self._iter_stream_lines(resp):
+                line = raw_line.strip()
+                if not line or not line.startswith("data:"):
+                    continue
+
+                payload = line[5:].strip()
+                if payload == "[DONE]":
+                    break
+
+                try:
+                    data = json.loads(payload)
+                except json.JSONDecodeError:
+                    continue
+
+                response_model = str(data.get("model", response_model))
+                choices = data.get("choices", [])
+                if not choices:
+                    continue
+
+                choice = choices[0]
+                delta = choice.get("delta", {})
+                finish_reason = choice.get("finish_reason")
+                if finish_reason:
+                    stop_reason = self._map_stop_reason(finish_reason)
+
+                text = delta.get("content", "")
+                if text:
+                    if not text_block_open:
+                        yield sse("content_block_start", {
+                            "type": "content_block_start",
+                            "index": current_index,
+                            "content_block": {"type": "text", "text": ""}
+                        })
+                        text_block_open = True
+                    yield sse("content_block_delta", {
+                        "type": "content_block_delta",
+                        "index": current_index,
+                        "delta": {"type": "text_delta", "text": text}
+                    })
+
+                for tc_index, tool_call in enumerate(delta.get("tool_calls", [])):
+                    block_index = current_index + 1 + tc_index
+                    state = tool_block_state.setdefault(block_index, {
+                        "id": self._sanitize_tool_id(tool_call.get("id")),
+                        "name": "",
+                        "arguments": ""
+                    })
+
+                    function_info = tool_call.get("function", {})
+                    if function_info.get("name"):
+                        state["name"] = str(function_info.get("name"))
+                    if function_info.get("arguments"):
+                        state["arguments"] += str(function_info.get("arguments"))
+
+                    if not state.get("started") and state["name"]:
+                        yield sse("content_block_start", {
+                            "type": "content_block_start",
+                            "index": block_index,
+                            "content_block": {
+                                "type": "tool_use",
+                                "id": state["id"],
+                                "name": state["name"],
+                                "input": {}
+                            }
+                        })
+                        state["started"] = True
+
+                    if state.get("started") and function_info.get("arguments"):
+                        yield sse("content_block_delta", {
+                            "type": "content_block_delta",
+                            "index": block_index,
+                            "delta": {
+                                "type": "input_json_delta",
+                                "partial_json": str(function_info.get("arguments"))
+                            }
+                        })
+
+            if text_block_open:
+                yield sse("content_block_stop", {
+                    "type": "content_block_stop",
+                    "index": current_index
+                })
+
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                if state.get("started"):
+                    yield sse("content_block_stop", {
+                        "type": "content_block_stop",
+                        "index": block_index
+                    })
+
+            yield sse("message_delta", {
+                "type": "message_delta",
+                "delta": {
+                    "stop_reason": stop_reason,
+                    "stop_sequence": None
+                },
+                "usage": {"output_tokens": 0}
+            })
+            yield sse("message_stop", {"type": "message_stop"})
+        finally:
+            if isinstance(resp, Response):
+                resp.close()

@@ -219,7 +219,9 @@ class ChatHandler:
                 messages=messages,
                 thinking_level=thinking_level,
                 stream=stream,
-                max_tokens=req.get('max_tokens')
+                max_tokens=req.get('max_tokens'),
+                tools=req.get('tools'),
+                tool_choice=req.get('tool_choice')
             )
 
         if provider == 'perplexity':
@@ -230,6 +232,10 @@ class ChatHandler:
             "model": model,
             "stream": stream
         }
+        if req.get('tools') is not None:
+            payload['tools'] = req.get('tools')
+        if req.get('tool_choice') is not None:
+            payload['tool_choice'] = req.get('tool_choice')
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
