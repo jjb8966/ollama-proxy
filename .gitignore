@@ -42,4 +42,7 @@ src/main/generated/
 ### application-local
 src/main/resources/application-local.yml
 
+# local runtime / secrets
 .env
+venv/
+server.log
