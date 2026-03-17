@@ -72,8 +72,7 @@ def get_tags():
             {"name": "google:gemini-2.5-flash", "model": "google:gemini-2.5-flash"},
             {"name": "openrouter:mistralai/devstral-2512:free", "model": "openrouter:mistralai/devstral-2512:free"},
             {"name": "cohere:command-a-03-2025", "model": "cohere:command-a-03-2025"},
-            {"name": "qwen:qwen3-coder-plus", "model": "qwen:qwen3-coder-plus"},
-            {"name": "perplexity:sonar", "model": "perplexity:sonar"}
+            {"name": "qwen:qwen3-coder-plus", "model": "qwen:qwen3-coder-plus"}
         ]
     
     response = {"models": models}

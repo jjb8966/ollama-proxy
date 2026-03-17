@@ -1,32 +1,24 @@
 {
   "models": [
     {
-      "name": "google:gemini-3-flash-preview",
-      "model": "google:gemini-3-flash-preview"
+      "name": "antigravity:anti-claude-opus-4-6-thinking",
+      "model": "antigravity:anti-claude-opus-4-6-thinking"
     },
     {
-      "name": "google:gemini-3.1-flash-lite-preview",
-      "model": "google:gemini-3.1-flash-lite-preview"
+      "name": "antigravity:anti-claude-sonnet-4-6",
+      "model": "antigravity:anti-claude-sonnet-4-6"
     },
     {
-      "name": "openrouter:mistralai/devstral-2512:free",
-      "model": "openrouter:mistralai/devstral-2512:free"
+      "name": "antigravity:anti-gemini-3-flash",
+      "model": "antigravity:anti-gemini-3-flash"
     },
     {
-      "name": "openrouter:kwaipilot/kat-coder-pro:free",
-      "model": "openrouter:kwaipilot/kat-coder-pro:free"
+      "name": "antigravity:anti-gemini-3.1-pro-high",
+      "model": "antigravity:anti-gemini-3.1-pro-high"
     },
     {
-      "name": "cohere:command-a-reasoning-08-2025",
-      "model": "cohere:command-a-reasoning-08-2025"
-    },
-    {
-      "name": "cohere:command-a-03-2025",
-      "model": "cohere:command-a-03-2025"
-    },
-    {
-      "name": "codestral:codestral-2508",
-      "model": "codestral:codestral-2508"
+      "name": "antigravity:anti-gemini-3.1-pro-low",
+      "model": "antigravity:anti-gemini-3.1-pro-low"
     },
     {
       "name": "antigravity:claude-opus-4-6-thinking",
@@ -37,6 +29,26 @@
       "model": "antigravity:claude-sonnet-4-6"
     },
     {
+      "name": "antigravity:gcli-gemini-3-flash-preview",
+      "model": "antigravity:gcli-gemini-3-flash-preview"
+    },
+    {
+      "name": "antigravity:gcli-gemini-3-pro-preview",
+      "model": "antigravity:gcli-gemini-3-pro-preview"
+    },
+    {
+      "name": "antigravity:gcli-gemini-3.1-pro-preview",
+      "model": "antigravity:gcli-gemini-3.1-pro-preview"
+    },
+    {
+      "name": "antigravity:gcli-gemini-3.1-pro-preview-customtools",
+      "model": "antigravity:gcli-gemini-3.1-pro-preview-customtools"
+    },
+    {
+      "name": "antigravity:gemini-3-flash",
+      "model": "antigravity:gemini-3-flash"
+    },
+    {
       "name": "antigravity:gemini-3.1-pro-high",
       "model": "antigravity:gemini-3.1-pro-high"
     },
@@ -45,8 +57,80 @@
       "model": "antigravity:gemini-3.1-pro-low"
     },
     {
-      "name": "antigravity:gemini-3-flash",
-      "model": "antigravity:gemini-3-flash"
+      "name": "cli-proxy-api:gemini-3-flash-preview",
+      "model": "cli-proxy-api:gemini-3-flash-preview"
+    },
+    {
+      "name": "cli-proxy-api:gemini-3-pro-preview",
+      "model": "cli-proxy-api:gemini-3-pro-preview"
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.2",
+      "model": "cli-proxy-api:gpt-5.2"
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.2-codex",
+      "model": "cli-proxy-api:gpt-5.2-codex"
+    },
+    {
+      "name": "codestral:codestral-2508",
+      "model": "codestral:codestral-2508"
+    },
+    {
+      "name": "cohere:command-a-03-2025",
+      "model": "cohere:command-a-03-2025"
+    },
+    {
+      "name": "cohere:command-a-reasoning-08-2025",
+      "model": "cohere:command-a-reasoning-08-2025"
+    },
+    {
+      "name": "google:gemini-3-flash-preview",
+      "model": "google:gemini-3-flash-preview"
+    },
+    {
+      "name": "google:gemini-3.1-flash-lite-preview",
+      "model": "google:gemini-3.1-flash-lite-preview"
+    },
+    {
+      "name": "nvidia-nim:minimaxai/minimax-m2.5",
+      "model": "nvidia-nim:minimaxai/minimax-m2.5"
+    },
+    {
+      "name": "nvidia-nim:mistralai/mistral-large-3-675b-instruct-2512",
+      "model": "nvidia-nim:mistralai/mistral-large-3-675b-instruct-2512"
+    },
+    {
+      "name": "nvidia-nim:moonshotai/kimi-k2.5",
+      "model": "nvidia-nim:moonshotai/kimi-k2.5"
+    },
+    {
+      "name": "nvidia-nim:nvidia/nemotron-3-super-120b-a12b",
+      "model": "nvidia-nim:nvidia/nemotron-3-super-120b-a12b"
+    },
+    {
+      "name": "nvidia-nim:openai/gpt-oss-120b",
+      "model": "nvidia-nim:openai/gpt-oss-120b"
+    },
+    {
+      "name": "nvidia-nim:qwen/qwen3.5-397b-a17b",
+      "model": "nvidia-nim:qwen/qwen3.5-397b-a17b"
+    },
+    {
+      "name": "nvidia-nim:z-ai/glm4.7",
+      "model": "nvidia-nim:z-ai/glm4.7"
+    },
+    {
+      "name": "nvidia-nim:z-ai/glm5",
+      "model": "nvidia-nim:z-ai/glm5"
+    },
+    {
+      "name": "openrouter:kwaipilot/kat-coder-pro:free",
+      "model": "openrouter:kwaipilot/kat-coder-pro:free"
+    },
+    {
+      "name": "openrouter:mistralai/devstral-2512:free",
+      "model": "openrouter:mistralai/devstral-2512:free"
     }
   ]
 }

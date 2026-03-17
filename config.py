@@ -39,8 +39,6 @@ class ApiConfig:
         self.codestral_rotator = KeyRotator("Codestral", "CODESTRAL_API_KEYS")
         self.codestral_rotator.log_key_count()
         
-        self.perplexity_rotator = KeyRotator("Perplexity", "PERPLEXITY_API_KEYS")
-        self.perplexity_rotator.log_key_count()
         
         # Qwen은 OAuth 토큰 사용
         self.qwen_oauth_manager = QwenOAuthManager()
@@ -49,3 +47,11 @@ class ApiConfig:
         # Antigravity는 별도 프록시 컨테이너 (인증 불필요, dummy 키 사용)
         self.antigravity_rotator = KeyRotator("Antigravity", "ANTIGRAVITY_API_KEYS")
         self.antigravity_rotator.log_key_count()
+
+        # Nvidia NIM (OpenAI 호환)
+        self.nvidia_nim_rotator = KeyRotator("NvidiaNIM", "NVIDIA_NIM_API_KEYS")
+        self.nvidia_nim_rotator.log_key_count()
+
+        # CLI Proxy API (OpenAI 호환, 로컬)
+        self.cli_proxy_api_rotator = KeyRotator("CLIProxyAPI", "CLI_PROXY_API_KEYS")
+        self.cli_proxy_api_rotator.log_key_count()

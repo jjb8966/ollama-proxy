@@ -16,64 +16,6 @@ from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
 
 
-def normalize_messages_for_perplexity(messages: List[Dict]) -> List[Dict]:
-    """
-    Perplexity API용 메시지를 정규화합니다.
-    
-    Perplexity API는 연속된 같은 role의 메시지를 허용하지 않으므로,
-    이를 하나로 병합합니다.
-    
-    Args:
-        messages: 원본 메시지 리스트
-        
-    Returns:
-        정규화된 메시지 리스트
-    """
-    if not messages:
-        return messages
-    
-    normalized = []
-    system_messages = []
-    
-    # system 메시지 분리 (맨 앞에 연속된 것만)
-    for msg in messages:
-        if msg.get('role') == 'system':
-            system_messages.append(msg)
-        else:
-            break
-    
-    # system 메시지 병합
-    if system_messages:
-        combined_system = '\n\n'.join([m.get('content', '') for m in system_messages])
-        normalized.append({'role': 'system', 'content': combined_system})
-    
-    # 나머지 메시지 처리
-    remaining = messages[len(system_messages):]
-    
-    for msg in remaining:
-        role = msg.get('role')
-        content = msg.get('content', '')
-        
-        # content가 리스트인 경우 (이미지 등) 텍스트만 추출
-        if isinstance(content, list):
-            text_parts = []
-            for part in content:
-                if isinstance(part, dict) and part.get('type') == 'text':
-                    text_parts.append(part.get('text', ''))
-            content = '\n'.join(text_parts) if text_parts else str(content)
-        
-        if not normalized:
-            normalized.append({'role': role, 'content': content})
-        elif normalized[-1]['role'] == role:
-            # 연속된 같은 role - 병합
-            prev_content = normalized[-1]['content']
-            normalized[-1]['content'] = f"{prev_content}\n\n{content}"
-        else:
-            normalized.append({'role': role, 'content': content})
-    
-    return normalized
-
-
 class ChatHandler:
     """
     채팅 요청 핸들러
@@ -108,13 +50,17 @@ class ChatHandler:
             'base_url': 'https://portal.qwen.ai/v1',
             'client_attr': 'qwen_client'
         },
-        'perplexity': {
-            'base_url': 'https://api.perplexity.ai',
-            'client_attr': 'perplexity_client'
-        },
         'antigravity': {
             'base_url': os.getenv('ANTIGRAVITY_PROXY_URL', 'http://antigravity-proxy:5010/v1'),
             'client_attr': 'antigravity_client'
+        },
+        'nvidia-nim': {
+            'base_url': os.getenv('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1'),
+            'client_attr': 'nvidia_nim_client'
+        },
+        'cli-proxy-api': {
+            'base_url': os.getenv('CLI_PROXY_API_BASE_URL', 'http://localhost:8317/v1'),
+            'client_attr': 'cli_proxy_api_client'
         }
     }
     
@@ -132,8 +78,9 @@ class ChatHandler:
         self.cohere_client = StandardApiClient(api_config.cohere_rotator)
         self.codestral_client = StandardApiClient(api_config.codestral_rotator)
         self.qwen_client = QwenApiClient(api_config.qwen_oauth_manager)
-        self.perplexity_client = StandardApiClient(api_config.perplexity_rotator)
         self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
+        self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
+        self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
 
     def _parse_model(self, requested_model: str) -> tuple:
         """
@@ -223,9 +170,6 @@ class ChatHandler:
                 tools=req.get('tools'),
                 tool_choice=req.get('tool_choice')
             )
-
-        if provider == 'perplexity':
-            messages = normalize_messages_for_perplexity(messages)
 
         payload = {
             "messages": messages,
