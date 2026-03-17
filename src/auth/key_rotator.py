@@ -60,14 +60,21 @@ class KeyRotator:
     def _load_api_keys(self, env_var_name: str) -> list:
         """
         환경 변수에서 API 키 목록을 로드합니다.
-        
-        키는 쉼표(,)로 구분되어 있어야 합니다.
+
+        지원 포맷:
+        - 콤마(,) 구분: KEY1,KEY2,KEY3
+        - 개행 구분(멀티라인):
+          KEY1\nKEY2\nKEY3
+
+        위 2가 혼합되어 있어도 모두 처리합니다.
         """
         keys_str = os.getenv(env_var_name, '')
         if not keys_str:
             logging.warning(f"[KeyRotator] {env_var_name} 환경 변수가 설정되지 않았습니다.")
             return []
-        return [key.strip() for key in keys_str.split(',') if key.strip()]
+
+        normalized = keys_str.replace(',', '\n')
+        return [key.strip() for key in normalized.splitlines() if key.strip()]
 
     def get_next_key(self) -> str:
         """
