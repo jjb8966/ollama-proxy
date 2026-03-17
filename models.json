@@ -9,10 +9,6 @@
       "model": "google:gemini-3.1-flash-lite-preview"
     },
     {
-      "name": "google:gemini-2.5-flash",
-      "model": "google:gemini-2.5-flash"
-    },
-    {
       "name": "openrouter:mistralai/devstral-2512:free",
       "model": "openrouter:mistralai/devstral-2512:free"
     },
@@ -33,30 +29,6 @@
       "model": "codestral:codestral-2508"
     },
     {
-      "name": "qwen:qwen3-coder-plus",
-      "model": "qwen:qwen3-coder-plus"
-    },
-    {
-      "name": "qwen:qwen3-coder-flash",
-      "model": "qwen:qwen3-coder-flash"
-    },
-    {
-      "name": "perplexity:sonar",
-      "model": "perplexity:sonar"
-    },
-    {
-      "name": "perplexity:sonar-pro",
-      "model": "perplexity:sonar-pro"
-    },
-    {
-      "name": "perplexity:sonar-reasoning-pro",
-      "model": "perplexity:sonar-reasoning-pro"
-    },
-    {
-      "name": "perplexity:sonar-deep-research",
-      "model": "perplexity:sonar-deep-research"
-    },
-    {
       "name": "antigravity:claude-opus-4-6-thinking",
       "model": "antigravity:claude-opus-4-6-thinking"
     },
@@ -75,10 +47,6 @@
     {
       "name": "antigravity:gemini-3-flash",
       "model": "antigravity:gemini-3-flash"
-    },
-    {
-      "name": "antigravity:gpt-oss-120b-medium",
-      "model": "antigravity:gpt-oss-120b-medium"
     }
   ]
 }
