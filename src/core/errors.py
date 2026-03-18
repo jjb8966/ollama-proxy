@@ -5,6 +5,7 @@
 API 오류 응답 생성 및 에러 로깅을 위한 유틸리티를 제공합니다.
 """
 
+from dataclasses import dataclass
 from datetime import datetime
 
 
@@ -65,3 +66,33 @@ class ErrorHandler:
             "done": True,
             "error": error_msg
         }
+
+
+@dataclass(frozen=True)
+class ProxyRequestError:
+    """라우트별 표준 포맷으로 변환 가능한 요청 단계 오류."""
+
+    model: str
+    message: str
+    status_code: int = 400
+    error_type: str = "invalid_request_error"
+
+    def to_openai_response(self) -> dict:
+        return {
+            "error": {
+                "message": self.message,
+                "type": self.error_type
+            }
+        }
+
+    def to_anthropic_response(self) -> dict:
+        return {
+            "type": "error",
+            "error": {
+                "type": self.error_type,
+                "message": self.message
+            }
+        }
+
+    def to_ollama_response(self) -> dict:
+        return ErrorHandler.create_error_response(self.model, self.message)

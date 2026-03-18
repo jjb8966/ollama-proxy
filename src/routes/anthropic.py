@@ -12,6 +12,7 @@ import logging
 import uuid
 from flask import Blueprint, Response, current_app, request, stream_with_context
 
+from src.core.errors import ProxyRequestError
 from src.handlers import AnthropicHandler, ChatHandler
 
 
@@ -71,6 +72,20 @@ def messages():
             }
         }
         return Response(json.dumps(error_body), status=500, mimetype='application/json')
+
+    if isinstance(resp, ProxyRequestError):
+        logger.warning(
+            "Anthropic request rejected before upstream call: request_id=%s model=%s status=%s type=%s",
+            request_id,
+            requested_model,
+            resp.status_code,
+            resp.error_type
+        )
+        return Response(
+            json.dumps(resp.to_anthropic_response()),
+            status=resp.status_code,
+            mimetype='application/json'
+        )
 
     if proxied_req['stream'] and (inspect.isgenerator(resp) or hasattr(resp, 'iter_lines')):
         logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)

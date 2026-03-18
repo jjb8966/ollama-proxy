@@ -10,6 +10,7 @@ import json
 import logging
 from flask import Blueprint, request, Response, stream_with_context, current_app
 
+from src.core.errors import ProxyRequestError
 from src.handlers.chat import ChatHandler
 
 
@@ -118,6 +119,13 @@ def chat_completions():
         return Response(
             json.dumps(error_body),
             status=500,
+            mimetype='application/json'
+        )
+
+    if isinstance(resp, ProxyRequestError):
+        return Response(
+            json.dumps(resp.to_openai_response()),
+            status=resp.status_code,
             mimetype='application/json'
         )
 

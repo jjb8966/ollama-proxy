@@ -11,11 +11,11 @@ from typing import Dict, Any, List, Optional
 
 import requests
 
+from src.core.errors import ProxyRequestError
 from src.providers.standard import StandardApiClient
 from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
 from src.utils.tokenizer import check_context_length
-from src.core.errors import ErrorHandler
 
 
 def _strip_quotes(value: str) -> str:
@@ -162,7 +162,7 @@ class ChatHandler:
             except (IndexError, KeyError) as e:
                 logging.warning(f"이미지 처리 실패: {e}")
 
-    def handle_chat_request(self, req: Dict[str, Any]) -> Optional[requests.Response]:
+    def handle_chat_request(self, req: Dict[str, Any]) -> Optional[requests.Response | Dict[str, Any] | ProxyRequestError]:
         messages = req.get('messages')
         stream = req.get('stream', True)
         requested_model = req.get('model')
@@ -179,8 +179,12 @@ class ChatHandler:
         is_valid, error_msg = check_context_length(requested_model, messages, max_tokens)
         if not is_valid:
             logging.error(f"[Context] {error_msg}")
-            # 에러 응답을 dict로 반환 (route에서 처리)
-            return ErrorHandler.create_error_response(requested_model or "unknown", error_msg)
+            return ProxyRequestError(
+                model=requested_model or "unknown",
+                message=error_msg,
+                status_code=400,
+                error_type="invalid_request_error"
+            )
 
         provider, model, base_url = self._parse_model(requested_model)
 

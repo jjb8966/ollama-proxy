@@ -138,6 +138,17 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
             ]
         )
 
+    def test_invalid_dict_response_is_rejected_in_non_streaming_transform(self) -> None:
+        with self.assertRaisesRegex(ValueError, "OpenAI-compatible"):
+            self.handler.handle_non_streaming_response(
+                {
+                    "model": "ollama-cloud:kimi-k2.5",
+                    "message": {"role": "assistant", "content": "bad"},
+                    "done": True
+                },
+                "ollama-cloud:kimi-k2.5"
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

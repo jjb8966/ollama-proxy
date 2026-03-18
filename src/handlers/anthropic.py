@@ -278,6 +278,8 @@ class AnthropicHandler:
         requested_model: str
     ) -> Dict[str, Any]:
         data = resp if isinstance(resp, dict) else resp.json()
+        if "choices" not in data or not isinstance(data.get("choices"), list):
+            raise ValueError("Expected OpenAI-compatible response with choices")
 
         usage = data.get("usage", {})
         choices = data.get("choices", [])
