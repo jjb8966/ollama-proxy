@@ -15,6 +15,8 @@ services:
       - ANTIGRAVITY_API_KEYS=${ANTIGRAVITY_API_KEYS}
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}
+      - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
     volumes:
       - ~/.qwen:/root/.qwen:ro
     restart: always

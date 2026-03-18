@@ -100,6 +100,30 @@ class BaseApiClient(ABC):
                     timeout=self.REQUEST_TIMEOUT
                 )
                 
+                # HTTP 상태 및 헤더 로깅
+                logging.info(
+                    f"[HTTP] 📥 응답 | status={resp.status_code} | provider={self.provider_name}"
+                )
+                
+                # Rate Limit 관련 헤더 추적
+                if resp.status_code == 429:
+                    retry_after = resp.headers.get('Retry-After', 'N/A')
+                    x_ratelimit_reset = resp.headers.get('X-RateLimit-Reset', 'N/A')
+                    x_ratelimit_remaining = resp.headers.get('X-RateLimit-Remaining', 'N/A')
+                    logging.warning(
+                        f"[HTTP] 🚦 Rate Limit | provider={self.provider_name} | "
+                        f"retry_after={retry_after} | reset={x_ratelimit_reset} | "
+                        f"remaining={x_ratelimit_remaining}"
+                    )
+                    logging.debug(f"[HTTP] Rate Limit 헤더: {dict(resp.headers)}")
+                
+                # 5xx 서버 오류 로깅
+                if 500 <= resp.status_code < 600:
+                    logging.error(
+                        f"[HTTP] ❌ 서버 오류 | status={resp.status_code} | "
+                        f"provider={self.provider_name}"
+                    )
+                
                 # 401 인증 실패 처리
                 if resp.status_code == 401 and not auth_retry_done:
                     logging.warning(f"[{self.provider_name}] 401 Unauthorized - 인증 복구 시도")

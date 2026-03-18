@@ -101,7 +101,9 @@ def chat_completions():
         "messages": req.get('messages'),
         "stream": stream,
         "max_tokens": req.get('max_tokens'),
-        "thinking_level": req.get('thinking_level', 'minimal')
+        "thinking_level": req.get('thinking_level', 'minimal'),
+        "tools": req.get('tools'),
+        "tool_choice": req.get('tool_choice')
     }
 
     # API 요청 처리
@@ -120,9 +122,11 @@ def chat_completions():
         )
 
     if isinstance(resp, dict):
+        # 에러 응답인지 확인 (error 필드 존재 시)
+        status_code = 400 if resp.get('error') else 200
         return Response(
             json.dumps(resp),
-            status=200,
+            status=status_code,
             mimetype='application/json'
         )
 

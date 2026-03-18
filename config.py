@@ -55,3 +55,8 @@ class ApiConfig:
         # CLI Proxy API (OpenAI 호환, 로컬)
         self.cli_proxy_api_rotator = KeyRotator("CLIProxyAPI", "CLI_PROXY_API_KEYS")
         self.cli_proxy_api_rotator.log_key_count()
+
+        # Ollama Cloud (OpenAI 호환)
+        # ENV 이름은 기존 운영 설정을 깨지 않기 위해 그대로 OLLAMA_API_KEYS 를 사용합니다.
+        self.ollama_cloud_rotator = KeyRotator("OllamaCloud", "OLLAMA_API_KEYS")
+        self.ollama_cloud_rotator.log_key_count()

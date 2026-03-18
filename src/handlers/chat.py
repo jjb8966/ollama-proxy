@@ -14,6 +14,15 @@ import requests
 from src.providers.standard import StandardApiClient
 from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
+from src.utils.tokenizer import check_context_length
+from src.core.errors import ErrorHandler
+
+
+def _strip_quotes(value: str) -> str:
+    """문자열 값에서 양쪽 따옴표를 제거합니다."""
+    if not value:
+        return value
+    return value.strip('"\'')
 
 
 class ChatHandler:
@@ -51,16 +60,26 @@ class ChatHandler:
             'client_attr': 'qwen_client'
         },
         'antigravity': {
-            'base_url': os.getenv('ANTIGRAVITY_PROXY_URL', 'http://antigravity-proxy:5010/v1'),
+            'base_url': _strip_quotes(os.getenv('ANTIGRAVITY_PROXY_URL', 'http://antigravity-proxy:5010/v1')),
             'client_attr': 'antigravity_client'
         },
         'nvidia-nim': {
-            'base_url': os.getenv('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1'),
+            'base_url': _strip_quotes(os.getenv('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1')),
             'client_attr': 'nvidia_nim_client'
         },
         'cli-proxy-api': {
-            'base_url': os.getenv('CLI_PROXY_API_BASE_URL', 'http://localhost:8317/v1'),
+            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://localhost:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
+        },
+        # Primary: ollama-cloud
+        'ollama-cloud': {
+            'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
+            'client_attr': 'ollama_cloud_client'
+        },
+        # Backward-compatible alias
+        'ollama': {
+            'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
+            'client_attr': 'ollama_cloud_client'
         }
     }
     
@@ -81,6 +100,7 @@ class ChatHandler:
         self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
+        self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
 
     def _parse_model(self, requested_model: str) -> tuple:
         """
@@ -147,12 +167,20 @@ class ChatHandler:
         stream = req.get('stream', True)
         requested_model = req.get('model')
         thinking_level = req.get('thinking_level', 'minimal')
+        max_tokens = req.get('max_tokens')
 
         if messages:
             self._process_image_content(messages)
         else:
             logging.warning("요청에 messages가 없습니다.")
             return None
+
+        # Context Length 검증
+        is_valid, error_msg = check_context_length(requested_model, messages, max_tokens)
+        if not is_valid:
+            logging.error(f"[Context] {error_msg}")
+            # 에러 응답을 dict로 반환 (route에서 처리)
+            return ErrorHandler.create_error_response(requested_model or "unknown", error_msg)
 
         provider, model, base_url = self._parse_model(requested_model)
 
