@@ -31,6 +31,25 @@ class StandardApiClient(BaseApiClient):
     def _get_api_key(self) -> Optional[str]:
         """다음 순서의 API 키를 반환합니다."""
         return self.key_rotator.get_next_key()
+
+    def _get_key_log_context(self, api_key: str) -> dict[str, str]:
+        for index, current_key in enumerate(self.key_rotator.api_keys):
+            if current_key != api_key:
+                continue
+            return {
+                "key_index": str(index),
+                "key_hash": self.key_rotator._hash_key(current_key)
+            }
+        return {
+            "key_hash": "unknown"
+        }
+
+    def _mark_key_failure(self, api_key: str, is_rate_limit: bool = False, retry_after: Optional[int] = None) -> None:
+        self.key_rotator.mark_key_failure(
+            key=api_key,
+            is_rate_limit=is_rate_limit,
+            retry_after=retry_after
+        )
     
     def _on_auth_failure(self) -> bool:
         """

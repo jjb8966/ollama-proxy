@@ -56,6 +56,14 @@ class BaseApiClient(ABC):
             복구 성공 여부 (True면 재시도)
         """
         pass
+
+    def _get_key_log_context(self, api_key: str) -> Dict[str, str]:
+        """키 관련 비민감 로그 컨텍스트를 반환합니다."""
+        return {}
+
+    def _mark_key_failure(self, api_key: str, is_rate_limit: bool = False, retry_after: Optional[int] = None) -> None:
+        """키 실패를 기록합니다. 기본 구현은 no-op 입니다."""
+        return None
     
     def post_request(
         self,
@@ -88,6 +96,13 @@ class BaseApiClient(ABC):
             if not api_key:
                 logging.error(f"[{self.provider_name}] API 키를 가져올 수 없습니다.")
                 return None
+
+            key_context = self._get_key_log_context(api_key)
+            context_suffix = ""
+            if key_context:
+                context_suffix = " | " + " | ".join(
+                    f"{key}={value}" for key, value in key_context.items()
+                )
             
             headers['Authorization'] = f'Bearer {api_key}'
             
@@ -102,7 +117,7 @@ class BaseApiClient(ABC):
                 
                 # HTTP 상태 및 헤더 로깅
                 logging.info(
-                    f"[HTTP] 📥 응답 | status={resp.status_code} | provider={self.provider_name}"
+                    f"[HTTP] 📥 응답 | status={resp.status_code} | provider={self.provider_name}{context_suffix}"
                 )
                 
                 # Rate Limit 관련 헤더 추적
@@ -110,10 +125,12 @@ class BaseApiClient(ABC):
                     retry_after = resp.headers.get('Retry-After', 'N/A')
                     x_ratelimit_reset = resp.headers.get('X-RateLimit-Reset', 'N/A')
                     x_ratelimit_remaining = resp.headers.get('X-RateLimit-Remaining', 'N/A')
+                    retry_after_int = int(retry_after) if str(retry_after).isdigit() else None
+                    self._mark_key_failure(api_key, is_rate_limit=True, retry_after=retry_after_int)
                     logging.warning(
                         f"[HTTP] 🚦 Rate Limit | provider={self.provider_name} | "
                         f"retry_after={retry_after} | reset={x_ratelimit_reset} | "
-                        f"remaining={x_ratelimit_remaining}"
+                        f"remaining={x_ratelimit_remaining}{context_suffix}"
                     )
                     logging.debug(f"[HTTP] Rate Limit 헤더: {dict(resp.headers)}")
                 
@@ -126,6 +143,7 @@ class BaseApiClient(ABC):
                 
                 # 401 인증 실패 처리
                 if resp.status_code == 401 and not auth_retry_done:
+                    self._mark_key_failure(api_key)
                     logging.warning(f"[{self.provider_name}] 401 Unauthorized - 인증 복구 시도")
                     if self._on_auth_failure():
                         auth_retry_done = True
@@ -151,6 +169,12 @@ class BaseApiClient(ABC):
     ) -> None:
         """API 요청 실패를 로깅합니다."""
         masked_key = ErrorHandler.mask_api_key(api_key)
+        key_context = self._get_key_log_context(api_key)
+        context_suffix = ""
+        if key_context:
+            context_suffix = " | " + " | ".join(
+                f"{key}={value}" for key, value in key_context.items()
+            )
         
         # 응답 본문 추출
         response_body = ''
@@ -170,6 +194,6 @@ class BaseApiClient(ABC):
         logging.error(
             f"[{self.provider_name}] API 요청 실패 - "
             f"URL: {url}, 에러: {str(error)}, 키: {masked_key}, "
-            f"응답: {response_body}, 재시도: {try_count + 1}/{max_retries}"
+            f"응답: {response_body}, 재시도: {try_count + 1}/{max_retries}{context_suffix}"
         )
         print(error_msg)  # 콘솔 출력 유지

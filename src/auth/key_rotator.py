@@ -329,11 +329,12 @@ class KeyRotator:
                     if is_rate_limit:
                         logging.warning(
                             f"[KeyRotator] [{self.provider}] Rate Limit 감지 | "
-                            f"key_index={i} | retry_after={retry_after}"
+                            f"key_index={i} | key_hash={self._hash_key(k)} | retry_after={retry_after}"
                         )
                     else:
                         logging.warning(
-                            f"[KeyRotator] [{self.provider}] 키 실패 기록 | key_index={i}"
+                            f"[KeyRotator] [{self.provider}] 키 실패 기록 | "
+                            f"key_index={i} | key_hash={self._hash_key(k)}"
                         )
                     break
     

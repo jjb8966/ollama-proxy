@@ -8,11 +8,15 @@ Claude Code 등 Anthropic Messages API 클라이언트와의 호환을 위해
 
 import inspect
 import json
+import logging
 import re
+import time
 import uuid
 from typing import Any, Dict, Generator, Iterable, List, Optional, Union
 
 from requests import Response
+
+logger = logging.getLogger(__name__)
 
 
 class AnthropicHandler:
@@ -89,18 +93,22 @@ class AnthropicHandler:
                 normalized.append({"role": role, "content": ""})
                 continue
 
-            text_parts: List[str] = []
-            assistant_tool_calls: List[Dict[str, Any]] = []
-            tool_results: List[Dict[str, Any]] = []
+            if role == "assistant":
+                text_parts: List[str] = []
+                assistant_tool_calls: List[Dict[str, Any]] = []
 
-            for block in content:
-                if not isinstance(block, dict):
-                    continue
-                block_type = block.get("type")
+                for block in content:
+                    if not isinstance(block, dict):
+                        continue
+                    block_type = block.get("type")
 
-                if block_type == "text":
-                    text_parts.append(str(block.get("text", "")))
-                elif block_type == "tool_use" and role == "assistant":
+                    if block_type == "text":
+                        text_parts.append(str(block.get("text", "")))
+                        continue
+
+                    if block_type != "tool_use":
+                        continue
+
                     tool_id = self._sanitize_tool_id(block.get("id"))
                     tool_name = str(block.get("name", ""))
                     tool_input = block.get("input", {})
@@ -114,7 +122,41 @@ class AnthropicHandler:
                             "arguments": json.dumps(tool_input, ensure_ascii=False)
                         }
                     })
-                elif block_type == "tool_result" and role == "user":
+
+                assistant_message: Dict[str, Any] = {
+                    "role": "assistant",
+                    "content": "".join(text_parts)
+                }
+                if assistant_tool_calls:
+                    assistant_message["tool_calls"] = assistant_tool_calls
+                normalized.append(assistant_message)
+                continue
+
+            if role == "user":
+                pending_text: List[str] = []
+
+                def flush_user_text() -> None:
+                    if pending_text:
+                        normalized.append({
+                            "role": "user",
+                            "content": "".join(pending_text)
+                        })
+                        pending_text.clear()
+
+                for block in content:
+                    if not isinstance(block, dict):
+                        continue
+                    block_type = block.get("type")
+
+                    if block_type == "text":
+                        pending_text.append(str(block.get("text", "")))
+                        continue
+
+                    if block_type != "tool_result":
+                        continue
+
+                    flush_user_text()
+
                     tool_id = self._sanitize_tool_id(block.get("tool_use_id"))
                     tool_content = block.get("content", "")
                     if isinstance(tool_content, list):
@@ -123,24 +165,16 @@ class AnthropicHandler:
                         tool_text = tool_content
                     else:
                         tool_text = json.dumps(tool_content, ensure_ascii=False)
-                    tool_results.append({
+                    normalized.append({
                         "role": "tool",
                         "tool_call_id": tool_id,
                         "content": tool_text
                     })
 
-            combined_text = "".join(text_parts)
-            if combined_text or not assistant_tool_calls:
-                normalized.append({"role": role, "content": combined_text})
+                flush_user_text()
+                continue
 
-            if assistant_tool_calls:
-                normalized.append({
-                    "role": "assistant",
-                    "content": combined_text or None,
-                    "tool_calls": assistant_tool_calls
-                })
-
-            normalized.extend(tool_results)
+            normalized.append({"role": role, "content": self._content_blocks_to_text(content)})
 
         return normalized
 
@@ -288,7 +322,8 @@ class AnthropicHandler:
     def stream_anthropic_response(
         self,
         resp: Union[Generator[str, None, None], Response],
-        requested_model: str
+        requested_model: str,
+        request_id: Optional[str] = None
     ) -> Generator[str, None, None]:
         message_id = f"msg_{uuid.uuid4().hex}"
         response_model = requested_model
@@ -296,11 +331,28 @@ class AnthropicHandler:
         current_index = 0
         text_block_open = False
         tool_block_state: Dict[int, Dict[str, Any]] = {}
+        stream_id = request_id or message_id
+        start_time = time.time()
+        first_chunk_time: Optional[float] = None
+        last_chunk_time = start_time
+        stream_done_received = False
+        line_count = 0
+        data_line_count = 0
+        empty_line_count = 0
+        chunk_count = 0
+        text_char_count = 0
+        tool_delta_count = 0
 
         def sse(event: str, data: Dict[str, Any]) -> str:
             return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
         try:
+            logger.info(
+                "[AnthropicStream] ▶️ 시작 | request_id=%s | message_id=%s | model=%s",
+                stream_id,
+                message_id,
+                requested_model
+            )
             yield sse("message_start", {
                 "type": "message_start",
                 "message": {
@@ -316,22 +368,72 @@ class AnthropicHandler:
             })
 
             for raw_line in self._iter_stream_lines(resp):
+                now = time.time()
+                line_count += 1
+                gap = now - last_chunk_time
+                if gap > 5.0:
+                    logger.warning(
+                        "[AnthropicStream] ⚠️ 청크 지연 | request_id=%s | model=%s | gap=%.3fs | elapsed=%.3fs",
+                        stream_id,
+                        requested_model,
+                        gap,
+                        now - start_time
+                    )
+                last_chunk_time = now
+
                 line = raw_line.strip()
-                if not line or not line.startswith("data:"):
+                if not line:
+                    empty_line_count += 1
                     continue
 
+                if not line.startswith("data:"):
+                    logger.debug(
+                        "[AnthropicStream] 비-data 라인 무시 | request_id=%s | sample=%s",
+                        stream_id,
+                        line[:120]
+                    )
+                    continue
+
+                data_line_count += 1
                 payload = line[5:].strip()
                 if payload == "[DONE]":
+                    stream_done_received = True
+                    logger.info(
+                        "[AnthropicStream] [DONE] 수신 | request_id=%s | model=%s | elapsed=%.3fs",
+                        stream_id,
+                        requested_model,
+                        time.time() - start_time
+                    )
                     break
 
                 try:
                     data = json.loads(payload)
                 except json.JSONDecodeError:
+                    logger.warning(
+                        "[AnthropicStream] JSON 디코드 실패 | request_id=%s | payload_sample=%s",
+                        stream_id,
+                        payload[:200]
+                    )
                     continue
+
+                chunk_count += 1
+                if first_chunk_time is None:
+                    first_chunk_time = now
+                    logger.info(
+                        "[AnthropicStream] ⏱️ 첫 청크 | request_id=%s | model=%s | latency=%.3fs",
+                        stream_id,
+                        requested_model,
+                        first_chunk_time - start_time
+                    )
 
                 response_model = str(data.get("model", response_model))
                 choices = data.get("choices", [])
                 if not choices:
+                    logger.debug(
+                        "[AnthropicStream] choices 없음 | request_id=%s | chunk_index=%s",
+                        stream_id,
+                        chunk_count
+                    )
                     continue
 
                 choice = choices[0]
@@ -339,10 +441,22 @@ class AnthropicHandler:
                 finish_reason = choice.get("finish_reason")
                 if finish_reason:
                     stop_reason = self._map_stop_reason(finish_reason)
+                    logger.info(
+                        "[AnthropicStream] finish_reason 수신 | request_id=%s | raw=%s | mapped=%s",
+                        stream_id,
+                        finish_reason,
+                        stop_reason
+                    )
 
                 text = delta.get("content", "")
                 if text:
+                    text_char_count += len(text)
                     if not text_block_open:
+                        logger.info(
+                            "[AnthropicStream] text 블록 시작 | request_id=%s | index=%s",
+                            stream_id,
+                            current_index
+                        )
                         yield sse("content_block_start", {
                             "type": "content_block_start",
                             "index": current_index,
@@ -368,8 +482,16 @@ class AnthropicHandler:
                         state["name"] = str(function_info.get("name"))
                     if function_info.get("arguments"):
                         state["arguments"] += str(function_info.get("arguments"))
+                        tool_delta_count += 1
 
                     if not state.get("started") and state["name"]:
+                        logger.info(
+                            "[AnthropicStream] tool 블록 시작 | request_id=%s | index=%s | tool=%s | tool_id=%s",
+                            stream_id,
+                            block_index,
+                            state["name"],
+                            state["id"]
+                        )
                         yield sse("content_block_start", {
                             "type": "content_block_start",
                             "index": block_index,
@@ -383,6 +505,13 @@ class AnthropicHandler:
                         state["started"] = True
 
                     if state.get("started") and function_info.get("arguments"):
+                        logger.debug(
+                            "[AnthropicStream] tool delta | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                            stream_id,
+                            block_index,
+                            state["name"] or "unknown",
+                            len(str(function_info.get("arguments")))
+                        )
                         yield sse("content_block_delta", {
                             "type": "content_block_delta",
                             "index": block_index,
@@ -393,6 +522,12 @@ class AnthropicHandler:
                         })
 
             if text_block_open:
+                logger.info(
+                    "[AnthropicStream] text 블록 종료 | request_id=%s | index=%s | text_chars=%s",
+                    stream_id,
+                    current_index,
+                    text_char_count
+                )
                 yield sse("content_block_stop", {
                     "type": "content_block_stop",
                     "index": current_index
@@ -401,6 +536,13 @@ class AnthropicHandler:
             for block_index in sorted(tool_block_state.keys()):
                 state = tool_block_state[block_index]
                 if state.get("started"):
+                    logger.info(
+                        "[AnthropicStream] tool 블록 종료 | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                        stream_id,
+                        block_index,
+                        state.get("name", "unknown"),
+                        len(state.get("arguments", ""))
+                    )
                     yield sse("content_block_stop", {
                         "type": "content_block_stop",
                         "index": block_index
@@ -415,6 +557,49 @@ class AnthropicHandler:
                 "usage": {"output_tokens": 0}
             })
             yield sse("message_stop", {"type": "message_stop"})
+            logger.info(
+                "[AnthropicStream] ✅ 종료 | request_id=%s | message_id=%s | model=%s | "
+                "done=%s | stop_reason=%s | chunks=%s | lines=%s | data_lines=%s | empty_lines=%s | "
+                "text_chars=%s | tool_deltas=%s | duration=%.3fs",
+                stream_id,
+                message_id,
+                response_model,
+                stream_done_received,
+                stop_reason,
+                chunk_count,
+                line_count,
+                data_line_count,
+                empty_line_count,
+                text_char_count,
+                tool_delta_count,
+                time.time() - start_time
+            )
+        except Exception as exc:
+            logger.error(
+                "[AnthropicStream] ❌ 예외 | request_id=%s | message_id=%s | model=%s | "
+                "done=%s | chunks=%s | lines=%s | data_lines=%s | text_chars=%s | "
+                "tool_deltas=%s | elapsed=%.3fs | error=%s",
+                stream_id,
+                message_id,
+                response_model,
+                stream_done_received,
+                chunk_count,
+                line_count,
+                data_line_count,
+                text_char_count,
+                tool_delta_count,
+                time.time() - start_time,
+                exc,
+                exc_info=True
+            )
+            raise
         finally:
+            logger.info(
+                "[AnthropicStream] 🔒 close | request_id=%s | message_id=%s | model=%s | elapsed=%.3fs",
+                stream_id,
+                message_id,
+                response_model,
+                time.time() - start_time
+            )
             if isinstance(resp, Response):
                 resp.close()

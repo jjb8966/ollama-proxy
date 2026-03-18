@@ -9,6 +9,7 @@ Anthropic 호환 API 라우트
 import inspect
 import json
 import logging
+import uuid
 from flask import Blueprint, Response, current_app, request, stream_with_context
 
 from src.handlers import AnthropicHandler, ChatHandler
@@ -25,6 +26,7 @@ def messages():
     api_config = current_app.config['api_config']
     chat_handler = ChatHandler(api_config)
     anthropic_handler = AnthropicHandler()
+    request_id = request.headers.get("x-request-id") or f"anth_{uuid.uuid4().hex[:12]}"
 
     req = request.get_json(force=True)
     requested_model = req.get('model')
@@ -39,7 +41,8 @@ def messages():
         return Response(json.dumps(error_body), status=400, mimetype='application/json')
 
     logger.info(
-        "Anthropic /v1/messages request: model=%s stream=%s tools=%s tool_choice=%s",
+        "Anthropic /v1/messages request: request_id=%s model=%s stream=%s tools=%s tool_choice=%s",
+        request_id,
         req.get('model'),
         bool(req.get('stream', False)),
         len(req.get('tools', [])) if isinstance(req.get('tools'), list) else 0,
@@ -59,6 +62,7 @@ def messages():
 
     resp = chat_handler.handle_chat_request(proxied_req)
     if resp is None:
+        logger.error("Anthropic upstream request failed before streaming: request_id=%s model=%s", request_id, requested_model)
         error_body = {
             "type": "error",
             "error": {
@@ -69,15 +73,17 @@ def messages():
         return Response(json.dumps(error_body), status=500, mimetype='application/json')
 
     if proxied_req['stream'] and (inspect.isgenerator(resp) or hasattr(resp, 'iter_lines')):
+        logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)
         return Response(
-            stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model)),
+            stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id)),
             mimetype='text/event-stream'
         )
 
     try:
         response_body = anthropic_handler.handle_non_streaming_response(resp, requested_model)
+        logger.info("Anthropic non-streaming response success: request_id=%s model=%s", request_id, requested_model)
     except Exception as exc:
-        logger.error(f"Anthropic 응답 변환 실패: {exc}", exc_info=True)
+        logger.error(f"Anthropic 응답 변환 실패: request_id={request_id} model={requested_model} error={exc}", exc_info=True)
         error_body = {
             "type": "error",
             "error": {
