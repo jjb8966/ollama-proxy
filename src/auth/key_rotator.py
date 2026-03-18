@@ -348,14 +348,21 @@ class KeyRotator:
             for i, key in enumerate(self.api_keys):
                 health = self.key_health.get(i)
                 if health:
+                    # 복구 시간 계산
+                    retry_after = None
+                    if health.is_rate_limited and health.rate_limit_until:
+                        remaining = int(health.rate_limit_until - time.time())
+                        if remaining > 0:
+                            retry_after = remaining
+                    
                     status.append({
                         "index": i,
                         "key_hash": self._hash_key(key),
+                        "status": "rate_limited" if health.is_rate_limited else "available",
                         "usage_count": health.usage_count,
                         "failure_count": health.failure_count,
                         "health_score": health.health_score,
-                        "is_available": health.is_available,
-                        "is_rate_limited": health.is_rate_limited
+                        "retry_after_sec": retry_after
                     })
             return status
     

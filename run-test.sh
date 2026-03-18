@@ -167,7 +167,23 @@ HTTP_CODE=$(echo "$RESPONSE" | tail -1)
 BODY=$(echo "$RESPONSE" | sed '$d')
 if [ "$HTTP_CODE" = "200" ]; then
     echo "   ✅ 쿼터 API 응답 성공 (HTTP 200)"
-    echo "$BODY" | python3 -m json.tool 2>/dev/null | head -20 || echo "$BODY" | head -5
+    echo "$BODY" | python3 -m json.tool 2>/dev/null | head -10 || echo "$BODY" | head -5
+else
+    echo "   ❌ 응답 오류: HTTP $HTTP_CODE"
+    echo "$BODY" | head -5
+fi
+echo ""
+
+# 테스트 3.5: 키 상태 조회 API
+echo "테스트 3.5: 키 상태 조회 API"
+RESPONSE=$(curl -s -w "\n%{http_code}" \
+    -H "Authorization: Bearer $PROXY_API_TOKEN" \
+    http://localhost:$TEST_PORT/v1/keys/status 2>/dev/null)
+HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+BODY=$(echo "$RESPONSE" | sed '$d')
+if [ "$HTTP_CODE" = "200" ]; then
+    echo "   ✅ 키 상태 API 응답 성공 (HTTP 200)"
+    echo "$BODY" | python3 -m json.tool 2>/dev/null | head -25 || echo "$BODY" | head -5
 else
     echo "   ❌ 응답 오류: HTTP $HTTP_CODE"
     echo "$BODY" | head -5
