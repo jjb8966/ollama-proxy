@@ -16,6 +16,17 @@ class _DummyClient(BaseApiClient):
         return False
 
 
+class _DummyAntigravityClient(BaseApiClient):
+    def __init__(self) -> None:
+        super().__init__("Antigravity")
+
+    def _get_api_key(self):
+        return "proxy-token"
+
+    def _on_auth_failure(self) -> bool:
+        return False
+
+
 class ProviderErrorHandlingTests(unittest.TestCase):
     def test_context_overflow_message_is_detected(self) -> None:
         detected = ErrorHandler.is_context_overflow_response(
@@ -64,6 +75,55 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         self.assertIsInstance(result, ProxyRequestError)
         assert isinstance(result, ProxyRequestError)
         self.assertEqual(result.error_code, "context_length_exceeded")
+
+    def test_antigravity_upstream_503_is_passed_through_without_retry(self) -> None:
+        client = _DummyAntigravityClient()
+        response = Mock()
+        response.status_code = 503
+        response.text = (
+            '{"error":{"message":"Upstream is overloaded (capacity exhausted). Please retry later.",'
+            '"type":"invalid_request_error","code":"model_capacity_exhausted"}}'
+        )
+        response.headers = {}
+
+        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+            result = client.post_request(
+                url="https://example.com/v1/chat/completions",
+                payload={"model": "gcli-gemini-3-pro-preview", "messages": [{"role": "user", "content": "hello"}]},
+                headers={"Content-Type": "application/json"},
+                stream=False,
+            )
+
+        self.assertEqual(mock_post.call_count, 1)
+        self.assertIsInstance(result, ProxyRequestError)
+        assert isinstance(result, ProxyRequestError)
+        self.assertEqual(result.status_code, 503)
+        self.assertEqual(result.error_code, "model_capacity_exhausted")
+        self.assertEqual(result.error_type, "invalid_request_error")
+
+    def test_antigravity_unknown_model_400_is_passed_through_without_retry(self) -> None:
+        client = _DummyAntigravityClient()
+        response = Mock()
+        response.status_code = 400
+        response.text = (
+            '{"error":{"message":"Unknown model: claude-sonnet-4-6",'
+            '"type":"invalid_request_error"}}'
+        )
+        response.headers = {}
+
+        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+            result = client.post_request(
+                url="https://example.com/v1/chat/completions",
+                payload={"model": "claude-sonnet-4-6", "messages": [{"role": "user", "content": "hello"}]},
+                headers={"Content-Type": "application/json"},
+                stream=False,
+            )
+
+        self.assertEqual(mock_post.call_count, 1)
+        self.assertIsInstance(result, ProxyRequestError)
+        assert isinstance(result, ProxyRequestError)
+        self.assertEqual(result.status_code, 400)
+        self.assertEqual(result.message, "Unknown model: claude-sonnet-4-6")
 
 
 if __name__ == "__main__":

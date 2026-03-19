@@ -44,7 +44,8 @@ class ApiConfig:
         self.qwen_oauth_manager = QwenOAuthManager()
         self.qwen_oauth_manager.log_key_count()
 
-        # Antigravity는 별도 프록시 컨테이너 (인증 불필요, dummy 키 사용)
+        # Antigravity는 별도 프록시 컨테이너를 거치며,
+        # 이 rotator의 값은 upstream LLM 키가 아니라 프록시 API 토큰으로 사용됩니다.
         self.antigravity_rotator = KeyRotator("Antigravity", "ANTIGRAVITY_API_KEYS")
         self.antigravity_rotator.log_key_count()
 
@@ -55,6 +56,10 @@ class ApiConfig:
         # CLI Proxy API (OpenAI 호환, 로컬)
         self.cli_proxy_api_rotator = KeyRotator("CLIProxyAPI", "CLI_PROXY_API_KEYS")
         self.cli_proxy_api_rotator.log_key_count()
+
+        # CLI Proxy API GPT (OpenAI 호환, 외부)
+        self.cli_proxy_api_gpt_rotator = KeyRotator("CLIProxyAPI_GPT", "CLI_PROXY_API_GPT_KEYS")
+        self.cli_proxy_api_gpt_rotator.log_key_count()
 
         # Ollama Cloud (OpenAI 호환)
         # ENV 이름은 기존 운영 설정을 깨지 않기 위해 그대로 OLLAMA_API_KEYS 를 사용합니다.

@@ -39,6 +39,7 @@ class _DummyApiConfig:
         self.antigravity_rotator = _DummyRotator("Antigravity")
         self.nvidia_nim_rotator = _DummyRotator("NvidiaNIM")
         self.cli_proxy_api_rotator = _DummyRotator("CLIProxyAPI")
+        self.cli_proxy_api_gpt_rotator = _DummyRotator("CLIProxyAPI_GPT")
         self.ollama_cloud_rotator = _DummyRotator("OllamaCloud")
 
 
@@ -112,6 +113,57 @@ class ChatHandlerLimitTests(unittest.TestCase):
         chunks = list(result)
         self.assertIn("사용자가 직접", chunks[0])
         self.assertEqual(chunks[-1], "data: [DONE]\n\n")
+
+    def test_removed_antigravity_legacy_model_is_rejected(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.antigravity_client = client
+
+        result = self.handler.handle_chat_request(
+            {
+                "model": "antigravity:claude-sonnet-4-6",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": False,
+            }
+        )
+
+        self.assertEqual(result.status_code, 400)
+        self.assertIn("no longer supported", result.message)
+        self.assertFalse(client.post_request.called)
+
+    def test_removed_antigravity_gcli_31_model_is_rejected(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.antigravity_client = client
+
+        result = self.handler.handle_chat_request(
+            {
+                "model": "antigravity:gcli-gemini-3.1-pro-preview",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": False,
+            }
+        )
+
+        self.assertEqual(result.status_code, 400)
+        self.assertIn("no longer supported", result.message)
+        self.assertFalse(client.post_request.called)
+
+    def test_antigravity_supported_model_is_left_unchanged(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.antigravity_client = client
+
+        result = self.handler.handle_chat_request(
+            {
+                "model": "antigravity:gcli-gemini-3-pro-preview",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": False,
+            }
+        )
+
+        self.assertEqual(result, {"choices": []})
+        payload = client.post_request.call_args.kwargs["payload"]
+        self.assertEqual(payload["model"], "gcli-gemini-3-pro-preview")
 
 
 if __name__ == "__main__":

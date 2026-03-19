@@ -40,6 +40,15 @@ class ChatHandler:
         "현재 요청 페이로드가 모델의 최대 컨텍스트 임계값을 초과했습니다. "
         "사용자가 직접 대화 또는 입력을 compact한 뒤 다시 시도해 주세요."
     )
+    REMOVED_ANTIGRAVITY_MODELS = {
+        "claude-opus-4-6-thinking",
+        "claude-sonnet-4-6",
+        "gemini-3-flash",
+        "gemini-3.1-pro-high",
+        "gemini-3.1-pro-low",
+        "gcli-gemini-3.1-pro-preview",
+        "gcli-gemini-3.1-pro-preview-customtools",
+    }
 
     # 제공업체별 prefix와 base_url 매핑
     PROVIDER_CONFIG = {
@@ -79,6 +88,10 @@ class ChatHandler:
             'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
         },
+        'cli-proxy-api-gpt': {
+            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_GPT_BASE_URL', 'https://jjb8966.duckdns.org/cli-proxy-api-gpt/v1')),
+            'client_attr': 'cli_proxy_api_gpt_client'
+        },
         # Primary: ollama-cloud
         'ollama-cloud': {
             'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
@@ -108,6 +121,7 @@ class ChatHandler:
         self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
+        self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
 
     @staticmethod
@@ -272,6 +286,24 @@ class ChatHandler:
         client_attr = self.PROVIDER_CONFIG[provider]['client_attr']
         return getattr(self, client_attr)
 
+    def _validate_provider_model(
+        self,
+        provider: Optional[str],
+        model: str,
+        requested_model: str
+    ) -> Optional[ProxyRequestError]:
+        """제공업체별 비활성화 모델을 차단합니다."""
+        if provider != 'antigravity':
+            return None
+        if model not in self.REMOVED_ANTIGRAVITY_MODELS:
+            return None
+        return ProxyRequestError(
+            model=requested_model,
+            message=f"Model is no longer supported: {requested_model}",
+            status_code=400,
+            error_type="invalid_request_error"
+        )
+
     def _process_image_content(self, messages: List[Dict]) -> None:
         """
         메시지 내 이미지 데이터를 OpenAI 형식으로 변환합니다.
@@ -328,6 +360,11 @@ class ChatHandler:
         if not provider:
             logging.error(f"지원되지 않는 모델: {requested_model}")
             return None
+
+        removed_model_error = self._validate_provider_model(provider, model, requested_model)
+        if removed_model_error is not None:
+            logging.warning("비활성화된 모델 요청 차단: %s", requested_model)
+            return removed_model_error
 
         if provider == 'google':
             return self.google_client.post_request(

@@ -136,6 +136,26 @@ class ErrorHandler:
                 return code
         return None
 
+    @staticmethod
+    def extract_error_type(response_body: str) -> Optional[str]:
+        if not response_body:
+            return None
+
+        try:
+            parsed = json.loads(response_body)
+        except json.JSONDecodeError:
+            return None
+
+        if not isinstance(parsed, dict):
+            return None
+
+        error = parsed.get("error")
+        if isinstance(error, dict):
+            error_type = error.get("type")
+            if isinstance(error_type, str) and error_type:
+                return error_type
+        return None
+
     @classmethod
     def is_context_overflow_message(cls, message: str) -> bool:
         if not message:

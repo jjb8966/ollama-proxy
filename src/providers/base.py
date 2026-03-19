@@ -64,6 +64,33 @@ class BaseApiClient(ABC):
     def _mark_key_failure(self, api_key: str, is_rate_limit: bool = False, retry_after: Optional[int] = None) -> None:
         """키 실패를 기록합니다. 기본 구현은 no-op 입니다."""
         return None
+
+    def _build_upstream_proxy_error(
+        self,
+        payload: Dict[str, Any],
+        status_code: int,
+        response_body: str
+    ) -> Optional[ProxyRequestError]:
+        """
+        업스트림 프록시가 이미 구조화한 에러를 즉시 전달합니다.
+
+        Antigravity는 내부에서 재시도와 계정 순환을 이미 수행하므로,
+        ollama-proxy가 같은 요청을 다시 재시도하면 응답이 과도하게 늦어집니다.
+        """
+        if self.provider_name != "Antigravity" or status_code < 400:
+            return None
+
+        message = ErrorHandler.extract_error_message(response_body)
+        if not message:
+            message = f"Upstream request failed with status {status_code}"
+
+        return ProxyRequestError(
+            model=str(payload.get("model", "unknown")),
+            message=message,
+            status_code=status_code,
+            error_type=ErrorHandler.extract_error_type(response_body) or "api_error",
+            error_code=ErrorHandler.extract_error_code(response_body),
+        )
     
     def post_request(
         self,
@@ -136,6 +163,18 @@ class BaseApiClient(ABC):
                         error_type="invalid_request_error",
                         error_code="context_length_exceeded"
                     )
+
+                passthrough_error = self._build_upstream_proxy_error(
+                    payload=payload,
+                    status_code=resp.status_code,
+                    response_body=response_body
+                )
+                if passthrough_error is not None:
+                    logging.warning(
+                        f"[{self.provider_name}] 업스트림 에러 즉시 전달 | "
+                        f"status={resp.status_code} | code={passthrough_error.error_code or '-'}{context_suffix}"
+                    )
+                    return passthrough_error
                 
                 # Rate Limit 관련 헤더 추적
                 if resp.status_code == 429:
