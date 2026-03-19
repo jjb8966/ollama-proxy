@@ -5,12 +5,34 @@
 API 오류 응답 생성 및 에러 로깅을 위한 유틸리티를 제공합니다.
 """
 
+import json
+import re
 from dataclasses import dataclass
 from datetime import datetime
+from typing import Optional
 
 
 class ErrorHandler:
     """API 에러 처리를 위한 유틸리티 클래스"""
+
+    CONTEXT_OVERFLOW_PATTERNS = [
+        re.compile(r"prompt is too long", re.IGNORECASE),
+        re.compile(r"prompt too long", re.IGNORECASE),
+        re.compile(r"input is too long for requested model", re.IGNORECASE),
+        re.compile(r"exceeds the context window", re.IGNORECASE),
+        re.compile(r"input token count.*exceeds the maximum", re.IGNORECASE),
+        re.compile(r"maximum prompt length is \d+", re.IGNORECASE),
+        re.compile(r"reduce the length of the messages", re.IGNORECASE),
+        re.compile(r"maximum context length is \d+ tokens", re.IGNORECASE),
+        re.compile(r"exceeds the available context size", re.IGNORECASE),
+        re.compile(r"greater than the context length", re.IGNORECASE),
+        re.compile(r"context window exceeds limit", re.IGNORECASE),
+        re.compile(r"exceeded model token limit", re.IGNORECASE),
+        re.compile(r"context[_ ]length[_ ]exceeded", re.IGNORECASE),
+        re.compile(r"request entity too large", re.IGNORECASE),
+        re.compile(r"context length is only \d+ tokens", re.IGNORECASE),
+        re.compile(r"input length.*exceeds.*context length", re.IGNORECASE),
+    ]
     
     @staticmethod
     def handle_api_error(provider: str, error: Exception, api_key: str = "") -> str:
@@ -67,6 +89,68 @@ class ErrorHandler:
             "error": error_msg
         }
 
+    @staticmethod
+    def extract_error_message(response_body: str) -> str:
+        if not response_body:
+            return ""
+
+        try:
+            parsed = json.loads(response_body)
+        except json.JSONDecodeError:
+            return response_body
+
+        if not isinstance(parsed, dict):
+            return response_body
+
+        message = parsed.get("message")
+        if isinstance(message, str) and message:
+            return message
+
+        error = parsed.get("error")
+        if isinstance(error, str) and error:
+            return error
+        if isinstance(error, dict):
+            error_message = error.get("message")
+            if isinstance(error_message, str) and error_message:
+                return error_message
+
+        return response_body
+
+    @staticmethod
+    def extract_error_code(response_body: str) -> Optional[str]:
+        if not response_body:
+            return None
+
+        try:
+            parsed = json.loads(response_body)
+        except json.JSONDecodeError:
+            return None
+
+        if not isinstance(parsed, dict):
+            return None
+
+        error = parsed.get("error")
+        if isinstance(error, dict):
+            code = error.get("code")
+            if isinstance(code, str) and code:
+                return code
+        return None
+
+    @classmethod
+    def is_context_overflow_message(cls, message: str) -> bool:
+        if not message:
+            return False
+        return any(pattern.search(message) for pattern in cls.CONTEXT_OVERFLOW_PATTERNS)
+
+    @classmethod
+    def is_context_overflow_response(cls, status_code: Optional[int], response_body: str) -> bool:
+        if status_code == 413:
+            return True
+        if cls.extract_error_code(response_body) == "context_length_exceeded":
+            return True
+        message = cls.extract_error_message(response_body)
+        return cls.is_context_overflow_message(message)
+
 
 @dataclass(frozen=True)
 class ProxyRequestError:
@@ -76,12 +160,18 @@ class ProxyRequestError:
     message: str
     status_code: int = 400
     error_type: str = "invalid_request_error"
+    error_code: Optional[str] = None
 
     def to_openai_response(self) -> dict:
+        error = {
+            "message": self.message,
+            "type": self.error_type
+        }
+        if self.error_code:
+            error["code"] = self.error_code
         return {
             "error": {
-                "message": self.message,
-                "type": self.error_type
+                **error
             }
         }
 

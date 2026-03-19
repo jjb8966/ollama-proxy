@@ -3,92 +3,110 @@
     {
       "name": "antigravity:anti-claude-opus-4-6-thinking",
       "model": "antigravity:anti-claude-opus-4-6-thinking",
-      "context_length": 200000
+      "context_length": 200000,
+      "max_output_tokens": 128000
     },
     {
       "name": "antigravity:anti-claude-sonnet-4-6",
       "model": "antigravity:anti-claude-sonnet-4-6",
-      "context_length": 200000
+      "context_length": 200000,
+      "max_output_tokens": 64000
     },
     {
       "name": "antigravity:anti-gemini-3-flash",
       "model": "antigravity:anti-gemini-3-flash",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:anti-gemini-3.1-pro-high",
       "model": "antigravity:anti-gemini-3.1-pro-high",
-      "context_length": 2000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:anti-gemini-3.1-pro-low",
       "model": "antigravity:anti-gemini-3.1-pro-low",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:claude-opus-4-6-thinking",
       "model": "antigravity:claude-opus-4-6-thinking",
-      "context_length": 200000
+      "context_length": 200000,
+      "max_output_tokens": 128000
     },
     {
       "name": "antigravity:claude-sonnet-4-6",
       "model": "antigravity:claude-sonnet-4-6",
-      "context_length": 200000
+      "context_length": 200000,
+      "max_output_tokens": 64000
     },
     {
       "name": "antigravity:gcli-gemini-3-flash-preview",
       "model": "antigravity:gcli-gemini-3-flash-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gcli-gemini-3-pro-preview",
       "model": "antigravity:gcli-gemini-3-pro-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gcli-gemini-3.1-pro-preview",
       "model": "antigravity:gcli-gemini-3.1-pro-preview",
-      "context_length": 2000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gcli-gemini-3.1-pro-preview-customtools",
       "model": "antigravity:gcli-gemini-3.1-pro-preview-customtools",
-      "context_length": 2000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gemini-3-flash",
       "model": "antigravity:gemini-3-flash",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gemini-3.1-pro-high",
       "model": "antigravity:gemini-3.1-pro-high",
-      "context_length": 2000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "antigravity:gemini-3.1-pro-low",
       "model": "antigravity:gemini-3.1-pro-low",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "cli-proxy-api:gemini-3-flash-preview",
       "model": "cli-proxy-api:gemini-3-flash-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "cli-proxy-api:gemini-3-pro-preview",
       "model": "cli-proxy-api:gemini-3-pro-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "cli-proxy-api:gpt-5.2",
       "model": "cli-proxy-api:gpt-5.2",
-      "context_length": 200000
+      "context_length": 400000,
+      "max_output_tokens": 128000
     },
     {
       "name": "cli-proxy-api:gpt-5.2-codex",
       "model": "cli-proxy-api:gpt-5.2-codex",
-      "context_length": 200000
+      "context_length": 400000,
+      "max_output_tokens": 128000
     },
     {
       "name": "codestral:codestral-2508",
@@ -98,42 +116,46 @@
     {
       "name": "cohere:command-a-03-2025",
       "model": "cohere:command-a-03-2025",
-      "context_length": 128000
+      "context_length": 256000,
+      "max_output_tokens": 8000
     },
     {
       "name": "cohere:command-a-reasoning-08-2025",
       "model": "cohere:command-a-reasoning-08-2025",
-      "context_length": 128000
+      "context_length": 256000,
+      "max_output_tokens": 32000
     },
     {
       "name": "google:gemini-3-flash-preview",
       "model": "google:gemini-3-flash-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "google:gemini-3.1-flash-lite-preview",
       "model": "google:gemini-3.1-flash-lite-preview",
-      "context_length": 1000000
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     },
     {
       "name": "nvidia-nim:minimaxai/minimax-m2.5",
       "model": "nvidia-nim:minimaxai/minimax-m2.5",
-      "context_length": 128000
+      "context_length": 204800
     },
     {
       "name": "nvidia-nim:mistralai/mistral-large-3-675b-instruct-2512",
       "model": "nvidia-nim:mistralai/mistral-large-3-675b-instruct-2512",
-      "context_length": 128000
+      "context_length": 262144
     },
     {
       "name": "nvidia-nim:moonshotai/kimi-k2.5",
       "model": "nvidia-nim:moonshotai/kimi-k2.5",
-      "context_length": 128000
+      "context_length": 256000
     },
     {
       "name": "nvidia-nim:nvidia/nemotron-3-super-120b-a12b",
       "model": "nvidia-nim:nvidia/nemotron-3-super-120b-a12b",
-      "context_length": 128000
+      "context_length": 1000000
     },
     {
       "name": "nvidia-nim:openai/gpt-oss-120b",
@@ -143,42 +165,44 @@
     {
       "name": "nvidia-nim:qwen/qwen3.5-397b-a17b",
       "model": "nvidia-nim:qwen/qwen3.5-397b-a17b",
-      "context_length": 131072
+      "context_length": 262144,
+      "max_output_tokens": 81920
     },
     {
       "name": "nvidia-nim:z-ai/glm4.7",
       "model": "nvidia-nim:z-ai/glm4.7",
-      "context_length": 128000
+      "context_length": 131072,
+      "max_output_tokens": 131072
     },
     {
       "name": "nvidia-nim:z-ai/glm5",
       "model": "nvidia-nim:z-ai/glm5",
-      "context_length": 128000
+      "context_length": 205000
     },
     {
       "name": "openrouter:kwaipilot/kat-coder-pro:free",
       "model": "openrouter:kwaipilot/kat-coder-pro:free",
-      "context_length": 128000
+      "context_length": 256000
     },
     {
       "name": "openrouter:mistralai/devstral-2512:free",
       "model": "openrouter:mistralai/devstral-2512:free",
-      "context_length": 128000
+      "context_length": 262144
     },
     {
       "name": "ollama-cloud:kimi-k2.5",
       "model": "ollama-cloud:kimi-k2.5",
-      "context_length": 128000
+      "context_length": 256000
     },
     {
       "name": "ollama-cloud:minimax-m2.5",
       "model": "ollama-cloud:minimax-m2.5",
-      "context_length": 128000
+      "context_length": 198000
     },
     {
       "name": "ollama-cloud:glm-5",
       "model": "ollama-cloud:glm-5",
-      "context_length": 128000
+      "context_length": 198000
     }
   ]
 }

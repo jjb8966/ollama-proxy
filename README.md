@@ -78,7 +78,7 @@ OLLAMA_API_KEYS="key1,key2"  # for ollama-cloud provider
 
 # base url override (optional)
 NVIDIA_NIM_BASE_URL="https://integrate.api.nvidia.com/v1"
-CLI_PROXY_API_BASE_URL="http://localhost:8317/v1"
+CLI_PROXY_API_BASE_URL="http://cli-proxy-api:8317/v1"
 OLLAMA_BASE_URL="https://ollama.com/v1"
 
 # 선택적 설정

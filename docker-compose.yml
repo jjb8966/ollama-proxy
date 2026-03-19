@@ -6,6 +6,9 @@ services:
     image: jjb000000/ollama-proxy:latest
     ports:
       - "5002:5002"
+    networks:
+      - default
+      - nginx-network
     environment:
       - GOOGLE_API_KEYS=${GOOGLE_API_KEYS}
       - OPENROUTER_API_KEYS=${OPENROUTER_API_KEYS}
@@ -14,6 +17,8 @@ services:
       - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
       - ANTIGRAVITY_API_KEYS=${ANTIGRAVITY_API_KEYS}
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
+      - CLI_PROXY_API_KEYS=${CLI_PROXY_API_KEYS}
+      - CLI_PROXY_API_BASE_URL=${CLI_PROXY_API_BASE_URL:-http://cli-proxy-api:8317/v1}
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}
       - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
@@ -36,3 +41,7 @@ services:
       - ~/.config/opencode:/root/.config/opencode
     restart: always
     container_name: antigravity-proxy
+
+networks:
+  nginx-network:
+    external: true

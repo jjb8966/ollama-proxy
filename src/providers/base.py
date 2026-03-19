@@ -12,7 +12,7 @@ from typing import Optional, Dict, Any
 
 import requests
 
-from src.core.errors import ErrorHandler
+from src.core.errors import ErrorHandler, ProxyRequestError
 
 
 class BaseApiClient(ABC):
@@ -72,7 +72,7 @@ class BaseApiClient(ABC):
         headers: Dict[str, str],
         stream: bool = False,
         max_retries: int = 10
-    ) -> Optional[requests.Response]:
+    ) -> Optional[requests.Response | ProxyRequestError]:
         """
         API POST 요청을 수행합니다.
         
@@ -119,6 +119,23 @@ class BaseApiClient(ABC):
                 logging.info(
                     f"[HTTP] 📥 응답 | status={resp.status_code} | provider={self.provider_name}{context_suffix}"
                 )
+
+                response_body = ""
+                if not stream or resp.status_code >= 400:
+                    response_body = resp.text
+
+                if ErrorHandler.is_context_overflow_response(resp.status_code, response_body):
+                    logging.warning(
+                        f"[{self.provider_name}] 컨텍스트 초과 응답 감지 - "
+                        f"URL: {url}{context_suffix}"
+                    )
+                    return ProxyRequestError(
+                        model=str(payload.get("model", "unknown")),
+                        message="Input exceeds context window of this model",
+                        status_code=400,
+                        error_type="invalid_request_error",
+                        error_code="context_length_exceeded"
+                    )
                 
                 # Rate Limit 관련 헤더 추적
                 if resp.status_code == 429:

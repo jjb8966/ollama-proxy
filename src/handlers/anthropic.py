@@ -114,18 +114,20 @@ class AnthropicHandler:
                     tool_input = block.get("input", {})
                     if not isinstance(tool_input, dict):
                         tool_input = {"input": tool_input}
-                    assistant_tool_calls.append({
-                        "id": tool_id,
-                        "type": "function",
-                        "function": {
-                            "name": tool_name,
-                            "arguments": json.dumps(tool_input, ensure_ascii=False)
+                    assistant_tool_calls.append(
+                        {
+                            "id": tool_id,
+                            "type": "function",
+                            "function": {
+                                "name": tool_name,
+                                "arguments": json.dumps(tool_input, ensure_ascii=False),
+                            },
                         }
-                    })
+                    )
 
                 assistant_message: Dict[str, Any] = {
                     "role": "assistant",
-                    "content": "".join(text_parts)
+                    "content": "".join(text_parts),
                 }
                 if assistant_tool_calls:
                     assistant_message["tool_calls"] = assistant_tool_calls
@@ -137,10 +139,9 @@ class AnthropicHandler:
 
                 def flush_user_text() -> None:
                     if pending_text:
-                        normalized.append({
-                            "role": "user",
-                            "content": "".join(pending_text)
-                        })
+                        normalized.append(
+                            {"role": "user", "content": "".join(pending_text)}
+                        )
                         pending_text.clear()
 
                 for block in content:
@@ -165,16 +166,16 @@ class AnthropicHandler:
                         tool_text = tool_content
                     else:
                         tool_text = json.dumps(tool_content, ensure_ascii=False)
-                    normalized.append({
-                        "role": "tool",
-                        "tool_call_id": tool_id,
-                        "content": tool_text
-                    })
+                    normalized.append(
+                        {"role": "tool", "tool_call_id": tool_id, "content": tool_text}
+                    )
 
                 flush_user_text()
                 continue
 
-            normalized.append({"role": role, "content": self._content_blocks_to_text(content)})
+            normalized.append(
+                {"role": role, "content": self._content_blocks_to_text(content)}
+            )
 
         return normalized
 
@@ -190,14 +191,18 @@ class AnthropicHandler:
             name = str(tool.get("name", "")).strip()
             if not name:
                 continue
-            normalized.append({
-                "type": "function",
-                "function": {
-                    "name": name,
-                    "description": tool.get("description", ""),
-                    "parameters": tool.get("input_schema", {"type": "object", "properties": {}})
+            normalized.append(
+                {
+                    "type": "function",
+                    "function": {
+                        "name": name,
+                        "description": tool.get("description", ""),
+                        "parameters": tool.get(
+                            "input_schema", {"type": "object", "properties": {}}
+                        ),
+                    },
                 }
-            })
+            )
         return normalized
 
     @staticmethod
@@ -213,10 +218,7 @@ class AnthropicHandler:
         if choice_type == "tool":
             name = tool_choice.get("name")
             if name:
-                return {
-                    "type": "function",
-                    "function": {"name": name}
-                }
+                return {"type": "function", "function": {"name": name}}
         return tool_choice
 
     def build_proxy_request(self, req: Dict[str, Any]) -> Dict[str, Any]:
@@ -230,7 +232,7 @@ class AnthropicHandler:
             "max_tokens": req.get("max_tokens"),
             "thinking_level": req.get("thinking_level", "minimal"),
             "tools": self._normalize_tools(req.get("tools")),
-            "tool_choice": self._normalize_tool_choice(req.get("tool_choice"))
+            "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
         }
 
     @staticmethod
@@ -255,27 +257,29 @@ class AnthropicHandler:
             function_info = tool_call.get("function", {})
             args_raw = function_info.get("arguments", "{}")
             try:
-                tool_input = json.loads(args_raw) if isinstance(args_raw, str) else args_raw
+                tool_input = (
+                    json.loads(args_raw) if isinstance(args_raw, str) else args_raw
+                )
             except json.JSONDecodeError:
                 tool_input = {}
             if not isinstance(tool_input, dict):
                 tool_input = {"input": tool_input}
 
-            content_blocks.append({
-                "type": "tool_use",
-                "id": self._sanitize_tool_id(tool_call.get("id")),
-                "name": str(function_info.get("name", "")),
-                "input": tool_input
-            })
+            content_blocks.append(
+                {
+                    "type": "tool_use",
+                    "id": self._sanitize_tool_id(tool_call.get("id")),
+                    "name": str(function_info.get("name", "")),
+                    "input": tool_input,
+                }
+            )
 
         if not content_blocks:
             content_blocks.append({"type": "text", "text": ""})
         return content_blocks
 
     def handle_non_streaming_response(
-        self,
-        resp: Union[Dict[str, Any], Response],
-        requested_model: str
+        self, resp: Union[Dict[str, Any], Response], requested_model: str
     ) -> Dict[str, Any]:
         data = resp if isinstance(resp, dict) else resp.json()
         if "choices" not in data or not isinstance(data.get("choices"), list):
@@ -300,17 +304,23 @@ class AnthropicHandler:
             "stop_sequence": None,
             "usage": {
                 "input_tokens": int(usage.get("prompt_tokens", 0)),
-                "output_tokens": int(usage.get("completion_tokens", 0))
-            }
+                "output_tokens": int(usage.get("completion_tokens", 0)),
+            },
         }
 
     @staticmethod
-    def _iter_stream_lines(resp: Union[Generator[str, None, None], Response]) -> Iterable[str]:
+    def _iter_stream_lines(
+        resp: Union[Generator[str, None, None], Response],
+    ) -> Iterable[str]:
         if inspect.isgenerator(resp):
             for chunk in resp:
                 if chunk is None:
                     continue
-                text = chunk.decode("utf-8", errors="ignore") if isinstance(chunk, bytes) else str(chunk)
+                text = (
+                    chunk.decode("utf-8", errors="ignore")
+                    if isinstance(chunk, bytes)
+                    else str(chunk)
+                )
                 for line in text.splitlines():
                     yield line
             return
@@ -325,7 +335,7 @@ class AnthropicHandler:
         self,
         resp: Union[Generator[str, None, None], Response],
         requested_model: str,
-        request_id: Optional[str] = None
+        request_id: Optional[str] = None,
     ) -> Generator[str, None, None]:
         message_id = f"msg_{uuid.uuid4().hex}"
         response_model = requested_model
@@ -338,6 +348,8 @@ class AnthropicHandler:
         first_chunk_time: Optional[float] = None
         last_chunk_time = start_time
         stream_done_received = False
+        finish_reason_received = False
+        blocks_closed = False
         line_count = 0
         data_line_count = 0
         empty_line_count = 0
@@ -348,26 +360,167 @@ class AnthropicHandler:
         def sse(event: str, data: Dict[str, Any]) -> str:
             return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
 
+        def ensure_tool_block_started(
+            block_index: int, state: Dict[str, Any]
+        ) -> List[str]:
+            """Tool block이 시작되지 않았으면 시작 이벤트를 생성합니다."""
+            if state.get("started") or not state.get("name"):
+                return []
+
+            logger.info(
+                "[AnthropicStream] tool 블록 시작 | request_id=%s | index=%s | tool=%s | tool_id=%s",
+                stream_id,
+                block_index,
+                state["name"],
+                state["id"],
+            )
+            state["started"] = True
+            return [
+                sse(
+                    "content_block_start",
+                    {
+                        "type": "content_block_start",
+                        "index": block_index,
+                        "content_block": {
+                            "type": "tool_use",
+                            "id": state["id"],
+                            "name": state["name"],
+                            "input": {},
+                        },
+                    },
+                )
+            ]
+
+        def flush_pending_tool_delta(
+            block_index: int, state: Dict[str, Any]
+        ) -> List[str]:
+            """아직 전송하지 않은 tool argument delta를 플러시합니다."""
+            if not state.get("started"):
+                return []
+
+            emitted_length = int(state.get("emitted_argument_length", 0))
+            arguments = str(state.get("arguments", ""))
+            pending_json = arguments[emitted_length:]
+            if not pending_json:
+                return []
+
+            logger.debug(
+                "[AnthropicStream] tool delta flush | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                stream_id,
+                block_index,
+                state.get("name", "unknown"),
+                len(pending_json),
+            )
+            state["emitted_argument_length"] = len(arguments)
+            return [
+                sse(
+                    "content_block_delta",
+                    {
+                        "type": "content_block_delta",
+                        "index": block_index,
+                        "delta": {
+                            "type": "input_json_delta",
+                            "partial_json": pending_json,
+                        },
+                    },
+                )
+            ]
+
+        def close_open_blocks() -> List[str]:
+            """모든 열린 content block을 닫습니다. 멱등 함수입니다."""
+            nonlocal text_block_open, stop_reason, blocks_closed
+            if blocks_closed:
+                return []
+
+            events: List[str] = []
+
+            # 먼저 모든 tool block을 시작 (arguments가 name보다 먼저 왔을 경우)
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                if not state.get("started") and state.get("name"):
+                    events.extend(ensure_tool_block_started(block_index, state))
+
+            # 남은 tool argument delta 플러시
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                if state.get("started"):
+                    events.extend(flush_pending_tool_delta(block_index, state))
+
+            # finish_reason이 없고 tool block이 있으면 stop_reason 보정
+            if not finish_reason_received and any(
+                state.get("started") or state.get("name")
+                for state in tool_block_state.values()
+            ):
+                stop_reason = "tool_use"
+
+            # text block 종료
+            if text_block_open:
+                logger.info(
+                    "[AnthropicStream] text 블록 종료 | request_id=%s | index=%s | text_chars=%s",
+                    stream_id,
+                    current_index,
+                    text_char_count,
+                )
+                events.append(
+                    sse(
+                        "content_block_stop",
+                        {"type": "content_block_stop", "index": current_index},
+                    )
+                )
+                text_block_open = False
+
+            # tool block 종료
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                if state.get("started") and not state.get("stopped"):
+                    logger.info(
+                        "[AnthropicStream] tool 블록 종료 | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                        stream_id,
+                        block_index,
+                        state.get("name", "unknown"),
+                        len(state.get("arguments", "")),
+                    )
+                    events.append(
+                        sse(
+                            "content_block_stop",
+                            {"type": "content_block_stop", "index": block_index},
+                        )
+                    )
+                    state["stopped"] = True
+                elif state.get("arguments") and not state.get("name"):
+                    logger.warning(
+                        "[AnthropicStream] 이름 없는 tool arguments 폐기 | request_id=%s | index=%s | arg_chars=%s",
+                        stream_id,
+                        block_index,
+                        len(state.get("arguments", "")),
+                    )
+
+            blocks_closed = True
+            return events
+
         try:
             logger.info(
                 "[AnthropicStream] ▶️ 시작 | request_id=%s | message_id=%s | model=%s",
                 stream_id,
                 message_id,
-                requested_model
+                requested_model,
             )
-            yield sse("message_start", {
-                "type": "message_start",
-                "message": {
-                    "id": message_id,
-                    "type": "message",
-                    "role": "assistant",
-                    "model": requested_model,
-                    "content": [],
-                    "stop_reason": None,
-                    "stop_sequence": None,
-                    "usage": {"input_tokens": 0, "output_tokens": 0}
-                }
-            })
+            yield sse(
+                "message_start",
+                {
+                    "type": "message_start",
+                    "message": {
+                        "id": message_id,
+                        "type": "message",
+                        "role": "assistant",
+                        "model": requested_model,
+                        "content": [],
+                        "stop_reason": None,
+                        "stop_sequence": None,
+                        "usage": {"input_tokens": 0, "output_tokens": 0},
+                    },
+                },
+            )
 
             for raw_line in self._iter_stream_lines(resp):
                 now = time.time()
@@ -379,7 +532,7 @@ class AnthropicHandler:
                         stream_id,
                         requested_model,
                         gap,
-                        now - start_time
+                        now - start_time,
                     )
                 last_chunk_time = now
 
@@ -392,7 +545,7 @@ class AnthropicHandler:
                     logger.debug(
                         "[AnthropicStream] 비-data 라인 무시 | request_id=%s | sample=%s",
                         stream_id,
-                        line[:120]
+                        line[:120],
                     )
                     continue
 
@@ -404,8 +557,10 @@ class AnthropicHandler:
                         "[AnthropicStream] [DONE] 수신 | request_id=%s | model=%s | elapsed=%.3fs",
                         stream_id,
                         requested_model,
-                        time.time() - start_time
+                        time.time() - start_time,
                     )
+                    for event in close_open_blocks():
+                        yield event
                     break
 
                 try:
@@ -414,7 +569,7 @@ class AnthropicHandler:
                     logger.warning(
                         "[AnthropicStream] JSON 디코드 실패 | request_id=%s | payload_sample=%s",
                         stream_id,
-                        payload[:200]
+                        payload[:200],
                     )
                     continue
 
@@ -425,7 +580,7 @@ class AnthropicHandler:
                         "[AnthropicStream] ⏱️ 첫 청크 | request_id=%s | model=%s | latency=%.3fs",
                         stream_id,
                         requested_model,
-                        first_chunk_time - start_time
+                        first_chunk_time - start_time,
                     )
 
                 response_model = str(data.get("model", response_model))
@@ -434,7 +589,7 @@ class AnthropicHandler:
                     logger.debug(
                         "[AnthropicStream] choices 없음 | request_id=%s | chunk_index=%s",
                         stream_id,
-                        chunk_count
+                        chunk_count,
                     )
                     continue
 
@@ -442,12 +597,13 @@ class AnthropicHandler:
                 delta = choice.get("delta", {})
                 finish_reason = choice.get("finish_reason")
                 if finish_reason:
+                    finish_reason_received = True
                     stop_reason = self._map_stop_reason(finish_reason)
                     logger.info(
                         "[AnthropicStream] finish_reason 수신 | request_id=%s | raw=%s | mapped=%s",
                         stream_id,
                         finish_reason,
-                        stop_reason
+                        stop_reason,
                     )
 
                 text = delta.get("content", "")
@@ -457,28 +613,42 @@ class AnthropicHandler:
                         logger.info(
                             "[AnthropicStream] text 블록 시작 | request_id=%s | index=%s",
                             stream_id,
-                            current_index
+                            current_index,
                         )
-                        yield sse("content_block_start", {
-                            "type": "content_block_start",
-                            "index": current_index,
-                            "content_block": {"type": "text", "text": ""}
-                        })
+                        yield sse(
+                            "content_block_start",
+                            {
+                                "type": "content_block_start",
+                                "index": current_index,
+                                "content_block": {"type": "text", "text": ""},
+                            },
+                        )
                         text_block_open = True
-                    yield sse("content_block_delta", {
-                        "type": "content_block_delta",
-                        "index": current_index,
-                        "delta": {"type": "text_delta", "text": text}
-                    })
+                    yield sse(
+                        "content_block_delta",
+                        {
+                            "type": "content_block_delta",
+                            "index": current_index,
+                            "delta": {"type": "text_delta", "text": text},
+                        },
+                    )
 
                 for tc_index, tool_call in enumerate(delta.get("tool_calls", [])):
                     block_index = current_index + 1 + tc_index
-                    state = tool_block_state.setdefault(block_index, {
-                        "id": self._sanitize_tool_id(tool_call.get("id")),
-                        "name": "",
-                        "arguments": ""
-                    })
+                    state = tool_block_state.setdefault(
+                        block_index,
+                        {
+                            "id": self._sanitize_tool_id(tool_call.get("id")),
+                            "name": "",
+                            "arguments": "",
+                            "started": False,
+                            "stopped": False,
+                            "emitted_argument_length": 0,
+                        },
+                    )
 
+                    if tool_call.get("id"):
+                        state["id"] = self._sanitize_tool_id(tool_call.get("id"))
                     function_info = tool_call.get("function", {})
                     if function_info.get("name"):
                         state["name"] = str(function_info.get("name"))
@@ -486,78 +656,22 @@ class AnthropicHandler:
                         state["arguments"] += str(function_info.get("arguments"))
                         tool_delta_count += 1
 
-                    if not state.get("started") and state["name"]:
-                        logger.info(
-                            "[AnthropicStream] tool 블록 시작 | request_id=%s | index=%s | tool=%s | tool_id=%s",
-                            stream_id,
-                            block_index,
-                            state["name"],
-                            state["id"]
-                        )
-                        yield sse("content_block_start", {
-                            "type": "content_block_start",
-                            "index": block_index,
-                            "content_block": {
-                                "type": "tool_use",
-                                "id": state["id"],
-                                "name": state["name"],
-                                "input": {}
-                            }
-                        })
-                        state["started"] = True
+                    for event in ensure_tool_block_started(block_index, state):
+                        yield event
+                    for event in flush_pending_tool_delta(block_index, state):
+                        yield event
 
-                    if state.get("started") and function_info.get("arguments"):
-                        logger.debug(
-                            "[AnthropicStream] tool delta | request_id=%s | index=%s | tool=%s | arg_chars=%s",
-                            stream_id,
-                            block_index,
-                            state["name"] or "unknown",
-                            len(str(function_info.get("arguments")))
-                        )
-                        yield sse("content_block_delta", {
-                            "type": "content_block_delta",
-                            "index": block_index,
-                            "delta": {
-                                "type": "input_json_delta",
-                                "partial_json": str(function_info.get("arguments"))
-                            }
-                        })
+            for event in close_open_blocks():
+                yield event
 
-            if text_block_open:
-                logger.info(
-                    "[AnthropicStream] text 블록 종료 | request_id=%s | index=%s | text_chars=%s",
-                    stream_id,
-                    current_index,
-                    text_char_count
-                )
-                yield sse("content_block_stop", {
-                    "type": "content_block_stop",
-                    "index": current_index
-                })
-
-            for block_index in sorted(tool_block_state.keys()):
-                state = tool_block_state[block_index]
-                if state.get("started"):
-                    logger.info(
-                        "[AnthropicStream] tool 블록 종료 | request_id=%s | index=%s | tool=%s | arg_chars=%s",
-                        stream_id,
-                        block_index,
-                        state.get("name", "unknown"),
-                        len(state.get("arguments", ""))
-                    )
-                    yield sse("content_block_stop", {
-                        "type": "content_block_stop",
-                        "index": block_index
-                    })
-
-            yield sse("message_delta", {
-                "type": "message_delta",
-                "delta": {
-                    "stop_reason": stop_reason,
-                    "stop_sequence": None
+            yield sse(
+                "message_delta",
+                {
+                    "type": "message_delta",
+                    "delta": {"stop_reason": stop_reason, "stop_sequence": None},
+                    "usage": {"output_tokens": 0},
                 },
-                "usage": {"output_tokens": 0}
-            })
+            )
             yield sse("message_stop", {"type": "message_stop"})
             logger.info(
                 "[AnthropicStream] ✅ 종료 | request_id=%s | message_id=%s | model=%s | "
@@ -574,7 +688,7 @@ class AnthropicHandler:
                 empty_line_count,
                 text_char_count,
                 tool_delta_count,
-                time.time() - start_time
+                time.time() - start_time,
             )
         except Exception as exc:
             logger.error(
@@ -592,7 +706,7 @@ class AnthropicHandler:
                 tool_delta_count,
                 time.time() - start_time,
                 exc,
-                exc_info=True
+                exc_info=True,
             )
             raise
         finally:
@@ -601,7 +715,7 @@ class AnthropicHandler:
                 stream_id,
                 message_id,
                 response_model,
-                time.time() - start_time
+                time.time() - start_time,
             )
             if isinstance(resp, Response):
                 resp.close()

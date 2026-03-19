@@ -5,8 +5,10 @@
 클라이언트의 채팅 요청을 처리하고 적절한 API 제공업체로 라우팅합니다.
 """
 
+import json
 import logging
 import os
+import time
 from typing import Dict, Any, List, Optional
 
 import requests
@@ -15,7 +17,7 @@ from src.core.errors import ProxyRequestError
 from src.providers.standard import StandardApiClient
 from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
-from src.utils.tokenizer import check_context_length
+from src.utils.model_limits import get_model_limits
 
 
 def _strip_quotes(value: str) -> str:
@@ -33,6 +35,12 @@ class ChatHandler:
     이미지 처리, 메시지 정규화 등의 전처리도 수행합니다.
     """
     
+    COMPACTION_THRESHOLD_RATIO = 0.8
+    COMPACTION_REQUIRED_MESSAGE = (
+        "현재 요청 페이로드가 모델의 최대 컨텍스트 임계값을 초과했습니다. "
+        "사용자가 직접 대화 또는 입력을 compact한 뒤 다시 시도해 주세요."
+    )
+
     # 제공업체별 prefix와 base_url 매핑
     PROVIDER_CONFIG = {
         'google': {
@@ -68,7 +76,7 @@ class ChatHandler:
             'client_attr': 'nvidia_nim_client'
         },
         'cli-proxy-api': {
-            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://localhost:8317/v1')),
+            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
         },
         # Primary: ollama-cloud
@@ -101,6 +109,142 @@ class ChatHandler:
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
+
+    @staticmethod
+    def _estimate_request_tokens(req: Dict[str, Any]) -> int:
+        payload = {
+            "model": req.get("model"),
+            "messages": req.get("messages"),
+            "tools": req.get("tools"),
+            "tool_choice": req.get("tool_choice"),
+            "max_tokens": req.get("max_tokens"),
+        }
+        serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), default=str)
+        compacted = serialized.replace(" ", "")
+        return max(1, int(len(compacted) / 3))
+
+    def _build_compaction_notice_content(
+        self,
+        requested_model: str,
+        estimated_tokens: int,
+        context_length: int
+    ) -> str:
+        threshold_tokens = int(context_length * self.COMPACTION_THRESHOLD_RATIO)
+        return (
+            f"{self.COMPACTION_REQUIRED_MESSAGE}\n\n"
+            f"- model: {requested_model}\n"
+            f"- estimated_tokens: {estimated_tokens}\n"
+            f"- context_length: {context_length}\n"
+            f"- compaction_threshold_tokens: {threshold_tokens}"
+        )
+
+    def _build_compaction_notice_response(
+        self,
+        req: Dict[str, Any],
+        estimated_tokens: int,
+        context_length: int
+    ) -> Dict[str, Any]:
+        requested_model = req.get("model", "unknown")
+        content = self._build_compaction_notice_content(
+            requested_model=requested_model,
+            estimated_tokens=estimated_tokens,
+            context_length=context_length,
+        )
+        return {
+            "id": f"chatcmpl-compaction-{int(time.time() * 1000)}",
+            "object": "chat.completion",
+            "created": int(time.time()),
+            "model": requested_model,
+            "choices": [
+                {
+                    "index": 0,
+                    "message": {
+                        "role": "assistant",
+                        "content": content,
+                    },
+                    "finish_reason": "stop",
+                }
+            ],
+        }
+
+    def _build_compaction_notice_stream(
+        self,
+        req: Dict[str, Any],
+        estimated_tokens: int,
+        context_length: int
+    ):
+        requested_model = req.get("model", "unknown")
+        created = int(time.time())
+        content = self._build_compaction_notice_content(
+            requested_model=requested_model,
+            estimated_tokens=estimated_tokens,
+            context_length=context_length,
+        )
+
+        chunk = {
+            "id": f"chatcmpl-compaction-{created}",
+            "object": "chat.completion.chunk",
+            "created": created,
+            "model": requested_model,
+            "choices": [
+                {
+                    "index": 0,
+                    "delta": {
+                        "role": "assistant",
+                        "content": content,
+                    },
+                    "finish_reason": None,
+                }
+            ],
+        }
+        yield f"data: {json.dumps(chunk, ensure_ascii=False)}\n\n"
+
+        final_chunk = {
+            "id": f"chatcmpl-compaction-{created}",
+            "object": "chat.completion.chunk",
+            "created": created,
+            "model": requested_model,
+            "choices": [
+                {
+                    "index": 0,
+                    "delta": {},
+                    "finish_reason": "stop",
+                }
+            ],
+        }
+        yield f"data: {json.dumps(final_chunk, ensure_ascii=False)}\n\n"
+        yield "data: [DONE]\n\n"
+
+    def _maybe_compact_request(
+        self,
+        req: Dict[str, Any]
+    ) -> Optional[requests.Response | Dict[str, Any] | ProxyRequestError]:
+        if req.get("_skip_compaction"):
+            return None
+
+        requested_model = req.get("model")
+        if not isinstance(requested_model, str) or not requested_model:
+            return None
+
+        limits = get_model_limits(requested_model)
+        if limits is None or limits.context_length is None or limits.context_length <= 0:
+            return None
+
+        estimated_tokens = self._estimate_request_tokens(req)
+        threshold_tokens = int(limits.context_length * self.COMPACTION_THRESHOLD_RATIO)
+        if estimated_tokens <= threshold_tokens:
+            return None
+
+        logging.info(
+            "[Compaction] 요청 페이로드가 임계값 초과 | model=%s | estimated=%s | threshold=%s | context=%s",
+            requested_model,
+            estimated_tokens,
+            threshold_tokens,
+            limits.context_length,
+        )
+        if req.get("stream", True):
+            return self._build_compaction_notice_stream(req, estimated_tokens, limits.context_length)
+        return self._build_compaction_notice_response(req, estimated_tokens, limits.context_length)
 
     def _parse_model(self, requested_model: str) -> tuple:
         """
@@ -175,16 +319,9 @@ class ChatHandler:
             logging.warning("요청에 messages가 없습니다.")
             return None
 
-        # Context Length 검증
-        is_valid, error_msg = check_context_length(requested_model, messages, max_tokens)
-        if not is_valid:
-            logging.error(f"[Context] {error_msg}")
-            return ProxyRequestError(
-                model=requested_model or "unknown",
-                message=error_msg,
-                status_code=400,
-                error_type="invalid_request_error"
-            )
+        compacted = self._maybe_compact_request(req)
+        if compacted is not None:
+            return compacted
 
         provider, model, base_url = self._parse_model(requested_model)
 
@@ -208,6 +345,8 @@ class ChatHandler:
             "model": model,
             "stream": stream
         }
+        if max_tokens is not None:
+            payload["max_tokens"] = max_tokens
         if req.get('tools') is not None:
             payload['tools'] = req.get('tools')
         if req.get('tool_choice') is not None:
