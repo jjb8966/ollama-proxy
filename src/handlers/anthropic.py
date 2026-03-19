@@ -23,6 +23,78 @@ class AnthropicHandler:
     """Anthropic Messages API 형식 변환 핸들러"""
 
     @staticmethod
+    def _truncate_log_text(value: Any, limit: int = 300) -> str:
+        if value is None:
+            return ""
+        if not isinstance(value, str):
+            value = str(value)
+        if len(value) <= limit:
+            return value
+        return f"{value[:limit]}..."
+
+    @staticmethod
+    def _extract_text_from_content_value(content: Any) -> str:
+        if isinstance(content, str):
+            return content
+        if isinstance(content, list):
+            parts: List[str] = []
+            for item in content:
+                if isinstance(item, str):
+                    parts.append(item)
+                    continue
+                if not isinstance(item, dict):
+                    continue
+                for key in ("text", "value", "content"):
+                    value = item.get(key)
+                    if isinstance(value, str) and value:
+                        parts.append(value)
+                        break
+            return "".join(parts)
+        if isinstance(content, dict):
+            for key in ("text", "value", "content"):
+                value = content.get(key)
+                if isinstance(value, str) and value:
+                    return value
+        return ""
+
+    def _extract_stream_text(self, choice: Dict[str, Any]) -> str:
+        if not isinstance(choice, dict):
+            return ""
+
+        delta = choice.get("delta", {})
+        if isinstance(delta, dict):
+            for key in ("content", "text", "reasoning_content", "reasoning"):
+                extracted = self._extract_text_from_content_value(delta.get(key))
+                if extracted:
+                    return extracted
+
+        message = choice.get("message", {})
+        if isinstance(message, dict):
+            for key in ("content", "reasoning_content", "reasoning"):
+                extracted = self._extract_text_from_content_value(message.get(key))
+                if extracted:
+                    return extracted
+
+        return self._extract_text_from_content_value(choice.get("text"))
+
+    def _summarize_stream_choice(self, choice: Any) -> str:
+        if not isinstance(choice, dict):
+            return self._truncate_log_text(choice)
+
+        summary: Dict[str, Any] = {"choice_keys": sorted(choice.keys())}
+        delta = choice.get("delta")
+        if isinstance(delta, dict):
+            summary["delta_keys"] = sorted(delta.keys())
+        message = choice.get("message")
+        if isinstance(message, dict):
+            summary["message_keys"] = sorted(message.keys())
+        finish_reason = choice.get("finish_reason")
+        if finish_reason is not None:
+            summary["finish_reason"] = finish_reason
+
+        return self._truncate_log_text(json.dumps(summary, ensure_ascii=False))
+
+    @staticmethod
     def normalize_model_name(model_name: Any) -> Any:
         if not isinstance(model_name, str):
             return model_name
@@ -41,6 +113,12 @@ class AnthropicHandler:
         if not candidate:
             candidate = f"toolu_{uuid.uuid4().hex[:24]}"
         return candidate
+
+    @staticmethod
+    def _normalize_tool_calls(tool_calls_value: Any) -> List[Dict[str, Any]]:
+        if not isinstance(tool_calls_value, list):
+            return []
+        return [tool_call for tool_call in tool_calls_value if isinstance(tool_call, dict)]
 
     @staticmethod
     def _content_blocks_to_text(content: Any) -> str:
@@ -250,10 +328,8 @@ class AnthropicHandler:
         if isinstance(text_content, str) and text_content:
             content_blocks.append({"type": "text", "text": text_content})
 
-        tool_calls = message.get("tool_calls", [])
+        tool_calls = self._normalize_tool_calls(message.get("tool_calls"))
         for tool_call in tool_calls:
-            if not isinstance(tool_call, dict):
-                continue
             function_info = tool_call.get("function", {})
             args_raw = function_info.get("arguments", "{}")
             try:
@@ -350,12 +426,17 @@ class AnthropicHandler:
         stream_done_received = False
         finish_reason_received = False
         blocks_closed = False
+        stream_completed = False
+        stream_closed_by_generator = False
+        stream_ended_without_done = False
         line_count = 0
         data_line_count = 0
         empty_line_count = 0
         chunk_count = 0
         text_char_count = 0
         tool_delta_count = 0
+        last_payload_sample = ""
+        last_choice_summary = ""
 
         def sse(event: str, data: Dict[str, Any]) -> str:
             return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
@@ -551,6 +632,7 @@ class AnthropicHandler:
 
                 data_line_count += 1
                 payload = line[5:].strip()
+                last_payload_sample = self._truncate_log_text(payload)
                 if payload == "[DONE]":
                     stream_done_received = True
                     logger.info(
@@ -594,6 +676,7 @@ class AnthropicHandler:
                     continue
 
                 choice = choices[0]
+                last_choice_summary = self._summarize_stream_choice(choice)
                 delta = choice.get("delta", {})
                 finish_reason = choice.get("finish_reason")
                 if finish_reason:
@@ -606,7 +689,7 @@ class AnthropicHandler:
                         stop_reason,
                     )
 
-                text = delta.get("content", "")
+                text = self._extract_stream_text(choice)
                 if text:
                     text_char_count += len(text)
                     if not text_block_open:
@@ -633,7 +716,8 @@ class AnthropicHandler:
                         },
                     )
 
-                for tc_index, tool_call in enumerate(delta.get("tool_calls", [])):
+                tool_calls = self._normalize_tool_calls(delta.get("tool_calls"))
+                for tc_index, tool_call in enumerate(tool_calls):
                     block_index = current_index + 1 + tc_index
                     state = tool_block_state.setdefault(
                         block_index,
@@ -661,8 +745,51 @@ class AnthropicHandler:
                     for event in flush_pending_tool_delta(block_index, state):
                         yield event
 
+                if (
+                    not text
+                    and not tool_calls
+                    and not finish_reason
+                    and logger.isEnabledFor(logging.DEBUG)
+                ):
+                    logger.debug(
+                        "[AnthropicStream] 텍스트 미추출 청크 | request_id=%s | choice_keys=%s | delta_keys=%s | sample=%s",
+                        stream_id,
+                        sorted(choice.keys()),
+                        sorted(delta.keys()) if isinstance(delta, dict) else [],
+                        json.dumps(choice, ensure_ascii=False)[:300],
+                    )
+            else:
+                if not stream_done_received:
+                    stream_ended_without_done = True
+                    logger.warning(
+                        "[AnthropicStream] [DONE] 없이 스트림 종료 | request_id=%s | message_id=%s | "
+                        "model=%s | stop_reason=%s | chunks=%s | text_chars=%s | tool_deltas=%s | "
+                        "last_payload=%s | last_choice=%s",
+                        stream_id,
+                        message_id,
+                        response_model,
+                        stop_reason,
+                        chunk_count,
+                        text_char_count,
+                        tool_delta_count,
+                        last_payload_sample,
+                        last_choice_summary,
+                    )
+
             for event in close_open_blocks():
                 yield event
+
+            if stop_reason == "end_turn" and text_char_count == 0 and tool_delta_count == 0:
+                logger.warning(
+                    "[AnthropicStream] 빈 end_turn 응답 | request_id=%s | message_id=%s | "
+                    "model=%s | chunks=%s | last_payload=%s | last_choice=%s",
+                    stream_id,
+                    message_id,
+                    response_model,
+                    chunk_count,
+                    last_payload_sample,
+                    last_choice_summary,
+                )
 
             yield sse(
                 "message_delta",
@@ -690,6 +817,28 @@ class AnthropicHandler:
                 tool_delta_count,
                 time.time() - start_time,
             )
+            stream_completed = True
+        except GeneratorExit:
+            stream_closed_by_generator = True
+            logger.warning(
+                "[AnthropicStream] ⚠️ generator 종료 | request_id=%s | message_id=%s | model=%s | "
+                "done=%s | stop_reason=%s | chunks=%s | lines=%s | data_lines=%s | text_chars=%s | "
+                "tool_deltas=%s | elapsed=%.3fs | last_payload=%s | last_choice=%s",
+                stream_id,
+                message_id,
+                response_model,
+                stream_done_received,
+                stop_reason,
+                chunk_count,
+                line_count,
+                data_line_count,
+                text_char_count,
+                tool_delta_count,
+                time.time() - start_time,
+                last_payload_sample,
+                last_choice_summary,
+            )
+            raise
         except Exception as exc:
             logger.error(
                 "[AnthropicStream] ❌ 예외 | request_id=%s | message_id=%s | model=%s | "
@@ -711,10 +860,15 @@ class AnthropicHandler:
             raise
         finally:
             logger.info(
-                "[AnthropicStream] 🔒 close | request_id=%s | message_id=%s | model=%s | elapsed=%.3fs",
+                "[AnthropicStream] 🔒 close | request_id=%s | message_id=%s | model=%s | "
+                "completed=%s | done=%s | generator_closed=%s | ended_without_done=%s | elapsed=%.3fs",
                 stream_id,
                 message_id,
                 response_model,
+                stream_completed,
+                stream_done_received,
+                stream_closed_by_generator,
+                stream_ended_without_done,
                 time.time() - start_time,
             )
             if isinstance(resp, Response):

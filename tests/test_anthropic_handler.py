@@ -149,6 +149,175 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                 "ollama-cloud:kimi-k2.5"
             )
 
+    def test_non_streaming_response_tolerates_null_tool_calls(self) -> None:
+        response = self.handler.handle_non_streaming_response(
+            {
+                "model": "cli-proxy-api-gpt:gpt-5.4",
+                "choices": [
+                    {
+                        "finish_reason": "stop",
+                        "message": {
+                            "role": "assistant",
+                            "content": "정상 응답입니다.",
+                            "tool_calls": None,
+                        },
+                    }
+                ],
+                "usage": {
+                    "prompt_tokens": 10,
+                    "completion_tokens": 5,
+                },
+            },
+            "cli-proxy-api-gpt:gpt-5.4",
+        )
+
+        self.assertEqual(response["content"], [{"type": "text", "text": "정상 응답입니다."}])
+        self.assertEqual(response["stop_reason"], "end_turn")
+
+
+class AnthropicHandlerStreamingTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.handler = AnthropicHandler()
+
+    @staticmethod
+    def _stream(lines):
+        for line in lines:
+            yield line
+
+    def test_stream_uses_delta_text_when_content_is_missing(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"text":"안녕하세요"},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_text")
+        )
+
+        joined = "".join(chunks)
+        self.assertIn("안녕하세요", joined)
+        self.assertIn('event: message_stop', joined)
+
+    def test_stream_uses_message_content_when_delta_content_is_missing(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{},"message":{"content":"반갑습니다."},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_msg")
+        )
+
+        joined = "".join(chunks)
+        self.assertIn("반갑습니다.", joined)
+        self.assertIn('event: message_stop', joined)
+
+    def test_stream_uses_reasoning_content_when_standard_text_is_missing(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"reasoning_content":"먼저 변경 사항을 확인했습니다."},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_reasoning")
+        )
+
+        joined = "".join(chunks)
+        self.assertIn("먼저 변경 사항을 확인했습니다.", joined)
+        self.assertIn('event: message_stop', joined)
+
+    def test_stream_logs_warning_for_empty_end_turn_response(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        with self.assertLogs("src.handlers.anthropic", level="WARNING") as logs:
+            chunks = list(
+                self.handler.stream_anthropic_response(
+                    resp,
+                    "ollama-cloud:kimi-k2.5",
+                    "req_empty_end_turn",
+                )
+            )
+
+        self.assertIn('event: message_stop', "".join(chunks))
+        self.assertTrue(any("빈 end_turn 응답" in message for message in logs.output))
+
+    def test_stream_logs_warning_when_done_marker_is_missing(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"text":"중간 응답"},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+            ]
+        )
+
+        with self.assertLogs("src.handlers.anthropic", level="WARNING") as logs:
+            chunks = list(
+                self.handler.stream_anthropic_response(
+                    resp,
+                    "ollama-cloud:kimi-k2.5",
+                    "req_no_done",
+                )
+            )
+
+        self.assertIn("중간 응답", "".join(chunks))
+        self.assertTrue(any("[DONE] 없이 스트림 종료" in message for message in logs.output))
+
+    def test_stream_logs_warning_when_generator_is_closed(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"text":"첫 청크"},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        stream = self.handler.stream_anthropic_response(
+            resp,
+            "ollama-cloud:kimi-k2.5",
+            "req_generator_close",
+        )
+        next(stream)
+
+        with self.assertLogs("src.handlers.anthropic", level="WARNING") as logs:
+            stream.close()
+
+        self.assertTrue(any("generator 종료" in message for message in logs.output))
+
+    def test_stream_tolerates_null_tool_calls(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"content":"안녕하세요","tool_calls":null},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{"tool_calls":null},"finish_reason":"stop"}]}\n\n',
+                'data: [DONE]\n\n',
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cli-proxy-api-gpt:gpt-5.4",
+                "req_null_tool_calls",
+            )
+        )
+
+        joined = "".join(chunks)
+        self.assertIn("안녕하세요", joined)
+        self.assertIn('event: message_stop', joined)
+
 
 if __name__ == "__main__":
     unittest.main()

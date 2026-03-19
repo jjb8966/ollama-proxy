@@ -19,6 +19,8 @@ services:
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
       - CLI_PROXY_API_KEYS=${CLI_PROXY_API_KEYS}
       - CLI_PROXY_API_BASE_URL=${CLI_PROXY_API_BASE_URL:-http://cli-proxy-api:8317/v1}
+      - CLI_PROXY_API_GPT_KEYS=${CLI_PROXY_API_GPT_KEYS}
+      - CLI_PROXY_API_GPT_BASE_URL=${CLI_PROXY_API_GPT_BASE_URL:-https://jjb8966.duckdns.org/cli-proxy-api-gpt/v1}
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}
       - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
