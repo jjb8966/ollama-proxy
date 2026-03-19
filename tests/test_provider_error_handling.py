@@ -40,13 +40,20 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         client = _DummyClient()
         response = Mock()
         response.status_code = 400
-        response.text = '{"error":"prompt too long; exceeded max context length by 99 tokens"}'
+        response.text = (
+            '{"error":"prompt too long; exceeded max context length by 99 tokens"}'
+        )
         response.headers = {}
 
-        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+        with patch(
+            "src.providers.base.requests.post", return_value=response
+        ) as mock_post:
             result = client.post_request(
                 url="https://example.com/v1/chat/completions",
-                payload={"model": "ollama-cloud:minimax-m2.5", "messages": [{"role": "user", "content": "hello"}]},
+                payload={
+                    "model": "ollama-cloud:minimax-m2.7",
+                    "messages": [{"role": "user", "content": "hello"}],
+                },
                 headers={"Content-Type": "application/json"},
                 stream=False,
             )
@@ -56,17 +63,26 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         assert isinstance(result, ProxyRequestError)
         self.assertEqual(result.error_code, "context_length_exceeded")
 
-    def test_streaming_context_overflow_response_is_normalized_without_retry(self) -> None:
+    def test_streaming_context_overflow_response_is_normalized_without_retry(
+        self,
+    ) -> None:
         client = _DummyClient()
         response = Mock()
         response.status_code = 400
-        response.text = '{"error":"prompt too long; exceeded max context length by 99 tokens"}'
+        response.text = (
+            '{"error":"prompt too long; exceeded max context length by 99 tokens"}'
+        )
         response.headers = {}
 
-        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+        with patch(
+            "src.providers.base.requests.post", return_value=response
+        ) as mock_post:
             result = client.post_request(
                 url="https://example.com/v1/chat/completions",
-                payload={"model": "ollama-cloud:minimax-m2.5", "messages": [{"role": "user", "content": "hello"}]},
+                payload={
+                    "model": "ollama-cloud:minimax-m2.7",
+                    "messages": [{"role": "user", "content": "hello"}],
+                },
                 headers={"Content-Type": "application/json"},
                 stream=True,
             )
@@ -86,10 +102,15 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         )
         response.headers = {}
 
-        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+        with patch(
+            "src.providers.base.requests.post", return_value=response
+        ) as mock_post:
             result = client.post_request(
                 url="https://example.com/v1/chat/completions",
-                payload={"model": "gcli-gemini-3-pro-preview", "messages": [{"role": "user", "content": "hello"}]},
+                payload={
+                    "model": "gcli-gemini-3-pro-preview",
+                    "messages": [{"role": "user", "content": "hello"}],
+                },
                 headers={"Content-Type": "application/json"},
                 stream=False,
             )
@@ -101,7 +122,9 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         self.assertEqual(result.error_code, "model_capacity_exhausted")
         self.assertEqual(result.error_type, "invalid_request_error")
 
-    def test_antigravity_unknown_model_400_is_passed_through_without_retry(self) -> None:
+    def test_antigravity_unknown_model_400_is_passed_through_without_retry(
+        self,
+    ) -> None:
         client = _DummyAntigravityClient()
         response = Mock()
         response.status_code = 400
@@ -111,10 +134,15 @@ class ProviderErrorHandlingTests(unittest.TestCase):
         )
         response.headers = {}
 
-        with patch("src.providers.base.requests.post", return_value=response) as mock_post:
+        with patch(
+            "src.providers.base.requests.post", return_value=response
+        ) as mock_post:
             result = client.post_request(
                 url="https://example.com/v1/chat/completions",
-                payload={"model": "claude-sonnet-4-6", "messages": [{"role": "user", "content": "hello"}]},
+                payload={
+                    "model": "claude-sonnet-4-6",
+                    "messages": [{"role": "user", "content": "hello"}],
+                },
                 headers={"Content-Type": "application/json"},
                 stream=False,
             )

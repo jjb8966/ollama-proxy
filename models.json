@@ -153,8 +153,8 @@
       "context_length": 256000
     },
     {
-      "name": "ollama-cloud:minimax-m2.5",
-      "model": "ollama-cloud:minimax-m2.5",
+      "name": "ollama-cloud:minimax-m2.7",
+      "model": "ollama-cloud:minimax-m2.7",
       "context_length": 198000
     },
     {

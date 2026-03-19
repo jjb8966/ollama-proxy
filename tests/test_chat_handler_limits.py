@@ -13,7 +13,9 @@ class _DummyRotator:
     def get_next_key(self) -> str:
         return self.api_keys[0]
 
-    def mark_key_failure(self, key: str, is_rate_limit: bool = False, retry_after=None) -> None:
+    def mark_key_failure(
+        self, key: str, is_rate_limit: bool = False, retry_after=None
+    ) -> None:
         return None
 
     def _hash_key(self, key: str) -> str:
@@ -54,7 +56,7 @@ class ChatHandlerLimitTests(unittest.TestCase):
 
         result = self.handler.handle_chat_request(
             {
-                "model": "ollama-cloud:minimax-m2.5",
+                "model": "ollama-cloud:minimax-m2.7",
                 "messages": [{"role": "user", "content": "hello"}],
                 "stream": False,
                 "max_tokens": 2048,
@@ -98,7 +100,9 @@ class ChatHandlerLimitTests(unittest.TestCase):
         self.assertTrue(normal_client.post_request.called)
         self.assertFalse(cli_proxy_api_client.post_request.called)
 
-    def test_streaming_request_over_threshold_returns_compaction_notice_stream(self) -> None:
+    def test_streaming_request_over_threshold_returns_compaction_notice_stream(
+        self,
+    ) -> None:
         self.handler._estimate_request_tokens = Mock(return_value=204801)
 
         result = self.handler.handle_chat_request(
