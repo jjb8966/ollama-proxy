@@ -118,7 +118,9 @@ class AnthropicHandler:
     def _normalize_tool_calls(tool_calls_value: Any) -> List[Dict[str, Any]]:
         if not isinstance(tool_calls_value, list):
             return []
-        return [tool_call for tool_call in tool_calls_value if isinstance(tool_call, dict)]
+        return [
+            tool_call for tool_call in tool_calls_value if isinstance(tool_call, dict)
+        ]
 
     @staticmethod
     def _content_blocks_to_text(content: Any) -> str:
@@ -258,6 +260,48 @@ class AnthropicHandler:
         return normalized
 
     @staticmethod
+    def _sanitize_tool_input_schema(schema: Any) -> Dict[str, Any]:
+        if not isinstance(schema, dict):
+            return {"type": "object", "properties": {}}
+
+        sanitized: Dict[str, Any] = {}
+        for key, value in schema.items():
+            if key == "properties":
+                if not isinstance(value, dict):
+                    continue
+                sanitized["properties"] = {
+                    prop_name: AnthropicHandler._sanitize_tool_input_schema(prop_schema)
+                    for prop_name, prop_schema in value.items()
+                    if isinstance(prop_name, str)
+                }
+                continue
+
+            if key == "items":
+                if isinstance(value, dict):
+                    sanitized["items"] = AnthropicHandler._sanitize_tool_input_schema(
+                        value
+                    )
+                continue
+
+            if key in ("anyOf", "oneOf", "allOf"):
+                if isinstance(value, list):
+                    sanitized[key] = [
+                        AnthropicHandler._sanitize_tool_input_schema(item)
+                        for item in value
+                        if isinstance(item, dict)
+                    ]
+                continue
+
+            sanitized[key] = value
+
+        if sanitized.get("type") == "object" and not isinstance(
+            sanitized.get("properties"), dict
+        ):
+            sanitized["properties"] = {}
+
+        return sanitized
+
+    @staticmethod
     def _normalize_tools(tools: Any) -> List[Dict[str, Any]]:
         normalized: List[Dict[str, Any]] = []
         if not isinstance(tools, list):
@@ -269,15 +313,16 @@ class AnthropicHandler:
             name = str(tool.get("name", "")).strip()
             if not name:
                 continue
+            input_schema = AnthropicHandler._sanitize_tool_input_schema(
+                tool.get("input_schema", {"type": "object", "properties": {}})
+            )
             normalized.append(
                 {
                     "type": "function",
                     "function": {
                         "name": name,
                         "description": tool.get("description", ""),
-                        "parameters": tool.get(
-                            "input_schema", {"type": "object", "properties": {}}
-                        ),
+                        "parameters": input_schema,
                     },
                 }
             )
@@ -779,7 +824,11 @@ class AnthropicHandler:
             for event in close_open_blocks():
                 yield event
 
-            if stop_reason == "end_turn" and text_char_count == 0 and tool_delta_count == 0:
+            if (
+                stop_reason == "end_turn"
+                and text_char_count == 0
+                and tool_delta_count == 0
+            ):
                 logger.warning(
                     "[AnthropicStream] 빈 end_turn 응답 | request_id=%s | message_id=%s | "
                     "model=%s | chunks=%s | last_payload=%s | last_choice=%s",

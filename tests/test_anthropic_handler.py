@@ -8,7 +8,9 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
     def setUp(self) -> None:
         self.handler = AnthropicHandler()
 
-    def test_tool_result_follows_assistant_tool_call_without_blank_user_message(self) -> None:
+    def test_tool_result_follows_assistant_tool_call_without_blank_user_message(
+        self,
+    ) -> None:
         messages = [
             {
                 "role": "assistant",
@@ -17,9 +19,9 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                         "type": "tool_use",
                         "id": "toolu_123",
                         "name": "bash",
-                        "input": {"command": "pwd"}
+                        "input": {"command": "pwd"},
                     }
-                ]
+                ],
             },
             {
                 "role": "user",
@@ -27,10 +29,10 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                     {
                         "type": "tool_result",
                         "tool_use_id": "toolu_123",
-                        "content": "output"
+                        "content": "output",
                     }
-                ]
-            }
+                ],
+            },
         ]
 
         normalized = self.handler._normalize_messages(messages)
@@ -47,17 +49,15 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                             "type": "function",
                             "function": {
                                 "name": "bash",
-                                "arguments": json.dumps({"command": "pwd"}, ensure_ascii=False)
-                            }
+                                "arguments": json.dumps(
+                                    {"command": "pwd"}, ensure_ascii=False
+                                ),
+                            },
                         }
-                    ]
+                    ],
                 },
-                {
-                    "role": "tool",
-                    "tool_call_id": "toolu_123",
-                    "content": "output"
-                }
-            ]
+                {"role": "tool", "tool_call_id": "toolu_123", "content": "output"},
+            ],
         )
 
     def test_assistant_text_and_tool_use_stay_in_one_message(self) -> None:
@@ -70,9 +70,9 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                         "type": "tool_use",
                         "id": "toolu_456",
                         "name": "bash",
-                        "input": {"command": "ls"}
-                    }
-                ]
+                        "input": {"command": "ls"},
+                    },
+                ],
             }
         ]
 
@@ -91,10 +91,13 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                     {
                         "type": "tool_result",
                         "tool_use_id": "toolu_789",
-                        "content": [{"type": "text", "text": "command output"}]
+                        "content": [{"type": "text", "text": "command output"}],
                     },
-                    {"type": "text", "text": "이 결과를 바탕으로 다음 단계 진행해 주세요."}
-                ]
+                    {
+                        "type": "text",
+                        "text": "이 결과를 바탕으로 다음 단계 진행해 주세요.",
+                    },
+                ],
             }
         ]
 
@@ -106,13 +109,13 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                 {
                     "role": "tool",
                     "tool_call_id": "toolu_789",
-                    "content": "command output"
+                    "content": "command output",
                 },
                 {
                     "role": "user",
-                    "content": "이 결과를 바탕으로 다음 단계 진행해 주세요."
-                }
-            ]
+                    "content": "이 결과를 바탕으로 다음 단계 진행해 주세요.",
+                },
+            ],
         )
 
     def test_text_only_content_blocks_remain_plain_messages(self) -> None:
@@ -121,21 +124,15 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                 "role": "user",
                 "content": [
                     {"type": "text", "text": "안녕하세요."},
-                    {"type": "text", "text": "계속 진행해 주세요."}
-                ]
+                    {"type": "text", "text": "계속 진행해 주세요."},
+                ],
             }
         ]
 
         normalized = self.handler._normalize_messages(messages)
 
         self.assertEqual(
-            normalized,
-            [
-                {
-                    "role": "user",
-                    "content": "안녕하세요.계속 진행해 주세요."
-                }
-            ]
+            normalized, [{"role": "user", "content": "안녕하세요.계속 진행해 주세요."}]
         )
 
     def test_invalid_dict_response_is_rejected_in_non_streaming_transform(self) -> None:
@@ -144,9 +141,9 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                 {
                     "model": "ollama-cloud:kimi-k2.5",
                     "message": {"role": "assistant", "content": "bad"},
-                    "done": True
+                    "done": True,
                 },
-                "ollama-cloud:kimi-k2.5"
+                "ollama-cloud:kimi-k2.5",
             )
 
     def test_non_streaming_response_tolerates_null_tool_calls(self) -> None:
@@ -171,8 +168,83 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
             "cli-proxy-api-gpt:gpt-5.4",
         )
 
-        self.assertEqual(response["content"], [{"type": "text", "text": "정상 응답입니다."}])
+        self.assertEqual(
+            response["content"], [{"type": "text", "text": "정상 응답입니다."}]
+        )
         self.assertEqual(response["stop_reason"], "end_turn")
+
+    def test_normalize_tools_adds_empty_properties_for_object_schema(self) -> None:
+        normalized = self.handler._normalize_tools(
+            [
+                {
+                    "name": "mcp__pencil__get_style_guide_tags",
+                    "description": "style guide tags",
+                    "input_schema": {"type": "object"},
+                }
+            ]
+        )
+
+        self.assertEqual(
+            normalized,
+            [
+                {
+                    "type": "function",
+                    "function": {
+                        "name": "mcp__pencil__get_style_guide_tags",
+                        "description": "style guide tags",
+                        "parameters": {"type": "object", "properties": {}},
+                    },
+                }
+            ],
+        )
+
+    def test_normalize_tools_uses_default_schema_for_non_dict_input_schema(
+        self,
+    ) -> None:
+        normalized = self.handler._normalize_tools(
+            [
+                {
+                    "name": "tool_without_schema_dict",
+                    "input_schema": "invalid",
+                }
+            ]
+        )
+
+        self.assertEqual(
+            normalized[0]["function"]["parameters"],
+            {"type": "object", "properties": {}},
+        )
+
+    def test_normalize_tools_sanitizes_nested_object_schemas(self) -> None:
+        normalized = self.handler._normalize_tools(
+            [
+                {
+                    "name": "nested_tool",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {
+                            "config": {
+                                "type": "object",
+                                "properties": {
+                                    "theme": {"type": "string"},
+                                    "options": {"type": "object"},
+                                },
+                            },
+                            "metadata": {"type": "object"},
+                        },
+                    },
+                }
+            ]
+        )
+
+        parameters = normalized[0]["function"]["parameters"]
+        self.assertEqual(
+            parameters["properties"]["metadata"], {"type": "object", "properties": {}}
+        )
+        self.assertEqual(
+            parameters["properties"]["config"]["properties"]["options"],
+            {"type": "object", "properties": {}},
+        )
 
 
 class AnthropicHandlerStreamingTests(unittest.TestCase):
@@ -189,58 +261,64 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
             [
                 'data: {"choices":[{"delta":{"text":"안녕하세요"},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
         chunks = list(
-            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_text")
+            self.handler.stream_anthropic_response(
+                resp, "ollama-cloud:kimi-k2.5", "req_text"
+            )
         )
 
         joined = "".join(chunks)
         self.assertIn("안녕하세요", joined)
-        self.assertIn('event: message_stop', joined)
+        self.assertIn("event: message_stop", joined)
 
     def test_stream_uses_message_content_when_delta_content_is_missing(self) -> None:
         resp = self._stream(
             [
                 'data: {"choices":[{"delta":{},"message":{"content":"반갑습니다."},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
         chunks = list(
-            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_msg")
+            self.handler.stream_anthropic_response(
+                resp, "ollama-cloud:kimi-k2.5", "req_msg"
+            )
         )
 
         joined = "".join(chunks)
         self.assertIn("반갑습니다.", joined)
-        self.assertIn('event: message_stop', joined)
+        self.assertIn("event: message_stop", joined)
 
     def test_stream_uses_reasoning_content_when_standard_text_is_missing(self) -> None:
         resp = self._stream(
             [
                 'data: {"choices":[{"delta":{"reasoning_content":"먼저 변경 사항을 확인했습니다."},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
         chunks = list(
-            self.handler.stream_anthropic_response(resp, "ollama-cloud:kimi-k2.5", "req_reasoning")
+            self.handler.stream_anthropic_response(
+                resp, "ollama-cloud:kimi-k2.5", "req_reasoning"
+            )
         )
 
         joined = "".join(chunks)
         self.assertIn("먼저 변경 사항을 확인했습니다.", joined)
-        self.assertIn('event: message_stop', joined)
+        self.assertIn("event: message_stop", joined)
 
     def test_stream_logs_warning_for_empty_end_turn_response(self) -> None:
         resp = self._stream(
             [
                 'data: {"choices":[{"delta":{},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
@@ -253,7 +331,7 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
                 )
             )
 
-        self.assertIn('event: message_stop', "".join(chunks))
+        self.assertIn("event: message_stop", "".join(chunks))
         self.assertTrue(any("빈 end_turn 응답" in message for message in logs.output))
 
     def test_stream_logs_warning_when_done_marker_is_missing(self) -> None:
@@ -274,14 +352,16 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
             )
 
         self.assertIn("중간 응답", "".join(chunks))
-        self.assertTrue(any("[DONE] 없이 스트림 종료" in message for message in logs.output))
+        self.assertTrue(
+            any("[DONE] 없이 스트림 종료" in message for message in logs.output)
+        )
 
     def test_stream_logs_warning_when_generator_is_closed(self) -> None:
         resp = self._stream(
             [
                 'data: {"choices":[{"delta":{"text":"첫 청크"},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
@@ -302,7 +382,7 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
             [
                 'data: {"choices":[{"delta":{"content":"안녕하세요","tool_calls":null},"finish_reason":null}]}\n\n',
                 'data: {"choices":[{"delta":{"tool_calls":null},"finish_reason":"stop"}]}\n\n',
-                'data: [DONE]\n\n',
+                "data: [DONE]\n\n",
             ]
         )
 
@@ -316,7 +396,7 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
 
         joined = "".join(chunks)
         self.assertIn("안녕하세요", joined)
-        self.assertIn('event: message_stop', joined)
+        self.assertIn("event: message_stop", joined)
 
 
 if __name__ == "__main__":
