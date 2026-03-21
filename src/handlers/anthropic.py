@@ -19,6 +19,20 @@ from requests import Response
 logger = logging.getLogger(__name__)
 
 
+_ANTHROPIC_ALLOWED_SCHEMA_KEYS = {
+    "type",
+    "description",
+    "enum",
+    "items",
+    "properties",
+    "required",
+    "nullable",
+    "anyOf",
+    "oneOf",
+    "allOf",
+}
+
+
 class AnthropicHandler:
     """Anthropic Messages API 형식 변환 핸들러"""
 
@@ -266,6 +280,9 @@ class AnthropicHandler:
 
         sanitized: Dict[str, Any] = {}
         for key, value in schema.items():
+            if key not in _ANTHROPIC_ALLOWED_SCHEMA_KEYS:
+                continue
+
             if key == "properties":
                 if not isinstance(value, dict):
                     continue

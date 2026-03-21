@@ -246,6 +246,116 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
             {"type": "object", "properties": {}},
         )
 
+    def test_sanitize_tool_input_schema_removes_non_standard_keywords(self) -> None:
+        schema = {
+            "type": "object",
+            "title": "MyTool",
+            "description": "A tool with extra keys",
+            "additionalProperties": False,
+            "default": {},
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "format": "email",
+                    "pattern": "^[a-z]+$",
+                }
+            },
+        }
+
+        sanitized = self.handler._sanitize_tool_input_schema(schema)
+
+        self.assertEqual(sanitized["type"], "object")
+        self.assertEqual(sanitized["description"], "A tool with extra keys")
+        self.assertIn("properties", sanitized)
+
+        self.assertNotIn("title", sanitized)
+        self.assertNotIn("additionalProperties", sanitized)
+        self.assertNotIn("default", sanitized)
+        self.assertNotIn("$schema", sanitized)
+
+        name_prop = sanitized["properties"]["name"]
+        self.assertEqual(name_prop["type"], "string")
+        self.assertNotIn("format", name_prop)
+        self.assertNotIn("pattern", name_prop)
+
+    def test_sanitize_tool_input_schema_preserves_standard_keywords(self) -> None:
+        schema = {
+            "type": "object",
+            "description": "All standard keys",
+            "enum": ["a", "b"],
+            "properties": {"p": {"type": "string"}},
+            "required": ["p"],
+            "nullable": True,
+            "anyOf": [{"type": "string"}, {"type": "number"}],
+            "oneOf": [{"type": "boolean"}],
+            "allOf": [{"type": "object"}],
+        }
+
+        sanitized = self.handler._sanitize_tool_input_schema(schema)
+
+        for key in [
+            "type",
+            "description",
+            "enum",
+            "properties",
+            "required",
+            "nullable",
+            "anyOf",
+            "oneOf",
+            "allOf",
+        ]:
+            self.assertIn(key, sanitized)
+
+    def test_sanitize_tool_input_schema_recursive_sanitization(self) -> None:
+        schema = {
+            "type": "object",
+            "properties": {
+                "list": {
+                    "type": "array",
+                    "items": {"type": "string", "title": "ItemTitle"},
+                },
+                "union": {
+                    "anyOf": [
+                        {"type": "string", "format": "date"},
+                        {"type": "number", "default": 0},
+                    ]
+                },
+            },
+        }
+
+        sanitized = self.handler._sanitize_tool_input_schema(schema)
+
+        items = sanitized["properties"]["list"]["items"]
+        self.assertEqual(items["type"], "string")
+        self.assertNotIn("title", items)
+
+        any_of = sanitized["properties"]["union"]["anyOf"]
+        self.assertEqual(any_of[0]["type"], "string")
+        self.assertNotIn("format", any_of[0])
+        self.assertEqual(any_of[1]["type"], "number")
+        self.assertNotIn("default", any_of[1])
+
+    def test_normalize_tools_integration_sanitization(self) -> None:
+        tools = [
+            {
+                "name": "my_tool",
+                "description": "desc",
+                "input_schema": {
+                    "type": "object",
+                    "title": "ToolTitle",
+                    "properties": {"p": {"type": "string", "format": "uri"}},
+                },
+            }
+        ]
+
+        normalized = self.handler._normalize_tools(tools)
+
+        params = normalized[0]["function"]["parameters"]
+        self.assertNotIn("title", params)
+        self.assertNotIn("format", params["properties"]["p"])
+        self.assertEqual(params["properties"]["p"]["type"], "string")
+
 
 class AnthropicHandlerStreamingTests(unittest.TestCase):
     def setUp(self) -> None:
