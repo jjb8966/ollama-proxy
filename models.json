@@ -179,6 +179,11 @@
       "model": "cli-proxy-api-gpt:gpt-5.4-mini",
       "context_length": 1050000,
       "max_output_tokens": 128000
+    },
+    {
+      "name": "ollama-cloud:qwen3.5",
+      "model": "ollama-cloud:qwen3.5",
+      "context_length": 131072
     }
   ]
 }
