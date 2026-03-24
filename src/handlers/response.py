@@ -144,10 +144,11 @@ class ResponseHandler:
         if not isinstance(delta_tool_calls, list):
             return
 
-        for index, tool_call in enumerate(delta_tool_calls):
+        for idx, tool_call in enumerate(delta_tool_calls):
             if not isinstance(tool_call, dict):
                 continue
 
+            index = tool_call.get("index", idx)
             state = buffers.setdefault(
                 index, {"name": "", "arguments": "", "description": ""}
             )

@@ -88,10 +88,6 @@ class ChatHandler:
             'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
         },
-        'cli-proxy-api-gpt': {
-            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_GPT_BASE_URL', 'https://jjb8966.duckdns.org/cli-proxy-api-gpt/v1')),
-            'client_attr': 'cli_proxy_api_gpt_client'
-        },
         # Primary: ollama-cloud
         'ollama-cloud': {
             'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),

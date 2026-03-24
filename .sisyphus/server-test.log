@@ -1,0 +1,28 @@
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [Google] API 키 수: 10개
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [OpenRouter] API 키 수: 20개
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [Akash] API 키 수: 1개
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [Cohere] API 키 수: 10개
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [Codestral] API 키 수: 1개
+2026-03-21 14:12:38,242 - root - INFO - [QwenOAuth] 토큰 로드 완료: /home/jjb/.qwen/oauth_creds.json
+2026-03-21 14:12:38,242 - root - INFO - [QwenOAuth] OAuth 토큰 로드됨
+2026-03-21 14:12:38,242 - root - INFO - [KeyRotator] [Antigravity] API 키 수: 1개
+2026-03-21 14:12:38,243 - root - INFO - [KeyRotator] [NvidiaNIM] API 키 수: 2개
+2026-03-21 14:12:38,243 - root - INFO - [KeyRotator] [CLIProxyAPI] API 키 수: 1개
+2026-03-21 14:12:38,243 - root - INFO - [KeyRotator] [CLIProxyAPI_GPT] API 키 수: 1개
+2026-03-21 14:12:38,243 - root - INFO - [KeyRotator] [OllamaCloud] API 키 수: 37개
+2026-03-21 14:12:38,246 - __main__ - INFO - Flask 애플리케이션 초기화 완료
+2026-03-21 14:12:38,246 - __main__ - INFO - ==================================================
+2026-03-21 14:12:38,246 - __main__ - INFO - Ollama Proxy Server 시작
+2026-03-21 14:12:38,246 - __main__ - INFO - ==================================================
+2026-03-21 14:12:38,246 - __main__ - INFO - 가상 환경: /home/jjb/Desktop/work/my/project/ollama-proxy/venv
+2026-03-21 14:12:38,246 - __main__ - INFO - 서버 주소: http://0.0.0.0:5005
+2026-03-21 14:12:38,246 - __main__ - INFO - 디버그 모드: False
+2026-03-21 14:12:38,246 - __main__ - INFO - ==================================================
+ * Serving Flask app 'app'
+ * Debug mode: off
+2026-03-21 14:12:38,249 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://192.168.0.84:5005
+2026-03-21 14:12:38,249 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-03-21 14:12:43,029 - werkzeug - INFO - 127.0.0.1 - - [21/Mar/2026 14:12:43] "[31m[1mPOST /v1/messages HTTP/1.1[0m" 401 -

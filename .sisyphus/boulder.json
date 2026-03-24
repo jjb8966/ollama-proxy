@@ -1,0 +1,9 @@
+{
+  "active_plan": "/home/jjb/Desktop/work/my/project/ollama-proxy/.sisyphus/plans/fix-invalid-tool-params.md",
+  "started_at": "2026-03-21T03:56:19.798Z",
+  "session_ids": [
+    "ses_2f185c4f7ffeiYR4n2z7E4D1sZ"
+  ],
+  "plan_name": "fix-invalid-tool-params",
+  "agent": "atlas"
+}

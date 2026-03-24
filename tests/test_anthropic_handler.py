@@ -149,7 +149,7 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
     def test_non_streaming_response_tolerates_null_tool_calls(self) -> None:
         response = self.handler.handle_non_streaming_response(
             {
-                "model": "cli-proxy-api-gpt:gpt-5.4",
+                "model": "cli-proxy-api:gpt-5.4",
                 "choices": [
                     {
                         "finish_reason": "stop",
@@ -165,7 +165,7 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                     "completion_tokens": 5,
                 },
             },
-            "cli-proxy-api-gpt:gpt-5.4",
+            "cli-proxy-api:gpt-5.4",
         )
 
         self.assertEqual(
@@ -499,7 +499,7 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
         chunks = list(
             self.handler.stream_anthropic_response(
                 resp,
-                "cli-proxy-api-gpt:gpt-5.4",
+                "cli-proxy-api:gpt-5.4",
                 "req_null_tool_calls",
             )
         )

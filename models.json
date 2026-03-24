@@ -163,24 +163,6 @@
       "context_length": 198000
     },
     {
-      "name": "cli-proxy-api-gpt:gpt-5.3-codex",
-      "model": "cli-proxy-api-gpt:gpt-5.3-codex",
-      "context_length": 400000,
-      "max_output_tokens": 128000
-    },
-    {
-      "name": "cli-proxy-api-gpt:gpt-5.4",
-      "model": "cli-proxy-api-gpt:gpt-5.4",
-      "context_length": 1050000,
-      "max_output_tokens": 128000
-    },
-    {
-      "name": "cli-proxy-api-gpt:gpt-5.4-mini",
-      "model": "cli-proxy-api-gpt:gpt-5.4-mini",
-      "context_length": 1050000,
-      "max_output_tokens": 128000
-    },
-    {
       "name": "ollama-cloud:qwen3.5",
       "model": "ollama-cloud:qwen3.5",
       "context_length": 131072

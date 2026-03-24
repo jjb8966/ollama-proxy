@@ -779,7 +779,8 @@ class AnthropicHandler:
                     )
 
                 tool_calls = self._normalize_tool_calls(delta.get("tool_calls"))
-                for tc_index, tool_call in enumerate(tool_calls):
+                for tc_idx, tool_call in enumerate(tool_calls):
+                    tc_index = tool_call.get("index", tc_idx)
                     block_index = current_index + 1 + tc_index
                     state = tool_block_state.setdefault(
                         block_index,
