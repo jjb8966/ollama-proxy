@@ -135,6 +135,90 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
             normalized, [{"role": "user", "content": "안녕하세요.계속 진행해 주세요."}]
         )
 
+    def test_user_base64_image_block_converts_to_image_url_content(self) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "이 이미지를 설명해 주세요."},
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/png",
+                            "data": "ZmFrZS1pbWFnZS1kYXRh",
+                        },
+                    },
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(
+            normalized,
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "이 이미지를 설명해 주세요."},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh"
+                            },
+                        },
+                    ],
+                }
+            ],
+        )
+
+    def test_user_image_block_before_tool_result_is_preserved(self) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "source": {
+                            "type": "base64",
+                            "media_type": "image/jpeg",
+                            "data": "YWJjMTIz",
+                        },
+                    },
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": "toolu_img_1",
+                        "content": "tool output",
+                    },
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(
+            normalized,
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": "data:image/jpeg;base64,YWJjMTIz"
+                            },
+                        }
+                    ],
+                },
+                {
+                    "role": "tool",
+                    "tool_call_id": "toolu_img_1",
+                    "content": "tool output",
+                },
+            ],
+        )
+
     def test_invalid_dict_response_is_rejected_in_non_streaming_transform(self) -> None:
         with self.assertRaisesRegex(ValueError, "OpenAI-compatible"):
             self.handler.handle_non_streaming_response(

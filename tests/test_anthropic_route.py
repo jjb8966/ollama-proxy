@@ -62,6 +62,59 @@ class AnthropicRouteErrorHandlingTests(unittest.TestCase):
         self.assertEqual(body["type"], "error")
         self.assertEqual(body["error"]["message"], "context window exceeded")
 
+    def test_user_image_block_is_forwarded_to_chat_handler(self) -> None:
+        with patch("src.routes.anthropic.ChatHandler") as mock_chat_handler:
+            mock_chat_handler.return_value.handle_chat_request.return_value = ProxyRequestError(
+                model="cli-proxy-api:gpt-5.4-high",
+                message="context window exceeded",
+                status_code=400,
+                error_type="invalid_request_error"
+            )
+            response = self.client.post(
+                "/v1/messages",
+                json={
+                    "model": "cli-proxy-api:gpt-5.4-high",
+                    "stream": False,
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": [
+                                {"type": "text", "text": "이미지를 설명해 주세요."},
+                                {
+                                    "type": "image",
+                                    "source": {
+                                        "type": "base64",
+                                        "media_type": "image/png",
+                                        "data": "ZmFrZS1pbWFnZS1kYXRh",
+                                    },
+                                },
+                            ],
+                        }
+                    ],
+                },
+            )
+
+        proxied_request = mock_chat_handler.return_value.handle_chat_request.call_args.args[0]
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(
+            proxied_request["messages"],
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "이미지를 설명해 주세요."},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh"
+                            },
+                        },
+                    ],
+                }
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

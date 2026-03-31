@@ -151,6 +151,33 @@ class AnthropicHandler:
                 text_parts.append(str(block.get("text", "")))
         return "".join(text_parts)
 
+    @staticmethod
+    def _normalize_image_block(block: Any) -> Optional[Dict[str, Any]]:
+        if not isinstance(block, dict) or block.get("type") != "image":
+            return None
+
+        source = block.get("source")
+        if not isinstance(source, dict):
+            return None
+
+        source_type = str(source.get("type", "")).strip()
+        if source_type == "base64":
+            media_type = str(source.get("media_type", "")).strip()
+            data = source.get("data")
+            if not media_type or not isinstance(data, str) or not data:
+                return None
+            return {
+                "type": "image_url",
+                "image_url": {"url": f"data:{media_type};base64,{data}"},
+            }
+
+        if source_type == "url":
+            url = source.get("url")
+            if isinstance(url, str) and url:
+                return {"type": "image_url", "image_url": {"url": url}}
+
+        return None
+
     def _normalize_system_messages(self, system_value: Any) -> List[Dict[str, Any]]:
         if system_value is None:
             return []
@@ -229,14 +256,32 @@ class AnthropicHandler:
                 continue
 
             if role == "user":
-                pending_text: List[str] = []
+                pending_content_blocks: List[Dict[str, Any]] = []
 
-                def flush_user_text() -> None:
-                    if pending_text:
+                def flush_user_content() -> None:
+                    if not pending_content_blocks:
+                        return
+                    if all(
+                        block.get("type") == "text"
+                        for block in pending_content_blocks
+                    ):
                         normalized.append(
-                            {"role": "user", "content": "".join(pending_text)}
+                            {
+                                "role": "user",
+                                "content": "".join(
+                                    str(block.get("text", ""))
+                                    for block in pending_content_blocks
+                                ),
+                            }
                         )
-                        pending_text.clear()
+                    else:
+                        normalized.append(
+                            {
+                                "role": "user",
+                                "content": pending_content_blocks.copy(),
+                            }
+                        )
+                    pending_content_blocks.clear()
 
                 for block in content:
                     if not isinstance(block, dict):
@@ -244,13 +289,21 @@ class AnthropicHandler:
                     block_type = block.get("type")
 
                     if block_type == "text":
-                        pending_text.append(str(block.get("text", "")))
+                        pending_content_blocks.append(
+                            {"type": "text", "text": str(block.get("text", ""))}
+                        )
+                        continue
+
+                    if block_type == "image":
+                        normalized_image_block = self._normalize_image_block(block)
+                        if normalized_image_block is not None:
+                            pending_content_blocks.append(normalized_image_block)
                         continue
 
                     if block_type != "tool_result":
                         continue
 
-                    flush_user_text()
+                    flush_user_content()
 
                     tool_id = self._sanitize_tool_id(block.get("tool_use_id"))
                     tool_content = block.get("content", "")
@@ -264,7 +317,7 @@ class AnthropicHandler:
                         {"role": "tool", "tool_call_id": tool_id, "content": tool_text}
                     )
 
-                flush_user_text()
+                flush_user_content()
                 continue
 
             normalized.append(

@@ -13,20 +13,8 @@
       "max_output_tokens": 64000
     },
     {
-      "name": "antigravity:anti-gemini-3-flash",
-      "model": "antigravity:anti-gemini-3-flash",
-      "context_length": 1048576,
-      "max_output_tokens": 65536
-    },
-    {
       "name": "antigravity:anti-gemini-3.1-pro-high",
       "model": "antigravity:anti-gemini-3.1-pro-high",
-      "context_length": 1048576,
-      "max_output_tokens": 65536
-    },
-    {
-      "name": "antigravity:anti-gemini-3.1-pro-low",
-      "model": "antigravity:anti-gemini-3.1-pro-low",
       "context_length": 1048576,
       "max_output_tokens": 65536
     },
@@ -43,30 +31,6 @@
       "max_output_tokens": 65536
     },
     {
-      "name": "cli-proxy-api:gemini-3-flash-preview",
-      "model": "cli-proxy-api:gemini-3-flash-preview",
-      "context_length": 1048576,
-      "max_output_tokens": 65536
-    },
-    {
-      "name": "cli-proxy-api:gemini-3-pro-preview",
-      "model": "cli-proxy-api:gemini-3-pro-preview",
-      "context_length": 1048576,
-      "max_output_tokens": 65536
-    },
-    {
-      "name": "cli-proxy-api:gpt-5.2",
-      "model": "cli-proxy-api:gpt-5.2",
-      "context_length": 400000,
-      "max_output_tokens": 128000
-    },
-    {
-      "name": "cli-proxy-api:gpt-5.2-codex",
-      "model": "cli-proxy-api:gpt-5.2-codex",
-      "context_length": 400000,
-      "max_output_tokens": 128000
-    },
-    {
       "name": "cli-proxy-api:gpt-5.3-codex",
       "model": "cli-proxy-api:gpt-5.3-codex",
       "context_length": 400000,
@@ -81,6 +45,18 @@
     {
       "name": "cli-proxy-api:gpt-5.4-mini",
       "model": "cli-proxy-api:gpt-5.4-mini",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.4-high",
+      "model": "cli-proxy-api:gpt-5.4-high",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.4-xhigh",
+      "model": "cli-proxy-api:gpt-5.4-xhigh",
       "context_length": 1050000,
       "max_output_tokens": 128000
     },
