@@ -16,21 +16,10 @@ from typing import Any, Dict, Generator, Iterable, List, Optional, Union
 
 from requests import Response
 
+from src.utils.schema_sanitizer import SCHEMA_ALLOWED_KEYS, sanitize_schema
+from src.utils.text_extraction import ANTHROPIC_TEXT_KEYS, extract_text_from_content_value
+
 logger = logging.getLogger(__name__)
-
-
-_ANTHROPIC_ALLOWED_SCHEMA_KEYS = {
-    "type",
-    "description",
-    "enum",
-    "items",
-    "properties",
-    "required",
-    "nullable",
-    "anyOf",
-    "oneOf",
-    "allOf",
-}
 
 
 def _is_empty_value(value: Any) -> bool:
@@ -57,28 +46,7 @@ class AnthropicHandler:
 
     @staticmethod
     def _extract_text_from_content_value(content: Any) -> str:
-        if isinstance(content, str):
-            return content
-        if isinstance(content, list):
-            parts: List[str] = []
-            for item in content:
-                if isinstance(item, str):
-                    parts.append(item)
-                    continue
-                if not isinstance(item, dict):
-                    continue
-                for key in ("text", "value", "content"):
-                    value = item.get(key)
-                    if isinstance(value, str) and value:
-                        parts.append(value)
-                        break
-            return "".join(parts)
-        if isinstance(content, dict):
-            for key in ("text", "value", "content"):
-                value = content.get(key)
-                if isinstance(value, str) and value:
-                    return value
-        return ""
+        return extract_text_from_content_value(content, keys=ANTHROPIC_TEXT_KEYS)
 
     def _extract_stream_text(self, choice: Dict[str, Any]) -> str:
         if not isinstance(choice, dict):
@@ -337,48 +305,7 @@ class AnthropicHandler:
 
     @staticmethod
     def _sanitize_tool_input_schema(schema: Any) -> Dict[str, Any]:
-        if not isinstance(schema, dict):
-            return {"type": "object", "properties": {}}
-
-        sanitized: Dict[str, Any] = {}
-        for key, value in schema.items():
-            if key not in _ANTHROPIC_ALLOWED_SCHEMA_KEYS:
-                continue
-
-            if key == "properties":
-                if not isinstance(value, dict):
-                    continue
-                sanitized["properties"] = {
-                    prop_name: AnthropicHandler._sanitize_tool_input_schema(prop_schema)
-                    for prop_name, prop_schema in value.items()
-                    if isinstance(prop_name, str)
-                }
-                continue
-
-            if key == "items":
-                if isinstance(value, dict):
-                    sanitized["items"] = AnthropicHandler._sanitize_tool_input_schema(
-                        value
-                    )
-                continue
-
-            if key in ("anyOf", "oneOf", "allOf"):
-                if isinstance(value, list):
-                    sanitized[key] = [
-                        AnthropicHandler._sanitize_tool_input_schema(item)
-                        for item in value
-                        if isinstance(item, dict)
-                    ]
-                continue
-
-            sanitized[key] = value
-
-        if sanitized.get("type") == "object" and not isinstance(
-            sanitized.get("properties"), dict
-        ):
-            sanitized["properties"] = {}
-
-        return sanitized
+        return sanitize_schema(schema, allowed_keys=SCHEMA_ALLOWED_KEYS)
 
     @staticmethod
     def _extract_tools_contract(tools: Any) -> Dict[str, Dict[str, Any]]:

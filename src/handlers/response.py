@@ -16,6 +16,8 @@ import requests
 from requests import Response
 
 from src.core.errors import ErrorHandler
+from src.utils.text_extraction import CONTENT_TEXT_KEYS, extract_text_from_content_value, parse_tool_arguments
+from src.utils.thought_filter import ThoughtTagFilter
 
 
 logger = logging.getLogger(__name__)
@@ -29,6 +31,9 @@ class ResponseHandler:
     스트리밍 응답과 비스트리밍 응답을 모두 처리합니다.
     """
 
+    def __init__(self) -> None:
+        self._thought_filter = ThoughtTagFilter()
+
     @staticmethod
     def _build_base_chunk(model: str) -> Dict[str, Any]:
         """기본 Ollama 청크 구조를 생성합니다."""
@@ -40,25 +45,7 @@ class ResponseHandler:
     @staticmethod
     def _parse_tool_arguments(arguments: Any) -> Dict[str, Any]:
         """OpenAI 호환 arguments를 Ollama 형식의 dict로 정규화합니다."""
-        if isinstance(arguments, dict):
-            return arguments
-
-        if isinstance(arguments, str):
-            stripped = arguments.strip()
-            if not stripped:
-                return {}
-            try:
-                parsed = json.loads(stripped)
-            except json.JSONDecodeError:
-                return {"input": arguments}
-            if isinstance(parsed, dict):
-                return parsed
-            return {"input": parsed}
-
-        if arguments is None:
-            return {}
-
-        return {"input": arguments}
+        return parse_tool_arguments(arguments)
 
     def _normalize_tool_calls(self, tool_calls: Any) -> List[Dict[str, Any]]:
         """OpenAI 호환 tool_calls를 Ollama message.tool_calls 형식으로 변환합니다."""
@@ -94,37 +81,7 @@ class ResponseHandler:
 
     @staticmethod
     def _extract_text_from_content_value(content: Any) -> str:
-        if isinstance(content, str):
-            return content
-
-        if isinstance(content, list):
-            parts: List[str] = []
-            for item in content:
-                if isinstance(item, str):
-                    parts.append(item)
-                    continue
-                if not isinstance(item, dict):
-                    continue
-                for key in (
-                    "content",
-                    "text",
-                    "value",
-                    "reasoning_content",
-                    "reasoning",
-                ):
-                    value = item.get(key)
-                    if isinstance(value, str) and value:
-                        parts.append(value)
-                        break
-            return "".join(parts)
-
-        if isinstance(content, dict):
-            for key in ("content", "text", "value", "reasoning_content", "reasoning"):
-                value = content.get(key)
-                if isinstance(value, str) and value:
-                    return value
-
-        return ""
+        return extract_text_from_content_value(content, keys=CONTENT_TEXT_KEYS)
 
     def _extract_text_from_message_like(self, payload: Any) -> str:
         if not isinstance(payload, dict):
@@ -266,7 +223,7 @@ class ResponseHandler:
                 if (
                     "<thought>" in text_content
                     or "</thought>" in text_content
-                    or self._in_thought_tag
+                    or self._thought_filter.in_thought_tag
                 ):
                     logger.info("[Thinking Mode] thought 태그 감지 - 필터링 수행")
                     text_content = self._filter_thought_tags(text_content)
@@ -274,36 +231,8 @@ class ResponseHandler:
         return text_content, tool_calls, finish_reason
 
     def _filter_thought_tags(self, text: str) -> str:
-        """
-        텍스트에서 <thought>...</thought> 태그 내용을 필터링합니다.
-
-        스트리밍 응답에서는 태그가 여러 청크에 걸쳐 나뉘어 올 수 있으므로,
-        인스턴스 변수로 상태를 추적합니다.
-        """
-        result = []
-        i = 0
-        while i < len(text):
-            # </thought> 태그 종료 감지
-            if self._in_thought_tag:
-                end_tag = "</thought>"
-                if text[i:].startswith(end_tag):
-                    self._in_thought_tag = False
-                    i += len(end_tag)
-                    continue
-                i += 1
-                continue
-
-            # <thought> 태그 시작 감지
-            start_tag = "<thought>"
-            if text[i:].startswith(start_tag):
-                self._in_thought_tag = True
-                i += len(start_tag)
-                continue
-
-            result.append(text[i])
-            i += 1
-
-        return "".join(result)
+        """텍스트에서 <thought>...</thought> 태그 내용을 필터링합니다."""
+        return self._thought_filter.filter(text)
 
     def _create_content_chunk(self, model: str, text: str) -> str:
         """컨텐츠 청크 JSON 문자열을 생성합니다."""
@@ -375,7 +304,7 @@ class ResponseHandler:
         pending_tool_call_buffers: Dict[int, Dict[str, str]] = {}
 
         # Gemini Thinking 태그 필터링 상태 초기화
-        self._in_thought_tag = False
+        self._thought_filter.reset()
 
         # 스트림 시작 로그
         logger.info(
@@ -489,6 +418,84 @@ class ResponseHandler:
                 resp.close()
                 response_closed = True
 
+    def handle_google_streaming_response(
+        self, resp: Generator[str, None, None], requested_model: str
+    ) -> Generator[str, None, None]:
+        """
+        Google 스트리밍 응답을 처리하는 제너레이터입니다.
+
+        Google SSE 형식의 스트림을 Ollama NDJSON 형식으로 변환합니다.
+        resp는 이미 파싱된 SSE 라인 문자열의 generator입니다.
+
+        Args:
+            resp: SSE 라인 문자열 generator
+            requested_model: 요청된 모델 이름
+
+        Yields:
+            Ollama 형식의 JSON 청크 문자열
+        """
+        start_time = time.time()
+        self._thought_filter.reset()
+        pending_tool_calls: Dict[int, Dict[str, str]] = {}
+        stream_finished = False
+
+        for sse_line in resp:
+            if not sse_line.strip():
+                continue
+            if sse_line.startswith("data: [DONE]"):
+                if pending_tool_calls:
+                    yield self._create_tool_call_chunk(
+                        requested_model,
+                        self._build_stream_tool_calls(pending_tool_calls),
+                    )
+                if not stream_finished:
+                    yield self._create_final_chunk(requested_model, start_time)
+                    stream_finished = True
+                break
+            if sse_line.startswith("data: "):
+                try:
+                    chunk = json.loads(sse_line[6:])
+                    choices = chunk.get("choices", [])
+                    if not choices:
+                        continue
+                    delta = choices[0].get("delta", {})
+                    text = self._extract_text_from_message_like(delta)
+                    finish_reason = choices[0].get("finish_reason")
+
+                    # thought 태그 필터링
+                    if text:
+                        text = self._filter_thought_tags(text)
+                        if text:
+                            yield self._create_content_chunk(requested_model, text)
+
+                    # tool call 조각 누적
+                    self._merge_stream_tool_calls(
+                        pending_tool_calls, delta.get("tool_calls", [])
+                    )
+
+                    if finish_reason in ("stop", "tool_calls", "length"):
+                        if pending_tool_calls:
+                            yield self._create_tool_call_chunk(
+                                requested_model,
+                                self._build_stream_tool_calls(pending_tool_calls),
+                            )
+                            pending_tool_calls.clear()
+                        yield self._create_final_chunk(
+                            requested_model, start_time, finish_reason
+                        )
+                        stream_finished = True
+                        break
+                except (json.JSONDecodeError, KeyError):
+                    continue
+
+        if not stream_finished:
+            if pending_tool_calls:
+                yield self._create_tool_call_chunk(
+                    requested_model,
+                    self._build_stream_tool_calls(pending_tool_calls),
+                )
+            yield self._create_final_chunk(requested_model, start_time)
+
     def handle_non_streaming_response(
         self, resp: Response, requested_model: str
     ) -> Dict[str, Any]:
@@ -519,7 +526,7 @@ class ResponseHandler:
             response_model = data.get("model", requested_model)
 
             # Gemini Thinking 태그 필터링
-            self._in_thought_tag = False
+            self._thought_filter.reset()
             if text_content and (
                 "<thought>" in text_content or "</thought>" in text_content
             ):

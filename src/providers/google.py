@@ -8,6 +8,12 @@ from typing import Optional, Dict, Any, Generator, Union, List
 import requests
 
 from src.auth.key_rotator import KeyRotator
+from src.utils.schema_sanitizer import (
+    SCHEMA_ALLOWED_KEYS,
+    GOOGLE_UNSUPPORTED_CONSTRAINT_KEYS,
+    GOOGLE_UNSUPPORTED_SCHEMA_KEYS,
+    sanitize_schema,
+)
 
 
 _SCHEMA_TYPE_MAP = {
@@ -17,46 +23,6 @@ _SCHEMA_TYPE_MAP = {
     "boolean": "BOOLEAN",
     "array": "ARRAY",
     "object": "OBJECT",
-}
-
-_UNSUPPORTED_CONSTRAINT_KEYS = {
-    "minLength",
-    "maxLength",
-    "exclusiveMinimum",
-    "exclusiveMaximum",
-    "pattern",
-    "minItems",
-    "maxItems",
-    "format",
-    "default",
-    "examples",
-}
-_UNSUPPORTED_SCHEMA_KEYS = {
-    "$schema",
-    "$defs",
-    "definitions",
-    "$ref",
-    "const",
-    "additionalProperties",
-    "patternProperties",
-    "unevaluatedProperties",
-    "dependentSchemas",
-    "propertyNames",
-    "title",
-    "$id",
-    "$comment",
-}
-_ALLOWED_SCHEMA_KEYS = {
-    "type",
-    "description",
-    "enum",
-    "items",
-    "properties",
-    "required",
-    "nullable",
-    "anyOf",
-    "oneOf",
-    "allOf",
 }
 
 
@@ -76,73 +42,12 @@ class GoogleApiClient:
 
     @staticmethod
     def _sanitize_schema_for_google(schema: Any) -> dict:
-        if not isinstance(schema, dict):
-            return {"type": "object", "properties": {}}
-
-        # $ref가 있어도 sibling 정보(type, description 등)는 보존
-        # $ref 자체는 _UNSUPPORTED_SCHEMA_KEYS에 의해 필터링됨
-
-        working = dict(schema)
-        if "const" in working and "enum" not in working:
-            working["enum"] = [working["const"]]
-
-        result: Dict[str, Any] = {}
-        for key, value in working.items():
-            if key in _UNSUPPORTED_CONSTRAINT_KEYS or key in _UNSUPPORTED_SCHEMA_KEYS:
-                continue
-            if key not in _ALLOWED_SCHEMA_KEYS:
-                continue
-
-            if key == "properties":
-                if not isinstance(value, dict):
-                    continue
-                result["properties"] = {
-                    prop_name: GoogleApiClient._sanitize_schema_for_google(prop_schema)
-                    for prop_name, prop_schema in value.items()
-                    if isinstance(prop_name, str)
-                }
-                continue
-
-            if key == "items":
-                if isinstance(value, dict):
-                    result["items"] = GoogleApiClient._sanitize_schema_for_google(value)
-                continue
-
-            if key in ("anyOf", "oneOf", "allOf"):
-                if isinstance(value, list):
-                    variants = [
-                        GoogleApiClient._sanitize_schema_for_google(item)
-                        for item in value if isinstance(item, dict)
-                    ]
-                    if variants:
-                        result[key] = variants
-                continue
-
-            if key == "required":
-                if isinstance(value, list):
-                    result["required"] = [item for item in value if isinstance(item, str)]
-                continue
-
-            if key == "enum":
-                if isinstance(value, list):
-                    result["enum"] = [item for item in value if isinstance(item, (str, int, float, bool))]
-                continue
-
-            result[key] = value
-
-        if not result:
-            return {"type": "object", "properties": {}}
-
-        if "type" not in result:
-            if "properties" in result:
-                result["type"] = "object"
-            elif "items" in result:
-                result["type"] = "array"
-
-        if result.get("type") == "object" and "properties" not in result:
-            result["properties"] = {}
-
-        return result
+        return sanitize_schema(
+            schema,
+            allowed_keys=SCHEMA_ALLOWED_KEYS,
+            unsupported_constraint_keys=GOOGLE_UNSUPPORTED_CONSTRAINT_KEYS,
+            unsupported_schema_keys=GOOGLE_UNSUPPORTED_SCHEMA_KEYS,
+        )
 
     @staticmethod
     def _convert_schema_types(schema: Any) -> Any:

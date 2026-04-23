@@ -5,6 +5,7 @@ Ollama 호환 API 라우트
 /api/chat, /api/tags, /api/version 등 Ollama 스타일 엔드포인트를 정의합니다.
 """
 
+import datetime
 import inspect
 import json
 import logging
@@ -122,7 +123,6 @@ def chat():
             tool_calls = response_handler._normalize_tool_calls(
                 message.get("tool_calls", [])
             )
-        import datetime
 
         message = {"role": "assistant", "content": text_content}
         if tool_calls:
@@ -136,214 +136,9 @@ def chat():
         return Response(json.dumps(ollama_response), mimetype="application/json")
 
     if stream and inspect.isgenerator(resp):
-
-        def google_stream_to_ollama():
-            start_time = __import__("time").time()
-            in_thought = False
-            pending_tool_calls = {}
-            stream_finished = False
-
-            def normalize_tool_arguments(arguments):
-                if isinstance(arguments, dict):
-                    return arguments
-                if isinstance(arguments, str):
-                    stripped = arguments.strip()
-                    if not stripped:
-                        return {}
-                    try:
-                        parsed = json.loads(stripped)
-                    except json.JSONDecodeError:
-                        return {"input": arguments}
-                    if isinstance(parsed, dict):
-                        return parsed
-                    return {"input": parsed}
-                if arguments is None:
-                    return {}
-                return {"input": arguments}
-
-            def build_tool_calls():
-                tool_calls = []
-                for index in sorted(pending_tool_calls.keys()):
-                    state = pending_tool_calls[index]
-                    name = state.get("name", "")
-                    if not name:
-                        continue
-                    tool_calls.append(
-                        {
-                            "function": {
-                                "name": name,
-                                "arguments": normalize_tool_arguments(
-                                    state.get("arguments", "")
-                                ),
-                            }
-                        }
-                    )
-                return tool_calls
-
-            for sse_line in resp:
-                if not sse_line.strip():
-                    continue
-                if sse_line.startswith("data: [DONE]"):
-                    tool_calls = build_tool_calls()
-                    if tool_calls:
-                        ollama_chunk = {
-                            "model": requested_model,
-                            "created_at": __import__("datetime")
-                            .datetime.utcnow()
-                            .isoformat()
-                            + "Z",
-                            "message": {
-                                "role": "assistant",
-                                "content": "",
-                                "tool_calls": tool_calls,
-                            },
-                            "done": False,
-                        }
-                        yield json.dumps(ollama_chunk) + "\n"
-                    duration_ns = int((__import__("time").time() - start_time) * 1e9)
-                    final = {
-                        "model": requested_model,
-                        "created_at": __import__("datetime")
-                        .datetime.utcnow()
-                        .isoformat()
-                        + "Z",
-                        "message": {"role": "assistant", "content": ""},
-                        "done": True,
-                        "total_duration": duration_ns,
-                        "eval_duration": duration_ns,
-                    }
-                    yield json.dumps(final) + "\n"
-                    stream_finished = True
-                    break
-                if sse_line.startswith("data: "):
-                    try:
-                        chunk = json.loads(sse_line[6:])
-                        choices = chunk.get("choices", [])
-                        if not choices:
-                            continue
-                        delta = choices[0].get("delta", {})
-                        text = response_handler._extract_text_from_message_like(delta)
-                        finish_reason = choices[0].get("finish_reason")
-
-                        filtered = []
-                        i = 0
-                        while i < len(text):
-                            if in_thought:
-                                end = text.find("</thought>", i)
-                                if end == -1:
-                                    break
-                                in_thought = False
-                                i = end + len("</thought>")
-                            else:
-                                start = text.find("<thought>", i)
-                                if start == -1:
-                                    filtered.append(text[i:])
-                                    break
-                                filtered.append(text[i:start])
-                                in_thought = True
-                                i = start + len("<thought>")
-                        text = "".join(filtered)
-
-                        if text:
-                            ollama_chunk = {
-                                "model": requested_model,
-                                "created_at": __import__("datetime")
-                                .datetime.utcnow()
-                                .isoformat()
-                                + "Z",
-                                "message": {"role": "assistant", "content": text},
-                                "done": False,
-                            }
-                            yield json.dumps(ollama_chunk) + "\n"
-
-                        for index, tool_call in enumerate(delta.get("tool_calls", [])):
-                            if not isinstance(tool_call, dict):
-                                continue
-                            state = pending_tool_calls.setdefault(
-                                index, {"name": "", "arguments": ""}
-                            )
-                            function_info = tool_call.get("function", {})
-                            if not isinstance(function_info, dict):
-                                function_info = {}
-                            if function_info.get("name"):
-                                state["name"] = str(function_info.get("name"))
-                            if isinstance(function_info.get("arguments"), str):
-                                state["arguments"] += function_info.get("arguments")
-                            elif function_info.get("arguments") is not None:
-                                state["arguments"] += json.dumps(
-                                    function_info.get("arguments"), ensure_ascii=False
-                                )
-
-                        if finish_reason in ("stop", "tool_calls", "length"):
-                            tool_calls = build_tool_calls()
-                            if tool_calls:
-                                ollama_chunk = {
-                                    "model": requested_model,
-                                    "created_at": __import__("datetime")
-                                    .datetime.utcnow()
-                                    .isoformat()
-                                    + "Z",
-                                    "message": {
-                                        "role": "assistant",
-                                        "content": "",
-                                        "tool_calls": tool_calls,
-                                    },
-                                    "done": False,
-                                }
-                                yield json.dumps(ollama_chunk) + "\n"
-                                pending_tool_calls.clear()
-                            duration_ns = int(
-                                (__import__("time").time() - start_time) * 1e9
-                            )
-                            final = {
-                                "model": requested_model,
-                                "created_at": __import__("datetime")
-                                .datetime.utcnow()
-                                .isoformat()
-                                + "Z",
-                                "message": {"role": "assistant", "content": ""},
-                                "done": True,
-                                "total_duration": duration_ns,
-                                "eval_duration": duration_ns,
-                                "done_reason": finish_reason,
-                            }
-                            yield json.dumps(final) + "\n"
-                            stream_finished = True
-                            break
-                    except (json.JSONDecodeError, KeyError):
-                        continue
-
-            if not stream_finished:
-                tool_calls = build_tool_calls()
-                if tool_calls:
-                    ollama_chunk = {
-                        "model": requested_model,
-                        "created_at": __import__("datetime")
-                        .datetime.utcnow()
-                        .isoformat()
-                        + "Z",
-                        "message": {
-                            "role": "assistant",
-                            "content": "",
-                            "tool_calls": tool_calls,
-                        },
-                        "done": False,
-                    }
-                    yield json.dumps(ollama_chunk) + "\n"
-                duration_ns = int((__import__("time").time() - start_time) * 1e9)
-                final = {
-                    "model": requested_model,
-                    "created_at": __import__("datetime").datetime.utcnow().isoformat()
-                    + "Z",
-                    "message": {"role": "assistant", "content": ""},
-                    "done": True,
-                    "total_duration": duration_ns,
-                    "eval_duration": duration_ns,
-                }
-                yield json.dumps(final) + "\n"
-
+        generator = response_handler.handle_google_streaming_response(resp, requested_model)
         return Response(
-            stream_with_context(google_stream_to_ollama()),
+            stream_with_context(generator),
             mimetype="application/x-ndjson",
         )
 
