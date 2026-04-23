@@ -52,6 +52,8 @@ __pycache__/
 *.pyc
 
 # local hidden work dirs
+.claude/
 .omc/
 .plan/
 .research/
+venv.broken-*/
