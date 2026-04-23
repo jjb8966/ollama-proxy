@@ -8,7 +8,7 @@ cd "$(dirname "$0")"
 # 이름 충돌로 docker-compose up이 실패하면(set -e) 아래 단계(nginx-network connect)가 실행되지 않습니다.
 # 따라서 이 스크립트는 ollama-proxy만 빌드/기동합니다.
 echo "🚀 Building and starting ollama-proxy (only) from local source..."
-docker-compose up --build -d --no-deps ollama-proxy
+docker-compose up --build -d --force-recreate --no-deps ollama-proxy
 
 # 2. nginx-network 네트워크 연결
 echo "🔗 Connecting containers to nginx-network..."

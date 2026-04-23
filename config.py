@@ -65,3 +65,7 @@ class ApiConfig:
         # ENV 이름은 기존 운영 설정을 깨지 않기 위해 그대로 OLLAMA_API_KEYS 를 사용합니다.
         self.ollama_cloud_rotator = KeyRotator("OllamaCloud", "OLLAMA_API_KEYS")
         self.ollama_cloud_rotator.log_key_count()
+
+        # OpenCode Go (OpenAI 호환)
+        self.opencode_rotator = KeyRotator("OpenCode", "OPENCODE_API_KEYS")
+        self.opencode_rotator.log_key_count()

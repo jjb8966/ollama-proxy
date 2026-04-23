@@ -75,11 +75,13 @@ PERPLEXITY_API_KEYS="key1"
 NVIDIA_NIM_API_KEYS="key1"
 CLI_PROXY_API_KEYS="key1"
 OLLAMA_API_KEYS="key1,key2"  # for ollama-cloud provider
+OPENCODE_API_KEYS="key1,key2"  # for opencode provider
 
 # base url override (optional)
 NVIDIA_NIM_BASE_URL="https://integrate.api.nvidia.com/v1"
 CLI_PROXY_API_BASE_URL="http://cli-proxy-api:8317/v1"
 OLLAMA_BASE_URL="https://ollama.com/v1"
+OPENCODE_BASE_URL="https://opencode.ai/zen/go/v1"
 
 # 선택적 설정
 PORT=5005
@@ -159,6 +161,7 @@ print(response.choices[0].message.content)
 | Qwen | `qwen:qwen3-coder-plus` |
 | Akash | `akash:Meta-Llama-3-1-8B-Instruct-FP8` |
 | Ollama Cloud | `ollama-cloud:kimi-k2.5` |
+| OpenCode | `opencode:glm-5.1` |
 
 전체 모델 목록은 `models.json` 파일에서 확인하거나 `/api/tags` 엔드포인트를 호출하세요.
 
