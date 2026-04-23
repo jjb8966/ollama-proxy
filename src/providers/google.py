@@ -56,6 +56,7 @@ _ALLOWED_SCHEMA_KEYS = {
     "nullable",
     "anyOf",
     "oneOf",
+    "allOf",
 }
 
 
@@ -78,8 +79,8 @@ class GoogleApiClient:
         if not isinstance(schema, dict):
             return {"type": "object", "properties": {}}
 
-        if isinstance(schema.get("$ref"), str):
-            return {"type": "object", "properties": {}}
+        # $ref가 있어도 sibling 정보(type, description 등)는 보존
+        # $ref 자체는 _UNSUPPORTED_SCHEMA_KEYS에 의해 필터링됨
 
         working = dict(schema)
         if "const" in working and "enum" not in working:
@@ -107,7 +108,7 @@ class GoogleApiClient:
                     result["items"] = GoogleApiClient._sanitize_schema_for_google(value)
                 continue
 
-            if key in ("anyOf", "oneOf"):
+            if key in ("anyOf", "oneOf", "allOf"):
                 if isinstance(value, list):
                     variants = [
                         GoogleApiClient._sanitize_schema_for_google(item)
@@ -128,6 +129,9 @@ class GoogleApiClient:
                 continue
 
             result[key] = value
+
+        if not result:
+            return {"type": "object", "properties": {}}
 
         if "type" not in result:
             if "properties" in result:
