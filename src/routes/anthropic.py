@@ -51,6 +51,7 @@ def messages():
     )
 
     proxied_req = anthropic_handler.build_proxy_request(req)
+    tools_contract = proxied_req.pop('_tools_contract', None)
     if not proxied_req.get('messages'):
         error_body = {
             "type": "error",
@@ -90,12 +91,12 @@ def messages():
     if proxied_req['stream'] and (inspect.isgenerator(resp) or hasattr(resp, 'iter_lines')):
         logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)
         return Response(
-            stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id)),
+            stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id, tools_contract=tools_contract)),
             mimetype='text/event-stream'
         )
 
     try:
-        response_body = anthropic_handler.handle_non_streaming_response(resp, requested_model)
+        response_body = anthropic_handler.handle_non_streaming_response(resp, requested_model, tools_contract=tools_contract)
         logger.info("Anthropic non-streaming response success: request_id=%s model=%s", request_id, requested_model)
     except Exception as exc:
         logger.error(f"Anthropic 응답 변환 실패: request_id={request_id} model={requested_model} error={exc}", exc_info=True)

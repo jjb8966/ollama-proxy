@@ -257,6 +257,136 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         )
         self.assertEqual(response["stop_reason"], "end_turn")
 
+    def test_non_streaming_response_prunes_optional_empty_tool_fields(self) -> None:
+        tools_contract = {
+            "Read": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {"type": "string"},
+                        "pages": {"type": "string"},
+                    },
+                    "required": ["file_path"],
+                },
+                "required": {"file_path"},
+                "properties": {
+                    "file_path": {"type": "string"},
+                    "pages": {"type": "string"},
+                },
+            }
+        }
+        response = self.handler.handle_non_streaming_response(
+            {
+                "model": "cli-proxy-api:gpt-5.4",
+                "choices": [
+                    {
+                        "finish_reason": "tool_calls",
+                        "message": {
+                            "role": "assistant",
+                            "content": "",
+                            "tool_calls": [
+                                {
+                                    "id": "toolu_read_1",
+                                    "type": "function",
+                                    "function": {
+                                        "name": "Read",
+                                        "arguments": json.dumps(
+                                            {"file_path": "/tmp/a.txt", "pages": ""},
+                                            ensure_ascii=False,
+                                        ),
+                                    },
+                                }
+                            ],
+                        },
+                    }
+                ],
+                "usage": {"prompt_tokens": 10, "completion_tokens": 5},
+            },
+            "cli-proxy-api:gpt-5.4",
+            tools_contract=tools_contract,
+        )
+
+        self.assertEqual(
+            response["content"][0]["input"],
+            {"file_path": "/tmp/a.txt"},
+        )
+        self.assertEqual(response["stop_reason"], "tool_use")
+
+    def test_normalize_tool_input_prunes_nested_optional_empty_fields(self) -> None:
+        tool_contract = {
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prompt": {"type": "string"},
+                    "metadata": {
+                        "type": "object",
+                        "properties": {
+                            "tag": {"type": "string"},
+                            "mode": {"type": "string"},
+                        },
+                        "required": ["mode"],
+                    },
+                },
+                "required": ["prompt"],
+            },
+            "required": {"prompt"},
+            "properties": {
+                "prompt": {"type": "string"},
+                "metadata": {
+                    "type": "object",
+                    "properties": {
+                        "tag": {"type": "string"},
+                        "mode": {"type": "string"},
+                    },
+                    "required": ["mode"],
+                },
+            },
+        }
+
+        normalized = self.handler._normalize_tool_input(
+            {
+                "prompt": "조사",
+                "metadata": {
+                    "tag": "   ",
+                    "mode": "quick",
+                },
+                "pages": "",
+            },
+            tool_contract,
+        )
+
+        self.assertEqual(
+            normalized,
+            {
+                "prompt": "조사",
+                "metadata": {"mode": "quick"},
+            },
+        )
+
+    def test_normalize_tool_input_keeps_required_empty_fields(self) -> None:
+        tool_contract = {
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "prompt": {"type": "string"},
+                    "description": {"type": "string"},
+                },
+                "required": ["prompt"],
+            },
+            "required": {"prompt"},
+            "properties": {
+                "prompt": {"type": "string"},
+                "description": {"type": "string"},
+            },
+        }
+
+        normalized = self.handler._normalize_tool_input(
+            {"prompt": "", "description": " "},
+            tool_contract,
+        )
+
+        self.assertEqual(normalized, {"prompt": ""})
+
     def test_normalize_tools_adds_empty_properties_for_object_schema(self) -> None:
         normalized = self.handler._normalize_tools(
             [
@@ -590,6 +720,76 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
 
         joined = "".join(chunks)
         self.assertIn("안녕하세요", joined)
+        self.assertIn("event: message_stop", joined)
+
+    def test_stream_prunes_optional_empty_tool_fields_before_flushing_json(self) -> None:
+        tools_contract = {
+            "Read": {
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "file_path": {"type": "string"},
+                        "pages": {"type": "string"},
+                    },
+                    "required": ["file_path"],
+                },
+                "required": {"file_path"},
+                "properties": {
+                    "file_path": {"type": "string"},
+                    "pages": {"type": "string"},
+                },
+            }
+        }
+        tool_call_payload = json.dumps(
+            {
+                "choices": [
+                    {
+                        "delta": {
+                            "tool_calls": [
+                                {
+                                    "index": 0,
+                                    "id": "toolu_read_1",
+                                    "type": "function",
+                                    "function": {
+                                        "name": "Read",
+                                        "arguments": json.dumps(
+                                            {
+                                                "file_path": "/tmp/a.txt",
+                                                "pages": "",
+                                            },
+                                            ensure_ascii=False,
+                                        ),
+                                    },
+                                }
+                            ]
+                        },
+                        "finish_reason": None,
+                    }
+                ]
+            },
+            ensure_ascii=False,
+        )
+        resp = self._stream(
+            [
+                f"data: {tool_call_payload}\n\n",
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cli-proxy-api:gpt-5.4",
+                "req_stream_prune",
+                tools_contract=tools_contract,
+            )
+        )
+
+        joined = "".join(chunks)
+        self.assertIn('"name": "Read"', joined)
+        self.assertIn('\\"file_path\\": \\"/tmp/a.txt\\"', joined)
+        self.assertNotIn('\\"pages\\": \\"\\"', joined)
         self.assertIn("event: message_stop", joined)
 
 

@@ -33,6 +33,15 @@ _ANTHROPIC_ALLOWED_SCHEMA_KEYS = {
 }
 
 
+def _is_empty_value(value: Any) -> bool:
+    """값이 empty string, None, 또는 whitespace-only string인지 확인합니다."""
+    if value is None:
+        return True
+    if isinstance(value, str) and not value.strip():
+        return True
+    return False
+
+
 class AnthropicHandler:
     """Anthropic Messages API 형식 변환 핸들러"""
 
@@ -372,6 +381,148 @@ class AnthropicHandler:
         return sanitized
 
     @staticmethod
+    def _extract_tools_contract(tools: Any) -> Dict[str, Dict[str, Any]]:
+        """
+        Anthropic tools 요청에서 내부용 tool contract 메타데이터를 추출합니다.
+
+        반환값은 tool_name -> {schema, required} 맵핑입니다.
+        이 정보는 응답 변환에서 tool_input을 정규화할 때 사용됩니다.
+        """
+        contracts: Dict[str, Dict[str, Any]] = {}
+        if not isinstance(tools, list):
+            return contracts
+
+        for tool in tools:
+            if not isinstance(tool, dict):
+                continue
+            name = str(tool.get("name", "")).strip()
+            if not name:
+                continue
+            schema = tool.get("input_schema", {})
+            if not isinstance(schema, dict):
+                schema = {}
+            raw_required = schema.get("required", [])
+            if not isinstance(raw_required, (list, tuple, set)):
+                required = set()
+            else:
+                required = {
+                    item for item in raw_required if isinstance(item, str)
+                }
+
+            # properties 정보 보존
+            properties = schema.get("properties", {})
+            if not isinstance(properties, dict):
+                properties = {}
+
+            contracts[name] = {
+                "schema": schema,
+                "required": required,
+                "properties": properties,
+            }
+
+        return contracts
+
+    @staticmethod
+    def _normalize_tool_input(
+        tool_input: Dict[str, Any],
+        tool_contract: Optional[Dict[str, Any]],
+    ) -> Dict[str, Any]:
+        """
+        tool_input을 schema-aware하게 정규화합니다.
+
+        - required가 아닌 필드이고 값이 빈 문자열/None/공백이면 제거
+        - Agent/Explore 스타일 payload에서 optional 빈 문자열 필드 제거
+        - Read 도구의 pages="" 같은 경우 처리
+        - nested object/array에도 같은 규칙을 재귀 적용
+        """
+        if not isinstance(tool_input, dict):
+            return tool_input
+
+        if not tool_contract:
+            return tool_input
+
+        def normalize_value(
+            value: Any,
+            schema: Optional[Dict[str, Any]],
+            required_fields: set[str],
+        ) -> Any:
+            if isinstance(value, dict):
+                nested_schema = schema if isinstance(schema, dict) else {}
+                nested_properties = nested_schema.get("properties", {})
+                if not isinstance(nested_properties, dict):
+                    nested_properties = {}
+                nested_required = nested_schema.get("required", [])
+                if not isinstance(nested_required, (list, tuple, set)):
+                    nested_required = []
+                nested_required_set = {
+                    item for item in nested_required if isinstance(item, str)
+                }
+
+                normalized_dict: Dict[str, Any] = {}
+                for nested_key, nested_value in value.items():
+                    child_schema = nested_properties.get(nested_key)
+                    normalized_child = normalize_value(
+                        nested_value,
+                        child_schema if isinstance(child_schema, dict) else None,
+                        nested_required_set,
+                    )
+                    if nested_key in nested_required_set:
+                        normalized_dict[nested_key] = normalized_child
+                        continue
+                    if _is_empty_value(normalized_child):
+                        continue
+                    normalized_dict[nested_key] = normalized_child
+                return normalized_dict
+
+            if isinstance(value, list):
+                item_schema = schema.get("items") if isinstance(schema, dict) else None
+                normalized_list = [
+                    normalize_value(
+                        item,
+                        item_schema if isinstance(item_schema, dict) else None,
+                        set(),
+                    )
+                    for item in value
+                ]
+                return normalized_list
+
+            return value
+
+        schema = tool_contract.get("schema", {})
+        if not isinstance(schema, dict):
+            schema = {}
+        properties = tool_contract.get("properties", {})
+        if not isinstance(properties, dict):
+            properties = {}
+
+        required_fields = tool_contract.get("required", set())
+        if not isinstance(required_fields, (set, list, tuple)):
+            required_fields = set()
+        else:
+            required_fields = {
+                item for item in required_fields if isinstance(item, str)
+            }
+
+        normalized: Dict[str, Any] = {}
+        for key, value in tool_input.items():
+            child_schema = properties.get(key)
+            normalized_value = normalize_value(
+                value,
+                child_schema if isinstance(child_schema, dict) else None,
+                set(),
+            )
+            if key in required_fields:
+                normalized[key] = normalized_value
+                continue
+            if _is_empty_value(normalized_value):
+                continue
+            normalized[key] = normalized_value
+
+        if schema.get("type") == "object" and "properties" in schema and not normalized:
+            return {}
+        return normalized
+
+    @staticmethod
     def _normalize_tools(tools: Any) -> List[Dict[str, Any]]:
         normalized: List[Dict[str, Any]] = []
         if not isinstance(tools, list):
@@ -417,6 +568,7 @@ class AnthropicHandler:
     def build_proxy_request(self, req: Dict[str, Any]) -> Dict[str, Any]:
         system_messages = self._normalize_system_messages(req.get("system"))
         chat_messages = self._normalize_messages(req.get("messages"))
+        request_tools = req.get("tools")
 
         return {
             "model": self.normalize_model_name(req.get("model")),
@@ -424,8 +576,9 @@ class AnthropicHandler:
             "stream": bool(req.get("stream", False)),
             "max_tokens": req.get("max_tokens"),
             "thinking_level": req.get("thinking_level", "minimal"),
-            "tools": self._normalize_tools(req.get("tools")),
+            "tools": self._normalize_tools(request_tools),
             "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
+            "_tools_contract": self._extract_tools_contract(request_tools),
         }
 
     @staticmethod
@@ -436,7 +589,11 @@ class AnthropicHandler:
             return "tool_use"
         return "end_turn"
 
-    def _build_anthropic_content(self, message: Dict[str, Any]) -> List[Dict[str, Any]]:
+    def _build_anthropic_content(
+        self,
+        message: Dict[str, Any],
+        tools_contract: Optional[Dict[str, Dict[str, Any]]] = None,
+    ) -> List[Dict[str, Any]]:
         content_blocks: List[Dict[str, Any]] = []
 
         text_content = message.get("content")
@@ -456,11 +613,17 @@ class AnthropicHandler:
             if not isinstance(tool_input, dict):
                 tool_input = {"input": tool_input}
 
+            # tools_contract가 있으면 tool_input 정규화
+            tool_name = str(function_info.get("name", ""))
+            if tools_contract and tool_name in tools_contract:
+                tool_contract = tools_contract[tool_name]
+                tool_input = self._normalize_tool_input(tool_input, tool_contract)
+
             content_blocks.append(
                 {
                     "type": "tool_use",
                     "id": self._sanitize_tool_id(tool_call.get("id")),
-                    "name": str(function_info.get("name", "")),
+                    "name": tool_name,
                     "input": tool_input,
                 }
             )
@@ -470,7 +633,10 @@ class AnthropicHandler:
         return content_blocks
 
     def handle_non_streaming_response(
-        self, resp: Union[Dict[str, Any], Response], requested_model: str
+        self,
+        resp: Union[Dict[str, Any], Response],
+        requested_model: str,
+        tools_contract: Optional[Dict[str, Dict[str, Any]]] = None,
     ) -> Dict[str, Any]:
         data = resp if isinstance(resp, dict) else resp.json()
         if "choices" not in data or not isinstance(data.get("choices"), list):
@@ -490,7 +656,7 @@ class AnthropicHandler:
             "type": "message",
             "role": "assistant",
             "model": response_model,
-            "content": self._build_anthropic_content(message),
+            "content": self._build_anthropic_content(message, tools_contract),
             "stop_reason": self._map_stop_reason(finish_reason),
             "stop_sequence": None,
             "usage": {
@@ -527,6 +693,7 @@ class AnthropicHandler:
         resp: Union[Generator[str, None, None], Response],
         requested_model: str,
         request_id: Optional[str] = None,
+        tools_contract: Optional[Dict[str, Dict[str, Any]]] = None,
     ) -> Generator[str, None, None]:
         message_id = f"msg_{uuid.uuid4().hex}"
         response_model = requested_model
@@ -635,6 +802,31 @@ class AnthropicHandler:
                 state = tool_block_state[block_index]
                 if not state.get("started") and state.get("name"):
                     events.extend(ensure_tool_block_started(block_index, state))
+
+            # tools_contract가 있으면 tool arguments 정규화
+            if tools_contract:
+                for block_index in sorted(tool_block_state.keys()):
+                    state = tool_block_state[block_index]
+                    tool_name = state.get("name", "")
+                    if (
+                        tool_name
+                        and tool_name in tools_contract
+                        and state.get("arguments")
+                    ):
+                        try:
+                            parsed_args = json.loads(state["arguments"])
+                            if isinstance(parsed_args, dict):
+                                normalized_args = self._normalize_tool_input(
+                                    parsed_args, tools_contract[tool_name]
+                                )
+                                normalized_json = json.dumps(
+                                    normalized_args, ensure_ascii=False
+                                )
+                                if normalized_json != state["arguments"]:
+                                    state["arguments"] = normalized_json
+                                    state["emitted_argument_length"] = 0
+                        except json.JSONDecodeError:
+                            pass
 
             # 남은 tool argument delta 플러시
             for block_index in sorted(tool_block_state.keys()):
@@ -858,8 +1050,9 @@ class AnthropicHandler:
 
                     for event in ensure_tool_block_started(block_index, state):
                         yield event
-                    for event in flush_pending_tool_delta(block_index, state):
-                        yield event
+                    if not tools_contract:
+                        for event in flush_pending_tool_delta(block_index, state):
+                            yield event
 
                 if (
                     not text

@@ -1,6 +1,8 @@
 import unittest
 from unittest.mock import patch
 
+from src.handlers.anthropic import AnthropicHandler
+
 from flask import Flask
 
 from src.core.errors import ProxyRequestError
@@ -114,6 +116,37 @@ class AnthropicRouteErrorHandlingTests(unittest.TestCase):
                 }
             ],
         )
+
+    def test_build_proxy_request_keeps_internal_tools_contract_out_of_provider_payload(self) -> None:
+        handler = AnthropicHandler()
+        proxied_request = handler.build_proxy_request(
+            {
+                "model": "cli-proxy-api:gpt-5.4-high",
+                "stream": False,
+                "messages": [{"role": "user", "content": "read"}],
+                "tools": [
+                    {
+                        "name": "Read",
+                        "description": "Read file",
+                        "input_schema": {
+                            "type": "object",
+                            "properties": {
+                                "file_path": {"type": "string"},
+                                "pages": {"type": "string"},
+                            },
+                            "required": ["file_path"],
+                        },
+                    }
+                ],
+            }
+        )
+
+        self.assertIn("_tools_contract", proxied_request)
+        tools_contract = proxied_request.pop("_tools_contract")
+        self.assertNotIn("_tools_contract", proxied_request)
+        self.assertEqual(tools_contract["Read"]["required"], {"file_path"})
+        self.assertIn("pages", tools_contract["Read"]["properties"])
+        self.assertEqual(proxied_request["tools"][0]["function"]["name"], "Read")
 
 
 if __name__ == "__main__":
