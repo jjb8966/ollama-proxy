@@ -67,6 +67,84 @@ class ChatHandlerLimitTests(unittest.TestCase):
         payload = client.post_request.call_args.kwargs["payload"]
         self.assertEqual(payload["max_tokens"], 2048)
 
+    def test_ollama_cloud_image_url_blocks_are_normalized_before_forwarding(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.ollama_cloud_client = client
+
+        self.handler.handle_chat_request(
+            {
+                "model": "ollama-cloud:glm-5",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": "이미지를 설명해 주세요."},
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh"
+                                },
+                            },
+                        ],
+                    }
+                ],
+                "stream": False,
+            }
+        )
+
+        payload = client.post_request.call_args.kwargs["payload"]
+        self.assertEqual(
+            payload["messages"],
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "이미지를 설명해 주세요."},
+                        {
+                            "type": "image_url",
+                            "image_url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh",
+                        },
+                    ],
+                }
+            ],
+        )
+
+    def test_non_ollama_cloud_provider_keeps_openai_image_url_shape(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.openrouter_client = client
+
+        self.handler.handle_chat_request(
+            {
+                "model": "openrouter:mistralai/devstral-2512:free",
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": "이미지를 설명해 주세요."},
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh"
+                                },
+                            },
+                        ],
+                    }
+                ],
+                "stream": False,
+            }
+        )
+
+        payload = client.post_request.call_args.kwargs["payload"]
+        self.assertEqual(
+            payload["messages"][0]["content"][1],
+            {
+                "type": "image_url",
+                "image_url": {"url": "data:image/png;base64,ZmFrZS1pbWFnZS1kYXRh"},
+            },
+        )
+
     def test_request_over_eighty_percent_of_context_uses_compaction_model(self) -> None:
         self.handler._estimate_request_tokens = Mock(return_value=204801)
 

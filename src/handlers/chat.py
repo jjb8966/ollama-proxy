@@ -30,11 +30,11 @@ def _strip_quotes(value: str) -> str:
 class ChatHandler:
     """
     채팅 요청 핸들러
-    
+
     모델 prefix에 따라 적절한 API 제공업체로 요청을 라우팅합니다.
     이미지 처리, 메시지 정규화 등의 전처리도 수행합니다.
     """
-    
+
     COMPACTION_THRESHOLD_RATIO = 0.8
     COMPACTION_REQUIRED_MESSAGE = (
         "현재 요청 페이로드가 모델의 최대 컨텍스트 임계값을 초과했습니다. "
@@ -97,16 +97,20 @@ class ChatHandler:
         'ollama': {
             'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
             'client_attr': 'ollama_cloud_client'
+        },
+        'opencode': {
+            'base_url': _strip_quotes(os.getenv('OPENCODE_BASE_URL', 'https://opencode.ai/zen/go/v1')),
+            'client_attr': 'opencode_client'
         }
     }
-    
+
     def __init__(self, api_config):
         """
         Args:
             api_config: ApiConfig 인스턴스 (각 제공업체의 rotator 포함)
         """
         self.api_config = api_config
-        
+
         # 각 제공업체별 클라이언트 생성
         self.google_client = GoogleApiClient(api_config.google_rotator)
         self.openrouter_client = StandardApiClient(api_config.openrouter_rotator)
@@ -119,6 +123,7 @@ class ChatHandler:
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
         self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
+        self.opencode_client = StandardApiClient(api_config.opencode_rotator)
 
     @staticmethod
     def _estimate_request_tokens(req: Dict[str, Any]) -> int:
@@ -259,10 +264,10 @@ class ChatHandler:
     def _parse_model(self, requested_model: str) -> tuple:
         """
         모델 문자열에서 제공업체와 모델명을 추출합니다.
-        
+
         Args:
             requested_model: "provider:model_name" 형식의 문자열
-            
+
         Returns:
             (제공업체, 모델명, base_url) 튜플
         """
@@ -270,7 +275,7 @@ class ChatHandler:
             if requested_model.startswith(f"{prefix}:"):
                 model = requested_model.replace(f'{prefix}:', '')
                 return prefix, model, config['base_url']
-        
+
         # 매칭되는 제공업체가 없는 경우
         return None, requested_model, None
 
@@ -278,7 +283,7 @@ class ChatHandler:
         """제공업체에 해당하는 API 클라이언트를 반환합니다."""
         if provider not in self.PROVIDER_CONFIG:
             raise ValueError(f"지원되지 않는 제공업체: {provider}")
-        
+
         client_attr = self.PROVIDER_CONFIG[provider]['client_attr']
         return getattr(self, client_attr)
 
@@ -303,29 +308,29 @@ class ChatHandler:
     def _process_image_content(self, messages: List[Dict]) -> None:
         """
         메시지 내 이미지 데이터를 OpenAI 형식으로 변환합니다.
-        
+
         Cline의 이미지 요청 형식을 OpenAI Vision API 형식으로 변환합니다.
         원본 messages 리스트를 직접 수정합니다.
         """
         if not messages:
             return
-        
+
         for message in messages:
             if message['role'] != 'user':
                 continue
-            
+
             content = message.get('content', '')
             if not isinstance(content, str) or 'data:image' not in content:
                 continue
-            
+
             # 이미지 데이터 분리
             try:
                 split1 = content.split('data:image')
                 split2 = split1[1].split('<environment_details>')
-                
+
                 text_data = split1[0] + split2[1]
                 image_data = 'data:image' + split2[0]
-                
+
                 # OpenAI Vision API 형식으로 변환
                 message['content'] = [
                     {'type': 'text', 'text': text_data},
@@ -333,6 +338,46 @@ class ChatHandler:
                 ]
             except (IndexError, KeyError) as e:
                 logging.warning(f"이미지 처리 실패: {e}")
+
+    def _normalize_ollama_cloud_image_content(self, messages: List[Dict]) -> None:
+        """ollama-cloud 업스트림 호환 형식으로 image_url 블록을 정규화합니다."""
+        if not messages:
+            return
+
+        for message in messages:
+            if message.get('role') != 'user':
+                continue
+
+            content = message.get('content')
+            if not isinstance(content, list):
+                continue
+
+            normalized_parts: List[Dict[str, Any]] = []
+            changed = False
+            for part in content:
+                if not isinstance(part, dict):
+                    normalized_parts.append(part)
+                    continue
+
+                if part.get('type') != 'image_url':
+                    normalized_parts.append(part)
+                    continue
+
+                image_url = part.get('image_url')
+                if not isinstance(image_url, dict):
+                    normalized_parts.append(part)
+                    continue
+
+                url = image_url.get('url')
+                if not isinstance(url, str) or not url:
+                    normalized_parts.append(part)
+                    continue
+
+                normalized_parts.append({'type': 'image_url', 'image_url': url})
+                changed = True
+
+            if changed:
+                message['content'] = normalized_parts
 
     def handle_chat_request(self, req: Dict[str, Any]) -> Optional[requests.Response | Dict[str, Any] | ProxyRequestError]:
         messages = req.get('messages')
@@ -361,6 +406,9 @@ class ChatHandler:
         if removed_model_error is not None:
             logging.warning("비활성화된 모델 요청 차단: %s", requested_model)
             return removed_model_error
+
+        if provider == 'ollama-cloud':
+            self._normalize_ollama_cloud_image_content(messages)
 
         if provider == 'google':
             return self.google_client.post_request(
