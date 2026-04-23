@@ -25,7 +25,7 @@ services:
       - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
       - OPENCODE_API_KEYS=${OPENCODE_API_KEYS}
-      - OPENCODE_BASE_URL=${OPENCODE_BASE_URL}
+      - OPENCODE_BASE_URL=${OPENCODE_BASE_URL:-https://opencode.ai/zen/go/v1}
     volumes:
       - ~/.qwen:/root/.qwen:ro
     restart: always

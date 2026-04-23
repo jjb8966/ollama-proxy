@@ -229,6 +229,12 @@
       "model": "opencode:qwen3.6-plus",
       "context_length": 1000000,
       "max_output_tokens": 65536
+    },
+    {
+      "name": "opencode:qwen3.5-plus",
+      "model": "opencode:qwen3.5-plus",
+      "context_length": 1000000,
+      "max_output_tokens": 81920
     }
   ]
 }
