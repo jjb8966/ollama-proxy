@@ -48,20 +48,39 @@ class AnthropicHandler:
     def _extract_text_from_content_value(content: Any) -> str:
         return extract_text_from_content_value(content, keys=ANTHROPIC_TEXT_KEYS)
 
+    @staticmethod
+    def _extract_stream_reasoning(choice: Dict[str, Any]) -> str:
+        """스트리밍 청크에서 reasoning_content를 추출합니다."""
+        if not isinstance(choice, dict):
+            return ""
+        delta = choice.get("delta", {})
+        if isinstance(delta, dict):
+            for key in ("reasoning_content", "reasoning"):
+                extracted = extract_text_from_content_value(delta.get(key))
+                if extracted:
+                    return extracted
+        message = choice.get("message", {})
+        if isinstance(message, dict):
+            for key in ("reasoning_content", "reasoning"):
+                extracted = extract_text_from_content_value(message.get(key))
+                if extracted:
+                    return extracted
+        return ""
+
     def _extract_stream_text(self, choice: Dict[str, Any]) -> str:
         if not isinstance(choice, dict):
             return ""
 
         delta = choice.get("delta", {})
         if isinstance(delta, dict):
-            for key in ("content", "text", "reasoning_content", "reasoning"):
+            for key in ("content", "text"):
                 extracted = self._extract_text_from_content_value(delta.get(key))
                 if extracted:
                     return extracted
 
         message = choice.get("message", {})
         if isinstance(message, dict):
-            for key in ("content", "reasoning_content", "reasoning"):
+            for key in ("content",):
                 extracted = self._extract_text_from_content_value(message.get(key))
                 if extracted:
                     return extracted
@@ -193,12 +212,19 @@ class AnthropicHandler:
 
             if role == "assistant":
                 text_parts: List[str] = []
+                reasoning_parts: List[str] = []
                 assistant_tool_calls: List[Dict[str, Any]] = []
 
                 for block in content:
                     if not isinstance(block, dict):
                         continue
                     block_type = block.get("type")
+
+                    if block_type == "thinking":
+                        thinking_text = block.get("thinking", "")
+                        if isinstance(thinking_text, str) and thinking_text:
+                            reasoning_parts.append(thinking_text)
+                        continue
 
                     if block_type == "text":
                         text_parts.append(str(block.get("text", "")))
@@ -227,6 +253,8 @@ class AnthropicHandler:
                     "role": "assistant",
                     "content": "".join(text_parts),
                 }
+                if reasoning_parts:
+                    assistant_message["reasoning_content"] = "\n".join(reasoning_parts)
                 if assistant_tool_calls:
                     assistant_message["tool_calls"] = assistant_tool_calls
                 normalized.append(assistant_message)
@@ -496,17 +524,20 @@ class AnthropicHandler:
         system_messages = self._normalize_system_messages(req.get("system"))
         chat_messages = self._normalize_messages(req.get("messages"))
         request_tools = req.get("tools")
+        normalized_tools = self._normalize_tools(request_tools)
 
-        return {
+        result: Dict[str, Any] = {
             "model": self.normalize_model_name(req.get("model")),
             "messages": system_messages + chat_messages,
             "stream": bool(req.get("stream", False)),
             "max_tokens": req.get("max_tokens"),
             "thinking_level": req.get("thinking_level", "minimal"),
-            "tools": self._normalize_tools(request_tools),
             "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
             "_tools_contract": self._extract_tools_contract(request_tools),
         }
+        if normalized_tools:
+            result["tools"] = normalized_tools
+        return result
 
     @staticmethod
     def _map_stop_reason(openai_reason: Optional[str]) -> str:
@@ -522,6 +553,11 @@ class AnthropicHandler:
         tools_contract: Optional[Dict[str, Dict[str, Any]]] = None,
     ) -> List[Dict[str, Any]]:
         content_blocks: List[Dict[str, Any]] = []
+
+        # thinking 블록은 text 블록보다 먼저 와야 함 (Anthropic API 명세)
+        reasoning_content = message.get("reasoning_content")
+        if isinstance(reasoning_content, str) and reasoning_content:
+            content_blocks.append({"type": "thinking", "thinking": reasoning_content})
 
         text_content = message.get("content")
         if isinstance(text_content, str) and text_content:
@@ -626,6 +662,7 @@ class AnthropicHandler:
         response_model = requested_model
         stop_reason = "end_turn"
         current_index = 0
+        thinking_block_open = False
         text_block_open = False
         tool_block_state: Dict[int, Dict[str, Any]] = {}
         stream_id = request_id or message_id
@@ -718,7 +755,7 @@ class AnthropicHandler:
 
         def close_open_blocks() -> List[str]:
             """모든 열린 content block을 닫습니다. 멱등 함수입니다."""
-            nonlocal text_block_open, stop_reason, blocks_closed
+            nonlocal thinking_block_open, text_block_open, current_index, stop_reason, blocks_closed
             if blocks_closed:
                 return []
 
@@ -767,6 +804,18 @@ class AnthropicHandler:
                 for state in tool_block_state.values()
             ):
                 stop_reason = "tool_use"
+
+            # thinking block 종료
+            if thinking_block_open:
+                events.append(
+                    sse(
+                        "content_block_stop",
+                        {"type": "content_block_stop", "index": current_index},
+                    )
+                )
+                thinking_block_open = False
+                if not text_block_open:
+                    current_index += 1
 
             # text block 종료
             if text_block_open:
@@ -923,8 +972,36 @@ class AnthropicHandler:
                         stop_reason,
                     )
 
+                reasoning = self._extract_stream_reasoning(choice)
+                if reasoning:
+                    if not thinking_block_open:
+                        yield sse(
+                            "content_block_start",
+                            {
+                                "type": "content_block_start",
+                                "index": current_index,
+                                "content_block": {"type": "thinking", "thinking": ""},
+                            },
+                        )
+                        thinking_block_open = True
+                    yield sse(
+                        "content_block_delta",
+                        {
+                            "type": "content_block_delta",
+                            "index": current_index,
+                            "delta": {"type": "thinking_delta", "thinking": reasoning},
+                        },
+                    )
+
                 text = self._extract_stream_text(choice)
                 if text:
+                    if thinking_block_open:
+                        yield sse(
+                            "content_block_stop",
+                            {"type": "content_block_stop", "index": current_index},
+                        )
+                        thinking_block_open = False
+                        current_index += 1
                     text_char_count += len(text)
                     if not text_block_open:
                         logger.info(
