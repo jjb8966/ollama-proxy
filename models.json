@@ -73,6 +73,24 @@
       "max_output_tokens": 128000
     },
     {
+      "name": "cli-proxy-api:gpt-5.5",
+      "model": "cli-proxy-api:gpt-5.5",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.5-high",
+      "model": "cli-proxy-api:gpt-5.5-high",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cli-proxy-api:gpt-5.5-xhigh",
+      "model": "cli-proxy-api:gpt-5.5-xhigh",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
       "name": "codestral:codestral-2508",
       "model": "codestral:codestral-2508",
       "context_length": 128000
