@@ -1,0 +1,419 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%3Fq%3Dkimi-k2.6
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e138]:
+      - heading "Issues" [level=1] [ref=e139]
+      - generic [ref=e140]:
+        - generic [ref=e142]:
+          - form "Search Issues" [ref=e144]:
+            - generic [ref=e145]: Search Issues
+            - generic [ref=e147]:
+              - generic [ref=e149]:
+                - generic [ref=e151]: kimi-k2.6
+                - combobox "Search Issues" [ref=e153]: kimi-k2.6
+              - button "Search" [ref=e154] [cursor=pointer]:
+                - img [ref=e155]
+          - generic [ref=e157]:
+            - link "Labels" [ref=e158] [cursor=pointer]:
+              - /url: /ollama/ollama/labels
+              - generic [ref=e159]:
+                - generic:
+                  - img
+                - generic [ref=e160]: Labels
+            - link "Milestones" [ref=e161] [cursor=pointer]:
+              - /url: /ollama/ollama/milestones
+              - generic [ref=e162]:
+                - generic:
+                  - img
+                - generic [ref=e163]: Milestones
+            - link "New issue" [ref=e164] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues?q=kimi-k2.6
+              - generic [ref=e166]: New issue
+        - generic [ref=e170]:
+          - heading "Search results" [level=2] [ref=e171]
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - link "Open" [ref=e174] [cursor=pointer]:
+                - /url: ""
+                - generic [ref=e175]: Open
+              - link "Closed" [ref=e177] [cursor=pointer]:
+                - /url: ""
+                - generic [ref=e178]: Closed
+            - toolbar "Actions" [ref=e180]:
+              - generic [ref=e181]:
+                - button "Filter by author" [ref=e183] [cursor=pointer]:
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: Author
+                    - generic:
+                      - img
+                - button "Filter by label" [ref=e187] [cursor=pointer]:
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: Labels
+                    - generic:
+                      - img
+                - button "Filter by project" [ref=e191] [cursor=pointer]:
+                  - generic [ref=e192]:
+                    - generic [ref=e193]: Projects
+                    - generic:
+                      - img
+                - button "Filter by milestone" [ref=e195] [cursor=pointer]:
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: Milestones
+                    - generic:
+                      - img
+                - button "Filter by assignees" [ref=e199] [cursor=pointer]:
+                  - generic [ref=e200]:
+                    - generic [ref=e201]: Assignees
+                    - generic:
+                      - img
+                - button "Filter by issue type" [ref=e203] [cursor=pointer]:
+                  - generic [ref=e204]:
+                    - generic [ref=e205]: Types
+                    - generic:
+                      - img
+                - button "Sort by Newest , descending" [ref=e207] [cursor=pointer]:
+                  - generic [ref=e208]:
+                    - generic:
+                      - img
+                    - generic [ref=e209]:
+                      - generic [ref=e210]: Sort by
+                      - text: Newest
+                      - generic [ref=e211]: ", descending"
+                  - generic:
+                    - img
+          - list "Search results" [ref=e212]:
+            - 'listitem "ollama launch claude --model kimi-k2.6:cloud can not read image: Status: Open. #15817 In ollama/ollama;· chenhao1umbc opened on Apr 25, 2026. More information available below." [ref=e215]':
+              - generic [ref=e216]:
+                - heading "ollama launch claude --model kimi-k2.6:cloud can not read image" [level=3] [ref=e217]:
+                  - link "ollama launch claude --model kimi-k2.6:cloud can not read image" [ref=e218] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15817
+                    - generic [ref=e219]: ollama launch claude --model kimi-k2.6:cloud can not read image
+                - link "bug Something isn't working" [ref=e223] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=kimi-k2.6%20label%3Abug
+                  - generic [ref=e225]: bug
+                  - generic [ref=e226]: Something isn't working
+              - generic [ref=e230]:
+                - img [ref=e232]
+                - generic [ref=e235]: "Status: Open."
+              - generic [ref=e239]:
+                - generic [ref=e240]:
+                  - generic [ref=e241]: "#15817"
+                  - generic [ref=e242]: In ollama/ollama;
+                - generic [ref=e243]:
+                  - text: ·
+                  - link "chenhao1umbc" [ref=e244] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Achenhao1umbc
+                  - text: opened
+                  - generic "Apr 26, 2026, 8:26 AM GMT+9" [ref=e245]: on Apr 25, 202610 hours ago
+            - 'listitem "kimi-k2.6:cloud API Error: 400: Status: Closed (completed). #15815 In ollama/ollama;· by mellow8 was closed on Apr 25, 2026. More information available below." [ref=e249]':
+              - generic [ref=e250]:
+                - 'heading "kimi-k2.6:cloud API Error: 400" [level=3] [ref=e251]':
+                  - 'link "kimi-k2.6:cloud API Error: 400" [ref=e252] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/15815
+                    - generic [ref=e253]: "kimi-k2.6:cloud API Error: 400"
+                - link "bug Something isn't working" [ref=e257] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=kimi-k2.6%20label%3Abug
+                  - generic [ref=e259]: bug
+                  - generic [ref=e260]: Something isn't working
+              - generic [ref=e264]:
+                - img [ref=e266]
+                - generic [ref=e269]: "Status: Closed (completed)."
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - generic [ref=e275]: "#15815"
+                  - generic [ref=e276]: In ollama/ollama;
+                - generic [ref=e277]:
+                  - text: · by
+                  - link "mellow8" [ref=e278] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Amellow8
+                  - text: was closed
+                  - generic "Apr 26, 2026, 2:43 AM GMT+9" [ref=e279]: on Apr 25, 202616 hours ago
+            - 'listitem "runner: expose prompt cache hit count in completion response: Status: Open (in progress). ollama/ollamanumber 15768 #15768 In ollama/ollama;· anishesg opened on Apr 23, 2026. More information available below." [ref=e283]':
+              - 'heading "runner: expose prompt cache hit count in completion response" [level=3] [ref=e285]':
+                - 'link "runner: expose prompt cache hit count in completion response" [ref=e286] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15768
+                  - generic [ref=e287]: "runner: expose prompt cache hit count in completion response"
+              - generic [ref=e292]:
+                - img [ref=e294]
+                - generic [ref=e296]: "Status: Open (in progress)."
+              - generic [ref=e300]:
+                - generic [ref=e301]:
+                  - text: ollama/ollama
+                  - generic [ref=e302]: number 15768
+                - generic [ref=e303]:
+                  - generic [ref=e304]: "#15768"
+                  - generic [ref=e305]: In ollama/ollama;
+                - generic [ref=e306]:
+                  - text: ·
+                  - link "anishesg" [ref=e307] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Aanishesg
+                  - text: opened
+                  - generic "Apr 23, 2026, 3:47 PM GMT+9" [ref=e308]: on Apr 23, 20263 days ago
+            - 'listitem "launch: keep launch recommended models in a fixed canonical order: Status: Merged (completed). ollama/ollamanumber 15750 #15750 In ollama/ollama;· by hoyyeva was closed on Apr 23, 2026. More information available below." [ref=e316]':
+              - 'heading "launch: keep launch recommended models in a fixed canonical order" [level=3] [ref=e318]':
+                - 'link "launch: keep launch recommended models in a fixed canonical order" [ref=e319] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15750
+                  - generic [ref=e320]: "launch: keep launch recommended models in a fixed canonical order"
+              - generic [ref=e325]:
+                - img [ref=e327]
+                - generic [ref=e329]: "Status: Merged (completed)."
+              - generic [ref=e333]:
+                - generic [ref=e334]:
+                  - text: ollama/ollama
+                  - generic [ref=e335]: number 15750
+                - generic [ref=e336]:
+                  - generic [ref=e337]: "#15750"
+                  - generic [ref=e338]: In ollama/ollama;
+                - generic [ref=e339]:
+                  - text: · by
+                  - link "hoyyeva" [ref=e340] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Ahoyyeva
+                  - text: was closed
+                  - generic "Apr 24, 2026, 5:33 AM GMT+9" [ref=e341]: on Apr 23, 20263 days ago
+            - 'listitem "Kimi models require pro ?: Status: Open. #15741 In ollama/ollama;· Azecko opened on Apr 22, 2026. More information available below." [ref=e349]':
+              - generic [ref=e350]:
+                - heading "Kimi models require pro ?" [level=3] [ref=e351]:
+                  - link "Kimi models require pro ?" [ref=e352] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15741
+                    - generic [ref=e353]: Kimi models require pro ?
+                - link "bug Something isn't working" [ref=e357] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=kimi-k2.6%20label%3Abug
+                  - generic [ref=e359]: bug
+                  - generic [ref=e360]: Something isn't working
+              - generic [ref=e364]:
+                - img [ref=e366]
+                - generic [ref=e369]: "Status: Open."
+              - generic [ref=e373]:
+                - generic [ref=e374]:
+                  - generic [ref=e375]: "#15741"
+                  - generic [ref=e376]: In ollama/ollama;
+                - generic [ref=e377]:
+                  - text: ·
+                  - link "Azecko" [ref=e378] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3AAzecko
+                  - text: opened
+                  - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e379]: on Apr 22, 20264 days ago
+            - 'listitem "launch: replace kimi-k2.5 with kimi-k2.6 as top recommended model: Status: Merged (completed). ollama/ollamanumber 15737 #15737 In ollama/ollama;· by ParthSareen was closed on Apr 21, 2026. More information available below." [ref=e383]':
+              - 'heading "launch: replace kimi-k2.5 with kimi-k2.6 as top recommended model" [level=3] [ref=e385]':
+                - 'link "launch: replace kimi-k2.5 with kimi-k2.6 as top recommended model" [ref=e386] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15737
+                  - generic [ref=e387]: "launch: replace kimi-k2.5 with kimi-k2.6 as top recommended model"
+              - generic [ref=e392]:
+                - img [ref=e394]
+                - generic [ref=e396]: "Status: Merged (completed)."
+              - generic [ref=e400]:
+                - generic [ref=e401]:
+                  - text: ollama/ollama
+                  - generic [ref=e402]: number 15737
+                - generic [ref=e403]:
+                  - generic [ref=e404]: "#15737"
+                  - generic [ref=e405]: In ollama/ollama;
+                - generic [ref=e406]:
+                  - text: · by
+                  - link "ParthSareen" [ref=e407] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3AParthSareen
+                  - text: was closed
+                  - generic "Apr 22, 2026, 7:13 AM GMT+9" [ref=e408]: on Apr 21, 20264 days ago
+            - 'listitem "Anthropic compatibility: image content blocks are dropped when forwarded to vision-capable cloud models (v0.21.0): Status: Open. #15727 In ollama/ollama;· peter20201011-cmyk opened on Apr 21, 2026. More information available below." [ref=e416]':
+              - 'heading "Anthropic compatibility: image content blocks are dropped when forwarded to vision-capable cloud models (v0.21.0)" [level=3] [ref=e418]':
+                - 'link "Anthropic compatibility: image content blocks are dropped when forwarded to vision-capable cloud models (v0.21.0)" [ref=e419] [cursor=pointer]':
+                  - /url: /ollama/ollama/issues/15727
+                  - generic [ref=e420]: "Anthropic compatibility: image content blocks are dropped when forwarded to vision-capable cloud models (v0.21.0)"
+              - generic [ref=e425]:
+                - img [ref=e427]
+                - generic [ref=e430]: "Status: Open."
+              - generic [ref=e434]:
+                - generic [ref=e435]:
+                  - generic [ref=e436]: "#15727"
+                  - generic [ref=e437]: In ollama/ollama;
+                - generic [ref=e438]:
+                  - text: ·
+                  - link "peter20201011-cmyk" [ref=e439] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Apeter20201011-cmyk
+                  - text: opened
+                  - generic "Apr 21, 2026, 3:47 PM GMT+9" [ref=e440]: on Apr 21, 20265 days ago
+            - 'listitem "Kimi K2.6 Cloud model request: Status: Closed (completed). #15722 In ollama/ollama;· by matbgn was closed on Apr 21, 2026. More information available below." [ref=e444]':
+              - heading "Kimi K2.6 Cloud model request" [level=3] [ref=e446]:
+                - link "Kimi K2.6 Cloud model request" [ref=e447] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues/15722
+                  - generic [ref=e448]: Kimi K2.6 Cloud model request
+              - generic [ref=e453]:
+                - img [ref=e455]
+                - generic [ref=e458]: "Status: Closed (completed)."
+              - generic [ref=e462]:
+                - generic [ref=e463]:
+                  - generic [ref=e464]: "#15722"
+                  - generic [ref=e465]: In ollama/ollama;
+                - generic [ref=e466]:
+                  - text: · by
+                  - link "matbgn" [ref=e467] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3Amatbgn
+                  - text: was closed
+                  - generic "Apr 21, 2026, 9:25 AM GMT+9" [ref=e468]: on Apr 21, 20265 days ago
+            - 'listitem "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable: Status: Open. #15453 In ollama/ollama;· KUANKEI21 opened on Apr 9, 2026. More information available below." [ref=e472]':
+              - generic [ref=e473]:
+                - 'heading "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [level=3] [ref=e474]':
+                  - 'link "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [ref=e475] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/15453
+                    - generic [ref=e476]: "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable"
+                - link "cloud" [ref=e480] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=kimi-k2.6%20label%3Acloud
+                  - generic [ref=e482]: cloud
+              - generic [ref=e487]:
+                - img [ref=e489]
+                - generic [ref=e492]: "Status: Open."
+              - generic [ref=e496]:
+                - generic [ref=e497]:
+                  - generic [ref=e498]: "#15453"
+                  - generic [ref=e499]: In ollama/ollama;
+                - generic [ref=e500]:
+                  - text: ·
+                  - link "KUANKEI21" [ref=e501] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=kimi-k2.6%20author%3AKUANKEI21
+                  - text: opened
+                  - generic "Apr 10, 2026, 12:23 AM GMT+9" [ref=e502]: on Apr 9, 20262 weeks ago
+  - contentinfo [ref=e504]:
+    - heading "Footer" [level=2] [ref=e505]
+    - generic [ref=e506]:
+      - generic [ref=e507]:
+        - link "GitHub Homepage" [ref=e508] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e509]
+        - generic [ref=e511]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e512]:
+        - heading "Footer navigation" [level=3] [ref=e513]
+        - list "Footer navigation" [ref=e514]:
+          - listitem [ref=e515]:
+            - link "Terms" [ref=e516] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e517]:
+            - link "Privacy" [ref=e518] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e519]:
+            - link "Security" [ref=e520] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e521]:
+            - link "Status" [ref=e522] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e523]:
+            - link "Community" [ref=e524] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e525]:
+            - link "Docs" [ref=e526] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e527]:
+            - link "Contact" [ref=e528] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e529]:
+            - button "Manage cookies" [ref=e531] [cursor=pointer]
+          - listitem [ref=e532]:
+            - button "Do not share my personal information" [ref=e534] [cursor=pointer]

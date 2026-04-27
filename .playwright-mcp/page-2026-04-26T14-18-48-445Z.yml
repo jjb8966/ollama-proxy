@@ -1,0 +1,298 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e10]:
+          - text: 🎉 Kimi K2.6 has been released with improved long-context coding stability.
+          - link "Top-up bonus event in progress 🔗" [ref=e11] [cursor=pointer]:
+            - /url: /docs/pricing/promotion
+        - generic [ref=e14]:
+          - generic [ref=e17]:
+            - link "Kimi API Platform home page light logo" [ref=e19] [cursor=pointer]:
+              - /url: https://platform.kimi.ai
+              - generic [ref=e20]: Kimi API Platform home page
+              - img "light logo" [ref=e21]
+            - button "Open search" [ref=e23] [cursor=pointer]:
+              - generic [ref=e24]:
+                - img [ref=e25]
+                - generic [ref=e28]: Search...
+              - generic [ref=e29]: ⌘K
+            - generic [ref=e30]:
+              - navigation [ref=e31]:
+                - list [ref=e32]:
+                  - listitem [ref=e33]:
+                    - link "Contact Sales" [ref=e34] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/contact-sales
+                  - listitem [ref=e35]:
+                    - link "Blog" [ref=e36] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/blog
+                  - listitem [ref=e37]:
+                    - link "Playground" [ref=e38] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/playground
+                  - listitem [ref=e39]:
+                    - link "User Center" [ref=e40] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/console/account
+              - button "Toggle dark mode" [ref=e42] [cursor=pointer]:
+                - img [ref=e43]
+          - generic [ref=e51]:
+            - link "Get Started" [ref=e52] [cursor=pointer]:
+              - /url: /docs/overview
+              - text: Get Started
+            - link "Guides" [ref=e54] [cursor=pointer]:
+              - /url: /docs/guide/utilize-the-streaming-output-feature-of-kimi-api
+              - text: Guides
+            - link "API Reference" [ref=e56] [cursor=pointer]:
+              - /url: /docs/api/overview
+              - text: API Reference
+            - link "Pricing" [ref=e58] [cursor=pointer]:
+              - /url: /docs/pricing/chat
+              - text: Pricing
+            - link "Resources" [ref=e60] [cursor=pointer]:
+              - /url: /docs/guide/prompt-best-practice
+              - text: Resources
+      - generic [ref=e62]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "Overview" [level=5] [ref=e69]
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - link "Welcome" [ref=e72] [cursor=pointer]:
+                  - /url: /docs/overview
+                  - generic [ref=e75]: Welcome
+              - listitem [ref=e76]:
+                - link "User Manual" [ref=e77] [cursor=pointer]:
+                  - /url: /docs/introduction
+                  - generic [ref=e80]: User Manual
+              - listitem [ref=e81]:
+                - link "Model List" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/models
+                  - generic [ref=e85]: Model List
+          - generic [ref=e86]:
+            - heading "Quickstart" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quickstart with Kimi API" [ref=e91] [cursor=pointer]:
+                  - /url: /docs/guide/start-using-kimi-api
+                  - generic [ref=e94]: Quickstart with Kimi API
+              - listitem [ref=e95]:
+                - link "Kimi K2.6 Multi-modal Model" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/guide/kimi-k2-6-quickstart
+                  - generic [ref=e99]: Kimi K2.6 Multi-modal Model
+              - listitem [ref=e100]:
+                - link "Kimi K2" [ref=e101] [cursor=pointer]:
+                  - /url: /docs/guide/kimi-k2-quickstart
+                  - generic [ref=e104]: Kimi K2
+          - generic [ref=e105]:
+            - heading "Next steps" [level=5] [ref=e107]
+            - list [ref=e108]:
+              - listitem [ref=e109]:
+                - link "Using Thinking Models" [ref=e110] [cursor=pointer]:
+                  - /url: /docs/guide/use-kimi-k2-thinking-model
+                  - generic [ref=e113]: Using Thinking Models
+              - listitem [ref=e114]:
+                - link "Conduct Multi-turn Chat with Kimi API" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/guide/engage-in-multi-turn-conversations-using-kimi-api
+                  - generic [ref=e118]: Conduct Multi-turn Chat with Kimi API
+              - listitem [ref=e119]:
+                - link "Use the Kimi Vision Model" [ref=e120] [cursor=pointer]:
+                  - /url: /docs/guide/use-kimi-vision-model
+                  - generic [ref=e123]: Use the Kimi Vision Model
+        - generic [ref=e125]:
+          - generic [ref=e128]:
+            - button "On this page" [ref=e129] [cursor=pointer]:
+              - img [ref=e130]
+              - generic [ref=e131]: On this page
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Multi-modal Model" [ref=e135] [cursor=pointer]:
+                  - /url: "#multi-modal-model"
+              - listitem [ref=e136]:
+                - link "Kimi K2 Model" [ref=e137] [cursor=pointer]:
+                  - /url: "#kimi-k2-model"
+              - listitem [ref=e138]:
+                - link "Generation Model Moonshot V1" [ref=e139] [cursor=pointer]:
+                  - /url: "#generation-model-moonshot-v1"
+              - listitem [ref=e140]:
+                - link "Deprecated Models" [ref=e141] [cursor=pointer]:
+                  - /url: "#deprecated-models"
+          - generic [ref=e142]:
+            - banner [ref=e143]:
+              - generic [ref=e144]:
+                - link "Overview" [ref=e147] [cursor=pointer]:
+                  - /url: /docs/overview
+                - generic [ref=e148]:
+                  - heading "Model List" [level=1] [ref=e149]
+                  - generic [ref=e150]:
+                    - button "Copy page" [ref=e151] [cursor=pointer]:
+                      - generic [ref=e152]:
+                        - img [ref=e153]
+                        - generic [ref=e156]: Copy page
+                    - button "More actions" [ref=e157] [cursor=pointer]:
+                      - img [ref=e158]
+            - generic [ref=e160]:
+              - generic [ref=e161]:
+                - text: You can use our
+                - link "List Models API" [ref=e162] [cursor=pointer]:
+                  - /url: /docs/api/list-models
+                - text: to get a list of currently available models.
+              - heading "Navigate to header Multi-modal Model" [level=2] [ref=e163]:
+                - link "Navigate to header" [ref=e164] [cursor=pointer]:
+                  - /url: "#multi-modal-model"
+                  - img [ref=e166]
+                - generic [ref=e168] [cursor=pointer]: Multi-modal Model
+              - table [ref=e171]:
+                - rowgroup [ref=e172]:
+                  - row "Model Name Description" [ref=e173]:
+                    - columnheader "Model Name" [ref=e174]
+                    - columnheader "Description" [ref=e175]
+                - rowgroup [ref=e176]:
+                  - row "kimi-k2.6 Kimi’s most intelligent model to date, achieving open-source SoTA performance in Agent, code, visual understanding, and a range of general intelligent tasks. It is also Kimi’s most versatile model to date, featuring a native multimodal architecture that supports both visual and text input, thinking and non-thinking modes, and dialogue and Agent tasks. Context 256k" [ref=e177]:
+                    - cell "kimi-k2.6" [ref=e178]:
+                      - code [ref=e179]: kimi-k2.6
+                    - cell "Kimi’s most intelligent model to date, achieving open-source SoTA performance in Agent, code, visual understanding, and a range of general intelligent tasks. It is also Kimi’s most versatile model to date, featuring a native multimodal architecture that supports both visual and text input, thinking and non-thinking modes, and dialogue and Agent tasks. Context 256k" [ref=e180]
+                  - row "kimi-k2.5 Kimi’s most intelligent model to date, achieving open-source SoTA performance in Agent, code, visual understanding, and a range of general intelligent tasks. It is also Kimi’s most versatile model to date, featuring a native multimodal architecture that supports both visual and text input, thinking and non-thinking modes, and dialogue and Agent tasks. Context 256k" [ref=e181]:
+                    - cell "kimi-k2.5" [ref=e182]:
+                      - code [ref=e183]: kimi-k2.5
+                    - cell "Kimi’s most intelligent model to date, achieving open-source SoTA performance in Agent, code, visual understanding, and a range of general intelligent tasks. It is also Kimi’s most versatile model to date, featuring a native multimodal architecture that supports both visual and text input, thinking and non-thinking modes, and dialogue and Agent tasks. Context 256k" [ref=e184]
+              - heading "Navigate to header Kimi K2 Model" [level=2] [ref=e185]:
+                - link "Navigate to header" [ref=e186] [cursor=pointer]:
+                  - /url: "#kimi-k2-model"
+                  - img [ref=e188]
+                - generic [ref=e190] [cursor=pointer]: Kimi K2 Model
+              - blockquote [ref=e191]:
+                - generic [ref=e192]:
+                  - code [ref=e193]: kimi-k2
+                  - text: series models will be officially discontinued on
+                  - strong [ref=e194]: May 25, 2026
+                  - text: and will no longer be maintained or supported. Please use the latest Kimi model
+                  - link "kimi-k2.6" [ref=e195] [cursor=pointer]:
+                    - /url: /docs/guide/kimi-k2-6-quickstart
+                  - text: for continued support and enhanced reasoning capabilities.
+              - table [ref=e198]:
+                - rowgroup [ref=e199]:
+                  - row "Model Name Description" [ref=e200]:
+                    - columnheader "Model Name" [ref=e201]
+                    - columnheader "Description" [ref=e202]
+                - rowgroup [ref=e203]:
+                  - row "kimi-k2-0905-preview Context length 256k, enhanced Agentic Coding capabilities, front-end code aesthetics and practicality, and context understanding capabilities based on the 0711 version" [ref=e204]:
+                    - cell "kimi-k2-0905-preview" [ref=e205]:
+                      - code [ref=e206]: kimi-k2-0905-preview
+                    - cell "Context length 256k, enhanced Agentic Coding capabilities, front-end code aesthetics and practicality, and context understanding capabilities based on the 0711 version" [ref=e207]
+                  - row "kimi-k2-0711-preview Context length 128k, MoE architecture base model with 1T total parameters, 32B activated parameters. Features powerful code and Agent capabilities. View technical blog" [ref=e208]:
+                    - cell "kimi-k2-0711-preview" [ref=e209]:
+                      - code [ref=e210]: kimi-k2-0711-preview
+                    - cell "Context length 128k, MoE architecture base model with 1T total parameters, 32B activated parameters. Features powerful code and Agent capabilities. View technical blog" [ref=e211]:
+                      - text: Context length 128k, MoE architecture base model with 1T total parameters, 32B activated parameters. Features powerful code and Agent capabilities.
+                      - link "View technical blog" [ref=e212] [cursor=pointer]:
+                        - /url: https://moonshotai.github.io/Kimi-K2/
+                  - row "kimi-k2-turbo-preview High-speed version of K2, benchmarking against the latest version (0905). Output speed increased to 60-100 tokens per second, context length 256k" [ref=e213]:
+                    - cell "kimi-k2-turbo-preview" [ref=e214]:
+                      - code [ref=e215]: kimi-k2-turbo-preview
+                    - cell "High-speed version of K2, benchmarking against the latest version (0905). Output speed increased to 60-100 tokens per second, context length 256k" [ref=e216]
+                  - row "kimi-k2-thinking K2 Long-term thinking model, supports 256k context, supports multi-step tool usage and reasoning, excels at solving more complex problems" [ref=e217]:
+                    - cell "kimi-k2-thinking" [ref=e218]:
+                      - code [ref=e219]: kimi-k2-thinking
+                    - cell "K2 Long-term thinking model, supports 256k context, supports multi-step tool usage and reasoning, excels at solving more complex problems" [ref=e220]
+                  - row "kimi-k2-thinking-turbo K2 Long-term thinking model high-speed version, supports 256k context, excels at deep reasoning, output speed increased to 60-100 tokens per second" [ref=e221]:
+                    - cell "kimi-k2-thinking-turbo" [ref=e222]:
+                      - code [ref=e223]: kimi-k2-thinking-turbo
+                    - cell "K2 Long-term thinking model high-speed version, supports 256k context, excels at deep reasoning, output speed increased to 60-100 tokens per second" [ref=e224]
+              - heading "Navigate to header Generation Model Moonshot V1" [level=2] [ref=e225]:
+                - link "Navigate to header" [ref=e226] [cursor=pointer]:
+                  - /url: "#generation-model-moonshot-v1"
+                  - img [ref=e228]
+                - generic [ref=e230] [cursor=pointer]: Generation Model Moonshot V1
+              - table [ref=e233]:
+                - rowgroup [ref=e234]:
+                  - row "Model Name Description" [ref=e235]:
+                    - columnheader "Model Name" [ref=e236]
+                    - columnheader "Description" [ref=e237]
+                - rowgroup [ref=e238]:
+                  - row "moonshot-v1-8k Suitable for generating short texts, context length 8k" [ref=e239]:
+                    - cell "moonshot-v1-8k" [ref=e240]:
+                      - code [ref=e241]: moonshot-v1-8k
+                    - cell "Suitable for generating short texts, context length 8k" [ref=e242]
+                  - row "moonshot-v1-32k Suitable for generating long texts, context length 32k" [ref=e243]:
+                    - cell "moonshot-v1-32k" [ref=e244]:
+                      - code [ref=e245]: moonshot-v1-32k
+                    - cell "Suitable for generating long texts, context length 32k" [ref=e246]
+                  - row "moonshot-v1-128k Suitable for generating very long texts, context length 128k" [ref=e247]:
+                    - cell "moonshot-v1-128k" [ref=e248]:
+                      - code [ref=e249]: moonshot-v1-128k
+                    - cell "Suitable for generating very long texts, context length 128k" [ref=e250]
+                  - row "moonshot-v1-8k-vision-preview Vision model, understands image content and outputs text, context length 8k" [ref=e251]:
+                    - cell "moonshot-v1-8k-vision-preview" [ref=e252]:
+                      - code [ref=e253]: moonshot-v1-8k-vision-preview
+                    - cell "Vision model, understands image content and outputs text, context length 8k" [ref=e254]
+                  - row "moonshot-v1-32k-vision-preview Vision model, understands image content and outputs text, context length 32k" [ref=e255]:
+                    - cell "moonshot-v1-32k-vision-preview" [ref=e256]:
+                      - code [ref=e257]: moonshot-v1-32k-vision-preview
+                    - cell "Vision model, understands image content and outputs text, context length 32k" [ref=e258]
+                  - row "moonshot-v1-128k-vision-preview Vision model, understands image content and outputs text, context length 128k" [ref=e259]:
+                    - cell "moonshot-v1-128k-vision-preview" [ref=e260]:
+                      - code [ref=e261]: moonshot-v1-128k-vision-preview
+                    - cell "Vision model, understands image content and outputs text, context length 128k" [ref=e262]
+              - blockquote [ref=e263]: "Note: The only difference between these Moonshot V1 models is their maximum context length (including input and output), there is no difference in effect."
+              - heading "Navigate to header Deprecated Models" [level=2] [ref=e264]:
+                - link "Navigate to header" [ref=e265] [cursor=pointer]:
+                  - /url: "#deprecated-models"
+                  - img [ref=e267]
+                - generic [ref=e269] [cursor=pointer]: Deprecated Models
+              - blockquote [ref=e270]:
+                - generic [ref=e271]:
+                  - code [ref=e272]: kimi-latest
+                  - text: was officially discontinued on
+                  - strong [ref=e273]: January 28, 2026
+                  - text: and is no longer maintained or supported. Please use the latest Kimi model
+                  - link "kimi-k2.6" [ref=e274] [cursor=pointer]:
+                    - /url: /docs/guide/kimi-k2-6-quickstart
+                  - text: for continued support and enhanced reasoning capabilities.
+              - blockquote [ref=e275]:
+                - generic [ref=e276]:
+                  - code [ref=e277]: kimi-thinking-preview
+                  - text: was officially discontinued on
+                  - strong [ref=e278]: November 11, 2025
+                  - text: and is no longer maintained or supported. We recommend upgrading to the latest model
+                  - link "kimi-k2.6" [ref=e279] [cursor=pointer]:
+                    - /url: /docs/guide/kimi-k2-6-quickstart
+                  - text: for continued support and enhanced reasoning capabilities.
+              - generic [ref=e280]:
+                - text: For further assistance, please
+                - link "contact sales" [ref=e281] [cursor=pointer]:
+                  - /url: https://platform.kimi.ai/contact-sales
+                - text: .
+            - generic [ref=e283]:
+              - paragraph [ref=e284]: Was this page helpful?
+              - generic [ref=e286]:
+                - button "Yes" [ref=e287] [cursor=pointer]:
+                  - img [ref=e288]
+                  - generic [ref=e290]: "Yes"
+                - button "No" [ref=e291] [cursor=pointer]:
+                  - img [ref=e292]
+                  - generic [ref=e294]: "No"
+            - generic [ref=e295]:
+              - link "User Manual" [ref=e296] [cursor=pointer]:
+                - /url: /docs/introduction
+                - img [ref=e297]
+                - generic [ref=e299]: User Manual
+              - link "Quickstart with Kimi API" [ref=e300] [cursor=pointer]:
+                - /url: /docs/guide/start-using-kimi-api
+                - generic [ref=e301]: Quickstart with Kimi API
+                - img [ref=e302]
+            - contentinfo [ref=e304]:
+              - generic [ref=e305]:
+                - link "x" [ref=e306] [cursor=pointer]:
+                  - /url: https://x.com/Kimi_Moonshot
+                  - generic [ref=e307]: x
+                  - img [ref=e308]
+                - link "github" [ref=e309] [cursor=pointer]:
+                  - /url: https://github.com/MoonshotAI
+                  - generic [ref=e310]: github
+                  - img [ref=e311]
+                - link "linkedin" [ref=e312] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/kimi-ai-linkedin
+                  - generic [ref=e313]: linkedin
+                  - img [ref=e314]
+  - alert [ref=e315]

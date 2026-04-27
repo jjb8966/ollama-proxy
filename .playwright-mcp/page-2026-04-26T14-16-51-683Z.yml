@@ -1,0 +1,528 @@
+- generic [ref=e2]:
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#content-area"
+  - generic [ref=e5]:
+    - generic [ref=e9]:
+      - generic [ref=e12]:
+        - generic [ref=e13]:
+          - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+            - /url: https://z.ai/model-api
+            - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+            - img "dark logo" [ref=e16]
+          - button "English" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: English
+            - img [ref=e20]
+        - button "Open search" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24]:
+            - img [ref=e25]
+            - generic [ref=e28]: Search...
+          - generic [ref=e29]: ⌘K
+        - generic [ref=e30]:
+          - navigation [ref=e31]:
+            - list [ref=e32]:
+              - listitem [ref=e33]:
+                - link "API Keys" [ref=e34] [cursor=pointer]:
+                  - /url: https://z.ai/manage-apikey/apikey-list
+              - listitem [ref=e35]:
+                - link "Payment Method" [ref=e36] [cursor=pointer]:
+                  - /url: https://z.ai/manage-apikey/billing
+          - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+      - generic [ref=e42]:
+        - link "Guides" [ref=e43] [cursor=pointer]:
+          - /url: /guides/overview/quick-start
+          - text: Guides
+        - link "API Reference" [ref=e45] [cursor=pointer]:
+          - /url: /api-reference/introduction
+          - text: API Reference
+        - link "Scenario Example" [ref=e47] [cursor=pointer]:
+          - /url: /scenario-example/develop-tools/claude
+          - text: Scenario Example
+        - link "Coding Plan" [ref=e49] [cursor=pointer]:
+          - /url: /devpack/overview
+          - text: Coding Plan
+        - link "Released Notes" [ref=e51] [cursor=pointer]:
+          - /url: /release-notes/new-released
+          - text: Released Notes
+        - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+          - /url: /legal-agreement/privacy-policy
+          - text: Terms and Policy
+        - link "Help Center" [ref=e55] [cursor=pointer]:
+          - /url: /help/faq
+          - text: Help Center
+    - generic [ref=e57]:
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - heading "Get Started" [level=5] [ref=e64]
+          - list [ref=e65]:
+            - listitem [ref=e66]:
+              - link "Quick Start" [ref=e67] [cursor=pointer]:
+                - /url: /guides/overview/quick-start
+                - generic [ref=e70]: Quick Start
+            - listitem [ref=e71]:
+              - link "Overview" [ref=e72] [cursor=pointer]:
+                - /url: /guides/overview/overview
+                - generic [ref=e75]: Overview
+            - listitem [ref=e76]:
+              - link "Pricing" [ref=e77] [cursor=pointer]:
+                - /url: /guides/overview/pricing
+                - generic [ref=e80]: Pricing
+            - listitem [ref=e81]:
+              - link "Core Parameters" [ref=e82] [cursor=pointer]:
+                - /url: /guides/overview/concept-param
+                - generic [ref=e85]: Core Parameters
+            - listitem [ref=e86]:
+              - button "Toggle SDKs Guide section" [ref=e87] [cursor=pointer]:
+                - generic [ref=e88]: SDKs Guide
+                - img [ref=e90]
+            - listitem [ref=e92]:
+              - link "Migrate to GLM-5.1" [ref=e93] [cursor=pointer]:
+                - /url: /guides/overview/migrate-to-glm-new
+                - generic [ref=e96]: Migrate to GLM-5.1
+        - generic [ref=e97]:
+          - heading "Language Models" [level=5] [ref=e99]
+          - list [ref=e100]:
+            - listitem [ref=e101]:
+              - link "GLM-5.1" [ref=e102] [cursor=pointer]:
+                - /url: /guides/llm/glm-5.1
+                - generic [ref=e105]: GLM-5.1
+            - listitem [ref=e106]:
+              - link "GLM-5" [ref=e107] [cursor=pointer]:
+                - /url: /guides/llm/glm-5
+                - generic [ref=e110]: GLM-5
+            - listitem [ref=e111]:
+              - link "GLM-5-Turbo" [ref=e112] [cursor=pointer]:
+                - /url: /guides/llm/glm-5-turbo
+                - generic [ref=e115]: GLM-5-Turbo
+            - listitem [ref=e116]:
+              - link "GLM-4.7" [ref=e117] [cursor=pointer]:
+                - /url: /guides/llm/glm-4.7
+                - generic [ref=e120]: GLM-4.7
+            - listitem [ref=e121]:
+              - link "GLM-4.6" [ref=e122] [cursor=pointer]:
+                - /url: /guides/llm/glm-4.6
+                - generic [ref=e125]: GLM-4.6
+            - listitem [ref=e126]:
+              - link "GLM-4.5" [ref=e127] [cursor=pointer]:
+                - /url: /guides/llm/glm-4.5
+                - generic [ref=e130]: GLM-4.5
+            - listitem [ref=e131]:
+              - link "GLM-4-32B-0414-128K" [ref=e132] [cursor=pointer]:
+                - /url: /guides/llm/glm-4-32b-0414-128k
+                - generic [ref=e135]: GLM-4-32B-0414-128K
+        - generic [ref=e136]:
+          - heading "Vision Language Models" [level=5] [ref=e138]
+          - list [ref=e139]:
+            - listitem [ref=e140]:
+              - link "GLM-5V-Turbo" [ref=e141] [cursor=pointer]:
+                - /url: /guides/vlm/glm-5v-turbo
+                - generic [ref=e144]: GLM-5V-Turbo
+            - listitem [ref=e145]:
+              - link "GLM-4.6V" [ref=e146] [cursor=pointer]:
+                - /url: /guides/vlm/glm-4.6v
+                - generic [ref=e149]: GLM-4.6V
+            - listitem [ref=e150]:
+              - link "GLM-OCR" [ref=e151] [cursor=pointer]:
+                - /url: /guides/vlm/glm-ocr
+                - generic [ref=e154]: GLM-OCR
+            - listitem [ref=e155]:
+              - link "AutoGLM-Phone-Multilingual" [ref=e156] [cursor=pointer]:
+                - /url: /guides/vlm/autoglm-phone-multilingual
+                - generic [ref=e159]: AutoGLM-Phone-Multilingual
+            - listitem [ref=e160]:
+              - link "GLM-4.5V" [ref=e161] [cursor=pointer]:
+                - /url: /guides/vlm/glm-4.5v
+                - generic [ref=e164]: GLM-4.5V
+        - generic [ref=e165]:
+          - heading "Image Generation Models" [level=5] [ref=e167]
+          - list [ref=e168]:
+            - listitem [ref=e169]:
+              - link "GLM-Image" [ref=e170] [cursor=pointer]:
+                - /url: /guides/image/glm-image
+                - generic [ref=e173]: GLM-Image
+            - listitem [ref=e174]:
+              - link "CogView-4" [ref=e175] [cursor=pointer]:
+                - /url: /guides/image/cogview-4
+                - generic [ref=e178]: CogView-4
+        - generic [ref=e179]:
+          - heading "Video Generation Models" [level=5] [ref=e181]
+          - list [ref=e182]:
+            - listitem [ref=e183]:
+              - link "CogVideoX-3" [ref=e184] [cursor=pointer]:
+                - /url: /guides/video/cogvideox-3
+                - generic [ref=e187]: CogVideoX-3
+            - listitem [ref=e188]:
+              - link "Vidu Q1" [ref=e189] [cursor=pointer]:
+                - /url: /guides/video/vidu-q1
+                - generic [ref=e192]: Vidu Q1
+            - listitem [ref=e193]:
+              - link "Vidu 2" [ref=e194] [cursor=pointer]:
+                - /url: /guides/video/vidu2
+                - generic [ref=e197]: Vidu 2
+        - generic [ref=e198]:
+          - heading "Image Generation Models" [level=5] [ref=e200]
+          - list [ref=e201]:
+            - listitem [ref=e202]:
+              - link "CogView-4" [ref=e203] [cursor=pointer]:
+                - /url: /guides/image/cogview-4
+                - generic [ref=e206]: CogView-4
+        - generic [ref=e207]:
+          - heading "Audio Models" [level=5] [ref=e209]
+          - list [ref=e210]:
+            - listitem [ref=e211]:
+              - link "GLM-ASR-2512" [ref=e212] [cursor=pointer]:
+                - /url: /guides/audio/glm-asr-2512
+                - generic [ref=e215]: GLM-ASR-2512
+        - generic [ref=e216]:
+          - heading "Capabilities" [level=5] [ref=e218]
+          - list [ref=e219]:
+            - listitem [ref=e220]:
+              - link "Thinking Mode" [ref=e221] [cursor=pointer]:
+                - /url: /guides/capabilities/thinking-mode
+                - generic [ref=e224]: Thinking Mode
+            - listitem [ref=e225]:
+              - link "Deep Thinking" [ref=e226] [cursor=pointer]:
+                - /url: /guides/capabilities/thinking
+                - generic [ref=e229]: Deep Thinking
+            - listitem [ref=e230]:
+              - link "Streaming Messages" [ref=e231] [cursor=pointer]:
+                - /url: /guides/capabilities/streaming
+                - generic [ref=e234]: Streaming Messages
+            - listitem [ref=e235]:
+              - link "Tool Streaming Output" [ref=e236] [cursor=pointer]:
+                - /url: /guides/capabilities/stream-tool
+                - generic [ref=e239]: Tool Streaming Output
+            - listitem [ref=e240]:
+              - link "Function Calling" [ref=e241] [cursor=pointer]:
+                - /url: /guides/capabilities/function-calling
+                - generic [ref=e244]: Function Calling
+            - listitem [ref=e245]:
+              - link "Context Caching" [ref=e246] [cursor=pointer]:
+                - /url: /guides/capabilities/cache
+                - generic [ref=e249]: Context Caching
+            - listitem [ref=e250]:
+              - link "Structured Output" [ref=e251] [cursor=pointer]:
+                - /url: /guides/capabilities/struct-output
+                - generic [ref=e254]: Structured Output
+        - generic [ref=e255]:
+          - heading "Tools" [level=5] [ref=e257]
+          - list [ref=e258]:
+            - listitem [ref=e259]:
+              - link "Web Search" [ref=e260] [cursor=pointer]:
+                - /url: /guides/tools/web-search
+                - generic [ref=e263]: Web Search
+            - listitem [ref=e264]:
+              - link "Stream Tool Call" [ref=e265] [cursor=pointer]:
+                - /url: /guides/tools/stream-tool
+                - generic [ref=e268]: Stream Tool Call
+        - generic [ref=e269]:
+          - heading "Agents" [level=5] [ref=e271]
+          - list [ref=e272]:
+            - listitem [ref=e273]:
+              - link "GLM Slide/Poster Agent(beta)" [ref=e274] [cursor=pointer]:
+                - /url: /guides/agents/slide
+                - generic [ref=e277]: GLM Slide/Poster Agent(beta)
+            - listitem [ref=e278]:
+              - link "Translation Agent" [ref=e279] [cursor=pointer]:
+                - /url: /guides/agents/translation
+                - generic [ref=e282]: Translation Agent
+            - listitem [ref=e283]:
+              - link "Video Effect Template Agent" [ref=e284] [cursor=pointer]:
+                - /url: /guides/agents/video-template
+                - generic [ref=e287]: Video Effect Template Agent
+      - generic [ref=e289]:
+        - generic [ref=e292]:
+          - button "On this page" [ref=e293] [cursor=pointer]:
+            - img [ref=e294]
+            - generic [ref=e295]: On this page
+          - list [ref=e297]:
+            - listitem [ref=e298]:
+              - link "Getting Started" [ref=e299] [cursor=pointer]:
+                - /url: "#getting-started"
+            - listitem [ref=e300]:
+              - link "Get More" [ref=e301] [cursor=pointer]:
+                - /url: "#get-more"
+        - generic [ref=e302]:
+          - banner [ref=e303]:
+            - generic [ref=e304]:
+              - generic [ref=e305]: Get Started
+              - generic [ref=e306]:
+                - heading "Quick Start" [level=1] [ref=e307]
+                - generic [ref=e308]:
+                  - button "Copy page" [ref=e309] [cursor=pointer]:
+                    - generic [ref=e310]:
+                      - img [ref=e311]
+                      - generic [ref=e314]: Copy page
+                  - button "More actions" [ref=e315] [cursor=pointer]:
+                    - img [ref=e316]
+          - generic [ref=e318]:
+            - generic [ref=e319]:
+              - img "Info" [ref=e321]
+              - generic [ref=e324]:
+                - text: Tired of limits? GLM Coding Plan — monthly access to world-class models, compatible with top coding tools like Claude Code and Cline. All from just $18/month.
+                - link "Try it now →" [ref=e325] [cursor=pointer]:
+                  - /url: https://z.ai/subscribe?utm_campaign=Platform_Ops&_channel_track_key=DaprgHIc
+            - heading "Navigate to header Getting Started" [level=2] [ref=e326]:
+              - link "Navigate to header" [ref=e327] [cursor=pointer]:
+                - /url: "#getting-started"
+                - img [ref=e329]
+              - generic [ref=e331] [cursor=pointer]: Getting Started
+            - list [ref=e332]:
+              - listitem [ref=e333]:
+                - generic [ref=e336]:
+                  - generic [ref=e337]: "1"
+                  - link "Navigate to header" [ref=e339] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e341]
+                - generic [ref=e343]:
+                  - paragraph [ref=e344]: Get API Key
+                  - list [ref=e346]:
+                    - listitem [ref=e347]:
+                      - generic [ref=e348]:
+                        - text: Access
+                        - link "Z.AI Open Platform" [ref=e349] [cursor=pointer]:
+                          - /url: https://z.ai/model-api
+                        - text: ", Register or Login."
+                    - listitem [ref=e350]:
+                      - generic [ref=e351]:
+                        - text: Access
+                        - link "Billing Page" [ref=e352] [cursor=pointer]:
+                          - /url: https://z.ai/manage-apikey/billing
+                        - text: to top up if needed.
+                    - listitem [ref=e353]:
+                      - generic [ref=e354]:
+                        - text: Create an API Key in the
+                        - link "API Keys" [ref=e355] [cursor=pointer]:
+                          - /url: https://z.ai/manage-apikey/apikey-list
+                        - text: management page.
+                    - listitem [ref=e356]:
+                      - text: Copy your API Key for use.
+                      - generic [ref=e357]:
+                        - link "Z.AI Open Platform Access Z.AI Open Platform, Register or Login." [ref=e358] [cursor=pointer]:
+                          - generic [ref=e359]:
+                            - img [ref=e361]
+                            - generic [ref=e362]:
+                              - heading "Z.AI Open Platform" [level=2] [ref=e363]
+                              - generic [ref=e365]:
+                                - text: Access
+                                - link "Z.AI Open Platform" [ref=e366]:
+                                  - /url: https://z.ai/model-api
+                                - text: ", Register or Login."
+                        - link "API Keys Management Create an API Key in the API Keys management page." [ref=e367] [cursor=pointer]:
+                          - generic [ref=e368]:
+                            - img [ref=e370]
+                            - generic [ref=e371]:
+                              - heading "API Keys Management" [level=2] [ref=e372]
+                              - generic [ref=e374]:
+                                - text: Create an API Key in the
+                                - link "API Keys" [ref=e375]:
+                                  - /url: https://z.ai/manage-apikey/apikey-list
+                                - text: management page.
+              - listitem [ref=e376]:
+                - generic [ref=e379]:
+                  - generic [ref=e380]: "2"
+                  - link "Navigate to header" [ref=e382] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e384]
+                - generic [ref=e386]:
+                  - paragraph [ref=e387]: Choose Model
+                  - generic [ref=e388]:
+                    - blockquote [ref=e389]:
+                      - generic [ref=e390]:
+                        - text: The platform offers multiple models, and you can select the appropriate model based on your needs. For detailed model introductions, please refer to the
+                        - link "Models & Agents" [ref=e391] [cursor=pointer]:
+                          - /url: pricing
+                        - text: .
+                    - generic [ref=e392]:
+                      - link "GLM-5.1 Zai’s new-generation flagship foundation model, targeting Agentic Engineering, enables a paradigm shift from code to engineering." [ref=e393] [cursor=pointer]:
+                        - generic [ref=e394]:
+                          - img [ref=e396]
+                          - generic [ref=e397]:
+                            - heading "GLM-5.1" [level=2] [ref=e398]
+                            - generic [ref=e400]: Zai’s new-generation flagship foundation model, targeting Agentic Engineering, enables a paradigm shift from code to engineering.
+                      - link "GLM-5V-Turbo Multimodal Coding model, specializing in visual programming." [ref=e401] [cursor=pointer]:
+                        - generic [ref=e402]:
+                          - img [ref=e404]
+                          - generic [ref=e405]:
+                            - heading "GLM-5V-Turbo" [level=2] [ref=e406]
+                            - generic [ref=e408]: Multimodal Coding model, specializing in visual programming.
+                      - link "GLM-Image Supports text-to-image generation, achieving open-source state-of-the-art (SOTA) in complex scenarios" [ref=e409] [cursor=pointer]:
+                        - generic [ref=e410]:
+                          - img [ref=e412]
+                          - generic [ref=e413]:
+                            - heading "GLM-Image" [level=2] [ref=e414]
+                            - generic [ref=e416]: Supports text-to-image generation, achieving open-source state-of-the-art (SOTA) in complex scenarios
+                      - link "CogVideoX-3 New frame generation capabilities that significantly improve image stability and clarity" [ref=e417] [cursor=pointer]:
+                        - generic [ref=e418]:
+                          - img [ref=e420]
+                          - generic [ref=e421]:
+                            - heading "CogVideoX-3" [level=2] [ref=e422]
+                            - generic [ref=e424]: New frame generation capabilities that significantly improve image stability and clarity
+              - listitem [ref=e425]:
+                - generic [ref=e428]:
+                  - generic [ref=e429]: "3"
+                  - link "Navigate to header" [ref=e431] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e433]
+                - generic [ref=e435]:
+                  - paragraph [ref=e436]: Choose the Calling Method
+                  - generic [ref=e437]:
+                    - generic [ref=e438]: Our platform provides various development approaches; you can select the best fit for your project needs and tech stack.
+                    - generic [ref=e439]:
+                      - link "HTTP API Standard RESTful API, compatible with all programming languages." [ref=e440] [cursor=pointer]:
+                        - generic [ref=e441]:
+                          - img [ref=e443]
+                          - generic [ref=e444]:
+                            - heading "HTTP API" [level=2] [ref=e445]
+                            - generic [ref=e447]: Standard RESTful API, compatible with all programming languages.
+                      - link "Z.AI Python SDK Official Python SDK, featuring full type hints and async support." [ref=e448] [cursor=pointer]:
+                        - generic [ref=e449]:
+                          - img [ref=e451]
+                          - generic [ref=e452]:
+                            - heading "Z.AI Python SDK" [level=2] [ref=e453]
+                            - generic [ref=e455]: Official Python SDK, featuring full type hints and async support.
+                      - link "Z.AI Java SDK Official Java SDK, designed for high concurrency and availability." [ref=e456] [cursor=pointer]:
+                        - generic [ref=e457]:
+                          - img [ref=e459]
+                          - generic [ref=e460]:
+                            - heading "Z.AI Java SDK" [level=2] [ref=e461]
+                            - generic [ref=e463]: Official Java SDK, designed for high concurrency and availability.
+                      - link "OpenAI Python SDK OpenAI SDK Compatibility, quickly migrating from OpenAI." [ref=e464] [cursor=pointer]:
+                        - generic [ref=e465]:
+                          - img [ref=e467]
+                          - generic [ref=e468]:
+                            - heading "OpenAI Python SDK" [level=2] [ref=e469]
+                            - generic [ref=e471]: OpenAI SDK Compatibility, quickly migrating from OpenAI.
+                      - link "API Reference Complete API documentation with parameter descriptions." [ref=e472] [cursor=pointer]:
+                        - generic [ref=e473]:
+                          - img [ref=e475]
+                          - generic [ref=e476]:
+                            - heading "API Reference" [level=2] [ref=e477]
+                            - generic [ref=e479]: Complete API documentation with parameter descriptions.
+              - listitem [ref=e480]:
+                - generic [ref=e483]:
+                  - generic [ref=e484]: "4"
+                  - link "Navigate to header" [ref=e486] [cursor=pointer]:
+                    - /url: "#"
+                    - img [ref=e488]
+                - generic [ref=e490]:
+                  - paragraph [ref=e491]: Make API Call
+                  - generic [ref=e492]:
+                    - generic [ref=e493]:
+                      - text: After preparing your
+                      - code [ref=e494]: API Key
+                      - text: and selecting a model, you can start making API calls. Here are examples using
+                      - code [ref=e495]: curl
+                      - text: ","
+                      - code [ref=e496]: Python SDK
+                      - text: ", and"
+                      - code [ref=e497]: Java SDK
+                      - text: ":"
+                    - generic [ref=e498]:
+                      - tablist [ref=e499]:
+                        - tab "cURL" [selected] [ref=e500] [cursor=pointer]:
+                          - generic [ref=e501]: cURL
+                        - tab "Official Python SDK" [ref=e502] [cursor=pointer]:
+                          - generic [ref=e503]: Official Python SDK
+                        - tab "Official Java SDK" [ref=e504] [cursor=pointer]:
+                          - generic [ref=e505]: Official Java SDK
+                        - tab "OpenAI Python SDK" [ref=e506] [cursor=pointer]:
+                          - generic [ref=e507]: OpenAI Python SDK
+                        - tab "OpenAI NodeJs SDK" [ref=e508] [cursor=pointer]:
+                          - generic [ref=e509]: OpenAI NodeJs SDK
+                        - tab "OpenAI Java SDK" [ref=e510] [cursor=pointer]:
+                          - generic [ref=e511]: OpenAI Java SDK
+                      - 'tabpanel "cURL Official Python SDK Official Java SDK OpenAI Python SDK OpenAI NodeJs SDK OpenAI Java SDK Warning Note: When using the GLM Coding Plan, you need to configure the dedicated Coding endpoint - https://api.z.ai/api/coding/paas/v4 instead of the general endpoint - https://api.z.ai/api/paas/v4 Note: The GLM Coding Plan API endpoint is intended for supported tools only. For other use cases, we recommend using the general API endpoint. Copy the contents from the code block curl -X POST \"https://api.z.ai/api/paas/v4/chat/completions\" \\ -H \"Content-Type: application/json\" \\ -H \"Accept-Language: en-US,en\" \\ -H \"Authorization: Bearer YOUR_API_KEY\" \\ -d ''{ \"model\": \"glm-5.1\", \"messages\": [ { \"role\": \"system\", \"content\": \"You are a helpful AI assistant.\" }, { \"role\": \"user\", \"content\": \"Hello, please introduce yourself.\" } ] }''" [ref=e513]':
+                        - generic [ref=e514]:
+                          - img "Warning" [ref=e516]
+                          - generic [ref=e519]:
+                            - text: "Note: When using the"
+                            - link "GLM Coding Plan" [ref=e520] [cursor=pointer]:
+                              - /url: /devpack/overview
+                            - text: ", you need to configure the dedicated"
+                            - text: Coding endpoint -
+                            - link "https://api.z.ai/api/coding/paas/v4" [ref=e521] [cursor=pointer]:
+                              - /url: https://api.z.ai/api/coding/paas/v4
+                            - text: instead of the general endpoint -
+                            - link "https://api.z.ai/api/paas/v4" [ref=e522] [cursor=pointer]:
+                              - /url: https://api.z.ai/api/paas/v4
+                            - text: "Note: The GLM Coding Plan API endpoint is intended for"
+                            - link "supported tools" [ref=e523] [cursor=pointer]:
+                              - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                            - text: only. For other use cases, we recommend using the general API endpoint.
+                        - generic [ref=e524]:
+                          - button "Copy the contents from the code block" [ref=e527] [cursor=pointer]:
+                            - img [ref=e528]
+                          - code [ref=e534]:
+                            - generic [ref=e535]: curl -X POST "https://api.z.ai/api/paas/v4/chat/completions" \
+                            - generic [ref=e536]: "-H \"Content-Type: application/json\" \\"
+                            - generic [ref=e537]: "-H \"Accept-Language: en-US,en\" \\"
+                            - generic [ref=e538]: "-H \"Authorization: Bearer YOUR_API_KEY\" \\"
+                            - generic [ref=e539]: "-d '{"
+                            - generic [ref=e540]: "\"model\": \"glm-5.1\","
+                            - generic [ref=e541]: "\"messages\": ["
+                            - generic [ref=e542]: "{"
+                            - generic [ref=e543]: "\"role\": \"system\","
+                            - generic [ref=e544]: "\"content\": \"You are a helpful AI assistant.\""
+                            - generic [ref=e545]: "},"
+                            - generic [ref=e546]: "{"
+                            - generic [ref=e547]: "\"role\": \"user\","
+                            - generic [ref=e548]: "\"content\": \"Hello, please introduce yourself.\""
+                            - generic [ref=e549]: "}"
+                            - generic [ref=e550]: "]"
+                            - generic [ref=e551]: "}'"
+            - heading "Navigate to header Get More" [level=3] [ref=e552]:
+              - link "Navigate to header" [ref=e553] [cursor=pointer]:
+                - /url: "#get-more"
+                - img [ref=e555]
+              - generic [ref=e557] [cursor=pointer]: Get More
+            - generic [ref=e558]:
+              - link "API Reference Access API Reference." [ref=e559] [cursor=pointer]:
+                - generic [ref=e560]:
+                  - img [ref=e562]
+                  - generic [ref=e563]:
+                    - heading "API Reference" [level=2] [ref=e564]
+                    - generic [ref=e566]: Access API Reference.
+              - link "Python SDK Access Python SDK Github" [ref=e567] [cursor=pointer]:
+                - generic [ref=e568]:
+                  - img [ref=e570]
+                  - generic [ref=e571]:
+                    - heading "Python SDK" [level=2] [ref=e572]
+                    - generic [ref=e574]: Access Python SDK Github
+              - link "Java SDK Access Java SDK Github" [ref=e575] [cursor=pointer]:
+                - generic [ref=e576]:
+                  - img [ref=e578]
+                  - generic [ref=e579]:
+                    - heading "Java SDK" [level=2] [ref=e580]
+                    - generic [ref=e582]: Access Java SDK Github
+          - generic [ref=e584]:
+            - paragraph [ref=e585]: Was this page helpful?
+            - generic [ref=e587]:
+              - button "Yes" [ref=e588] [cursor=pointer]:
+                - img [ref=e589]
+                - generic [ref=e591]: "Yes"
+              - button "No" [ref=e592] [cursor=pointer]:
+                - img [ref=e593]
+                - generic [ref=e595]: "No"
+          - link "Overview" [ref=e597] [cursor=pointer]:
+            - /url: /guides/overview/overview
+            - generic [ref=e598]: Overview
+            - img [ref=e599]
+          - contentinfo [ref=e601]:
+            - generic [ref=e602]:
+              - link "x" [ref=e603] [cursor=pointer]:
+                - /url: https://x.com/Zai_org
+                - generic [ref=e604]: x
+                - img [ref=e605]
+              - link "github" [ref=e606] [cursor=pointer]:
+                - /url: https://github.com/zai-org
+                - generic [ref=e607]: github
+                - img [ref=e608]
+              - link "discord" [ref=e609] [cursor=pointer]:
+                - /url: https://discord.gg/QR7SARHRxK
+                - generic [ref=e610]: discord
+                - img [ref=e611]
+              - link "linkedin" [ref=e612] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/zdotai
+                - generic [ref=e613]: linkedin
+                - img [ref=e614]

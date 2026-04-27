@@ -1,0 +1,516 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+              - /url: https://z.ai/model-api
+              - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+              - img "dark logo" [ref=e16]
+            - button "English" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: English
+              - img [ref=e20]
+          - button "Open search" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search...
+            - generic [ref=e29]: ⌘K
+          - generic [ref=e30]:
+            - navigation [ref=e31]:
+              - list [ref=e32]:
+                - listitem [ref=e33]:
+                  - link "API Keys" [ref=e34] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                - listitem [ref=e35]:
+                  - link "Payment Method" [ref=e36] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+            - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - generic [ref=e42]:
+          - link "Guides" [ref=e43] [cursor=pointer]:
+            - /url: /guides/overview/quick-start
+            - text: Guides
+          - link "API Reference" [ref=e45] [cursor=pointer]:
+            - /url: /api-reference/introduction
+            - text: API Reference
+          - link "Scenario Example" [ref=e47] [cursor=pointer]:
+            - /url: /scenario-example/develop-tools/claude
+            - text: Scenario Example
+          - link "Coding Plan" [ref=e49] [cursor=pointer]:
+            - /url: /devpack/overview
+            - text: Coding Plan
+          - link "Released Notes" [ref=e51] [cursor=pointer]:
+            - /url: /release-notes/new-released
+            - text: Released Notes
+          - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+            - /url: /legal-agreement/privacy-policy
+            - text: Terms and Policy
+          - link "Help Center" [ref=e55] [cursor=pointer]:
+            - /url: /help/faq
+            - text: Help Center
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "GLM Coding Plan" [level=5] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Overview" [ref=e67] [cursor=pointer]:
+                  - /url: /devpack/overview
+                  - generic [ref=e70]: Overview
+              - listitem [ref=e71]:
+                - link "Usage Policy" [ref=e72] [cursor=pointer]:
+                  - /url: /devpack/usage-policy
+                  - generic [ref=e75]: Usage Policy
+              - listitem [ref=e76]:
+                - link "FAQ" [ref=e77] [cursor=pointer]:
+                  - /url: /devpack/faq
+                  - generic [ref=e80]: FAQ
+              - listitem [ref=e81]:
+                - link "Legacy Plan Migration Notice" [ref=e82] [cursor=pointer]:
+                  - /url: /devpack/transition
+                  - generic [ref=e85]: Legacy Plan Migration Notice
+          - generic [ref=e86]:
+            - heading "Guide" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quick Start" [ref=e91] [cursor=pointer]:
+                  - /url: /devpack/quick-start
+                  - generic [ref=e94]: Quick Start
+              - listitem [ref=e95]:
+                - link "Coding Tool Helper" [ref=e96] [cursor=pointer]:
+                  - /url: /devpack/extension/coding-tool-helper
+                  - generic [ref=e99]: Coding Tool Helper
+              - listitem [ref=e100]:
+                - link "Tool Integration" [ref=e101] [cursor=pointer]:
+                  - /url: /devpack/tool/others
+                  - generic [ref=e104]: Tool Integration
+              - listitem [ref=e105]:
+                - link "How to Switch Models" [ref=e106] [cursor=pointer]:
+                  - /url: /devpack/using5.1
+                  - generic [ref=e109]: How to Switch Models
+              - listitem [ref=e110]:
+                - button "Toggle MCP Integration section" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: MCP Integration
+                  - img [ref=e114]
+          - generic [ref=e116]:
+            - heading "Learning Resources" [level=5] [ref=e118]
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - link "Best Practice" [ref=e121] [cursor=pointer]:
+                  - /url: /devpack/resources/best-practice
+                  - generic [ref=e124]: Best Practice
+              - listitem [ref=e125]:
+                - link "Memory-mechanism" [ref=e126] [cursor=pointer]:
+                  - /url: /devpack/resources/memory-mechanism
+                  - generic [ref=e129]: Memory-mechanism
+          - generic [ref=e130]:
+            - heading "Campaign Rules" [level=5] [ref=e132]
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Invite Friends, Get Credits" [ref=e135] [cursor=pointer]:
+                  - /url: /devpack/credit-campaign-rules
+                  - generic [ref=e138]: Invite Friends, Get Credits
+        - generic [ref=e140]:
+          - generic [ref=e143]:
+            - button "On this page" [ref=e144] [cursor=pointer]:
+              - img [ref=e145]
+              - generic [ref=e146]: On this page
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - link "GLM Coding Plan Details" [ref=e150] [cursor=pointer]:
+                  - /url: "#glm-coding-plan-details"
+              - listitem [ref=e151]:
+                - link "MCP Call" [ref=e152] [cursor=pointer]:
+                  - /url: "#mcp-call"
+              - listitem [ref=e153]:
+                - link "Subscription Management" [ref=e154] [cursor=pointer]:
+                  - /url: "#subscription-management"
+              - listitem [ref=e155]:
+                - link "Upgrade your Plan" [ref=e156] [cursor=pointer]:
+                  - /url: "#upgrade-your-plan"
+              - listitem [ref=e157]:
+                - link "‘Invite Friends, Get Credits’" [ref=e158] [cursor=pointer]:
+                  - /url: "#%E2%80%98invite-friends-get-credits%E2%80%99"
+              - listitem [ref=e159]:
+                - link "Technical Support" [ref=e160] [cursor=pointer]:
+                  - /url: "#technical-support"
+          - generic [ref=e161]:
+            - banner [ref=e162]:
+              - generic [ref=e163]:
+                - generic [ref=e164]: GLM Coding Plan
+                - generic [ref=e165]:
+                  - heading "FAQ" [level=1] [ref=e166]
+                  - generic [ref=e167]:
+                    - button "Copy page" [ref=e168] [cursor=pointer]:
+                      - generic [ref=e169]:
+                        - img [ref=e170]
+                        - generic [ref=e173]: Copy page
+                    - button "More actions" [ref=e174] [cursor=pointer]:
+                      - img [ref=e175]
+            - generic [ref=e177]:
+              - heading "Navigate to header GLM Coding Plan Details" [level=2] [ref=e178]:
+                - link "Navigate to header" [ref=e179] [cursor=pointer]:
+                  - /url: "#glm-coding-plan-details"
+                  - img [ref=e181]
+                - generic [ref=e183] [cursor=pointer]: GLM Coding Plan Details
+              - strong [ref=e185]: "Q: Plan to Add Support for GLM-5.1 ? How can I switch between them?"
+              - generic [ref=e186]:
+                - strong [ref=e187]: "A:"
+                - text: All plans support
+                - strong [ref=e188]: GLM-5.1
+                - text: ", GLM-5-Turbo, GLM-4.7 and GLM-4.5-Air."
+              - generic [ref=e189]:
+                - img "Tip" [ref=e191]
+                - generic [ref=e193]:
+                  - generic [ref=e194]: "Mapping between Claude Code internal model environment variables and GLM models, with the default configuration as follows:"
+                  - list [ref=e195]:
+                    - listitem [ref=e196]:
+                      - code [ref=e197]: ANTHROPIC_DEFAULT_OPUS_MODEL
+                      - text: ":"
+                      - code [ref=e198]: GLM-4.7
+                    - listitem [ref=e199]:
+                      - code [ref=e200]: ANTHROPIC_DEFAULT_SONNET_MODEL
+                      - text: ":"
+                      - code [ref=e201]: GLM-4.7
+                    - listitem [ref=e202]:
+                      - code [ref=e203]: ANTHROPIC_DEFAULT_HAIKU_MODEL
+                      - text: ":"
+                      - code [ref=e204]: GLM-4.5-Air
+              - generic [ref=e205]:
+                - img "Info" [ref=e207]
+                - generic [ref=e210]:
+                  - text: If you want to use
+                  - code [ref=e211]: GLM-5.1
+                  - text: ", you need to manually change the model to “GLM-5.1” in your custom configuration (e.g.,"
+                  - code [ref=e212]: ~/.claude/settings.json
+                  - text: in Claude Code).
+              - separator [ref=e213]
+              - strong [ref=e215]: "Q: Why is the quota consumed faster when using GLM-5.1? Is there a way to save quota?"
+              - generic [ref=e216]:
+                - strong [ref=e217]: "A:"
+                - text: As advanced models, GLM-5.1 and GLM-5-Turbo are comparable to Claude Opus model.
+                - strong [ref=e218]: Usage for these models will be calculated and deducted at “3 times the standard rate during peak hours and 2 times the standard rate during off-peak hours”;
+                - text: we recommend switching to GLM-5.1 for complex tasks and continuing to use GLM-4.7 for general tasks to avoid depleting your plan’s usage quota too quickly.
+                - strong [ref=e219]: As a limited-time benefit, GLM-5.1 and GLM-5-Turbo will only consume 1× quota during off-peak hours, valid through the end of April.
+              - generic [ref=e220]: "Usage suggestions for more efficient quota utilization:"
+              - list [ref=e221]:
+                - listitem [ref=e222]: GLM-4.7 is comparable to Claude’s Sonnet-level model, and GLM-4.7 is sufficient for daily development and routine tasks.
+                - listitem [ref=e223]: GLM-5.1 and GLM-5-Turbo is comparable to Claude’s Opus-level model, and in high-difficulty scenarios such as complex reasoning and large-scale engineering tasks, it switches to GLM-5.1.
+              - generic [ref=e224]: By reasonably combining different model capability levels, it is possible to more efficiently control quota consumption while ensuring effectiveness.
+              - strong [ref=e226]: "Recommended Configuration (taking Claude Code as an example):"
+              - list [ref=e227]:
+                - listitem [ref=e228]:
+                  - text: Edit or add the
+                  - code [ref=e229]: settings.json
+                  - text: file
+                - listitem [ref=e230]:
+                  - text: "MacOS & Linux:"
+                  - code [ref=e231]: ~/.claude/settings.json
+                - listitem [ref=e232]:
+                  - text: "Windows user directory:"
+                  - code [ref=e233]: /.claude/settings.json
+                - listitem [ref=e234]: Add or modify the env field inside
+                - listitem [ref=e235]:
+                  - text: Note to replace the
+                  - code [ref=e236]: your_zhipu_api_key
+                  - text: inside with the API Key you obtained in the previous step.
+              - generic [ref=e237]:
+                - button "Copy the contents from the code block" [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                - code [ref=e247]:
+                  - generic [ref=e248]: "{"
+                  - generic [ref=e249]: "\"env\": {"
+                  - generic [ref=e250]: "\"ANTHROPIC_AUTH_TOKEN\": \"your_Z.ai_api_key\","
+                  - generic [ref=e251]: "\"ANTHROPIC_BASE_URL\": \"https://api.z.ai/api/anthropic\","
+                  - generic [ref=e252]: "\"API_TIMEOUT_MS\": \"3000000\","
+                  - generic [ref=e253]: "\"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC\": 1,"
+                  - generic [ref=e254]: "\"ANTHROPIC_DEFAULT_OPUS_MODEL\": \"glm-5.1\","
+                  - generic [ref=e255]: "\"ANTHROPIC_DEFAULT_SONNET_MODEL\": \"glm-4.7\","
+                  - generic [ref=e256]: "\"ANTHROPIC_DEFAULT_HAIKU_MODEL\": \"glm-4.5-air\""
+                  - generic [ref=e257]: "}"
+                  - generic [ref=e258]: "}"
+              - separator [ref=e259]
+              - strong [ref=e261]: "Q: How much usage quota does the plan provide?"
+              - generic [ref=e262]:
+                - strong [ref=e263]: "A:"
+                - text: Subscribe once, unlock unmatched usage and unbeatable value.
+              - list [ref=e264]:
+                - listitem [ref=e265]:
+                  - strong [ref=e266]: Lite Plan
+                  - text: ": Up to ~80 prompts every 5 hours — about 3× the usage quota of the Claude Pro plan."
+                - listitem [ref=e267]:
+                  - strong [ref=e268]: Pro Plan
+                  - text: ": Up to ~400 prompts every 5 hours — about 5× the usage quota of the Lite plan."
+                - listitem [ref=e269]:
+                  - strong [ref=e270]: Max Plan
+                  - text: ": Up to ~1600 prompts every 5 hours — about 4× the usage quota of the Pro plan."
+              - generic [ref=e271]: In terms of token consumption, each prompt typically allows 15–20 model calls, giving a total monthly allowance of tens of billions of tokens — all at only ~1% of standard API pricing, making it extremely cost-effective.
+              - blockquote [ref=e272]:
+                - list [ref=e273]:
+                  - listitem [ref=e274]: The numbers above are estimates; actual usage may vary depending on task complexity, codebase size, and whether auto-accept is enabled.
+              - separator [ref=e275]
+              - strong [ref=e277]: "Q: Apart from the 5-hour usage limit, are there any other restrictions on usage?"
+              - generic [ref=e278]:
+                - strong [ref=e279]: "A:"
+                - text: To manage resources and ensure fair access for all users, we have introduced a weekly usage quota limit. This quota starts counting from the time you place your order, and the quota is refreshed and reset on a 7-day cycle. You can view the progress of your quota consumption in the
+                - link "subscription" [ref=e280] [cursor=pointer]:
+                  - /url: https://z.ai/manage-apikey/subscription
+                - text: .
+              - generic [ref=e281]: Users who subscribe and enable auto-renewal before February 12 will enjoy unlimited weekly usage for the duration of their subscription.
+              - separator [ref=e282]
+              - strong [ref=e284]: "Q: Which tools are supported?"
+              - generic [ref=e285]:
+                - strong [ref=e286]: "A:"
+                - text: The GLM Coding Plan is strictly limited to use within officially
+                - link "supported tools and products" [ref=e287] [cursor=pointer]:
+                  - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                - text: . The subscriber shall not use the subscription benefits in any unsupported tools or scenarios.
+                - text: Please refer to our tool guide for step-by-step setup. All supported coding tools share the same usage quota under your subscription.
+              - separator [ref=e288]
+              - strong [ref=e290]: "Q: What happens when my plan quota runs out? Will the system consume my account balance?"
+              - generic [ref=e291]:
+                - strong [ref=e292]: "A:"
+                - text: No. GLM calls made in supported tools will
+                - strong [ref=e293]: only
+                - text: use your Coding Plan quota.
+              - list [ref=e294]:
+                - listitem [ref=e295]:
+                  - text: Once the quota is used up, you’ll need to wait until the next
+                  - strong [ref=e296]: 5-hour cycle
+                  - text: for it to refresh. The system will not deduct from your account balance.
+                - listitem [ref=e297]: Users subscribed to the Coding Plan can only make calls via the plan’s quota in supported tools. API calls outside the plan are not available.
+              - separator [ref=e298]
+              - heading "Navigate to header MCP Call" [level=2] [ref=e299]:
+                - link "Navigate to header" [ref=e300] [cursor=pointer]:
+                  - /url: "#mcp-call"
+                  - img [ref=e302]
+                - generic [ref=e304] [cursor=pointer]: MCP Call
+              - strong [ref=e306]: Q：Which plan supports Vision Understanding, Web Search and Web Reader MCP tools?
+              - generic [ref=e307]:
+                - strong [ref=e308]: A：
+                - text: All plans support these MCP tools, but the Lite plan includes only a limited quota for trial purposes.
+              - separator [ref=e309]
+              - strong [ref=e311]: Q：What is the quota of Vision Understanding, Web Search and Web Reader MCP in the plan?
+              - generic [ref=e312]:
+                - strong [ref=e313]: A：
+                - text: "The MCP quotas for the Lite, Pro and Max plans are as follows:"
+              - list [ref=e314]:
+                - listitem [ref=e315]:
+                  - strong [ref=e316]: Lite Plan
+                  - text: ": Include a total of 100 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+                - listitem [ref=e317]:
+                  - strong [ref=e318]: Pro Plan
+                  - text: ": Include a total of 1,000 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+                - listitem [ref=e319]:
+                  - strong [ref=e320]: Max Plan
+                  - text: ": Include a total of 4,000 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+              - separator [ref=e321]
+              - strong [ref=e323]: Q：Besides using the GLM Coding Plan resource package, can I use other methods to call these three MCP tools for Vision Understanding, Web Search and Web Reader?
+              - generic [ref=e324]:
+                - strong [ref=e325]: A：
+                - text: Other than the resource package, we currently do not provide any other access solutions for calling these three MCP tools. If you use other similar MCP tools and incur billing issues during their use, such issues are not within the scope of this package.
+              - separator [ref=e326]
+              - heading "Navigate to header Subscription Management" [level=2] [ref=e327]:
+                - link "Navigate to header" [ref=e328] [cursor=pointer]:
+                  - /url: "#subscription-management"
+                  - img [ref=e330]
+                - generic [ref=e332] [cursor=pointer]: Subscription Management
+              - strong [ref=e334]: "Q: Will my subscription renew automatically?"
+              - generic [ref=e335]:
+                - strong [ref=e336]: "A:"
+                - text: Yes. Your subscription will automatically renew at the end of each billing cycle, and the fee will be charged to your saved payment method.
+              - separator [ref=e337]
+              - strong [ref=e339]: "Q: How are subscription fees deducted?"
+              - generic [ref=e340]:
+                - strong [ref=e341]: "A:"
+                - text: "The system deducts fees in the following order:"
+              - list [ref=e342]:
+                - listitem [ref=e343]: Credits balance will be used first.
+                - listitem [ref=e344]: If insufficient, cash balance will be used;.
+                - listitem [ref=e345]: If still insufficient, the remaining amount will be charged from your linked payment method (e.g., bank card or PayPal).
+              - generic [ref=e346]:
+                - img "Tip" [ref=e348]
+                - generic [ref=e351]: Please note that a small minimum applies when charging your credit card. If the remaining amount is less, we will round up the deduction to meet this minimum.
+              - separator [ref=e352]
+              - strong [ref=e354]: "Q: How can I cancel my subscription?"
+              - generic [ref=e355]:
+                - strong [ref=e356]: "A:"
+                - text: You can cancel your subscription on the subscription management page. Please make sure to cancel at least 24 hours before your next billing date to avoid auto-renewal. After cancellation, your current plan remains valid until it expires.
+              - separator [ref=e357]
+              - strong [ref=e359]: "Q: Can I get a refund?"
+              - generic [ref=e360]:
+                - strong [ref=e361]: "A:"
+                - text: Please note that subscriptions are non-refundable once purchased. Even if you haven’t used your full plan, the fees cannot be returned. We recommend choosing a subscription plan and billing cycle that best fits your usage needs.
+              - separator [ref=e362]
+              - heading "Navigate to header Upgrade your Plan" [level=2] [ref=e363]:
+                - link "Navigate to header" [ref=e364] [cursor=pointer]:
+                  - /url: "#upgrade-your-plan"
+                  - img [ref=e366]
+                - generic [ref=e368] [cursor=pointer]: Upgrade your Plan
+              - strong [ref=e370]: "Q: How can I upgrade my coding plan?"
+              - generic [ref=e371]:
+                - strong [ref=e372]: "A:"
+                - text: For
+                - strong [ref=e373]: same-tier plan upgrades
+                - text: (e.g., monthly plan to annual plan), the newly purchased plan will
+                - strong [ref=e374]: not take effect immediately
+                - text: . It will only become active after the expiration of your current plan, meaning the validity periods of the plans are cumulative.
+              - generic [ref=e375]:
+                - text: "Example: Upgrading from a"
+                - strong [ref=e376]: Lite Monthly Plan
+                - text: to a
+                - strong [ref=e377]: Lite Annual Plan
+                - text: will grant you a total of 13 months of service validity.
+              - generic [ref=e378]:
+                - text: For
+                - strong [ref=e379]: cross-tier plan upgrades
+                - text: ", the new plan will take effect immediately. The remaining value of your original plan will be converted into account balance on a pro-rated basis, which can be used to offset the price difference of the upgrade."
+              - separator [ref=e380]
+              - strong [ref=e382]: "Q: How can I downgrade my plan?"
+              - generic [ref=e383]:
+                - strong [ref=e384]: "A:"
+                - text: "On the subsciption page, select your desired plan. The change will take effect after the current billing cycle ends. You can also cancel your current subscription and re-subscribe to the desired plan after the billing cycle ends. Steps are as follows:"
+              - list [ref=e385]:
+                - listitem [ref=e386]:
+                  - text: Go to your
+                  - link "subscription page" [ref=e387] [cursor=pointer]:
+                    - /url: https://z.ai/subscribe?utm_source=zai&utm_medium=index&utm_term=glm-coding-plan&utm_campaign=Platform_Ops&_channel_track_key=6lShUDnv
+                  - text: .
+                - listitem [ref=e388]: Click “Subscribe” and select your desired plan.
+                - listitem [ref=e389]: Confirm the change.
+                - listitem [ref=e390]: The new plan will take effect after the current billing cycle ends.
+              - separator [ref=e391]
+              - strong [ref=e393]: "Q: How can I change my billing cycle?"
+              - generic [ref=e394]:
+                - strong [ref=e395]: "A:"
+                - text: "On the subsciption page, select your desired plan. The change will take effect after the current billing cycle ends. You can also cancel your current subscription and re-subscribe to the desired plan after the billing cycle ends. Steps are as follows:"
+              - list [ref=e396]:
+                - listitem [ref=e397]:
+                  - text: Go to your
+                  - link "subscription page" [ref=e398] [cursor=pointer]:
+                    - /url: https://z.ai/subscribe?utm_source=zai&utm_medium=index&utm_term=glm-coding-plan&utm_campaign=Platform_Ops&_channel_track_key=6lShUDnv
+                  - text: .
+                - listitem [ref=e399]: Click “Subscribe” and select your desired billing cycle.
+                - listitem [ref=e400]: Confirm the change.
+                - listitem [ref=e401]: The new cycle will take effect after the current billing period ends.
+              - separator [ref=e402]
+              - heading "Navigate to header ‘Invite Friends, Get Credits’" [level=2] [ref=e403]:
+                - link "Navigate to header" [ref=e404] [cursor=pointer]:
+                  - /url: "#‘invite-friends-get-credits’"
+                  - img [ref=e406]
+                - generic [ref=e408] [cursor=pointer]: ‘Invite Friends, Get Credits’
+              - strong [ref=e410]: "Q: Where can I view the credits I earned?"
+              - generic [ref=e411]:
+                - strong [ref=e412]: "A:"
+                - text: You can view your credit rewards in the [Invite Friends, Earn Credits pop-up - Your Credit Rewards] or check the details under [Billing - Transaction History].
+              - separator [ref=e413]
+              - strong [ref=e415]: "Q: Where can I use my credits? Can I withdraw them?"
+              - generic [ref=e416]:
+                - strong [ref=e417]: "A:"
+                - text: Credits can be used on [Z.ai platform] to offset various purchases, including subscriptions like GLM Coding Plan, resource packs, feature extensions, and API calls.
+              - generic [ref=e418]:
+                - img "Tip" [ref=e420]
+                - generic [ref=e423]: Credits are promotional benefits and cannot be withdrawn, transferred, or refunded.
+              - separator [ref=e424]
+              - strong [ref=e426]: "Q: How is a successful invitation defined? What does my friend need to do?"
+              - generic [ref=e427]:
+                - strong [ref=e428]: "A:"
+                - text: "A successful invitation must meet all of the following:"
+              - list [ref=e429]:
+                - listitem [ref=e430]: The referred friend shall access the campaign page through the inviter’s unique referral link or code.
+                - listitem [ref=e431]: Your friend is a new user (has never paid for a subscription).
+                - listitem [ref=e432]: They complete their first GLM Coding Plan subscription payment within 72 hours.
+                - listitem [ref=e433]: The order is not refunded within 24 hours.
+              - separator [ref=e434]
+              - strong [ref=e436]: "Q: When will I receive the credits after inviting a friend?"
+              - generic [ref=e437]:
+                - strong [ref=e438]: "A:"
+                - text: Credits are usually issued within 24-48 hours after your friend’s payment is confirmed and the order passes review. Check [Finance - Transaction History]. If not received after 72 hours, contact support.
+              - separator [ref=e439]
+              - strong [ref=e441]: "Q: What does “friend’s actual payment amount” mean? How are credits calculated if a coupon is used?"
+              - generic [ref=e442]:
+                - strong [ref=e443]: "A:"
+                - text: “Actual payment amount” refers to the final cash amount your friend paid for their first order.
+              - generic [ref=e444]: "For example: If a plan costs 100 USD, and your friend gets a 50% first-order discount, an extra 10% off from your referral, and uses 5 USD in credits, the final actual payment is 40 USD. Your credits will be calculated based on 40 USD (e.g., 10% of 40 USD = 4 USD). Credit calculation does not include any coupons, discounts, point deductions, or refunded amounts."
+              - separator [ref=e445]
+              - strong [ref=e447]: "Q: Why didn’t I receive credits after referring a friend?"
+              - generic [ref=e448]:
+                - strong [ref=e449]: "A:"
+                - text: "Common reasons include:"
+              - list [ref=e450]:
+                - listitem [ref=e451]: Your friend didn’t register using your exclusive link/code.
+                - listitem [ref=e452]: Your friend completed payment after 72 hours.
+                - listitem [ref=e453]: Your friend was not a new subscribing user.
+                - listitem [ref=e454]: The order was refunded.
+                - listitem [ref=e455]: The system detected unusual activity (e.g., bulk registrations, fraud).
+              - strong [ref=e457]: If none of these apply, please contact customer support with your account and your friend’s registration information.
+              - separator [ref=e458]
+              - heading "Navigate to header Technical Support" [level=2] [ref=e459]:
+                - link "Navigate to header" [ref=e460] [cursor=pointer]:
+                  - /url: "#technical-support"
+                  - img [ref=e462]
+                - generic [ref=e464] [cursor=pointer]: Technical Support
+              - separator [ref=e465]
+              - strong [ref=e467]: Q：Why does it still report error “1113 Insufficient Balance” after purchasing the coding package? Why is the account balance still deducted after purchasing the coding package?
+              - generic [ref=e468]:
+                - strong [ref=e469]: A：
+                - text: "The situation of reporting insufficient balance or deducting account balance may be due to not meeting the usage conditions of the GLM Coding Plan coding package:"
+              - list [ref=e470]:
+                - listitem [ref=e471]:
+                  - text: The GLM Coding Plan is strictly limited to use within officially
+                  - link "supported tools and products" [ref=e472] [cursor=pointer]:
+                    - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                  - text: .
+                - listitem [ref=e473]: "A specific baseurl address must be configured to use it:"
+              - list [ref=e474]:
+                - listitem [ref=e475]:
+                  - text: API endpoint for Claude Code and Goose is：
+                  - code [ref=e476]: https://api.z.ai/api/anthropic
+                - listitem [ref=e477]:
+                  - text: "API endpoint for other tools is:"
+                  - code [ref=e478]: https://api.z.ai/api/coding/paas/v4
+              - list [ref=e479]:
+                - listitem [ref=e480]:
+                  - text: "Only the following four models can be called: GLM-5.1, GLM-5-Turbo, GLM-4.7, and GLM-4.5-Air. For detailed instructions, please refer to:"
+                  - link "https://docs.z.ai/devpack/overview" [ref=e481] [cursor=pointer]:
+                    - /url: https://docs.z.ai/devpack/overview
+            - generic [ref=e483]:
+              - paragraph [ref=e484]: Was this page helpful?
+              - generic [ref=e486]:
+                - button "Yes" [ref=e487] [cursor=pointer]:
+                  - img [ref=e488]
+                  - generic [ref=e490]: "Yes"
+                - button "No" [ref=e491] [cursor=pointer]:
+                  - img [ref=e492]
+                  - generic [ref=e494]: "No"
+            - generic [ref=e495]:
+              - link "Usage Policy" [ref=e496] [cursor=pointer]:
+                - /url: /devpack/usage-policy
+                - img [ref=e497]
+                - generic [ref=e499]: Usage Policy
+              - link "Legacy Plan Migration Notice" [ref=e500] [cursor=pointer]:
+                - /url: /devpack/transition
+                - generic [ref=e501]: Legacy Plan Migration Notice
+                - img [ref=e502]
+            - contentinfo [ref=e504]:
+              - generic [ref=e505]:
+                - link "x" [ref=e506] [cursor=pointer]:
+                  - /url: https://x.com/Zai_org
+                  - generic [ref=e507]: x
+                  - img [ref=e508]
+                - link "github" [ref=e509] [cursor=pointer]:
+                  - /url: https://github.com/zai-org
+                  - generic [ref=e510]: github
+                  - img [ref=e511]
+                - link "discord" [ref=e512] [cursor=pointer]:
+                  - /url: https://discord.gg/QR7SARHRxK
+                  - generic [ref=e513]: discord
+                  - img [ref=e514]
+                - link "linkedin" [ref=e515] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/zdotai
+                  - generic [ref=e516]: linkedin
+                  - img [ref=e517]
+  - alert [ref=e518]

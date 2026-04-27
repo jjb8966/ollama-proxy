@@ -1,0 +1,345 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%2F15660
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e133]:
+      - region "Header" [ref=e135]:
+        - generic [ref=e136]:
+          - 'heading "Feature Request: add more details on usage reset / send notification when reset #15660" [level=1] [ref=e138]'
+          - generic [ref=e140]:
+            - link "New issue" [ref=e142] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues/15660
+              - generic [ref=e144]: New issue
+            - button "Copy link" [ref=e145] [cursor=pointer]:
+              - img [ref=e146]
+      - generic [ref=e154]:
+        - img "Issue" [ref=e155]
+        - text: Open
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - generic [ref=e162]:
+            - link "@robster7674's profile" [ref=e163] [cursor=pointer]:
+              - /url: https://github.com/robster7674
+              - img "@robster7674" [ref=e164]
+            - generic [ref=e165]:
+              - heading "Description" [level=2] [ref=e166]
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - link "robster7674" [ref=e173] [cursor=pointer]:
+                      - /url: https://github.com/robster7674
+                    - generic [ref=e174]:
+                      - text: opened
+                      - link "on Apr 18, 2026last week" [ref=e175] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15660#issue-4286826092
+                        - generic "Apr 18, 2026, 2:15 PM GMT+9" [ref=e176]: on Apr 18, 2026last week
+                  - button "Issue body actions" [ref=e180] [cursor=pointer]:
+                    - img [ref=e181]
+                - generic [ref=e183]:
+                  - generic [ref=e185]:
+                    - paragraph [ref=e186]: Currently the Cloud Usage page is fairly limited in details.
+                    - link "Image" [ref=e187] [cursor=pointer]:
+                      - /url: https://private-user-images.githubusercontent.com/70331923/580268684-26d58912-fcb5-41a6-9107-935b99448936.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzcxOTcxOTQsIm5iZiI6MTc3NzE5Njg5NCwicGF0aCI6Ii83MDMzMTkyMy81ODAyNjg2ODQtMjZkNTg5MTItZmNiNS00MWE2LTkxMDctOTM1Yjk5NDQ4OTM2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjA0MjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwNDI2VDA5NDgxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBmOTgxOTUzNzFjNDJlYWQ3ZWEzNDU4YTBhMWQ5OWVlZTUzMzNiMzMxNDEwYjlmZDg0M2JlMDM5NzQyODdmZTUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JnJlc3BvbnNlLWNvbnRlbnQtdHlwZT1pbWFnZSUyRnBuZyJ9.cFaTd0GT6EhQq-sOojCryxJO7umbu0dfkbDMQTfBM-4
+                      - img "Image" [ref=e188]
+                    - paragraph [ref=e189]: It would be good to have a more detailed date/time on when the limit is actually reset. Also, a section named Notifications that includes not only warnings but also reset confirmations to be sent out when triggered would be good.
+                  - toolbar "Reactions" [ref=e191]:
+                    - switch "👍 1 reaction" [ref=e192]:
+                      - generic [ref=e193]:
+                        - generic: 👍
+                        - generic [ref=e194]:
+                          - generic [ref=e195]: React with 👍
+                          - text: "1"
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - heading "Activity" [level=2] [ref=e199]
+              - generic [ref=e200]:
+                - region "Events" [ref=e201]:
+                  - generic [ref=e208]:
+                    - img [ref=e212]
+                    - generic [ref=e216]:
+                      - link "robster7674" [ref=e218] [cursor=pointer]:
+                        - /url: /robster7674
+                        - generic [ref=e219]: robster7674
+                      - text: added
+                      - link "feature request New feature or request" [ref=e221] [cursor=pointer]:
+                        - /url: /ollama/ollama/issues?q=state%3Aopen%20label%3A%22feature%20request%22
+                        - generic [ref=e223]: feature request
+                        - generic [ref=e224]: New feature or request
+                      - link "on Apr 18, 2026last week" [ref=e225] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15660#event-24631886129
+                        - generic "Apr 18, 2026, 2:15 PM GMT+9" [ref=e226]: on Apr 18, 2026last week
+                - generic [ref=e227]:
+                  - link "@PureBlissAK's profile" [ref=e228] [cursor=pointer]:
+                    - /url: https://github.com/PureBlissAK
+                    - img "PureBlissAK" [ref=e229]
+                  - generic [ref=e236]:
+                    - generic [ref=e238]:
+                      - heading "PureBlissAK commented on Apr 19, 2026 last week" [level=3] [ref=e239]:
+                        - text: PureBlissAK commented
+                        - generic "Apr 19, 2026, 3:13 AM GMT+9" [ref=e240]: on Apr 19, 2026 last week
+                      - generic [ref=e241]:
+                        - link "PureBlissAK" [ref=e243] [cursor=pointer]:
+                          - /url: /PureBlissAK
+                        - link "on Apr 19, 2026last week" [ref=e246] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15660#issuecomment-4274294979
+                          - generic "Apr 19, 2026, 3:13 AM GMT+9" [ref=e247]: on Apr 19, 2026last week
+                      - button "Actions for PureBlissAK's comment, 3:13 AM on April 19" [ref=e251] [cursor=pointer]:
+                        - img [ref=e252]
+                    - generic [ref=e254]:
+                      - generic [ref=e256]:
+                        - heading "🤖 Automated Triage & Analysis Report" [level=2] [ref=e257]
+                        - paragraph [ref=e258]:
+                          - strong [ref=e259]: Issue
+                          - text: ":"
+                          - link "#15660" [ref=e260] [cursor=pointer]:
+                            - /url: https://github.com/ollama/ollama/issues/15660
+                          - strong [ref=e261]: Analyzed
+                          - text: ": 2026-04-18T18:13:49.104923"
+                        - heading "Analysis" [level=3] [ref=e262]
+                        - list [ref=e263]:
+                          - listitem [ref=e264]:
+                            - strong [ref=e265]: Type
+                            - text: ": unknown"
+                          - listitem [ref=e266]:
+                            - strong [ref=e267]: Severity
+                            - text: ": medium"
+                          - listitem [ref=e268]:
+                            - strong [ref=e269]: Components
+                            - text: ": unknown"
+                        - heading "Implementation Plan" [level=3] [ref=e270]
+                        - list [ref=e271]:
+                          - listitem [ref=e272]:
+                            - strong [ref=e273]: Effort
+                            - text: ": medium"
+                          - listitem [ref=e274]:
+                            - strong [ref=e275]: Steps
+                            - text: ":"
+                        - paragraph [ref=e276]:
+                          - emphasis [ref=e277]: This issue has been triaged and marked for implementation.
+                      - toolbar "Reactions"
+                - generic [ref=e278]:
+                  - link "@libravault-xyz's profile" [ref=e279] [cursor=pointer]:
+                    - /url: https://github.com/libravault-xyz
+                    - img "libravault-xyz" [ref=e280]
+                  - generic [ref=e287]:
+                    - generic [ref=e289]:
+                      - heading "libravault-xyz commented on Apr 26, 2026 4 hours ago" [level=3] [ref=e290]:
+                        - text: libravault-xyz commented
+                        - generic "Apr 26, 2026, 2:43 PM GMT+9" [ref=e291]: on Apr 26, 2026 4 hours ago
+                      - generic [ref=e292]:
+                        - link "libravault-xyz" [ref=e294] [cursor=pointer]:
+                          - /url: /libravault-xyz
+                        - link "on Apr 26, 20264 hours ago" [ref=e297] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15660#issuecomment-4321357849
+                          - generic "Apr 26, 2026, 2:43 PM GMT+9" [ref=e298]: on Apr 26, 20264 hours ago
+                      - button "Actions for libravault-xyz's comment, 2:43 PM today" [ref=e302] [cursor=pointer]:
+                        - img [ref=e303]
+                    - generic [ref=e305]:
+                      - generic [ref=e307]:
+                        - paragraph [ref=e308]: "Somewhat in context: just got this error \"Can't analyze the screenshot (vision credits depleted), but I can investigate both issues from the codebase.\""
+                        - paragraph [ref=e309]: Would be good to have session statistics per modality.
+                      - toolbar "Reactions"
+            - generic [ref=e310]:
+              - link "Sign up for free" [ref=e311] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ollama/ollama/issues/15660
+                - generic [ref=e313]: Sign up for free
+              - generic [ref=e314]:
+                - strong [ref=e315]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e316] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ollama/ollama/issues/15660
+        - generic [ref=e318]:
+          - heading "Metadata" [level=2] [ref=e319]
+          - generic [ref=e321]:
+            - generic [ref=e323]:
+              - generic [ref=e324]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e325]: No one assigned
+            - generic [ref=e326]:
+              - generic [ref=e328]:
+                - heading "Labels" [level=3]
+              - link "feature request New feature or request" [ref=e331] [cursor=pointer]:
+                - /url: https://github.com/ollama/ollama/issues?q=state%3Aopen%20label%3A%22feature%20request%22
+                - generic [ref=e333]: feature request
+                - generic [ref=e334]: New feature or request
+            - generic [ref=e336]:
+              - generic [ref=e337]:
+                - heading "Type" [level=3]
+              - generic [ref=e338]: No type
+            - generic [ref=e340]:
+              - generic [ref=e341]:
+                - heading "Projects" [level=3]
+              - generic [ref=e342]: No projects
+            - generic [ref=e344]:
+              - generic [ref=e345]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e346]: No milestone
+            - generic [ref=e348]:
+              - generic [ref=e349]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e350]: None yet
+            - generic [ref=e351]:
+              - generic [ref=e353]:
+                - heading "Development" [level=3]
+              - generic [ref=e354]:
+                - generic [ref=e355]: No branches or pull requests
+                - list
+            - generic [ref=e356]:
+              - generic [ref=e358]:
+                - heading "Participants" [level=3]
+              - generic [ref=e361]:
+                - link "@robster7674" [ref=e362] [cursor=pointer]:
+                  - /url: /robster7674
+                  - img "@robster7674" [ref=e363]
+                - link "@PureBlissAK" [ref=e364] [cursor=pointer]:
+                  - /url: /PureBlissAK
+                  - img "@PureBlissAK" [ref=e365]
+                - link "@libravault-xyz" [ref=e366] [cursor=pointer]:
+                  - /url: /libravault-xyz
+                  - img "@libravault-xyz" [ref=e367]
+            - heading "Issue actions" [level=2] [ref=e368]
+            - list
+  - contentinfo [ref=e369]:
+    - heading "Footer" [level=2] [ref=e370]
+    - generic [ref=e371]:
+      - generic [ref=e372]:
+        - link "GitHub Homepage" [ref=e373] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e374]
+        - generic [ref=e376]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e377]:
+        - heading "Footer navigation" [level=3] [ref=e378]
+        - list "Footer navigation" [ref=e379]:
+          - listitem [ref=e380]:
+            - link "Terms" [ref=e381] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e382]:
+            - link "Privacy" [ref=e383] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e384]:
+            - link "Security" [ref=e385] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e386]:
+            - link "Status" [ref=e387] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e388]:
+            - link "Community" [ref=e389] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e390]:
+            - link "Docs" [ref=e391] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e392]:
+            - link "Contact" [ref=e393] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e394]:
+            - button "Manage cookies" [ref=e396] [cursor=pointer]
+          - listitem [ref=e397]:
+            - button "Do not share my personal information" [ref=e399] [cursor=pointer]

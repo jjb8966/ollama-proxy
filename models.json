@@ -207,6 +207,18 @@
       "context_length": 256000
     },
     {
+      "name": "opencode:deepseek-v4-pro",
+      "model": "opencode:deepseek-v4-pro",
+      "context_length": 1000000,
+      "max_output_tokens": 384000
+    },
+    {
+      "name": "opencode:deepseek-v4-flash",
+      "model": "opencode:deepseek-v4-flash",
+      "context_length": 1000000,
+      "max_output_tokens": 384000
+    },
+    {
       "name": "opencode:glm-5",
       "model": "opencode:glm-5",
       "context_length": 205000,

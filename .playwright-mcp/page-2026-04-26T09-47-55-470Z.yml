@@ -1,0 +1,474 @@
+- generic [ref=e2]:
+  - region:
+    - generic:
+      - tooltip "This user is the author of this issue"
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%2F15707
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e133]:
+      - region "Header" [ref=e135]:
+        - generic [ref=e136]:
+          - 'heading "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work #15707" [level=1] [ref=e138]':
+            - generic [ref=e139]:
+              - code [ref=e140]: glm-5.1:cloud
+              - text: model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work
+            - text: "#15707"
+          - generic [ref=e142]:
+            - link "New issue" [ref=e144] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues/15707
+              - generic [ref=e146]: New issue
+            - button "Copy link" [ref=e147] [cursor=pointer]:
+              - img [ref=e148]
+      - generic [ref=e156]:
+        - img "Issue" [ref=e157]
+        - text: Closed
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - generic [ref=e164]:
+            - link "@jonathanGGa's profile" [ref=e165] [cursor=pointer]:
+              - /url: https://github.com/jonathanGGa
+              - img "@jonathanGGa" [ref=e166]
+            - generic [ref=e167]:
+              - heading "Description" [level=2] [ref=e168]
+              - generic [ref=e170]:
+                - generic [ref=e172]:
+                  - generic [ref=e173]:
+                    - link "jonathanGGa" [ref=e175] [cursor=pointer]:
+                      - /url: https://github.com/jonathanGGa
+                    - generic [ref=e176]:
+                      - text: opened
+                      - link "on Apr 19, 2026last week" [ref=e177] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15707#issue-4291675803
+                        - generic "Apr 20, 2026, 3:36 AM GMT+9" [ref=e178]: on Apr 19, 2026last week
+                      - generic [ref=e179]:
+                        - text: ·
+                        - generic [ref=e180]:
+                          - text: edited by
+                          - link "jonathanGGa" [ref=e181] [cursor=pointer]:
+                            - /url: https://github.com/jonathanGGa
+                  - generic [ref=e182]:
+                    - button "Open edits" [ref=e185] [cursor=pointer]:
+                      - generic [ref=e187]: Edits
+                      - generic:
+                        - img
+                    - button "Issue body actions" [ref=e190] [cursor=pointer]:
+                      - img [ref=e191]
+                - generic [ref=e193]:
+                  - generic [ref=e195]:
+                    - heading "What is the issue?" [level=3] [ref=e196]
+                    - heading "Bug Description" [level=4] [ref=e197]
+                    - paragraph [ref=e198]:
+                      - text: When using GitHub Copilot (CLI & Chat (VSCode) ) with Ollama Cloud as the provider, the
+                      - code [ref=e199]: glm-5.1:cloud
+                      - text: model consistently fails with a 403 authentication error on every request. All other Ollama Cloud models authenticate and respond correctly.
+                    - heading "Steps to Reproduce" [level=4] [ref=e200]
+                    - list [ref=e201]:
+                      - listitem [ref=e202]: Configure GitHub Copilot to use Ollama Cloud as the language model provider
+                      - listitem [ref=e203]:
+                        - text: Select the
+                        - code [ref=e204]: glm-5.1:cloud
+                        - text: model
+                      - listitem [ref=e205]: Send any message in Copilot
+                      - listitem [ref=e206]: Request fails immediately with authentication error
+                    - heading "Expected Behavior" [level=4] [ref=e207]
+                    - paragraph [ref=e208]:
+                      - text: The
+                      - code [ref=e209]: glm-5.1:cloud
+                      - text: model should authenticate successfully and return responses, just like other Ollama Cloud models.
+                    - heading "Actual Behavior in Copilot CLI" [level=4] [ref=e210]
+                    - paragraph [ref=e211]:
+                      - text: Every request to
+                      - code [ref=e212]: glm-5.1:cloud
+                      - text: "fails with:"
+                    - generic [ref=e213]:
+                      - code [ref=e215]: Authentication failed with provider at http://127.0.0.1:11434/v1 (HTTP 403). Check your COPILOT_PROVIDER_API_KEY or COPILOT_PROVIDER_BEARER_TOKEN.
+                      - button "Copy" [ref=e217] [cursor=pointer]:
+                        - img [ref=e218]
+                    - heading "Actual Behavior in Copilot Chat (VSCode)" [level=4] [ref=e221]
+                    - paragraph [ref=e222]:
+                      - text: Every request to
+                      - code [ref=e223]: glm-5.1:cloud
+                      - text: "fails with:"
+                    - generic [ref=e224]:
+                      - code [ref=e226]: "Sorry, your request failed. Please try again. Copilot Request id: 9c3f19f1-b94c-45f9-83b7-b49b08bd11c5 Reason: token expired or invalid: 403: Error: token expired or invalid: 403 at Dj._provideLanguageModelResponse (c:\\Users\\33665.vscode\\extensions\\github.copilot-chat-0.44.1\\dist\\extension.js:1688:13141) at process.processTicksAndRejections (node:internal/process/task_queues:103:5)"
+                      - button "Copy" [ref=e228] [cursor=pointer]:
+                        - img [ref=e229]
+                    - heading "Environment" [level=4] [ref=e232]
+                    - list [ref=e233]:
+                      - listitem [ref=e234]:
+                        - strong [ref=e235]: "Ollama version:"
+                        - text: (latest)
+                      - listitem [ref=e236]:
+                        - strong [ref=e237]: "Affected model:"
+                        - code [ref=e238]: glm-5.1:cloud
+                      - listitem [ref=e239]:
+                        - strong [ref=e240]: "Working models:"
+                        - text: All other Ollama Cloud models tested (kimi, qwen, minimax)
+                    - heading "Relevant log output" [level=3] [ref=e241]
+                    - button "Copy" [ref=e245] [cursor=pointer]:
+                      - img [ref=e246]
+                    - heading "OS" [level=3] [ref=e249]
+                    - paragraph [ref=e250]:
+                      - emphasis [ref=e251]: No response
+                    - heading "GPU" [level=3] [ref=e252]
+                    - paragraph [ref=e253]:
+                      - emphasis [ref=e254]: No response
+                    - heading "CPU" [level=3] [ref=e255]
+                    - paragraph [ref=e256]:
+                      - emphasis [ref=e257]: No response
+                    - heading "Ollama version" [level=3] [ref=e258]
+                    - paragraph [ref=e259]:
+                      - emphasis [ref=e260]: No response
+                  - generic:
+                    - toolbar "Reactions"
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - heading "Activity" [level=2] [ref=e264]
+              - generic [ref=e265]:
+                - region "Events" [ref=e266]:
+                  - generic [ref=e273]:
+                    - img [ref=e277]
+                    - generic [ref=e281]:
+                      - link "jonathanGGa" [ref=e283] [cursor=pointer]:
+                        - /url: /jonathanGGa
+                        - generic [ref=e284]: jonathanGGa
+                      - text: added
+                      - link "bug Something isn't working" [ref=e286] [cursor=pointer]:
+                        - /url: /ollama/ollama/issues?q=state%3Aopen%20label%3A%22bug%22
+                        - generic [ref=e288]: bug
+                        - generic [ref=e289]: Something isn't working
+                      - link "on Apr 20, 2026last week" [ref=e290] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15707#event-24654322833
+                        - generic "Apr 20, 2026, 3:37 AM GMT+9" [ref=e291]: on Apr 20, 2026last week
+                  - generic [ref=e298]:
+                    - img [ref=e302]
+                    - generic [ref=e306]:
+                      - link "jonathanGGa" [ref=e308] [cursor=pointer]:
+                        - /url: /jonathanGGa
+                        - generic [ref=e309]: jonathanGGa
+                      - text: closed this as
+                      - link "completed" [ref=e310] [cursor=pointer]:
+                        - /url: /ollama/ollama/issues?q=is%3Aissue%20state%3Aclosed%20archived%3Afalse%20reason%3Acompleted
+                      - link "on Apr 20, 2026last week" [ref=e311] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15707#event-24681511921
+                        - generic "Apr 20, 2026, 11:36 PM GMT+9" [ref=e312]: on Apr 20, 2026last week
+                - generic [ref=e313]:
+                  - link "@MihaelIsaev's profile" [ref=e314] [cursor=pointer]:
+                    - /url: https://github.com/MihaelIsaev
+                    - img "MihaelIsaev" [ref=e315]
+                  - generic [ref=e322]:
+                    - generic [ref=e324]:
+                      - heading "MihaelIsaev commented on Apr 22, 2026 5 days ago" [level=3] [ref=e325]:
+                        - text: MihaelIsaev commented
+                        - generic "Apr 22, 2026, 3:01 AM GMT+9" [ref=e326]: on Apr 22, 2026 5 days ago
+                      - generic [ref=e327]:
+                        - link "MihaelIsaev" [ref=e329] [cursor=pointer]:
+                          - /url: /MihaelIsaev
+                        - generic [ref=e330]:
+                          - link "on Apr 22, 20265 days ago" [ref=e332] [cursor=pointer]:
+                            - /url: https://github.com/ollama/ollama/issues/15707#issuecomment-4290726995
+                            - generic "Apr 22, 2026, 3:01 AM GMT+9" [ref=e333]: on Apr 22, 20265 days ago
+                          - generic [ref=e334]:
+                            - text: ·
+                            - generic [ref=e335]:
+                              - text: edited by
+                              - link "MihaelIsaev" [ref=e336] [cursor=pointer]:
+                                - /url: https://github.com/MihaelIsaev
+                      - generic [ref=e337]:
+                        - button "Open edits" [ref=e340] [cursor=pointer]:
+                          - generic [ref=e342]: Edits
+                          - generic:
+                            - img
+                        - button "Actions for MihaelIsaev's comment, 3:01 AM on April 22" [ref=e345] [cursor=pointer]:
+                          - img [ref=e346]
+                    - generic [ref=e348]:
+                      - paragraph [ref=e351]:
+                        - text: Still getting 403 in Copilot with
+                        - code [ref=e352]: glm-5.1:cloud
+                        - text: while
+                        - code [ref=e353]: glm-5:cloud
+                        - text: works
+                      - toolbar "Reactions"
+                - generic [ref=e354]:
+                  - link "@jonathanGGa's profile" [ref=e355] [cursor=pointer]:
+                    - /url: https://github.com/jonathanGGa
+                    - img "jonathanGGa" [ref=e356]
+                  - generic [ref=e363]:
+                    - generic [ref=e365]:
+                      - heading "jonathanGGa commented on Apr 22, 2026 5 days ago" [level=3] [ref=e366]:
+                        - text: jonathanGGa commented
+                        - generic "Apr 22, 2026, 3:05 AM GMT+9" [ref=e367]: on Apr 22, 2026 5 days ago
+                      - generic [ref=e368]:
+                        - link "jonathanGGa" [ref=e370] [cursor=pointer]:
+                          - /url: /jonathanGGa
+                        - link "on Apr 22, 20265 days ago" [ref=e373] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15707#issuecomment-4290749071
+                          - generic "Apr 22, 2026, 3:05 AM GMT+9" [ref=e374]: on Apr 22, 20265 days ago
+                      - generic [ref=e376]:
+                        - generic "This user is the author of this issue" [ref=e378]: Author
+                        - button "Actions for jonathanGGa's comment, 3:05 AM on April 22" [ref=e380] [cursor=pointer]:
+                          - img [ref=e381]
+                    - generic [ref=e383]:
+                      - generic [ref=e385]:
+                        - blockquote [ref=e386]:
+                          - paragraph [ref=e387]:
+                            - text: Still getting 403 in Copilot with
+                            - code [ref=e388]: glm-5.1:cloud
+                            - text: while
+                            - code [ref=e389]: glm-5:cloud
+                            - text: works
+                        - paragraph [ref=e390]: It looks like it doesn't work in free plan, but it works when you subs to pro plan
+                      - toolbar "Reactions"
+                - generic [ref=e391]:
+                  - link "@MihaelIsaev's profile" [ref=e392] [cursor=pointer]:
+                    - /url: https://github.com/MihaelIsaev
+                    - img "MihaelIsaev" [ref=e393]
+                  - generic [ref=e400]:
+                    - generic [ref=e402]:
+                      - heading "MihaelIsaev commented on Apr 22, 2026 5 days ago" [level=3] [ref=e403]:
+                        - text: MihaelIsaev commented
+                        - generic "Apr 22, 2026, 3:07 AM GMT+9" [ref=e404]: on Apr 22, 2026 5 days ago
+                      - generic [ref=e405]:
+                        - link "MihaelIsaev" [ref=e407] [cursor=pointer]:
+                          - /url: /MihaelIsaev
+                        - link "on Apr 22, 20265 days ago" [ref=e410] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15707#issuecomment-4290760922
+                          - generic "Apr 22, 2026, 3:07 AM GMT+9" [ref=e411]: on Apr 22, 20265 days ago
+                      - button "Actions for MihaelIsaev's comment, 3:07 AM on April 22" [ref=e415] [cursor=pointer]:
+                        - img [ref=e416]
+                    - generic [ref=e418]:
+                      - generic [ref=e420]:
+                        - blockquote [ref=e421]:
+                          - blockquote [ref=e422]:
+                            - paragraph [ref=e423]:
+                              - text: Still getting 403 in Copilot with
+                              - code [ref=e424]: glm-5.1:cloud
+                              - text: while
+                              - code [ref=e425]: glm-5:cloud
+                              - text: works
+                          - paragraph [ref=e426]: It looks like it doesn't work in free plan, but it works when you subs to pro plan
+                        - paragraph [ref=e427]: Oh ok, good to know, thanks
+                      - toolbar "Reactions"
+                - generic [ref=e428]:
+                  - link "@netetireallyhuman's profile" [ref=e429] [cursor=pointer]:
+                    - /url: https://github.com/netetireallyhuman
+                    - img "netetireallyhuman" [ref=e430]
+                  - generic [ref=e437]:
+                    - generic [ref=e439]:
+                      - heading "netetireallyhuman commented on Apr 23, 2026 4 days ago" [level=3] [ref=e440]:
+                        - text: netetireallyhuman commented
+                        - generic "Apr 23, 2026, 6:29 AM GMT+9" [ref=e441]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e442]:
+                        - link "netetireallyhuman" [ref=e444] [cursor=pointer]:
+                          - /url: /netetireallyhuman
+                        - link "on Apr 23, 20264 days ago" [ref=e447] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15707#issuecomment-4300083373
+                          - generic "Apr 23, 2026, 6:29 AM GMT+9" [ref=e448]: on Apr 23, 20264 days ago
+                      - button "Actions for netetireallyhuman's comment, 6:29 AM on April 23" [ref=e452] [cursor=pointer]:
+                        - img [ref=e453]
+                    - generic [ref=e455]:
+                      - paragraph [ref=e458]: Still getting 403 in Copilot with glm-5.1:cloud
+                      - toolbar "Reactions"
+            - generic [ref=e459]:
+              - link "Sign up for free" [ref=e460] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ollama/ollama/issues/15707
+                - generic [ref=e462]: Sign up for free
+              - generic [ref=e463]:
+                - strong [ref=e464]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e465] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ollama/ollama/issues/15707
+        - generic [ref=e467]:
+          - heading "Metadata" [level=2] [ref=e468]
+          - generic [ref=e470]:
+            - generic [ref=e472]:
+              - generic [ref=e473]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e474]: No one assigned
+            - generic [ref=e475]:
+              - generic [ref=e477]:
+                - heading "Labels" [level=3]
+              - link "bug Something isn't working" [ref=e480] [cursor=pointer]:
+                - /url: https://github.com/ollama/ollama/issues?q=state%3Aopen%20label%3A%22bug%22
+                - generic [ref=e482]: bug
+                - generic [ref=e483]: Something isn't working
+            - generic [ref=e485]:
+              - generic [ref=e486]:
+                - heading "Type" [level=3]
+              - generic [ref=e487]: No type
+            - generic [ref=e489]:
+              - generic [ref=e490]:
+                - heading "Projects" [level=3]
+              - generic [ref=e491]: No projects
+            - generic [ref=e493]:
+              - generic [ref=e494]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e495]: No milestone
+            - generic [ref=e497]:
+              - generic [ref=e498]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e499]: None yet
+            - generic [ref=e500]:
+              - generic [ref=e502]:
+                - heading "Development" [level=3]
+              - generic [ref=e503]:
+                - generic [ref=e504]: No branches or pull requests
+                - list
+            - generic [ref=e505]:
+              - generic [ref=e507]:
+                - heading "Participants" [level=3]
+              - generic [ref=e510]:
+                - link "@MihaelIsaev" [ref=e511] [cursor=pointer]:
+                  - /url: /MihaelIsaev
+                  - img "@MihaelIsaev" [ref=e512]
+                - link "@jonathanGGa" [ref=e513] [cursor=pointer]:
+                  - /url: /jonathanGGa
+                  - img "@jonathanGGa" [ref=e514]
+                - link "@netetireallyhuman" [ref=e515] [cursor=pointer]:
+                  - /url: /netetireallyhuman
+                  - img "@netetireallyhuman" [ref=e516]
+            - heading "Issue actions" [level=2] [ref=e517]
+            - list
+  - contentinfo [ref=e518]:
+    - heading "Footer" [level=2] [ref=e519]
+    - generic [ref=e520]:
+      - generic [ref=e521]:
+        - link "GitHub Homepage" [ref=e522] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e523]
+        - generic [ref=e525]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e526]:
+        - heading "Footer navigation" [level=3] [ref=e527]
+        - list "Footer navigation" [ref=e528]:
+          - listitem [ref=e529]:
+            - link "Terms" [ref=e530] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e531]:
+            - link "Privacy" [ref=e532] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e533]:
+            - link "Security" [ref=e534] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e535]:
+            - link "Status" [ref=e536] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e537]:
+            - link "Community" [ref=e538] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e539]:
+            - link "Docs" [ref=e540] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e541]:
+            - link "Contact" [ref=e542] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e543]:
+            - button "Manage cookies" [ref=e545] [cursor=pointer]
+          - listitem [ref=e546]:
+            - button "Do not share my personal information" [ref=e548] [cursor=pointer]

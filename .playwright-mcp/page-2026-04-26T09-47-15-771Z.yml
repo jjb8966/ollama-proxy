@@ -1,0 +1,830 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%3Fq%3Dcloud%2Bpro
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e138]:
+      - heading "Issues" [level=1] [ref=e139]
+      - generic [ref=e140]:
+        - generic [ref=e142]:
+          - form "Search Issues" [ref=e144]:
+            - generic [ref=e145]: Search Issues
+            - generic [ref=e147]:
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - generic [ref=e151]: cloud
+                  - generic [ref=e153]: pro
+                - combobox "Search Issues" [ref=e155]: cloud pro
+              - button "Search" [ref=e156] [cursor=pointer]:
+                - img [ref=e157]
+          - generic [ref=e159]:
+            - link "Labels" [ref=e160] [cursor=pointer]:
+              - /url: /ollama/ollama/labels
+              - generic [ref=e161]:
+                - generic:
+                  - img
+                - generic [ref=e162]: Labels
+            - link "Milestones" [ref=e163] [cursor=pointer]:
+              - /url: /ollama/ollama/milestones
+              - generic [ref=e164]:
+                - generic:
+                  - img
+                - generic [ref=e165]: Milestones
+            - link "New issue" [ref=e166] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues?q=cloud+pro
+              - generic [ref=e168]: New issue
+        - generic [ref=e169]:
+          - generic [ref=e172]:
+            - heading "Search results" [level=2] [ref=e173]
+            - generic [ref=e174]:
+              - generic [ref=e175]:
+                - link "Open" [ref=e176] [cursor=pointer]:
+                  - /url: ""
+                  - generic [ref=e177]: Open
+                - link "Closed" [ref=e179] [cursor=pointer]:
+                  - /url: ""
+                  - generic [ref=e180]: Closed
+              - toolbar "Actions" [ref=e182]:
+                - generic [ref=e183]:
+                  - button "Filter by author" [ref=e185] [cursor=pointer]:
+                    - generic [ref=e186]:
+                      - generic [ref=e187]: Author
+                      - generic:
+                        - img
+                  - button "Filter by label" [ref=e189] [cursor=pointer]:
+                    - generic [ref=e190]:
+                      - generic [ref=e191]: Labels
+                      - generic:
+                        - img
+                  - button "Filter by project" [ref=e193] [cursor=pointer]:
+                    - generic [ref=e194]:
+                      - generic [ref=e195]: Projects
+                      - generic:
+                        - img
+                  - button "Filter by milestone" [ref=e197] [cursor=pointer]:
+                    - generic [ref=e198]:
+                      - generic [ref=e199]: Milestones
+                      - generic:
+                        - img
+                  - button "Filter by assignees" [ref=e201] [cursor=pointer]:
+                    - generic [ref=e202]:
+                      - generic [ref=e203]: Assignees
+                      - generic:
+                        - img
+                  - button "Filter by issue type" [ref=e205] [cursor=pointer]:
+                    - generic [ref=e206]:
+                      - generic [ref=e207]: Types
+                      - generic:
+                        - img
+                  - button "Sort by Newest , descending" [ref=e209] [cursor=pointer]:
+                    - generic [ref=e210]:
+                      - generic:
+                        - img
+                      - generic [ref=e211]:
+                        - generic [ref=e212]: Sort by
+                        - text: Newest
+                        - generic [ref=e213]: ", descending"
+                    - generic:
+                      - img
+            - list "Search results" [ref=e214]:
+              - 'listitem "minimax-m2.1: Status: Open. #15802 In ollama/ollama;· Notbici opened on Apr 25, 2026. More information available below." [ref=e217]':
+                - heading "minimax-m2.1" [level=3] [ref=e219]:
+                  - link "minimax-m2.1" [ref=e220] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15802
+                    - generic [ref=e221]: minimax-m2.1
+                - generic [ref=e226]:
+                  - img [ref=e228]
+                  - generic [ref=e231]: "Status: Open."
+                - generic [ref=e235]:
+                  - generic [ref=e236]:
+                    - generic [ref=e237]: "#15802"
+                    - generic [ref=e238]: In ollama/ollama;
+                  - generic [ref=e239]:
+                    - text: ·
+                    - link "Notbici" [ref=e240] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3ANotbici
+                    - text: opened
+                    - generic "Apr 25, 2026, 8:13 AM GMT+9" [ref=e241]: on Apr 25, 2026yesterday
+              - 'listitem "failure during GPU discovery with ROCm (crash) in ubuntu 26.04 and docker container: Status: Open. #15762 In ollama/ollama;· 3v1n0 opened on Apr 23, 2026. More information available below." [ref=e245]':
+                - generic [ref=e246]:
+                  - heading "failure during GPU discovery with ROCm (crash) in ubuntu 26.04 and docker container" [level=3] [ref=e247]:
+                    - link "failure during GPU discovery with ROCm (crash) in ubuntu 26.04 and docker container" [ref=e248] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15762
+                      - generic [ref=e249]: failure during GPU discovery with ROCm (crash) in ubuntu 26.04 and docker container
+                  - link "bug Something isn't working" [ref=e253] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e255]: bug
+                    - generic [ref=e256]: Something isn't working
+                - generic [ref=e260]:
+                  - img [ref=e262]
+                  - generic [ref=e265]: "Status: Open."
+                - generic [ref=e269]:
+                  - generic [ref=e270]:
+                    - generic [ref=e271]: "#15762"
+                    - generic [ref=e272]: In ollama/ollama;
+                  - generic [ref=e273]:
+                    - text: ·
+                    - link "3v1n0" [ref=e274] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3A3v1n0
+                    - text: opened
+                    - generic "Apr 23, 2026, 11:00 AM GMT+9" [ref=e275]: on Apr 23, 20263 days ago
+              - 'listitem "Kimi models require pro ?: Status: Open. #15741 In ollama/ollama;· Azecko opened on Apr 22, 2026. More information available below." [ref=e279]':
+                - generic [ref=e280]:
+                  - heading "Kimi models require pro ?" [level=3] [ref=e281]:
+                    - link "Kimi models require pro ?" [ref=e282] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15741
+                      - generic [ref=e283]: Kimi models require pro ?
+                  - link "bug Something isn't working" [ref=e287] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e289]: bug
+                    - generic [ref=e290]: Something isn't working
+                - generic [ref=e294]:
+                  - img [ref=e296]
+                  - generic [ref=e299]: "Status: Open."
+                - generic [ref=e303]:
+                  - generic [ref=e304]:
+                    - generic [ref=e305]: "#15741"
+                    - generic [ref=e306]: In ollama/ollama;
+                  - generic [ref=e307]:
+                    - text: ·
+                    - link "Azecko" [ref=e308] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AAzecko
+                    - text: opened
+                    - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e309]: on Apr 22, 20264 days ago
+              - 'listitem "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work: Status: Closed (completed). #15707 In ollama/ollama;· by jonathanGGa was closed on Apr 20, 2026. More information available below." [ref=e313]':
+                - generic [ref=e314]:
+                  - heading "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work" [level=3] [ref=e315]:
+                    - link "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work" [ref=e316] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15707
+                      - generic [ref=e318]:
+                        - code [ref=e319]: glm-5.1:cloud
+                        - text: model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work
+                  - link "bug Something isn't working" [ref=e323] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e325]: bug
+                    - generic [ref=e326]: Something isn't working
+                - generic [ref=e330]:
+                  - img [ref=e332]
+                  - generic [ref=e335]: "Status: Closed (completed)."
+                - generic [ref=e339]:
+                  - generic [ref=e340]:
+                    - generic [ref=e341]: "#15707"
+                    - generic [ref=e342]: In ollama/ollama;
+                  - generic [ref=e343]:
+                    - text: · by
+                    - link "jonathanGGa" [ref=e344] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AjonathanGGa
+                    - text: was closed
+                    - generic "Apr 20, 2026, 11:36 PM GMT+9" [ref=e345]: on Apr 20, 2026last week
+              - 'listitem "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API: Status: Open. #15647 In ollama/ollama;· ruhtraxjj opened on Apr 17, 2026. More information available below." [ref=e349]':
+                - generic [ref=e350]:
+                  - heading "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API" [level=3] [ref=e351]:
+                    - link "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API" [ref=e352] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15647
+                      - generic [ref=e353]: tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API
+                  - link "cloud" [ref=e357] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Acloud
+                    - generic [ref=e359]: cloud
+                - generic [ref=e364]:
+                  - img [ref=e366]
+                  - generic [ref=e369]: "Status: Open."
+                - generic [ref=e373]:
+                  - generic [ref=e374]:
+                    - generic [ref=e375]: "#15647"
+                    - generic [ref=e376]: In ollama/ollama;
+                  - generic [ref=e377]:
+                    - text: ·
+                    - link "ruhtraxjj" [ref=e378] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Aruhtraxjj
+                    - text: opened
+                    - generic "Apr 17, 2026, 9:06 PM GMT+9" [ref=e379]: on Apr 17, 2026last week
+              - 'listitem "LangChain: chatollama invocation fails when messages contain only SystemMessage/AIMessage without any HumanMessage: Status: Open. #15507 In ollama/ollama;· Bkbest opened on Apr 12, 2026. More information available below." [ref=e383]':
+                - generic [ref=e384]:
+                  - 'heading "LangChain: chatollama invocation fails when messages contain only SystemMessage/AIMessage without any HumanMessage" [level=3] [ref=e385]':
+                    - 'link "LangChain: chatollama invocation fails when messages contain only SystemMessage/AIMessage without any HumanMessage" [ref=e386] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/15507
+                      - generic [ref=e387]: "LangChain: chatollama invocation fails when messages contain only SystemMessage/AIMessage without any HumanMessage"
+                  - generic [ref=e389]:
+                    - link "bug Something isn't working" [ref=e391] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                      - generic [ref=e393]: bug
+                      - generic [ref=e394]: Something isn't working
+                    - link "cloud" [ref=e396] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Acloud
+                      - generic [ref=e398]: cloud
+                - generic [ref=e403]:
+                  - img [ref=e405]
+                  - generic [ref=e408]: "Status: Open."
+                - generic [ref=e412]:
+                  - generic [ref=e413]:
+                    - generic [ref=e414]: "#15507"
+                    - generic [ref=e415]: In ollama/ollama;
+                  - generic [ref=e416]:
+                    - text: ·
+                    - link "Bkbest" [ref=e417] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3ABkbest
+                    - text: opened
+                    - generic "Apr 12, 2026, 5:23 AM GMT+9" [ref=e418]: on Apr 12, 20262 weeks ago
+              - 'listitem "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable: Status: Open. #15453 In ollama/ollama;· KUANKEI21 opened on Apr 10, 2026. More information available below." [ref=e422]':
+                - generic [ref=e423]:
+                  - 'heading "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [level=3] [ref=e424]':
+                    - 'link "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [ref=e425] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/15453
+                      - generic [ref=e426]: "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable"
+                  - link "cloud" [ref=e430] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Acloud
+                    - generic [ref=e432]: cloud
+                - generic [ref=e437]:
+                  - img [ref=e439]
+                  - generic [ref=e442]: "Status: Open."
+                - generic [ref=e446]:
+                  - generic [ref=e447]:
+                    - generic [ref=e448]: "#15453"
+                    - generic [ref=e449]: In ollama/ollama;
+                  - generic [ref=e450]:
+                    - text: ·
+                    - link "KUANKEI21" [ref=e451] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AKUANKEI21
+                    - text: opened
+                    - generic "Apr 10, 2026, 12:23 AM GMT+9" [ref=e452]: on Apr 10, 20262 weeks ago
+              - 'listitem "Gemma4 + ROCm gfx1201 + high context size = results in \"llama runner process has terminated: %!w(<nil>)\": Status: Closed (completed). #15338 In ollama/ollama;· by FibreFoX was closed on Apr 7, 2026. More information available below." [ref=e456]':
+                - generic [ref=e457]:
+                  - 'heading "Gemma4 + ROCm gfx1201 + high context size = results in \"llama runner process has terminated: %!w(<nil>)\"" [level=3] [ref=e458]':
+                    - 'link "Gemma4 + ROCm gfx1201 + high context size = results in \"llama runner process has terminated: %!w(<nil>)\"" [ref=e459] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/15338
+                      - generic [ref=e460]: "Gemma4 + ROCm gfx1201 + high context size = results in \"llama runner process has terminated: %!w(<nil>)\""
+                  - link "bug Something isn't working" [ref=e464] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e466]: bug
+                    - generic [ref=e467]: Something isn't working
+                - generic [ref=e471]:
+                  - img [ref=e473]
+                  - generic [ref=e476]: "Status: Closed (completed)."
+                - generic [ref=e480]:
+                  - generic [ref=e481]:
+                    - generic [ref=e482]: "#15338"
+                    - generic [ref=e483]: In ollama/ollama;
+                  - generic [ref=e484]:
+                    - text: · by
+                    - link "FibreFoX" [ref=e485] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AFibreFoX
+                    - text: was closed
+                    - generic "Apr 7, 2026, 9:30 PM GMT+9" [ref=e486]: on Apr 7, 20263 weeks ago
+              - 'listitem "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish.: Status: Open. #15328 In ollama/ollama;· wqmeng opened on Apr 4, 2026. More information available below." [ref=e490]':
+                - generic [ref=e491]:
+                  - heading "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish." [level=3] [ref=e492]:
+                    - link "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish." [ref=e493] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15328
+                      - generic [ref=e494]: Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish.
+                  - link "bug Something isn't working" [ref=e498] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e500]: bug
+                    - generic [ref=e501]: Something isn't working
+                - generic [ref=e505]:
+                  - img [ref=e507]
+                  - generic [ref=e510]: "Status: Open."
+                - generic [ref=e514]:
+                  - generic [ref=e515]:
+                    - generic [ref=e516]: "#15328"
+                    - generic [ref=e517]: In ollama/ollama;
+                  - generic [ref=e518]:
+                    - text: ·
+                    - link "wqmeng" [ref=e519] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Awqmeng
+                    - text: opened
+                    - generic "Apr 4, 2026, 11:18 PM GMT+9" [ref=e520]: on Apr 4, 20263 weeks ago
+              - 'listitem "I''m having an issue when using the Ollama cloud model, especially when generating large outputs.: Status: Open. #15290 In ollama/ollama;· Hevoon opened on Apr 3, 2026. More information available below." [ref=e524]':
+                - generic [ref=e525]:
+                  - heading "I'm having an issue when using the Ollama cloud model, especially when generating large outputs." [level=3] [ref=e526]:
+                    - link "I'm having an issue when using the Ollama cloud model, especially when generating large outputs." [ref=e527] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15290
+                      - generic [ref=e528]: I'm having an issue when using the Ollama cloud model, especially when generating large outputs.
+                  - link "bug Something isn't working" [ref=e532] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e534]: bug
+                    - generic [ref=e535]: Something isn't working
+                - generic [ref=e539]:
+                  - img [ref=e541]
+                  - generic [ref=e544]: "Status: Open."
+                - generic [ref=e548]:
+                  - generic [ref=e549]:
+                    - generic [ref=e550]: "#15290"
+                    - generic [ref=e551]: In ollama/ollama;
+                  - generic [ref=e552]:
+                    - text: ·
+                    - link "Hevoon" [ref=e553] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AHevoon
+                    - text: opened
+                    - generic "Apr 3, 2026, 11:40 PM GMT+9" [ref=e554]: on Apr 3, 20263 weeks ago
+              - 'listitem "ollama run gemma4:26b Error: 500 Internal Server Error: Status: Duplicate of an existing item. #15264 In ollama/ollama;· by cdsama was closed on Apr 3, 2026 · Duplicate. More information available below." [ref=e558]':
+                - generic [ref=e559]:
+                  - 'heading "ollama run gemma4:26b Error: 500 Internal Server Error" [level=3] [ref=e560]':
+                    - 'link "ollama run gemma4:26b Error: 500 Internal Server Error" [ref=e561] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/15264
+                      - generic [ref=e562]: "ollama run gemma4:26b Error: 500 Internal Server Error"
+                  - link "bug Something isn't working" [ref=e566] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e568]: bug
+                    - generic [ref=e569]: Something isn't working
+                - generic [ref=e573]:
+                  - img [ref=e575]
+                  - generic [ref=e577]: "Status: Duplicate of an existing item."
+                - generic [ref=e581]:
+                  - generic [ref=e582]:
+                    - generic [ref=e583]: "#15264"
+                    - generic [ref=e584]: In ollama/ollama;
+                  - generic [ref=e585]:
+                    - text: · by
+                    - link "cdsama" [ref=e586] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Acdsama
+                    - text: was closed
+                    - generic "Apr 3, 2026, 8:13 PM GMT+9" [ref=e587]: on Apr 3, 20263 weeks ago
+                  - generic [ref=e588]: · Duplicate
+              - 'listitem "Gemma4:31b not working with Cloud Run + Nvidia RTX Pro 6000: Status: Duplicate of an existing item. #15238 In ollama/ollama;· by oded996 was closed on Apr 3, 2026 · Duplicate. More information available below." [ref=e592]':
+                - generic [ref=e593]:
+                  - heading "Gemma4:31b not working with Cloud Run + Nvidia RTX Pro 6000" [level=3] [ref=e594]:
+                    - link "Gemma4:31b not working with Cloud Run + Nvidia RTX Pro 6000" [ref=e595] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15238
+                      - generic [ref=e596]: Gemma4:31b not working with Cloud Run + Nvidia RTX Pro 6000
+                  - link "bug Something isn't working" [ref=e600] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e602]: bug
+                    - generic [ref=e603]: Something isn't working
+                - generic [ref=e607]:
+                  - img [ref=e609]
+                  - generic [ref=e611]: "Status: Duplicate of an existing item."
+                - generic [ref=e615]:
+                  - generic [ref=e616]:
+                    - generic [ref=e617]: "#15238"
+                    - generic [ref=e618]: In ollama/ollama;
+                  - generic [ref=e619]:
+                    - text: · by
+                    - link "oded996" [ref=e620] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Aoded996
+                    - text: was closed
+                    - generic "Apr 3, 2026, 8:14 PM GMT+9" [ref=e621]: on Apr 3, 20263 weeks ago
+                  - generic [ref=e622]: · Duplicate
+              - 'listitem "Ollama recently stopped being able to run a 70b model: Status: Open. #15228 In ollama/ollama;· micseydel opened on Apr 3, 2026. More information available below." [ref=e626]':
+                - generic [ref=e627]:
+                  - heading "Ollama recently stopped being able to run a 70b model" [level=3] [ref=e628]:
+                    - link "Ollama recently stopped being able to run a 70b model" [ref=e629] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15228
+                      - generic [ref=e630]: Ollama recently stopped being able to run a 70b model
+                  - link "bug Something isn't working" [ref=e634] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e636]: bug
+                    - generic [ref=e637]: Something isn't working
+                - generic [ref=e641]:
+                  - img [ref=e643]
+                  - generic [ref=e646]: "Status: Open."
+                - generic [ref=e650]:
+                  - generic [ref=e651]:
+                    - generic [ref=e652]: "#15228"
+                    - generic [ref=e653]: In ollama/ollama;
+                  - generic [ref=e654]:
+                    - text: ·
+                    - link "micseydel" [ref=e655] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Amicseydel
+                    - text: opened
+                    - generic "Apr 3, 2026, 2:51 AM GMT+9" [ref=e656]: on Apr 3, 20263 weeks ago
+              - 'listitem "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1: Status: Open. #15178 In ollama/ollama;· g21chen opened on Apr 1, 2026. More information available below." [ref=e660]':
+                - generic [ref=e661]:
+                  - heading "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1" [level=3] [ref=e662]:
+                    - link "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1" [ref=e663] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15178
+                      - generic [ref=e664]: Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1
+                  - link "bug Something isn't working" [ref=e668] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e670]: bug
+                    - generic [ref=e671]: Something isn't working
+                - generic [ref=e675]:
+                  - img [ref=e677]
+                  - generic [ref=e680]: "Status: Open."
+                - generic [ref=e684]:
+                  - generic [ref=e685]:
+                    - generic [ref=e686]: "#15178"
+                    - generic [ref=e687]: In ollama/ollama;
+                  - generic [ref=e688]:
+                    - text: ·
+                    - link "g21chen" [ref=e689] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Ag21chen
+                    - text: opened
+                    - generic "Apr 1, 2026, 2:11 AM GMT+9" [ref=e690]: on Apr 1, 2026last month
+              - 'listitem "Account Usage API Endpoint: Status: Duplicate of an existing item. #15132 In ollama/ollama;· by GB59 was closed on Mar 30, 2026 · Duplicate. More information available below." [ref=e694]':
+                - generic [ref=e695]:
+                  - heading "Account Usage API Endpoint" [level=3] [ref=e696]:
+                    - link "Account Usage API Endpoint" [ref=e697] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15132
+                      - generic [ref=e698]: Account Usage API Endpoint
+                  - link "feature request New feature or request" [ref=e702] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3A%22feature%20request%22
+                    - generic [ref=e704]: feature request
+                    - generic [ref=e705]: New feature or request
+                - generic [ref=e709]:
+                  - img [ref=e711]
+                  - generic [ref=e713]: "Status: Duplicate of an existing item."
+                - generic [ref=e717]:
+                  - generic [ref=e718]:
+                    - generic [ref=e719]: "#15132"
+                    - generic [ref=e720]: In ollama/ollama;
+                  - generic [ref=e721]:
+                    - text: · by
+                    - link "GB59" [ref=e722] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AGB59
+                    - text: was closed
+                    - generic "Mar 30, 2026, 1:24 AM GMT+9" [ref=e723]: on Mar 30, 2026last month
+                  - generic [ref=e724]: · Duplicate
+              - 'listitem "GLM 5.1 Cloud model request: Status: Closed (completed). #15111 In ollama/ollama;· by matbgn was closed on Apr 8, 2026. More information available below." [ref=e728]':
+                - generic [ref=e729]:
+                  - heading "GLM 5.1 Cloud model request" [level=3] [ref=e730]:
+                    - link "GLM 5.1 Cloud model request" [ref=e731] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15111
+                      - generic [ref=e732]: GLM 5.1 Cloud model request
+                  - link "model Model requests" [ref=e736] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Amodel
+                    - generic [ref=e738]: model
+                    - generic [ref=e739]: Model requests
+                - generic [ref=e743]:
+                  - img [ref=e745]
+                  - generic [ref=e748]: "Status: Closed (completed)."
+                - generic [ref=e752]:
+                  - generic [ref=e753]:
+                    - generic [ref=e754]: "#15111"
+                    - generic [ref=e755]: In ollama/ollama;
+                  - generic [ref=e756]:
+                    - text: · by
+                    - link "matbgn" [ref=e757] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Amatbgn
+                    - text: was closed
+                    - generic "Apr 8, 2026, 6:02 PM GMT+9" [ref=e758]: on Apr 8, 20263 weeks ago
+              - 'listitem "add MoltenVK support for Intel macs: Status: Open (in progress). ollama/ollamanumber 15000 #15000 In ollama/ollama;· jamfor999 opened on Mar 22, 2026. More information available below." [ref=e762]':
+                - heading "add MoltenVK support for Intel macs" [level=3] [ref=e764]:
+                  - link "add MoltenVK support for Intel macs" [ref=e765] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/15000
+                    - generic [ref=e766]: add MoltenVK support for Intel macs
+                - generic [ref=e771]:
+                  - img [ref=e773]
+                  - generic [ref=e775]: "Status: Open (in progress)."
+                - generic [ref=e779]:
+                  - generic [ref=e780]:
+                    - text: ollama/ollama
+                    - generic [ref=e781]: number 15000
+                  - generic [ref=e782]:
+                    - generic [ref=e783]: "#15000"
+                    - generic [ref=e784]: In ollama/ollama;
+                  - generic [ref=e785]:
+                    - text: ·
+                    - link "jamfor999" [ref=e786] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Ajamfor999
+                    - text: opened
+                    - generic "Mar 22, 2026, 9:04 AM GMT+9" [ref=e787]: on Mar 22, 2026on Mar 22
+              - 'listitem "AMD RDNA4 (gfx1201 / RX 9060 XT) not detected – Ollama falls back to CPU (0 VRAM): Status: Open. #14927 In ollama/ollama;· OTAKUWeBer opened on Mar 18, 2026. More information available below." [ref=e795]':
+                - generic [ref=e796]:
+                  - heading "AMD RDNA4 (gfx1201 / RX 9060 XT) not detected – Ollama falls back to CPU (0 VRAM)" [level=3] [ref=e797]:
+                    - link "AMD RDNA4 (gfx1201 / RX 9060 XT) not detected – Ollama falls back to CPU (0 VRAM)" [ref=e798] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14927
+                      - generic [ref=e799]: AMD RDNA4 (gfx1201 / RX 9060 XT) not detected – Ollama falls back to CPU (0 VRAM)
+                  - link "bug Something isn't working" [ref=e803] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e805]: bug
+                    - generic [ref=e806]: Something isn't working
+                - generic [ref=e810]:
+                  - img [ref=e812]
+                  - generic [ref=e815]: "Status: Open."
+                - generic [ref=e819]:
+                  - generic [ref=e820]:
+                    - generic [ref=e821]: "#14927"
+                    - generic [ref=e822]: In ollama/ollama;
+                  - generic [ref=e823]:
+                    - text: ·
+                    - link "OTAKUWeBer" [ref=e824] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3AOTAKUWeBer
+                    - text: opened
+                    - generic "Mar 18, 2026, 5:48 PM GMT+9" [ref=e825]: on Mar 18, 2026on Mar 18
+              - 'listitem "Massive difference in speed between Ollama and llama.cpp with qwen3.5:35b!: Status: Open. #14861 In ollama/ollama;· chigkim opened on Mar 15, 2026. More information available below." [ref=e829]':
+                - generic [ref=e830]:
+                  - heading "Massive difference in speed between Ollama and llama.cpp with qwen3.5:35b!" [level=3] [ref=e831]:
+                    - link "Massive difference in speed between Ollama and llama.cpp with qwen3.5:35b!" [ref=e832] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14861
+                      - generic [ref=e833]: Massive difference in speed between Ollama and llama.cpp with qwen3.5:35b!
+                  - generic [ref=e835]:
+                    - link "bug Something isn't working" [ref=e837] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                      - generic [ref=e839]: bug
+                      - generic [ref=e840]: Something isn't working
+                    - link "performance" [ref=e842] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Aperformance
+                      - generic [ref=e844]: performance
+                - generic [ref=e849]:
+                  - img [ref=e851]
+                  - generic [ref=e854]: "Status: Open."
+                - generic [ref=e858]:
+                  - generic [ref=e859]:
+                    - generic [ref=e860]: "#14861"
+                    - generic [ref=e861]: In ollama/ollama;
+                  - generic [ref=e862]:
+                    - text: ·
+                    - link "chigkim" [ref=e863] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Achigkim
+                    - text: opened
+                    - generic "Mar 15, 2026, 11:34 PM GMT+9" [ref=e864]: on Mar 15, 2026on Mar 15
+              - 'listitem "ROCm backend fails to initialize on AMD Radeon AI PRO R9700 (RDNA4, gfx1201) in Windows 11: Status: Open. #14686 In ollama/ollama;· aibin8910 opened on Mar 7, 2026. More information available below." [ref=e868]':
+                - generic [ref=e869]:
+                  - heading "ROCm backend fails to initialize on AMD Radeon AI PRO R9700 (RDNA4, gfx1201) in Windows 11" [level=3] [ref=e870]:
+                    - link "ROCm backend fails to initialize on AMD Radeon AI PRO R9700 (RDNA4, gfx1201) in Windows 11" [ref=e871] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14686
+                      - generic [ref=e872]: ROCm backend fails to initialize on AMD Radeon AI PRO R9700 (RDNA4, gfx1201) in Windows 11
+                  - link "feature request New feature or request" [ref=e876] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3A%22feature%20request%22
+                    - generic [ref=e878]: feature request
+                    - generic [ref=e879]: New feature or request
+                - generic [ref=e883]:
+                  - img [ref=e885]
+                  - generic [ref=e888]: "Status: Open."
+                - generic [ref=e892]:
+                  - generic [ref=e893]:
+                    - generic [ref=e894]: "#14686"
+                    - generic [ref=e895]: In ollama/ollama;
+                  - generic [ref=e896]:
+                    - text: ·
+                    - link "aibin8910" [ref=e897] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Aaibin8910
+                    - text: opened
+                    - generic "Mar 7, 2026, 12:23 PM GMT+9" [ref=e898]: on Mar 7, 2026on Mar 7
+              - 'listitem "Kimi K2.5 (ollama/kimi-k2.5:cloud) cannot call tools in OpenClaw while minimax/qwen work fine: Status: Open. #14592 In ollama/ollama;· oggixx opened on Mar 4, 2026. More information available below." [ref=e902]':
+                - generic [ref=e903]:
+                  - heading "Kimi K2.5 (ollama/kimi-k2.5:cloud) cannot call tools in OpenClaw while minimax/qwen work fine" [level=3] [ref=e904]:
+                    - link "Kimi K2.5 (ollama/kimi-k2.5:cloud) cannot call tools in OpenClaw while minimax/qwen work fine" [ref=e905] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14592
+                      - generic [ref=e906]: Kimi K2.5 (ollama/kimi-k2.5:cloud) cannot call tools in OpenClaw while minimax/qwen work fine
+                  - link "cloud" [ref=e910] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Acloud
+                    - generic [ref=e912]: cloud
+                - generic [ref=e917]:
+                  - img [ref=e919]
+                  - generic [ref=e922]: "Status: Open."
+                - generic [ref=e926]:
+                  - generic [ref=e927]:
+                    - generic [ref=e928]: "#14592"
+                    - generic [ref=e929]: In ollama/ollama;
+                  - generic [ref=e930]:
+                    - text: ·
+                    - link "oggixx" [ref=e931] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Aoggixx
+                    - text: opened
+                    - generic "Mar 4, 2026, 12:38 AM GMT+9" [ref=e932]: on Mar 4, 2026on Mar 4
+              - 'listitem "ollama 0.17.4+ qwen3.5 35b/27b only have 1 active request. pls Add parallel request support for qwen35/qwen35moe architecture: Status: Duplicate of an existing item. #14510 In ollama/ollama;· by tonyltl was closed on Mar 6, 2026 · Duplicate. More information available below." [ref=e936]':
+                - generic [ref=e937]:
+                  - heading "ollama 0.17.4+ qwen3.5 35b/27b only have 1 active request. pls Add parallel request support for qwen35/qwen35moe architecture" [level=3] [ref=e938]:
+                    - link "ollama 0.17.4+ qwen3.5 35b/27b only have 1 active request. pls Add parallel request support for qwen35/qwen35moe architecture" [ref=e939] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14510
+                      - generic [ref=e940]: ollama 0.17.4+ qwen3.5 35b/27b only have 1 active request. pls Add parallel request support for qwen35/qwen35moe architecture
+                  - link "bug Something isn't working" [ref=e944] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e946]: bug
+                    - generic [ref=e947]: Something isn't working
+                - generic [ref=e951]:
+                  - img [ref=e953]
+                  - generic [ref=e955]: "Status: Duplicate of an existing item."
+                - generic [ref=e959]:
+                  - generic [ref=e960]:
+                    - generic [ref=e961]: "#14510"
+                    - generic [ref=e962]: In ollama/ollama;
+                  - generic [ref=e963]:
+                    - text: · by
+                    - link "tonyltl" [ref=e964] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Atonyltl
+                    - text: was closed
+                    - generic "Mar 6, 2026, 5:46 PM GMT+9" [ref=e965]: on Mar 6, 2026on Mar 6
+                  - generic [ref=e966]: · Duplicate
+              - 'listitem "[qwen3.5 local models] Error: 500 Internal Server Error on AMD Radeon AI Pro R9700 (ROCm error: invalid device function, SOLVE_TRI failed): Status: Open. #14423 In ollama/ollama;· e-strelock opened on Feb 26, 2026. More information available below." [ref=e970]':
+                - generic [ref=e971]:
+                  - 'heading "[qwen3.5 local models] Error: 500 Internal Server Error on AMD Radeon AI Pro R9700 (ROCm error: invalid device function, SOLVE_TRI failed)" [level=3] [ref=e972]':
+                    - 'link "[qwen3.5 local models] Error: 500 Internal Server Error on AMD Radeon AI Pro R9700 (ROCm error: invalid device function, SOLVE_TRI failed)" [ref=e973] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/14423
+                      - generic [ref=e974]: "[qwen3.5 local models] Error: 500 Internal Server Error on AMD Radeon AI Pro R9700 (ROCm error: invalid device function, SOLVE_TRI failed)"
+                  - link "bug Something isn't working" [ref=e978] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e980]: bug
+                    - generic [ref=e981]: Something isn't working
+                - generic [ref=e985]:
+                  - img [ref=e987]
+                  - generic [ref=e990]: "Status: Open."
+                - generic [ref=e994]:
+                  - generic [ref=e995]:
+                    - generic [ref=e996]: "#14423"
+                    - generic [ref=e997]: In ollama/ollama;
+                  - generic [ref=e998]:
+                    - text: ·
+                    - link "e-strelock" [ref=e999] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Ae-strelock
+                    - text: opened
+                    - generic "Feb 26, 2026, 3:19 AM GMT+9" [ref=e1000]: on Feb 26, 2026on Feb 26
+              - 'listitem "qwen3.5:35b Looping Issue: Status: Open. #14421 In ollama/ollama;· PetrRichter opened on Feb 25, 2026. More information available below." [ref=e1004]':
+                - generic [ref=e1005]:
+                  - heading "qwen3.5:35b Looping Issue" [level=3] [ref=e1006]:
+                    - link "qwen3.5:35b Looping Issue" [ref=e1007] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14421
+                      - generic [ref=e1008]: qwen3.5:35b Looping Issue
+                  - link "bug Something isn't working" [ref=e1012] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e1014]: bug
+                    - generic [ref=e1015]: Something isn't working
+                - generic [ref=e1019]:
+                  - img [ref=e1021]
+                  - generic [ref=e1024]: "Status: Open."
+                - generic [ref=e1028]:
+                  - generic [ref=e1029]:
+                    - generic [ref=e1030]: "#14421"
+                    - generic [ref=e1031]: In ollama/ollama;
+                  - generic [ref=e1032]:
+                    - text: ·
+                    - link "PetrRichter" [ref=e1033] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3APetrRichter
+                    - text: opened
+                    - generic "Feb 25, 2026, 11:53 PM GMT+9" [ref=e1034]: on Feb 25, 2026on Feb 25
+              - 'listitem "qwen3.5:35b Error: 500 Internal Server Error: Status: Duplicate of an existing item. #14419 In ollama/ollama;· by shoque88 was closed on Feb 28, 2026 · Duplicate. More information available below." [ref=e1038]':
+                - generic [ref=e1039]:
+                  - 'heading "qwen3.5:35b Error: 500 Internal Server Error" [level=3] [ref=e1040]':
+                    - 'link "qwen3.5:35b Error: 500 Internal Server Error" [ref=e1041] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/14419
+                      - generic [ref=e1042]: "qwen3.5:35b Error: 500 Internal Server Error"
+                  - link "bug Something isn't working" [ref=e1046] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20pro%20label%3Abug
+                    - generic [ref=e1048]: bug
+                    - generic [ref=e1049]: Something isn't working
+                - generic [ref=e1053]:
+                  - img [ref=e1055]
+                  - generic [ref=e1057]: "Status: Duplicate of an existing item."
+                - generic [ref=e1061]:
+                  - generic [ref=e1062]:
+                    - generic [ref=e1063]: "#14419"
+                    - generic [ref=e1064]: In ollama/ollama;
+                  - generic [ref=e1065]:
+                    - text: · by
+                    - link "shoque88" [ref=e1066] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20pro%20author%3Ashoque88
+                    - text: was closed
+                    - generic "Feb 28, 2026, 3:27 AM GMT+9" [ref=e1067]: on Feb 28, 2026on Feb 28
+                  - generic [ref=e1068]: · Duplicate
+          - navigation "Pagination" [ref=e1070]:
+            - generic [ref=e1071]:
+              - generic [ref=e1072]:
+                - img [ref=e1073]
+                - text: Previous
+              - link "Page 1" [ref=e1075] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+pro&page=1
+                - text: "1"
+              - link "Page 2" [ref=e1076] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+pro&page=2
+                - text: "2"
+              - link "Page 3" [ref=e1077] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+pro&page=3
+                - text: "3"
+              - link "Next Page" [ref=e1078] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+pro&page=2
+                - text: Next
+                - img [ref=e1079]
+  - contentinfo [ref=e1081]:
+    - heading "Footer" [level=2] [ref=e1082]
+    - generic [ref=e1083]:
+      - generic [ref=e1084]:
+        - link "GitHub Homepage" [ref=e1085] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1086]
+        - generic [ref=e1088]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1089]:
+        - heading "Footer navigation" [level=3] [ref=e1090]
+        - list "Footer navigation" [ref=e1091]:
+          - listitem [ref=e1092]:
+            - link "Terms" [ref=e1093] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1094]:
+            - link "Privacy" [ref=e1095] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1096]:
+            - link "Security" [ref=e1097] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1098]:
+            - link "Status" [ref=e1099] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1100]:
+            - link "Community" [ref=e1101] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1102]:
+            - link "Docs" [ref=e1103] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1104]:
+            - link "Contact" [ref=e1105] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1106]:
+            - button "Manage cookies" [ref=e1108] [cursor=pointer]
+          - listitem [ref=e1109]:
+            - button "Do not share my personal information" [ref=e1111] [cursor=pointer]

@@ -1,0 +1,3170 @@
+- generic [active] [ref=e1]:
+  - link "콘텐츠로 이동" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/ko
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "검색" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: 검색
+            - generic [ref=e20]:
+              - generic [ref=e21]: ⌘
+              - generic [ref=e22]: K
+    - navigation "메인":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "소개" [ref=e28] [cursor=pointer]:
+            - /url: /docs/ko/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/ko/config/
+        - listitem [ref=e31]:
+          - link "공급자" [ref=e32] [cursor=pointer]:
+            - /url: /docs/ko/providers/
+        - listitem [ref=e33]:
+          - link "네트워크" [ref=e34] [cursor=pointer]:
+            - /url: /docs/ko/network/
+        - listitem [ref=e35]:
+          - link "엔터프라이즈" [ref=e36] [cursor=pointer]:
+            - /url: /docs/ko/enterprise/
+        - listitem [ref=e37]:
+          - link "문제 해결" [ref=e38] [cursor=pointer]:
+            - /url: /docs/ko/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/ko/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "사용" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: 사용
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/ko/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/ko/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/ko/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/ko/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ko/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/ko/zen/
+              - listitem [ref=e60]:
+                - link "공유" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/ko/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/ko/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/ko/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "구성" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: 구성
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "도구" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/ko/tools/
+              - listitem [ref=e75]:
+                - link "규칙" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/ko/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/ko/agents/
+              - listitem [ref=e79]:
+                - link "모델" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/ko/models/
+              - listitem [ref=e81]:
+                - link "테마" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/ko/themes/
+              - listitem [ref=e83]:
+                - link "키바인드" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/ko/keybinds/
+              - listitem [ref=e85]:
+                - link "명령어" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/ko/commands/
+              - listitem [ref=e87]:
+                - link "포매터" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/ko/formatters/
+              - listitem [ref=e89]:
+                - link "권한" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/ko/permissions/
+              - listitem [ref=e91]:
+                - link "LSP 서버" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/ko/lsp/
+              - listitem [ref=e93]:
+                - link "MCP 서버" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/ko/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/ko/acp/
+              - listitem [ref=e97]:
+                - link "에이전트 스킬" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/ko/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/ko/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "개발" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: 개발
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/ko/sdk/
+              - listitem [ref=e110]:
+                - link "서버" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/ko/server/
+              - listitem [ref=e112]:
+                - link "플러그인" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/ko/plugins/
+              - listitem [ref=e114]:
+                - link "생태계" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ko/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "목차" [ref=e123]:
+          - heading "목차" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "개요" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+              - list [ref=e128]:
+                - listitem [ref=e129]:
+                  - link "자격 증명" [ref=e130] [cursor=pointer]:
+                    - /url: "#자격-증명"
+                - listitem [ref=e131]:
+                  - link "구성" [ref=e132] [cursor=pointer]:
+                    - /url: "#구성"
+            - listitem [ref=e133]:
+              - link "OpenCode Zen" [ref=e134] [cursor=pointer]:
+                - /url: "#opencode-zen"
+            - listitem [ref=e135]:
+              - link "OpenCode Go" [ref=e136] [cursor=pointer]:
+                - /url: "#opencode-go"
+            - listitem [ref=e137]:
+              - link "디렉토리" [ref=e138] [cursor=pointer]:
+                - /url: "#디렉토리"
+              - list [ref=e139]:
+                - listitem [ref=e140]:
+                  - link "302.AI" [ref=e141] [cursor=pointer]:
+                    - /url: "#302ai"
+                - listitem [ref=e142]:
+                  - link "Amazon Bedrock" [ref=e143] [cursor=pointer]:
+                    - /url: "#amazon-bedrock"
+                - listitem [ref=e144]:
+                  - link "Anthropic" [ref=e145] [cursor=pointer]:
+                    - /url: "#anthropic"
+                - listitem [ref=e146]:
+                  - link "Azure OpenAI" [ref=e147] [cursor=pointer]:
+                    - /url: "#azure-openai"
+                - listitem [ref=e148]:
+                  - link "Azure Cognitive Services" [ref=e149] [cursor=pointer]:
+                    - /url: "#azure-cognitive-services"
+                - listitem [ref=e150]:
+                  - link "Baseten" [ref=e151] [cursor=pointer]:
+                    - /url: "#baseten"
+                - listitem [ref=e152]:
+                  - link "Cerebras" [ref=e153] [cursor=pointer]:
+                    - /url: "#cerebras"
+                - listitem [ref=e154]:
+                  - link "Cloudflare AI Gateway" [ref=e155] [cursor=pointer]:
+                    - /url: "#cloudflare-ai-gateway"
+                - listitem [ref=e156]:
+                  - link "Cortecs" [ref=e157] [cursor=pointer]:
+                    - /url: "#cortecs"
+                - listitem [ref=e158]:
+                  - link "DeepSeek" [ref=e159] [cursor=pointer]:
+                    - /url: "#deepseek"
+                - listitem [ref=e160]:
+                  - link "Deep Infra" [ref=e161] [cursor=pointer]:
+                    - /url: "#deep-infra"
+                - listitem [ref=e162]:
+                  - link "Firmware" [ref=e163] [cursor=pointer]:
+                    - /url: "#firmware"
+                - listitem [ref=e164]:
+                  - link "Fireworks AI" [ref=e165] [cursor=pointer]:
+                    - /url: "#fireworks-ai"
+                - listitem [ref=e166]:
+                  - link "GitLab Duo" [ref=e167] [cursor=pointer]:
+                    - /url: "#gitlab-duo"
+                - listitem [ref=e168]:
+                  - link "GitHub Copilot" [ref=e169] [cursor=pointer]:
+                    - /url: "#github-copilot"
+                - listitem [ref=e170]:
+                  - link "Google Vertex AI" [ref=e171] [cursor=pointer]:
+                    - /url: "#google-vertex-ai"
+                - listitem [ref=e172]:
+                  - link "Groq" [ref=e173] [cursor=pointer]:
+                    - /url: "#groq"
+                - listitem [ref=e174]:
+                  - link "Hugging Face" [ref=e175] [cursor=pointer]:
+                    - /url: "#hugging-face"
+                - listitem [ref=e176]:
+                  - link "Helicone" [ref=e177] [cursor=pointer]:
+                    - /url: "#helicone"
+                - listitem [ref=e178]:
+                  - link "llama.cpp" [ref=e179] [cursor=pointer]:
+                    - /url: "#llamacpp"
+                - listitem [ref=e180]:
+                  - link "IO.NET" [ref=e181] [cursor=pointer]:
+                    - /url: "#ionet"
+                - listitem [ref=e182]:
+                  - link "LM Studio" [ref=e183] [cursor=pointer]:
+                    - /url: "#lm-studio"
+                - listitem [ref=e184]:
+                  - link "Moonshot AI" [ref=e185] [cursor=pointer]:
+                    - /url: "#moonshot-ai"
+                - listitem [ref=e186]:
+                  - link "MiniMax" [ref=e187] [cursor=pointer]:
+                    - /url: "#minimax"
+                - listitem [ref=e188]:
+                  - link "Nebius Token Factory" [ref=e189] [cursor=pointer]:
+                    - /url: "#nebius-token-factory"
+                - listitem [ref=e190]:
+                  - link "Ollama" [ref=e191] [cursor=pointer]:
+                    - /url: "#ollama"
+                - listitem [ref=e192]:
+                  - link "Ollama Cloud" [ref=e193] [cursor=pointer]:
+                    - /url: "#ollama-cloud"
+                - listitem [ref=e194]:
+                  - link "OpenAI" [ref=e195] [cursor=pointer]:
+                    - /url: "#openai"
+                - listitem [ref=e196]:
+                  - link "OpenCode Zen" [ref=e197] [cursor=pointer]:
+                    - /url: "#opencode-zen-1"
+                - listitem [ref=e198]:
+                  - link "OpenRouter" [ref=e199] [cursor=pointer]:
+                    - /url: "#openrouter"
+                - listitem [ref=e200]:
+                  - link "SAP AI Core" [ref=e201] [cursor=pointer]:
+                    - /url: "#sap-ai-core"
+                - listitem [ref=e202]:
+                  - link "STACKIT" [ref=e203] [cursor=pointer]:
+                    - /url: "#stackit"
+                - listitem [ref=e204]:
+                  - link "OVHcloud AI Endpoints" [ref=e205] [cursor=pointer]:
+                    - /url: "#ovhcloud-ai-endpoints"
+                - listitem [ref=e206]:
+                  - link "Scaleway" [ref=e207] [cursor=pointer]:
+                    - /url: "#scaleway"
+                - listitem [ref=e208]:
+                  - link "Together AI" [ref=e209] [cursor=pointer]:
+                    - /url: "#together-ai"
+                - listitem [ref=e210]:
+                  - link "Venice AI" [ref=e211] [cursor=pointer]:
+                    - /url: "#venice-ai"
+                - listitem [ref=e212]:
+                  - link "Vercel AI Gateway" [ref=e213] [cursor=pointer]:
+                    - /url: "#vercel-ai-gateway"
+                - listitem [ref=e214]:
+                  - link "xAI" [ref=e215] [cursor=pointer]:
+                    - /url: "#xai"
+                - listitem [ref=e216]:
+                  - link "Z.AI" [ref=e217] [cursor=pointer]:
+                    - /url: "#zai"
+                - listitem [ref=e218]:
+                  - link "ZenMux" [ref=e219] [cursor=pointer]:
+                    - /url: "#zenmux"
+            - listitem [ref=e220]:
+              - link "사용자 정의 공급자" [ref=e221] [cursor=pointer]:
+                - /url: "#사용자-정의-공급자"
+            - listitem [ref=e222]:
+              - link "문제 해결" [ref=e223] [cursor=pointer]:
+                - /url: "#문제-해결"
+      - main [ref=e225]:
+        - generic [ref=e227]:
+          - heading "공급자" [level=1] [ref=e228]
+          - paragraph [ref=e229]: OpenCode에서 LLM 공급자를 사용합니다.
+        - generic [ref=e231]:
+          - generic [ref=e232]:
+            - paragraph [ref=e233]:
+              - text: OpenCode는
+              - link "AI SDK" [ref=e234] [cursor=pointer]:
+                - /url: https://ai-sdk.dev/
+              - text: 및
+              - link "Models.dev" [ref=e235] [cursor=pointer]:
+                - /url: https://models.dev
+              - text: 를 사용하여
+              - strong [ref=e236]: 75개 이상의 LLM 공급자
+              - text: 를 지원하며 로컬 모델도 실행할 수 있습니다.
+            - paragraph [ref=e237]: "필요한 공급자를 추가하려면:"
+            - list [ref=e238]:
+              - listitem [ref=e239]:
+                - code [ref=e240]: "`/connect`"
+                - text: 명령을 사용하여 공급자의 API 키를 추가하십시오.
+              - listitem [ref=e241]: OpenCode 구성에서 공급자를 구성하십시오.
+            - separator [ref=e242]
+            - heading "자격 증명" [level=3] [ref=e243]:
+              - link "자격 증명" [ref=e244]:
+                - /url: "#자격-증명"
+            - paragraph [ref=e245]:
+              - code [ref=e246]: "`/connect`"
+              - text: "명령으로 공급자의 API 키를 추가하면 다음 위치에 저장됩니다:"
+              - code [ref=e247]: "`~/.local/share/opencode/auth.json`"
+            - separator [ref=e248]
+            - heading "구성" [level=3] [ref=e249]:
+              - link "구성" [ref=e250]:
+                - /url: "#구성"
+            - paragraph [ref=e251]:
+              - text: OpenCode 설정의
+              - code [ref=e252]: "`provider`"
+              - text: 섹션을 통해 공급자를 사용자 정의할 수 있습니다.
+            - separator [ref=e253]
+            - heading "기본 URL" [level=4] [ref=e254]:
+              - link "기본 URL" [ref=e255]:
+                - /url: "#기본-url"
+            - paragraph [ref=e256]:
+              - code [ref=e257]: "`baseURL`"
+              - text: 옵션을 설정하여 모든 공급자를 위한 기본 URL을 사용자 정의할 수 있습니다. 프록시 서비스 또는 사용자 정의 엔드포인트를 사용할 때 유용합니다.
+            - figure "opencode.json" [ref=e259]:
+              - generic [ref=e261]: opencode.json
+              - code [ref=e263]:
+                - generic [ref=e265]: "{"
+                - generic [ref=e267]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e269]: "\"provider\": {"
+                - generic [ref=e271]: "\"anthropic\": {"
+                - generic [ref=e273]: "\"options\": {"
+                - generic [ref=e275]: "\"baseURL\": \"https://api.anthropic.com/v1\""
+                - generic [ref=e277]: "}"
+                - generic [ref=e280]: "}"
+                - generic [ref=e283]: "}"
+                - generic [ref=e286]: "}"
+              - button "Copy to clipboard" [ref=e288] [cursor=pointer]
+            - separator [ref=e290]
+            - heading "OpenCode Zen" [level=2] [ref=e291]:
+              - link "OpenCode Zen" [ref=e292]:
+                - /url: "#opencode-zen"
+            - paragraph [ref=e293]:
+              - text: OpenCode Zen은 OpenCode 팀이 OpenCode와 잘 작동하도록 테스트하고 검증한 모델 목록입니다.
+              - link "더 알아보기" [ref=e294] [cursor=pointer]:
+                - /url: /docs/zen
+              - text: .
+            - complementary "팁" [ref=e295]:
+              - paragraph [ref=e296]:
+                - img [ref=e297]
+                - text: 팁
+              - paragraph [ref=e301]: 처음이라면 OpenCode Zen으로 시작하는 것이 좋습니다.
+            - list [ref=e302]:
+              - listitem [ref=e303]:
+                - paragraph [ref=e304]:
+                  - text: TUI에서
+                  - code [ref=e305]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - code [ref=e306]: "`OpenCode Zen`"
+                  - text: 을 선택한 뒤,
+                  - link "opencode.ai/auth" [ref=e307] [cursor=pointer]:
+                    - /url: https://opencode.ai/zen
+                  - text: 로 이동합니다.
+                - figure [ref=e309]:
+                  - code [ref=e311]:
+                    - generic [ref=e313]: /connect
+                  - button "Copy to clipboard" [ref=e315] [cursor=pointer]
+              - listitem [ref=e317]:
+                - paragraph [ref=e318]: 로그인하고 결제 정보를 입력한 후 API 키를 복사하십시오.
+              - listitem [ref=e319]:
+                - paragraph [ref=e320]: API 키를 붙여넣습니다.
+                - figure [ref=e322]:
+                  - code [ref=e324]:
+                    - generic [ref=e326]: ┌ API key
+                    - generic [ref=e328]: │
+                    - generic [ref=e330]: │
+                    - generic [ref=e332]: └ enter
+                  - button "Copy to clipboard" [ref=e334] [cursor=pointer]
+              - listitem [ref=e336]:
+                - paragraph [ref=e337]:
+                  - text: TUI에서
+                  - code [ref=e338]: "`/models`"
+                  - text: 를 실행하여 추천 모델 목록을 볼 수 있습니다.
+                - figure [ref=e340]:
+                  - code [ref=e342]:
+                    - generic [ref=e344]: /models
+                  - button "Copy to clipboard" [ref=e346] [cursor=pointer]
+            - paragraph [ref=e348]: OpenCode의 다른 공급자처럼 작동하며 사용은 완전히 선택 사항입니다.
+            - separator [ref=e349]
+            - heading "OpenCode Go" [level=2] [ref=e350]:
+              - link "OpenCode Go" [ref=e351]:
+                - /url: "#opencode-go"
+            - paragraph [ref=e352]: OpenCode Go는 OpenCode 팀이 테스트하고 검증하여 OpenCode와 잘 작동하는 인기 있는 오픈 코딩 모델에 안정적으로 액세스할 수 있는 저렴한 구독 요금제입니다.
+            - list [ref=e353]:
+              - listitem [ref=e354]:
+                - paragraph [ref=e355]:
+                  - text: TUI에서
+                  - code [ref=e356]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - code [ref=e357]: "`OpenCode Go`"
+                  - text: 를 선택한 뒤
+                  - link "opencode.ai/auth" [ref=e358] [cursor=pointer]:
+                    - /url: https://opencode.ai/zen
+                  - text: 로 이동하십시오.
+                - figure [ref=e360]:
+                  - code [ref=e362]:
+                    - generic [ref=e364]: /connect
+                  - button "Copy to clipboard" [ref=e366] [cursor=pointer]
+              - listitem [ref=e368]:
+                - paragraph [ref=e369]: 로그인하고 결제 정보를 입력한 후 API 키를 복사하십시오.
+              - listitem [ref=e370]:
+                - paragraph [ref=e371]: API 키를 붙여넣습니다.
+                - figure [ref=e373]:
+                  - code [ref=e375]:
+                    - generic [ref=e377]: ┌ API key
+                    - generic [ref=e379]: │
+                    - generic [ref=e381]: │
+                    - generic [ref=e383]: └ enter
+                  - button "Copy to clipboard" [ref=e385] [cursor=pointer]
+              - listitem [ref=e387]:
+                - paragraph [ref=e388]:
+                  - text: TUI에서
+                  - code [ref=e389]: "`/models`"
+                  - text: 를 실행하여 추천 모델 목록을 볼 수 있습니다.
+                - figure [ref=e391]:
+                  - code [ref=e393]:
+                    - generic [ref=e395]: /models
+                  - button "Copy to clipboard" [ref=e397] [cursor=pointer]
+            - paragraph [ref=e399]: OpenCode의 다른 공급자처럼 작동하며 사용은 완전히 선택 사항입니다.
+            - separator [ref=e400]
+            - heading "디렉토리" [level=2] [ref=e401]:
+              - link "디렉토리" [ref=e402]:
+                - /url: "#디렉토리"
+            - paragraph [ref=e403]: 공급자 세부 정보를 확인하세요. 목록에 공급자를 추가하려면 PR을 열어주세요.
+            - complementary "참고" [ref=e404]:
+              - paragraph [ref=e405]:
+                - img [ref=e406]
+                - text: 참고
+              - paragraph [ref=e409]: 원하는 공급자가 없나요? PR을 제출해 주세요.
+            - separator [ref=e410]
+            - heading "302.AI" [level=3] [ref=e411]:
+              - link "302.AI" [ref=e412]:
+                - /url: "#302ai"
+            - list [ref=e413]:
+              - listitem [ref=e414]:
+                - paragraph [ref=e415]:
+                  - link "302.AI 콘솔" [ref=e416] [cursor=pointer]:
+                    - /url: https://302.ai/
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e417]:
+                - paragraph [ref=e418]:
+                  - code [ref=e419]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e420]: 302.AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e422]:
+                  - code [ref=e424]:
+                    - generic [ref=e426]: /connect
+                  - button "Copy to clipboard" [ref=e428] [cursor=pointer]
+              - listitem [ref=e430]:
+                - paragraph [ref=e431]: 302.AI API 키를 입력하십시오.
+                - figure [ref=e433]:
+                  - code [ref=e435]:
+                    - generic [ref=e437]: ┌ API key
+                    - generic [ref=e439]: │
+                    - generic [ref=e441]: │
+                    - generic [ref=e443]: └ enter
+                  - button "Copy to clipboard" [ref=e445] [cursor=pointer]
+              - listitem [ref=e447]:
+                - paragraph [ref=e448]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e449]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e451]:
+                  - code [ref=e453]:
+                    - generic [ref=e455]: /models
+                  - button "Copy to clipboard" [ref=e457] [cursor=pointer]
+            - separator [ref=e459]
+            - heading "Amazon Bedrock" [level=3] [ref=e460]:
+              - link "Amazon Bedrock" [ref=e461]:
+                - /url: "#amazon-bedrock"
+            - paragraph [ref=e462]: "OpenCode로 Amazon Bedrock을 사용하려면:"
+            - list [ref=e463]:
+              - listitem [ref=e464]:
+                - paragraph [ref=e465]:
+                  - text: Amazon Bedrock 콘솔의
+                  - strong [ref=e466]: Model catalog
+                  - text: 로 이동하여 원하는 모델에 대한 액세스를 요청합니다.
+                - complementary "팁" [ref=e467]:
+                  - paragraph [ref=e468]:
+                    - img [ref=e469]
+                    - text: 팁
+                  - paragraph [ref=e473]: Amazon Bedrock에서 원하는 모델에 대한 액세스 권한이 있어야 합니다.
+              - listitem [ref=e474]:
+                - paragraph [ref=e475]:
+                  - text: 다음 방법 중 하나를 사용하여
+                  - strong [ref=e476]: 인증을 구성
+                  - text: "합니다:"
+                - separator [ref=e477]
+                - heading "환경 변수 (빠른 시작)" [level=4] [ref=e478]:
+                  - link "환경 변수 (빠른 시작)" [ref=e479]:
+                    - /url: "#환경-변수-빠른-시작"
+                - paragraph [ref=e480]: "OpenCode를 실행하는 동안 다음 환경 변수 중 하나를 설정합니다:"
+                - figure "Terminal window" [ref=e482]:
+                  - generic [ref=e485]: Terminal window
+                  - code [ref=e487]:
+                    - generic [ref=e489]: "# Option 1: Using AWS access keys"
+                    - generic [ref=e491]: AWS_ACCESS_KEY_ID=XXX AWS_SECRET_ACCESS_KEY=YYY opencode
+                    - generic [ref=e495]: "# Option 2: Using named AWS profile"
+                    - generic [ref=e497]: AWS_PROFILE=my-profile opencode
+                    - generic [ref=e501]: "# Option 3: Using Bedrock bearer token"
+                    - generic [ref=e503]: AWS_BEARER_TOKEN_BEDROCK=XXX opencode
+                  - button "Copy to clipboard" [ref=e505] [cursor=pointer]
+                - paragraph [ref=e507]: "또는 bash 프로필에 추가합니다:"
+                - figure "~/.bash_profile" [ref=e509]:
+                  - generic [ref=e511]: ~/.bash_profile
+                  - code [ref=e513]:
+                    - generic [ref=e515]: export AWS_PROFILE=my-dev-profile
+                    - generic [ref=e517]: export AWS_REGION=us-east-1
+                  - button "Copy to clipboard" [ref=e519] [cursor=pointer]
+                - separator [ref=e521]
+                - heading "구성 파일 (권장)" [level=4] [ref=e522]:
+                  - link "구성 파일 (권장)" [ref=e523]:
+                    - /url: "#구성-파일-권장"
+                - paragraph [ref=e524]:
+                  - text: 프로젝트별 또는 영구 구성을 위해
+                  - code [ref=e525]: "`opencode.json`"
+                  - text: "을 사용하십시오:"
+                - figure "opencode.json" [ref=e527]:
+                  - generic [ref=e529]: opencode.json
+                  - code [ref=e531]:
+                    - generic [ref=e533]: "{"
+                    - generic [ref=e535]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e537]: "\"provider\": {"
+                    - generic [ref=e539]: "\"amazon-bedrock\": {"
+                    - generic [ref=e541]: "\"options\": {"
+                    - generic [ref=e543]: "\"region\": \"us-east-1\","
+                    - generic [ref=e545]: "\"profile\": \"my-aws-profile\""
+                    - generic [ref=e547]: "}"
+                    - generic [ref=e550]: "}"
+                    - generic [ref=e553]: "}"
+                    - generic [ref=e556]: "}"
+                  - button "Copy to clipboard" [ref=e558] [cursor=pointer]
+                - paragraph [ref=e560]:
+                  - strong [ref=e561]: "유효한 옵션:"
+                - list [ref=e562]:
+                  - listitem [ref=e563]:
+                    - code [ref=e564]: "`region`"
+                    - text: "- AWS 리전 (예:"
+                    - code [ref=e565]: "`us-east-1`"
+                    - text: ","
+                    - code [ref=e566]: "`eu-west-1`"
+                    - text: )
+                  - listitem [ref=e567]:
+                    - code [ref=e568]: "`profile`"
+                    - text: "-"
+                    - code [ref=e569]: "`~/.aws/credentials`"
+                    - text: 의 AWS 프로필 이름
+                  - listitem [ref=e570]:
+                    - code [ref=e571]: "`endpoint`"
+                    - text: "- VPC 엔드포인트 등을 위한 사용자 정의 엔드포인트 URL (일반"
+                    - code [ref=e572]: "`baseURL`"
+                    - text: 옵션의 별칭)
+                - complementary "팁" [ref=e573]:
+                  - paragraph [ref=e574]:
+                    - img [ref=e575]
+                    - text: 팁
+                  - paragraph [ref=e579]: 구성 파일 옵션은 환경 변수보다 우선 순위가 높습니다.
+                - separator [ref=e580]
+                - 'heading "고급: VPC 엔드포인트" [level=4] [ref=e581]':
+                  - 'link "고급: VPC 엔드포인트" [ref=e582]':
+                    - /url: "#고급-vpc-엔드포인트"
+                - paragraph [ref=e583]: "Bedrock의 VPC 엔드포인트를 사용하는 경우:"
+                - figure "opencode.json" [ref=e585]:
+                  - generic [ref=e587]: opencode.json
+                  - code [ref=e589]:
+                    - generic [ref=e591]: "{"
+                    - generic [ref=e593]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e595]: "\"provider\": {"
+                    - generic [ref=e597]: "\"amazon-bedrock\": {"
+                    - generic [ref=e599]: "\"options\": {"
+                    - generic [ref=e601]: "\"region\": \"us-east-1\","
+                    - generic [ref=e603]: "\"profile\": \"production\","
+                    - generic [ref=e605]: "\"endpoint\": \"https://bedrock-runtime.us-east-1.vpce-xxxxx.amazonaws.com\""
+                    - generic [ref=e607]: "}"
+                    - generic [ref=e610]: "}"
+                    - generic [ref=e613]: "}"
+                    - generic [ref=e616]: "}"
+                  - button "Copy to clipboard" [ref=e618] [cursor=pointer]
+                - complementary "참고" [ref=e620]:
+                  - paragraph [ref=e621]:
+                    - img [ref=e622]
+                    - text: 참고
+                  - paragraph [ref=e625]:
+                    - code [ref=e626]: "`endpoint`"
+                    - text: 옵션은 일반적인
+                    - code [ref=e627]: "`baseURL`"
+                    - text: 옵션의 별칭입니다.
+                    - code [ref=e628]: "`endpoint`"
+                    - text: 와
+                    - code [ref=e629]: "`baseURL`"
+                    - text: 둘 다 지정된 경우
+                    - code [ref=e630]: "`endpoint`"
+                    - text: 가 우선합니다.
+                - separator [ref=e631]
+                - heading "인증 방법" [level=4] [ref=e632]:
+                  - link "인증 방법" [ref=e633]:
+                    - /url: "#인증-방법"
+                - list [ref=e634]:
+                  - listitem [ref=e635]:
+                    - strong [ref=e636]:
+                      - code [ref=e637]: "`AWS_ACCESS_KEY_ID`"
+                      - text: /
+                      - code [ref=e638]: "`AWS_SECRET_ACCESS_KEY`"
+                    - text: ": IAM 사용자 및 AWS 콘솔에서 액세스 키 생성"
+                  - listitem [ref=e639]:
+                    - strong [ref=e640]:
+                      - code [ref=e641]: "`AWS_PROFILE`"
+                    - text: ":"
+                    - code [ref=e642]: "`~/.aws/credentials`"
+                    - text: 의 프로필 이름을 사용합니다.
+                    - code [ref=e643]: "`aws configure --profile my-profile`"
+                    - text: 또는
+                    - code [ref=e644]: "`aws sso login`"
+                    - text: 으로 먼저 구성하십시오.
+                  - listitem [ref=e645]:
+                    - strong [ref=e646]:
+                      - code [ref=e647]: "`AWS_BEARER_TOKEN_BEDROCK`"
+                    - text: ": Amazon Bedrock 콘솔에서 임시 API 키 생성"
+                  - listitem [ref=e648]:
+                    - strong [ref=e649]:
+                      - code [ref=e650]: "`AWS_WEB_IDENTITY_TOKEN_FILE`"
+                      - text: /
+                      - code [ref=e651]: "`AWS_ROLE_ARN`"
+                    - text: ": EKS IRSA (서비스 계정용 IAM 역할) 또는 다른 Kubernetes 환경의 OIDC 연동. 이 환경 변수는 서비스 계정을 사용할 때 Kubernetes에 의해 자동으로 주입됩니다."
+                - separator [ref=e652]
+                - heading "인증 우선 순위" [level=4] [ref=e653]:
+                  - link "인증 우선 순위" [ref=e654]:
+                    - /url: "#인증-우선-순위"
+                - paragraph [ref=e655]: Amazon Bedrock은 다음과 같은 인증 우선 순위를 사용합니다.
+                - list [ref=e656]:
+                  - listitem [ref=e657]:
+                    - strong [ref=e658]: Bearer Token
+                    - text: "-"
+                    - code [ref=e659]: "`AWS_BEARER_TOKEN_BEDROCK`"
+                    - text: 환경 변수 또는
+                    - code [ref=e660]: "`/connect`"
+                    - text: 명령의 토큰
+                  - listitem [ref=e661]:
+                    - strong [ref=e662]: AWS Credential Chain
+                    - text: "- 프로필, 액세스 키, 공유 자격 증명, IAM 역할, 웹 ID 토큰 (EKS IRSA), 인스턴스 메타데이터"
+                - complementary "참고" [ref=e663]:
+                  - paragraph [ref=e664]:
+                    - img [ref=e665]
+                    - text: 참고
+                  - paragraph [ref=e668]:
+                    - text: Bearer 토큰을 설정할 때 (
+                    - code [ref=e669]: "`/connect`"
+                    - text: 또는
+                    - code [ref=e670]: "`AWS_BEARER_TOKEN_BEDROCK`"
+                    - text: 를 통해), 구성된 프로필을 포함한 모든 AWS 자격 증명 방법보다 우선 순위가 높습니다.
+              - listitem [ref=e671]:
+                - paragraph [ref=e672]:
+                  - code [ref=e673]: "`/models`"
+                  - text: 명령을 실행하여 원하는 모델을 선택하십시오.
+                - figure [ref=e675]:
+                  - code [ref=e677]:
+                    - generic [ref=e679]: /models
+                  - button "Copy to clipboard" [ref=e681] [cursor=pointer]
+            - complementary "참고" [ref=e683]:
+              - paragraph [ref=e684]:
+                - img [ref=e685]
+                - text: 참고
+              - paragraph [ref=e688]:
+                - text: 사용자 정의 추론 프로필(custom inference profiles)의 경우, 키에 모델과 공급자 이름을 사용하고
+                - code [ref=e689]: "`id`"
+                - text: 속성에 ARN을 설정하십시오. 이렇게 하면 올바른 캐싱이 보장됩니다.
+            - figure "opencode.json" [ref=e691]:
+              - generic [ref=e693]: opencode.json
+              - code [ref=e695]:
+                - generic [ref=e697]: "{"
+                - generic [ref=e699]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e701]: "\"provider\": {"
+                - generic [ref=e703]: "\"amazon-bedrock\": {"
+                - generic [ref=e705]: // ...
+                - generic [ref=e707]: "\"models\": {"
+                - generic [ref=e709]: "\"anthropic-claude-sonnet-4.5\": {"
+                - generic [ref=e711]: "\"id\": \"arn:aws:bedrock:us-east-1:xxx:application-inference-profile/yyy\""
+                - generic [ref=e713]: "}"
+                - generic [ref=e716]: "}"
+                - generic [ref=e719]: "}"
+                - generic [ref=e722]: "}"
+                - generic [ref=e725]: "}"
+              - button "Copy to clipboard" [ref=e727] [cursor=pointer]
+            - separator [ref=e729]
+            - heading "Anthropic" [level=3] [ref=e730]:
+              - link "Anthropic" [ref=e731]:
+                - /url: "#anthropic"
+            - list [ref=e732]:
+              - listitem [ref=e733]:
+                - paragraph [ref=e734]:
+                  - text: 가입 후
+                  - code [ref=e735]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e736]: Anthropic
+                  - text: 을 선택합니다.
+                - figure [ref=e738]:
+                  - code [ref=e740]:
+                    - generic [ref=e742]: /connect
+                  - button "Copy to clipboard" [ref=e744] [cursor=pointer]
+              - listitem [ref=e746]:
+                - paragraph [ref=e747]:
+                  - strong [ref=e748]: Claude Pro/Max
+                  - text: 옵션을 선택하면 브라우저가 열리고 인증을 요청합니다.
+                - figure [ref=e750]:
+                  - code [ref=e752]:
+                    - generic [ref=e754]: ┌ Select auth method
+                    - generic [ref=e756]: │
+                    - generic [ref=e758]: │ Claude Pro/Max
+                    - generic [ref=e760]: │ Create an API Key
+                    - generic [ref=e762]: │ Manually enter API Key
+                    - generic [ref=e764]: └
+                  - button "Copy to clipboard" [ref=e766] [cursor=pointer]
+              - listitem [ref=e768]:
+                - paragraph [ref=e769]:
+                  - text: 이제
+                  - code [ref=e770]: "`/models`"
+                  - text: 명령을 사용할 때 모든 Anthropic 모델을 사용할 수 있습니다.
+                - figure [ref=e772]:
+                  - code [ref=e774]:
+                    - generic [ref=e776]: /models
+                  - button "Copy to clipboard" [ref=e778] [cursor=pointer]
+            - paragraph [ref=e781]:
+              - text: OpenCode에서 Claude Pro/Max 구독을 사용하는 것은
+              - link "Anthropic" [ref=e782] [cursor=pointer]:
+                - /url: https://anthropic.com
+              - text: 에서 공식적으로 지원하지 않습니다.
+            - heading "API 키 사용" [level=5] [ref=e783]:
+              - link "API 키 사용" [ref=e784]:
+                - /url: "#api-키-사용"
+            - paragraph [ref=e785]:
+              - text: Pro/Max 구독이 없는 경우
+              - strong [ref=e786]: Create an API Key
+              - text: 를 선택할 수 있습니다. 브라우저가 열리고 Anthropic에 로그인한 후 터미널에 붙여넣을 수 있는 코드를 제공합니다.
+            - paragraph [ref=e787]:
+              - text: 또는 이미 API 키가 있다면,
+              - strong [ref=e788]: Manually enter API Key
+              - text: 를 선택하고 터미널에 붙여넣을 수 있습니다.
+            - separator [ref=e789]
+            - heading "Azure OpenAI" [level=3] [ref=e790]:
+              - link "Azure OpenAI" [ref=e791]:
+                - /url: "#azure-openai"
+            - complementary "참고" [ref=e792]:
+              - paragraph [ref=e793]:
+                - img [ref=e794]
+                - text: 참고
+              - paragraph [ref=e797]:
+                - text: “I’m sorry, but I cannot assist with that request” 오류가 발생하면, Azure 리소스의 콘텐츠 필터를
+                - strong [ref=e798]: DefaultV2
+                - text: 에서
+                - strong [ref=e799]: Default
+                - text: 로 변경해 보세요.
+            - list [ref=e800]:
+              - listitem [ref=e801]:
+                - paragraph [ref=e802]:
+                  - link "Azure 포털" [ref=e803] [cursor=pointer]:
+                    - /url: https://portal.azure.com/
+                  - text: 로 이동하여
+                  - strong [ref=e804]: Azure OpenAI
+                  - text: "리소스를 만듭니다. 다음이 필요합니다:"
+                - list [ref=e805]:
+                  - listitem [ref=e806]:
+                    - strong [ref=e807]: 리소스 이름
+                    - text: ": API 엔드포인트의 일부가 됩니다 ("
+                    - code [ref=e808]: "`https://RESOURCE_NAME.openai.azure.com/`"
+                    - text: )
+                  - listitem [ref=e809]:
+                    - strong [ref=e810]: API 키
+                    - text: ": 리소스의"
+                    - code [ref=e811]: "`KEY 1`"
+                    - text: 또는
+                    - code [ref=e812]: "`KEY 2`"
+              - listitem [ref=e813]:
+                - paragraph [ref=e814]:
+                  - link "Azure AI Foundry" [ref=e815] [cursor=pointer]:
+                    - /url: https://ai.azure.com/
+                  - text: 로 이동하여 모델을 배포합니다.
+                - complementary "참고" [ref=e816]:
+                  - paragraph [ref=e817]:
+                    - img [ref=e818]
+                    - text: 참고
+                  - paragraph [ref=e821]: 배포 이름은 제대로 작동하려면 OpenCode의 모델 이름과 일치해야 합니다.
+              - listitem [ref=e822]:
+                - paragraph [ref=e823]:
+                  - code [ref=e824]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e825]: Azure
+                  - text: 를 검색하십시오.
+                - figure [ref=e827]:
+                  - code [ref=e829]:
+                    - generic [ref=e831]: /connect
+                  - button "Copy to clipboard" [ref=e833] [cursor=pointer]
+              - listitem [ref=e835]:
+                - paragraph [ref=e836]: API 키를 입력하십시오.
+                - figure [ref=e838]:
+                  - code [ref=e840]:
+                    - generic [ref=e842]: ┌ API key
+                    - generic [ref=e844]: │
+                    - generic [ref=e846]: │
+                    - generic [ref=e848]: └ enter
+                  - button "Copy to clipboard" [ref=e850] [cursor=pointer]
+              - listitem [ref=e852]:
+                - paragraph [ref=e853]: "리소스 이름을 환경 변수로 설정:"
+                - figure "Terminal window" [ref=e855]:
+                  - generic [ref=e858]: Terminal window
+                  - code [ref=e860]:
+                    - generic [ref=e862]: AZURE_RESOURCE_NAME=XXX opencode
+                  - button "Copy to clipboard" [ref=e864] [cursor=pointer]
+                - paragraph [ref=e866]: "또는 bash 프로필에 추가:"
+                - figure "~/.bash_profile" [ref=e868]:
+                  - generic [ref=e870]: ~/.bash_profile
+                  - code [ref=e872]:
+                    - generic [ref=e874]: export AZURE_RESOURCE_NAME=XXX
+                  - button "Copy to clipboard" [ref=e876] [cursor=pointer]
+              - listitem [ref=e878]:
+                - paragraph [ref=e879]:
+                  - code [ref=e880]: "`/models`"
+                  - text: 명령을 실행하여 배포된 모델을 선택하십시오.
+                - figure [ref=e882]:
+                  - code [ref=e884]:
+                    - generic [ref=e886]: /models
+                  - button "Copy to clipboard" [ref=e888] [cursor=pointer]
+            - separator [ref=e890]
+            - heading "Azure Cognitive Services" [level=3] [ref=e891]:
+              - link "Azure Cognitive Services" [ref=e892]:
+                - /url: "#azure-cognitive-services"
+            - list [ref=e893]:
+              - listitem [ref=e894]:
+                - paragraph [ref=e895]:
+                  - link "Azure 포털" [ref=e896] [cursor=pointer]:
+                    - /url: https://portal.azure.com/
+                  - text: 로 이동하여
+                  - strong [ref=e897]: Azure OpenAI
+                  - text: "리소스를 만듭니다. 다음이 필요합니다:"
+                - list [ref=e898]:
+                  - listitem [ref=e899]:
+                    - strong [ref=e900]: 리소스 이름
+                    - text: ": API 엔드포인트의 일부가 됩니다 ("
+                    - code [ref=e901]: "`https://AZURE_COGNITIVE_SERVICES_RESOURCE_NAME.cognitiveservices.azure.com/`"
+                    - text: )
+                  - listitem [ref=e902]:
+                    - strong [ref=e903]: API 키
+                    - text: ": 리소스의"
+                    - code [ref=e904]: "`KEY 1`"
+                    - text: 또는
+                    - code [ref=e905]: "`KEY 2`"
+              - listitem [ref=e906]:
+                - paragraph [ref=e907]:
+                  - link "Azure AI Foundry" [ref=e908] [cursor=pointer]:
+                    - /url: https://ai.azure.com/
+                  - text: 로 이동하여 모델을 배포합니다.
+                - complementary "참고" [ref=e909]:
+                  - paragraph [ref=e910]:
+                    - img [ref=e911]
+                    - text: 참고
+                  - paragraph [ref=e914]: 배포 이름은 제대로 작동하려면 OpenCode의 모델 이름과 일치해야 합니다.
+              - listitem [ref=e915]:
+                - paragraph [ref=e916]:
+                  - code [ref=e917]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e918]: Azure Cognitive Services
+                  - text: 를 검색하십시오.
+                - figure [ref=e920]:
+                  - code [ref=e922]:
+                    - generic [ref=e924]: /connect
+                  - button "Copy to clipboard" [ref=e926] [cursor=pointer]
+              - listitem [ref=e928]:
+                - paragraph [ref=e929]: API 키를 입력하십시오.
+                - figure [ref=e931]:
+                  - code [ref=e933]:
+                    - generic [ref=e935]: ┌ API key
+                    - generic [ref=e937]: │
+                    - generic [ref=e939]: │
+                    - generic [ref=e941]: └ enter
+                  - button "Copy to clipboard" [ref=e943] [cursor=pointer]
+              - listitem [ref=e945]:
+                - paragraph [ref=e946]: "리소스 이름을 환경 변수로 설정:"
+                - figure "Terminal window" [ref=e948]:
+                  - generic [ref=e951]: Terminal window
+                  - code [ref=e953]:
+                    - generic [ref=e955]: AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX opencode
+                  - button "Copy to clipboard" [ref=e957] [cursor=pointer]
+                - paragraph [ref=e959]: "또는 bash 프로필에 추가:"
+                - figure "~/.bash_profile" [ref=e961]:
+                  - generic [ref=e963]: ~/.bash_profile
+                  - code [ref=e965]:
+                    - generic [ref=e967]: export AZURE_COGNITIVE_SERVICES_RESOURCE_NAME=XXX
+                  - button "Copy to clipboard" [ref=e969] [cursor=pointer]
+              - listitem [ref=e971]:
+                - paragraph [ref=e972]:
+                  - code [ref=e973]: "`/models`"
+                  - text: 명령을 실행하여 배포된 모델을 선택하십시오.
+                - figure [ref=e975]:
+                  - code [ref=e977]:
+                    - generic [ref=e979]: /models
+                  - button "Copy to clipboard" [ref=e981] [cursor=pointer]
+            - separator [ref=e983]
+            - heading "Baseten" [level=3] [ref=e984]:
+              - link "Baseten" [ref=e985]:
+                - /url: "#baseten"
+            - list [ref=e986]:
+              - listitem [ref=e987]:
+                - paragraph [ref=e988]:
+                  - link "Baseten" [ref=e989] [cursor=pointer]:
+                    - /url: https://app.baseten.co/
+                  - text: 으로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e990]:
+                - paragraph [ref=e991]:
+                  - code [ref=e992]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e993]: Baseten
+                  - text: 을 검색하십시오.
+                - figure [ref=e995]:
+                  - code [ref=e997]:
+                    - generic [ref=e999]: /connect
+                  - button "Copy to clipboard" [ref=e1001] [cursor=pointer]
+              - listitem [ref=e1003]:
+                - paragraph [ref=e1004]: Baseten API 키를 입력하십시오.
+                - figure [ref=e1006]:
+                  - code [ref=e1008]:
+                    - generic [ref=e1010]: ┌ API key
+                    - generic [ref=e1012]: │
+                    - generic [ref=e1014]: │
+                    - generic [ref=e1016]: └ enter
+                  - button "Copy to clipboard" [ref=e1018] [cursor=pointer]
+              - listitem [ref=e1020]:
+                - paragraph [ref=e1021]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e1022]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e1024]:
+                  - code [ref=e1026]:
+                    - generic [ref=e1028]: /models
+                  - button "Copy to clipboard" [ref=e1030] [cursor=pointer]
+            - separator [ref=e1032]
+            - heading "Cerebras" [level=3] [ref=e1033]:
+              - link "Cerebras" [ref=e1034]:
+                - /url: "#cerebras"
+            - list [ref=e1035]:
+              - listitem [ref=e1036]:
+                - paragraph [ref=e1037]:
+                  - link "Cerebras 콘솔" [ref=e1038] [cursor=pointer]:
+                    - /url: https://inference.cerebras.ai/
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e1039]:
+                - paragraph [ref=e1040]:
+                  - code [ref=e1041]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1042]: Cerebras
+                  - text: 를 검색하십시오.
+                - figure [ref=e1044]:
+                  - code [ref=e1046]:
+                    - generic [ref=e1048]: /connect
+                  - button "Copy to clipboard" [ref=e1050] [cursor=pointer]
+              - listitem [ref=e1052]:
+                - paragraph [ref=e1053]: Cerebras API 키를 입력하십시오.
+                - figure [ref=e1055]:
+                  - code [ref=e1057]:
+                    - generic [ref=e1059]: ┌ API key
+                    - generic [ref=e1061]: │
+                    - generic [ref=e1063]: │
+                    - generic [ref=e1065]: └ enter
+                  - button "Copy to clipboard" [ref=e1067] [cursor=pointer]
+              - listitem [ref=e1069]:
+                - paragraph [ref=e1070]:
+                  - code [ref=e1071]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e1072]: Qwen 3 Coder 480B
+                  - text: )을 선택하십시오.
+                - figure [ref=e1074]:
+                  - code [ref=e1076]:
+                    - generic [ref=e1078]: /models
+                  - button "Copy to clipboard" [ref=e1080] [cursor=pointer]
+            - separator [ref=e1082]
+            - heading "Cloudflare AI Gateway" [level=3] [ref=e1083]:
+              - link "Cloudflare AI Gateway" [ref=e1084]:
+                - /url: "#cloudflare-ai-gateway"
+            - paragraph [ref=e1085]:
+              - text: Cloudflare AI Gateway는 OpenAI, Anthropic, Workers AI 등의 모델에 액세스할 수 있으며, 통합된 엔드포인트를 통해 더 많은 기능을 제공합니다.
+              - link "Unified Billing" [ref=e1086] [cursor=pointer]:
+                - /url: https://developers.cloudflare.com/ai-gateway/features/unified-billing/
+              - text: 을 사용하면 각 공급자의 별도 API 키가 필요하지 않습니다.
+            - list [ref=e1087]:
+              - listitem [ref=e1088]:
+                - paragraph [ref=e1089]:
+                  - link "Cloudflare 대시보드" [ref=e1090] [cursor=pointer]:
+                    - /url: https://dash.cloudflare.com/
+                  - text: 로 이동하여,
+                  - strong [ref=e1091]: AI
+                  - text: ">"
+                  - strong [ref=e1092]: AI Gateway
+                  - text: 로 가서 새로운 게이트웨이를 만듭니다.
+              - listitem [ref=e1093]:
+                - paragraph [ref=e1094]: 계정 ID 및 Gateway ID를 환경 변수로 설정하십시오.
+                - figure "~/.bash_profile" [ref=e1096]:
+                  - generic [ref=e1098]: ~/.bash_profile
+                  - code [ref=e1100]:
+                    - generic [ref=e1102]: export CLOUDFLARE_ACCOUNT_ID=your-32-character-account-id
+                    - generic [ref=e1104]: export CLOUDFLARE_GATEWAY_ID=your-gateway-id
+                  - button "Copy to clipboard" [ref=e1106] [cursor=pointer]
+              - listitem [ref=e1108]:
+                - paragraph [ref=e1109]:
+                  - code [ref=e1110]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1111]: Cloudflare AI Gateway
+                  - text: 를 검색하십시오.
+                - figure [ref=e1113]:
+                  - code [ref=e1115]:
+                    - generic [ref=e1117]: /connect
+                  - button "Copy to clipboard" [ref=e1119] [cursor=pointer]
+              - listitem [ref=e1121]:
+                - paragraph [ref=e1122]: Cloudflare API 토큰을 입력하십시오.
+                - figure [ref=e1124]:
+                  - code [ref=e1126]:
+                    - generic [ref=e1128]: ┌ API key
+                    - generic [ref=e1130]: │
+                    - generic [ref=e1132]: │
+                    - generic [ref=e1134]: └ enter
+                  - button "Copy to clipboard" [ref=e1136] [cursor=pointer]
+                - paragraph [ref=e1138]: 또는 환경 변수로 설정합니다.
+                - figure "~/.bash_profile" [ref=e1140]:
+                  - generic [ref=e1142]: ~/.bash_profile
+                  - code [ref=e1144]:
+                    - generic [ref=e1146]: export CLOUDFLARE_API_TOKEN=your-api-token
+                  - button "Copy to clipboard" [ref=e1148] [cursor=pointer]
+              - listitem [ref=e1150]:
+                - paragraph [ref=e1151]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e1152]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e1154]:
+                  - code [ref=e1156]:
+                    - generic [ref=e1158]: /models
+                  - button "Copy to clipboard" [ref=e1160] [cursor=pointer]
+                - paragraph [ref=e1162]: OpenCode 구성을 통해 모델을 추가할 수 있습니다.
+                - figure "opencode.json" [ref=e1164]:
+                  - generic [ref=e1166]: opencode.json
+                  - code [ref=e1168]:
+                    - generic [ref=e1170]: "{"
+                    - generic [ref=e1172]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e1174]: "\"provider\": {"
+                    - generic [ref=e1176]: "\"cloudflare-ai-gateway\": {"
+                    - generic [ref=e1178]: "\"models\": {"
+                    - generic [ref=e1180]: "\"openai/gpt-4o\": {},"
+                    - generic [ref=e1182]: "\"anthropic/claude-sonnet-4\": {}"
+                    - generic [ref=e1184]: "}"
+                    - generic [ref=e1187]: "}"
+                    - generic [ref=e1190]: "}"
+                    - generic [ref=e1193]: "}"
+                  - button "Copy to clipboard" [ref=e1195] [cursor=pointer]
+            - separator [ref=e1197]
+            - heading "Cortecs" [level=3] [ref=e1198]:
+              - link "Cortecs" [ref=e1199]:
+                - /url: "#cortecs"
+            - list [ref=e1200]:
+              - listitem [ref=e1201]:
+                - paragraph [ref=e1202]:
+                  - link "Cortecs 콘솔" [ref=e1203] [cursor=pointer]:
+                    - /url: https://cortecs.ai/
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e1204]:
+                - paragraph [ref=e1205]:
+                  - code [ref=e1206]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1207]: Cortecs
+                  - text: 를 검색하십시오.
+                - figure [ref=e1209]:
+                  - code [ref=e1211]:
+                    - generic [ref=e1213]: /connect
+                  - button "Copy to clipboard" [ref=e1215] [cursor=pointer]
+              - listitem [ref=e1217]:
+                - paragraph [ref=e1218]: Cortecs API 키를 입력하십시오.
+                - figure [ref=e1220]:
+                  - code [ref=e1222]:
+                    - generic [ref=e1224]: ┌ API key
+                    - generic [ref=e1226]: │
+                    - generic [ref=e1228]: │
+                    - generic [ref=e1230]: └ enter
+                  - button "Copy to clipboard" [ref=e1232] [cursor=pointer]
+              - listitem [ref=e1234]:
+                - paragraph [ref=e1235]:
+                  - code [ref=e1236]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e1237]: Kimi K2 Instruct
+                  - text: )을 선택하십시오.
+                - figure [ref=e1239]:
+                  - code [ref=e1241]:
+                    - generic [ref=e1243]: /models
+                  - button "Copy to clipboard" [ref=e1245] [cursor=pointer]
+            - separator [ref=e1247]
+            - heading "DeepSeek" [level=3] [ref=e1248]:
+              - link "DeepSeek" [ref=e1249]:
+                - /url: "#deepseek"
+            - list [ref=e1250]:
+              - listitem [ref=e1251]:
+                - paragraph [ref=e1252]:
+                  - link "DeepSeek 콘솔" [ref=e1253] [cursor=pointer]:
+                    - /url: https://platform.deepseek.com/
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e1254]: API Keys
+                  - text: 를 클릭하여 키를 생성합니다.
+              - listitem [ref=e1255]:
+                - paragraph [ref=e1256]:
+                  - code [ref=e1257]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1258]: DeepSeek
+                  - text: 를 검색하십시오.
+                - figure [ref=e1260]:
+                  - code [ref=e1262]:
+                    - generic [ref=e1264]: /connect
+                  - button "Copy to clipboard" [ref=e1266] [cursor=pointer]
+              - listitem [ref=e1268]:
+                - paragraph [ref=e1269]: DeepSeek API 키를 입력하십시오.
+                - figure [ref=e1271]:
+                  - code [ref=e1273]:
+                    - generic [ref=e1275]: ┌ API key
+                    - generic [ref=e1277]: │
+                    - generic [ref=e1279]: │
+                    - generic [ref=e1281]: └ enter
+                  - button "Copy to clipboard" [ref=e1283] [cursor=pointer]
+              - listitem [ref=e1285]:
+                - paragraph [ref=e1286]:
+                  - code [ref=e1287]: "`/models`"
+                  - text: "명령을 실행하여 DeepSeek 모델(예:"
+                  - emphasis [ref=e1288]: DeepSeek V4 Pro
+                  - text: )을 선택하십시오.
+                - figure [ref=e1290]:
+                  - code [ref=e1292]:
+                    - generic [ref=e1294]: /models
+                  - button "Copy to clipboard" [ref=e1296] [cursor=pointer]
+            - separator [ref=e1298]
+            - heading "Deep Infra" [level=3] [ref=e1299]:
+              - link "Deep Infra" [ref=e1300]:
+                - /url: "#deep-infra"
+            - list [ref=e1301]:
+              - listitem [ref=e1302]:
+                - paragraph [ref=e1303]:
+                  - link "Deep Infra 대시보드" [ref=e1304] [cursor=pointer]:
+                    - /url: https://deepinfra.com/dash
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e1305]:
+                - paragraph [ref=e1306]:
+                  - code [ref=e1307]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1308]: Deep Infra
+                  - text: 를 검색하십시오.
+                - figure [ref=e1310]:
+                  - code [ref=e1312]:
+                    - generic [ref=e1314]: /connect
+                  - button "Copy to clipboard" [ref=e1316] [cursor=pointer]
+              - listitem [ref=e1318]:
+                - paragraph [ref=e1319]: Deep Infra API 키를 입력하십시오.
+                - figure [ref=e1321]:
+                  - code [ref=e1323]:
+                    - generic [ref=e1325]: ┌ API key
+                    - generic [ref=e1327]: │
+                    - generic [ref=e1329]: │
+                    - generic [ref=e1331]: └ enter
+                  - button "Copy to clipboard" [ref=e1333] [cursor=pointer]
+              - listitem [ref=e1335]:
+                - paragraph [ref=e1336]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e1337]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e1339]:
+                  - code [ref=e1341]:
+                    - generic [ref=e1343]: /models
+                  - button "Copy to clipboard" [ref=e1345] [cursor=pointer]
+            - separator [ref=e1347]
+            - heading "Firmware" [level=3] [ref=e1348]:
+              - link "Firmware" [ref=e1349]:
+                - /url: "#firmware"
+            - list [ref=e1350]:
+              - listitem [ref=e1351]:
+                - paragraph [ref=e1352]:
+                  - link "Firmware 대시보드" [ref=e1353] [cursor=pointer]:
+                    - /url: https://app.firmware.ai/signup
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e1354]:
+                - paragraph [ref=e1355]:
+                  - code [ref=e1356]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1357]: Firmware
+                  - text: 를 검색하십시오.
+                - figure [ref=e1359]:
+                  - code [ref=e1361]:
+                    - generic [ref=e1363]: /connect
+                  - button "Copy to clipboard" [ref=e1365] [cursor=pointer]
+              - listitem [ref=e1367]:
+                - paragraph [ref=e1368]: Firmware API 키를 입력하십시오.
+                - figure [ref=e1370]:
+                  - code [ref=e1372]:
+                    - generic [ref=e1374]: ┌ API key
+                    - generic [ref=e1376]: │
+                    - generic [ref=e1378]: │
+                    - generic [ref=e1380]: └ enter
+                  - button "Copy to clipboard" [ref=e1382] [cursor=pointer]
+              - listitem [ref=e1384]:
+                - paragraph [ref=e1385]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e1386]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e1388]:
+                  - code [ref=e1390]:
+                    - generic [ref=e1392]: /models
+                  - button "Copy to clipboard" [ref=e1394] [cursor=pointer]
+            - separator [ref=e1396]
+            - heading "Fireworks AI" [level=3] [ref=e1397]:
+              - link "Fireworks AI" [ref=e1398]:
+                - /url: "#fireworks-ai"
+            - list [ref=e1399]:
+              - listitem [ref=e1400]:
+                - paragraph [ref=e1401]:
+                  - link "Fireworks AI 콘솔" [ref=e1402] [cursor=pointer]:
+                    - /url: https://app.fireworks.ai/
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e1403]: API Keys
+                  - text: 를 클릭합니다.
+              - listitem [ref=e1404]:
+                - paragraph [ref=e1405]:
+                  - code [ref=e1406]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1407]: Fireworks AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e1409]:
+                  - code [ref=e1411]:
+                    - generic [ref=e1413]: /connect
+                  - button "Copy to clipboard" [ref=e1415] [cursor=pointer]
+              - listitem [ref=e1417]:
+                - paragraph [ref=e1418]: Fireworks AI API 키를 입력하십시오.
+                - figure [ref=e1420]:
+                  - code [ref=e1422]:
+                    - generic [ref=e1424]: ┌ API key
+                    - generic [ref=e1426]: │
+                    - generic [ref=e1428]: │
+                    - generic [ref=e1430]: └ enter
+                  - button "Copy to clipboard" [ref=e1432] [cursor=pointer]
+              - listitem [ref=e1434]:
+                - paragraph [ref=e1435]:
+                  - code [ref=e1436]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e1437]: Kimi K2 Instruct
+                  - text: )을 선택하십시오.
+                - figure [ref=e1439]:
+                  - code [ref=e1441]:
+                    - generic [ref=e1443]: /models
+                  - button "Copy to clipboard" [ref=e1445] [cursor=pointer]
+            - separator [ref=e1447]
+            - heading "GitLab Duo" [level=3] [ref=e1448]:
+              - link "GitLab Duo" [ref=e1449]:
+                - /url: "#gitlab-duo"
+            - paragraph [ref=e1450]: GitLab Duo는 GitLab의 Anthropic 프록시를 통해 기본 도구 호출 기능을 갖춘 AI 기반 에이전트 채팅을 제공합니다.
+            - list [ref=e1451]:
+              - listitem [ref=e1452]:
+                - paragraph [ref=e1453]:
+                  - code [ref=e1454]: "`/connect`"
+                  - text: 명령을 실행하고 GitLab을 선택합니다.
+                - figure [ref=e1456]:
+                  - code [ref=e1458]:
+                    - generic [ref=e1460]: /connect
+                  - button "Copy to clipboard" [ref=e1462] [cursor=pointer]
+              - listitem [ref=e1464]:
+                - paragraph [ref=e1465]: "인증 방법을 선택하십시오:"
+                - figure [ref=e1467]:
+                  - code [ref=e1469]:
+                    - generic [ref=e1471]: ┌ Select auth method
+                    - generic [ref=e1473]: │
+                    - generic [ref=e1475]: │ OAuth (Recommended)
+                    - generic [ref=e1477]: │ Personal Access Token
+                    - generic [ref=e1479]: └
+                  - button "Copy to clipboard" [ref=e1481] [cursor=pointer]
+                - heading "OAuth 사용 (권장)" [level=4] [ref=e1483]:
+                  - link "OAuth 사용 (권장)" [ref=e1484]:
+                    - /url: "#oauth-사용-권장"
+                - paragraph [ref=e1485]:
+                  - strong [ref=e1486]: OAuth
+                  - text: 를 선택하면 브라우저가 열리고 인증을 요청합니다.
+                - heading "개인 액세스 토큰 사용" [level=4] [ref=e1487]:
+                  - link "개인 액세스 토큰 사용" [ref=e1488]:
+                    - /url: "#개인-액세스-토큰-사용"
+                - list [ref=e1489]:
+                  - listitem [ref=e1490]:
+                    - link "GitLab User Settings > Access Tokens" [ref=e1491] [cursor=pointer]:
+                      - /url: https://gitlab.com/-/user_settings/personal_access_tokens
+                    - text: 로 이동
+                  - listitem [ref=e1492]:
+                    - strong [ref=e1493]: Add new token
+                    - text: 클릭
+                  - listitem [ref=e1494]:
+                    - text: "이름:"
+                    - code [ref=e1495]: "`OpenCode`"
+                    - text: ", 범위:"
+                    - code [ref=e1496]: "`api`"
+                  - listitem [ref=e1497]:
+                    - text: 토큰 복사 (
+                    - code [ref=e1498]: "`glpat-`"
+                    - text: 로 시작)
+                  - listitem [ref=e1499]: 터미널에 입력
+              - listitem [ref=e1500]:
+                - paragraph [ref=e1501]:
+                  - code [ref=e1502]: "`/models`"
+                  - text: 명령을 실행하여 사용 가능한 모델을 확인하십시오.
+                - figure [ref=e1504]:
+                  - code [ref=e1506]:
+                    - generic [ref=e1508]: /models
+                  - button "Copy to clipboard" [ref=e1510] [cursor=pointer]
+                - paragraph [ref=e1512]: "세 가지 Claude 기반 모델을 사용할 수 있습니다:"
+                - list [ref=e1513]:
+                  - listitem [ref=e1514]:
+                    - strong [ref=e1515]: duo-chat-haiku-4-5
+                    - text: (기본값) - 빠른 작업을 위한 빠른 응답
+                  - listitem [ref=e1516]:
+                    - strong [ref=e1517]: duo-chat-sonnet-4-5
+                    - text: "- 대부분의 워크플로우에 균형 잡힌 성능"
+                  - listitem [ref=e1518]:
+                    - strong [ref=e1519]: duo-chat-opus-4-5
+                    - text: "- 복잡한 분석에 적합"
+            - complementary "참고" [ref=e1520]:
+              - paragraph [ref=e1521]:
+                - img [ref=e1522]
+                - text: 참고
+              - paragraph [ref=e1525]:
+                - code [ref=e1526]: "`GITLAB_TOKEN`"
+                - text: 환경 변수를 지정하여 토큰을 저장하지 않고 사용할 수도 있습니다.
+            - heading "셀프 호스팅 GitLab" [level=4] [ref=e1527]:
+              - link "셀프 호스팅 GitLab" [ref=e1528]:
+                - /url: "#셀프-호스팅-gitlab"
+            - complementary "규정 준수 참고 사항" [ref=e1529]:
+              - paragraph [ref=e1530]:
+                - img [ref=e1531]
+                - text: 규정 준수 참고 사항
+              - generic [ref=e1533]:
+                - paragraph [ref=e1534]:
+                  - text: OpenCode는 세션 제목 생성과 같은 일부 AI 작업을 위해 작은 모델을 사용합니다. 기본적으로 Zen에서 호스팅되는 gpt-5-nano를 사용하도록 구성됩니다. OpenCode를 자체 호스팅 GitLab 인스턴스만 사용하도록 제한하려면
+                  - code [ref=e1535]: "`opencode.json`"
+                  - text: 파일에 다음을 추가하십시오. 세션 공유를 비활성화하는 것도 권장합니다.
+                - figure [ref=e1537]:
+                  - code [ref=e1539]:
+                    - generic [ref=e1541]: "{"
+                    - generic [ref=e1543]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e1545]: "\"small_model\": \"gitlab/duo-chat-haiku-4-5\","
+                    - generic [ref=e1547]: "\"share\": \"disabled\""
+                    - generic [ref=e1549]: "}"
+                  - button "Copy to clipboard" [ref=e1551] [cursor=pointer]
+            - paragraph [ref=e1553]: "자체 호스팅 GitLab 인스턴스의 경우:"
+            - figure "Terminal window" [ref=e1555]:
+              - generic [ref=e1558]: Terminal window
+              - code [ref=e1560]:
+                - generic [ref=e1562]: export GITLAB_INSTANCE_URL=https://gitlab.company.com
+                - generic [ref=e1564]: export GITLAB_TOKEN=glpat-...
+              - button "Copy to clipboard" [ref=e1566] [cursor=pointer]
+            - paragraph [ref=e1568]: "인스턴스가 사용자 정의 AI Gateway를 실행하는 경우:"
+            - figure "Terminal window" [ref=e1570]:
+              - generic [ref=e1573]: Terminal window
+              - code [ref=e1575]:
+                - generic [ref=e1577]: GITLAB_AI_GATEWAY_URL=https://ai-gateway.company.com
+              - button "Copy to clipboard" [ref=e1579] [cursor=pointer]
+            - paragraph [ref=e1581]: "또는 bash 프로필에 추가:"
+            - figure "~/.bash_profile" [ref=e1583]:
+              - generic [ref=e1585]: ~/.bash_profile
+              - code [ref=e1587]:
+                - generic [ref=e1589]: export GITLAB_INSTANCE_URL=https://gitlab.company.com
+                - generic [ref=e1591]: export GITLAB_AI_GATEWAY_URL=https://ai-gateway.company.com
+                - generic [ref=e1593]: export GITLAB_TOKEN=glpat-...
+              - button "Copy to clipboard" [ref=e1595] [cursor=pointer]
+            - complementary "참고" [ref=e1597]:
+              - paragraph [ref=e1598]:
+                - img [ref=e1599]
+                - text: 참고
+              - generic [ref=e1601]:
+                - paragraph [ref=e1602]: "GitLab 관리자는 다음을 활성화해야 합니다:"
+                - list [ref=e1603]:
+                  - listitem [ref=e1604]:
+                    - link "Duo Agent Platform" [ref=e1605] [cursor=pointer]:
+                      - /url: https://docs.gitlab.com/user/duo_agent_platform/turn_on_off/
+                    - text: (사용자, 그룹 또는 인스턴스)
+                  - listitem [ref=e1606]:
+                    - text: "기능 플래그 (Rails 콘솔을 통해):"
+                    - list [ref=e1607]:
+                      - listitem [ref=e1608]:
+                        - code [ref=e1609]: "`agent_platform_claude_code`"
+                      - listitem [ref=e1610]:
+                        - code [ref=e1611]: "`third_party_agents_enabled`"
+            - heading "셀프 호스팅 인스턴스용 OAuth" [level=4] [ref=e1612]:
+              - link "셀프 호스팅 인스턴스용 OAuth" [ref=e1613]:
+                - /url: "#셀프-호스팅-인스턴스용-oauth"
+            - paragraph [ref=e1614]:
+              - text: 자체 호스팅 인스턴스에 대해 OAuth를 작동시키려면 새로운 애플리케이션(Settings → Applications)을 만들어야 합니다. 콜백 URL
+              - code [ref=e1615]: "`http://127.0.0.1:8080/callback`"
+              - text: "및 다음 범위가 필요합니다:"
+            - list [ref=e1616]:
+              - listitem [ref=e1617]: api (사용자 대신 API 액세스)
+              - listitem [ref=e1618]: read_user (개인 정보 읽기)
+              - listitem [ref=e1619]: read_repository (리포지토리 읽기 전용 액세스)
+            - paragraph [ref=e1620]: "그런 다음 애플리케이션 ID를 환경 변수로 노출하십시오:"
+            - figure "Terminal window" [ref=e1622]:
+              - generic [ref=e1625]: Terminal window
+              - code [ref=e1627]:
+                - generic [ref=e1629]: export GITLAB_OAUTH_CLIENT_ID=your_application_id_here
+              - button "Copy to clipboard" [ref=e1631] [cursor=pointer]
+            - paragraph [ref=e1633]:
+              - link "opencode-gitlab-auth" [ref=e1634] [cursor=pointer]:
+                - /url: https://www.npmjs.com/package/opencode-gitlab-auth
+              - text: 홈페이지에 추가 문서가 있습니다.
+            - heading "구성" [level=4] [ref=e1635]:
+              - link "구성" [ref=e1636]:
+                - /url: "#구성-1"
+            - paragraph [ref=e1637]:
+              - code [ref=e1638]: "`opencode.json`"
+              - text: "을 통해 사용자 정의:"
+            - figure "opencode.json" [ref=e1640]:
+              - generic [ref=e1642]: opencode.json
+              - code [ref=e1644]:
+                - generic [ref=e1646]: "{"
+                - generic [ref=e1648]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e1650]: "\"provider\": {"
+                - generic [ref=e1652]: "\"gitlab\": {"
+                - generic [ref=e1654]: "\"options\": {"
+                - generic [ref=e1656]: "\"instanceUrl\": \"https://gitlab.com\""
+                - generic [ref=e1658]: "}"
+                - generic [ref=e1661]: "}"
+                - generic [ref=e1664]: "}"
+                - generic [ref=e1667]: "}"
+              - button "Copy to clipboard" [ref=e1669] [cursor=pointer]
+            - heading "GitLab API 도구 (선택 사항이지만 강력 권장)" [level=4] [ref=e1671]:
+              - link "GitLab API 도구 (선택 사항이지만 강력 권장)" [ref=e1672]:
+                - /url: "#gitlab-api-도구-선택-사항이지만-강력-권장"
+            - paragraph [ref=e1673]: "GitLab 도구(병합 요청, 이슈, 파이프라인, CI/CD 등)에 액세스하려면:"
+            - figure "opencode.json" [ref=e1675]:
+              - generic [ref=e1677]: opencode.json
+              - code [ref=e1679]:
+                - generic [ref=e1681]: "{"
+                - generic [ref=e1683]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e1685]: "\"plugin\": [\"opencode-gitlab-plugin\"]"
+                - generic [ref=e1687]: "}"
+              - button "Copy to clipboard" [ref=e1689] [cursor=pointer]
+            - paragraph [ref=e1691]: 이 플러그인은 MR 리뷰, 이슈 추적, 파이프라인 모니터링 등을 포함한 포괄적인 GitLab 리포지토리 관리 기능을 제공합니다.
+            - separator [ref=e1692]
+            - heading "GitHub Copilot" [level=3] [ref=e1693]:
+              - link "GitHub Copilot" [ref=e1694]:
+                - /url: "#github-copilot"
+            - paragraph [ref=e1695]: "OpenCode에서 GitHub Copilot 구독을 사용하려면:"
+            - complementary "참고" [ref=e1696]:
+              - paragraph [ref=e1697]:
+                - img [ref=e1698]
+                - text: 참고
+              - paragraph [ref=e1701]:
+                - text: 일부 모델은
+                - link "Pro+ 구독" [ref=e1702] [cursor=pointer]:
+                  - /url: https://github.com/features/copilot/plans
+                - text: 이 필요할 수 있습니다.
+            - list [ref=e1703]:
+              - listitem [ref=e1704]:
+                - paragraph [ref=e1705]:
+                  - code [ref=e1706]: "`/connect`"
+                  - text: 명령을 실행하고 GitHub Copilot을 검색하십시오.
+                - figure [ref=e1708]:
+                  - code [ref=e1710]:
+                    - generic [ref=e1712]: /connect
+                  - button "Copy to clipboard" [ref=e1714] [cursor=pointer]
+              - listitem [ref=e1716]:
+                - paragraph [ref=e1717]:
+                  - link "github.com/login/device" [ref=e1718] [cursor=pointer]:
+                    - /url: https://github.com/login/device
+                  - text: 로 이동하여 코드를 입력합니다.
+                - figure [ref=e1720]:
+                  - code [ref=e1722]:
+                    - generic [ref=e1724]: ┌ Login with GitHub Copilot
+                    - generic [ref=e1726]: │
+                    - generic [ref=e1728]: │ https://github.com/login/device
+                    - generic [ref=e1730]: │
+                    - generic [ref=e1732]: "│ Enter code: 8F43-6FCF"
+                    - generic [ref=e1734]: │
+                    - generic [ref=e1736]: │ Waiting for authorization...
+                    - generic [ref=e1738]: └
+                  - button "Copy to clipboard" [ref=e1740] [cursor=pointer]
+              - listitem [ref=e1742]:
+                - paragraph [ref=e1743]:
+                  - text: 이제 원하는 모델을 선택하기 위해
+                  - code [ref=e1744]: "`/models`"
+                  - text: 명령을 실행합니다.
+                - figure [ref=e1746]:
+                  - code [ref=e1748]:
+                    - generic [ref=e1750]: /models
+                  - button "Copy to clipboard" [ref=e1752] [cursor=pointer]
+            - separator [ref=e1754]
+            - heading "Google Vertex AI" [level=3] [ref=e1755]:
+              - link "Google Vertex AI" [ref=e1756]:
+                - /url: "#google-vertex-ai"
+            - paragraph [ref=e1757]: "OpenCode로 Google Vertex AI를 사용하려면:"
+            - list [ref=e1758]:
+              - listitem [ref=e1759]:
+                - paragraph [ref=e1760]:
+                  - text: Google Cloud Console의
+                  - strong [ref=e1761]: Model Garden
+                  - text: 으로 이동하여 해당 리전에서 사용 가능한 모델을 확인하십시오.
+                - complementary "참고" [ref=e1762]:
+                  - paragraph [ref=e1763]:
+                    - img [ref=e1764]
+                    - text: 참고
+                  - paragraph [ref=e1767]: Vertex AI API가 활성화된 Google Cloud 프로젝트가 있어야 합니다.
+              - listitem [ref=e1768]:
+                - paragraph [ref=e1769]: "필요한 환경 변수를 설정:"
+                - list [ref=e1770]:
+                  - listitem [ref=e1771]:
+                    - code [ref=e1772]: "`GOOGLE_CLOUD_PROJECT`"
+                    - text: ": 구글 클라우드 프로젝트 ID"
+                  - listitem [ref=e1773]:
+                    - code [ref=e1774]: "`VERTEX_LOCATION`"
+                    - text: "(선택): Vertex AI 리전 (기본값:"
+                    - code [ref=e1775]: "`global`"
+                    - text: )
+                  - listitem [ref=e1776]:
+                    - text: "인증 (하나 선택):"
+                    - list [ref=e1777]:
+                      - listitem [ref=e1778]:
+                        - code [ref=e1779]: "`GOOGLE_APPLICATION_CREDENTIALS`"
+                        - text: ": 서비스 계정 JSON 키 파일 경로"
+                      - listitem [ref=e1780]:
+                        - text: "gcloud CLI 사용:"
+                        - code [ref=e1781]: "`gcloud auth application-default login`"
+                - paragraph [ref=e1782]: "OpenCode를 실행할 때 설정:"
+                - figure "Terminal window" [ref=e1784]:
+                  - generic [ref=e1787]: Terminal window
+                  - code [ref=e1789]:
+                    - generic [ref=e1791]: GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json GOOGLE_CLOUD_PROJECT=your-project-id opencode
+                  - button "Copy to clipboard" [ref=e1793] [cursor=pointer]
+                - paragraph [ref=e1795]: "또는 bash 프로필에 추가:"
+                - figure "~/.bash_profile" [ref=e1797]:
+                  - generic [ref=e1799]: ~/.bash_profile
+                  - code [ref=e1801]:
+                    - generic [ref=e1803]: export GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
+                    - generic [ref=e1805]: export GOOGLE_CLOUD_PROJECT=your-project-id
+                    - generic [ref=e1807]: export VERTEX_LOCATION=global
+                  - button "Copy to clipboard" [ref=e1809] [cursor=pointer]
+            - complementary "팁" [ref=e1811]:
+              - paragraph [ref=e1812]:
+                - img [ref=e1813]
+                - text: 팁
+              - paragraph [ref=e1817]:
+                - code [ref=e1818]: "`global`"
+                - text: "리전은 가용성을 높이고 오류를 줄이며 추가 비용이 없습니다. 데이터 거주 요건이 있는 경우 지역 엔드포인트(예:"
+                - code [ref=e1819]: "`us-central1`"
+                - text: )를 사용하십시오.
+                - link "더 알아보기" [ref=e1820] [cursor=pointer]:
+                  - /url: https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/use-partner-models#regional_and_global_endpoints
+            - list [ref=e1821]:
+              - listitem [ref=e1822]:
+                - paragraph [ref=e1823]:
+                  - code [ref=e1824]: "`/models`"
+                  - text: 명령을 실행하여 원하는 모델을 선택하십시오.
+                - figure [ref=e1826]:
+                  - code [ref=e1828]:
+                    - generic [ref=e1830]: /models
+                  - button "Copy to clipboard" [ref=e1832] [cursor=pointer]
+            - separator [ref=e1834]
+            - heading "Groq" [level=3] [ref=e1835]:
+              - link "Groq" [ref=e1836]:
+                - /url: "#groq"
+            - list [ref=e1837]:
+              - listitem [ref=e1838]:
+                - paragraph [ref=e1839]:
+                  - link "Groq 콘솔" [ref=e1840] [cursor=pointer]:
+                    - /url: https://console.groq.com/
+                  - text: 로 이동하여
+                  - strong [ref=e1841]: Create API Key
+                  - text: 를 클릭하고 키를 복사합니다.
+              - listitem [ref=e1842]:
+                - paragraph [ref=e1843]:
+                  - code [ref=e1844]: "`/connect`"
+                  - text: 명령을 실행하고 Groq를 검색하십시오.
+                - figure [ref=e1846]:
+                  - code [ref=e1848]:
+                    - generic [ref=e1850]: /connect
+                  - button "Copy to clipboard" [ref=e1852] [cursor=pointer]
+              - listitem [ref=e1854]:
+                - paragraph [ref=e1855]: API 키를 입력하십시오.
+                - figure [ref=e1857]:
+                  - code [ref=e1859]:
+                    - generic [ref=e1861]: ┌ API key
+                    - generic [ref=e1863]: │
+                    - generic [ref=e1865]: │
+                    - generic [ref=e1867]: └ enter
+                  - button "Copy to clipboard" [ref=e1869] [cursor=pointer]
+              - listitem [ref=e1871]:
+                - paragraph [ref=e1872]:
+                  - code [ref=e1873]: "`/models`"
+                  - text: 명령을 실행하여 원하는 모델을 선택합니다.
+                - figure [ref=e1875]:
+                  - code [ref=e1877]:
+                    - generic [ref=e1879]: /models
+                  - button "Copy to clipboard" [ref=e1881] [cursor=pointer]
+            - separator [ref=e1883]
+            - heading "Hugging Face" [level=3] [ref=e1884]:
+              - link "Hugging Face" [ref=e1885]:
+                - /url: "#hugging-face"
+            - paragraph [ref=e1886]:
+              - link "Hugging Face Inference Providers" [ref=e1887] [cursor=pointer]:
+                - /url: https://huggingface.co/docs/inference-providers
+              - text: 는 17개 이상의 공급자가 지원하는 오픈 모델에 대한 액세스를 제공합니다.
+            - list [ref=e1888]:
+              - listitem [ref=e1889]:
+                - paragraph [ref=e1890]:
+                  - link "Hugging Face settings" [ref=e1891] [cursor=pointer]:
+                    - /url: https://huggingface.co/settings/tokens/new?ownUserPermissions=inference.serverless.write&tokenType=fineGrained
+                  - text: 로 이동하여 Inference Providers에 호출할 권한이 있는 토큰을 생성합니다.
+              - listitem [ref=e1892]:
+                - paragraph [ref=e1893]:
+                  - code [ref=e1894]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1895]: Hugging Face
+                  - text: 를 검색하십시오.
+                - figure [ref=e1897]:
+                  - code [ref=e1899]:
+                    - generic [ref=e1901]: /connect
+                  - button "Copy to clipboard" [ref=e1903] [cursor=pointer]
+              - listitem [ref=e1905]:
+                - paragraph [ref=e1906]: Hugging Face 토큰을 입력하십시오.
+                - figure [ref=e1908]:
+                  - code [ref=e1910]:
+                    - generic [ref=e1912]: ┌ API key
+                    - generic [ref=e1914]: │
+                    - generic [ref=e1916]: │
+                    - generic [ref=e1918]: └ enter
+                  - button "Copy to clipboard" [ref=e1920] [cursor=pointer]
+              - listitem [ref=e1922]:
+                - paragraph [ref=e1923]:
+                  - code [ref=e1924]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e1925]: Kimi-K2-Instruct
+                  - text: 또는
+                  - emphasis [ref=e1926]: GLM-4.6
+                  - text: )을 선택하십시오.
+                - figure [ref=e1928]:
+                  - code [ref=e1930]:
+                    - generic [ref=e1932]: /models
+                  - button "Copy to clipboard" [ref=e1934] [cursor=pointer]
+            - separator [ref=e1936]
+            - heading "Helicone" [level=3] [ref=e1937]:
+              - link "Helicone" [ref=e1938]:
+                - /url: "#helicone"
+            - paragraph [ref=e1939]:
+              - link "Helicone" [ref=e1940] [cursor=pointer]:
+                - /url: https://helicone.ai
+              - text: 는 AI 애플리케이션을 위한 로깅, 모니터링 및 분석 기능을 제공하는 LLM 관찰 가능성(Observability) 플랫폼입니다. Helicone AI Gateway는 모델을 기반으로 적절한 공급자에게 요청을 자동으로 라우팅합니다.
+            - list [ref=e1941]:
+              - listitem [ref=e1942]:
+                - paragraph [ref=e1943]:
+                  - link "Helicone" [ref=e1944] [cursor=pointer]:
+                    - /url: https://helicone.ai
+                  - text: 로 이동하여 계정을 만들고 대시보드에서 API 키를 생성합니다.
+              - listitem [ref=e1945]:
+                - paragraph [ref=e1946]:
+                  - code [ref=e1947]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e1948]: Helicone
+                  - text: 를 검색하십시오.
+                - figure [ref=e1950]:
+                  - code [ref=e1952]:
+                    - generic [ref=e1954]: /connect
+                  - button "Copy to clipboard" [ref=e1956] [cursor=pointer]
+              - listitem [ref=e1958]:
+                - paragraph [ref=e1959]: Helicone API 키를 입력하십시오.
+                - figure [ref=e1961]:
+                  - code [ref=e1963]:
+                    - generic [ref=e1965]: ┌ API key
+                    - generic [ref=e1967]: │
+                    - generic [ref=e1969]: │
+                    - generic [ref=e1971]: └ enter
+                  - button "Copy to clipboard" [ref=e1973] [cursor=pointer]
+              - listitem [ref=e1975]:
+                - paragraph [ref=e1976]:
+                  - code [ref=e1977]: "`/models`"
+                  - text: 명령을 실행하여 모델을 선택하십시오.
+                - figure [ref=e1979]:
+                  - code [ref=e1981]:
+                    - generic [ref=e1983]: /models
+                  - button "Copy to clipboard" [ref=e1985] [cursor=pointer]
+            - paragraph [ref=e1987]:
+              - text: 캐싱 및 속도 제한과 같은 더 많은 공급자와 고급 기능은
+              - link "Helicone 문서" [ref=e1988] [cursor=pointer]:
+                - /url: https://docs.helicone.ai
+              - text: 를 확인하십시오.
+            - heading "선택적 구성" [level=4] [ref=e1989]:
+              - link "선택적 구성" [ref=e1990]:
+                - /url: "#선택적-구성"
+            - paragraph [ref=e1991]: OpenCode를 통해 자동으로 구성되지 않는 Helicone의 기능이나 모델이 있는 경우 직접 구성할 수 있습니다.
+            - paragraph [ref=e1992]:
+              - link "Helicone의 모델 디렉토리" [ref=e1993] [cursor=pointer]:
+                - /url: https://helicone.ai/models
+              - text: 에서 추가하려는 모델의 ID를 확인하십시오.
+            - figure "~/.config/opencode/opencode.jsonc" [ref=e1995]:
+              - generic [ref=e1997]: ~/.config/opencode/opencode.jsonc
+              - code [ref=e1999]:
+                - generic [ref=e2001]: "{"
+                - generic [ref=e2003]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e2005]: "\"provider\": {"
+                - generic [ref=e2007]: "\"helicone\": {"
+                - generic [ref=e2009]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e2011]: "\"name\": \"Helicone\","
+                - generic [ref=e2013]: "\"options\": {"
+                - generic [ref=e2015]: "\"baseURL\": \"https://ai-gateway.helicone.ai\","
+                - generic [ref=e2017]: "},"
+                - generic [ref=e2020]: "\"models\": {"
+                - generic [ref=e2022]: "\"gpt-4o\": {"
+                - generic [ref=e2024]: // Model ID (from Helicone's model directory page)
+                - generic [ref=e2026]: "\"name\": \"GPT-4o\", // Your own custom name for the model"
+                - generic [ref=e2028]: "},"
+                - generic [ref=e2031]: "\"claude-sonnet-4-20250514\": {"
+                - generic [ref=e2033]: "\"name\": \"Claude Sonnet 4\","
+                - generic [ref=e2035]: "},"
+                - generic [ref=e2038]: "},"
+                - generic [ref=e2041]: "},"
+                - generic [ref=e2044]: "},"
+                - generic [ref=e2047]: "}"
+              - button "Copy to clipboard" [ref=e2049] [cursor=pointer]
+            - heading "사용자 정의 헤더" [level=4] [ref=e2051]:
+              - link "사용자 정의 헤더" [ref=e2052]:
+                - /url: "#사용자-정의-헤더"
+            - paragraph [ref=e2053]:
+              - text: Helicone는 캐싱, 사용자 추적 및 세션 관리와 같은 기능을 위한 사용자 정의 헤더를 지원합니다.
+              - code [ref=e2054]: "`options.headers`"
+              - text: "를 사용하여 공급자 구성에 추가하십시오:"
+            - figure "~/.config/opencode/opencode.jsonc" [ref=e2056]:
+              - generic [ref=e2058]: ~/.config/opencode/opencode.jsonc
+              - code [ref=e2060]:
+                - generic [ref=e2062]: "{"
+                - generic [ref=e2064]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e2066]: "\"provider\": {"
+                - generic [ref=e2068]: "\"helicone\": {"
+                - generic [ref=e2070]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e2072]: "\"name\": \"Helicone\","
+                - generic [ref=e2074]: "\"options\": {"
+                - generic [ref=e2076]: "\"baseURL\": \"https://ai-gateway.helicone.ai\","
+                - generic [ref=e2078]: "\"headers\": {"
+                - generic [ref=e2080]: "\"Helicone-Cache-Enabled\": \"true\","
+                - generic [ref=e2082]: "\"Helicone-User-Id\": \"opencode\","
+                - generic [ref=e2084]: "},"
+                - generic [ref=e2087]: "},"
+                - generic [ref=e2090]: "},"
+                - generic [ref=e2093]: "},"
+                - generic [ref=e2096]: "}"
+              - button "Copy to clipboard" [ref=e2098] [cursor=pointer]
+            - heading "세션 추적" [level=5] [ref=e2100]:
+              - link "세션 추적" [ref=e2101]:
+                - /url: "#세션-추적"
+            - paragraph [ref=e2102]:
+              - text: Helicone의
+              - link "Sessions" [ref=e2103] [cursor=pointer]:
+                - /url: https://docs.helicone.ai/features/sessions
+              - text: 기능을 사용하면 관련 LLM 요청을 그룹화할 수 있습니다.
+              - link "opencode-helicone-session" [ref=e2104] [cursor=pointer]:
+                - /url: https://github.com/H2Shami/opencode-helicone-session
+              - text: 플러그인을 사용하여 각 OpenCode 대화를 Helicone 세션으로 자동 기록하십시오.
+            - figure "Terminal window" [ref=e2106]:
+              - generic [ref=e2109]: Terminal window
+              - code [ref=e2111]:
+                - generic [ref=e2113]: npm install -g opencode-helicone-session
+              - button "Copy to clipboard" [ref=e2115] [cursor=pointer]
+            - paragraph [ref=e2117]: 설정에 추가하십시오.
+            - figure "opencode.json" [ref=e2119]:
+              - generic [ref=e2121]: opencode.json
+              - code [ref=e2123]:
+                - generic [ref=e2125]: "{"
+                - generic [ref=e2127]: "\"plugin\": [\"opencode-helicone-session\"]"
+                - generic [ref=e2129]: "}"
+              - button "Copy to clipboard" [ref=e2131] [cursor=pointer]
+            - paragraph [ref=e2133]:
+              - text: 이 플러그인은
+              - code [ref=e2134]: "`Helicone-Session-Id`"
+              - text: 및
+              - code [ref=e2135]: "`Helicone-Session-Name`"
+              - text: 헤더를 요청에 주입합니다. Helicone의 세션 페이지에서 각 OpenCode 대화가 별도의 세션으로 나열되는 것을 볼 수 있습니다.
+            - heading "공통 Helicone 헤더" [level=5] [ref=e2136]:
+              - link "공통 Helicone 헤더" [ref=e2137]:
+                - /url: "#공통-helicone-헤더"
+            - table [ref=e2138]:
+              - rowgroup [ref=e2139]:
+                - row "헤더 설명" [ref=e2140]:
+                  - columnheader "헤더" [ref=e2141]
+                  - columnheader "설명" [ref=e2142]
+              - rowgroup [ref=e2143]:
+                - 'row "`Helicone-Cache-Enabled` 응답 캐싱 활성화 (`true`/`false`)" [ref=e2144]':
+                  - 'cell "`Helicone-Cache-Enabled`" [ref=e2145]':
+                    - code [ref=e2146]: "`Helicone-Cache-Enabled`"
+                  - 'cell "응답 캐싱 활성화 (`true`/`false`)" [ref=e2147]':
+                    - text: 응답 캐싱 활성화 (
+                    - code [ref=e2148]: "`true`"
+                    - text: /
+                    - code [ref=e2149]: "`false`"
+                    - text: )
+                - 'row "`Helicone-User-Id` 사용자별 지표 추적" [ref=e2150]':
+                  - 'cell "`Helicone-User-Id`" [ref=e2151]':
+                    - code [ref=e2152]: "`Helicone-User-Id`"
+                  - cell "사용자별 지표 추적" [ref=e2153]
+                - 'row "`Helicone-Property-[Name]` 사용자 정의 속성 추가(예: `Helicone-Property-Environment`)" [ref=e2154]':
+                  - 'cell "`Helicone-Property-[Name]`" [ref=e2155]':
+                    - code [ref=e2156]: "`Helicone-Property-[Name]`"
+                  - 'cell "사용자 정의 속성 추가(예: `Helicone-Property-Environment`)" [ref=e2157]':
+                    - text: "사용자 정의 속성 추가(예:"
+                    - code [ref=e2158]: "`Helicone-Property-Environment`"
+                    - text: )
+                - 'row "`Helicone-Prompt-Id` 요청을 프롬프트 버전과 연관" [ref=e2159]':
+                  - 'cell "`Helicone-Prompt-Id`" [ref=e2160]':
+                    - code [ref=e2161]: "`Helicone-Prompt-Id`"
+                  - cell "요청을 프롬프트 버전과 연관" [ref=e2162]
+            - paragraph [ref=e2163]:
+              - text: 사용 가능한 모든 헤더는
+              - link "Helicone Header Directory" [ref=e2164] [cursor=pointer]:
+                - /url: https://docs.helicone.ai/helicone-headers/header-directory
+              - text: 를 참조하십시오.
+            - separator [ref=e2165]
+            - heading "llama.cpp" [level=3] [ref=e2166]:
+              - link "llama.cpp" [ref=e2167]:
+                - /url: "#llamacpp"
+            - paragraph [ref=e2168]:
+              - link "llama.cpp" [ref=e2169] [cursor=pointer]:
+                - /url: https://github.com/ggml-org/llama.cpp
+              - text: 의 llama-server 유틸리티를 통해 로컬 모델을 사용하도록 구성할 수 있습니다.
+            - figure "opencode.json" [ref=e2171]:
+              - generic [ref=e2173]: opencode.json
+              - code [ref=e2175]:
+                - generic [ref=e2177]: "{"
+                - generic [ref=e2179]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e2181]: "\"provider\": {"
+                - generic [ref=e2183]:
+                  - text: "\""
+                  - mark [ref=e2184]: llama.cpp
+                  - text: "\": {"
+                - generic [ref=e2186]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e2188]: "\"name\": \"llama-server (local)\","
+                - generic [ref=e2190]: "\"options\": {"
+                - generic [ref=e2192]: "\"baseURL\": \"http://127.0.0.1:8080/v1\""
+                - generic [ref=e2194]: "},"
+                - generic [ref=e2197]: "\"models\": {"
+                - generic [ref=e2199]: "\"qwen3-coder:a3b\": {"
+                - generic [ref=e2201]: "\"name\": \"Qwen3-Coder: a3b-30b (local)\","
+                - generic [ref=e2203]: "\"limit\": {"
+                - generic [ref=e2205]: "\"context\": 128000,"
+                - generic [ref=e2207]: "\"output\": 65536"
+                - generic [ref=e2209]: "}"
+                - generic [ref=e2212]: "}"
+                - generic [ref=e2215]: "}"
+                - generic [ref=e2218]: "}"
+                - generic [ref=e2221]: "}"
+                - generic [ref=e2224]: "}"
+              - button "Copy to clipboard" [ref=e2226] [cursor=pointer]
+            - paragraph [ref=e2228]: "이 예제에서:"
+            - list [ref=e2229]:
+              - listitem [ref=e2230]:
+                - code [ref=e2231]: "`llama.cpp`"
+                - text: 는 사용자 정의 공급자 ID입니다. 원하는 문자열로 지정할 수 있습니다.
+              - listitem [ref=e2232]:
+                - code [ref=e2233]: "`npm`"
+                - text: 은 이 공급자에 사용할 패키지를 지정합니다. 여기서는 OpenAI 호환 API를 위해
+                - code [ref=e2234]: "`@ai-sdk/openai-compatible`"
+                - text: 을 사용합니다.
+              - listitem [ref=e2235]:
+                - code [ref=e2236]: "`name`"
+                - text: 은 UI에 표시될 공급자 이름입니다.
+              - listitem [ref=e2237]:
+                - code [ref=e2238]: "`options.baseURL`"
+                - text: 은 로컬 서버의 엔드포인트입니다.
+              - listitem [ref=e2239]:
+                - code [ref=e2240]: "`models`"
+                - text: 는 모델 ID와 해당 구성을 매핑합니다. 모델 이름은 모델 선택 목록에 표시됩니다.
+            - separator [ref=e2241]
+            - heading "IO.NET" [level=3] [ref=e2242]:
+              - link "IO.NET" [ref=e2243]:
+                - /url: "#ionet"
+            - paragraph [ref=e2244]: "IO.NET은 다양한 사용 사례에 최적화된 17개의 모델을 제공합니다:"
+            - list [ref=e2245]:
+              - listitem [ref=e2246]:
+                - paragraph [ref=e2247]:
+                  - link "IO.NET 콘솔" [ref=e2248] [cursor=pointer]:
+                    - /url: https://ai.io.net/
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e2249]:
+                - paragraph [ref=e2250]:
+                  - code [ref=e2251]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2252]: IO.NET
+                  - text: 을 검색하십시오.
+                - figure [ref=e2254]:
+                  - code [ref=e2256]:
+                    - generic [ref=e2258]: /connect
+                  - button "Copy to clipboard" [ref=e2260] [cursor=pointer]
+              - listitem [ref=e2262]:
+                - paragraph [ref=e2263]: IO.NET API 키를 입력하십시오.
+                - figure [ref=e2265]:
+                  - code [ref=e2267]:
+                    - generic [ref=e2269]: ┌ API key
+                    - generic [ref=e2271]: │
+                    - generic [ref=e2273]: │
+                    - generic [ref=e2275]: └ enter
+                  - button "Copy to clipboard" [ref=e2277] [cursor=pointer]
+              - listitem [ref=e2279]:
+                - paragraph [ref=e2280]:
+                  - text: 모델을 선택하려면
+                  - code [ref=e2281]: "`/models`"
+                  - text: 명령을 실행하십시오.
+                - figure [ref=e2283]:
+                  - code [ref=e2285]:
+                    - generic [ref=e2287]: /models
+                  - button "Copy to clipboard" [ref=e2289] [cursor=pointer]
+            - separator [ref=e2291]
+            - heading "LM Studio" [level=3] [ref=e2292]:
+              - link "LM Studio" [ref=e2293]:
+                - /url: "#lm-studio"
+            - paragraph [ref=e2294]: LM Studio를 통해 로컬 모델을 사용하도록 구성할 수 있습니다.
+            - figure "opencode.json" [ref=e2296]:
+              - generic [ref=e2298]: opencode.json
+              - code [ref=e2300]:
+                - generic [ref=e2302]: "{"
+                - generic [ref=e2304]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e2306]: "\"provider\": {"
+                - generic [ref=e2308]:
+                  - text: "\""
+                  - mark [ref=e2309]: lmstudio
+                  - text: "\": {"
+                - generic [ref=e2311]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e2313]: "\"name\": \"LM Studio (local)\","
+                - generic [ref=e2315]: "\"options\": {"
+                - generic [ref=e2317]: "\"baseURL\": \"http://127.0.0.1:1234/v1\""
+                - generic [ref=e2319]: "},"
+                - generic [ref=e2322]: "\"models\": {"
+                - generic [ref=e2324]: "\"google/gemma-3n-e4b\": {"
+                - generic [ref=e2326]: "\"name\": \"Gemma 3n-e4b (local)\""
+                - generic [ref=e2328]: "}"
+                - generic [ref=e2331]: "}"
+                - generic [ref=e2334]: "}"
+                - generic [ref=e2337]: "}"
+                - generic [ref=e2340]: "}"
+              - button "Copy to clipboard" [ref=e2342] [cursor=pointer]
+            - paragraph [ref=e2344]: "이 예제에서:"
+            - list [ref=e2345]:
+              - listitem [ref=e2346]:
+                - code [ref=e2347]: "`lmstudio`"
+                - text: 는 사용자 정의 공급자 ID입니다. 원하는 문자열로 지정할 수 있습니다.
+              - listitem [ref=e2348]:
+                - code [ref=e2349]: "`npm`"
+                - text: 은 이 공급자에 사용할 패키지를 지정합니다. 여기서는 OpenAI 호환 API를 위해
+                - code [ref=e2350]: "`@ai-sdk/openai-compatible`"
+                - text: 을 사용합니다.
+              - listitem [ref=e2351]:
+                - code [ref=e2352]: "`name`"
+                - text: 은 UI에 표시될 공급자 이름입니다.
+              - listitem [ref=e2353]:
+                - code [ref=e2354]: "`options.baseURL`"
+                - text: 은 로컬 서버의 엔드포인트입니다.
+              - listitem [ref=e2355]:
+                - code [ref=e2356]: "`models`"
+                - text: 는 모델 ID와 해당 구성을 매핑합니다. 모델 이름은 모델 선택 목록에 표시됩니다.
+            - separator [ref=e2357]
+            - heading "Moonshot AI" [level=3] [ref=e2358]:
+              - link "Moonshot AI" [ref=e2359]:
+                - /url: "#moonshot-ai"
+            - paragraph [ref=e2360]: "Moonshot AI에서 Kimi K2를 사용하려면:"
+            - list [ref=e2361]:
+              - listitem [ref=e2362]:
+                - paragraph [ref=e2363]:
+                  - link "Moonshot AI 콘솔" [ref=e2364] [cursor=pointer]:
+                    - /url: https://platform.moonshot.ai/console
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e2365]: Create API key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e2366]:
+                - paragraph [ref=e2367]:
+                  - code [ref=e2368]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2369]: Moonshot AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e2371]:
+                  - code [ref=e2373]:
+                    - generic [ref=e2375]: /connect
+                  - button "Copy to clipboard" [ref=e2377] [cursor=pointer]
+              - listitem [ref=e2379]:
+                - paragraph [ref=e2380]: Moonshot API 키를 입력하십시오.
+                - figure [ref=e2382]:
+                  - code [ref=e2384]:
+                    - generic [ref=e2386]: ┌ API key
+                    - generic [ref=e2388]: │
+                    - generic [ref=e2390]: │
+                    - generic [ref=e2392]: └ enter
+                  - button "Copy to clipboard" [ref=e2394] [cursor=pointer]
+              - listitem [ref=e2396]:
+                - paragraph [ref=e2397]:
+                  - code [ref=e2398]: "`/models`"
+                  - text: 명령을 실행하여
+                  - emphasis [ref=e2399]: Kimi K2
+                  - text: 를 선택하십시오.
+                - figure [ref=e2401]:
+                  - code [ref=e2403]:
+                    - generic [ref=e2405]: /models
+                  - button "Copy to clipboard" [ref=e2407] [cursor=pointer]
+            - separator [ref=e2409]
+            - heading "MiniMax" [level=3] [ref=e2410]:
+              - link "MiniMax" [ref=e2411]:
+                - /url: "#minimax"
+            - list [ref=e2412]:
+              - listitem [ref=e2413]:
+                - paragraph [ref=e2414]:
+                  - link "MiniMax API 콘솔" [ref=e2415] [cursor=pointer]:
+                    - /url: https://platform.minimax.io/login
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e2416]:
+                - paragraph [ref=e2417]:
+                  - code [ref=e2418]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2419]: MiniMax
+                  - text: 를 검색하십시오.
+                - figure [ref=e2421]:
+                  - code [ref=e2423]:
+                    - generic [ref=e2425]: /connect
+                  - button "Copy to clipboard" [ref=e2427] [cursor=pointer]
+              - listitem [ref=e2429]:
+                - paragraph [ref=e2430]: MiniMax API 키를 입력하십시오.
+                - figure [ref=e2432]:
+                  - code [ref=e2434]:
+                    - generic [ref=e2436]: ┌ API key
+                    - generic [ref=e2438]: │
+                    - generic [ref=e2440]: │
+                    - generic [ref=e2442]: └ enter
+                  - button "Copy to clipboard" [ref=e2444] [cursor=pointer]
+              - listitem [ref=e2446]:
+                - paragraph [ref=e2447]:
+                  - code [ref=e2448]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e2449]: M2.1
+                  - text: )을 선택하십시오.
+                - figure [ref=e2451]:
+                  - code [ref=e2453]:
+                    - generic [ref=e2455]: /models
+                  - button "Copy to clipboard" [ref=e2457] [cursor=pointer]
+            - separator [ref=e2459]
+            - heading "Nebius Token Factory" [level=3] [ref=e2460]:
+              - link "Nebius Token Factory" [ref=e2461]:
+                - /url: "#nebius-token-factory"
+            - list [ref=e2462]:
+              - listitem [ref=e2463]:
+                - paragraph [ref=e2464]:
+                  - link "Nebius Token Factory 콘솔" [ref=e2465] [cursor=pointer]:
+                    - /url: https://tokenfactory.nebius.com/
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e2466]: Add Key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e2467]:
+                - paragraph [ref=e2468]:
+                  - code [ref=e2469]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2470]: Nebius Token Factory
+                  - text: 를 검색하십시오.
+                - figure [ref=e2472]:
+                  - code [ref=e2474]:
+                    - generic [ref=e2476]: /connect
+                  - button "Copy to clipboard" [ref=e2478] [cursor=pointer]
+              - listitem [ref=e2480]:
+                - paragraph [ref=e2481]: Nebius Token Factory API 키를 입력하십시오.
+                - figure [ref=e2483]:
+                  - code [ref=e2485]:
+                    - generic [ref=e2487]: ┌ API key
+                    - generic [ref=e2489]: │
+                    - generic [ref=e2491]: │
+                    - generic [ref=e2493]: └ enter
+                  - button "Copy to clipboard" [ref=e2495] [cursor=pointer]
+              - listitem [ref=e2497]:
+                - paragraph [ref=e2498]:
+                  - code [ref=e2499]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e2500]: Kimi K2 Instruct
+                  - text: )을 선택하십시오.
+                - figure [ref=e2502]:
+                  - code [ref=e2504]:
+                    - generic [ref=e2506]: /models
+                  - button "Copy to clipboard" [ref=e2508] [cursor=pointer]
+            - separator [ref=e2510]
+            - heading "Ollama" [level=3] [ref=e2511]:
+              - link "Ollama" [ref=e2512]:
+                - /url: "#ollama"
+            - paragraph [ref=e2513]: Ollama를 통해 로컬 모델을 사용하도록 구성할 수 있습니다.
+            - complementary "팁" [ref=e2514]:
+              - paragraph [ref=e2515]:
+                - img [ref=e2516]
+                - text: 팁
+              - paragraph [ref=e2520]:
+                - text: Ollama는 OpenCode에 대해 자동으로 구성될 수 있습니다. 자세한 내용은
+                - link "Ollama 통합 문서" [ref=e2521] [cursor=pointer]:
+                  - /url: https://docs.ollama.com/integrations/opencode
+                - text: 를 참조하십시오.
+            - figure "opencode.json" [ref=e2523]:
+              - generic [ref=e2525]: opencode.json
+              - code [ref=e2527]:
+                - generic [ref=e2529]: "{"
+                - generic [ref=e2531]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e2533]: "\"provider\": {"
+                - generic [ref=e2535]:
+                  - text: "\""
+                  - mark [ref=e2536]: ollama
+                  - text: "\": {"
+                - generic [ref=e2538]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e2540]: "\"name\": \"Ollama (local)\","
+                - generic [ref=e2542]: "\"options\": {"
+                - generic [ref=e2544]: "\"baseURL\": \"http://localhost:11434/v1\""
+                - generic [ref=e2546]: "},"
+                - generic [ref=e2549]: "\"models\": {"
+                - generic [ref=e2551]: "\"llama2\": {"
+                - generic [ref=e2553]: "\"name\": \"Llama 2\""
+                - generic [ref=e2555]: "}"
+                - generic [ref=e2558]: "}"
+                - generic [ref=e2561]: "}"
+                - generic [ref=e2564]: "}"
+                - generic [ref=e2567]: "}"
+              - button "Copy to clipboard" [ref=e2569] [cursor=pointer]
+            - paragraph [ref=e2571]: "이 예제에서:"
+            - list [ref=e2572]:
+              - listitem [ref=e2573]:
+                - code [ref=e2574]: "`ollama`"
+                - text: 는 사용자 정의 공급자 ID입니다. 원하는 문자열로 지정할 수 있습니다.
+              - listitem [ref=e2575]:
+                - code [ref=e2576]: "`npm`"
+                - text: 은 이 공급자에 사용할 패키지를 지정합니다. 여기서는 OpenAI 호환 API를 위해
+                - code [ref=e2577]: "`@ai-sdk/openai-compatible`"
+                - text: 을 사용합니다.
+              - listitem [ref=e2578]:
+                - code [ref=e2579]: "`name`"
+                - text: 은 UI에 표시될 공급자 이름입니다.
+              - listitem [ref=e2580]:
+                - code [ref=e2581]: "`options.baseURL`"
+                - text: 은 로컬 서버의 엔드포인트입니다.
+              - listitem [ref=e2582]:
+                - code [ref=e2583]: "`models`"
+                - text: 는 모델 ID와 해당 구성을 매핑합니다. 모델 이름은 모델 선택 목록에 표시됩니다.
+            - complementary "팁" [ref=e2584]:
+              - paragraph [ref=e2585]:
+                - img [ref=e2586]
+                - text: 팁
+              - paragraph [ref=e2590]:
+                - text: 도구 호출이 작동하지 않는 경우, Ollama에서
+                - code [ref=e2591]: "`num_ctx`"
+                - text: 를 늘려보십시오. 16k - 32k 정도에서 시작하십시오.
+            - separator [ref=e2592]
+            - heading "Ollama Cloud" [level=3] [ref=e2593]:
+              - link "Ollama Cloud" [ref=e2594]:
+                - /url: "#ollama-cloud"
+            - paragraph [ref=e2595]: "OpenCode로 Ollama Cloud를 사용하려면:"
+            - list [ref=e2596]:
+              - listitem [ref=e2597]:
+                - paragraph [ref=e2598]:
+                  - link "https://ollama.com/" [ref=e2599] [cursor=pointer]:
+                    - /url: https://ollama.com/
+                  - text: 으로 이동하여 로그인하거나 계정을 만듭니다.
+              - listitem [ref=e2600]:
+                - paragraph [ref=e2601]:
+                  - strong [ref=e2602]: Settings
+                  - text: ">"
+                  - strong [ref=e2603]: Keys
+                  - text: 로 이동하여
+                  - strong [ref=e2604]: Add API Key
+                  - text: 를 클릭해 새 API 키를 생성합니다.
+              - listitem [ref=e2605]:
+                - paragraph [ref=e2606]: OpenCode에서 사용할 API 키를 복사합니다.
+              - listitem [ref=e2607]:
+                - paragraph [ref=e2608]:
+                  - code [ref=e2609]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2610]: Ollama Cloud
+                  - text: 를 검색하십시오.
+                - figure [ref=e2612]:
+                  - code [ref=e2614]:
+                    - generic [ref=e2616]: /connect
+                  - button "Copy to clipboard" [ref=e2618] [cursor=pointer]
+              - listitem [ref=e2620]:
+                - paragraph [ref=e2621]: Ollama Cloud API 키를 입력하십시오.
+                - figure [ref=e2623]:
+                  - code [ref=e2625]:
+                    - generic [ref=e2627]: ┌ API key
+                    - generic [ref=e2629]: │
+                    - generic [ref=e2631]: │
+                    - generic [ref=e2633]: └ enter
+                  - button "Copy to clipboard" [ref=e2635] [cursor=pointer]
+              - listitem [ref=e2637]:
+                - paragraph [ref=e2638]:
+                  - strong [ref=e2639]: 중요
+                  - text: ": OpenCode에서 클라우드 모델을 사용하기 전에, 로컬에서 모델 정보를 가져와야 합니다:"
+                - figure "Terminal window" [ref=e2641]:
+                  - generic [ref=e2644]: Terminal window
+                  - code [ref=e2646]:
+                    - generic [ref=e2648]: ollama pull gpt-oss:20b-cloud
+                  - button "Copy to clipboard" [ref=e2650] [cursor=pointer]
+              - listitem [ref=e2652]:
+                - paragraph [ref=e2653]:
+                  - code [ref=e2654]: "`/models`"
+                  - text: 명령을 실행하여 Ollama Cloud 모델을 선택하십시오.
+                - figure [ref=e2656]:
+                  - code [ref=e2658]:
+                    - generic [ref=e2660]: /models
+                  - button "Copy to clipboard" [ref=e2662] [cursor=pointer]
+            - separator [ref=e2664]
+            - heading "OpenAI" [level=3] [ref=e2665]:
+              - link "OpenAI" [ref=e2666]:
+                - /url: "#openai"
+            - paragraph [ref=e2667]:
+              - link "ChatGPT Plus 또는 Pro" [ref=e2668] [cursor=pointer]:
+                - /url: https://chatgpt.com/pricing
+              - text: 에 가입하는 것이 좋습니다.
+            - list [ref=e2669]:
+              - listitem [ref=e2670]:
+                - paragraph [ref=e2671]:
+                  - text: 가입 후
+                  - code [ref=e2672]: "`/connect`"
+                  - text: 명령을 실행하고 OpenAI를 선택하십시오.
+                - figure [ref=e2674]:
+                  - code [ref=e2676]:
+                    - generic [ref=e2678]: /connect
+                  - button "Copy to clipboard" [ref=e2680] [cursor=pointer]
+              - listitem [ref=e2682]:
+                - paragraph [ref=e2683]:
+                  - strong [ref=e2684]: ChatGPT Plus/Pro
+                  - text: 옵션을 선택하면 브라우저가 열리고 인증을 요청합니다.
+                - figure [ref=e2686]:
+                  - code [ref=e2688]:
+                    - generic [ref=e2690]: ┌ Select auth method
+                    - generic [ref=e2692]: │
+                    - generic [ref=e2694]: │ ChatGPT Plus/Pro
+                    - generic [ref=e2696]: │ Manually enter API Key
+                    - generic [ref=e2698]: └
+                  - button "Copy to clipboard" [ref=e2700] [cursor=pointer]
+              - listitem [ref=e2702]:
+                - paragraph [ref=e2703]:
+                  - text: 이제
+                  - code [ref=e2704]: "`/models`"
+                  - text: 명령을 사용할 때 모든 OpenAI 모델을 사용할 수 있습니다.
+                - figure [ref=e2706]:
+                  - code [ref=e2708]:
+                    - generic [ref=e2710]: /models
+                  - button "Copy to clipboard" [ref=e2712] [cursor=pointer]
+            - heading "API 키 사용" [level=5] [ref=e2714]:
+              - link "API 키 사용" [ref=e2715]:
+                - /url: "#api-키-사용-1"
+            - paragraph [ref=e2716]:
+              - text: 이미 API 키가 있다면
+              - strong [ref=e2717]: Manually enter API Key
+              - text: 를 선택하고 터미널에 붙여넣을 수 있습니다.
+            - separator [ref=e2718]
+            - heading "OpenCode Zen" [level=3] [ref=e2719]:
+              - link "OpenCode Zen" [ref=e2720]:
+                - /url: "#opencode-zen-1"
+            - paragraph [ref=e2721]:
+              - text: OpenCode Zen은 OpenCode 팀에서 제공하는 테스트 및 검증된 모델 목록입니다.
+              - link "더 알아보기" [ref=e2722] [cursor=pointer]:
+                - /url: /docs/zen
+              - text: .
+            - list [ref=e2723]:
+              - listitem [ref=e2724]:
+                - paragraph [ref=e2725]:
+                  - text: "**"
+                  - link "OpenCode Zen" [ref=e2726] [cursor=pointer]:
+                    - /url: https://opencode.ai/auth
+                  - text: "**에 로그인하고"
+                  - strong [ref=e2727]: Create API Key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e2728]:
+                - paragraph [ref=e2729]:
+                  - code [ref=e2730]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2731]: OpenCode Zen
+                  - text: 을 검색하십시오.
+                - figure [ref=e2733]:
+                  - code [ref=e2735]:
+                    - generic [ref=e2737]: /connect
+                  - button "Copy to clipboard" [ref=e2739] [cursor=pointer]
+              - listitem [ref=e2741]:
+                - paragraph [ref=e2742]: OpenCode API 키를 입력하십시오.
+                - figure [ref=e2744]:
+                  - code [ref=e2746]:
+                    - generic [ref=e2748]: ┌ API key
+                    - generic [ref=e2750]: │
+                    - generic [ref=e2752]: │
+                    - generic [ref=e2754]: └ enter
+                  - button "Copy to clipboard" [ref=e2756] [cursor=pointer]
+              - listitem [ref=e2758]:
+                - paragraph [ref=e2759]:
+                  - code [ref=e2760]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e2761]: Qwen 3 Coder 480B
+                  - text: )을 선택하십시오.
+                - figure [ref=e2763]:
+                  - code [ref=e2765]:
+                    - generic [ref=e2767]: /models
+                  - button "Copy to clipboard" [ref=e2769] [cursor=pointer]
+            - separator [ref=e2771]
+            - heading "OpenRouter" [level=3] [ref=e2772]:
+              - link "OpenRouter" [ref=e2773]:
+                - /url: "#openrouter"
+            - list [ref=e2774]:
+              - listitem [ref=e2775]:
+                - paragraph [ref=e2776]:
+                  - link "OpenRouter 대시보드" [ref=e2777] [cursor=pointer]:
+                    - /url: https://openrouter.ai/settings/keys
+                  - text: 로 이동하여
+                  - strong [ref=e2778]: Create API Key
+                  - text: 를 클릭하고 키를 복사합니다.
+              - listitem [ref=e2779]:
+                - paragraph [ref=e2780]:
+                  - code [ref=e2781]: "`/connect`"
+                  - text: 명령을 실행하고 OpenRouter를 검색하십시오.
+                - figure [ref=e2783]:
+                  - code [ref=e2785]:
+                    - generic [ref=e2787]: /connect
+                  - button "Copy to clipboard" [ref=e2789] [cursor=pointer]
+              - listitem [ref=e2791]:
+                - paragraph [ref=e2792]: API 키를 입력하십시오.
+                - figure [ref=e2794]:
+                  - code [ref=e2796]:
+                    - generic [ref=e2798]: ┌ API key
+                    - generic [ref=e2800]: │
+                    - generic [ref=e2802]: │
+                    - generic [ref=e2804]: └ enter
+                  - button "Copy to clipboard" [ref=e2806] [cursor=pointer]
+              - listitem [ref=e2808]:
+                - paragraph [ref=e2809]:
+                  - text: 많은 OpenRouter 모델은 기본적으로 미리 로드되어 있으므로
+                  - code [ref=e2810]: "`/models`"
+                  - text: 명령을 실행하여 원하는 것을 선택하십시오.
+                - figure [ref=e2812]:
+                  - code [ref=e2814]:
+                    - generic [ref=e2816]: /models
+                  - button "Copy to clipboard" [ref=e2818] [cursor=pointer]
+                - paragraph [ref=e2820]: OpenCode 구성을 통해 모델을 추가할 수도 있습니다.
+                - figure "opencode.json" [ref=e2822]:
+                  - generic [ref=e2824]: opencode.json
+                  - code [ref=e2826]:
+                    - generic [ref=e2828]: "{"
+                    - generic [ref=e2830]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e2832]: "\"provider\": {"
+                    - generic [ref=e2834]: "\"openrouter\": {"
+                    - generic [ref=e2836]: "\"models\": {"
+                    - generic [ref=e2838]: "\"somecoolnewmodel\": {}"
+                    - generic [ref=e2840]: "}"
+                    - generic [ref=e2843]: "}"
+                    - generic [ref=e2846]: "}"
+                    - generic [ref=e2849]: "}"
+                  - button "Copy to clipboard" [ref=e2851] [cursor=pointer]
+              - listitem [ref=e2853]:
+                - paragraph [ref=e2854]: 또한 OpenCode 구성을 통해 사용자 정의할 수도 있습니다. 다음은 공급자 순서를 지정하는 예입니다.
+                - figure "opencode.json" [ref=e2856]:
+                  - generic [ref=e2858]: opencode.json
+                  - code [ref=e2860]:
+                    - generic [ref=e2862]: "{"
+                    - generic [ref=e2864]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e2866]: "\"provider\": {"
+                    - generic [ref=e2868]: "\"openrouter\": {"
+                    - generic [ref=e2870]: "\"models\": {"
+                    - generic [ref=e2872]: "\"moonshotai/kimi-k2\": {"
+                    - generic [ref=e2874]: "\"options\": {"
+                    - generic [ref=e2876]: "\"provider\": {"
+                    - generic [ref=e2878]: "\"order\": [\"baseten\"],"
+                    - generic [ref=e2880]: "\"allow_fallbacks\": false"
+                    - generic [ref=e2882]: "}"
+                    - generic [ref=e2885]: "}"
+                    - generic [ref=e2888]: "}"
+                    - generic [ref=e2891]: "}"
+                    - generic [ref=e2894]: "}"
+                    - generic [ref=e2897]: "}"
+                    - generic [ref=e2900]: "}"
+                  - button "Copy to clipboard" [ref=e2902] [cursor=pointer]
+            - separator [ref=e2904]
+            - heading "SAP AI Core" [level=3] [ref=e2905]:
+              - link "SAP AI Core" [ref=e2906]:
+                - /url: "#sap-ai-core"
+            - paragraph [ref=e2907]: SAP AI Core는 OpenAI, Anthropic, Google, Amazon, Meta, Mistral 및 AI21의 40개 이상의 모델에 대한 액세스를 제공합니다.
+            - list [ref=e2908]:
+              - listitem [ref=e2909]:
+                - paragraph [ref=e2910]:
+                  - link "SAP BTP Cockpit" [ref=e2911] [cursor=pointer]:
+                    - /url: https://account.hana.ondemand.com/
+                  - text: 으로 이동하여 SAP AI Core 서비스 인스턴스로 이동하고 서비스 키를 만듭니다.
+                - complementary "팁" [ref=e2912]:
+                  - paragraph [ref=e2913]:
+                    - img [ref=e2914]
+                    - text: 팁
+                  - paragraph [ref=e2918]:
+                    - text: 서비스 키는
+                    - code [ref=e2919]: "`clientid`"
+                    - text: ","
+                    - code [ref=e2920]: "`clientsecret`"
+                    - text: ","
+                    - code [ref=e2921]: "`url`"
+                    - text: 및
+                    - code [ref=e2922]: "`serviceurls.AI_API_URL`"
+                    - text: 을 포함하는 JSON 객체입니다.
+                    - strong [ref=e2923]: Services
+                    - text: ">"
+                    - strong [ref=e2924]: Instances and Subscriptions
+                    - text: 아래에서 AI Core 인스턴스를 찾을 수 있습니다.
+              - listitem [ref=e2925]:
+                - paragraph [ref=e2926]:
+                  - code [ref=e2927]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e2928]: SAP AI Core
+                  - text: 를 검색하십시오.
+                - figure [ref=e2930]:
+                  - code [ref=e2932]:
+                    - generic [ref=e2934]: /connect
+                  - button "Copy to clipboard" [ref=e2936] [cursor=pointer]
+              - listitem [ref=e2938]:
+                - paragraph [ref=e2939]: 서비스 키 JSON을 입력하십시오.
+                - figure [ref=e2941]:
+                  - code [ref=e2943]:
+                    - generic [ref=e2945]: ┌ Service key
+                    - generic [ref=e2947]: │
+                    - generic [ref=e2949]: │
+                    - generic [ref=e2951]: └ enter
+                  - button "Copy to clipboard" [ref=e2953] [cursor=pointer]
+                - paragraph [ref=e2955]:
+                  - text: 또는
+                  - code [ref=e2956]: "`AICORE_SERVICE_KEY`"
+                  - text: "환경 변수를 설정합니다:"
+                - figure "Terminal window" [ref=e2958]:
+                  - generic [ref=e2961]: Terminal window
+                  - code [ref=e2963]:
+                    - generic [ref=e2965]: "AICORE_SERVICE_KEY='{\"clientid\":\"...\",\"clientsecret\":\"...\",\"url\":\"...\",\"serviceurls\":{\"AI_API_URL\":\"...\"}}' opencode"
+                  - button "Copy to clipboard" [ref=e2967] [cursor=pointer]
+                - paragraph [ref=e2969]: "또는 bash 프로필에 추가합니다:"
+                - figure "~/.bash_profile" [ref=e2971]:
+                  - generic [ref=e2973]: ~/.bash_profile
+                  - code [ref=e2975]:
+                    - generic [ref=e2977]: "export AICORE_SERVICE_KEY='{\"clientid\":\"...\",\"clientsecret\":\"...\",\"url\":\"...\",\"serviceurls\":{\"AI_API_URL\":\"...\"}}'"
+                  - button "Copy to clipboard" [ref=e2979] [cursor=pointer]
+              - listitem [ref=e2981]:
+                - paragraph [ref=e2982]: "선택적으로 배포 ID 및 리소스 그룹을 설정합니다:"
+                - figure "Terminal window" [ref=e2984]:
+                  - generic [ref=e2987]: Terminal window
+                  - code [ref=e2989]:
+                    - generic [ref=e2991]: AICORE_DEPLOYMENT_ID=your-deployment-id AICORE_RESOURCE_GROUP=your-resource-group opencode
+                  - button "Copy to clipboard" [ref=e2993] [cursor=pointer]
+                - complementary "참고" [ref=e2995]:
+                  - paragraph [ref=e2996]:
+                    - img [ref=e2997]
+                    - text: 참고
+                  - paragraph [ref=e3000]: 이 설정은 선택 사항이며 SAP AI Core 설정에 따라 구성해야 합니다.
+              - listitem [ref=e3001]:
+                - paragraph [ref=e3002]:
+                  - code [ref=e3003]: "`/models`"
+                  - text: 명령을 실행하여 40개 이상의 사용 가능한 모델 중에서 선택하십시오.
+                - figure [ref=e3005]:
+                  - code [ref=e3007]:
+                    - generic [ref=e3009]: /models
+                  - button "Copy to clipboard" [ref=e3011] [cursor=pointer]
+            - separator [ref=e3013]
+            - heading "STACKIT" [level=3] [ref=e3014]:
+              - link "STACKIT" [ref=e3015]:
+                - /url: "#stackit"
+            - paragraph [ref=e3016]: STACKIT AI Model Serving은 Llama, Mistral, Qwen과 같은 LLM에 초점을 맞추고 유럽 인프라에서 데이터 주권을 최대한 보장하는 완전 관리형 AI 모델 호스팅 환경을 제공합니다.
+            - list [ref=e3017]:
+              - listitem [ref=e3018]:
+                - paragraph [ref=e3019]:
+                  - link "STACKIT Portal" [ref=e3020] [cursor=pointer]:
+                    - /url: https://portal.stackit.cloud
+                  - text: 로 이동하여
+                  - strong [ref=e3021]: AI Model Serving
+                  - text: 으로 이동한 다음 프로젝트의 인증 토큰을 만듭니다.
+                - complementary "팁" [ref=e3022]:
+                  - paragraph [ref=e3023]:
+                    - img [ref=e3024]
+                    - text: 팁
+                  - paragraph [ref=e3028]: 인증 토큰을 만들기 전에 STACKIT 고객 계정, 사용자 계정 및 프로젝트가 필요합니다.
+              - listitem [ref=e3029]:
+                - paragraph [ref=e3030]:
+                  - code [ref=e3031]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3032]: STACKIT
+                  - text: 을 검색하십시오.
+                - figure [ref=e3034]:
+                  - code [ref=e3036]:
+                    - generic [ref=e3038]: /connect
+                  - button "Copy to clipboard" [ref=e3040] [cursor=pointer]
+              - listitem [ref=e3042]:
+                - paragraph [ref=e3043]: STACKIT AI Model Serving 인증 토큰을 입력하십시오.
+                - figure [ref=e3045]:
+                  - code [ref=e3047]:
+                    - generic [ref=e3049]: ┌ API key
+                    - generic [ref=e3051]: │
+                    - generic [ref=e3053]: │
+                    - generic [ref=e3055]: └ enter
+                  - button "Copy to clipboard" [ref=e3057] [cursor=pointer]
+              - listitem [ref=e3059]:
+                - paragraph [ref=e3060]:
+                  - code [ref=e3061]: "`/models`"
+                  - text: 명령을 실행하여
+                  - emphasis [ref=e3062]: Qwen3-VL 235B
+                  - text: 또는
+                  - emphasis [ref=e3063]: Llama 3.3 70B
+                  - text: 와 같은 사용 가능한 모델을 선택하십시오.
+                - figure [ref=e3065]:
+                  - code [ref=e3067]:
+                    - generic [ref=e3069]: /models
+                  - button "Copy to clipboard" [ref=e3071] [cursor=pointer]
+            - separator [ref=e3073]
+            - heading "OVHcloud AI Endpoints" [level=3] [ref=e3074]:
+              - link "OVHcloud AI Endpoints" [ref=e3075]:
+                - /url: "#ovhcloud-ai-endpoints"
+            - list [ref=e3076]:
+              - listitem [ref=e3077]:
+                - paragraph [ref=e3078]:
+                  - link "OVHcloud 패널" [ref=e3079] [cursor=pointer]:
+                    - /url: https://ovh.com/manager
+                  - text: 로 이동합니다.
+                  - code [ref=e3080]: "`Public Cloud`"
+                  - text: 섹션으로 이동하여
+                  - code [ref=e3081]: "`AI & Machine Learning`"
+                  - text: ">"
+                  - code [ref=e3082]: "`AI Endpoints`"
+                  - text: 로 간 뒤
+                  - code [ref=e3083]: "`API Keys`"
+                  - text: 탭에서
+                  - strong [ref=e3084]: Create a new API key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e3085]:
+                - paragraph [ref=e3086]:
+                  - code [ref=e3087]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3088]: OVHcloud AI Endpoints
+                  - text: 를 검색하십시오.
+                - figure [ref=e3090]:
+                  - code [ref=e3092]:
+                    - generic [ref=e3094]: /connect
+                  - button "Copy to clipboard" [ref=e3096] [cursor=pointer]
+              - listitem [ref=e3098]:
+                - paragraph [ref=e3099]: OVHcloud AI Endpoints API 키를 입력하십시오.
+                - figure [ref=e3101]:
+                  - code [ref=e3103]:
+                    - generic [ref=e3105]: ┌ API key
+                    - generic [ref=e3107]: │
+                    - generic [ref=e3109]: │
+                    - generic [ref=e3111]: └ enter
+                  - button "Copy to clipboard" [ref=e3113] [cursor=pointer]
+              - listitem [ref=e3115]:
+                - paragraph [ref=e3116]:
+                  - code [ref=e3117]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3118]: gpt-oss-120b
+                  - text: )을 선택하십시오.
+                - figure [ref=e3120]:
+                  - code [ref=e3122]:
+                    - generic [ref=e3124]: /models
+                  - button "Copy to clipboard" [ref=e3126] [cursor=pointer]
+            - separator [ref=e3128]
+            - heading "Scaleway" [level=3] [ref=e3129]:
+              - link "Scaleway" [ref=e3130]:
+                - /url: "#scaleway"
+            - paragraph [ref=e3131]:
+              - text: OpenCode로
+              - link "Scaleway Generative APIs" [ref=e3132] [cursor=pointer]:
+                - /url: https://www.scaleway.com/en/docs/generative-apis/
+              - text: "를 사용하려면:"
+            - list [ref=e3133]:
+              - listitem [ref=e3134]:
+                - paragraph [ref=e3135]:
+                  - link "Scaleway Console IAM 설정" [ref=e3136] [cursor=pointer]:
+                    - /url: https://console.scaleway.com/iam/api-keys
+                  - text: 에서 새 API 키를 생성합니다.
+              - listitem [ref=e3137]:
+                - paragraph [ref=e3138]:
+                  - code [ref=e3139]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3140]: Scaleway
+                  - text: 를 검색하십시오.
+                - figure [ref=e3142]:
+                  - code [ref=e3144]:
+                    - generic [ref=e3146]: /connect
+                  - button "Copy to clipboard" [ref=e3148] [cursor=pointer]
+              - listitem [ref=e3150]:
+                - paragraph [ref=e3151]: Scaleway API 키를 입력하십시오.
+                - figure [ref=e3153]:
+                  - code [ref=e3155]:
+                    - generic [ref=e3157]: ┌ API key
+                    - generic [ref=e3159]: │
+                    - generic [ref=e3161]: │
+                    - generic [ref=e3163]: └ enter
+                  - button "Copy to clipboard" [ref=e3165] [cursor=pointer]
+              - listitem [ref=e3167]:
+                - paragraph [ref=e3168]:
+                  - code [ref=e3169]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3170]: devstral-2-123b-instruct-2512
+                  - text: 또는
+                  - emphasis [ref=e3171]: gpt-oss-120b
+                  - text: )을 선택하십시오.
+                - figure [ref=e3173]:
+                  - code [ref=e3175]:
+                    - generic [ref=e3177]: /models
+                  - button "Copy to clipboard" [ref=e3179] [cursor=pointer]
+            - separator [ref=e3181]
+            - heading "Together AI" [level=3] [ref=e3182]:
+              - link "Together AI" [ref=e3183]:
+                - /url: "#together-ai"
+            - list [ref=e3184]:
+              - listitem [ref=e3185]:
+                - paragraph [ref=e3186]:
+                  - link "Together AI 콘솔" [ref=e3187] [cursor=pointer]:
+                    - /url: https://api.together.ai
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e3188]: Add Key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e3189]:
+                - paragraph [ref=e3190]:
+                  - code [ref=e3191]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3192]: Together AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e3194]:
+                  - code [ref=e3196]:
+                    - generic [ref=e3198]: /connect
+                  - button "Copy to clipboard" [ref=e3200] [cursor=pointer]
+              - listitem [ref=e3202]:
+                - paragraph [ref=e3203]: Together AI API 키를 입력하십시오.
+                - figure [ref=e3205]:
+                  - code [ref=e3207]:
+                    - generic [ref=e3209]: ┌ API key
+                    - generic [ref=e3211]: │
+                    - generic [ref=e3213]: │
+                    - generic [ref=e3215]: └ enter
+                  - button "Copy to clipboard" [ref=e3217] [cursor=pointer]
+              - listitem [ref=e3219]:
+                - paragraph [ref=e3220]:
+                  - code [ref=e3221]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3222]: Kimi K2 Instruct
+                  - text: )을 선택하십시오.
+                - figure [ref=e3224]:
+                  - code [ref=e3226]:
+                    - generic [ref=e3228]: /models
+                  - button "Copy to clipboard" [ref=e3230] [cursor=pointer]
+            - separator [ref=e3232]
+            - heading "Venice AI" [level=3] [ref=e3233]:
+              - link "Venice AI" [ref=e3234]:
+                - /url: "#venice-ai"
+            - list [ref=e3235]:
+              - listitem [ref=e3236]:
+                - paragraph [ref=e3237]:
+                  - link "Venice AI 콘솔" [ref=e3238] [cursor=pointer]:
+                    - /url: https://venice.ai
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e3239]:
+                - paragraph [ref=e3240]:
+                  - code [ref=e3241]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3242]: Venice AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e3244]:
+                  - code [ref=e3246]:
+                    - generic [ref=e3248]: /connect
+                  - button "Copy to clipboard" [ref=e3250] [cursor=pointer]
+              - listitem [ref=e3252]:
+                - paragraph [ref=e3253]: Venice AI API 키를 입력하십시오.
+                - figure [ref=e3255]:
+                  - code [ref=e3257]:
+                    - generic [ref=e3259]: ┌ API key
+                    - generic [ref=e3261]: │
+                    - generic [ref=e3263]: │
+                    - generic [ref=e3265]: └ enter
+                  - button "Copy to clipboard" [ref=e3267] [cursor=pointer]
+              - listitem [ref=e3269]:
+                - paragraph [ref=e3270]:
+                  - code [ref=e3271]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3272]: Llama 3.3 70B
+                  - text: )을 선택하십시오.
+                - figure [ref=e3274]:
+                  - code [ref=e3276]:
+                    - generic [ref=e3278]: /models
+                  - button "Copy to clipboard" [ref=e3280] [cursor=pointer]
+            - separator [ref=e3282]
+            - heading "Vercel AI Gateway" [level=3] [ref=e3283]:
+              - link "Vercel AI Gateway" [ref=e3284]:
+                - /url: "#vercel-ai-gateway"
+            - paragraph [ref=e3285]: Vercel AI Gateway는 OpenAI, Anthropic, Google, xAI 등의 모델에 액세스할 수 있으며, 통합된 엔드포인트를 통해 더 많은 기능을 제공합니다. 모델은 마크업 없이 정가로 제공됩니다.
+            - list [ref=e3286]:
+              - listitem [ref=e3287]:
+                - paragraph [ref=e3288]:
+                  - link "Vercel 대시보드" [ref=e3289] [cursor=pointer]:
+                    - /url: https://vercel.com/
+                  - text: 로 이동하여
+                  - strong [ref=e3290]: AI Gateway
+                  - text: 탭으로 간 뒤,
+                  - strong [ref=e3291]: API keys
+                  - text: 를 클릭하여 새 API 키를 생성합니다.
+              - listitem [ref=e3292]:
+                - paragraph [ref=e3293]:
+                  - code [ref=e3294]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3295]: Vercel AI Gateway
+                  - text: 를 검색하십시오.
+                - figure [ref=e3297]:
+                  - code [ref=e3299]:
+                    - generic [ref=e3301]: /connect
+                  - button "Copy to clipboard" [ref=e3303] [cursor=pointer]
+              - listitem [ref=e3305]:
+                - paragraph [ref=e3306]: Vercel AI Gateway API 키를 입력하십시오.
+                - figure [ref=e3308]:
+                  - code [ref=e3310]:
+                    - generic [ref=e3312]: ┌ API key
+                    - generic [ref=e3314]: │
+                    - generic [ref=e3316]: │
+                    - generic [ref=e3318]: └ enter
+                  - button "Copy to clipboard" [ref=e3320] [cursor=pointer]
+              - listitem [ref=e3322]:
+                - paragraph [ref=e3323]:
+                  - code [ref=e3324]: "`/models`"
+                  - text: 명령을 실행하여 모델을 선택하십시오.
+                - figure [ref=e3326]:
+                  - code [ref=e3328]:
+                    - generic [ref=e3330]: /models
+                  - button "Copy to clipboard" [ref=e3332] [cursor=pointer]
+            - paragraph [ref=e3334]: OpenCode 구성을 통해 모델을 사용자 정의할 수도 있습니다. 다음은 공급자 라우팅 순서를 지정하는 예입니다.
+            - figure "opencode.json" [ref=e3336]:
+              - generic [ref=e3338]: opencode.json
+              - code [ref=e3340]:
+                - generic [ref=e3342]: "{"
+                - generic [ref=e3344]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e3346]: "\"provider\": {"
+                - generic [ref=e3348]: "\"vercel\": {"
+                - generic [ref=e3350]: "\"models\": {"
+                - generic [ref=e3352]: "\"anthropic/claude-sonnet-4\": {"
+                - generic [ref=e3354]: "\"options\": {"
+                - generic [ref=e3356]: "\"order\": [\"anthropic\", \"vertex\"]"
+                - generic [ref=e3358]: "}"
+                - generic [ref=e3361]: "}"
+                - generic [ref=e3364]: "}"
+                - generic [ref=e3367]: "}"
+                - generic [ref=e3370]: "}"
+                - generic [ref=e3373]: "}"
+              - button "Copy to clipboard" [ref=e3375] [cursor=pointer]
+            - paragraph [ref=e3377]: "몇 가지 유용한 라우팅 옵션:"
+            - table [ref=e3378]:
+              - rowgroup [ref=e3379]:
+                - row "옵션 설명" [ref=e3380]:
+                  - columnheader "옵션" [ref=e3381]
+                  - columnheader "설명" [ref=e3382]
+              - rowgroup [ref=e3383]:
+                - 'row "`order` 시도할 공급자 순서" [ref=e3384]':
+                  - 'cell "`order`" [ref=e3385]':
+                    - code [ref=e3386]: "`order`"
+                  - cell "시도할 공급자 순서" [ref=e3387]
+                - 'row "`only` 특정 공급자로 제한" [ref=e3388]':
+                  - 'cell "`only`" [ref=e3389]':
+                    - code [ref=e3390]: "`only`"
+                  - cell "특정 공급자로 제한" [ref=e3391]
+                - 'row "`zeroDataRetention` 데이터 보유 정책이 없는 곳만 사용" [ref=e3392]':
+                  - 'cell "`zeroDataRetention`" [ref=e3393]':
+                    - code [ref=e3394]: "`zeroDataRetention`"
+                  - cell "데이터 보유 정책이 없는 곳만 사용" [ref=e3395]
+            - separator [ref=e3396]
+            - heading "xAI" [level=3] [ref=e3397]:
+              - link "xAI" [ref=e3398]:
+                - /url: "#xai"
+            - list [ref=e3399]:
+              - listitem [ref=e3400]:
+                - paragraph [ref=e3401]:
+                  - link "xAI 콘솔" [ref=e3402] [cursor=pointer]:
+                    - /url: https://console.x.ai/
+                  - text: 로 이동하여 계정을 만들고 API 키를 생성합니다.
+              - listitem [ref=e3403]:
+                - paragraph [ref=e3404]:
+                  - code [ref=e3405]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3406]: xAI
+                  - text: 를 검색하십시오.
+                - figure [ref=e3408]:
+                  - code [ref=e3410]:
+                    - generic [ref=e3412]: /connect
+                  - button "Copy to clipboard" [ref=e3414] [cursor=pointer]
+              - listitem [ref=e3416]:
+                - paragraph [ref=e3417]: xAI API 키를 입력하십시오.
+                - figure [ref=e3419]:
+                  - code [ref=e3421]:
+                    - generic [ref=e3423]: ┌ API key
+                    - generic [ref=e3425]: │
+                    - generic [ref=e3427]: │
+                    - generic [ref=e3429]: └ enter
+                  - button "Copy to clipboard" [ref=e3431] [cursor=pointer]
+              - listitem [ref=e3433]:
+                - paragraph [ref=e3434]:
+                  - code [ref=e3435]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3436]: Grok Beta
+                  - text: )을 선택하십시오.
+                - figure [ref=e3438]:
+                  - code [ref=e3440]:
+                    - generic [ref=e3442]: /models
+                  - button "Copy to clipboard" [ref=e3444] [cursor=pointer]
+            - separator [ref=e3446]
+            - heading "Z.AI" [level=3] [ref=e3447]:
+              - link "Z.AI" [ref=e3448]:
+                - /url: "#zai"
+            - list [ref=e3449]:
+              - listitem [ref=e3450]:
+                - paragraph [ref=e3451]:
+                  - link "Z.AI API 콘솔" [ref=e3452] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                  - text: 로 이동하여 계정을 만들고
+                  - strong [ref=e3453]: Create a new API key
+                  - text: 를 클릭합니다.
+              - listitem [ref=e3454]:
+                - paragraph [ref=e3455]:
+                  - code [ref=e3456]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3457]: Z.AI
+                  - text: 를 검색하십시오.
+                - figure [ref=e3459]:
+                  - code [ref=e3461]:
+                    - generic [ref=e3463]: /connect
+                  - button "Copy to clipboard" [ref=e3465] [cursor=pointer]
+                - paragraph [ref=e3467]:
+                  - strong [ref=e3468]: GLM Coding Plan
+                  - text: 에 가입했다면
+                  - strong [ref=e3469]: Z.AI Coding Plan
+                  - text: 을 선택하십시오.
+              - listitem [ref=e3470]:
+                - paragraph [ref=e3471]: Z.AI API 키를 입력하십시오.
+                - figure [ref=e3473]:
+                  - code [ref=e3475]:
+                    - generic [ref=e3477]: ┌ API key
+                    - generic [ref=e3479]: │
+                    - generic [ref=e3481]: │
+                    - generic [ref=e3483]: └ enter
+                  - button "Copy to clipboard" [ref=e3485] [cursor=pointer]
+              - listitem [ref=e3487]:
+                - paragraph [ref=e3488]:
+                  - code [ref=e3489]: "`/models`"
+                  - text: "명령을 실행하여 모델(예:"
+                  - emphasis [ref=e3490]: GLM-4.7
+                  - text: )을 선택하십시오.
+                - figure [ref=e3492]:
+                  - code [ref=e3494]:
+                    - generic [ref=e3496]: /models
+                  - button "Copy to clipboard" [ref=e3498] [cursor=pointer]
+            - separator [ref=e3500]
+            - heading "ZenMux" [level=3] [ref=e3501]:
+              - link "ZenMux" [ref=e3502]:
+                - /url: "#zenmux"
+            - list [ref=e3503]:
+              - listitem [ref=e3504]:
+                - paragraph [ref=e3505]:
+                  - link "ZenMux 대시보드" [ref=e3506] [cursor=pointer]:
+                    - /url: https://zenmux.ai/settings/keys
+                  - text: 로 이동하여
+                  - strong [ref=e3507]: Create API Key
+                  - text: 를 클릭하고 키를 복사합니다.
+              - listitem [ref=e3508]:
+                - paragraph [ref=e3509]:
+                  - code [ref=e3510]: "`/connect`"
+                  - text: 명령을 실행하고 ZenMux를 검색하십시오.
+                - figure [ref=e3512]:
+                  - code [ref=e3514]:
+                    - generic [ref=e3516]: /connect
+                  - button "Copy to clipboard" [ref=e3518] [cursor=pointer]
+              - listitem [ref=e3520]:
+                - paragraph [ref=e3521]: API 키를 입력하십시오.
+                - figure [ref=e3523]:
+                  - code [ref=e3525]:
+                    - generic [ref=e3527]: ┌ API key
+                    - generic [ref=e3529]: │
+                    - generic [ref=e3531]: │
+                    - generic [ref=e3533]: └ enter
+                  - button "Copy to clipboard" [ref=e3535] [cursor=pointer]
+              - listitem [ref=e3537]:
+                - paragraph [ref=e3538]:
+                  - text: 많은 ZenMux 모델은 기본적으로 미리 로드되어 있으므로
+                  - code [ref=e3539]: "`/models`"
+                  - text: 명령을 실행하여 원하는 것을 선택하십시오.
+                - figure [ref=e3541]:
+                  - code [ref=e3543]:
+                    - generic [ref=e3545]: /models
+                  - button "Copy to clipboard" [ref=e3547] [cursor=pointer]
+                - paragraph [ref=e3549]: OpenCode 구성을 통해 모델을 추가할 수도 있습니다.
+                - figure "opencode.json" [ref=e3551]:
+                  - generic [ref=e3553]: opencode.json
+                  - code [ref=e3555]:
+                    - generic [ref=e3557]: "{"
+                    - generic [ref=e3559]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e3561]: "\"provider\": {"
+                    - generic [ref=e3563]: "\"zenmux\": {"
+                    - generic [ref=e3565]: "\"models\": {"
+                    - generic [ref=e3567]: "\"somecoolnewmodel\": {}"
+                    - generic [ref=e3569]: "}"
+                    - generic [ref=e3572]: "}"
+                    - generic [ref=e3575]: "}"
+                    - generic [ref=e3578]: "}"
+                  - button "Copy to clipboard" [ref=e3580] [cursor=pointer]
+            - separator [ref=e3582]
+            - heading "사용자 정의 공급자" [level=2] [ref=e3583]:
+              - link "사용자 정의 공급자" [ref=e3584]:
+                - /url: "#사용자-정의-공급자"
+            - paragraph [ref=e3585]:
+              - code [ref=e3586]: "`/connect`"
+              - text: 명령에 나열되지 않은
+              - strong [ref=e3587]: OpenAI 호환
+              - text: "공급자를 추가하려면:"
+            - complementary "팁" [ref=e3588]:
+              - paragraph [ref=e3589]:
+                - img [ref=e3590]
+                - text: 팁
+              - paragraph [ref=e3594]: OpenCode에서 모든 OpenAI 호환 공급자를 사용할 수 있습니다. 대부분의 최신 AI 공급자는 OpenAI 호환 API를 제공합니다.
+            - list [ref=e3595]:
+              - listitem [ref=e3596]:
+                - paragraph [ref=e3597]:
+                  - code [ref=e3598]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - strong [ref=e3599]: Other
+                  - text: 로 스크롤하십시오.
+                - figure "Terminal window" [ref=e3601]:
+                  - generic [ref=e3604]: Terminal window
+                  - code [ref=e3606]:
+                    - generic [ref=e3608]: $ /connect
+                    - generic [ref=e3612]: ┌ Add credential
+                    - generic [ref=e3614]: │
+                    - generic [ref=e3616]: ◆ Select provider
+                    - generic [ref=e3618]: │ ...
+                    - generic [ref=e3620]: │ ● Other
+                    - generic [ref=e3622]: └
+                  - button "Copy to clipboard" [ref=e3624] [cursor=pointer]
+              - listitem [ref=e3626]:
+                - paragraph [ref=e3627]: 공급자를 위한 고유한 ID를 입력하십시오.
+                - figure "Terminal window" [ref=e3629]:
+                  - generic [ref=e3632]: Terminal window
+                  - code [ref=e3634]:
+                    - generic [ref=e3636]: $ /connect
+                    - generic [ref=e3640]: ┌ Add credential
+                    - generic [ref=e3642]: │
+                    - generic [ref=e3644]: ◇ Enter provider id
+                    - generic [ref=e3646]: │ myprovider
+                    - generic [ref=e3648]: └
+                  - button "Copy to clipboard" [ref=e3650] [cursor=pointer]
+                - complementary "참고" [ref=e3652]:
+                  - paragraph [ref=e3653]:
+                    - img [ref=e3654]
+                    - text: 참고
+                  - paragraph [ref=e3657]: 기억하기 쉬운 ID를 선택하십시오. 구성 파일에서 이 ID를 사용하게 됩니다.
+              - listitem [ref=e3658]:
+                - paragraph [ref=e3659]: 공급자의 API 키를 입력하십시오.
+                - figure "Terminal window" [ref=e3661]:
+                  - generic [ref=e3664]: Terminal window
+                  - code [ref=e3666]:
+                    - generic [ref=e3668]: $ /connect
+                    - generic [ref=e3672]: ┌ Add credential
+                    - generic [ref=e3674]: │
+                    - generic [ref=e3676]: ▲ This only stores a credential for myprovider - you will need to configure it in opencode.json, check the docs for examples.
+                    - generic [ref=e3678]: │
+                    - generic [ref=e3680]: ◇ Enter your API key
+                    - generic [ref=e3682]: │ sk-...
+                    - generic [ref=e3684]: └
+                  - button "Copy to clipboard" [ref=e3686] [cursor=pointer]
+              - listitem [ref=e3688]:
+                - paragraph [ref=e3689]:
+                  - text: 프로젝트 디렉토리에
+                  - code [ref=e3690]: "`opencode.json`"
+                  - text: 파일을 만들거나 업데이트하십시오.
+                - figure "opencode.json" [ref=e3692]:
+                  - generic [ref=e3694]: opencode.json
+                  - code [ref=e3696]:
+                    - generic [ref=e3698]: "{"
+                    - generic [ref=e3700]: "\"$schema\": \"https://opencode.ai/config.json\","
+                    - generic [ref=e3702]: "\"provider\": {"
+                    - generic [ref=e3704]:
+                      - mark [ref=e3705]: "\"myprovider\""
+                      - text: ": {"
+                    - generic [ref=e3707]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                    - generic [ref=e3709]: "\"name\": \"My AI ProviderDisplay Name\","
+                    - generic [ref=e3711]: "\"options\": {"
+                    - generic [ref=e3713]: "\"baseURL\": \"https://api.myprovider.com/v1\""
+                    - generic [ref=e3715]: "},"
+                    - generic [ref=e3718]: "\"models\": {"
+                    - generic [ref=e3720]: "\"my-model-name\": {"
+                    - generic [ref=e3722]: "\"name\": \"My Model Display Name\""
+                    - generic [ref=e3724]: "}"
+                    - generic [ref=e3727]: "}"
+                    - generic [ref=e3730]: "}"
+                    - generic [ref=e3733]: "}"
+                    - generic [ref=e3736]: "}"
+                  - button "Copy to clipboard" [ref=e3738] [cursor=pointer]
+                - paragraph [ref=e3740]: "구성 옵션은 다음과 같습니다:"
+                - list [ref=e3741]:
+                  - listitem [ref=e3742]:
+                    - strong [ref=e3743]: npm
+                    - text: ": 사용할 AI SDK 패키지. OpenAI 호환 공급자의 경우"
+                    - code [ref=e3744]: "`@ai-sdk/openai-compatible`"
+                  - listitem [ref=e3745]:
+                    - strong [ref=e3746]: name
+                    - text: ": UI에 표시될 이름"
+                  - listitem [ref=e3747]:
+                    - strong [ref=e3748]: models
+                    - text: ": 사용 가능한 모델"
+                  - listitem [ref=e3749]:
+                    - strong [ref=e3750]: options.baseURL
+                    - text: ": API 엔드포인트 URL"
+                  - listitem [ref=e3751]:
+                    - strong [ref=e3752]: options.apiKey
+                    - text: ": 인증을 사용하지 않는 경우 선택적으로 API 키 설정"
+                  - listitem [ref=e3753]:
+                    - strong [ref=e3754]: options.headers
+                    - text: ": 선택적으로 사용자 정의 헤더 설정"
+                - paragraph [ref=e3755]: 고급 옵션에 대한 자세한 내용은 아래 예제를 참조하십시오.
+              - listitem [ref=e3756]:
+                - paragraph [ref=e3757]:
+                  - code [ref=e3758]: "`/models`"
+                  - text: 명령을 실행하면 사용자 정의 공급자와 모델이 선택 목록에 나타납니다.
+            - separator [ref=e3759]
+            - heading "예제" [level=5] [ref=e3760]:
+              - link "예제" [ref=e3761]:
+                - /url: "#예제"
+            - paragraph [ref=e3762]:
+              - text: 다음은
+              - code [ref=e3763]: "`apiKey`"
+              - text: ","
+              - code [ref=e3764]: "`headers`"
+              - text: 및 모델
+              - code [ref=e3765]: "`limit`"
+              - text: 옵션을 설정하는 예입니다.
+            - figure "opencode.json" [ref=e3767]:
+              - generic [ref=e3769]: opencode.json
+              - code [ref=e3771]:
+                - generic [ref=e3773]: "{"
+                - generic [ref=e3775]: "\"$schema\": \"https://opencode.ai/config.json\","
+                - generic [ref=e3777]: "\"provider\": {"
+                - generic [ref=e3779]: "\"myprovider\": {"
+                - generic [ref=e3781]: "\"npm\": \"@ai-sdk/openai-compatible\","
+                - generic [ref=e3783]: "\"name\": \"My AI ProviderDisplay Name\","
+                - generic [ref=e3785]: "\"options\": {"
+                - generic [ref=e3787]: "\"baseURL\": \"https://api.myprovider.com/v1\","
+                - generic [ref=e3789]: "\"apiKey\": \"{env:ANTHROPIC_API_KEY}\","
+                - generic [ref=e3791]: "\"headers\": {"
+                - generic [ref=e3793]: "\"Authorization\": \"Bearer custom-token\""
+                - generic [ref=e3795]: "}"
+                - generic [ref=e3798]: "},"
+                - generic [ref=e3801]: "\"models\": {"
+                - generic [ref=e3803]: "\"my-model-name\": {"
+                - generic [ref=e3805]: "\"name\": \"My Model Display Name\","
+                - generic [ref=e3807]: "\"limit\": {"
+                - generic [ref=e3809]: "\"context\": 200000,"
+                - generic [ref=e3811]: "\"output\": 65536"
+                - generic [ref=e3813]: "}"
+                - generic [ref=e3816]: "}"
+                - generic [ref=e3819]: "}"
+                - generic [ref=e3822]: "}"
+                - generic [ref=e3825]: "}"
+                - generic [ref=e3828]: "}"
+              - button "Copy to clipboard" [ref=e3830] [cursor=pointer]
+            - paragraph [ref=e3832]: "구성 세부 사항:"
+            - list [ref=e3833]:
+              - listitem [ref=e3834]:
+                - strong [ref=e3835]: apiKey
+                - text: ":"
+                - code [ref=e3836]: "`env`"
+                - text: 변수 구문을 사용하여 설정,
+                - link "더 알아보기" [ref=e3837] [cursor=pointer]:
+                  - /url: /docs/config#env-vars
+                - text: .
+              - listitem [ref=e3838]:
+                - strong [ref=e3839]: headers
+                - text: ": 각 요청과 함께 전송되는 사용자 정의 헤더."
+              - listitem [ref=e3840]:
+                - strong [ref=e3841]: limit.context
+                - text: ": 모델이 허용하는 최대 입력 토큰."
+              - listitem [ref=e3842]:
+                - strong [ref=e3843]: limit.output
+                - text: ": 모델이 생성할 수 있는 최대 출력 토큰."
+            - paragraph [ref=e3844]:
+              - code [ref=e3845]: "`limit`"
+              - text: 필드를 사용하면 OpenCode가 남은 컨텍스트 양을 파악할 수 있습니다. 표준 공급자는 models.dev에서 자동으로 이를 가져옵니다.
+            - separator [ref=e3846]
+            - heading "문제 해결" [level=2] [ref=e3847]:
+              - link "문제 해결" [ref=e3848]:
+                - /url: "#문제-해결"
+            - paragraph [ref=e3849]: 공급자 구성에 문제가 있는 경우 다음을 확인하십시오.
+            - list [ref=e3850]:
+              - listitem [ref=e3851]:
+                - paragraph [ref=e3852]:
+                  - strong [ref=e3853]: 인증 설정 확인
+                  - text: ":"
+                  - code [ref=e3854]: "`opencode auth list`"
+                  - text: 를 실행하여 공급자의 자격 증명이 구성에 추가되었는지 확인하십시오.
+                - paragraph [ref=e3855]: Amazon Bedrock과 같이 인증을 위해 환경 변수에 의존하는 공급자에는 적용되지 않습니다.
+              - listitem [ref=e3856]:
+                - paragraph [ref=e3857]: "사용자 정의 공급자의 경우, OpenCode 구성을 확인하고 다음을 수행하십시오:"
+                - list [ref=e3858]:
+                  - listitem [ref=e3859]:
+                    - code [ref=e3860]: "`/connect`"
+                    - text: 명령에 사용된 공급자 ID가 OpenCode 구성의 ID와 일치하는지 확인하십시오.
+                  - listitem [ref=e3861]:
+                    - text: 공급자에 올바른 npm 패키지가 사용되었는지 확인하십시오. 예를 들어 Cerebras에는
+                    - code [ref=e3862]: "`@ai-sdk/cerebras`"
+                    - text: 를 사용하고, 다른 모든 OpenAI 호환 공급자에는
+                    - code [ref=e3863]: "`@ai-sdk/openai-compatible`"
+                    - text: 을 사용하십시오.
+                  - listitem [ref=e3864]:
+                    - code [ref=e3865]: "`options.baseURL`"
+                    - text: 필드에 올바른 API 엔드포인트가 사용되었는지 확인하십시오.
+          - generic [ref=e3867]:
+            - generic [ref=e3868]:
+              - link "페이지 편집" [ref=e3869] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/ko/providers.mdx
+                - img [ref=e3870]
+                - text: 페이지 편집
+              - link "Found a bug? Open an issue" [ref=e3872] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e3873]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e3875] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e3876]
+                - text: Join our Discord community
+              - generic [ref=e3879]:
+                - generic [ref=e3880]: 언어 선택
+                - img
+                - combobox "언어 선택" [ref=e3881] [cursor=pointer]:
+                  - option "English"
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어" [selected]
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e3882]:
+              - paragraph [ref=e3883]:
+                - text: ©
+                - link "Anomaly" [ref=e3884] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e3885]:
+                - text: "마지막 업데이트:"
+                - time [ref=e3886]: 2026. 4. 26.

@@ -1,0 +1,324 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+              - /url: https://z.ai/model-api
+              - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+              - img "dark logo" [ref=e16]
+            - button "English" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: English
+              - img [ref=e20]
+          - button "Open search" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search...
+            - generic [ref=e29]: ⌘K
+          - generic [ref=e30]:
+            - navigation [ref=e31]:
+              - list [ref=e32]:
+                - listitem [ref=e33]:
+                  - link "API Keys" [ref=e34] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                - listitem [ref=e35]:
+                  - link "Payment Method" [ref=e36] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+            - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - generic [ref=e42]:
+          - link "Guides" [ref=e43] [cursor=pointer]:
+            - /url: /guides/overview/quick-start
+            - text: Guides
+          - link "API Reference" [ref=e45] [cursor=pointer]:
+            - /url: /api-reference/introduction
+            - text: API Reference
+          - link "Scenario Example" [ref=e47] [cursor=pointer]:
+            - /url: /scenario-example/develop-tools/claude
+            - text: Scenario Example
+          - link "Coding Plan" [ref=e49] [cursor=pointer]:
+            - /url: /devpack/overview
+            - text: Coding Plan
+          - link "Released Notes" [ref=e51] [cursor=pointer]:
+            - /url: /release-notes/new-released
+            - text: Released Notes
+          - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+            - /url: /legal-agreement/privacy-policy
+            - text: Terms and Policy
+          - link "Help Center" [ref=e55] [cursor=pointer]:
+            - /url: /help/faq
+            - text: Help Center
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "GLM Coding Plan" [level=5] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Overview" [ref=e67] [cursor=pointer]:
+                  - /url: /devpack/overview
+                  - generic [ref=e70]: Overview
+              - listitem [ref=e71]:
+                - link "Usage Policy" [ref=e72] [cursor=pointer]:
+                  - /url: /devpack/usage-policy
+                  - generic [ref=e75]: Usage Policy
+              - listitem [ref=e76]:
+                - link "FAQ" [ref=e77] [cursor=pointer]:
+                  - /url: /devpack/faq
+                  - generic [ref=e80]: FAQ
+              - listitem [ref=e81]:
+                - link "Legacy Plan Migration Notice" [ref=e82] [cursor=pointer]:
+                  - /url: /devpack/transition
+                  - generic [ref=e85]: Legacy Plan Migration Notice
+          - generic [ref=e86]:
+            - heading "Guide" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quick Start" [ref=e91] [cursor=pointer]:
+                  - /url: /devpack/quick-start
+                  - generic [ref=e94]: Quick Start
+              - listitem [ref=e95]:
+                - link "Coding Tool Helper" [ref=e96] [cursor=pointer]:
+                  - /url: /devpack/extension/coding-tool-helper
+                  - generic [ref=e99]: Coding Tool Helper
+              - listitem [ref=e100]:
+                - link "Tool Integration" [ref=e101] [cursor=pointer]:
+                  - /url: /devpack/tool/others
+                  - generic [ref=e104]: Tool Integration
+              - listitem [ref=e105]:
+                - link "How to Switch Models" [ref=e106] [cursor=pointer]:
+                  - /url: /devpack/using5.1
+                  - generic [ref=e109]: How to Switch Models
+              - listitem [ref=e110]:
+                - button "Toggle MCP Integration section" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: MCP Integration
+                  - img [ref=e114]
+          - generic [ref=e116]:
+            - heading "Learning Resources" [level=5] [ref=e118]
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - link "Best Practice" [ref=e121] [cursor=pointer]:
+                  - /url: /devpack/resources/best-practice
+                  - generic [ref=e124]: Best Practice
+              - listitem [ref=e125]:
+                - link "Memory-mechanism" [ref=e126] [cursor=pointer]:
+                  - /url: /devpack/resources/memory-mechanism
+                  - generic [ref=e129]: Memory-mechanism
+          - generic [ref=e130]:
+            - heading "Campaign Rules" [level=5] [ref=e132]
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Invite Friends, Get Credits" [ref=e135] [cursor=pointer]:
+                  - /url: /devpack/credit-campaign-rules
+                  - generic [ref=e138]: Invite Friends, Get Credits
+        - generic [ref=e140]:
+          - generic [ref=e143]:
+            - button "On this page" [ref=e144] [cursor=pointer]:
+              - img [ref=e145]
+              - generic [ref=e146]: On this page
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - link "Rate Limits" [ref=e150] [cursor=pointer]:
+                  - /url: "#rate-limits"
+              - listitem [ref=e151]:
+                - link "Account Usage Policy" [ref=e152] [cursor=pointer]:
+                  - /url: "#account-usage-policy"
+              - listitem [ref=e153]:
+                - link "Manage Your Subscription" [ref=e154] [cursor=pointer]:
+                  - /url: "#manage-your-subscription"
+              - listitem [ref=e155]:
+                - link "Subscription Period & Renewal" [ref=e156] [cursor=pointer]:
+                  - /url: "#subscription-period-%26-renewal"
+              - listitem [ref=e157]:
+                - link "Refund Policy" [ref=e158] [cursor=pointer]:
+                  - /url: "#refund-policy"
+          - generic [ref=e159]:
+            - banner [ref=e160]:
+              - generic [ref=e161]:
+                - generic [ref=e162]: GLM Coding Plan
+                - generic [ref=e163]:
+                  - heading "Usage Policy" [level=1] [ref=e164]
+                  - generic [ref=e165]:
+                    - button "Copy page" [ref=e166] [cursor=pointer]:
+                      - generic [ref=e167]:
+                        - img [ref=e168]
+                        - generic [ref=e171]: Copy page
+                    - button "More actions" [ref=e172] [cursor=pointer]:
+                      - img [ref=e173]
+            - generic [ref=e175]:
+              - generic [ref=e176]: The GLM Coding Plan is a subscription package designed specifically for AI-powered coding.
+              - heading "Navigate to header Rate Limits" [level=2] [ref=e177]:
+                - link "Navigate to header" [ref=e178] [cursor=pointer]:
+                  - /url: "#rate-limits"
+                  - img [ref=e180]
+                - generic [ref=e182] [cursor=pointer]:
+                  - img [ref=e183]
+                  - text: Rate Limits
+              - generic [ref=e184]:
+                - text: Rate (concurrency) limits are tied to your plan tier. The platform dynamically adjusts these limits based on resource availability, with the general principle being
+                - strong [ref=e185]: Max > Pro > Lite
+                - text: .
+              - generic [ref=e186]: "For each project, you can use methods like Subagent to make concurrent model calls. Our recommended number of concurrent projects is as follows:"
+              - list [ref=e187]:
+                - listitem [ref=e188]:
+                  - strong [ref=e189]: Lite
+                  - text: ": Recommended for developing a single project at a time"
+                - listitem [ref=e190]:
+                  - strong [ref=e191]: Pro
+                  - text: ": Recommended for developing 1–2 projects simultaneously"
+                - listitem [ref=e192]:
+                  - strong [ref=e193]: Max
+                  - text: ": Recommended for developing 2 or more projects simultaneously"
+              - generic [ref=e194]:
+                - img "Tip" [ref=e196]
+                - generic [ref=e199]: Plan users will enjoy higher concurrency limits during off-peak hours (dynamically increased), enabling support for a greater number of concurrent projects.
+              - heading "Navigate to header Account Usage Policy" [level=2] [ref=e200]:
+                - link "Navigate to header" [ref=e201] [cursor=pointer]:
+                  - /url: "#account-usage-policy"
+                  - img [ref=e203]
+                - generic [ref=e205] [cursor=pointer]:
+                  - img [ref=e206]
+                  - text: Account Usage Policy
+              - generic [ref=e207]:
+                - img "Warning" [ref=e209]
+                - generic [ref=e211]:
+                  - generic [ref=e212]:
+                    - text: The
+                    - strong [ref=e213]: GLM Coding Plan
+                    - text: subscription is intended for
+                    - strong [ref=e214]: individual use by the subscriber
+                    - text: . If multiple users share the same account and subscription, it may be considered improper usage.
+                  - generic [ref=e215]: In such cases, we may apply restrictions to the subscription benefits, and in severe cases the account itself may be affected.
+              - generic [ref=e216]:
+                - img "Note" [ref=e218]
+                - generic [ref=e220]:
+                  - generic [ref=e221]:
+                    - text: The GLM Coding Plan is strictly limited to use within officially
+                    - link "supported tools and products" [ref=e222] [cursor=pointer]:
+                      - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                    - text: . The subscriber shall not use the subscription benefits in any unsupported tools or scenarios.
+                  - generic [ref=e223]: If the system detects usage through unauthorized or unsupported tools (such as SDK-based access or other third-party integrations), some subscription benefits may be restricted to ensure fairness and service stability.
+              - list [ref=e224]:
+                - listitem [ref=e225]:
+                  - text: To protect the rights of all subscribers, if your account violates the
+                  - link "Usage Rules" [ref=e226] [cursor=pointer]:
+                    - /url: /legal-agreement/subscription-terms#4-usage-rules
+                  - text: ", and triggers risk control rules, it may be subject to risk control measures, including high-intensity throttling, account suspension, or permanent ban."
+                - listitem [ref=e227]:
+                  - text: If your account triggers a risk control rule, a notification may appear. You can
+                  - link "contact our support team" [ref=e228] [cursor=pointer]:
+                    - /url: https://z.ai/contact
+                  - text: to request a review of the restriction.
+              - generic [ref=e229]:
+                - img "Danger" [ref=e231]
+                - generic [ref=e234]: Violating the Usage Rules three or more times will result in an account ban.
+              - heading "Navigate to header Manage Your Subscription" [level=2] [ref=e235]:
+                - link "Navigate to header" [ref=e236] [cursor=pointer]:
+                  - /url: "#manage-your-subscription"
+                  - img [ref=e238]
+                - generic [ref=e240] [cursor=pointer]:
+                  - img [ref=e241]
+                  - text: Manage Your Subscription
+              - generic [ref=e242]: "You can manage your subscription, view billing details, and cancel the subscription as follows:"
+              - list [ref=e243]:
+                - listitem [ref=e244]:
+                  - text: Log in to the Z.ai
+                  - link "API Platform" [ref=e245] [cursor=pointer]:
+                    - /url: https://z.ai/subscribe?utm_source=zai&utm_medium=index&utm_term=glm-coding-plan&utm_campaign=Platform_Ops&_channel_track_key=6lShUDnv
+                  - text: .
+                - listitem [ref=e246]:
+                  - text: Click your profile icon in the top-right corner →
+                  - link "Payment Method" [ref=e247] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+                  - text: .
+                - listitem [ref=e248]:
+                  - text: In the left menu, select
+                  - link "Subscription" [ref=e249] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/subscription
+                  - text: .
+                - listitem [ref=e250]:
+                  - text: To view billing history, go to Billing →
+                  - link "Billing History" [ref=e251] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+                  - text: .
+              - heading "Navigate to header Subscription Period & Renewal" [level=2] [ref=e252]:
+                - link "Navigate to header" [ref=e253] [cursor=pointer]:
+                  - /url: "#subscription-period-&-renewal"
+                  - img [ref=e255]
+                - generic [ref=e257] [cursor=pointer]:
+                  - img [ref=e258]
+                  - text: Subscription Period & Renewal
+              - generic [ref=e259]:
+                - text: Your subscription will
+                - strong [ref=e260]: automatically renew at the end of each billing cycle
+                - text: ", and the fee will be charged to your linked payment method."
+              - generic [ref=e261]: "The system will charge you in the following order:"
+              - list [ref=e262]:
+                - listitem [ref=e263]: Priority is given to the bonus balance in your platform account.
+                - listitem [ref=e264]: If the bonus balance is insufficient, the cash balance in your platform account will be used.
+                - listitem [ref=e265]: If the above balances are insufficient, the payment will be deducted from your linked third-party payment method (e.g., WeChat Pay, Alipay).
+              - generic [ref=e266]:
+                - img "Info" [ref=e268]
+                - generic [ref=e270]:
+                  - generic [ref=e271]:
+                    - text: If you need to cancel your subscription, you can do so on the
+                    - link "Subscription" [ref=e272] [cursor=pointer]:
+                      - /url: https://z.ai/manage-apikey/subscription
+                    - text: page.
+                  - generic [ref=e273]:
+                    - text: Please be sure to cancel
+                    - strong [ref=e274]: at least 3 days
+                    - text: before the next billing date to avoid automatic renewal.
+                  - generic [ref=e275]: After cancellation, the current subscription period remains valid and will not be renewed upon expiration.
+              - heading "Navigate to header Refund Policy" [level=2] [ref=e276]:
+                - link "Navigate to header" [ref=e277] [cursor=pointer]:
+                  - /url: "#refund-policy"
+                  - img [ref=e279]
+                - generic [ref=e281] [cursor=pointer]:
+                  - img [ref=e282]
+                  - text: Refund Policy
+              - generic [ref=e283]:
+                - img "Warning" [ref=e285]
+                - generic [ref=e288]: Please note that once a subscription service is purchased, it is considered confirmed, and refunds are not supported. Even if you have not used up your plan, the fees cannot be refunded.
+              - generic [ref=e289]:
+                - img "Check" [ref=e291]
+                - generic [ref=e294]: We recommend that you choose the appropriate subscription plan and term based on your usage needs.
+            - generic [ref=e296]:
+              - paragraph [ref=e297]: Was this page helpful?
+              - generic [ref=e299]:
+                - button "Yes" [ref=e300] [cursor=pointer]:
+                  - img [ref=e301]
+                  - generic [ref=e303]: "Yes"
+                - button "No" [ref=e304] [cursor=pointer]:
+                  - img [ref=e305]
+                  - generic [ref=e307]: "No"
+            - generic [ref=e308]:
+              - link "Overview" [ref=e309] [cursor=pointer]:
+                - /url: /devpack/overview
+                - img [ref=e310]
+                - generic [ref=e312]: Overview
+              - link "FAQ" [ref=e313] [cursor=pointer]:
+                - /url: /devpack/faq
+                - generic [ref=e314]: FAQ
+                - img [ref=e315]
+            - contentinfo [ref=e317]:
+              - generic [ref=e318]:
+                - link "x" [ref=e319] [cursor=pointer]:
+                  - /url: https://x.com/Zai_org
+                  - generic [ref=e320]: x
+                  - img [ref=e321]
+                - link "github" [ref=e322] [cursor=pointer]:
+                  - /url: https://github.com/zai-org
+                  - generic [ref=e323]: github
+                  - img [ref=e324]
+                - link "discord" [ref=e325] [cursor=pointer]:
+                  - /url: https://discord.gg/QR7SARHRxK
+                  - generic [ref=e326]: discord
+                  - img [ref=e327]
+                - link "linkedin" [ref=e328] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/zdotai
+                  - generic [ref=e329]: linkedin
+                  - img [ref=e330]
+  - alert [ref=e331]

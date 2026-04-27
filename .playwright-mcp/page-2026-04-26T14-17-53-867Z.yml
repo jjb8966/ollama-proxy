@@ -1,0 +1,195 @@
+- generic [ref=e6]:
+  - banner [ref=e7]:
+    - navigation [ref=e8]:
+      - link "Kimi Code" [ref=e10] [cursor=pointer]:
+        - /url: /code?from=kfc_overview_topbar
+      - generic [ref=e11]:
+        - button "Member benefits" [ref=e12] [cursor=pointer]
+        - link "Docs" [ref=e13] [cursor=pointer]:
+          - /url: https://www.kimi.com/code/docs/en/
+        - button "Console" [ref=e14] [cursor=pointer]
+        - button "中文" [ref=e15] [cursor=pointer]
+        - button "Log in" [ref=e16] [cursor=pointer]
+  - generic [ref=e18] [cursor=pointer]:
+    - paragraph [ref=e19]: K2.6 official version is now updated
+    - paragraph [ref=e20]: Try Now
+  - generic [ref=e22]:
+    - heading "Kimi Code" [level=1] [ref=e23]
+    - paragraph [ref=e24]: A coding-focused perk of the Kimi membership, engineered to drop into any dev workflow, answer faster and more reliably, and get programming tasks done in record time.
+  - generic [ref=e27]:
+    - generic [ref=e28] [cursor=pointer]:
+      - generic [ref=e29]: Get Kimi Code
+      - img [ref=e30]
+    - generic [ref=e32]:
+      - code [ref=e33]: curl -L code.kimi.com/install.sh | bash
+      - generic [ref=e35] [cursor=pointer]:
+        - img [ref=e36]
+        - generic: Copy
+  - generic [ref=e40]:
+    - heading "One subscription, code anywhere" [level=2] [ref=e41]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - generic [ref=e44] [cursor=pointer]: Terminal
+        - generic [ref=e45] [cursor=pointer]: IDE
+      - generic [ref=e49]:
+        - generic [ref=e55]: Kimi CLI
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - generic [ref=e62]:
+              - paragraph [ref=e63]: Welcome to Kimi Code CLI!
+              - paragraph [ref=e64]: Send /help for help information.
+            - generic [ref=e65]: "Model: kimi-for-coding (powered by kimi-k2.6)"
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - generic [ref=e68]: moonshot@KimiCode
+              - generic [ref=e69]: 🚀
+              - generic [ref=e70]: introduce your self
+            - generic [ref=e71]: introduce your self
+            - generic [ref=e72]:
+              - generic [ref=e73]: ●
+              - generic [ref=e74]: The user is asking me to introduce myself. This is a simple greeting/question that doesn't involve any file operations or tool usage. I should simply respond directly in a friendly, concise manner.
+            - generic [ref=e75]:
+              - generic [ref=e76]: ●
+              - generic [ref=e77]: Hello! I'm Kimi Code CLI, an AI-powered coding assistant developed by Moonshot AI.
+            - generic [ref=e78]: "I'm designed to help you with:"
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - generic [ref=e81]: ●
+                - generic [ref=e82]: 💻 Software Development - Writing, debugging, and refactoring code
+              - generic [ref=e83]:
+                - generic [ref=e84]: ●
+                - generic [ref=e85]: 🔍 Codebase Analysis - Exploring and understanding large projects
+              - generic [ref=e86]:
+                - generic [ref=e87]: ●
+                - generic [ref=e88]: 🛠️ Technical Tasks - Running commands, processing files, and automating workflows
+              - generic [ref=e89]:
+                - generic [ref=e90]: ●
+                - generic [ref=e91]: 🌐 Research - Searching the web for latest information and documentation
+            - generic [ref=e92]: I can work with various programming languages, read and write files, execute shell commands, search code, fetch web content, and even spawn subagents for parallel tasks when needed.
+            - generic [ref=e93]: How can I help you today? 😊
+      - generic [ref=e96]:
+        - generic [ref=e97] [cursor=pointer]:
+          - generic [ref=e98]: Get Kimi Code
+          - img [ref=e99]
+        - generic [ref=e101]:
+          - code [ref=e102]: curl -L code.kimi.com/install.sh | bash
+          - generic [ref=e104] [cursor=pointer]:
+            - img [ref=e105]
+            - generic: Copy
+  - generic [ref=e109]:
+    - heading "Kimi Code is available in the following Kimi Code Plans" [level=2] [ref=e110]
+    - generic [ref=e112]:
+      - generic [ref=e113]:
+        - generic [ref=e115] [cursor=pointer]: Monthly
+        - generic [ref=e116] [cursor=pointer]:
+          - generic [ref=e117]: Annually
+          - generic [ref=e118]: Save up to $480
+      - generic [ref=e119]:
+        - generic [ref=e120]:
+          - generic [ref=e121]:
+            - text: Moderato
+            - img [ref=e128]
+          - paragraph [ref=e138]: Advanced Flow
+          - paragraph [ref=e139]:
+            - generic [ref=e140]: $15
+            - generic [ref=e141]: / month
+            - generic [ref=e142]: $19
+          - paragraph [ref=e143]: Billed for 12 months $180 / year
+          - button "Subscribe" [ref=e145] [cursor=pointer]
+          - paragraph [ref=e146]: Weekly refreshed usage quotas with multi-device login, allowing you to share your plan across devices and work efficiently on multiple projects.
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - text: Allegretto
+            - img [ref=e155]
+          - paragraph [ref=e162]: Pro Choice Recommended
+          - paragraph [ref=e163]:
+            - generic [ref=e164]: $31
+            - generic [ref=e165]: / month
+            - generic [ref=e166]: $39
+          - paragraph [ref=e167]: Billed for 12 months $372 / year
+          - button "Subscribe" [ref=e169] [cursor=pointer]
+          - paragraph [ref=e170]: Ample weekly limits and increased concurrency caps, providing a high-value solution for advanced users.
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - text: Allegro
+            - img [ref=e179]
+          - paragraph [ref=e188]: Premium Mode
+          - paragraph [ref=e189]:
+            - generic [ref=e190]: $79
+            - generic [ref=e191]: / month
+            - generic [ref=e192]: $99
+          - paragraph [ref=e193]: Billed for 12 months $948 / year
+          - button "Subscribe" [ref=e195] [cursor=pointer]
+          - paragraph [ref=e196]: Expansive quota designed for excellence. Seamlessly handles everything from daily tasks to intensive development
+        - generic [ref=e197]:
+          - generic [ref=e198]:
+            - text: Vivace
+            - img [ref=e205]
+          - paragraph [ref=e210]: Ultimate Boost
+          - paragraph [ref=e211]:
+            - generic [ref=e212]: $159
+            - generic [ref=e213]: / month
+            - generic [ref=e214]: $199
+          - paragraph [ref=e215]: Billed for 12 months $1,908 / year
+          - button "Subscribe" [ref=e217] [cursor=pointer]
+          - paragraph [ref=e218]: Offering our highest weekly plan quotas, enabling you to handle complex projects and large codebases with ease.
+    - paragraph [ref=e219]:
+      - text: Purchase any of the above plans to also get other
+      - button "Kimi membership benefits" [ref=e220] [cursor=pointer]
+  - contentinfo [ref=e221]:
+    - generic [ref=e223]:
+      - generic [ref=e224]:
+        - img [ref=e226]
+        - generic [ref=e231]:
+          - link "X" [ref=e232] [cursor=pointer]:
+            - /url: https://x.com/Kimi_Moonshot
+            - img [ref=e233]
+          - link "Instagram" [ref=e236] [cursor=pointer]:
+            - /url: https://www.instagram.com/kimiai.official/
+            - img [ref=e237]
+          - link "Discord" [ref=e241] [cursor=pointer]:
+            - /url: https://discord.gg/rGSAZtWSZg
+            - img [ref=e242]
+          - link "Reddit" [ref=e244] [cursor=pointer]:
+            - /url: https://www.reddit.com/r/kimi/
+            - img [ref=e245]
+          - link "GitHub" [ref=e247] [cursor=pointer]:
+            - /url: https://github.com/MoonshotAI
+            - img [ref=e248]
+      - generic [ref=e250]:
+        - generic [ref=e251]:
+          - generic [ref=e252]: Products
+          - link "Kimi" [ref=e253] [cursor=pointer]:
+            - /url: https://www.kimi.com/
+          - link "Kimi Platform" [ref=e254] [cursor=pointer]:
+            - /url: https://platform.kimi.ai/
+          - link "Kimi Code" [ref=e255] [cursor=pointer]:
+            - /url: https://www.kimi.com/code
+          - link "Pricing" [ref=e256] [cursor=pointer]:
+            - /url: https://www.kimi.com/membership/pricing
+        - generic [ref=e257]:
+          - generic [ref=e258]: Features
+          - link "AI Agent" [ref=e259] [cursor=pointer]:
+            - /url: https://www.kimi.com/agent
+          - link "AI Website Builder" [ref=e260] [cursor=pointer]:
+            - /url: https://www.kimi.com/websites
+          - link "AI Document Agent" [ref=e261] [cursor=pointer]:
+            - /url: https://www.kimi.com/docs
+          - link "AI Slides Generator" [ref=e262] [cursor=pointer]:
+            - /url: https://www.kimi.com/slides
+          - link "AI Excel Agent" [ref=e263] [cursor=pointer]:
+            - /url: https://www.kimi.com/sheets
+          - link "AI Deep Research" [ref=e264] [cursor=pointer]:
+            - /url: https://www.kimi.com/deep-research
+          - link "AI Agent Swarm" [ref=e265] [cursor=pointer]:
+            - /url: https://www.kimi.com/agent-swarm
+        - generic [ref=e266]:
+          - generic [ref=e267]: Company
+          - link "Moonshot AI" [ref=e268] [cursor=pointer]:
+            - /url: https://www.moonshot.ai/
+          - link "User Terms of Service" [ref=e269] [cursor=pointer]:
+            - /url: https://www.kimi.com/user/agreement/modelUse?version=v2
+          - link "Privacy Policy" [ref=e270] [cursor=pointer]:
+            - /url: https://www.kimi.com/user/agreement/userPrivacy?version=v2
+          - link "Contact us" [ref=e271] [cursor=pointer]:
+            - /url: mailto:code@moonshot.ai

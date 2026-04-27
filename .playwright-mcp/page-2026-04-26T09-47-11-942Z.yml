@@ -1,0 +1,828 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%3Fq%3Dcloud%2Busage%2Blimit
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [disabled] [ref=e58]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e138]:
+      - heading "Issues" [level=1] [ref=e139]
+      - generic [ref=e140]:
+        - generic [ref=e142]:
+          - form "Search Issues" [ref=e144]:
+            - generic [ref=e145]: Search Issues
+            - generic [ref=e147]:
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - generic [ref=e151]: cloud
+                  - generic [ref=e153]: usage
+                  - generic [ref=e155]: limit
+                - combobox "Search Issues" [ref=e157]: cloud usage limit
+              - button "Search" [ref=e158] [cursor=pointer]:
+                - img [ref=e159]
+          - generic [ref=e161]:
+            - link "Labels" [ref=e162] [cursor=pointer]:
+              - /url: /ollama/ollama/labels
+              - generic [ref=e163]:
+                - generic:
+                  - img
+                - generic [ref=e164]: Labels
+            - link "Milestones" [ref=e165] [cursor=pointer]:
+              - /url: /ollama/ollama/milestones
+              - generic [ref=e166]:
+                - generic:
+                  - img
+                - generic [ref=e167]: Milestones
+            - link "New issue" [ref=e168] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues?q=cloud+usage+limit
+              - generic [ref=e170]: New issue
+        - generic [ref=e171]:
+          - generic [ref=e174]:
+            - heading "Search results" [level=2] [ref=e175]
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - link "Open" [ref=e178] [cursor=pointer]:
+                  - /url: ""
+                  - generic [ref=e179]: Open
+                - link "Closed" [ref=e181] [cursor=pointer]:
+                  - /url: ""
+                  - generic [ref=e182]: Closed
+              - toolbar "Actions" [ref=e184]:
+                - generic [ref=e185]:
+                  - button "Filter by author" [ref=e187] [cursor=pointer]:
+                    - generic [ref=e188]:
+                      - generic [ref=e189]: Author
+                      - generic:
+                        - img
+                  - button "Filter by label" [ref=e191] [cursor=pointer]:
+                    - generic [ref=e192]:
+                      - generic [ref=e193]: Labels
+                      - generic:
+                        - img
+                  - button "Filter by project" [ref=e195] [cursor=pointer]:
+                    - generic [ref=e196]:
+                      - generic [ref=e197]: Projects
+                      - generic:
+                        - img
+                  - button "Filter by milestone" [ref=e199] [cursor=pointer]:
+                    - generic [ref=e200]:
+                      - generic [ref=e201]: Milestones
+                      - generic:
+                        - img
+                  - button "Filter by assignees" [ref=e203] [cursor=pointer]:
+                    - generic [ref=e204]:
+                      - generic [ref=e205]: Assignees
+                      - generic:
+                        - img
+                  - button "Filter by issue type" [ref=e207] [cursor=pointer]:
+                    - generic [ref=e208]:
+                      - generic [ref=e209]: Types
+                      - generic:
+                        - img
+                  - button "Sort by Newest , descending" [ref=e211] [cursor=pointer]:
+                    - generic [ref=e212]:
+                      - generic:
+                        - img
+                      - generic [ref=e213]:
+                        - generic [ref=e214]: Sort by
+                        - text: Newest
+                        - generic [ref=e215]: ", descending"
+                    - generic:
+                      - img
+            - list "Search results" [ref=e216]:
+              - 'listitem "Kimi models require pro ?: Status: Open. #15741 In ollama/ollama;· Azecko opened on Apr 22, 2026. More information available below." [ref=e219]':
+                - generic [ref=e220]:
+                  - heading "Kimi models require pro ?" [level=3] [ref=e221]:
+                    - link "Kimi models require pro ?" [ref=e222] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15741
+                      - generic [ref=e223]: Kimi models require pro ?
+                  - link "bug Something isn't working" [ref=e227] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e229]: bug
+                    - generic [ref=e230]: Something isn't working
+                - generic [ref=e234]:
+                  - img [ref=e236]
+                  - generic [ref=e239]: "Status: Open."
+                - generic [ref=e243]:
+                  - generic [ref=e244]:
+                    - generic [ref=e245]: "#15741"
+                    - generic [ref=e246]: In ollama/ollama;
+                  - generic [ref=e247]:
+                    - text: ·
+                    - link "Azecko" [ref=e248] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3AAzecko
+                    - text: opened
+                    - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e249]: on Apr 22, 20264 days ago
+              - 'listitem "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body): Status: Open. #15663 In ollama/ollama;· TH33ORACL3 opened on Apr 18, 2026. More information available below." [ref=e253]':
+                - 'heading "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body)" [level=3] [ref=e255]':
+                  - 'link "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body)" [ref=e256] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/15663
+                    - generic [ref=e257]: "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body)"
+                - generic [ref=e262]:
+                  - img [ref=e264]
+                  - generic [ref=e267]: "Status: Open."
+                - generic [ref=e271]:
+                  - generic [ref=e272]:
+                    - generic [ref=e273]: "#15663"
+                    - generic [ref=e274]: In ollama/ollama;
+                  - generic [ref=e275]:
+                    - text: ·
+                    - link "TH33ORACL3" [ref=e276] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3ATH33ORACL3
+                    - text: opened
+                    - generic "Apr 18, 2026, 5:47 PM GMT+9" [ref=e277]: on Apr 18, 2026last week
+              - 'listitem "Feature Request: add more details on usage reset / send notification when reset: Status: Open. #15660 In ollama/ollama;· robster7674 opened on Apr 18, 2026. More information available below." [ref=e281]':
+                - generic [ref=e282]:
+                  - 'heading "Feature Request: add more details on usage reset / send notification when reset" [level=3] [ref=e283]':
+                    - 'link "Feature Request: add more details on usage reset / send notification when reset" [ref=e284] [cursor=pointer]':
+                      - /url: /ollama/ollama/issues/15660
+                      - generic [ref=e285]: "Feature Request: add more details on usage reset / send notification when reset"
+                  - link "feature request New feature or request" [ref=e289] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3A%22feature%20request%22
+                    - generic [ref=e291]: feature request
+                    - generic [ref=e292]: New feature or request
+                - generic [ref=e296]:
+                  - img [ref=e298]
+                  - generic [ref=e301]: "Status: Open."
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - generic [ref=e307]: "#15660"
+                    - generic [ref=e308]: In ollama/ollama;
+                  - generic [ref=e309]:
+                    - text: ·
+                    - link "robster7674" [ref=e310] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Arobster7674
+                    - text: opened
+                    - generic "Apr 18, 2026, 2:15 PM GMT+9" [ref=e311]: on Apr 18, 2026last week
+              - 'listitem "Ollama 20.3 fails to initialize GPU: Status: Open. #15400 In ollama/ollama;· 0xCA opened on Apr 8, 2026. More information available below." [ref=e315]':
+                - generic [ref=e316]:
+                  - heading "Ollama 20.3 fails to initialize GPU" [level=3] [ref=e317]:
+                    - link "Ollama 20.3 fails to initialize GPU" [ref=e318] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15400
+                      - generic [ref=e319]: Ollama 20.3 fails to initialize GPU
+                  - link "bug Something isn't working" [ref=e323] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e325]: bug
+                    - generic [ref=e326]: Something isn't working
+                - generic [ref=e330]:
+                  - img [ref=e332]
+                  - generic [ref=e335]: "Status: Open."
+                - generic [ref=e339]:
+                  - generic [ref=e340]:
+                    - generic [ref=e341]: "#15400"
+                    - generic [ref=e342]: In ollama/ollama;
+                  - generic [ref=e343]:
+                    - text: ·
+                    - link "0xCA" [ref=e344] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3A0xCA
+                    - text: opened
+                    - generic "Apr 8, 2026, 5:16 AM GMT+9" [ref=e345]: on Apr 8, 20263 weeks ago
+              - 'listitem "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish.: Status: Open. #15328 In ollama/ollama;· wqmeng opened on Apr 4, 2026. More information available below." [ref=e349]':
+                - generic [ref=e350]:
+                  - heading "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish." [level=3] [ref=e351]:
+                    - link "Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish." [ref=e352] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15328
+                      - generic [ref=e353]: Intel GPU Arc 770 16G, gemma4:e2b gemma4:e4b, OLLAMA_VULKAN=1, Output gibberish.
+                  - link "bug Something isn't working" [ref=e357] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e359]: bug
+                    - generic [ref=e360]: Something isn't working
+                - generic [ref=e364]:
+                  - img [ref=e366]
+                  - generic [ref=e369]: "Status: Open."
+                - generic [ref=e373]:
+                  - generic [ref=e374]:
+                    - generic [ref=e375]: "#15328"
+                    - generic [ref=e376]: In ollama/ollama;
+                  - generic [ref=e377]:
+                    - text: ·
+                    - link "wqmeng" [ref=e378] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Awqmeng
+                    - text: opened
+                    - generic "Apr 4, 2026, 11:18 PM GMT+9" [ref=e379]: on Apr 4, 20263 weeks ago
+              - 'listitem "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1: Status: Open. #15178 In ollama/ollama;· g21chen opened on Apr 1, 2026. More information available below." [ref=e383]':
+                - generic [ref=e384]:
+                  - heading "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1" [level=3] [ref=e385]:
+                    - link "Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1" [ref=e386] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15178
+                      - generic [ref=e387]: Not able to run ollama on top of RTX PRO 4500 Server Edition + GPU mig enabled + driver 590.48.01 + Cuda13.1
+                  - link "bug Something isn't working" [ref=e391] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e393]: bug
+                    - generic [ref=e394]: Something isn't working
+                - generic [ref=e398]:
+                  - img [ref=e400]
+                  - generic [ref=e403]: "Status: Open."
+                - generic [ref=e407]:
+                  - generic [ref=e408]:
+                    - generic [ref=e409]: "#15178"
+                    - generic [ref=e410]: In ollama/ollama;
+                  - generic [ref=e411]:
+                    - text: ·
+                    - link "g21chen" [ref=e412] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ag21chen
+                    - text: opened
+                    - generic "Apr 1, 2026, 2:11 AM GMT+9" [ref=e413]: on Apr 1, 2026last month
+              - 'listitem "Account Usage API Endpoint: Status: Duplicate of an existing item. #15132 In ollama/ollama;· by GB59 was closed on Mar 30, 2026 · Duplicate. More information available below." [ref=e417]':
+                - generic [ref=e418]:
+                  - heading "Account Usage API Endpoint" [level=3] [ref=e419]:
+                    - link "Account Usage API Endpoint" [ref=e420] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/15132
+                      - generic [ref=e421]: Account Usage API Endpoint
+                  - link "feature request New feature or request" [ref=e425] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3A%22feature%20request%22
+                    - generic [ref=e427]: feature request
+                    - generic [ref=e428]: New feature or request
+                - generic [ref=e432]:
+                  - img [ref=e434]
+                  - generic [ref=e436]: "Status: Duplicate of an existing item."
+                - generic [ref=e440]:
+                  - generic [ref=e441]:
+                    - generic [ref=e442]: "#15132"
+                    - generic [ref=e443]: In ollama/ollama;
+                  - generic [ref=e444]:
+                    - text: · by
+                    - link "GB59" [ref=e445] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3AGB59
+                    - text: was closed
+                    - generic "Mar 30, 2026, 1:24 AM GMT+9" [ref=e446]: on Mar 30, 2026last month
+                  - generic [ref=e447]: · Duplicate
+              - 'listitem "Qwen3.5 0.8b keeps printing ''kv cache removal unsupported, clearing cache and returning inputs for reprocessing\" id=0 error=\"model does not support operation'', and finally times out and crashes.: Status: Closed (completed). #14939 In ollama/ollama;· by zhangyy130 was closed on Mar 30, 2026. More information available below." [ref=e451]':
+                - generic [ref=e452]:
+                  - heading "Qwen3.5 0.8b keeps printing 'kv cache removal unsupported, clearing cache and returning inputs for reprocessing\" id=0 error=\"model does not support operation', and finally times out and crashes." [level=3] [ref=e453]:
+                    - link "Qwen3.5 0.8b keeps printing 'kv cache removal unsupported, clearing cache and returning inputs for reprocessing\" id=0 error=\"model does not support operation', and finally times out and crashes." [ref=e454] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14939
+                      - generic [ref=e455]: Qwen3.5 0.8b keeps printing 'kv cache removal unsupported, clearing cache and returning inputs for reprocessing" id=0 error="model does not support operation', and finally times out and crashes.
+                  - link "bug Something isn't working" [ref=e459] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e461]: bug
+                    - generic [ref=e462]: Something isn't working
+                - generic [ref=e466]:
+                  - img [ref=e468]
+                  - generic [ref=e471]: "Status: Closed (completed)."
+                - generic [ref=e475]:
+                  - generic [ref=e476]:
+                    - generic [ref=e477]: "#14939"
+                    - generic [ref=e478]: In ollama/ollama;
+                  - generic [ref=e479]:
+                    - text: · by
+                    - link "zhangyy130" [ref=e480] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Azhangyy130
+                    - text: was closed
+                    - generic "Mar 30, 2026, 8:40 PM GMT+9" [ref=e481]: on Mar 30, 2026last month
+              - 'listitem "CUDA error on RTX 3060 Laptop 6GB with qwen3.5:4b — fixed by updating from 0.17.1 to 0.17.7: Status: Closed (completed). #14799 In ollama/ollama;· by Guih42 was closed on Mar 13, 2026. More information available below." [ref=e485]':
+                - generic [ref=e486]:
+                  - heading "CUDA error on RTX 3060 Laptop 6GB with qwen3.5:4b — fixed by updating from 0.17.1 to 0.17.7" [level=3] [ref=e487]:
+                    - link "CUDA error on RTX 3060 Laptop 6GB with qwen3.5:4b — fixed by updating from 0.17.1 to 0.17.7" [ref=e488] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14799
+                      - generic [ref=e489]: CUDA error on RTX 3060 Laptop 6GB with qwen3.5:4b — fixed by updating from 0.17.1 to 0.17.7
+                  - link "bug Something isn't working" [ref=e493] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e495]: bug
+                    - generic [ref=e496]: Something isn't working
+                - generic [ref=e500]:
+                  - img [ref=e502]
+                  - generic [ref=e505]: "Status: Closed (completed)."
+                - generic [ref=e509]:
+                  - generic [ref=e510]:
+                    - generic [ref=e511]: "#14799"
+                    - generic [ref=e512]: In ollama/ollama;
+                  - generic [ref=e513]:
+                    - text: · by
+                    - link "Guih42" [ref=e514] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3AGuih42
+                    - text: was closed
+                    - generic "Mar 13, 2026, 12:52 AM GMT+9" [ref=e515]: on Mar 13, 2026on Mar 13
+              - 'listitem "MLX runner memory fixes: Status: Merged (completed). ollama/ollamanumber 14470 #14470 In ollama/ollama;· by jessegross was closed on Feb 28, 2026. More information available below." [ref=e519]':
+                - heading "MLX runner memory fixes" [level=3] [ref=e521]:
+                  - link "MLX runner memory fixes" [ref=e522] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/14470
+                    - generic [ref=e523]: MLX runner memory fixes
+                - generic [ref=e528]:
+                  - img [ref=e530]
+                  - generic [ref=e532]: "Status: Merged (completed)."
+                - generic [ref=e536]:
+                  - generic [ref=e537]:
+                    - text: ollama/ollama
+                    - generic [ref=e538]: number 14470
+                  - generic [ref=e539]:
+                    - generic [ref=e540]: "#14470"
+                    - generic [ref=e541]: In ollama/ollama;
+                  - generic [ref=e542]:
+                    - text: · by
+                    - link "jessegross" [ref=e543] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ajessegross
+                    - text: was closed
+                    - generic "Feb 28, 2026, 10:29 AM GMT+9" [ref=e544]: on Feb 28, 2026on Feb 28
+              - 'listitem "qwen3.5:35b fails with cudaMemcpyAsyncReserve: Status: Closed (completed). #14444 In ollama/ollama;· by thepyper was closed on Mar 2, 2026. More information available below." [ref=e552]':
+                - generic [ref=e553]:
+                  - heading "qwen3.5:35b fails with cudaMemcpyAsyncReserve" [level=3] [ref=e554]:
+                    - link "qwen3.5:35b fails with cudaMemcpyAsyncReserve" [ref=e555] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/14444
+                      - generic [ref=e556]: qwen3.5:35b fails with cudaMemcpyAsyncReserve
+                  - link "bug Something isn't working" [ref=e560] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e562]: bug
+                    - generic [ref=e563]: Something isn't working
+                - generic [ref=e567]:
+                  - img [ref=e569]
+                  - generic [ref=e572]: "Status: Closed (completed)."
+                - generic [ref=e576]:
+                  - generic [ref=e577]:
+                    - generic [ref=e578]: "#14444"
+                    - generic [ref=e579]: In ollama/ollama;
+                  - generic [ref=e580]:
+                    - text: · by
+                    - link "thepyper" [ref=e581] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Athepyper
+                    - text: was closed
+                    - generic "Mar 2, 2026, 12:31 PM GMT+9" [ref=e582]: on Mar 2, 2026on Mar 2
+              - 'listitem "feat: Add support for remote providers and OpenAI integration: Status: Open (in progress). ollama/ollamanumber 13576 #13576 In ollama/ollama;· x22x22 opened on Dec 28, 2025. More information available below." [ref=e586]':
+                - 'heading "feat: Add support for remote providers and OpenAI integration" [level=3] [ref=e588]':
+                  - 'link "feat: Add support for remote providers and OpenAI integration" [ref=e589] [cursor=pointer]':
+                    - /url: /ollama/ollama/pull/13576
+                    - generic [ref=e590]: "feat: Add support for remote providers and OpenAI integration"
+                - generic [ref=e595]:
+                  - img [ref=e597]
+                  - generic [ref=e599]: "Status: Open (in progress)."
+                - generic [ref=e603]:
+                  - generic [ref=e604]:
+                    - text: ollama/ollama
+                    - generic [ref=e605]: number 13576
+                  - generic [ref=e606]:
+                    - generic [ref=e607]: "#13576"
+                    - generic [ref=e608]: In ollama/ollama;
+                  - generic [ref=e609]:
+                    - text: ·
+                    - link "x22x22" [ref=e610] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ax22x22
+                    - text: opened
+                    - generic "Dec 28, 2025, 4:23 AM GMT+9" [ref=e611]: on Dec 28, 2025on Dec 28, 2025
+              - 'listitem "qwen3-vl:235b-cloud errors out with ''Service Temporarily Unavailable'': Status: Open. #13399 In ollama/ollama;· Catnip24 opened on Dec 10, 2025. More information available below." [ref=e619]':
+                - generic [ref=e620]:
+                  - heading "qwen3-vl:235b-cloud errors out with 'Service Temporarily Unavailable'" [level=3] [ref=e621]:
+                    - link "qwen3-vl:235b-cloud errors out with 'Service Temporarily Unavailable'" [ref=e622] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/13399
+                      - generic [ref=e623]: qwen3-vl:235b-cloud errors out with 'Service Temporarily Unavailable'
+                  - generic [ref=e625]:
+                    - link "bug Something isn't working" [ref=e627] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                      - generic [ref=e629]: bug
+                      - generic [ref=e630]: Something isn't working
+                    - link "cloud" [ref=e632] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Acloud
+                      - generic [ref=e634]: cloud
+                - generic [ref=e639]:
+                  - img [ref=e641]
+                  - generic [ref=e644]: "Status: Open."
+                - generic [ref=e648]:
+                  - generic [ref=e649]:
+                    - generic [ref=e650]: "#13399"
+                    - generic [ref=e651]: In ollama/ollama;
+                  - generic [ref=e652]:
+                    - text: ·
+                    - link "Catnip24" [ref=e653] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3ACatnip24
+                    - text: opened
+                    - generic "Dec 10, 2025, 4:29 AM GMT+9" [ref=e654]: on Dec 10, 2025on Dec 10, 2025
+              - 'listitem "OpenAI compatibility requests return no content or error: Status: Closed (completed). #13371 In ollama/ollama;· by it-s was closed on Dec 13, 2025. More information available below." [ref=e658]':
+                - generic [ref=e659]:
+                  - heading "OpenAI compatibility requests return no content or error" [level=3] [ref=e660]:
+                    - link "OpenAI compatibility requests return no content or error" [ref=e661] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/13371
+                      - generic [ref=e662]: OpenAI compatibility requests return no content or error
+                  - generic [ref=e664]:
+                    - link "bug Something isn't working" [ref=e666] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                      - generic [ref=e668]: bug
+                      - generic [ref=e669]: Something isn't working
+                    - link "cloud" [ref=e671] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Acloud
+                      - generic [ref=e673]: cloud
+                - generic [ref=e678]:
+                  - img [ref=e680]
+                  - generic [ref=e683]: "Status: Closed (completed)."
+                - generic [ref=e687]:
+                  - generic [ref=e688]:
+                    - generic [ref=e689]: "#13371"
+                    - generic [ref=e690]: In ollama/ollama;
+                  - generic [ref=e691]:
+                    - text: · by
+                    - link "it-s" [ref=e692] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ait-s
+                    - text: was closed
+                    - generic "Dec 13, 2025, 5:21 AM GMT+9" [ref=e693]: on Dec 13, 2025on Dec 13, 2025
+              - 'listitem "Persistent 500 Internal Server Error with qwen3-vl:235b-cloud via OpenAI Interface: Status: Open. #12859 In ollama/ollama;· jsmith173 opened on Oct 30, 2025. More information available below." [ref=e697]':
+                - generic [ref=e698]:
+                  - heading "Persistent 500 Internal Server Error with qwen3-vl:235b-cloud via OpenAI Interface" [level=3] [ref=e699]:
+                    - link "Persistent 500 Internal Server Error with qwen3-vl:235b-cloud via OpenAI Interface" [ref=e700] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/12859
+                      - generic [ref=e702]:
+                        - text: Persistent 500 Internal Server Error with
+                        - code [ref=e703]: qwen3-vl:235b-cloud
+                        - text: via OpenAI Interface
+                  - generic [ref=e705]:
+                    - link "bug Something isn't working" [ref=e707] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                      - generic [ref=e709]: bug
+                      - generic [ref=e710]: Something isn't working
+                    - link "cloud" [ref=e712] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Acloud
+                      - generic [ref=e714]: cloud
+                - generic [ref=e719]:
+                  - img [ref=e721]
+                  - generic [ref=e724]: "Status: Open."
+                - generic [ref=e728]:
+                  - generic [ref=e729]:
+                    - generic [ref=e730]: "#12859"
+                    - generic [ref=e731]: In ollama/ollama;
+                  - generic [ref=e732]:
+                    - text: ·
+                    - link "jsmith173" [ref=e733] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ajsmith173
+                    - text: opened
+                    - generic "Oct 30, 2025, 9:56 PM GMT+9" [ref=e734]: on Oct 30, 2025on Oct 30, 2025
+              - 'listitem "Cloud usage stats.: Status: Open. #12532 In ollama/ollama;· rick-github opened on Oct 8, 2025. More information available below." [ref=e738]':
+                - generic [ref=e739]:
+                  - heading "Cloud usage stats." [level=3] [ref=e740]:
+                    - link "Cloud usage stats." [ref=e741] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/12532
+                      - generic [ref=e742]: Cloud usage stats.
+                  - generic [ref=e744]:
+                    - link "cloud" [ref=e746] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Acloud
+                      - generic [ref=e748]: cloud
+                    - link "feature request New feature or request" [ref=e751] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3A%22feature%20request%22
+                      - generic [ref=e753]: feature request
+                      - generic [ref=e754]: New feature or request
+                - generic [ref=e758]:
+                  - img [ref=e760]
+                  - generic [ref=e763]: "Status: Open."
+                - generic [ref=e767]:
+                  - generic [ref=e768]:
+                    - generic [ref=e769]: "#12532"
+                    - generic [ref=e770]: In ollama/ollama;
+                  - generic [ref=e771]:
+                    - text: ·
+                    - link "rick-github" [ref=e772] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Arick-github
+                    - text: opened
+                    - generic "Oct 8, 2025, 8:53 AM GMT+9" [ref=e773]: on Oct 8, 2025on Oct 8, 2025
+              - 'listitem "Ollama not using NVIDIA GPUs with gpt-oss models: Status: Closed (completed). #11676 In ollama/ollama;· by nadamas2000 was closed on Sep 2, 2025. More information available below." [ref=e777]':
+                - generic [ref=e778]:
+                  - heading "Ollama not using NVIDIA GPUs with gpt-oss models" [level=3] [ref=e779]:
+                    - link "Ollama not using NVIDIA GPUs with gpt-oss models" [ref=e780] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/11676
+                      - generic [ref=e781]: Ollama not using NVIDIA GPUs with gpt-oss models
+                  - link "bug Something isn't working" [ref=e785] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e787]: bug
+                    - generic [ref=e788]: Something isn't working
+                - generic [ref=e792]:
+                  - img [ref=e794]
+                  - generic [ref=e797]: "Status: Closed (completed)."
+                - generic [ref=e801]:
+                  - generic [ref=e802]:
+                    - generic [ref=e803]: "#11676"
+                    - generic [ref=e804]: In ollama/ollama;
+                  - generic [ref=e805]:
+                    - text: · by
+                    - link "nadamas2000" [ref=e806] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Anadamas2000
+                    - text: was closed
+                    - generic "Sep 2, 2025, 4:34 AM GMT+9" [ref=e807]: on Sep 2, 2025on Sep 2, 2025
+              - 'listitem "Vision - IQ3_XXS - Mistral Small 3.1 24b: Status: Closed (completed). #10393 In ollama/ollama;· by mirage335 was closed on May 1, 2025. More information available below." [ref=e811]':
+                - generic [ref=e812]:
+                  - heading "Vision - IQ3_XXS - Mistral Small 3.1 24b" [level=3] [ref=e813]:
+                    - link "Vision - IQ3_XXS - Mistral Small 3.1 24b" [ref=e814] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/10393
+                      - generic [ref=e815]: Vision - IQ3_XXS - Mistral Small 3.1 24b
+                  - link "model Model requests" [ref=e819] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Amodel
+                    - generic [ref=e821]: model
+                    - generic [ref=e822]: Model requests
+                - generic [ref=e826]:
+                  - img [ref=e828]
+                  - generic [ref=e831]: "Status: Closed (completed)."
+                - generic [ref=e835]:
+                  - generic [ref=e836]:
+                    - generic [ref=e837]: "#10393"
+                    - generic [ref=e838]: In ollama/ollama;
+                  - generic [ref=e839]:
+                    - text: · by
+                    - link "mirage335" [ref=e840] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Amirage335
+                    - text: was closed
+                    - generic "May 1, 2025, 1:56 AM GMT+9" [ref=e841]: on May 1, 2025on May 1, 2025
+              - 'listitem "Out of memory errors when running gemma3: Status: Closed (completed). #9791 In ollama/ollama;· by ultramarinebicycle was closed on Apr 9, 2025. More information available below." [ref=e845]':
+                - generic [ref=e846]:
+                  - heading "Out of memory errors when running gemma3" [level=3] [ref=e847]:
+                    - link "Out of memory errors when running gemma3" [ref=e848] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/9791
+                      - generic [ref=e850]:
+                        - text: Out of memory errors when running
+                        - code [ref=e851]: gemma3
+                  - link "bug Something isn't working" [ref=e855] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e857]: bug
+                    - generic [ref=e858]: Something isn't working
+                - generic [ref=e862]:
+                  - img [ref=e864]
+                  - generic [ref=e867]: "Status: Closed (completed)."
+                - generic [ref=e871]:
+                  - generic [ref=e872]:
+                    - generic [ref=e873]: "#9791"
+                    - generic [ref=e874]: In ollama/ollama;
+                  - generic [ref=e875]:
+                    - text: · by
+                    - link "ultramarinebicycle" [ref=e876] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Aultramarinebicycle
+                    - text: was closed
+                    - generic "Apr 9, 2025, 6:32 AM GMT+9" [ref=e877]: on Apr 9, 2025on Apr 9, 2025
+              - 'listitem "Vulkan support (replacing pull/5059): Status: Closed (abandoned). ollama/ollamanumber 9650 #9650 In ollama/ollama;· by grinco was closed on Oct 16, 2025. More information available below." [ref=e881]':
+                - heading "Vulkan support (replacing pull/5059)" [level=3] [ref=e883]:
+                  - link "Vulkan support (replacing pull/5059)" [ref=e884] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/9650
+                    - generic [ref=e885]: Vulkan support (replacing pull/5059)
+                - generic [ref=e890]:
+                  - img [ref=e892]
+                  - generic [ref=e894]: "Status: Closed (abandoned)."
+                - generic [ref=e898]:
+                  - generic [ref=e899]:
+                    - text: ollama/ollama
+                    - generic [ref=e900]: number 9650
+                  - generic [ref=e901]:
+                    - generic [ref=e902]: "#9650"
+                    - generic [ref=e903]: In ollama/ollama;
+                  - generic [ref=e904]:
+                    - text: · by
+                    - link "grinco" [ref=e905] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Agrinco
+                    - text: was closed
+                    - generic "Oct 16, 2025, 5:28 AM GMT+9" [ref=e906]: on Oct 16, 2025on Oct 16, 2025
+              - 'listitem "Ollama is very slow after running for a while: Status: Closed (completed). #8023 In ollama/ollama;· by minakami443 was closed on Jan 13, 2025. More information available below." [ref=e914]':
+                - generic [ref=e915]:
+                  - heading "Ollama is very slow after running for a while" [level=3] [ref=e916]:
+                    - link "Ollama is very slow after running for a while" [ref=e917] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/8023
+                      - generic [ref=e918]: Ollama is very slow after running for a while
+                  - link "bug Something isn't working" [ref=e922] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Abug
+                    - generic [ref=e924]: bug
+                    - generic [ref=e925]: Something isn't working
+                - generic [ref=e929]:
+                  - img [ref=e931]
+                  - generic [ref=e934]: "Status: Closed (completed)."
+                - generic [ref=e938]:
+                  - generic [ref=e939]:
+                    - generic [ref=e940]: "#8023"
+                    - generic [ref=e941]: In ollama/ollama;
+                  - generic [ref=e942]:
+                    - text: · by
+                    - link "minakami443" [ref=e943] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Aminakami443
+                    - text: was closed
+                    - generic "Jan 13, 2025, 10:37 AM GMT+9" [ref=e944]: on Jan 13, 2025on Jan 13, 2025
+              - 'listitem "AMD integrated graphic on linux kernel 6.9.9+, GTT memory, loading freeze fix: Status: Closed (abandoned). ollama/ollamanumber 6282 #6282 In ollama/ollama;· by MaciejMogilany was closed on Dec 24, 2025. More information available below." [ref=e948]':
+                - heading "AMD integrated graphic on linux kernel 6.9.9+, GTT memory, loading freeze fix" [level=3] [ref=e950]:
+                  - link "AMD integrated graphic on linux kernel 6.9.9+, GTT memory, loading freeze fix" [ref=e951] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/6282
+                    - generic [ref=e952]: AMD integrated graphic on linux kernel 6.9.9+, GTT memory, loading freeze fix
+                - generic [ref=e957]:
+                  - img [ref=e959]
+                  - generic [ref=e961]: "Status: Closed (abandoned)."
+                - generic [ref=e965]:
+                  - generic [ref=e966]:
+                    - text: ollama/ollama
+                    - generic [ref=e967]: number 6282
+                  - generic [ref=e968]:
+                    - generic [ref=e969]: "#6282"
+                    - generic [ref=e970]: In ollama/ollama;
+                  - generic [ref=e971]:
+                    - text: · by
+                    - link "MaciejMogilany" [ref=e972] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3AMaciejMogilany
+                    - text: was closed
+                    - generic "Dec 24, 2025, 2:30 AM GMT+9" [ref=e973]: on Dec 24, 2025on Dec 24, 2025
+              - 'listitem "Fix crash on startup when trying to clean up unused files (#5840): Status: Merged (completed). ollama/ollamanumber 6145 #6145 In ollama/ollama;· by jessegross was closed on Aug 8, 2024. More information available below." [ref=e981]':
+                - heading "Fix crash on startup when trying to clean up unused files (#5840)" [level=3] [ref=e983]:
+                  - link "Fix crash on startup when trying to clean up unused files (#5840)" [ref=e984] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/6145
+                    - generic [ref=e985]: Fix crash on startup when trying to clean up unused files (#5840)
+                - generic [ref=e990]:
+                  - img [ref=e992]
+                  - generic [ref=e994]: "Status: Merged (completed)."
+                - generic [ref=e998]:
+                  - generic [ref=e999]:
+                    - text: ollama/ollama
+                    - generic [ref=e1000]: number 6145
+                  - generic [ref=e1001]:
+                    - generic [ref=e1002]: "#6145"
+                    - generic [ref=e1003]: In ollama/ollama;
+                  - generic [ref=e1004]:
+                    - text: · by
+                    - link "jessegross" [ref=e1005] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ajessegross
+                    - text: was closed
+                    - generic "Aug 8, 2024, 3:24 AM GMT+9" [ref=e1006]: on Aug 8, 2024on Aug 8, 2024
+              - 'listitem "[Ascend ] add ascend npu support: Status: Open (in progress). ollama/ollamanumber 5872 #5872 In ollama/ollama;· zhongTao99 opened on Jul 23, 2024. More information available below." [ref=e1014]':
+                - heading "[Ascend ] add ascend npu support" [level=3] [ref=e1016]:
+                  - link "[Ascend ] add ascend npu support" [ref=e1017] [cursor=pointer]:
+                    - /url: /ollama/ollama/pull/5872
+                    - generic [ref=e1018]: "[Ascend ] add ascend npu support"
+                - generic [ref=e1023]:
+                  - img [ref=e1025]
+                  - generic [ref=e1027]: "Status: Open (in progress)."
+                - generic [ref=e1031]:
+                  - generic [ref=e1032]:
+                    - text: ollama/ollama
+                    - generic [ref=e1033]: number 5872
+                  - generic [ref=e1034]:
+                    - generic [ref=e1035]: "#5872"
+                    - generic [ref=e1036]: In ollama/ollama;
+                  - generic [ref=e1037]:
+                    - text: ·
+                    - link "zhongTao99" [ref=e1038] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3AzhongTao99
+                    - text: opened
+                    - generic "Jul 23, 2024, 8:44 PM GMT+9" [ref=e1039]: on Jul 23, 2024on Jul 23, 2024
+              - 'listitem "Azurefile (NFS) causes very slow model loads - Mixtral 22B isn''t loaded on an A100 (80GB VRAM): Status: Closed (completed). #5826 In ollama/ollama;· by juangon was closed on Jul 23, 2024. More information available below." [ref=e1047]':
+                - generic [ref=e1048]:
+                  - heading "Azurefile (NFS) causes very slow model loads - Mixtral 22B isn't loaded on an A100 (80GB VRAM)" [level=3] [ref=e1049]:
+                    - link "Azurefile (NFS) causes very slow model loads - Mixtral 22B isn't loaded on an A100 (80GB VRAM)" [ref=e1050] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues/5826
+                      - generic [ref=e1051]: Azurefile (NFS) causes very slow model loads - Mixtral 22B isn't loaded on an A100 (80GB VRAM)
+                  - link "question General questions" [ref=e1055] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20label%3Aquestion
+                    - generic [ref=e1057]: question
+                    - generic [ref=e1058]: General questions
+                - generic [ref=e1062]:
+                  - img [ref=e1064]
+                  - generic [ref=e1067]: "Status: Closed (completed)."
+                - generic [ref=e1071]:
+                  - generic [ref=e1072]:
+                    - generic [ref=e1073]: "#5826"
+                    - generic [ref=e1074]: In ollama/ollama;
+                  - generic [ref=e1075]:
+                    - text: · by
+                    - link "juangon" [ref=e1076] [cursor=pointer]:
+                      - /url: /ollama/ollama/issues?q=cloud%20usage%20limit%20author%3Ajuangon
+                    - text: was closed
+                    - generic "Jul 23, 2024, 4:26 PM GMT+9" [ref=e1077]: on Jul 23, 2024on Jul 23, 2024
+          - navigation "Pagination" [ref=e1079]:
+            - generic [ref=e1080]:
+              - generic [ref=e1081]:
+                - img [ref=e1082]
+                - text: Previous
+              - link "Page 1" [ref=e1084] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+usage+limit&page=1
+                - text: "1"
+              - link "Page 2" [ref=e1085] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+usage+limit&page=2
+                - text: "2"
+              - link "Next Page" [ref=e1086] [cursor=pointer]:
+                - /url: /ollama/ollama/issues?q=cloud+usage+limit&page=2
+                - text: Next
+                - img [ref=e1087]
+  - contentinfo [ref=e1089]:
+    - heading "Footer" [level=2] [ref=e1090]
+    - generic [ref=e1091]:
+      - generic [ref=e1092]:
+        - link "GitHub Homepage" [ref=e1093] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1094]
+        - generic [ref=e1096]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1097]:
+        - heading "Footer navigation" [level=3] [ref=e1098]
+        - list "Footer navigation" [ref=e1099]:
+          - listitem [ref=e1100]:
+            - link "Terms" [ref=e1101] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1102]:
+            - link "Privacy" [ref=e1103] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1104]:
+            - link "Security" [ref=e1105] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1106]:
+            - link "Status" [ref=e1107] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1108]:
+            - link "Community" [ref=e1109] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1110]:
+            - link "Docs" [ref=e1111] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1112]:
+            - link "Contact" [ref=e1113] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1114]:
+            - button "Manage cookies" [ref=e1116] [cursor=pointer]
+          - listitem [ref=e1117]:
+            - button "Do not share my personal information" [ref=e1119] [cursor=pointer]

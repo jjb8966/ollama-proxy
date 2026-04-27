@@ -1,0 +1,474 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+              - /url: https://z.ai/model-api
+              - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+              - img "dark logo" [ref=e16]
+            - button "English" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: English
+              - img [ref=e20]
+          - button "Open search" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search...
+            - generic [ref=e29]: ⌘K
+          - generic [ref=e30]:
+            - navigation [ref=e31]:
+              - list [ref=e32]:
+                - listitem [ref=e33]:
+                  - link "API Keys" [ref=e34] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                - listitem [ref=e35]:
+                  - link "Payment Method" [ref=e36] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+            - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - generic [ref=e42]:
+          - link "Guides" [ref=e43] [cursor=pointer]:
+            - /url: /guides/overview/quick-start
+            - text: Guides
+          - link "API Reference" [ref=e45] [cursor=pointer]:
+            - /url: /api-reference/introduction
+            - text: API Reference
+          - link "Scenario Example" [ref=e47] [cursor=pointer]:
+            - /url: /scenario-example/develop-tools/claude
+            - text: Scenario Example
+          - link "Coding Plan" [ref=e49] [cursor=pointer]:
+            - /url: /devpack/overview
+            - text: Coding Plan
+          - link "Released Notes" [ref=e51] [cursor=pointer]:
+            - /url: /release-notes/new-released
+            - text: Released Notes
+          - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+            - /url: /legal-agreement/privacy-policy
+            - text: Terms and Policy
+          - link "Help Center" [ref=e55] [cursor=pointer]:
+            - /url: /help/faq
+            - text: Help Center
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "GLM Coding Plan" [level=5] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Overview" [ref=e67] [cursor=pointer]:
+                  - /url: /devpack/overview
+                  - generic [ref=e70]: Overview
+              - listitem [ref=e71]:
+                - link "Usage Policy" [ref=e72] [cursor=pointer]:
+                  - /url: /devpack/usage-policy
+                  - generic [ref=e75]: Usage Policy
+              - listitem [ref=e76]:
+                - link "FAQ" [ref=e77] [cursor=pointer]:
+                  - /url: /devpack/faq
+                  - generic [ref=e80]: FAQ
+              - listitem [ref=e81]:
+                - link "Legacy Plan Migration Notice" [ref=e82] [cursor=pointer]:
+                  - /url: /devpack/transition
+                  - generic [ref=e85]: Legacy Plan Migration Notice
+          - generic [ref=e86]:
+            - heading "Guide" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quick Start" [ref=e91] [cursor=pointer]:
+                  - /url: /devpack/quick-start
+                  - generic [ref=e94]: Quick Start
+              - listitem [ref=e95]:
+                - link "Coding Tool Helper" [ref=e96] [cursor=pointer]:
+                  - /url: /devpack/extension/coding-tool-helper
+                  - generic [ref=e99]: Coding Tool Helper
+              - listitem [ref=e100]:
+                - link "Tool Integration" [ref=e101] [cursor=pointer]:
+                  - /url: /devpack/tool/others
+                  - generic [ref=e104]: Tool Integration
+              - listitem [ref=e105]:
+                - link "How to Switch Models" [ref=e106] [cursor=pointer]:
+                  - /url: /devpack/using5.1
+                  - generic [ref=e109]: How to Switch Models
+              - listitem [ref=e110]:
+                - button "Toggle MCP Integration section" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: MCP Integration
+                  - img [ref=e114]
+          - generic [ref=e116]:
+            - heading "Learning Resources" [level=5] [ref=e118]
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - link "Best Practice" [ref=e121] [cursor=pointer]:
+                  - /url: /devpack/resources/best-practice
+                  - generic [ref=e124]: Best Practice
+              - listitem [ref=e125]:
+                - link "Memory-mechanism" [ref=e126] [cursor=pointer]:
+                  - /url: /devpack/resources/memory-mechanism
+                  - generic [ref=e129]: Memory-mechanism
+          - generic [ref=e130]:
+            - heading "Campaign Rules" [level=5] [ref=e132]
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Invite Friends, Get Credits" [ref=e135] [cursor=pointer]:
+                  - /url: /devpack/credit-campaign-rules
+                  - generic [ref=e138]: Invite Friends, Get Credits
+        - generic [ref=e140]:
+          - generic [ref=e143]:
+            - button "On this page" [ref=e144] [cursor=pointer]:
+              - img [ref=e145]
+              - generic [ref=e146]: On this page
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - 'link "Step 1: Supported Tools" [ref=e150] [cursor=pointer]':
+                  - /url: "#step-1-supported-tools"
+              - listitem [ref=e151]:
+                - link "1. Coding Agent Tool" [ref=e152] [cursor=pointer]:
+                  - /url: "#1-coding-agent-tool"
+              - listitem [ref=e153]:
+                - link "2. General-purpose Agent Tool" [ref=e154] [cursor=pointer]:
+                  - /url: "#2-general-purpose-agent-tool"
+              - listitem [ref=e155]:
+                - 'link "Step 2: Install and Config" [ref=e156] [cursor=pointer]':
+                  - /url: "#step-2-install-and-config"
+              - listitem [ref=e157]:
+                - link "1. Install Cursor" [ref=e158] [cursor=pointer]:
+                  - /url: "#1-install-cursor"
+              - listitem [ref=e159]:
+                - link "2. Create a New Provider/Model" [ref=e160] [cursor=pointer]:
+                  - /url: "#2-create-a-new-provider%2Fmodel"
+              - listitem [ref=e161]:
+                - link "3. Save and Switch Models" [ref=e162] [cursor=pointer]:
+                  - /url: "#3-save-and-switch-models"
+              - listitem [ref=e163]:
+                - link "4. Get Started" [ref=e164] [cursor=pointer]:
+                  - /url: "#4-get-started"
+              - listitem [ref=e165]:
+                - 'link "Step 3: Replacing the API URL" [ref=e166] [cursor=pointer]':
+                  - /url: "#step-3-replacing-the-api-url"
+          - generic [ref=e167]:
+            - banner [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e170]: Guide
+                - generic [ref=e171]:
+                  - heading "Tool Integration" [level=1] [ref=e172]
+                  - generic [ref=e173]:
+                    - button "Copy page" [ref=e174] [cursor=pointer]:
+                      - generic [ref=e175]:
+                        - img [ref=e176]
+                        - generic [ref=e179]: Copy page
+                    - button "More actions" [ref=e180] [cursor=pointer]:
+                      - img [ref=e181]
+            - generic [ref=e183]:
+              - generic [ref=e184]:
+                - img "Warning" [ref=e186]
+                - generic [ref=e189]:
+                  - text: Using the GLM Coding Plan, you need to configure the dedicated Coding API
+                  - code [ref=e190]: https://api.z.ai/api/coding/paas/v4
+                  - text: instead of the General API
+                  - code [ref=e191]: https://api.z.ai/api/paas/v4
+              - 'heading "Navigate to header Step 1: Supported Tools" [level=2] [ref=e192]':
+                - link "Navigate to header" [ref=e193] [cursor=pointer]:
+                  - /url: "#step-1-supported-tools"
+                  - img [ref=e195]
+                - generic [ref=e197] [cursor=pointer]: "Step 1: Supported Tools"
+              - generic [ref=e198]:
+                - img "Tip" [ref=e200]
+                - generic [ref=e203]: The GLM Coding Plan is limited to use within the following officially supported tools and product environments; users may not use their subscription benefits for tools or scenarios outside of this scope.
+              - heading "Navigate to header 1. Coding Agent Tool" [level=3] [ref=e204]:
+                - link "Navigate to header" [ref=e205] [cursor=pointer]:
+                  - /url: "#1-coding-agent-tool"
+                  - img [ref=e207]
+                - generic [ref=e209] [cursor=pointer]: 1. Coding Agent Tool
+              - generic [ref=e210]: Click on the tool documentation below that you wish to use, and follow the corresponding integration guide to set it up.
+              - generic [ref=e211]:
+                - link [ref=e212] [cursor=pointer]:
+                  - link [ref=e214]:
+                    - /url: /devpack/tool/claude
+                    - img [ref=e216]
+                    - generic [ref=e217]:
+                      - heading [level=2] [ref=e218]: Claude Code
+                      - generic [ref=e220]: The Claude Code IDE plugin supports VSCode and JetBrains.
+                - link [ref=e221] [cursor=pointer]:
+                  - link [ref=e223]:
+                    - /url: /devpack/tool/claude-for-ide
+                    - img [ref=e225]
+                    - generic [ref=e226]:
+                      - heading [level=2] [ref=e227]: Claude for IDE
+                      - generic [ref=e229]: The Claude Code IDE plugin supports VSCode and JetBrains.
+                - link [ref=e230] [cursor=pointer]:
+                  - link [ref=e232]:
+                    - /url: /devpack/tool/opencode
+                    - img [ref=e234]
+                    - generic [ref=e235]:
+                      - heading [level=2] [ref=e236]: OpenCode
+                      - generic [ref=e238]: The Claude Code IDE plugin supports VSCode and JetBrains.
+                - link [ref=e239] [cursor=pointer]:
+                  - link [ref=e241]:
+                    - /url: /devpack/tool/cursor
+                    - img [ref=e243]
+                    - generic [ref=e244]:
+                      - heading [level=2] [ref=e245]: Cursor
+                      - generic [ref=e247]: An AI-first code editor that supports custom model configurations.
+                - link [ref=e248] [cursor=pointer]:
+                  - link [ref=e250]:
+                    - /url: /devpack/tool/cline
+                    - img [ref=e252]
+                    - generic [ref=e253]:
+                      - heading [level=2] [ref=e254]: Cline
+                      - generic [ref=e256]: An AI programming extension for VS Code that supports code generation and file operations.
+                - link [ref=e257] [cursor=pointer]:
+                  - link [ref=e259]:
+                    - /url: /devpack/tool/trae
+                    - img [ref=e261]
+                    - generic [ref=e262]:
+                      - heading [level=2] [ref=e263]: TRAE
+                      - generic [ref=e265]: An AI editor capable of independently completing various development tasks.
+                - link [ref=e266] [cursor=pointer]:
+                  - link [ref=e268]:
+                    - /url: /devpack/tool/qoder
+                    - img [ref=e270]
+                    - generic [ref=e271]:
+                      - heading [level=2] [ref=e272]: Qoder
+                      - generic [ref=e274]: An agentic coding platform designed for real software development.
+                - link [ref=e275] [cursor=pointer]:
+                  - link [ref=e277]:
+                    - /url: /devpack/tool/droid
+                    - img [ref=e279]
+                    - generic [ref=e280]:
+                      - heading [level=2] [ref=e281]: Droid
+                      - generic [ref=e283]: Enterprise-grade AI coding agent that runs in the terminal to handle end-to-end workflows.
+                - link [ref=e284] [cursor=pointer]:
+                  - link [ref=e286]:
+                    - /url: /devpack/tool/kilo
+                    - img [ref=e288]
+                    - generic [ref=e289]:
+                      - heading [level=2] [ref=e290]: Kilo Code
+                      - generic [ref=e292]: A powerful VS Code extension for code generation and project management.
+                - link [ref=e293] [cursor=pointer]:
+                  - link [ref=e295]:
+                    - /url: /devpack/tool/roo
+                    - img [ref=e297]
+                    - generic [ref=e298]:
+                      - heading [level=2] [ref=e299]: Roo Code
+                      - generic [ref=e301]: A smart VS Code extension for code writing and refactoring.
+                - link [ref=e302] [cursor=pointer]:
+                  - link [ref=e304]:
+                    - /url: /devpack/tool/crush
+                    - img [ref=e306]
+                    - generic [ref=e307]:
+                      - heading [level=2] [ref=e308]: Crush
+                      - generic [ref=e310]: A terminal-based AI programming tool that supports both CLI and TUI interfaces.
+                - link [ref=e311] [cursor=pointer]:
+                  - link [ref=e313]:
+                    - /url: /devpack/tool/goose
+                    - img [ref=e315]
+                    - generic [ref=e316]:
+                      - heading [level=2] [ref=e317]: Goose
+                      - generic [ref=e319]: AI Agent tool, supporting local execution and automated engineering tasks.
+                - link [ref=e320] [cursor=pointer]:
+                  - link [ref=e322]:
+                    - /url: /devpack/tool/goose
+                    - img [ref=e324]
+                    - generic [ref=e325]:
+                      - heading [level=2] [ref=e326]: Eigent
+                      - generic [ref=e328]: A desktop AI agent built on a multi-agent architecture, capable of automating browser, terminal, and MCP-powered workflows.
+              - heading "Navigate to header 2. General-purpose Agent Tool" [level=3] [ref=e329]:
+                - link "Navigate to header" [ref=e330] [cursor=pointer]:
+                  - /url: "#2-general-purpose-agent-tool"
+                  - img [ref=e332]
+                - generic [ref=e334] [cursor=pointer]: 2. General-purpose Agent Tool
+              - generic [ref=e335]:
+                - img "Tip" [ref=e337]
+                - generic [ref=e340]: The general-purpose agent tools listed below are also supported and will continue to be served on a best-effort basis. Under high inference load (typically around 2–6 PM Singapore time, though this may shift), some requests may face temporary rate limits.
+              - generic [ref=e341]:
+                - link [ref=e342] [cursor=pointer]:
+                  - link [ref=e344]:
+                    - /url: /devpack/tool/openclaw
+                    - img [ref=e346]
+                    - generic [ref=e347]:
+                      - heading [level=2] [ref=e348]: OpenClaw
+                      - generic [ref=e350]: An open-source AI assistant that runs on local devices, supports multi-platform use.
+                - link [ref=e351] [cursor=pointer]:
+                  - link [ref=e353]:
+                    - /url: "#"
+                    - img [ref=e355]
+                    - generic [ref=e356]:
+                      - heading [level=2] [ref=e357]: Hermes Agent
+                      - generic [ref=e359]: An open-source evolving AI agent with persistent memory,getting smarter with use.
+                - link [ref=e360] [cursor=pointer]:
+                  - link [ref=e362]:
+                    - /url: "#"
+                    - img [ref=e364]
+                    - generic [ref=e365]:
+                      - heading [level=2] [ref=e366]: SillyTavern
+                      - generic [ref=e368]: A highly customizable AI chat frontend for immersive roleplay with multi-model & media support.
+              - 'heading "Navigate to header Step 2: Install and Config" [level=2] [ref=e369]':
+                - link "Navigate to header" [ref=e370] [cursor=pointer]:
+                  - /url: "#step-2-install-and-config"
+                  - img [ref=e372]
+                - generic [ref=e374] [cursor=pointer]: "Step 2: Install and Config"
+              - blockquote [ref=e375]:
+                - text: "Core Steps:"
+                - list [ref=e376]:
+                  - listitem [ref=e377]: Select an OpenAI-compatible provider.
+                  - listitem [ref=e378]:
+                    - strong [ref=e379]:
+                      - code [ref=e380]: Add/Replace the OpenAI Base URL with https://api.z.ai/api/coding/paas/v4.
+                  - listitem [ref=e381]:
+                    - strong [ref=e382]:
+                      - code [ref=e383]: Enter your Z.AI API Key and select GLM-5.1, GLM-5, GLM-5-Turbo, GLM-4.7 or GLM-4.5-air.
+              - generic [ref=e384]:
+                - text: Using
+                - strong [ref=e385]: Cursor
+                - text: "as an example (Note: Custom configuration is only supported in Cursor Pro and higher versions), the following steps demonstrate how to integrate the"
+                - code [ref=e386]: GLM-4.7
+                - text: model via the OpenAI protocol. Similarly, other tools supporting the OpenAI protocol can adopt the same configuration approach.
+              - heading "Navigate to header 1. Install Cursor" [level=3] [ref=e387]:
+                - link "Navigate to header" [ref=e388] [cursor=pointer]:
+                  - /url: "#1-install-cursor"
+                  - img [ref=e390]
+                - generic [ref=e392] [cursor=pointer]: 1. Install Cursor
+              - generic [ref=e393]: Download and install Cursor from the official website.
+              - heading "Navigate to header 2. Create a New Provider/Model" [level=3] [ref=e394]:
+                - link "Navigate to header" [ref=e395] [cursor=pointer]:
+                  - /url: "#2-create-a-new-provider/model"
+                  - img [ref=e397]
+                - generic [ref=e399] [cursor=pointer]: 2. Create a New Provider/Model
+              - generic [ref=e400]:
+                - text: In Cursor, navigate to the “
+                - strong [ref=e401]: Models
+                - text: ” section and click the “
+                - strong [ref=e402]: Add Custom Model
+                - text: ”.
+              - generic [ref=e404]:
+                - img "Description" [ref=e406]
+                - generic:
+                  - 'button "Expand image: Description"'
+              - list [ref=e407]:
+                - listitem [ref=e408]:
+                  - text: Select the
+                  - strong [ref=e409]: OpenAI Protocol
+                  - text: .
+                - listitem [ref=e410]:
+                  - text: Configure the
+                  - strong [ref=e411]: OpenAI API Key
+                  - text: (obtained from the Z.AI).
+                - listitem [ref=e412]:
+                  - text: In
+                  - strong [ref=e413]: Override OpenAI Base URL
+                  - text: ", replace the default URL with"
+                  - code [ref=e414]: https://api.z.ai/api/coding/paas/v4
+                  - text: .
+                - listitem [ref=e415]:
+                  - text: Enter the model you wish to use, such as
+                  - code [ref=e416]: GLM-5.1
+                  - text: ","
+                  - code [ref=e417]: GLM-5
+                  - text: or
+                  - code [ref=e418]: GLM-4.5-air
+                  - text: .
+                - listitem [ref=e419]:
+                  - text: "Note: In Cursor, the model name must be entered in uppercase, such as"
+                  - code [ref=e420]: GLM-4.7
+                  - text: .
+              - generic [ref=e422]:
+                - img "Description" [ref=e424]
+                - generic:
+                  - 'button "Expand image: Description"'
+              - heading "Navigate to header 3. Save and Switch Models" [level=3] [ref=e425]:
+                - link "Navigate to header" [ref=e426] [cursor=pointer]:
+                  - /url: "#3-save-and-switch-models"
+                  - img [ref=e428]
+                - generic [ref=e430] [cursor=pointer]: 3. Save and Switch Models
+              - generic [ref=e431]:
+                - text: After configuration, save your settings and select the newly created
+                - strong [ref=e432]: GLM-4.7 Provider
+                - text: on the homepage.
+              - heading "Navigate to header 4. Get Started" [level=3] [ref=e433]:
+                - link "Navigate to header" [ref=e434] [cursor=pointer]:
+                  - /url: "#4-get-started"
+                  - img [ref=e436]
+                - generic [ref=e438] [cursor=pointer]: 4. Get Started
+              - generic [ref=e439]: With this setup, you can begin using the GLM model for code generation, debugging, task analysis, and more.
+              - generic [ref=e441]:
+                - img "Description" [ref=e443]
+                - generic:
+                  - 'button "Expand image: Description"'
+              - 'heading "Navigate to header Step 3: Replacing the API URL" [level=2] [ref=e444]':
+                - link "Navigate to header" [ref=e445] [cursor=pointer]:
+                  - /url: "#step-3-replacing-the-api-url"
+                  - img [ref=e447]
+                - generic [ref=e449] [cursor=pointer]: "Step 3: Replacing the API URL"
+              - list [ref=e450]:
+                - listitem [ref=e451]:
+                  - strong [ref=e452]: Locate the API configuration section in your tool
+                  - text: ":"
+              - generic [ref=e453]:
+                - text: For example, in
+                - strong [ref=e454]: Goose
+                - text: ", this is typically where you set the API address in the configuration file; In"
+                - strong [ref=e455]: VS Code
+                - text: plugins or
+                - strong [ref=e456]: IntelliJ IDEA
+                - text: plugins, configuration is usually done through the plugin’s settings interface.
+              - list [ref=e457]:
+                - listitem [ref=e458]:
+                  - strong [ref=e459]: Replace the OpenAI Base URL
+                  - text: ":"
+              - generic [ref=e460]:
+                - text: Replace the default OpenAI API URL with
+                - code [ref=e461]: https://api.z.ai/api/coding/paas/v4
+                - text: .
+              - list [ref=e462]:
+                - listitem [ref=e463]:
+                  - strong [ref=e464]: Enter API Key and Select Model
+                  - text: ":"
+              - list [ref=e465]:
+                - listitem [ref=e466]:
+                  - text: Enter your
+                  - strong [ref=e467]: Z.ai API Key
+                  - text: .
+                - listitem [ref=e468]:
+                  - text: Select
+                  - code [ref=e469]: GLM-5.1
+                  - text: (standard, complex tasks) or
+                  - code [ref=e470]: GLM-4.5-air
+                  - text: (lightweight, faster response) based on your requirements.
+            - generic [ref=e472]:
+              - paragraph [ref=e473]: Was this page helpful?
+              - generic [ref=e475]:
+                - button "Yes" [ref=e476] [cursor=pointer]:
+                  - img [ref=e477]
+                  - generic [ref=e479]: "Yes"
+                - button "No" [ref=e480] [cursor=pointer]:
+                  - img [ref=e481]
+                  - generic [ref=e483]: "No"
+            - generic [ref=e484]:
+              - link "Coding Tool Helper" [ref=e485] [cursor=pointer]:
+                - /url: /devpack/extension/coding-tool-helper
+                - img [ref=e486]
+                - generic [ref=e488]: Coding Tool Helper
+              - link "How to Switch Models" [ref=e489] [cursor=pointer]:
+                - /url: /devpack/using5.1
+                - generic [ref=e490]: How to Switch Models
+                - img [ref=e491]
+            - contentinfo [ref=e493]:
+              - generic [ref=e494]:
+                - link "x" [ref=e495] [cursor=pointer]:
+                  - /url: https://x.com/Zai_org
+                  - generic [ref=e496]: x
+                  - img [ref=e497]
+                - link "github" [ref=e498] [cursor=pointer]:
+                  - /url: https://github.com/zai-org
+                  - generic [ref=e499]: github
+                  - img [ref=e500]
+                - link "discord" [ref=e501] [cursor=pointer]:
+                  - /url: https://discord.gg/QR7SARHRxK
+                  - generic [ref=e502]: discord
+                  - img [ref=e503]
+                - link "linkedin" [ref=e504] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/zdotai
+                  - generic [ref=e505]: linkedin
+                  - img [ref=e506]
+  - alert [ref=e507]

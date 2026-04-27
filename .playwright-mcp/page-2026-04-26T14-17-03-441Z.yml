@@ -1,0 +1,227 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - link "OpenCode" [ref=e7] [cursor=pointer]:
+        - /url: /ko
+        - img "OpenCode" [ref=e8]
+      - navigation [ref=e9]:
+        - list [ref=e10]:
+          - listitem [ref=e11]:
+            - link "GitHub [140K]" [ref=e12] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - text: GitHub
+              - generic [ref=e13]: "[140K]"
+          - listitem [ref=e14]:
+            - link "문서" [ref=e15] [cursor=pointer]:
+              - /url: /docs/ko
+          - listitem [ref=e16]:
+            - link "Zen" [ref=e17] [cursor=pointer]:
+              - /url: /ko/zen
+          - listitem [ref=e18]:
+            - link "Go" [ref=e19] [cursor=pointer]:
+              - /url: /ko/go
+          - listitem [ref=e20]:
+            - link "엔터프라이즈" [ref=e21] [cursor=pointer]:
+              - /url: /ko/enterprise
+          - listitem [ref=e22]:
+            - link "다운로드" [ref=e23] [cursor=pointer]:
+              - /url: /ko/download
+              - img [ref=e24]
+              - text: 다운로드
+    - generic [ref=e26]:
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]: 신규
+          - generic [ref=e30]:
+            - generic [ref=e31]:
+              - text: 데스크톱 앱 베타 버전 출시
+              - generic [ref=e32]: macOS, Windows, Linux 지원
+              - text: .
+            - link "지금 다운로드" [ref=e33] [cursor=pointer]:
+              - /url: /ko/download
+        - generic [ref=e34]:
+          - heading "오픈 소스 AI 코딩 에이전트" [level=1] [ref=e35]
+          - paragraph [ref=e36]:
+            - text: 무료 모델이 포함되어 있으며, 어떤 제공자의 모델이든 연결 가능합니다.
+            - text: Claude, GPT, Gemini 등을 포함합니다.
+        - region "설치 옵션" [ref=e38]:
+          - tablist [ref=e39]:
+            - tab "curl" [selected] [ref=e40] [cursor=pointer]
+            - tab "npm" [ref=e41] [cursor=pointer]
+            - tab "bun" [ref=e42] [cursor=pointer]
+            - tab "brew" [ref=e43] [cursor=pointer]
+            - tab "paru" [ref=e44] [cursor=pointer]
+          - tabpanel "curl" [ref=e46]:
+            - button "curl -fsSL https://opencode.ai/install | bash" [ref=e47] [cursor=pointer]:
+              - generic [ref=e48]: curl -fsSL https://opencode.ai/install | bash
+              - img [ref=e50]
+      - generic [ref=e53]: 브라우저가 비디오 태그를 지원하지 않습니다.
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - heading "OpenCode란 무엇인가요?" [level=3] [ref=e56]
+          - paragraph [ref=e57]: OpenCode는 터미널, IDE, 또는 데스크톱에서 코드를 작성할 수 있도록 도와주는 오픈 소스 에이전트입니다.
+        - list [ref=e58]:
+          - listitem [ref=e59]:
+            - generic [ref=e60]: "[*]"
+            - generic [ref=e61]:
+              - strong [ref=e62]: LSP 지원
+              - text: LLM에 적합한 LSP를 자동으로 로드합니다
+          - listitem [ref=e63]:
+            - generic [ref=e64]: "[*]"
+            - generic [ref=e65]:
+              - strong [ref=e66]: 멀티 세션
+              - text: 동일한 프로젝트에서 여러 에이전트를 병렬로 실행하세요
+          - listitem [ref=e67]:
+            - generic [ref=e68]: "[*]"
+            - generic [ref=e69]:
+              - strong [ref=e70]: 링크 공유
+              - text: 참조나 디버깅을 위해 세션 링크를 공유하세요
+          - listitem [ref=e71]:
+            - generic [ref=e72]: "[*]"
+            - generic [ref=e73]:
+              - strong [ref=e74]: GitHub Copilot
+              - text: GitHub로 로그인하여 Copilot 계정을 사용하세요
+          - listitem [ref=e75]:
+            - generic [ref=e76]: "[*]"
+            - generic [ref=e77]:
+              - strong [ref=e78]: ChatGPT Plus/Pro
+              - text: OpenAI로 로그인하여 ChatGPT Plus 또는 Pro 계정을 사용하세요
+          - listitem [ref=e79]:
+            - generic [ref=e80]: "[*]"
+            - generic [ref=e81]:
+              - strong [ref=e82]: 모든 모델
+              - text: Models.dev를 통해 로컬 모델 포함 75개 이상의 LLM 제공자 지원
+          - listitem [ref=e83]:
+            - generic [ref=e84]: "[*]"
+            - generic [ref=e85]:
+              - strong [ref=e86]: 모든 에디터
+              - text: 터미널 인터페이스, 데스크톱 앱, IDE 확장 프로그램으로 사용 가능
+        - link "문서 읽기" [ref=e87] [cursor=pointer]:
+          - /url: /docs/ko
+          - generic [ref=e88]: 문서 읽기
+          - img [ref=e89]
+      - generic [ref=e92]:
+        - heading "오픈 소스 AI 코딩 에이전트" [level=3] [ref=e93]
+        - generic [ref=e94]:
+          - generic [ref=e95]: "[*]"
+          - paragraph [ref=e96]:
+            - strong [ref=e97]: 140,000
+            - text: 개 이상의 GitHub 스타,
+            - strong [ref=e98]: "850"
+            - text: 명의 기여자,
+            - strong [ref=e99]: 11,000
+            - text: 개 이상의 커밋과 함께, OpenCode는 매달
+            - strong [ref=e100]: 6.5M
+            - text: 명 이상의 개발자가 사용하고 신뢰합니다.
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - img [ref=e104]
+            - generic [ref=e109]:
+              - figure [ref=e110]: 그림 1.
+              - strong [ref=e111]: 140K
+              - text: GitHub 스타
+          - generic [ref=e112]:
+            - img [ref=e114]
+            - generic [ref=e398]:
+              - figure [ref=e399]: 그림 2.
+              - strong [ref=e400]: "850"
+              - text: 기여자
+          - generic [ref=e401]:
+            - img [ref=e403]
+            - generic [ref=e435]:
+              - figure [ref=e436]: 그림 3.
+              - strong [ref=e437]: 6.5M
+              - text: 월간 사용자
+      - generic [ref=e439]:
+        - heading "프라이버시를 최우선으로 설계" [level=3] [ref=e440]
+        - generic [ref=e441]:
+          - generic [ref=e442]: "[*]"
+          - paragraph [ref=e443]:
+            - text: "OpenCode는 코드나 컨텍스트 데이터를 저장하지 않으므로, 프라이버시에 민감한 환경에서도 안전하게 작동합니다. 더 알아보기:"
+            - link "프라이버시" [ref=e444] [cursor=pointer]:
+              - /url: /docs/ko/enterprise/
+            - text: .
+      - generic [ref=e445]:
+        - heading "FAQ" [level=3] [ref=e447]
+        - list [ref=e448]:
+          - listitem [ref=e449]:
+            - button "OpenCode란 무엇인가요?" [ref=e451] [cursor=pointer]:
+              - img [ref=e452]
+              - generic [ref=e454]: OpenCode란 무엇인가요?
+          - listitem [ref=e455]:
+            - button "OpenCode는 어떻게 사용하나요?" [ref=e457] [cursor=pointer]:
+              - img [ref=e458]
+              - generic [ref=e460]: OpenCode는 어떻게 사용하나요?
+          - listitem [ref=e461]:
+            - button "OpenCode를 사용하려면 별도의 AI 구독이 필요한가요?" [ref=e463] [cursor=pointer]:
+              - img [ref=e464]
+              - generic [ref=e466]: OpenCode를 사용하려면 별도의 AI 구독이 필요한가요?
+          - listitem [ref=e467]:
+            - button "기존 AI 구독을 OpenCode에서 사용할 수 있나요?" [ref=e469] [cursor=pointer]:
+              - img [ref=e470]
+              - generic [ref=e472]: 기존 AI 구독을 OpenCode에서 사용할 수 있나요?
+          - listitem [ref=e473]:
+            - button "OpenCode는 터미널에서만 사용할 수 있나요?" [ref=e475] [cursor=pointer]:
+              - img [ref=e476]
+              - generic [ref=e478]: OpenCode는 터미널에서만 사용할 수 있나요?
+          - listitem [ref=e479]:
+            - button "OpenCode 비용은 얼마인가요?" [ref=e481] [cursor=pointer]:
+              - img [ref=e482]
+              - generic [ref=e484]: OpenCode 비용은 얼마인가요?
+          - listitem [ref=e485]:
+            - button "데이터와 프라이버시는 어떤가요?" [ref=e487] [cursor=pointer]:
+              - img [ref=e488]
+              - generic [ref=e490]: 데이터와 프라이버시는 어떤가요?
+          - listitem [ref=e491]:
+            - button "OpenCode는 오픈 소스인가요?" [ref=e493] [cursor=pointer]:
+              - img [ref=e494]
+              - generic [ref=e496]: OpenCode는 오픈 소스인가요?
+      - generic [ref=e498]:
+        - strong [ref=e499]: 코딩 에이전트를 위한 신뢰할 수 있고 최적화된 모델
+        - paragraph [ref=e500]: Zen은 OpenCode가 코딩 에이전트를 위해 특별히 테스트하고 벤치마킹한 엄선된 AI 모델 세트에 대한 액세스를 제공합니다. 제공자 간의 일관되지 않은 성능과 품질에 대해 걱정할 필요 없이, 검증된 모델을 사용하세요.
+        - generic [ref=e501]:
+          - img [ref=e503]
+          - img [ref=e507]
+          - img [ref=e511]
+          - img [ref=e514]
+          - img [ref=e518]
+          - img [ref=e521]
+          - img [ref=e524]
+        - link "Zen 알아보기" [ref=e526] [cursor=pointer]:
+          - /url: /ko/zen
+          - generic [ref=e527]: Zen 알아보기
+          - img [ref=e528]
+      - generic [ref=e530]:
+        - generic [ref=e531]:
+          - heading "새로운 제품 출시 소식을 가장 먼저 받아보세요" [level=3] [ref=e532]
+          - paragraph [ref=e533]: 대기 명단에 등록하여 조기 이용 권한을 받으세요.
+        - generic [ref=e534]:
+          - textbox "이메일 주소" [ref=e535]
+          - button "구독" [ref=e536] [cursor=pointer]
+      - generic [ref=e537]:
+        - link "GitHub [140K]" [ref=e539] [cursor=pointer]:
+          - /url: https://github.com/anomalyco/opencode
+          - text: GitHub
+          - generic [ref=e540]: "[140K]"
+        - link "문서" [ref=e542] [cursor=pointer]:
+          - /url: /docs/ko
+        - link "변경 내역" [ref=e544] [cursor=pointer]:
+          - /url: /ko/changelog
+        - link "Discord" [ref=e546] [cursor=pointer]:
+          - /url: /ko/discord
+        - link "X" [ref=e548] [cursor=pointer]:
+          - /url: https://x.com/opencode
+  - generic [ref=e549]:
+    - generic [ref=e550]:
+      - text: ©2026
+      - link "Anomaly" [ref=e551] [cursor=pointer]:
+        - /url: https://anoma.ly
+    - link "브랜드" [ref=e553] [cursor=pointer]:
+      - /url: /ko/brand
+    - link "개인정보처리방침" [ref=e555] [cursor=pointer]:
+      - /url: /ko/legal/privacy-policy
+    - link "이용약관" [ref=e557] [cursor=pointer]:
+      - /url: /ko/legal/terms-of-service
+    - button "한국어" [ref=e561] [cursor=pointer]:
+      - generic [ref=e562]: 한국어
+      - img [ref=e563]

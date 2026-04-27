@@ -1,0 +1,359 @@
+- generic [ref=e2]:
+  - link "Skip to main content" [ref=e3] [cursor=pointer]:
+    - /url: "#content-area"
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - generic [ref=e9]:
+          - link "Ollama home page light logo" [ref=e10] [cursor=pointer]:
+            - /url: https://ollama.com
+            - generic [ref=e11]: Ollama home page
+            - img "light logo" [ref=e12]
+          - button "Toggle dark mode" [ref=e13] [cursor=pointer]:
+            - generic [ref=e14]:
+              - img [ref=e15]
+              - img [ref=e22]
+        - button "Open search" [ref=e28] [cursor=pointer]:
+          - generic [ref=e29]:
+            - img [ref=e30]
+            - generic [ref=e33]: Search...
+          - generic [ref=e34]: ⌘K
+        - generic [ref=e35]:
+          - list
+          - generic [ref=e36]:
+            - heading "Get started" [level=5] [ref=e38]
+            - list [ref=e39]:
+              - listitem [ref=e40]:
+                - link "Welcome" [ref=e41] [cursor=pointer]:
+                  - /url: /
+                  - generic [ref=e44]: Welcome
+              - listitem [ref=e45]:
+                - link "Quickstart" [ref=e46] [cursor=pointer]:
+                  - /url: /quickstart
+                  - generic [ref=e49]: Quickstart
+              - listitem [ref=e50]:
+                - link "Cloud" [ref=e51] [cursor=pointer]:
+                  - /url: /cloud
+                  - generic [ref=e54]: Cloud
+          - generic [ref=e55]:
+            - heading "Capabilities" [level=5] [ref=e57]
+            - list [ref=e58]:
+              - listitem [ref=e59]:
+                - link "Streaming" [ref=e60] [cursor=pointer]:
+                  - /url: /capabilities/streaming
+                  - generic [ref=e63]: Streaming
+              - listitem [ref=e64]:
+                - link "Thinking" [ref=e65] [cursor=pointer]:
+                  - /url: /capabilities/thinking
+                  - generic [ref=e68]: Thinking
+              - listitem [ref=e69]:
+                - link "Structured Outputs" [ref=e70] [cursor=pointer]:
+                  - /url: /capabilities/structured-outputs
+                  - generic [ref=e73]: Structured Outputs
+              - listitem [ref=e74]:
+                - link "Vision" [ref=e75] [cursor=pointer]:
+                  - /url: /capabilities/vision
+                  - generic [ref=e78]: Vision
+              - listitem [ref=e79]:
+                - link "Embeddings" [ref=e80] [cursor=pointer]:
+                  - /url: /capabilities/embeddings
+                  - generic [ref=e83]: Embeddings
+              - listitem [ref=e84]:
+                - link "Tool calling" [ref=e85] [cursor=pointer]:
+                  - /url: /capabilities/tool-calling
+                  - generic [ref=e88]: Tool calling
+              - listitem [ref=e89]:
+                - link "Web search" [ref=e90] [cursor=pointer]:
+                  - /url: /capabilities/web-search
+                  - generic [ref=e93]: Web search
+          - generic [ref=e94]:
+            - heading "Integrations" [level=5] [ref=e96]
+            - list [ref=e97]:
+              - listitem [ref=e98]:
+                - link "Overview" [ref=e99] [cursor=pointer]:
+                  - /url: /integrations
+                  - generic [ref=e102]: Overview
+              - listitem [ref=e103]:
+                - button "Toggle Assistants section" [ref=e104] [cursor=pointer]:
+                  - generic [ref=e105]: Assistants
+                  - img [ref=e107]
+              - listitem [ref=e109]:
+                - button "Toggle Coding section" [ref=e110] [cursor=pointer]:
+                  - generic [ref=e111]: Coding
+                  - img [ref=e113]
+              - listitem [ref=e115]:
+                - button "Toggle IDEs & Editors section" [ref=e116] [cursor=pointer]:
+                  - generic [ref=e117]: IDEs & Editors
+                  - img [ref=e119]
+              - listitem [ref=e121]:
+                - button "Toggle Chat & RAG section" [ref=e122] [cursor=pointer]:
+                  - generic [ref=e123]: Chat & RAG
+                  - img [ref=e125]
+              - listitem [ref=e127]:
+                - button "Toggle Automation section" [ref=e128] [cursor=pointer]:
+                  - generic [ref=e129]: Automation
+                  - img [ref=e131]
+              - listitem [ref=e133]:
+                - button "Toggle Notebooks section" [ref=e134] [cursor=pointer]:
+                  - generic [ref=e135]: Notebooks
+                  - img [ref=e137]
+          - generic [ref=e139]:
+            - heading "More information" [level=5] [ref=e141]
+            - list [ref=e142]:
+              - listitem [ref=e143]:
+                - link "CLI Reference" [ref=e144] [cursor=pointer]:
+                  - /url: /cli
+                  - generic [ref=e147]: CLI Reference
+              - listitem [ref=e148]:
+                - button "Toggle Assistant Sandboxing section" [ref=e149] [cursor=pointer]:
+                  - generic [ref=e150]: Assistant Sandboxing
+                  - img [ref=e152]
+              - listitem [ref=e154]:
+                - link "Modelfile Reference" [ref=e155] [cursor=pointer]:
+                  - /url: /modelfile
+                  - generic [ref=e158]: Modelfile Reference
+              - listitem [ref=e159]:
+                - link "Context length" [ref=e160] [cursor=pointer]:
+                  - /url: /context-length
+                  - generic [ref=e163]: Context length
+              - listitem [ref=e164]:
+                - link "Linux" [ref=e165] [cursor=pointer]:
+                  - /url: /linux
+                  - generic [ref=e168]: Linux
+              - listitem [ref=e169]:
+                - link "macOS" [ref=e170] [cursor=pointer]:
+                  - /url: /macos
+                  - generic [ref=e173]: macOS
+              - listitem [ref=e174]:
+                - link "Windows" [ref=e175] [cursor=pointer]:
+                  - /url: /windows
+                  - generic [ref=e178]: Windows
+              - listitem [ref=e179]:
+                - link "Docker" [ref=e180] [cursor=pointer]:
+                  - /url: /docker
+                  - generic [ref=e183]: Docker
+              - listitem [ref=e184]:
+                - link "Importing a Model" [ref=e185] [cursor=pointer]:
+                  - /url: /import
+                  - generic [ref=e188]: Importing a Model
+              - listitem [ref=e189]:
+                - link "FAQ" [ref=e190] [cursor=pointer]:
+                  - /url: /faq
+                  - generic [ref=e193]: FAQ
+              - listitem [ref=e194]:
+                - link "Hardware support" [ref=e195] [cursor=pointer]:
+                  - /url: /gpu
+                  - generic [ref=e198]: Hardware support
+              - listitem [ref=e199]:
+                - link "Troubleshooting" [ref=e200] [cursor=pointer]:
+                  - /url: /troubleshooting
+                  - generic [ref=e203]: Troubleshooting
+      - list [ref=e204]:
+        - listitem [ref=e205]:
+          - link "Sign in" [ref=e206] [cursor=pointer]:
+            - /url: https://ollama.com/signin
+            - generic [ref=e209]: Sign in
+            - img [ref=e211]
+        - listitem [ref=e214]:
+          - link "Download" [ref=e215] [cursor=pointer]:
+            - /url: https://ollama.com/download
+            - generic [ref=e218]: Download
+            - img [ref=e220]
+        - listitem
+    - generic [ref=e223]:
+      - generic [ref=e225]:
+        - link "Documentation" [ref=e226] [cursor=pointer]:
+          - /url: /
+          - text: Documentation
+        - link "API Reference" [ref=e228] [cursor=pointer]:
+          - /url: /api/introduction
+          - text: API Reference
+      - generic [ref=e230]:
+        - banner [ref=e231]:
+          - generic [ref=e232]:
+            - generic [ref=e233]: Get started
+            - generic [ref=e234]:
+              - heading "Cloud" [level=1] [ref=e235]
+              - button "Copy page" [ref=e237] [cursor=pointer]:
+                - generic [ref=e238]:
+                  - img [ref=e239]
+                  - generic [ref=e242]: Copy page
+        - generic [ref=e243]:
+          - heading "Navigate to header Cloud Models" [level=2] [ref=e244]:
+            - link "Navigate to header" [ref=e245] [cursor=pointer]:
+              - /url: "#cloud-models"
+              - img [ref=e247]
+            - generic [ref=e249] [cursor=pointer]: Cloud Models
+          - generic [ref=e250]: Ollama’s cloud models are a new kind of model in Ollama that can run without a powerful GPU. Instead, cloud models are automatically offloaded to Ollama’s cloud service while offering the same capabilities as local models, making it possible to keep using your local tools while running larger models that wouldn’t fit on a personal computer.
+          - heading "Navigate to header Supported models" [level=3] [ref=e251]:
+            - link "Navigate to header" [ref=e252] [cursor=pointer]:
+              - /url: "#supported-models"
+              - img [ref=e254]
+            - generic [ref=e256] [cursor=pointer]: Supported models
+          - generic [ref=e257]:
+            - text: For a list of supported models, see Ollama’s
+            - link "model library" [ref=e258] [cursor=pointer]:
+              - /url: https://ollama.com/search?c=cloud
+            - text: .
+          - heading "Navigate to header Running Cloud models" [level=3] [ref=e259]:
+            - link "Navigate to header" [ref=e260] [cursor=pointer]:
+              - /url: "#running-cloud-models"
+              - img [ref=e262]
+            - generic [ref=e264] [cursor=pointer]: Running Cloud models
+          - generic [ref=e265]:
+            - text: Ollama’s cloud models require an account on
+            - link "ollama.com" [ref=e266] [cursor=pointer]:
+              - /url: https://ollama.com
+            - text: ". To sign in or create an account, run:"
+          - generic [ref=e267]:
+            - button "Copy the contents from the code block" [ref=e270] [cursor=pointer]:
+              - img [ref=e271]
+            - code [ref=e277]:
+              - generic [ref=e278]: ollama signin
+          - generic [ref=e279]:
+            - tablist [ref=e280]:
+              - tab "CLI" [selected] [ref=e281] [cursor=pointer]:
+                - generic [ref=e282]: CLI
+              - tab "Python" [ref=e283] [cursor=pointer]:
+                - generic [ref=e284]: Python
+              - tab "JavaScript" [ref=e285] [cursor=pointer]:
+                - generic [ref=e286]: JavaScript
+              - tab "cURL" [ref=e287] [cursor=pointer]:
+                - generic [ref=e288]: cURL
+            - 'tabpanel "CLI Python JavaScript cURL To run a cloud model, open the terminal and run: Copy the contents from the code block ollama run gpt-oss:120b-cloud" [ref=e290]':
+              - generic [ref=e291]: "To run a cloud model, open the terminal and run:"
+              - generic [ref=e292]:
+                - button "Copy the contents from the code block" [ref=e295] [cursor=pointer]:
+                  - img [ref=e296]
+                - code [ref=e302]:
+                  - generic [ref=e303]: ollama run gpt-oss:120b-cloud
+          - heading "Navigate to header Cloud API access" [level=2] [ref=e304]:
+            - link "Navigate to header" [ref=e305] [cursor=pointer]:
+              - /url: "#cloud-api-access"
+              - img [ref=e307]
+            - generic [ref=e309] [cursor=pointer]: Cloud API access
+          - generic [ref=e310]: Cloud models can also be accessed directly on ollama.com’s API. In this mode, ollama.com acts as a remote Ollama host.
+          - heading "Navigate to header Authentication" [level=3] [ref=e311]:
+            - link "Navigate to header" [ref=e312] [cursor=pointer]:
+              - /url: "#authentication"
+              - img [ref=e314]
+            - generic [ref=e316] [cursor=pointer]: Authentication
+          - generic [ref=e317]:
+            - text: For direct access to ollama.com’s API, first create an
+            - link "API key" [ref=e318] [cursor=pointer]:
+              - /url: https://ollama.com/settings/keys
+            - text: .
+          - generic [ref=e319]:
+            - text: Then, set the
+            - code [ref=e320]: OLLAMA_API_KEY
+            - text: environment variable to your API key.
+          - generic [ref=e321]:
+            - button "Copy the contents from the code block" [ref=e324] [cursor=pointer]:
+              - img [ref=e325]
+            - code [ref=e331]:
+              - generic [ref=e332]: export OLLAMA_API_KEY=your_api_key
+          - heading "Navigate to header Listing models" [level=3] [ref=e333]:
+            - link "Navigate to header" [ref=e334] [cursor=pointer]:
+              - /url: "#listing-models"
+              - img [ref=e336]
+            - generic [ref=e338] [cursor=pointer]: Listing models
+          - generic [ref=e339]: "For models available directly via Ollama’s API, models can be listed via:"
+          - generic [ref=e340]:
+            - button "Copy the contents from the code block" [ref=e343] [cursor=pointer]:
+              - img [ref=e344]
+            - code [ref=e350]:
+              - generic [ref=e351]: curl https://ollama.com/api/tags
+          - heading "Navigate to header Generating a response" [level=3] [ref=e352]:
+            - link "Navigate to header" [ref=e353] [cursor=pointer]:
+              - /url: "#generating-a-response"
+              - img [ref=e355]
+            - generic [ref=e357] [cursor=pointer]: Generating a response
+          - generic [ref=e358]:
+            - tablist [ref=e359]:
+              - tab "Python" [selected] [ref=e360] [cursor=pointer]:
+                - generic [ref=e361]: Python
+              - tab "JavaScript" [ref=e362] [cursor=pointer]:
+                - generic [ref=e363]: JavaScript
+              - tab "cURL" [ref=e364] [cursor=pointer]:
+                - generic [ref=e365]: cURL
+            - 'tabpanel "Python JavaScript cURL First, install Ollama’s Python library Copy the contents from the code block pip install ollama Then make a request Copy the contents from the code block import os from ollama import Client client = Client( host=\"https://ollama.com\", headers={''Authorization'': ''Bearer '' + os.environ.get(''OLLAMA_API_KEY'')} ) messages = [ { ''role'': ''user'', ''content'': ''Why is the sky blue?'', }, ] for part in client.chat(''gpt-oss:120b'', messages=messages, stream=True): print(part[''message''][''content''], end='''', flush=True)" [ref=e367]':
+              - generic [ref=e368]:
+                - text: First, install
+                - link "Ollama’s Python library" [ref=e369] [cursor=pointer]:
+                  - /url: https://github.com/ollama/ollama-python
+              - generic [ref=e370]:
+                - button "Copy the contents from the code block" [ref=e373] [cursor=pointer]:
+                  - img [ref=e374]
+                - code [ref=e380]:
+                  - generic [ref=e381]: pip install ollama
+              - generic [ref=e382]: Then make a request
+              - generic [ref=e383]:
+                - button "Copy the contents from the code block" [ref=e386] [cursor=pointer]:
+                  - img [ref=e387]
+                - code [ref=e393]:
+                  - generic [ref=e394]: import os
+                  - generic [ref=e395]: from ollama import Client
+                  - generic [ref=e396]: client = Client(
+                  - generic [ref=e397]: host="https://ollama.com",
+                  - generic [ref=e398]: "headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY')}"
+                  - generic [ref=e399]: )
+                  - generic [ref=e400]: messages = [
+                  - generic [ref=e401]: "{"
+                  - generic [ref=e402]: "'role': 'user',"
+                  - generic [ref=e403]: "'content': 'Why is the sky blue?',"
+                  - generic [ref=e404]: "},"
+                  - generic [ref=e405]: "]"
+                  - generic [ref=e406]: "for part in client.chat('gpt-oss:120b', messages=messages, stream=True):"
+                  - generic [ref=e407]: print(part['message']['content'], end='', flush=True)
+          - heading "Navigate to header Local only" [level=2] [ref=e408]:
+            - link "Navigate to header" [ref=e409] [cursor=pointer]:
+              - /url: "#local-only"
+              - img [ref=e411]
+            - generic [ref=e413] [cursor=pointer]: Local only
+          - generic [ref=e414]:
+            - text: Ollama can run in local-only mode by
+            - link "disabling Ollama’s cloud" [ref=e415] [cursor=pointer]:
+              - /url: ./faq#how-do-i-disable-ollama-cloud
+            - text: features.
+        - generic [ref=e416]:
+          - link "Previous" [ref=e417] [cursor=pointer]:
+            - /url: /quickstart
+            - img [ref=e418]
+            - generic [ref=e420]: Previous
+          - link "Streaming Next" [ref=e421] [cursor=pointer]:
+            - /url: /capabilities/streaming
+            - generic [ref=e422]:
+              - generic [ref=e424]: Streaming
+              - generic [ref=e426]:
+                - generic [ref=e427]: Next
+                - img [ref=e428]
+        - contentinfo [ref=e430]
+      - generic [ref=e433]:
+        - button "On this page" [ref=e434] [cursor=pointer]:
+          - img [ref=e435]
+          - generic [ref=e436]: On this page
+        - list [ref=e438]:
+          - listitem [ref=e439]:
+            - link "Cloud Models" [ref=e440] [cursor=pointer]:
+              - /url: "#cloud-models"
+          - listitem [ref=e441]:
+            - link "Supported models" [ref=e442] [cursor=pointer]:
+              - /url: "#supported-models"
+          - listitem [ref=e443]:
+            - link "Running Cloud models" [ref=e444] [cursor=pointer]:
+              - /url: "#running-cloud-models"
+          - listitem [ref=e445]:
+            - link "Cloud API access" [ref=e446] [cursor=pointer]:
+              - /url: "#cloud-api-access"
+          - listitem [ref=e447]:
+            - link "Authentication" [ref=e448] [cursor=pointer]:
+              - /url: "#authentication"
+          - listitem [ref=e449]:
+            - link "Listing models" [ref=e450] [cursor=pointer]:
+              - /url: "#listing-models"
+          - listitem [ref=e451]:
+            - link "Generating a response" [ref=e452] [cursor=pointer]:
+              - /url: "#generating-a-response"
+          - listitem [ref=e453]:
+            - link "Local only" [ref=e454] [cursor=pointer]:
+              - /url: "#local-only"

@@ -1,0 +1,284 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Ollama" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Ollama" [ref=e5]
+      - generic [ref=e6]:
+        - link "Models" [ref=e7] [cursor=pointer]:
+          - /url: /search
+        - link "Docs" [ref=e8] [cursor=pointer]:
+          - /url: /docs
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e13]:
+        - img [ref=e15]
+        - textbox "Search models" [ref=e17]
+      - generic [ref=e18]:
+        - link "Sign in" [ref=e19] [cursor=pointer]:
+          - /url: /signin
+        - link "Download" [ref=e20] [cursor=pointer]:
+          - /url: /download
+  - generic [ref=e21]:
+    - link "Ollama is now powered by MLX on Apple Silicon in preview March 30, 2026 Today, we're previewing the fastest way to run Ollama on Apple silicon, powered by MLX, Apple's machine learning framework." [ref=e22] [cursor=pointer]:
+      - /url: /blog/mlx
+      - heading "Ollama is now powered by MLX on Apple Silicon in preview" [level=2] [ref=e23]
+      - heading "March 30, 2026" [level=3] [ref=e24]
+      - paragraph [ref=e25]: Today, we're previewing the fastest way to run Ollama on Apple silicon, powered by MLX, Apple's machine learning framework.
+    - link "The simplest and fastest way to setup OpenClaw February 23, 2026 Setup OpenClaw in under two minutes with a single Ollama command." [ref=e26] [cursor=pointer]:
+      - /url: /blog/openclaw-tutorial
+      - heading "The simplest and fastest way to setup OpenClaw" [level=2] [ref=e27]
+      - heading "February 23, 2026" [level=3] [ref=e28]
+      - paragraph [ref=e29]: Setup OpenClaw in under two minutes with a single Ollama command.
+    - link "Subagents and web search in Claude Code February 16, 2026 Ollama now supports subagents and web search in Claude Code." [ref=e30] [cursor=pointer]:
+      - /url: /blog/web-search-subagents-claude-code
+      - heading "Subagents and web search in Claude Code" [level=2] [ref=e31]
+      - heading "February 16, 2026" [level=3] [ref=e32]
+      - paragraph [ref=e33]: Ollama now supports subagents and web search in Claude Code.
+    - link "OpenClaw February 1, 2026 OpenClaw is a personal AI assistant that connects your messaging apps to local AI coding agents, all running on your own device." [ref=e34] [cursor=pointer]:
+      - /url: /blog/openclaw
+      - heading "OpenClaw" [level=2] [ref=e35]
+      - heading "February 1, 2026" [level=3] [ref=e36]
+      - paragraph [ref=e37]: OpenClaw is a personal AI assistant that connects your messaging apps to local AI coding agents, all running on your own device.
+    - link "ollama launch January 23, 2026 ollama launch is a new command which sets up and runs coding tools like Claude Code, OpenCode, and Codex with local or cloud models. No environment variables or config files needed." [ref=e38] [cursor=pointer]:
+      - /url: /blog/launch
+      - heading "ollama launch" [level=2] [ref=e39]
+      - heading "January 23, 2026" [level=3] [ref=e40]
+      - paragraph [ref=e41]: ollama launch is a new command which sets up and runs coding tools like Claude Code, OpenCode, and Codex with local or cloud models. No environment variables or config files needed.
+    - link "Image generation (experimental) January 20, 2026 Generate images locally with Ollama on macOS. Windows and Linux support coming soon." [ref=e42] [cursor=pointer]:
+      - /url: /blog/image-generation
+      - heading "Image generation (experimental)" [level=2] [ref=e43]
+      - heading "January 20, 2026" [level=3] [ref=e44]
+      - paragraph [ref=e45]: Generate images locally with Ollama on macOS. Windows and Linux support coming soon.
+    - link "Claude Code with Anthropic API compatibility January 16, 2026 Ollama is now compatible with the Anthropic Messages API, making it possible to use tools like Claude Code with open models." [ref=e46] [cursor=pointer]:
+      - /url: /blog/claude
+      - heading "Claude Code with Anthropic API compatibility" [level=2] [ref=e47]
+      - heading "January 16, 2026" [level=3] [ref=e48]
+      - paragraph [ref=e49]: Ollama is now compatible with the Anthropic Messages API, making it possible to use tools like Claude Code with open models.
+    - link "OpenAI Codex with Ollama January 15, 2026 Open models can be used with OpenAI's Codex CLI through Ollama. Codex can read, modify, and execute code in your working directory using models such as gpt-oss:20b, gpt-oss:120b, or other open-weight alternatives." [ref=e50] [cursor=pointer]:
+      - /url: /blog/codex
+      - heading "OpenAI Codex with Ollama" [level=2] [ref=e51]
+      - heading "January 15, 2026" [level=3] [ref=e52]
+      - paragraph [ref=e53]: Open models can be used with OpenAI's Codex CLI through Ollama. Codex can read, modify, and execute code in your working directory using models such as gpt-oss:20b, gpt-oss:120b, or other open-weight alternatives.
+    - 'link "OpenAI gpt-oss-safeguard October 29, 2025 Ollama is partnering with OpenAI and ROOST (Robust Open Online Safety Tools) to bring the latest gpt-oss-safeguard reasoning models to users for safety classification tasks. gpt-oss-safeguard models are available in two sizes: 20B and 120B, and are permissively licensed under the Apache 2.0 license." [ref=e54] [cursor=pointer]':
+      - /url: /blog/gpt-oss-safeguard
+      - heading "OpenAI gpt-oss-safeguard" [level=2] [ref=e55]
+      - heading "October 29, 2025" [level=3] [ref=e56]
+      - paragraph [ref=e57]: "Ollama is partnering with OpenAI and ROOST (Robust Open Online Safety Tools) to bring the latest gpt-oss-safeguard reasoning models to users for safety classification tasks. gpt-oss-safeguard models are available in two sizes: 20B and 120B, and are permissively licensed under the Apache 2.0 license."
+    - link "MiniMax M2 October 28, 2025 MiniMax M2 is now available on Ollama's cloud. It's a model built for coding and agentic workflows." [ref=e58] [cursor=pointer]:
+      - /url: /blog/minimax-m2
+      - heading "MiniMax M2" [level=2] [ref=e59]
+      - heading "October 28, 2025" [level=3] [ref=e60]
+      - paragraph [ref=e61]: MiniMax M2 is now available on Ollama's cloud. It's a model built for coding and agentic workflows.
+    - link "NVIDIA DGX Spark performance October 23, 2025 We ran performance tests on release day firmware and an updated Ollama version to see how Ollama performs." [ref=e62] [cursor=pointer]:
+      - /url: /blog/nvidia-spark-performance
+      - heading "NVIDIA DGX Spark performance" [level=2] [ref=e63]
+      - heading "October 23, 2025" [level=3] [ref=e64]
+      - paragraph [ref=e65]: We ran performance tests on release day firmware and an updated Ollama version to see how Ollama performs.
+    - link "New coding models & integrations October 16, 2025 GLM-4.6 and Qwen3-coder-480B are available on Ollama’s cloud service with easy integrations to the tools you are familiar with. Qwen3-Coder-30B has been updated for faster, more reliable tool calling in Ollama’s new engine." [ref=e66] [cursor=pointer]:
+      - /url: /blog/coding-models
+      - heading "New coding models & integrations" [level=2] [ref=e67]
+      - heading "October 16, 2025" [level=3] [ref=e68]
+      - paragraph [ref=e69]: GLM-4.6 and Qwen3-coder-480B are available on Ollama’s cloud service with easy integrations to the tools you are familiar with. Qwen3-Coder-30B has been updated for faster, more reliable tool calling in Ollama’s new engine.
+    - link "Qwen3-VL October 14, 2025 Ollama now supports Alibaba's Qwen3-VL." [ref=e70] [cursor=pointer]:
+      - /url: /blog/qwen3-vl
+      - heading "Qwen3-VL" [level=2] [ref=e71]
+      - heading "October 14, 2025" [level=3] [ref=e72]
+      - paragraph [ref=e73]: Ollama now supports Alibaba's Qwen3-VL.
+    - link "NVIDIA DGX Spark October 13, 2025 The latest NVIDIA DGX Spark is here! Ollama has partnered with NVIDIA to ensure it runs fast and efficiently out-of-the-box." [ref=e74] [cursor=pointer]:
+      - /url: /blog/nvidia-spark
+      - heading "NVIDIA DGX Spark" [level=2] [ref=e75]
+      - heading "October 13, 2025" [level=3] [ref=e76]
+      - paragraph [ref=e77]: The latest NVIDIA DGX Spark is here! Ollama has partnered with NVIDIA to ensure it runs fast and efficiently out-of-the-box.
+    - link "Web search September 24, 2025 A new web search API is now available in Ollama. Ollama provides a generous free tier of web searches for individuals to use, and higher rate limits are available via Ollama’s cloud." [ref=e78] [cursor=pointer]:
+      - /url: /blog/web-search
+      - heading "Web search" [level=2] [ref=e79]
+      - heading "September 24, 2025" [level=3] [ref=e80]
+      - paragraph [ref=e81]: A new web search API is now available in Ollama. Ollama provides a generous free tier of web searches for individuals to use, and higher rate limits are available via Ollama’s cloud.
+    - link "New model scheduling September 23, 2025 Ollama now includes a significantly improved model scheduling system, reducing crashes due to out of memory issues, maximizing GPU utilization and performance, especially on multi-GPU systems." [ref=e82] [cursor=pointer]:
+      - /url: /blog/new-model-scheduling
+      - heading "New model scheduling" [level=2] [ref=e83]
+      - heading "September 23, 2025" [level=3] [ref=e84]
+      - paragraph [ref=e85]: Ollama now includes a significantly improved model scheduling system, reducing crashes due to out of memory issues, maximizing GPU utilization and performance, especially on multi-GPU systems.
+    - link "Cloud models September 19, 2025 Cloud models are now in preview, letting you run larger models with fast, datacenter-grade hardware. You can keep using your local tools while running larger models that wouldn’t fit on a personal computer." [ref=e86] [cursor=pointer]:
+      - /url: /blog/cloud-models
+      - heading "Cloud models" [level=2] [ref=e87]
+      - heading "September 19, 2025" [level=3] [ref=e88]
+      - paragraph [ref=e89]: Cloud models are now in preview, letting you run larger models with fast, datacenter-grade hardware. You can keep using your local tools while running larger models that wouldn’t fit on a personal computer.
+    - link "OpenAI gpt-oss August 5, 2025 Ollama partners with OpenAI to bring gpt-oss to Ollama and its community." [ref=e90] [cursor=pointer]:
+      - /url: /blog/gpt-oss
+      - heading "OpenAI gpt-oss" [level=2] [ref=e91]
+      - heading "August 5, 2025" [level=3] [ref=e92]
+      - paragraph [ref=e93]: Ollama partners with OpenAI to bring gpt-oss to Ollama and its community.
+    - link "Ollama's new app July 30, 2025 Ollama's new app is now available for macOS and Windows." [ref=e94] [cursor=pointer]:
+      - /url: /blog/new-app
+      - heading "Ollama's new app" [level=2] [ref=e95]
+      - heading "July 30, 2025" [level=3] [ref=e96]
+      - paragraph [ref=e97]: Ollama's new app is now available for macOS and Windows.
+    - 'link "Secure Minions: private collaboration between Ollama and frontier models June 3, 2025 Secure Minions is a secure protocol built by Stanford''s Hazy Research lab to allow encrypted local-remote communication." [ref=e98] [cursor=pointer]':
+      - /url: /blog/secureminions
+      - 'heading "Secure Minions: private collaboration between Ollama and frontier models" [level=2] [ref=e99]'
+      - heading "June 3, 2025" [level=3] [ref=e100]
+      - paragraph [ref=e101]: Secure Minions is a secure protocol built by Stanford's Hazy Research lab to allow encrypted local-remote communication.
+    - link "Thinking May 30, 2025 Ollama now has the ability to enable or disable thinking. This gives users the flexibility to choose the model’s thinking behavior for different applications and use cases." [ref=e102] [cursor=pointer]:
+      - /url: /blog/thinking
+      - heading "Thinking" [level=2] [ref=e103]
+      - heading "May 30, 2025" [level=3] [ref=e104]
+      - paragraph [ref=e105]: Ollama now has the ability to enable or disable thinking. This gives users the flexibility to choose the model’s thinking behavior for different applications and use cases.
+    - link "Streaming responses with tool calling May 28, 2025 Ollama now supports streaming responses with tool calling. This enables all chat applications to stream content and also call tools in real time." [ref=e106] [cursor=pointer]:
+      - /url: /blog/streaming-tool
+      - heading "Streaming responses with tool calling" [level=2] [ref=e107]
+      - heading "May 28, 2025" [level=3] [ref=e108]
+      - paragraph [ref=e109]: Ollama now supports streaming responses with tool calling. This enables all chat applications to stream content and also call tools in real time.
+    - link "Ollama's new engine for multimodal models May 15, 2025 Ollama now supports new multimodal models with its new engine." [ref=e110] [cursor=pointer]:
+      - /url: /blog/multimodal-models
+      - heading "Ollama's new engine for multimodal models" [level=2] [ref=e111]
+      - heading "May 15, 2025" [level=3] [ref=e112]
+      - paragraph [ref=e113]: Ollama now supports new multimodal models with its new engine.
+    - 'link "Minions: where local and cloud LLMs meet February 25, 2025 Avanika Narayan, Dan Biderman, and Sabri Eyuboglu from Christopher Ré''s Stanford Hazy Research lab, along with Avner May, Scott Linderman, James Zou, have developed a way to shift a substantial portion of LLM workloads to consumer devices by having small on-device models (such as Llama 3.2 with Ollama) collaborate with larger models in the cloud (such as GPT-4o)." [ref=e114] [cursor=pointer]':
+      - /url: /blog/minions
+      - 'heading "Minions: where local and cloud LLMs meet" [level=2] [ref=e115]'
+      - heading "February 25, 2025" [level=3] [ref=e116]
+      - paragraph [ref=e117]: Avanika Narayan, Dan Biderman, and Sabri Eyuboglu from Christopher Ré's Stanford Hazy Research lab, along with Avner May, Scott Linderman, James Zou, have developed a way to shift a substantial portion of LLM workloads to consumer devices by having small on-device models (such as Llama 3.2 with Ollama) collaborate with larger models in the cloud (such as GPT-4o).
+    - link "Structured outputs December 6, 2024 Ollama now supports structured outputs making it possible to constrain a model's output to a specific format defined by a JSON schema. The Ollama Python and JavaScript libraries have been updated to support structured outputs." [ref=e118] [cursor=pointer]:
+      - /url: /blog/structured-outputs
+      - heading "Structured outputs" [level=2] [ref=e119]
+      - heading "December 6, 2024" [level=3] [ref=e120]
+      - paragraph [ref=e121]: Ollama now supports structured outputs making it possible to constrain a model's output to a specific format defined by a JSON schema. The Ollama Python and JavaScript libraries have been updated to support structured outputs.
+    - link "Ollama Python library 0.4 with function calling improvements November 25, 2024 With Ollama Python library version 0.4, functions can now be provided as tools. The library now also has full typing support and new examples have been added." [ref=e122] [cursor=pointer]:
+      - /url: /blog/functions-as-tools
+      - heading "Ollama Python library 0.4 with function calling improvements" [level=2] [ref=e123]
+      - heading "November 25, 2024" [level=3] [ref=e124]
+      - paragraph [ref=e125]: With Ollama Python library version 0.4, functions can now be provided as tools. The library now also has full typing support and new examples have been added.
+    - link "Llama 3.2 Vision November 6, 2024 Llama 3.2 Vision 11B and 90B models are now available in Ollama." [ref=e126] [cursor=pointer]:
+      - /url: /blog/llama3.2-vision
+      - heading "Llama 3.2 Vision" [level=2] [ref=e127]
+      - heading "November 6, 2024" [level=3] [ref=e128]
+      - paragraph [ref=e129]: Llama 3.2 Vision 11B and 90B models are now available in Ollama.
+    - link "IBM Granite 3.0 models October 21, 2024 Ollama partners with IBM to bring Granite 3.0 models to Ollama." [ref=e130] [cursor=pointer]:
+      - /url: /blog/ibm-granite
+      - heading "IBM Granite 3.0 models" [level=2] [ref=e131]
+      - heading "October 21, 2024" [level=3] [ref=e132]
+      - paragraph [ref=e133]: Ollama partners with IBM to bring Granite 3.0 models to Ollama.
+    - link "Llama 3.2 goes small and multimodal September 25, 2024 Ollama partners with Meta to bring Llama 3.2 to Ollama." [ref=e134] [cursor=pointer]:
+      - /url: /blog/llama3.2
+      - heading "Llama 3.2 goes small and multimodal" [level=2] [ref=e135]
+      - heading "September 25, 2024" [level=3] [ref=e136]
+      - paragraph [ref=e137]: Ollama partners with Meta to bring Llama 3.2 to Ollama.
+    - link "Reduce hallucinations with Bespoke-Minicheck September 18, 2024 Bespoke-Minicheck is a new grounded factuality checking model developed by Bespoke Labs that is now available in Ollama. It can fact-check responses generated by other models to detect and reduce hallucinations." [ref=e138] [cursor=pointer]:
+      - /url: /blog/reduce-hallucinations-with-bespoke-minicheck
+      - heading "Reduce hallucinations with Bespoke-Minicheck" [level=2] [ref=e139]
+      - heading "September 18, 2024" [level=3] [ref=e140]
+      - paragraph [ref=e141]: Bespoke-Minicheck is a new grounded factuality checking model developed by Bespoke Labs that is now available in Ollama. It can fact-check responses generated by other models to detect and reduce hallucinations.
+    - link "Tool support July 25, 2024 Ollama now supports tool calling with popular models such as Llama 3.1. This enables a model to answer a given prompt using tool(s) it knows about, making it possible for models to perform more complex tasks or interact with the outside world." [ref=e142] [cursor=pointer]:
+      - /url: /blog/tool-support
+      - heading "Tool support" [level=2] [ref=e143]
+      - heading "July 25, 2024" [level=3] [ref=e144]
+      - paragraph [ref=e145]: Ollama now supports tool calling with popular models such as Llama 3.1. This enables a model to answer a given prompt using tool(s) it knows about, making it possible for models to perform more complex tasks or interact with the outside world.
+    - link "Google Gemma 2 June 27, 2024 Gemma 2 is now available on Ollama in 3 sizes - 2B, 9B and 27B." [ref=e146] [cursor=pointer]:
+      - /url: /blog/gemma2
+      - heading "Google Gemma 2" [level=2] [ref=e147]
+      - heading "June 27, 2024" [level=3] [ref=e148]
+      - paragraph [ref=e149]: Gemma 2 is now available on Ollama in 3 sizes - 2B, 9B and 27B.
+    - link "An entirely open-source AI code assistant inside your editor May 31, 2024 Continue enables you to easily create your own coding assistant directly inside Visual Studio Code and JetBrains with open-source LLMs." [ref=e150] [cursor=pointer]:
+      - /url: /blog/continue-code-assistant
+      - heading "An entirely open-source AI code assistant inside your editor" [level=2] [ref=e151]
+      - heading "May 31, 2024" [level=3] [ref=e152]
+      - paragraph [ref=e153]: Continue enables you to easily create your own coding assistant directly inside Visual Studio Code and JetBrains with open-source LLMs.
+    - link "Google announces Firebase Genkit with Ollama support May 20, 2024 At Google IO 2024, Google announced Ollama support in Firebase Genkit, a new open-source framework for developers to build, deploy and monitor production-ready AI-powered apps." [ref=e154] [cursor=pointer]:
+      - /url: /blog/firebase-genkit
+      - heading "Google announces Firebase Genkit with Ollama support" [level=2] [ref=e155]
+      - heading "May 20, 2024" [level=3] [ref=e156]
+      - paragraph [ref=e157]: At Google IO 2024, Google announced Ollama support in Firebase Genkit, a new open-source framework for developers to build, deploy and monitor production-ready AI-powered apps.
+    - link "Llama 3 is not very censored April 19, 2024 Compared to Llama 2, Llama 3 feels much less censored. Meta has substantially lowered false refusal rates. Llama 3 will refuse less than 1/3 of the prompts previously refused by Llama 2." [ref=e158] [cursor=pointer]:
+      - /url: /blog/llama-3-is-not-very-censored
+      - heading "Llama 3 is not very censored" [level=2] [ref=e159]
+      - heading "April 19, 2024" [level=3] [ref=e160]
+      - paragraph [ref=e161]: Compared to Llama 2, Llama 3 feels much less censored. Meta has substantially lowered false refusal rates. Llama 3 will refuse less than 1/3 of the prompts previously refused by Llama 2.
+    - link "Llama 3 April 18, 2024 Llama 3 is now available to run on Ollama. This model is the next generation of Meta's state-of-the-art large language model, and is the most capable openly available LLM to date." [ref=e162] [cursor=pointer]:
+      - /url: /blog/llama3
+      - heading "Llama 3" [level=2] [ref=e163]
+      - heading "April 18, 2024" [level=3] [ref=e164]
+      - paragraph [ref=e165]: Llama 3 is now available to run on Ollama. This model is the next generation of Meta's state-of-the-art large language model, and is the most capable openly available LLM to date.
+    - link "Embedding models April 8, 2024 Embedding models are available in Ollama, making it easy to generate vector embeddings for use in search and retrieval augmented generation (RAG) applications." [ref=e166] [cursor=pointer]:
+      - /url: /blog/embedding-models
+      - heading "Embedding models" [level=2] [ref=e167]
+      - heading "April 8, 2024" [level=3] [ref=e168]
+      - paragraph [ref=e169]: Embedding models are available in Ollama, making it easy to generate vector embeddings for use in search and retrieval augmented generation (RAG) applications.
+    - link "Ollama now supports AMD graphics cards March 14, 2024 Ollama now supports AMD graphics cards in preview on Windows and Linux. All the features of Ollama can now be accelerated by AMD graphics cards on Ollama for Linux and Windows." [ref=e170] [cursor=pointer]:
+      - /url: /blog/amd-preview
+      - heading "Ollama now supports AMD graphics cards" [level=2] [ref=e171]
+      - heading "March 14, 2024" [level=3] [ref=e172]
+      - paragraph [ref=e173]: Ollama now supports AMD graphics cards in preview on Windows and Linux. All the features of Ollama can now be accelerated by AMD graphics cards on Ollama for Linux and Windows.
+    - link "Windows preview February 15, 2024 Ollama is now available on Windows in preview, making it possible to pull, run and create large language models in a new native Windows experience. Ollama on Windows includes built-in GPU acceleration, access to the full model library, and serves the Ollama API including OpenAI compatibility." [ref=e174] [cursor=pointer]:
+      - /url: /blog/windows-preview
+      - heading "Windows preview" [level=2] [ref=e175]
+      - heading "February 15, 2024" [level=3] [ref=e176]
+      - paragraph [ref=e177]: Ollama is now available on Windows in preview, making it possible to pull, run and create large language models in a new native Windows experience. Ollama on Windows includes built-in GPU acceleration, access to the full model library, and serves the Ollama API including OpenAI compatibility.
+    - link "OpenAI compatibility February 8, 2024 Ollama now has initial compatibility with the OpenAI Chat Completions API, making it possible to use existing tooling built for OpenAI with local models via Ollama." [ref=e178] [cursor=pointer]:
+      - /url: /blog/openai-compatibility
+      - heading "OpenAI compatibility" [level=2] [ref=e179]
+      - heading "February 8, 2024" [level=3] [ref=e180]
+      - paragraph [ref=e181]: Ollama now has initial compatibility with the OpenAI Chat Completions API, making it possible to use existing tooling built for OpenAI with local models via Ollama.
+    - 'link "Vision models February 2, 2024 New vision models are now available: LLaVA 1.6, in 7B, 13B and 34B parameter sizes. These models support higher resolution images, improved text recognition and logical reasoning." [ref=e182] [cursor=pointer]':
+      - /url: /blog/vision-models
+      - heading "Vision models" [level=2] [ref=e183]
+      - heading "February 2, 2024" [level=3] [ref=e184]
+      - paragraph [ref=e185]: "New vision models are now available: LLaVA 1.6, in 7B, 13B and 34B parameter sizes. These models support higher resolution images, improved text recognition and logical reasoning."
+    - link "Python & JavaScript Libraries January 23, 2024 The initial versions of the Ollama Python and JavaScript libraries are now available, making it easy to integrate your Python or JavaScript, or Typescript app with Ollama in a few lines of code. Both libraries include all the features of the Ollama REST API, are familiar in design, and compatible with new and previous versions of Ollama." [ref=e186] [cursor=pointer]:
+      - /url: /blog/python-javascript-libraries
+      - heading "Python & JavaScript Libraries" [level=2] [ref=e187]
+      - heading "January 23, 2024" [level=3] [ref=e188]
+      - paragraph [ref=e189]: The initial versions of the Ollama Python and JavaScript libraries are now available, making it easy to integrate your Python or JavaScript, or Typescript app with Ollama in a few lines of code. Both libraries include all the features of the Ollama REST API, are familiar in design, and compatible with new and previous versions of Ollama.
+    - link "Building LLM-Powered Web Apps with Client-Side Technology October 13, 2023 Recreate one of the most popular LangChain use-cases with open source, locally running software - a chain that performs Retrieval-Augmented Generation, or RAG for short, and allows you to “chat with your documents”" [ref=e190] [cursor=pointer]:
+      - /url: /blog/building-llm-powered-web-apps
+      - heading "Building LLM-Powered Web Apps with Client-Side Technology" [level=2] [ref=e191]
+      - heading "October 13, 2023" [level=3] [ref=e192]
+      - paragraph [ref=e193]: Recreate one of the most popular LangChain use-cases with open source, locally running software - a chain that performs Retrieval-Augmented Generation, or RAG for short, and allows you to “chat with your documents”
+    - link "Ollama is now available as an official Docker image October 5, 2023 Ollama can now run with Docker Desktop on the Mac, and run inside Docker containers with GPU acceleration on Linux." [ref=e194] [cursor=pointer]:
+      - /url: /blog/ollama-is-now-available-as-an-official-docker-image
+      - heading "Ollama is now available as an official Docker image" [level=2] [ref=e195]
+      - heading "October 5, 2023" [level=3] [ref=e196]
+      - paragraph [ref=e197]: Ollama can now run with Docker Desktop on the Mac, and run inside Docker containers with GPU acceleration on Linux.
+    - link "Leveraging LLMs in your Obsidian Notes September 21, 2023 This post walks through how you could incorporate a local LLM using Ollama in Obsidian, or potentially any note taking tool." [ref=e198] [cursor=pointer]:
+      - /url: /blog/llms-in-obsidian
+      - heading "Leveraging LLMs in your Obsidian Notes" [level=2] [ref=e199]
+      - heading "September 21, 2023" [level=3] [ref=e200]
+      - paragraph [ref=e201]: This post walks through how you could incorporate a local LLM using Ollama in Obsidian, or potentially any note taking tool.
+    - link "How to prompt Code Llama September 9, 2023 This guide walks through the different ways to structure prompts for Code Llama and its different variations and features including instructions, code completion and fill-in-the-middle (FIM)." [ref=e202] [cursor=pointer]:
+      - /url: /blog/how-to-prompt-code-llama
+      - heading "How to prompt Code Llama" [level=2] [ref=e203]
+      - heading "September 9, 2023" [level=3] [ref=e204]
+      - paragraph [ref=e205]: This guide walks through the different ways to structure prompts for Code Llama and its different variations and features including instructions, code completion and fill-in-the-middle (FIM).
+    - link "Run Code Llama locally August 24, 2023 Meta's Code Llama is now available on Ollama to try." [ref=e206] [cursor=pointer]:
+      - /url: /blog/run-code-llama-locally
+      - heading "Run Code Llama locally" [level=2] [ref=e207]
+      - heading "August 24, 2023" [level=3] [ref=e208]
+      - paragraph [ref=e209]: Meta's Code Llama is now available on Ollama to try.
+    - link "Run Llama 2 uncensored locally August 1, 2023 This post will give some example comparisons running Llama 2 uncensored model versus its censored model." [ref=e210] [cursor=pointer]:
+      - /url: /blog/run-llama2-uncensored-locally
+      - heading "Run Llama 2 uncensored locally" [level=2] [ref=e211]
+      - heading "August 1, 2023" [level=3] [ref=e212]
+      - paragraph [ref=e213]: This post will give some example comparisons running Llama 2 uncensored model versus its censored model.
+  - contentinfo [ref=e214]:
+    - generic [ref=e216]:
+      - generic [ref=e217]: © 2026 Ollama
+      - generic [ref=e218]:
+        - link "Download" [ref=e219] [cursor=pointer]:
+          - /url: /download
+        - link "Blog" [ref=e220] [cursor=pointer]:
+          - /url: /blog
+        - link "Docs" [ref=e221] [cursor=pointer]:
+          - /url: https://docs.ollama.com
+        - link "GitHub" [ref=e222] [cursor=pointer]:
+          - /url: https://github.com/ollama/ollama
+        - link "Discord" [ref=e223] [cursor=pointer]:
+          - /url: https://discord.com/invite/ollama
+        - link "X (Twitter)" [ref=e224] [cursor=pointer]:
+          - /url: https://twitter.com/ollama
+        - link "Contact" [ref=e225] [cursor=pointer]:
+          - /url: mailto:hello@ollama.com
+        - link "Privacy" [ref=e226] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=e227] [cursor=pointer]:
+          - /url: /terms

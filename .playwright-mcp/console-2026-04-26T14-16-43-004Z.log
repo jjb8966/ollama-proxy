@@ -1,0 +1,2 @@
+[     296ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://openrouter.ai/api/internal/v1/provider-preferences:0
+[     297ms] [ERROR] Failed to load resource: the server responded with a status of 401 () @ https://openrouter.ai/api/internal/v1/provider-preferences?includeGuardrails=true:0

@@ -1,0 +1,394 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e5]:
+        - generic [ref=e7]:
+          - img [ref=e8]
+          - generic [ref=e11]: Platform
+        - generic [ref=e12]:
+          - link "Documentation" [ref=e13] [cursor=pointer]:
+            - /url: /docs/overview
+          - link "Pricing" [ref=e14] [cursor=pointer]:
+            - /url: /docs/pricing/chat
+          - link "Contact Sales" [ref=e15] [cursor=pointer]:
+            - /url: /contact-sales
+          - link "Developer Console" [ref=e16] [cursor=pointer]:
+            - /url: /playground
+          - link "User Center" [ref=e17] [cursor=pointer]:
+            - /url: /console/account
+        - button "Login" [ref=e19] [cursor=pointer]
+        - text: 
+    - paragraph [ref=e22]:
+      - text: 🎉 Kimi K2.6 has been released with improved long-context coding stability.
+      - link "Top-up bonus event in progress 🔗" [ref=e23] [cursor=pointer]:
+        - /url: /docs/pricing/promotion
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - generic [ref=e27]: Kimi LLM Open Platform
+        - heading "Build with Kimi API Transform energy into intelligence" [level=1] [ref=e28]:
+          - paragraph [ref=e29]:
+            - generic [ref=e30]: Build with Kimi API
+            - generic [ref=e31]: Transform energy into intelligence
+        - link "Get Started" [ref=e32] [cursor=pointer]:
+          - /url: /console
+          - button "Get Started" [ref=e33]:
+            - text: Get Started
+            - img
+      - generic "Kimi Open Platform AI Playground preview background video" [ref=e36]
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: Trusted by millions of professional developers
+        - region "Technology partners" [ref=e41]:
+          - generic [ref=e42]:
+            - list [ref=e43]:
+              - listitem [ref=e44]:
+                - generic [ref=e45]:
+                  - img "Vercel"
+              - listitem [ref=e46]:
+                - generic [ref=e47]:
+                  - img "Trickle"
+              - listitem [ref=e48]:
+                - generic [ref=e49]:
+                  - img "TRAE"
+              - listitem [ref=e50]:
+                - generic [ref=e51]:
+                  - img "Kilo Code"
+              - listitem [ref=e52]:
+                - generic [ref=e53]:
+                  - img "OpenRouter"
+              - listitem [ref=e54]:
+                - generic [ref=e55]:
+                  - img "Windsurf"
+              - listitem [ref=e56]:
+                - generic [ref=e57]:
+                  - img "Youware"
+              - listitem [ref=e58]:
+                - generic [ref=e59]:
+                  - img "Flowith"
+              - listitem [ref=e60]:
+                - generic [ref=e61]:
+                  - img "GenSpark"
+              - listitem [ref=e62]:
+                - generic [ref=e63]:
+                  - img "Xiaohongshu"
+              - listitem [ref=e64]:
+                - generic [ref=e65]:
+                  - img "Cursor"
+              - listitem [ref=e66]:
+                - generic [ref=e67]:
+                  - img "Huawei"
+              - listitem [ref=e68]:
+                - generic [ref=e69]:
+                  - img "Coze"
+              - listitem [ref=e70]:
+                - generic [ref=e71]:
+                  - img "CodeBuddy"
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - generic [ref=e74]:
+                  - img
+              - listitem [ref=e75]:
+                - generic [ref=e76]:
+                  - img
+              - listitem [ref=e77]:
+                - generic [ref=e78]:
+                  - img
+              - listitem [ref=e79]:
+                - generic [ref=e80]:
+                  - img
+              - listitem [ref=e81]:
+                - generic [ref=e82]:
+                  - img
+              - listitem [ref=e83]:
+                - generic [ref=e84]:
+                  - img
+              - listitem [ref=e85]:
+                - generic [ref=e86]:
+                  - img
+              - listitem [ref=e87]:
+                - generic [ref=e88]:
+                  - img
+              - listitem [ref=e89]:
+                - generic [ref=e90]:
+                  - img
+              - listitem [ref=e91]:
+                - generic [ref=e92]:
+                  - img
+              - listitem [ref=e93]:
+                - generic [ref=e94]:
+                  - img
+              - listitem [ref=e95]:
+                - generic [ref=e96]:
+                  - img
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - img
+              - listitem [ref=e99]:
+                - generic [ref=e100]:
+                  - img
+            - list [ref=e101]:
+              - listitem [ref=e102]:
+                - generic [ref=e103]:
+                  - img
+              - listitem [ref=e104]:
+                - generic [ref=e105]:
+                  - img
+              - listitem [ref=e106]:
+                - generic [ref=e107]:
+                  - img
+              - listitem [ref=e108]:
+                - generic [ref=e109]:
+                  - img
+              - listitem [ref=e110]:
+                - generic [ref=e111]:
+                  - img
+              - listitem [ref=e112]:
+                - generic [ref=e113]:
+                  - img
+              - listitem [ref=e114]:
+                - generic [ref=e115]:
+                  - img
+              - listitem [ref=e116]:
+                - generic [ref=e117]:
+                  - img
+              - listitem [ref=e118]:
+                - generic [ref=e119]:
+                  - img
+              - listitem [ref=e120]:
+                - generic [ref=e121]:
+                  - img
+              - listitem [ref=e122]:
+                - generic [ref=e123]:
+                  - img
+              - listitem [ref=e124]:
+                - generic [ref=e125]:
+                  - img
+              - listitem [ref=e126]:
+                - generic [ref=e127]:
+                  - img
+              - listitem [ref=e128]:
+                - generic [ref=e129]:
+                  - img
+    - generic [ref=e131]:
+      - generic [ref=e132]:
+        - heading "Latest Models" [level=2] [ref=e133]
+        - paragraph [ref=e134]: Built for tasks of any scale—delivering fast, reliable performance with high quality results.
+      - generic [ref=e135]:
+        - link "K2.6 kimi-k2.6 is Kimi's latest and most intelligent model, possessing stronger and more stable long-term code writing capabilities and significantly enhances the Agent's autonomous execution capabilities Cache Hit $0.16 / MTok Input $0.95 / MTok Output $4.00 / MTok" [ref=e137] [cursor=pointer]:
+          - /url: /docs/guide/kimi-k2-6-quickstart
+          - heading "K2.6" [level=3] [ref=e140]
+          - paragraph [ref=e142]: kimi-k2.6 is Kimi's latest and most intelligent model, possessing stronger and more stable long-term code writing capabilities and significantly enhances the Agent's autonomous execution capabilities
+          - generic [ref=e144]:
+            - generic [ref=e145]:
+              - generic [ref=e146]: Cache Hit
+              - generic [ref=e147]: $0.16 / MTok
+            - generic [ref=e148]:
+              - generic [ref=e149]: Input
+              - generic [ref=e150]: $0.95 / MTok
+            - generic [ref=e151]:
+              - generic [ref=e152]: Output
+              - generic [ref=e153]: $4.00 / MTok
+        - link "K2.5 kimi-k2.5 supports visual and text input, thinking and non-thinking modes, and dialogue and agent tasks Cache Hit $0.10 / MTok Input $0.60 / MTok Output $3.00 / MTok" [ref=e155] [cursor=pointer]:
+          - /url: /docs/pricing/chat-k25
+          - heading "K2.5" [level=3] [ref=e158]
+          - paragraph [ref=e160]: kimi-k2.5 supports visual and text input, thinking and non-thinking modes, and dialogue and agent tasks
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]: Cache Hit
+              - generic [ref=e165]: $0.10 / MTok
+            - generic [ref=e166]:
+              - generic [ref=e167]: Input
+              - generic [ref=e168]: $0.60 / MTok
+            - generic [ref=e169]:
+              - generic [ref=e170]: Output
+              - generic [ref=e171]: $3.00 / MTok
+        - link "K2 0905 kimi-k2 is a MoE architecture base model with exceptional code and Agent capabilities, with 1T total parameters and 32B active parameters Cache Hit $0.15 / MTok Input $0.60 / MTok Output $2.50 / MTok" [ref=e173] [cursor=pointer]:
+          - /url: /docs/guide/kimi-k2-quickstart
+          - heading "K2 0905" [level=3] [ref=e176]
+          - paragraph [ref=e178]: kimi-k2 is a MoE architecture base model with exceptional code and Agent capabilities, with 1T total parameters and 32B active parameters
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - generic [ref=e182]: Cache Hit
+              - generic [ref=e183]: $0.15 / MTok
+            - generic [ref=e184]:
+              - generic [ref=e185]: Input
+              - generic [ref=e186]: $0.60 / MTok
+            - generic [ref=e187]:
+              - generic [ref=e188]: Output
+              - generic [ref=e189]: $2.50 / MTok
+    - generic [ref=e191]:
+      - generic [ref=e192]:
+        - generic [ref=e193]:
+          - heading "Official Tools, Plug and Play" [level=2] [ref=e194]
+          - paragraph [ref=e195]: Reliable, production ready tools—integrate once and start building.
+        - link "View Documentation" [ref=e196] [cursor=pointer]:
+          - /url: /docs/overview
+      - generic [ref=e198]:
+        - img [ref=e200]
+        - generic [ref=e202]:
+          - heading "Web Search" [level=3] [ref=e203]
+          - paragraph [ref=e204]: Web search tool enables large models to access the latest information, cite authoritative sources, making results verifiable and cutting-edge
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - img [ref=e208]
+          - generic [ref=e210]:
+            - heading "Rethink" [level=3] [ref=e211]
+            - paragraph [ref=e212]: Intelligent idea organization tool
+        - generic [ref=e213]:
+          - img [ref=e215]
+          - generic [ref=e217]:
+            - heading "Random-Choice" [level=3] [ref=e218]
+            - paragraph [ref=e219]: Random selection tool
+        - generic [ref=e220]:
+          - img [ref=e222]
+          - generic [ref=e225]:
+            - heading "Memory" [level=3] [ref=e226]
+            - paragraph [ref=e227]: Memory storage and retrieval system tool, supporting persistence of conversation history, user preferences, and other data
+        - generic [ref=e228]:
+          - img [ref=e230]
+          - generic [ref=e232]:
+            - heading "Excel" [level=3] [ref=e233]
+            - paragraph [ref=e234]: Analysis tool for Excel and CSV files
+        - generic [ref=e235]:
+          - img [ref=e237]
+          - generic [ref=e240]:
+            - heading "Code-Runner" [level=3] [ref=e241]
+            - paragraph [ref=e242]: Python code execution tool
+        - generic [ref=e243]:
+          - img [ref=e245]
+          - generic [ref=e247]:
+            - heading "Quick Js" [level=3] [ref=e248]
+            - paragraph [ref=e249]: Tool for safely executing JavaScript code using the QuickJS engine
+        - generic [ref=e250]:
+          - img [ref=e252]
+          - generic [ref=e254]:
+            - heading "Date" [level=3] [ref=e255]
+            - paragraph [ref=e256]: Date and time processing tool
+        - generic [ref=e257]:
+          - img [ref=e259]
+          - generic [ref=e261]:
+            - heading "Fetch" [level=3] [ref=e262]
+            - paragraph [ref=e263]: URL content extraction and markdown formatting tool
+        - generic [ref=e264]:
+          - img [ref=e266]
+          - generic [ref=e268]:
+            - heading "Convert" [level=3] [ref=e269]
+            - paragraph [ref=e270]: Unit conversion tool, supporting physics units and currency conversion
+        - generic [ref=e271]:
+          - img [ref=e273]
+          - generic [ref=e275]:
+            - heading "Base 64" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Encoding and decoding tool
+    - generic [ref=e279]:
+      - generic [ref=e281]:
+        - heading "Fast Execution for Complex Workflows" [level=2] [ref=e282]
+        - paragraph [ref=e283]: A complete tool ecosystem that integrates general intelligence with vertical models—built for real world complexity.
+      - generic [ref=e284]:
+        - generic [ref=e288]:
+          - heading "Agent Programming" [level=3] [ref=e289]
+          - paragraph [ref=e290]: Built for complex software automation. Based on Kimi K2’s instruction following and logical reasoning capabilities, Kimi enables autonomous programming agents to handle debugging, refactoring, and multi-step development workflows with high precision.
+        - generic [ref=e294]:
+          - heading "Deep Research and Reasoning" [level=3] [ref=e295]
+          - paragraph [ref=e296]: Designed for long horizon, complex reasoning tasks. Leveraging the K2 Thinking model’s reasoning capability and up to 300-step tool calling, Kimi acts as an expert-level research assistant supporting strategic research, pricing and competitive analysis, stock and crypto investing analysis.
+        - generic [ref=e300]:
+          - heading "Legal Intelligence" [level=3] [ref=e301]
+          - paragraph [ref=e302]: Streamline high-stakes document workflows. Kimi is optimized for rigorous attention to detail, making it ideal for legal and IP scenarios. From automated contract review to complex patent analysis and drafting, the model ensures strict adherence to terminology and logical structures.
+        - generic [ref=e306]:
+          - heading "Conversation Intelligence" [level=3] [ref=e307]
+          - paragraph [ref=e308]: Extracting deep value from unstructured conversation data. Kimi excels in high fidelity conversation analysis, supporting use cases from psychological counseling quality assessment and public opinion monitoring to customer intent detection and key information extraction, including subtle linguistic signals.
+    - generic [ref=e310]:
+      - generic [ref=e312]:
+        - heading "Powering Innovation Through Partnership" [level=2] [ref=e313]
+        - paragraph [ref=e314]: Breaking resource boundaries to unlock exponential growth in core value—aligning to succeed together.
+      - generic [ref=e315]:
+        - generic [ref=e318]:
+          - paragraph [ref=e319]: Kimi offers SOTA-level performance at a fraction of the cost. It's tremendously good at long-context tasks across the codebase, as well as the day-to-day work needed to support an always-on agent like KiloClaw.
+          - generic [ref=e320]: "#AgenticCoding"
+        - generic [ref=e323]:
+          - paragraph [ref=e324]: Genspark runs its agent platform on Kimi K2 (0905), turning crisp instructions into autonomous agents that solve real world problems.
+          - generic [ref=e325]: "#AIAgents"
+        - generic [ref=e328]:
+          - paragraph [ref=e329]: Tencent CodeBuddy integrates Kimi K2 Thinking as its underlying model, providing core capabilities to help developers solve complex programming tasks and improve R&D efficiency.
+          - generic [ref=e330]: "#AgenticCoding"
+        - generic [ref=e333]:
+          - paragraph [ref=e334]: XtalPi integrates with the Kimi K2.5 model, instantly reading chemical formulas and charts, quickly extracting key points from cutting-edge literature, streamlining the R&D process, and accelerating drug/material decision-making.
+          - generic [ref=e335]: "#AIforScience"
+        - generic [ref=e338]:
+          - paragraph [ref=e339]: AlphaEngine integrates with Kimi K2 Thinking to create a FinGPT Agent. It supports over 300 tool calls, deeply analyzes massive amounts of research reports and financial data, and automates macroeconomic analysis, supply chain breakdown, and in-depth report writing.
+          - generic [ref=e340]: "#FinancialResearch"
+        - generic [ref=e343]:
+          - paragraph [ref=e344]: DP Technology, an AI-for-Science unicorn, highlights Kimi K2.5's dominance in chemical literature understanding—ranking Top 2 on both RxnBench benchmarks alongside closed-source leaders like Gemini-3 and GPT-5.2, leaving open-source competitors decisively behind.
+          - generic [ref=e345]: "#AIforScience"
+    - generic [ref=e347]:
+      - generic [ref=e348]:
+        - heading "Quick Start" [level=2] [ref=e349]
+        - paragraph [ref=e350]: Launch your first AI workflow in just a few steps.
+      - generic [ref=e351]:
+        - generic [ref=e355]:
+          - generic [ref=e356]:
+            - heading "Flexible Pay-As-You-Go" [level=4] [ref=e357]
+            - paragraph [ref=e358]: Ideal for individual developers and small teams
+          - list [ref=e360]:
+            - listitem [ref=e361]: "• Flexible pay-as-you-go billing: On-demand, usage based pricing with transparent and controllable costs"
+            - listitem [ref=e362]: "• Lightning fast access: One click Kimi model calls with no setup required"
+            - listitem [ref=e363]: "• Tiered usage benefits: Automatically unlock higher rate limits based on cumulative spend"
+          - link "Get Started" [ref=e365] [cursor=pointer]:
+            - /url: /console/pay
+        - generic [ref=e369]:
+          - generic [ref=e370]:
+            - heading "Enterprise Solutions & Customization" [level=4] [ref=e371]
+            - paragraph [ref=e372]: Designed for medium and large enterprises
+          - list [ref=e374]:
+            - listitem [ref=e375]: "• High performance architecture: Flexible rate limits and support for multi project deployments"
+            - listitem [ref=e376]: "• Security and compliance assurance: SLA backed reliability with data compliance and privacy protections"
+            - listitem [ref=e377]: "• Dedicated technical support: Priority response and model performance optimization"
+          - link "Contact Sales" [ref=e379] [cursor=pointer]:
+            - /url: /contact-sales
+    - contentinfo [ref=e380]:
+      - generic [ref=e382]:
+        - generic [ref=e383]:
+          - img [ref=e385]
+          - generic [ref=e387]:
+            - link "X (Twitter)" [ref=e388] [cursor=pointer]:
+              - /url: https://x.com/Kimi_Moonshot
+              - img [ref=e389]
+            - link "GitHub" [ref=e392] [cursor=pointer]:
+              - /url: https://github.com/MoonshotAI
+              - img [ref=e393]
+            - link "LinkedIn" [ref=e395] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/kimi-ai-linkedin/
+              - img [ref=e396]
+        - generic [ref=e401]:
+          - generic [ref=e402]:
+            - heading "Contact" [level=4] [ref=e403]
+            - list [ref=e404]:
+              - listitem [ref=e405]:
+                - link "Forum" [ref=e406] [cursor=pointer]:
+                  - /url: https://forum.moonshot.ai/
+              - listitem [ref=e407]:
+                - link "Discord" [ref=e408] [cursor=pointer]:
+                  - /url: https://discord.gg/TYU2fdJykW
+              - listitem [ref=e409]:
+                - link "Email Us" [ref=e410] [cursor=pointer]:
+                  - /url: mailto:api-service@moonshot.ai
+          - generic [ref=e411]:
+            - heading "Legal" [level=4] [ref=e412]
+            - list [ref=e413]:
+              - listitem [ref=e414]:
+                - link "Platform Terms of Service" [ref=e415] [cursor=pointer]:
+                  - /url: /docs/agreement/modeluse
+              - listitem [ref=e416]:
+                - link "Privacy Policy" [ref=e417] [cursor=pointer]:
+                  - /url: /docs/agreement/userprivacy
+          - generic [ref=e418]:
+            - heading "Company" [level=4] [ref=e419]
+            - list [ref=e420]:
+              - listitem [ref=e421]:
+                - link "Moonshot Website" [ref=e422] [cursor=pointer]:
+                  - /url: https://www.moonshot.ai
+              - listitem [ref=e423]:
+                - link "Kimi" [ref=e424] [cursor=pointer]:
+                  - /url: https://kimi.com
+              - listitem [ref=e425]:
+                - link "Kimi Code" [ref=e426] [cursor=pointer]:
+                  - /url: https://www.kimi.com/code?from=kimi_platform
+  - alert [ref=e427]

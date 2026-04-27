@@ -1,0 +1,352 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic [ref=e8]:
+          - generic [ref=e9]:
+            - link "Ollama home page light logo" [ref=e10] [cursor=pointer]:
+              - /url: https://ollama.com
+              - generic [ref=e11]: Ollama home page
+              - img "light logo" [ref=e12]
+            - button "Toggle dark mode" [ref=e13] [cursor=pointer]:
+              - generic [ref=e14]:
+                - img [ref=e15]
+                - img [ref=e22]
+          - button "Open search" [ref=e28] [cursor=pointer]:
+            - generic [ref=e29]:
+              - img [ref=e30]
+              - generic [ref=e33]: Search...
+            - generic [ref=e34]: ⌘K
+          - generic [ref=e35]:
+            - list
+            - generic [ref=e36]:
+              - heading "Get started" [level=5] [ref=e38]
+              - list [ref=e39]:
+                - listitem [ref=e40]:
+                  - link "Welcome" [ref=e41] [cursor=pointer]:
+                    - /url: /
+                    - generic [ref=e44]: Welcome
+                - listitem [ref=e45]:
+                  - link "Quickstart" [ref=e46] [cursor=pointer]:
+                    - /url: /quickstart
+                    - generic [ref=e49]: Quickstart
+                - listitem [ref=e50]:
+                  - link "Cloud" [ref=e51] [cursor=pointer]:
+                    - /url: /cloud
+                    - generic [ref=e54]: Cloud
+            - generic [ref=e55]:
+              - heading "Capabilities" [level=5] [ref=e57]
+              - list [ref=e58]:
+                - listitem [ref=e59]:
+                  - link "Streaming" [ref=e60] [cursor=pointer]:
+                    - /url: /capabilities/streaming
+                    - generic [ref=e63]: Streaming
+                - listitem [ref=e64]:
+                  - link "Thinking" [ref=e65] [cursor=pointer]:
+                    - /url: /capabilities/thinking
+                    - generic [ref=e68]: Thinking
+                - listitem [ref=e69]:
+                  - link "Structured Outputs" [ref=e70] [cursor=pointer]:
+                    - /url: /capabilities/structured-outputs
+                    - generic [ref=e73]: Structured Outputs
+                - listitem [ref=e74]:
+                  - link "Vision" [ref=e75] [cursor=pointer]:
+                    - /url: /capabilities/vision
+                    - generic [ref=e78]: Vision
+                - listitem [ref=e79]:
+                  - link "Embeddings" [ref=e80] [cursor=pointer]:
+                    - /url: /capabilities/embeddings
+                    - generic [ref=e83]: Embeddings
+                - listitem [ref=e84]:
+                  - link "Tool calling" [ref=e85] [cursor=pointer]:
+                    - /url: /capabilities/tool-calling
+                    - generic [ref=e88]: Tool calling
+                - listitem [ref=e89]:
+                  - link "Web search" [ref=e90] [cursor=pointer]:
+                    - /url: /capabilities/web-search
+                    - generic [ref=e93]: Web search
+            - generic [ref=e94]:
+              - heading "Integrations" [level=5] [ref=e96]
+              - list [ref=e97]:
+                - listitem [ref=e98]:
+                  - link "Overview" [ref=e99] [cursor=pointer]:
+                    - /url: /integrations
+                    - generic [ref=e102]: Overview
+                - listitem [ref=e103]:
+                  - button "Toggle Assistants section" [expanded] [ref=e104] [cursor=pointer]:
+                    - generic [ref=e105]: Assistants
+                    - img [ref=e107]
+                  - list [ref=e109]:
+                    - listitem [ref=e110]:
+                      - link "OpenClaw" [ref=e111] [cursor=pointer]:
+                        - /url: /integrations/openclaw
+                        - generic [ref=e114]: OpenClaw
+                    - listitem [ref=e115]:
+                      - link "Hermes Agent" [ref=e116] [cursor=pointer]:
+                        - /url: /integrations/hermes
+                        - generic [ref=e119]: Hermes Agent
+                - listitem [ref=e120]:
+                  - button "Toggle Coding section" [expanded] [ref=e121] [cursor=pointer]:
+                    - generic [ref=e122]: Coding
+                    - img [ref=e124]
+                  - list [ref=e126]:
+                    - listitem [ref=e127]:
+                      - link "Claude Code" [ref=e128] [cursor=pointer]:
+                        - /url: /integrations/claude-code
+                        - generic [ref=e131]: Claude Code
+                    - listitem [ref=e132]:
+                      - link "Codex" [ref=e133] [cursor=pointer]:
+                        - /url: /integrations/codex
+                        - generic [ref=e136]: Codex
+                    - listitem [ref=e137]:
+                      - link "Copilot CLI" [ref=e138] [cursor=pointer]:
+                        - /url: /integrations/copilot-cli
+                        - generic [ref=e141]: Copilot CLI
+                    - listitem [ref=e142]:
+                      - link "OpenCode" [ref=e143] [cursor=pointer]:
+                        - /url: /integrations/opencode
+                        - generic [ref=e146]: OpenCode
+                    - listitem [ref=e147]:
+                      - link "Droid" [ref=e148] [cursor=pointer]:
+                        - /url: /integrations/droid
+                        - generic [ref=e151]: Droid
+                    - listitem [ref=e152]:
+                      - link "Goose" [ref=e153] [cursor=pointer]:
+                        - /url: /integrations/goose
+                        - generic [ref=e156]: Goose
+                    - listitem [ref=e157]:
+                      - link "Pi" [ref=e158] [cursor=pointer]:
+                        - /url: /integrations/pi
+                        - generic [ref=e161]: Pi
+                - listitem [ref=e162]:
+                  - button "Toggle IDEs & Editors section" [expanded] [ref=e163] [cursor=pointer]:
+                    - generic [ref=e164]: IDEs & Editors
+                    - img [ref=e166]
+                  - list [ref=e168]:
+                    - listitem [ref=e169]:
+                      - link "Cline" [ref=e170] [cursor=pointer]:
+                        - /url: /integrations/cline
+                        - generic [ref=e173]: Cline
+                    - listitem [ref=e174]:
+                      - link "JetBrains" [ref=e175] [cursor=pointer]:
+                        - /url: /integrations/jetbrains
+                        - generic [ref=e178]: JetBrains
+                    - listitem [ref=e179]:
+                      - link "Roo Code" [ref=e180] [cursor=pointer]:
+                        - /url: /integrations/roo-code
+                        - generic [ref=e183]: Roo Code
+                    - listitem [ref=e184]:
+                      - link "VS Code" [ref=e185] [cursor=pointer]:
+                        - /url: /integrations/vscode
+                        - generic [ref=e188]: VS Code
+                    - listitem [ref=e189]:
+                      - link "Xcode" [ref=e190] [cursor=pointer]:
+                        - /url: /integrations/xcode
+                        - generic [ref=e193]: Xcode
+                    - listitem [ref=e194]:
+                      - link "Zed" [ref=e195] [cursor=pointer]:
+                        - /url: /integrations/zed
+                        - generic [ref=e198]: Zed
+                - listitem [ref=e199]:
+                  - button "Toggle Chat & RAG section" [ref=e200] [cursor=pointer]:
+                    - generic [ref=e201]: Chat & RAG
+                    - img [ref=e203]
+                - listitem [ref=e205]:
+                  - button "Toggle Automation section" [ref=e206] [cursor=pointer]:
+                    - generic [ref=e207]: Automation
+                    - img [ref=e209]
+                - listitem [ref=e211]:
+                  - button "Toggle Notebooks section" [ref=e212] [cursor=pointer]:
+                    - generic [ref=e213]: Notebooks
+                    - img [ref=e215]
+            - generic [ref=e217]:
+              - heading "More information" [level=5] [ref=e219]
+              - list [ref=e220]:
+                - listitem [ref=e221]:
+                  - link "CLI Reference" [ref=e222] [cursor=pointer]:
+                    - /url: /cli
+                    - generic [ref=e225]: CLI Reference
+                - listitem [ref=e226]:
+                  - button "Toggle Assistant Sandboxing section" [ref=e227] [cursor=pointer]:
+                    - generic [ref=e228]: Assistant Sandboxing
+                    - img [ref=e230]
+                - listitem [ref=e232]:
+                  - link "Modelfile Reference" [ref=e233] [cursor=pointer]:
+                    - /url: /modelfile
+                    - generic [ref=e236]: Modelfile Reference
+                - listitem [ref=e237]:
+                  - link "Context length" [ref=e238] [cursor=pointer]:
+                    - /url: /context-length
+                    - generic [ref=e241]: Context length
+                - listitem [ref=e242]:
+                  - link "Linux" [ref=e243] [cursor=pointer]:
+                    - /url: /linux
+                    - generic [ref=e246]: Linux
+                - listitem [ref=e247]:
+                  - link "macOS" [ref=e248] [cursor=pointer]:
+                    - /url: /macos
+                    - generic [ref=e251]: macOS
+                - listitem [ref=e252]:
+                  - link "Windows" [ref=e253] [cursor=pointer]:
+                    - /url: /windows
+                    - generic [ref=e256]: Windows
+                - listitem [ref=e257]:
+                  - link "Docker" [ref=e258] [cursor=pointer]:
+                    - /url: /docker
+                    - generic [ref=e261]: Docker
+                - listitem [ref=e262]:
+                  - link "Importing a Model" [ref=e263] [cursor=pointer]:
+                    - /url: /import
+                    - generic [ref=e266]: Importing a Model
+                - listitem [ref=e267]:
+                  - link "FAQ" [ref=e268] [cursor=pointer]:
+                    - /url: /faq
+                    - generic [ref=e271]: FAQ
+                - listitem [ref=e272]:
+                  - link "Hardware support" [ref=e273] [cursor=pointer]:
+                    - /url: /gpu
+                    - generic [ref=e276]: Hardware support
+                - listitem [ref=e277]:
+                  - link "Troubleshooting" [ref=e278] [cursor=pointer]:
+                    - /url: /troubleshooting
+                    - generic [ref=e281]: Troubleshooting
+        - list [ref=e282]:
+          - listitem [ref=e283]:
+            - link "Sign in" [ref=e284] [cursor=pointer]:
+              - /url: https://ollama.com/signin
+              - generic [ref=e287]: Sign in
+              - img [ref=e289]
+          - listitem [ref=e292]:
+            - link "Download" [ref=e293] [cursor=pointer]:
+              - /url: https://ollama.com/download
+              - generic [ref=e296]: Download
+              - img [ref=e298]
+          - listitem
+      - generic [ref=e301]:
+        - generic [ref=e303]:
+          - link "Documentation" [ref=e304] [cursor=pointer]:
+            - /url: /
+            - text: Documentation
+          - link "API Reference" [ref=e306] [cursor=pointer]:
+            - /url: /api/introduction
+            - text: API Reference
+        - generic [ref=e308]:
+          - banner [ref=e309]:
+            - generic [ref=e310]:
+              - generic [ref=e311]: Get started
+              - generic [ref=e312]:
+                - heading "Ollama's documentation" [level=1] [ref=e313]
+                - button "Copy page" [ref=e315] [cursor=pointer]:
+                  - generic [ref=e316]:
+                    - img [ref=e317]
+                    - generic [ref=e320]: Copy page
+          - generic [ref=e321]:
+            - img [ref=e322]
+            - generic [ref=e323]:
+              - link "Ollama" [ref=e324] [cursor=pointer]:
+                - /url: https://ollama.com
+              - text: is the easiest way to get up and running with large language models such as gpt-oss, Gemma 3, DeepSeek-R1, Qwen3 and more.
+            - generic [ref=e325]:
+              - link [ref=e326] [cursor=pointer]:
+                - link [ref=e328]:
+                  - /url: /quickstart
+                  - img [ref=e330]
+                  - generic [ref=e331]:
+                    - heading [level=2] [ref=e332]: Quickstart
+                    - generic [ref=e334]: Get up and running with your first model or integrate Ollama with your favorite tools
+              - link [ref=e335] [cursor=pointer]:
+                - link [ref=e337]:
+                  - /url: https://ollama.com/download
+                  - img [ref=e339]
+                  - img [ref=e343]
+                  - generic [ref=e344]:
+                    - heading [level=2] [ref=e345]: Download Ollama
+                    - generic [ref=e347]: Download Ollama on macOS, Windows or Linux
+              - link [ref=e348] [cursor=pointer]:
+                - link [ref=e350]:
+                  - /url: /cloud
+                  - img [ref=e352]
+                  - generic [ref=e353]:
+                    - heading [level=2] [ref=e354]: Cloud
+                    - generic [ref=e356]: Ollama’s cloud models offer larger models with better performance.
+              - link [ref=e357] [cursor=pointer]:
+                - link [ref=e359]:
+                  - /url: /api
+                  - img [ref=e361]
+                  - generic [ref=e362]:
+                    - heading [level=2] [ref=e363]: API reference
+                    - generic [ref=e365]: View Ollama’s API reference
+            - heading "Navigate to header Libraries" [level=2] [ref=e366]:
+              - link "Navigate to header" [ref=e367] [cursor=pointer]:
+                - /url: "#libraries"
+                - img [ref=e369]
+              - generic [ref=e371] [cursor=pointer]: Libraries
+            - generic [ref=e372]:
+              - link [ref=e373] [cursor=pointer]:
+                - link [ref=e375]:
+                  - /url: https://github.com/ollama/ollama-python
+                  - img [ref=e377]
+                  - img [ref=e381]
+                  - generic [ref=e382]:
+                    - heading [level=2] [ref=e383]: Ollama's Python Library
+                    - generic [ref=e385]: The official library for using Ollama with Python
+              - link [ref=e386] [cursor=pointer]:
+                - link [ref=e388]:
+                  - /url: https://github.com/ollama/ollama-js
+                  - img [ref=e390]
+                  - img [ref=e394]
+                  - generic [ref=e395]:
+                    - heading [level=2] [ref=e396]: Ollama's JavaScript library
+                    - generic [ref=e398]: The official library for using Ollama with JavaScript or TypeScript.
+              - link [ref=e399] [cursor=pointer]:
+                - link [ref=e401]:
+                  - /url: https://github.com/ollama/ollama?tab=readme-ov-file#libraries-1
+                  - img [ref=e403]
+                  - img [ref=e407]
+                  - generic [ref=e408]:
+                    - heading [level=2] [ref=e409]: Community libraries
+                    - generic [ref=e411]: View a list of 20+ community-supported libraries for Ollama
+            - heading "Navigate to header Community" [level=2] [ref=e412]:
+              - link "Navigate to header" [ref=e413] [cursor=pointer]:
+                - /url: "#community"
+                - img [ref=e415]
+              - generic [ref=e417] [cursor=pointer]: Community
+            - generic [ref=e418]:
+              - link [ref=e419] [cursor=pointer]:
+                - link [ref=e421]:
+                  - /url: https://discord.gg/ollama
+                  - img [ref=e423]
+                  - img [ref=e427]
+                  - generic [ref=e428]:
+                    - heading [level=2] [ref=e429]: Discord
+                    - generic [ref=e431]: Join our Discord community
+              - link [ref=e432] [cursor=pointer]:
+                - link [ref=e434]:
+                  - /url: https://reddit.com/r/ollama
+                  - img [ref=e436]
+                  - img [ref=e440]
+                  - generic [ref=e441]:
+                    - heading [level=2] [ref=e442]: Reddit
+                    - generic [ref=e444]: Join our Reddit community
+          - link "Quickstart Next" [ref=e446] [cursor=pointer]:
+            - /url: /quickstart
+            - generic [ref=e447]:
+              - generic [ref=e449]: Quickstart
+              - generic [ref=e451]:
+                - generic [ref=e452]: Next
+                - img [ref=e453]
+          - contentinfo [ref=e455]
+        - generic [ref=e458]:
+          - button "On this page" [ref=e459] [cursor=pointer]:
+            - img [ref=e460]
+            - generic [ref=e461]: On this page
+          - list [ref=e463]:
+            - listitem [ref=e464]:
+              - link "Libraries" [ref=e465] [cursor=pointer]:
+                - /url: "#libraries"
+            - listitem [ref=e466]:
+              - link "Community" [ref=e467] [cursor=pointer]:
+                - /url: "#community"
+  - alert [ref=e468]

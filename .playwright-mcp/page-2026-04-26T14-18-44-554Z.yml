@@ -1,0 +1,263 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e10]:
+          - text: 🎉 Kimi K2.6 has been released with improved long-context coding stability.
+          - link "Top-up bonus event in progress 🔗" [ref=e11] [cursor=pointer]:
+            - /url: /docs/pricing/promotion
+        - generic [ref=e14]:
+          - generic [ref=e17]:
+            - link "Kimi API Platform home page light logo" [ref=e19] [cursor=pointer]:
+              - /url: https://platform.kimi.ai
+              - generic [ref=e20]: Kimi API Platform home page
+              - img "light logo" [ref=e21]
+            - button "Open search" [ref=e23] [cursor=pointer]:
+              - generic [ref=e24]:
+                - img [ref=e25]
+                - generic [ref=e28]: Search...
+              - generic [ref=e29]: ⌘K
+            - generic [ref=e30]:
+              - navigation [ref=e31]:
+                - list [ref=e32]:
+                  - listitem [ref=e33]:
+                    - link "Contact Sales" [ref=e34] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/contact-sales
+                  - listitem [ref=e35]:
+                    - link "Blog" [ref=e36] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/blog
+                  - listitem [ref=e37]:
+                    - link "Playground" [ref=e38] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/playground
+                  - listitem [ref=e39]:
+                    - link "User Center" [ref=e40] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/console/account
+              - button "Toggle dark mode" [ref=e42] [cursor=pointer]:
+                - img [ref=e43]
+          - generic [ref=e51]:
+            - link "Get Started" [ref=e52] [cursor=pointer]:
+              - /url: /docs/overview
+              - text: Get Started
+            - link "Guides" [ref=e54] [cursor=pointer]:
+              - /url: /docs/guide/utilize-the-streaming-output-feature-of-kimi-api
+              - text: Guides
+            - link "API Reference" [ref=e56] [cursor=pointer]:
+              - /url: /docs/api/overview
+              - text: API Reference
+            - link "Pricing" [ref=e58] [cursor=pointer]:
+              - /url: /docs/pricing/chat
+              - text: Pricing
+            - link "Resources" [ref=e60] [cursor=pointer]:
+              - /url: /docs/guide/prompt-best-practice
+              - text: Resources
+      - generic [ref=e62]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "Model Pricing" [level=5] [ref=e69]
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - link "Overview" [ref=e72] [cursor=pointer]:
+                  - /url: /docs/pricing/chat
+                  - generic [ref=e75]: Overview
+              - listitem [ref=e76]:
+                - link "Kimi K2.6" [ref=e77] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k26
+                  - generic [ref=e80]: Kimi K2.6
+              - listitem [ref=e81]:
+                - link "Kimi K2.5" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k25
+                  - generic [ref=e85]: Kimi K2.5
+              - listitem [ref=e86]:
+                - link "Kimi K2" [ref=e87] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k2
+                  - generic [ref=e90]: Kimi K2
+              - listitem [ref=e91]:
+                - link "Moonshot V1" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-v1
+                  - generic [ref=e95]: Moonshot V1
+          - generic [ref=e96]:
+            - heading "Other" [level=5] [ref=e98]
+            - list [ref=e99]:
+              - listitem [ref=e100]:
+                - link "BatchJob Pricing" [ref=e101] [cursor=pointer]:
+                  - /url: /docs/pricing/batch
+                  - generic [ref=e104]: BatchJob Pricing
+              - listitem [ref=e105]:
+                - link "WebSearch Pricing" [ref=e106] [cursor=pointer]:
+                  - /url: /docs/pricing/tools
+                  - generic [ref=e109]: WebSearch Pricing
+              - listitem [ref=e110]:
+                - link "Recharge and Rate Limiting" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/pricing/limits
+                  - generic [ref=e114]: Recharge and Rate Limiting
+          - generic [ref=e115]:
+            - heading "Promotions" [level=5] [ref=e117]
+            - list [ref=e118]:
+              - listitem [ref=e119]:
+                - link "Limited Time Offers" [ref=e120] [cursor=pointer]:
+                  - /url: /docs/pricing/promotion
+                  - generic [ref=e123]: Limited Time Offers
+          - generic [ref=e124]:
+            - heading "Support" [level=5] [ref=e126]
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - link "FAQ" [ref=e129] [cursor=pointer]:
+                  - /url: /docs/pricing/faq
+                  - generic [ref=e132]: FAQ
+        - generic [ref=e134]:
+          - generic [ref=e137]:
+            - button "On this page" [ref=e138] [cursor=pointer]:
+              - img [ref=e139]
+              - generic [ref=e140]: On this page
+            - list [ref=e142]:
+              - listitem [ref=e143]:
+                - link "Explanation of Rate Limits Concepts" [ref=e144] [cursor=pointer]:
+                  - /url: "#explanation-of-rate-limits-concepts"
+              - listitem [ref=e145]:
+                - link "Why Do We Implement Rate Limits?" [ref=e146] [cursor=pointer]:
+                  - /url: "#why-do-we-implement-rate-limits"
+              - listitem [ref=e147]:
+                - link "Special Notes" [ref=e148] [cursor=pointer]:
+                  - /url: "#special-notes"
+          - generic [ref=e149]:
+            - banner [ref=e150]:
+              - generic [ref=e151]:
+                - link "Other" [ref=e154] [cursor=pointer]:
+                  - /url: /docs/pricing/batch
+                - generic [ref=e155]:
+                  - heading "Recharge and Rate Limiting" [level=1] [ref=e156]
+                  - generic [ref=e157]:
+                    - button "Copy page" [ref=e158] [cursor=pointer]:
+                      - generic [ref=e159]:
+                        - img [ref=e160]
+                        - generic [ref=e163]: Copy page
+                    - button "More actions" [ref=e164] [cursor=pointer]:
+                      - img [ref=e165]
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - text: To ensure fair distribution of resources and prevent malicious attacks, we currently apply rate limits based on the cumulative recharge amount of each account. The specific limits are shown in the table below. If you have higher requirements, please contact us via email at
+                - link "api-service@moonshot.ai" [ref=e169] [cursor=pointer]:
+                  - /url: mailto:api-service@moonshot.ai
+                - text: .
+              - list [ref=e170]:
+                - listitem [ref=e171]: To prevent abuse, you need to recharge at least $1 to start using, and when your cumulative recharge reaches $5, you will receive a $5 voucher.
+              - table [ref=e175]:
+                - rowgroup [ref=e183]:
+                  - row "User Level Cumulative Recharge Amount Concurrency RPM TPM TPD" [ref=e184]:
+                    - columnheader "User Level" [ref=e185]
+                    - columnheader "Cumulative Recharge Amount" [ref=e186]
+                    - columnheader "Concurrency" [ref=e187]
+                    - columnheader "RPM" [ref=e188]
+                    - columnheader "TPM" [ref=e189]
+                    - columnheader "TPD" [ref=e190]
+                - rowgroup [ref=e191]:
+                  - row "Tier0 $1 1 3 500,000 1,500,000" [ref=e192]:
+                    - cell "Tier0" [ref=e193]
+                    - cell "$1" [ref=e194]
+                    - cell "1" [ref=e195]
+                    - cell "3" [ref=e196]
+                    - cell "500,000" [ref=e197]
+                    - cell "1,500,000" [ref=e198]
+                  - row "Tier1 $10 50 200 2,000,000 Unlimited" [ref=e199]:
+                    - cell "Tier1" [ref=e200]
+                    - cell "$10" [ref=e201]
+                    - cell "50" [ref=e202]
+                    - cell "200" [ref=e203]
+                    - cell "2,000,000" [ref=e204]
+                    - cell "Unlimited" [ref=e205]
+                  - row "Tier2 $20 100 500 3,000,000 Unlimited" [ref=e206]:
+                    - cell "Tier2" [ref=e207]
+                    - cell "$20" [ref=e208]
+                    - cell "100" [ref=e209]
+                    - cell "500" [ref=e210]
+                    - cell "3,000,000" [ref=e211]
+                    - cell "Unlimited" [ref=e212]
+                  - row "Tier3 $100 200 5,000 3,000,000 Unlimited" [ref=e213]:
+                    - cell "Tier3" [ref=e214]
+                    - cell "$100" [ref=e215]
+                    - cell "200" [ref=e216]
+                    - cell "5,000" [ref=e217]
+                    - cell "3,000,000" [ref=e218]
+                    - cell "Unlimited" [ref=e219]
+                  - row "Tier4 $1,000 400 5,000 4,000,000 Unlimited" [ref=e220]:
+                    - cell "Tier4" [ref=e221]
+                    - cell "$1,000" [ref=e222]
+                    - cell "400" [ref=e223]
+                    - cell "5,000" [ref=e224]
+                    - cell "4,000,000" [ref=e225]
+                    - cell "Unlimited" [ref=e226]
+                  - row "Tier5 $3,000 1,000 10,000 5,000,000 Unlimited" [ref=e227]:
+                    - cell "Tier5" [ref=e228]
+                    - cell "$3,000" [ref=e229]
+                    - cell "1,000" [ref=e230]
+                    - cell "10,000" [ref=e231]
+                    - cell "5,000,000" [ref=e232]
+                    - cell "Unlimited" [ref=e233]
+              - heading "Navigate to header Explanation of Rate Limits Concepts" [level=2] [ref=e234]:
+                - link "Navigate to header" [ref=e235] [cursor=pointer]:
+                  - /url: "#explanation-of-rate-limits-concepts"
+                  - img [ref=e237]
+                - generic [ref=e239] [cursor=pointer]: Explanation of Rate Limits Concepts
+              - list [ref=e240]:
+                - listitem [ref=e241]: "Concurrency: The maximum number of requests from you that we can process at the same time."
+                - listitem [ref=e242]: "RPM: Requests per minute, which means the maximum number of requests you can send to us in one minute."
+                - listitem [ref=e243]: "TPM: Tokens per minute, which means the maximum number of tokens you can interact with us in one minute."
+                - listitem [ref=e244]: "TPD: Tokens per day, which means the maximum number of tokens you can interact with us in one day."
+              - generic [ref=e245]:
+                - text: For more details, please refer to the
+                - link "Rate Limits" [ref=e246] [cursor=pointer]:
+                  - /url: /docs/introduction#rate-limits
+                - text: section.
+              - heading "Navigate to header Why Do We Implement Rate Limits?" [level=2] [ref=e247]:
+                - link "Navigate to header" [ref=e248] [cursor=pointer]:
+                  - /url: "#why-do-we-implement-rate-limits"
+                  - img [ref=e250]
+                - generic [ref=e252] [cursor=pointer]: Why Do We Implement Rate Limits?
+              - generic [ref=e253]: "Rate limits are a common practice for API interfaces, and there are several reasons for it:"
+              - list [ref=e254]:
+                - listitem [ref=e255]: They help prevent abuse or misuse of the API. For example, malicious actors might try to overwhelm the API with a large number of requests, attempting to overload it or cause service disruptions. By setting rate limits, we can guard against such behavior.
+                - listitem [ref=e256]: Rate limits ensure fair access to the API for everyone. If one person or organization sends too many requests, it could slow down the API for everyone else. By limiting the number of requests a single user can send, we ensure that as many people as possible can use the API without experiencing slowdowns.
+                - listitem [ref=e257]: Rate limits help us manage the overall load on our cluster. A sudden surge in requests to the API could put pressure on the servers and lead to performance issues. By setting rate limits, we can maintain a smooth and consistent experience for all users.
+              - heading "Navigate to header Special Notes" [level=2] [ref=e258]:
+                - link "Navigate to header" [ref=e259] [cursor=pointer]:
+                  - /url: "#special-notes"
+                  - img [ref=e261]
+                - generic [ref=e263] [cursor=pointer]: Special Notes
+              - list [ref=e264]:
+                - listitem [ref=e265]: We will do our best to ensure normal usage for users, but when the cluster load reaches its capacity limit, we may take temporary measures to adjust the rate limits.
+                - listitem [ref=e266]: Vouchers do not count towards the cumulative recharge total.
+            - generic [ref=e268]:
+              - paragraph [ref=e269]: Was this page helpful?
+              - generic [ref=e271]:
+                - button "Yes" [ref=e272] [cursor=pointer]:
+                  - img [ref=e273]
+                  - generic [ref=e275]: "Yes"
+                - button "No" [ref=e276] [cursor=pointer]:
+                  - img [ref=e277]
+                  - generic [ref=e279]: "No"
+            - generic [ref=e280]:
+              - link "WebSearch Pricing" [ref=e281] [cursor=pointer]:
+                - /url: /docs/pricing/tools
+                - img [ref=e282]
+                - generic [ref=e284]: WebSearch Pricing
+              - link "Limited Time Offers" [ref=e285] [cursor=pointer]:
+                - /url: /docs/pricing/promotion
+                - generic [ref=e286]: Limited Time Offers
+                - img [ref=e287]
+            - contentinfo [ref=e289]:
+              - generic [ref=e290]:
+                - link "x" [ref=e291] [cursor=pointer]:
+                  - /url: https://x.com/Kimi_Moonshot
+                  - generic [ref=e292]: x
+                  - img [ref=e293]
+                - link "github" [ref=e294] [cursor=pointer]:
+                  - /url: https://github.com/MoonshotAI
+                  - generic [ref=e295]: github
+                  - img [ref=e296]
+                - link "linkedin" [ref=e297] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/kimi-ai-linkedin
+                  - generic [ref=e298]: linkedin
+                  - img [ref=e299]
+  - alert [ref=e300]

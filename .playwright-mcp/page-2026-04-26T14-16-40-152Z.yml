@@ -1,0 +1,332 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Skip to content" [ref=e6] [cursor=pointer]:
+          - /url: "#skip"
+        - generic [ref=e7]:
+          - link "Logo OpenRouter" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - button "Logo OpenRouter" [ref=e9]:
+              - generic [ref=e10]:
+                - img "Logo" [ref=e11]
+                - text: OpenRouter
+          - combobox [ref=e19]:
+            - generic [ref=e20]:
+              - img [ref=e21]
+              - combobox [expanded] [ref=e23]
+            - generic: /
+          - generic [ref=e24]:
+            - link "Fusion" [ref=e25] [cursor=pointer]:
+              - /url: /labs/fusion
+              - button "Fusion" [ref=e26]
+            - link "Models" [ref=e27] [cursor=pointer]:
+              - /url: /models
+              - button "Models" [ref=e28]
+            - link "Chat" [ref=e29] [cursor=pointer]:
+              - /url: /chat
+              - button "Chat" [ref=e30]
+            - link "Rankings" [ref=e31] [cursor=pointer]:
+              - /url: /rankings
+              - button "Rankings" [ref=e32]
+            - link "Apps" [ref=e33] [cursor=pointer]:
+              - /url: /apps
+              - button "Apps" [ref=e34]
+            - link "Enterprise" [ref=e35] [cursor=pointer]:
+              - /url: /enterprise
+              - button "Enterprise" [ref=e36]
+            - link "Pricing" [ref=e37] [cursor=pointer]:
+              - /url: /pricing
+              - button "Pricing" [ref=e38]
+            - link "Docs" [ref=e39] [cursor=pointer]:
+              - /url: /docs/quickstart
+              - button "Docs" [ref=e40]
+            - button "Sign Up" [ref=e42] [cursor=pointer]
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e50]:
+          - generic [ref=e52]:
+            - heading "Input Modalities" [level=3] [ref=e53]:
+              - button "Input Modalities" [expanded] [ref=e54] [cursor=pointer]:
+                - generic [ref=e55]:
+                  - img [ref=e56]
+                  - generic [ref=e58]: Input Modalities
+                - img [ref=e59]
+            - region "Input Modalities" [ref=e61]:
+              - generic [ref=e65]:
+                - link "Text" [ref=e68] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?q=glm-5.1&fmt=cards&input_modalities=text
+                  - button "Text" [ref=e69]:
+                    - generic [ref=e70]: Text
+                - link "Image" [ref=e73] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?q=glm-5.1&fmt=cards&input_modalities=image
+                  - button "Image" [ref=e74]:
+                    - generic [ref=e75]: Image
+                - link "File" [ref=e78] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?q=glm-5.1&fmt=cards&input_modalities=file
+                  - button "File" [ref=e79]:
+                    - generic [ref=e80]: File
+                - link "Audio" [ref=e83] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?q=glm-5.1&fmt=cards&input_modalities=audio
+                  - button "Audio" [ref=e84]:
+                    - generic [ref=e85]: Audio
+                - link "Video" [ref=e88] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?q=glm-5.1&fmt=cards&input_modalities=video
+                  - button "Video" [ref=e89]:
+                    - generic [ref=e90]: Video
+          - heading "Context length" [level=3] [ref=e93]:
+            - button "Context length" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]:
+                - img [ref=e96]
+                - generic [ref=e98]: Context length
+              - img [ref=e99]
+          - heading "Prompt pricing" [level=3] [ref=e103]:
+            - button "Prompt pricing" [ref=e104] [cursor=pointer]:
+              - generic [ref=e105]:
+                - img [ref=e106]
+                - generic [ref=e108]: Prompt pricing
+              - img [ref=e109]
+          - heading "Series" [level=3] [ref=e113]:
+            - button "Series" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]:
+                - img [ref=e116]
+                - generic [ref=e118]: Series
+              - img [ref=e119]
+          - heading "Categories" [level=3] [ref=e123]:
+            - button "Categories" [ref=e124] [cursor=pointer]:
+              - generic [ref=e125]:
+                - img [ref=e126]
+                - generic [ref=e129]: Categories
+              - img [ref=e130]
+          - heading "Supported Parameters" [level=3] [ref=e134]:
+            - button "Supported Parameters" [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]:
+                - img [ref=e137]
+                - generic [ref=e139]: Supported Parameters
+              - img [ref=e140]
+          - heading "Distillable" [level=3] [ref=e144]:
+            - button "Distillable" [ref=e145] [cursor=pointer]:
+              - generic [ref=e146]:
+                - img [ref=e147]
+                - generic [ref=e149]: Distillable
+              - img [ref=e150]
+          - heading "Zero Data Retention" [level=3] [ref=e154]:
+            - button "Zero Data Retention" [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]:
+                - img [ref=e157]
+                - generic [ref=e159]: Zero Data Retention
+              - img [ref=e160]
+          - heading "Providers" [level=3] [ref=e164]:
+            - button "Providers" [ref=e165] [cursor=pointer]:
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - text: Providers
+              - img [ref=e169]
+          - heading "Model Authors" [level=3] [ref=e173]:
+            - button "Model Authors" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - img [ref=e176]
+                - text: Model Authors
+              - img [ref=e178]
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - heading "Models" [level=1] [ref=e183]
+              - generic [ref=e184]:
+                - img [ref=e185]
+                - textbox "Search models..." [ref=e187]: glm-5.1
+              - link "Compare" [ref=e188] [cursor=pointer]:
+                - /url: /compare
+                - button "Compare" [ref=e189]:
+                  - img [ref=e190]
+                  - generic [ref=e192]: Compare
+              - generic [ref=e193]:
+                - button "Top Weekly" [expanded] [ref=e194] [cursor=pointer]:
+                  - img [ref=e195]
+                  - text: Top Weekly
+                  - img [ref=e198]
+                - list "Top Weekly":
+                  - menuitem "Most Popular"
+                  - menuitem "Newest"
+                  - menuitem "Top Weekly"
+                  - 'menuitem "Pricing: Low to High"'
+                  - 'menuitem "Pricing: High to Low"'
+                  - 'menuitem "Context: High to Low"'
+                  - 'menuitem "Throughput: High to Low"'
+                  - 'menuitem "Latency: Low to High"'
+              - tablist [ref=e206]:
+                - tab [ref=e207] [cursor=pointer]:
+                  - img [ref=e208]
+                - tab [selected] [ref=e210] [cursor=pointer]:
+                  - img [ref=e211]
+            - generic [ref=e213]:
+              - button "Text 1" [ref=e214] [cursor=pointer]:
+                - img [ref=e215]
+                - generic [ref=e217]: Text
+                - generic [ref=e218]: "1"
+              - button "Image 0" [ref=e219] [cursor=pointer]:
+                - img [ref=e220]
+                - generic [ref=e224]: Image
+                - generic [ref=e225]: "0"
+              - button "Embeddings 0" [ref=e226] [cursor=pointer]:
+                - img [ref=e227]
+                - generic [ref=e237]: Embeddings
+                - generic [ref=e238]: "0"
+              - button "Audio 0" [ref=e239] [cursor=pointer]:
+                - img [ref=e240]
+                - generic [ref=e241]: Audio
+                - generic [ref=e242]: "0"
+              - button "Video 0" [ref=e243] [cursor=pointer]:
+                - img [ref=e244]
+                - generic [ref=e247]: Video
+                - generic [ref=e248]: "0"
+              - button "Rerank 0" [ref=e249] [cursor=pointer]:
+                - img [ref=e250]
+                - generic [ref=e253]: Rerank
+                - generic [ref=e254]: "0"
+              - button "Speech 0" [ref=e255] [cursor=pointer]:
+                - img [ref=e256]
+                - generic [ref=e260]: Speech
+                - generic [ref=e261]: "0"
+          - list [ref=e264]:
+            - listitem [ref=e265]:
+              - generic [ref=e269]:
+                - generic [ref=e270]:
+                  - generic [ref=e271]:
+                    - link "Favicon for z-ai" [ref=e272] [cursor=pointer]:
+                      - /url: /z-ai
+                      - img "Favicon for z-ai" [ref=e276]
+                    - 'link "Z.ai: GLM 5.1" [ref=e277] [cursor=pointer]':
+                      - /url: /z-ai/glm-5.1
+                      - generic [ref=e278]: "Z.ai: GLM 5.1"
+                    - img [ref=e281]
+                    - button "Copy to clipboard" [ref=e283] [cursor=pointer]:
+                      - img [ref=e284]
+                  - generic [ref=e287]:
+                    - generic [ref=e289]: 441B tokens
+                    - img [ref=e290]
+                - generic [ref=e293]:
+                  - button "Academia (#27)" [ref=e294] [cursor=pointer]:
+                    - 'generic "Ranked at #27 in Academia category" [ref=e295]': Academia (#27)
+                  - button "Finance (#13)" [ref=e297] [cursor=pointer]:
+                    - 'generic "Ranked at #13 in Finance category" [ref=e298]': Finance (#13)
+                  - button "Health (#12)" [ref=e300] [cursor=pointer]:
+                    - 'generic "Ranked at #12 in Health category" [ref=e301]': Health (#12)
+                  - button "Legal (#31)" [ref=e303] [cursor=pointer]:
+                    - 'generic "Ranked at #31 in Legal category" [ref=e304]': Legal (#31)
+                  - button "Marketing (#47)" [ref=e306] [cursor=pointer]:
+                    - 'generic "Ranked at #47 in Marketing category" [ref=e307]': Marketing (#47)
+                  - button "+4 categories" [ref=e309] [cursor=pointer]: +4 categories
+                - link "GLM-5.1 delivers a major leap in coding capability, with particularly significant gains in handling long-horizon tasks. Unlike previous models built around minute-level interactions, GLM-5.1 can work independently and continuously on a single task for more than 8 hours, autonomously planning, executing, and improving itself throughout the process, ultimately delivering complete, engineering-grade results." [ref=e313] [cursor=pointer]:
+                  - /url: /z-ai/glm-5.1
+                  - paragraph [ref=e315]: GLM-5.1 delivers a major leap in coding capability, with particularly significant gains in handling long-horizon tasks. Unlike previous models built around minute-level interactions, GLM-5.1 can work independently and continuously on a single task for more than 8 hours, autonomously planning, executing, and improving itself throughout the process, ultimately delivering complete, engineering-grade results.
+                - generic [ref=e316]:
+                  - generic [ref=e317]:
+                    - text: by
+                    - link "z-ai" [ref=e318] [cursor=pointer]:
+                      - /url: /z-ai
+                  - generic [ref=e320]: Apr 8, 2026
+                  - generic [ref=e322]: 203K context
+                  - generic [ref=e323]: $1.05/M input tokens
+                  - generic [ref=e324]: $3.50/M output tokens
+      - generic [ref=e327]:
+        - generic [ref=e328]:
+          - link "OpenRouter Logo OpenRouter" [ref=e330] [cursor=pointer]:
+            - /url: /
+            - img "OpenRouter Logo" [ref=e331]
+            - generic [ref=e336]: OpenRouter
+          - generic [ref=e337]: © 2026 OpenRouter, Inc
+        - generic [ref=e338]:
+          - heading "Product" [level=3] [ref=e339]
+          - list [ref=e340]:
+            - listitem [ref=e341]:
+              - link "Chat" [ref=e342] [cursor=pointer]:
+                - /url: /chat
+            - listitem [ref=e343]:
+              - link "Rankings" [ref=e344] [cursor=pointer]:
+                - /url: /rankings
+            - listitem [ref=e345]:
+              - link "Apps" [ref=e346] [cursor=pointer]:
+                - /url: /apps
+            - listitem [ref=e347]:
+              - link "Models" [ref=e348] [cursor=pointer]:
+                - /url: /models
+            - listitem [ref=e349]:
+              - link "Providers" [ref=e350] [cursor=pointer]:
+                - /url: /providers
+            - listitem [ref=e351]:
+              - link "Pricing" [ref=e352] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e353]:
+              - link "Enterprise" [ref=e354] [cursor=pointer]:
+                - /url: /enterprise
+            - listitem [ref=e355]:
+              - link "Labs" [ref=e356] [cursor=pointer]:
+                - /url: /labs
+        - generic [ref=e357]:
+          - heading "Company" [level=3] [ref=e358]
+          - list [ref=e359]:
+            - listitem [ref=e360]:
+              - link "About" [ref=e361] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e362]:
+              - link "Announcements" [ref=e363] [cursor=pointer]:
+                - /url: /announcements
+            - listitem [ref=e364]:
+              - link "Careers Hiring" [ref=e365] [cursor=pointer]:
+                - /url: /careers
+                - text: Careers
+                - generic [ref=e366]: Hiring
+            - listitem [ref=e367]:
+              - link "Privacy" [ref=e368] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e369]:
+              - link "Terms of Service" [ref=e370] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e371]:
+              - link "Support" [ref=e372] [cursor=pointer]:
+                - /url: /support
+            - listitem [ref=e373]:
+              - link "State of AI" [ref=e374] [cursor=pointer]:
+                - /url: /state-of-ai
+            - listitem [ref=e375]:
+              - link "Works With OR" [ref=e376] [cursor=pointer]:
+                - /url: /works-with-openrouter
+            - listitem [ref=e377]:
+              - link "Data" [ref=e378] [cursor=pointer]:
+                - /url: /data
+        - generic [ref=e379]:
+          - heading "Developer" [level=3] [ref=e380]
+          - list [ref=e381]:
+            - listitem [ref=e382]:
+              - link "Documentation" [ref=e383] [cursor=pointer]:
+                - /url: /docs
+            - listitem [ref=e384]:
+              - link "API Reference" [ref=e385] [cursor=pointer]:
+                - /url: /docs/api-reference
+            - listitem [ref=e386]:
+              - link "SDK" [ref=e387] [cursor=pointer]:
+                - /url: /sdk
+            - listitem [ref=e388]:
+              - link "Status" [ref=e389] [cursor=pointer]:
+                - /url: https://status.openrouter.ai
+        - generic [ref=e390]:
+          - heading "Connect" [level=3] [ref=e391]
+          - list [ref=e392]:
+            - listitem [ref=e393]:
+              - link "Discord" [ref=e394] [cursor=pointer]:
+                - /url: https://discord.gg/fVyRaUDgxW
+            - listitem [ref=e395]:
+              - link "GitHub" [ref=e396] [cursor=pointer]:
+                - /url: https://github.com/OpenRouterTeam
+            - listitem [ref=e397]:
+              - link "LinkedIn" [ref=e398] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/104068329
+            - listitem [ref=e399]:
+              - link "X" [ref=e400] [cursor=pointer]:
+                - /url: https://twitter.com/openrouter
+            - listitem [ref=e401]:
+              - link "YouTube" [ref=e402] [cursor=pointer]:
+                - /url: https://www.youtube.com/@OpenRouterAI
+  - region "Notifications alt+T"
+  - alert [ref=e403]

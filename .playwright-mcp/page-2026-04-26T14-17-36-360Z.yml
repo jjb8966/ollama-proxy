@@ -1,0 +1,563 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+              - /url: https://z.ai/model-api
+              - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+              - img "dark logo" [ref=e16]
+            - button "English" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: English
+              - img [ref=e20]
+          - button "Open search" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search...
+            - generic [ref=e29]: ⌘K
+          - generic [ref=e30]:
+            - navigation [ref=e31]:
+              - list [ref=e32]:
+                - listitem [ref=e33]:
+                  - link "API Keys" [ref=e34] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                - listitem [ref=e35]:
+                  - link "Payment Method" [ref=e36] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+            - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - generic [ref=e42]:
+          - link "Guides" [ref=e43] [cursor=pointer]:
+            - /url: /guides/overview/quick-start
+            - text: Guides
+          - link "API Reference" [ref=e45] [cursor=pointer]:
+            - /url: /api-reference/introduction
+            - text: API Reference
+          - link "Scenario Example" [ref=e47] [cursor=pointer]:
+            - /url: /scenario-example/develop-tools/claude
+            - text: Scenario Example
+          - link "Coding Plan" [ref=e49] [cursor=pointer]:
+            - /url: /devpack/overview
+            - text: Coding Plan
+          - link "Released Notes" [ref=e51] [cursor=pointer]:
+            - /url: /release-notes/new-released
+            - text: Released Notes
+          - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+            - /url: /legal-agreement/privacy-policy
+            - text: Terms and Policy
+          - link "Help Center" [ref=e55] [cursor=pointer]:
+            - /url: /help/faq
+            - text: Help Center
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Get Started" [level=5] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Quick Start" [ref=e67] [cursor=pointer]:
+                  - /url: /guides/overview/quick-start
+                  - generic [ref=e70]: Quick Start
+              - listitem [ref=e71]:
+                - link "Overview" [ref=e72] [cursor=pointer]:
+                  - /url: /guides/overview/overview
+                  - generic [ref=e75]: Overview
+              - listitem [ref=e76]:
+                - link "Pricing" [ref=e77] [cursor=pointer]:
+                  - /url: /guides/overview/pricing
+                  - generic [ref=e80]: Pricing
+              - listitem [ref=e81]:
+                - link "Core Parameters" [ref=e82] [cursor=pointer]:
+                  - /url: /guides/overview/concept-param
+                  - generic [ref=e85]: Core Parameters
+              - listitem [ref=e86]:
+                - button "Toggle SDKs Guide section" [ref=e87] [cursor=pointer]:
+                  - generic [ref=e88]: SDKs Guide
+                  - img [ref=e90]
+              - listitem [ref=e92]:
+                - link "Migrate to GLM-5.1" [ref=e93] [cursor=pointer]:
+                  - /url: /guides/overview/migrate-to-glm-new
+                  - generic [ref=e96]: Migrate to GLM-5.1
+          - generic [ref=e97]:
+            - heading "Language Models" [level=5] [ref=e99]
+            - list [ref=e100]:
+              - listitem [ref=e101]:
+                - link "GLM-5.1" [ref=e102] [cursor=pointer]:
+                  - /url: /guides/llm/glm-5.1
+                  - generic [ref=e105]: GLM-5.1
+              - listitem [ref=e106]:
+                - link "GLM-5" [ref=e107] [cursor=pointer]:
+                  - /url: /guides/llm/glm-5
+                  - generic [ref=e110]: GLM-5
+              - listitem [ref=e111]:
+                - link "GLM-5-Turbo" [ref=e112] [cursor=pointer]:
+                  - /url: /guides/llm/glm-5-turbo
+                  - generic [ref=e115]: GLM-5-Turbo
+              - listitem [ref=e116]:
+                - link "GLM-4.7" [ref=e117] [cursor=pointer]:
+                  - /url: /guides/llm/glm-4.7
+                  - generic [ref=e120]: GLM-4.7
+              - listitem [ref=e121]:
+                - link "GLM-4.6" [ref=e122] [cursor=pointer]:
+                  - /url: /guides/llm/glm-4.6
+                  - generic [ref=e125]: GLM-4.6
+              - listitem [ref=e126]:
+                - link "GLM-4.5" [ref=e127] [cursor=pointer]:
+                  - /url: /guides/llm/glm-4.5
+                  - generic [ref=e130]: GLM-4.5
+              - listitem [ref=e131]:
+                - link "GLM-4-32B-0414-128K" [ref=e132] [cursor=pointer]:
+                  - /url: /guides/llm/glm-4-32b-0414-128k
+                  - generic [ref=e135]: GLM-4-32B-0414-128K
+          - generic [ref=e136]:
+            - heading "Vision Language Models" [level=5] [ref=e138]
+            - list [ref=e139]:
+              - listitem [ref=e140]:
+                - link "GLM-5V-Turbo" [ref=e141] [cursor=pointer]:
+                  - /url: /guides/vlm/glm-5v-turbo
+                  - generic [ref=e144]: GLM-5V-Turbo
+              - listitem [ref=e145]:
+                - link "GLM-4.6V" [ref=e146] [cursor=pointer]:
+                  - /url: /guides/vlm/glm-4.6v
+                  - generic [ref=e149]: GLM-4.6V
+              - listitem [ref=e150]:
+                - link "GLM-OCR" [ref=e151] [cursor=pointer]:
+                  - /url: /guides/vlm/glm-ocr
+                  - generic [ref=e154]: GLM-OCR
+              - listitem [ref=e155]:
+                - link "AutoGLM-Phone-Multilingual" [ref=e156] [cursor=pointer]:
+                  - /url: /guides/vlm/autoglm-phone-multilingual
+                  - generic [ref=e159]: AutoGLM-Phone-Multilingual
+              - listitem [ref=e160]:
+                - link "GLM-4.5V" [ref=e161] [cursor=pointer]:
+                  - /url: /guides/vlm/glm-4.5v
+                  - generic [ref=e164]: GLM-4.5V
+          - generic [ref=e165]:
+            - heading "Image Generation Models" [level=5] [ref=e167]
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - link "GLM-Image" [ref=e170] [cursor=pointer]:
+                  - /url: /guides/image/glm-image
+                  - generic [ref=e173]: GLM-Image
+              - listitem [ref=e174]:
+                - link "CogView-4" [ref=e175] [cursor=pointer]:
+                  - /url: /guides/image/cogview-4
+                  - generic [ref=e178]: CogView-4
+          - generic [ref=e179]:
+            - heading "Video Generation Models" [level=5] [ref=e181]
+            - list [ref=e182]:
+              - listitem [ref=e183]:
+                - link "CogVideoX-3" [ref=e184] [cursor=pointer]:
+                  - /url: /guides/video/cogvideox-3
+                  - generic [ref=e187]: CogVideoX-3
+              - listitem [ref=e188]:
+                - link "Vidu Q1" [ref=e189] [cursor=pointer]:
+                  - /url: /guides/video/vidu-q1
+                  - generic [ref=e192]: Vidu Q1
+              - listitem [ref=e193]:
+                - link "Vidu 2" [ref=e194] [cursor=pointer]:
+                  - /url: /guides/video/vidu2
+                  - generic [ref=e197]: Vidu 2
+          - generic [ref=e198]:
+            - heading "Image Generation Models" [level=5] [ref=e200]
+            - list [ref=e201]:
+              - listitem [ref=e202]:
+                - link "CogView-4" [ref=e203] [cursor=pointer]:
+                  - /url: /guides/image/cogview-4
+                  - generic [ref=e206]: CogView-4
+          - generic [ref=e207]:
+            - heading "Audio Models" [level=5] [ref=e209]
+            - list [ref=e210]:
+              - listitem [ref=e211]:
+                - link "GLM-ASR-2512" [ref=e212] [cursor=pointer]:
+                  - /url: /guides/audio/glm-asr-2512
+                  - generic [ref=e215]: GLM-ASR-2512
+          - generic [ref=e216]:
+            - heading "Capabilities" [level=5] [ref=e218]
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - link "Thinking Mode" [ref=e221] [cursor=pointer]:
+                  - /url: /guides/capabilities/thinking-mode
+                  - generic [ref=e224]: Thinking Mode
+              - listitem [ref=e225]:
+                - link "Deep Thinking" [ref=e226] [cursor=pointer]:
+                  - /url: /guides/capabilities/thinking
+                  - generic [ref=e229]: Deep Thinking
+              - listitem [ref=e230]:
+                - link "Streaming Messages" [ref=e231] [cursor=pointer]:
+                  - /url: /guides/capabilities/streaming
+                  - generic [ref=e234]: Streaming Messages
+              - listitem [ref=e235]:
+                - link "Tool Streaming Output" [ref=e236] [cursor=pointer]:
+                  - /url: /guides/capabilities/stream-tool
+                  - generic [ref=e239]: Tool Streaming Output
+              - listitem [ref=e240]:
+                - link "Function Calling" [ref=e241] [cursor=pointer]:
+                  - /url: /guides/capabilities/function-calling
+                  - generic [ref=e244]: Function Calling
+              - listitem [ref=e245]:
+                - link "Context Caching" [ref=e246] [cursor=pointer]:
+                  - /url: /guides/capabilities/cache
+                  - generic [ref=e249]: Context Caching
+              - listitem [ref=e250]:
+                - link "Structured Output" [ref=e251] [cursor=pointer]:
+                  - /url: /guides/capabilities/struct-output
+                  - generic [ref=e254]: Structured Output
+          - generic [ref=e255]:
+            - heading "Tools" [level=5] [ref=e257]
+            - list [ref=e258]:
+              - listitem [ref=e259]:
+                - link "Web Search" [ref=e260] [cursor=pointer]:
+                  - /url: /guides/tools/web-search
+                  - generic [ref=e263]: Web Search
+              - listitem [ref=e264]:
+                - link "Stream Tool Call" [ref=e265] [cursor=pointer]:
+                  - /url: /guides/tools/stream-tool
+                  - generic [ref=e268]: Stream Tool Call
+          - generic [ref=e269]:
+            - heading "Agents" [level=5] [ref=e271]
+            - list [ref=e272]:
+              - listitem [ref=e273]:
+                - link "GLM Slide/Poster Agent(beta)" [ref=e274] [cursor=pointer]:
+                  - /url: /guides/agents/slide
+                  - generic [ref=e277]: GLM Slide/Poster Agent(beta)
+              - listitem [ref=e278]:
+                - link "Translation Agent" [ref=e279] [cursor=pointer]:
+                  - /url: /guides/agents/translation
+                  - generic [ref=e282]: Translation Agent
+              - listitem [ref=e283]:
+                - link "Video Effect Template Agent" [ref=e284] [cursor=pointer]:
+                  - /url: /guides/agents/video-template
+                  - generic [ref=e287]: Video Effect Template Agent
+        - generic [ref=e289]:
+          - generic [ref=e292]:
+            - button "On this page" [ref=e293] [cursor=pointer]:
+              - img [ref=e294]
+              - generic [ref=e295]: On this page
+            - list [ref=e297]:
+              - listitem [ref=e298]:
+                - link "Models" [ref=e299] [cursor=pointer]:
+                  - /url: "#models"
+              - listitem [ref=e300]:
+                - link "Text Models" [ref=e301] [cursor=pointer]:
+                  - /url: "#text-models"
+              - listitem [ref=e302]:
+                - link "Vision Models" [ref=e303] [cursor=pointer]:
+                  - /url: "#vision-models"
+              - listitem [ref=e304]:
+                - link "Built-in Tools" [ref=e305] [cursor=pointer]:
+                  - /url: "#built-in-tools"
+              - listitem [ref=e306]:
+                - link "Image Generation Models" [ref=e307] [cursor=pointer]:
+                  - /url: "#image-generation-models"
+              - listitem [ref=e308]:
+                - link "Video Generation Models" [ref=e309] [cursor=pointer]:
+                  - /url: "#video-generation-models"
+              - listitem [ref=e310]:
+                - link "Audio Models" [ref=e311] [cursor=pointer]:
+                  - /url: "#audio-models"
+              - listitem [ref=e312]:
+                - link "Agents" [ref=e313] [cursor=pointer]:
+                  - /url: "#agents"
+          - generic [ref=e314]:
+            - banner [ref=e315]:
+              - generic [ref=e316]:
+                - generic [ref=e317]: Get Started
+                - generic [ref=e318]:
+                  - heading "Pricing" [level=1] [ref=e319]
+                  - generic [ref=e320]:
+                    - button "Copy page" [ref=e321] [cursor=pointer]:
+                      - generic [ref=e322]:
+                        - img [ref=e323]
+                        - generic [ref=e326]: Copy page
+                    - button "More actions" [ref=e327] [cursor=pointer]:
+                      - img [ref=e328]
+              - paragraph [ref=e331]: This page provides pricing information for Z.AI’s models and tools. All prices are in USD.
+            - generic [ref=e332]:
+              - heading "Navigate to header Models" [level=2] [ref=e333]:
+                - link "Navigate to header" [ref=e334] [cursor=pointer]:
+                  - /url: "#models"
+                  - img [ref=e336]
+                - generic [ref=e338] [cursor=pointer]: Models
+              - heading "Navigate to header Text Models" [level=3] [ref=e339]:
+                - link "Navigate to header" [ref=e340] [cursor=pointer]:
+                  - /url: "#text-models"
+                  - img [ref=e342]
+                - generic [ref=e344] [cursor=pointer]: Text Models
+              - generic [ref=e345]: Prices per 1M tokens.
+              - table [ref=e348]:
+                - rowgroup [ref=e349]:
+                  - row "Model Input Cached Input Cached Input Storage Output" [ref=e350]:
+                    - columnheader "Model" [ref=e351]
+                    - columnheader "Input" [ref=e352]
+                    - columnheader "Cached Input" [ref=e353]
+                    - columnheader "Cached Input Storage" [ref=e354]
+                    - columnheader "Output" [ref=e355]
+                - rowgroup [ref=e356]:
+                  - row "GLM-5.1 $1.4 $0.26 Limited-time Free $4.4" [ref=e357]:
+                    - cell "GLM-5.1" [ref=e358]
+                    - cell "$1.4" [ref=e359]
+                    - cell "$0.26" [ref=e360]
+                    - cell "Limited-time Free" [ref=e361]
+                    - cell "$4.4" [ref=e362]
+                  - row "GLM-5 $1 $0.2 Limited-time Free $3.2" [ref=e363]:
+                    - cell "GLM-5" [ref=e364]
+                    - cell "$1" [ref=e365]
+                    - cell "$0.2" [ref=e366]
+                    - cell "Limited-time Free" [ref=e367]
+                    - cell "$3.2" [ref=e368]
+                  - row "GLM-5-Turbo $1.2 $0.24 Limited-time Free $4.0" [ref=e369]:
+                    - cell "GLM-5-Turbo" [ref=e370]
+                    - cell "$1.2" [ref=e371]
+                    - cell "$0.24" [ref=e372]
+                    - cell "Limited-time Free" [ref=e373]
+                    - cell "$4.0" [ref=e374]
+                  - row "GLM-4.7 $0.6 $0.11 Limited-time Free $2.2" [ref=e375]:
+                    - cell "GLM-4.7" [ref=e376]
+                    - cell "$0.6" [ref=e377]
+                    - cell "$0.11" [ref=e378]
+                    - cell "Limited-time Free" [ref=e379]
+                    - cell "$2.2" [ref=e380]
+                  - row "GLM-4.7-FlashX $0.07 $0.01 Limited-time Free $0.4" [ref=e381]:
+                    - cell "GLM-4.7-FlashX" [ref=e382]
+                    - cell "$0.07" [ref=e383]
+                    - cell "$0.01" [ref=e384]
+                    - cell "Limited-time Free" [ref=e385]
+                    - cell "$0.4" [ref=e386]
+                  - row "GLM-4.6 $0.6 $0.11 Limited-time Free $2.2" [ref=e387]:
+                    - cell "GLM-4.6" [ref=e388]
+                    - cell "$0.6" [ref=e389]
+                    - cell "$0.11" [ref=e390]
+                    - cell "Limited-time Free" [ref=e391]
+                    - cell "$2.2" [ref=e392]
+                  - row "GLM-4.5 $0.6 $0.11 Limited-time Free $2.2" [ref=e393]:
+                    - cell "GLM-4.5" [ref=e394]
+                    - cell "$0.6" [ref=e395]
+                    - cell "$0.11" [ref=e396]
+                    - cell "Limited-time Free" [ref=e397]
+                    - cell "$2.2" [ref=e398]
+                  - row "GLM-4.5-X $2.2 $0.45 Limited-time Free $8.9" [ref=e399]:
+                    - cell "GLM-4.5-X" [ref=e400]
+                    - cell "$2.2" [ref=e401]
+                    - cell "$0.45" [ref=e402]
+                    - cell "Limited-time Free" [ref=e403]
+                    - cell "$8.9" [ref=e404]
+                  - row "GLM-4.5-Air $0.2 $0.03 Limited-time Free $1.1" [ref=e405]:
+                    - cell "GLM-4.5-Air" [ref=e406]
+                    - cell "$0.2" [ref=e407]
+                    - cell "$0.03" [ref=e408]
+                    - cell "Limited-time Free" [ref=e409]
+                    - cell "$1.1" [ref=e410]
+                  - row "GLM-4.5-AirX $1.1 $0.22 Limited-time Free $4.5" [ref=e411]:
+                    - cell "GLM-4.5-AirX" [ref=e412]
+                    - cell "$1.1" [ref=e413]
+                    - cell "$0.22" [ref=e414]
+                    - cell "Limited-time Free" [ref=e415]
+                    - cell "$4.5" [ref=e416]
+                  - row "GLM-4-32B-0414-128K $0.1 - - $0.1" [ref=e417]:
+                    - cell "GLM-4-32B-0414-128K" [ref=e418]
+                    - cell "$0.1" [ref=e419]
+                    - cell "-" [ref=e420]
+                    - cell "-" [ref=e421]
+                    - cell "$0.1" [ref=e422]
+                  - row "GLM-4.7-Flash Free Free Free Free" [ref=e423]:
+                    - cell "GLM-4.7-Flash" [ref=e424]
+                    - cell "Free" [ref=e425]
+                    - cell "Free" [ref=e426]
+                    - cell "Free" [ref=e427]
+                    - cell "Free" [ref=e428]
+                  - row "GLM-4.5-Flash Free Free Free Free" [ref=e429]:
+                    - cell "GLM-4.5-Flash" [ref=e430]
+                    - cell "Free" [ref=e431]
+                    - cell "Free" [ref=e432]
+                    - cell "Free" [ref=e433]
+                    - cell "Free" [ref=e434]
+              - heading "Navigate to header Vision Models" [level=3] [ref=e435]:
+                - link "Navigate to header" [ref=e436] [cursor=pointer]:
+                  - /url: "#vision-models"
+                  - img [ref=e438]
+                - generic [ref=e440] [cursor=pointer]: Vision Models
+              - generic [ref=e441]: Prices per 1M tokens.
+              - table [ref=e444]:
+                - rowgroup [ref=e445]:
+                  - row "Model Input Cached Input Cached Input Storage Output" [ref=e446]:
+                    - columnheader "Model" [ref=e447]
+                    - columnheader "Input" [ref=e448]
+                    - columnheader "Cached Input" [ref=e449]
+                    - columnheader "Cached Input Storage" [ref=e450]
+                    - columnheader "Output" [ref=e451]
+                - rowgroup [ref=e452]:
+                  - row "GLM-5V-Turbo $1.2 $0.24 Limited-time Free $4" [ref=e453]:
+                    - cell "GLM-5V-Turbo" [ref=e454]
+                    - cell "$1.2" [ref=e455]
+                    - cell "$0.24" [ref=e456]
+                    - cell "Limited-time Free" [ref=e457]
+                    - cell "$4" [ref=e458]
+                  - row "GLM-4.6V $0.3 $0.05 Limited-time Free $0.9" [ref=e459]:
+                    - cell "GLM-4.6V" [ref=e460]
+                    - cell "$0.3" [ref=e461]
+                    - cell "$0.05" [ref=e462]
+                    - cell "Limited-time Free" [ref=e463]
+                    - cell "$0.9" [ref=e464]
+                  - row "GLM-OCR $0.03 \\ \\ $0.03" [ref=e465]:
+                    - cell "GLM-OCR" [ref=e466]
+                    - cell "$0.03" [ref=e467]
+                    - cell "\\" [ref=e468]
+                    - cell "\\" [ref=e469]
+                    - cell "$0.03" [ref=e470]
+                  - row "GLM-4.6V-FlashX $0.04 $0.004 Limited-time Free $0.4" [ref=e471]:
+                    - cell "GLM-4.6V-FlashX" [ref=e472]
+                    - cell "$0.04" [ref=e473]
+                    - cell "$0.004" [ref=e474]
+                    - cell "Limited-time Free" [ref=e475]
+                    - cell "$0.4" [ref=e476]
+                  - row "GLM-4.5V $0.6 $0.11 Limited-time Free $1.8" [ref=e477]:
+                    - cell "GLM-4.5V" [ref=e478]
+                    - cell "$0.6" [ref=e479]
+                    - cell "$0.11" [ref=e480]
+                    - cell "Limited-time Free" [ref=e481]
+                    - cell "$1.8" [ref=e482]
+                  - row "GLM-4.6V-Flash Free Free Free Free" [ref=e483]:
+                    - cell "GLM-4.6V-Flash" [ref=e484]
+                    - cell "Free" [ref=e485]
+                    - cell "Free" [ref=e486]
+                    - cell "Free" [ref=e487]
+                    - cell "Free" [ref=e488]
+              - heading "Navigate to header Built-in Tools" [level=3] [ref=e489]:
+                - link "Navigate to header" [ref=e490] [cursor=pointer]:
+                  - /url: "#built-in-tools"
+                  - img [ref=e492]
+                - generic [ref=e494] [cursor=pointer]: Built-in Tools
+              - table [ref=e497]:
+                - rowgroup [ref=e498]:
+                  - row "Tool Cost" [ref=e499]:
+                    - columnheader "Tool" [ref=e500]
+                    - columnheader "Cost" [ref=e501]
+                - rowgroup [ref=e502]:
+                  - row "Web Search $0.01 / use" [ref=e503]:
+                    - cell "Web Search" [ref=e504]
+                    - cell "$0.01 / use" [ref=e505]
+              - heading "Navigate to header Image Generation Models" [level=3] [ref=e506]:
+                - link "Navigate to header" [ref=e507] [cursor=pointer]:
+                  - /url: "#image-generation-models"
+                  - img [ref=e509]
+                - generic [ref=e511] [cursor=pointer]: Image Generation Models
+              - generic [ref=e512]: Prices per image.
+              - table [ref=e515]:
+                - rowgroup [ref=e516]:
+                  - row "Model Price" [ref=e517]:
+                    - columnheader "Model" [ref=e518]
+                    - columnheader "Price" [ref=e519]
+                - rowgroup [ref=e520]:
+                  - row "GLM-Image $0.015" [ref=e521]:
+                    - cell "GLM-Image" [ref=e522]
+                    - cell "$0.015" [ref=e523]
+                  - row "CogView-4 $0.01" [ref=e524]:
+                    - cell "CogView-4" [ref=e525]
+                    - cell "$0.01" [ref=e526]
+              - heading "Navigate to header Video Generation Models" [level=3] [ref=e527]:
+                - link "Navigate to header" [ref=e528] [cursor=pointer]:
+                  - /url: "#video-generation-models"
+                  - img [ref=e530]
+                - generic [ref=e532] [cursor=pointer]: Video Generation Models
+              - generic [ref=e533]: Prices per video.
+              - table [ref=e536]:
+                - rowgroup [ref=e537]:
+                  - row "Model Price" [ref=e538]:
+                    - columnheader "Model" [ref=e539]
+                    - columnheader "Price" [ref=e540]
+                - rowgroup [ref=e541]:
+                  - row "CogVideoX-3 $0.2" [ref=e542]:
+                    - cell "CogVideoX-3" [ref=e543]
+                    - cell "$0.2" [ref=e544]
+                  - row "ViduQ1-Text $0.4" [ref=e545]:
+                    - cell "ViduQ1-Text" [ref=e546]
+                    - cell "$0.4" [ref=e547]
+                  - row "ViduQ1-Image $0.4" [ref=e548]:
+                    - cell "ViduQ1-Image" [ref=e549]
+                    - cell "$0.4" [ref=e550]
+                  - row "ViduQ1-Start-End $0.4" [ref=e551]:
+                    - cell "ViduQ1-Start-End" [ref=e552]
+                    - cell "$0.4" [ref=e553]
+                  - row "Vidu2-Image $0.2" [ref=e554]:
+                    - cell "Vidu2-Image" [ref=e555]
+                    - cell "$0.2" [ref=e556]
+                  - row "Vidu2-Start-End $0.2" [ref=e557]:
+                    - cell "Vidu2-Start-End" [ref=e558]
+                    - cell "$0.2" [ref=e559]
+                  - row "Vidu2-Reference $0.4" [ref=e560]:
+                    - cell "Vidu2-Reference" [ref=e561]
+                    - cell "$0.4" [ref=e562]
+              - heading "Navigate to header Audio Models" [level=3] [ref=e563]:
+                - link "Navigate to header" [ref=e564] [cursor=pointer]:
+                  - /url: "#audio-models"
+                  - img [ref=e566]
+                - generic [ref=e568] [cursor=pointer]: Audio Models
+              - table [ref=e571]:
+                - rowgroup [ref=e572]:
+                  - row "Model Price" [ref=e573]:
+                    - columnheader "Model" [ref=e574]
+                    - columnheader "Price" [ref=e575]
+                - rowgroup [ref=e576]:
+                  - row "GLM-ASR-2512 $0.03 / MTok (equivalent to approximately $0.0024/minute)" [ref=e577]:
+                    - cell "GLM-ASR-2512" [ref=e578]
+                    - cell "$0.03 / MTok (equivalent to approximately $0.0024/minute)" [ref=e579]
+              - heading "Navigate to header Agents" [level=3] [ref=e580]:
+                - link "Navigate to header" [ref=e581] [cursor=pointer]:
+                  - /url: "#agents"
+                  - img [ref=e583]
+                - generic [ref=e585] [cursor=pointer]: Agents
+              - table [ref=e588]:
+                - rowgroup [ref=e589]:
+                  - row "Agent Price" [ref=e590]:
+                    - columnheader "Agent" [ref=e591]
+                    - columnheader "Price" [ref=e592]
+                - rowgroup [ref=e593]:
+                  - row "GLM Slide/Poster Agent(beta) $0.7 / MTok" [ref=e594]:
+                    - cell "GLM Slide/Poster Agent(beta)" [ref=e595]
+                    - cell "$0.7 / MTok" [ref=e596]
+                  - row "General-Purpose Translation $3 / MTok" [ref=e597]:
+                    - cell "General-Purpose Translation" [ref=e598]
+                    - cell "$3 / MTok" [ref=e599]
+                  - row "Popular Special Effects Video Templates $0.2 / video" [ref=e600]:
+                    - cell "Popular Special Effects Video Templates" [ref=e601]
+                    - cell "$0.2 / video" [ref=e602]
+            - generic [ref=e604]:
+              - paragraph [ref=e605]: Was this page helpful?
+              - generic [ref=e607]:
+                - button "Yes" [ref=e608] [cursor=pointer]:
+                  - img [ref=e609]
+                  - generic [ref=e611]: "Yes"
+                - button "No" [ref=e612] [cursor=pointer]:
+                  - img [ref=e613]
+                  - generic [ref=e615]: "No"
+            - generic [ref=e616]:
+              - link "Overview" [ref=e617] [cursor=pointer]:
+                - /url: /guides/overview/overview
+                - img [ref=e618]
+                - generic [ref=e620]: Overview
+              - link "Core Parameters" [ref=e621] [cursor=pointer]:
+                - /url: /guides/overview/concept-param
+                - generic [ref=e622]: Core Parameters
+                - img [ref=e623]
+            - contentinfo [ref=e625]:
+              - generic [ref=e626]:
+                - link "x" [ref=e627] [cursor=pointer]:
+                  - /url: https://x.com/Zai_org
+                  - generic [ref=e628]: x
+                  - img [ref=e629]
+                - link "github" [ref=e630] [cursor=pointer]:
+                  - /url: https://github.com/zai-org
+                  - generic [ref=e631]: github
+                  - img [ref=e632]
+                - link "discord" [ref=e633] [cursor=pointer]:
+                  - /url: https://discord.gg/QR7SARHRxK
+                  - generic [ref=e634]: discord
+                  - img [ref=e635]
+                - link "linkedin" [ref=e636] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/zdotai
+                  - generic [ref=e637]: linkedin
+                  - img [ref=e638]
+  - alert [ref=e639]

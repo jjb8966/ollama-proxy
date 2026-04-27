@@ -1,0 +1,551 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%2F15663
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e133]:
+      - region "Header" [ref=e135]:
+        - generic [ref=e136]:
+          - 'heading "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body) #15663" [level=1] [ref=e138]'
+          - generic [ref=e140]:
+            - button "New issue" [ref=e142] [cursor=pointer]:
+              - generic [ref=e144]: New issue
+            - button "Copy link" [ref=e145] [cursor=pointer]:
+              - img [ref=e146]
+      - generic [ref=e154]:
+        - img "Issue" [ref=e155]
+        - text: Open
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - generic [ref=e162]:
+            - link "@TH33ORACL3's profile" [ref=e163] [cursor=pointer]:
+              - /url: https://github.com/TH33ORACL3
+              - img "@TH33ORACL3" [ref=e164]
+            - generic [ref=e165]:
+              - heading "Description" [level=2] [ref=e166]
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - link "TH33ORACL3" [ref=e173] [cursor=pointer]:
+                      - /url: https://github.com/TH33ORACL3
+                    - generic [ref=e174]:
+                      - text: opened
+                      - link "on Apr 18, 2026last week" [ref=e175] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15663#issue-4287382463
+                        - generic "Apr 18, 2026, 5:47 PM GMT+9" [ref=e176]: on Apr 18, 2026last week
+                  - button "Issue body actions" [ref=e180] [cursor=pointer]:
+                    - img [ref=e181]
+                - generic [ref=e183]:
+                  - generic [ref=e185]:
+                    - heading "Summary" [level=2] [ref=e186]
+                    - paragraph [ref=e187]:
+                      - text: Ollama Cloud API responses do not include account-level quota or usage information. Today, the only way to know your remaining quota, monthly limit, or reset date is to log into the web dashboard at
+                      - link "https://ollama.com" [ref=e188] [cursor=pointer]:
+                        - /url: https://ollama.com
+                      - text: or wait for an automated email warning. Please expose this data through the API so it can be consumed programmatically.
+                    - heading "Suggested Labels" [level=2] [ref=e189]
+                    - paragraph [ref=e190]: "Maintainers — please consider applying:"
+                    - list [ref=e191]:
+                      - listitem [ref=e192]:
+                        - code [ref=e193]: feature request
+                      - listitem [ref=e194]:
+                        - code [ref=e195]: ollama.com
+                        - text: (this is a Cloud-side change)
+                      - listitem [ref=e196]:
+                        - code [ref=e197]: feedback wanted
+                    - paragraph [ref=e198]: (External contributors cannot apply labels.)
+                    - heading "Environment" [level=2] [ref=e199]
+                    - list [ref=e200]:
+                      - listitem [ref=e201]:
+                        - strong [ref=e202]: "Ollama version:"
+                        - text: 0.21.0
+                      - listitem [ref=e203]:
+                        - strong [ref=e204]: "OS:"
+                        - text: macOS 26.4.1 (build 25E253)
+                      - listitem [ref=e205]:
+                        - strong [ref=e206]: "Endpoint:"
+                        - code [ref=e207]: https://ollama.com
+                        - text: (Cloud)
+                      - listitem [ref=e208]:
+                        - strong [ref=e209]: "Auth:"
+                        - text: Personal API key (
+                        - code [ref=e210]: ollama-cloud
+                        - text: provider)
+                    - heading "Current Behavior" [level=2] [ref=e211]
+                    - paragraph [ref=e212]:
+                      - text: Calling any Cloud endpoint (e.g.,
+                      - code [ref=e213]: POST /api/chat
+                      - text: ","
+                      - code [ref=e214]: POST /api/generate
+                      - text: ","
+                      - code [ref=e215]: POST /api/embed
+                      - text: ") returns a response that includes per-request token counts but no account-level quota information:"
+                    - generic [ref=e216]:
+                      - generic [ref=e217]:
+                        - text: "{ \"model\":"
+                        - generic [ref=e218]: "\"gpt-oss:120b\""
+                        - text: ", \"created_at\":"
+                        - generic [ref=e219]: "\"2026-04-18T...\""
+                        - text: ", \"message\": { \"role\":"
+                        - generic [ref=e220]: "\"assistant\""
+                        - text: ", \"content\":"
+                        - generic [ref=e221]: "\"...\""
+                        - text: "}, \"done\": true, \"prompt_eval_count\": 123, \"eval_count\": 456 }"
+                      - button "Copy" [ref=e223] [cursor=pointer]:
+                        - img [ref=e224]
+                    - paragraph [ref=e227]: "Response headers also contain no quota metadata:"
+                    - generic [ref=e228]:
+                      - code [ref=e230]: "HTTP/2 200 content-type: application/json date: ..."
+                      - button "Copy" [ref=e232] [cursor=pointer]:
+                        - img [ref=e233]
+                    - paragraph [ref=e236]: "To find out how close I am to my monthly cap, I have to:"
+                    - list [ref=e237]:
+                      - listitem [ref=e238]: Open a browser
+                      - listitem [ref=e239]:
+                        - text: Log into
+                        - link "https://ollama.com" [ref=e240] [cursor=pointer]:
+                          - /url: https://ollama.com
+                      - listitem [ref=e241]: Navigate to the usage page
+                    - paragraph [ref=e242]: …or wait for the threshold email Ollama sends near the limit. Neither path is usable from a CLI tool, an editor integration, or an automated workflow.
+                    - heading "Proposed Behavior" [level=2] [ref=e243]
+                    - heading "Option A — HTTP response headers (preferred, lowest friction)" [level=3] [ref=e244]
+                    - paragraph [ref=e245]: "Add headers similar to GitHub's, OpenAI's, and Anthropic's rate-limit conventions:"
+                    - generic [ref=e246]:
+                      - code [ref=e248]: "X-Ollama-Quota-Limit: <int> # tokens or requests per period X-Ollama-Quota-Remaining: <int> X-Ollama-Quota-Used: <int> X-Ollama-Quota-Reset: <ISO-8601> # when the quota resets X-Ollama-Quota-Period: monthly|daily # billing period granularity"
+                      - button "Copy" [ref=e250] [cursor=pointer]:
+                        - img [ref=e251]
+                    - paragraph [ref=e254]: Headers are cheap to add, don't change response schemas, and are trivially consumable by any HTTP client.
+                    - heading "Option B — Extend the JSON usage/response body" [level=3] [ref=e255]:
+                      - text: Option B — Extend the JSON
+                      - code [ref=e256]: usage
+                      - text: /response body
+                    - generic [ref=e257]:
+                      - generic [ref=e258]:
+                        - text: "{ \"model\":"
+                        - generic [ref=e259]: "\"gpt-oss:120b\""
+                        - text: ", \"done\": true, \"prompt_eval_count\": 123, \"eval_count\": 456, \"account\": { \"quota\": { \"period\":"
+                        - generic [ref=e260]: "\"monthly\""
+                        - text: ", \"limit\": 1000000, \"used\": 123456, \"remaining\": 876544, \"reset_at\":"
+                        - generic [ref=e261]: "\"2026-05-01T00:00:00Z\""
+                        - text: "} } }"
+                      - button "Copy" [ref=e263] [cursor=pointer]:
+                        - img [ref=e264]
+                    - heading "Option C — Dedicated endpoint" [level=3] [ref=e267]
+                    - paragraph [ref=e268]:
+                      - code [ref=e269]: GET https://ollama.com/api/account/usage
+                      - text: returning the same structure as Option B. Useful for proactive polling without making a model call.
+                    - paragraph [ref=e270]:
+                      - text: Ideally, ship
+                      - strong [ref=e271]: A + C
+                      - text: ": headers piggyback on existing calls, and a dedicated endpoint lets tooling check status without spending tokens."
+                    - heading "Why This Matters" [level=2] [ref=e272]
+                    - table [ref=e274]:
+                      - rowgroup [ref=e275]:
+                        - row "Use case Without API quota With API quota" [ref=e276]:
+                          - columnheader "Use case" [ref=e277]
+                          - columnheader "Without API quota" [ref=e278]
+                          - columnheader "With API quota" [ref=e279]
+                      - rowgroup [ref=e280]:
+                        - row "CLI tools (e.g., pi, custom wrappers) Must scrape dashboard or surprise users with 429s Can warn user at 80%, switch keys, or pause" [ref=e281]:
+                          - cell "CLI tools (e.g., pi, custom wrappers)" [ref=e282]:
+                            - text: CLI tools (e.g.,
+                            - code [ref=e283]: pi
+                            - text: ", custom wrappers)"
+                          - cell "Must scrape dashboard or surprise users with 429s" [ref=e284]
+                          - cell "Can warn user at 80%, switch keys, or pause" [ref=e285]
+                        - row "Multi-key rotation (I have 10 keys configured) Can't tell which key is closest to its limit Can rotate to the most-available key automatically" [ref=e286]:
+                          - cell "Multi-key rotation (I have 10 keys configured)" [ref=e287]
+                          - cell "Can't tell which key is closest to its limit" [ref=e288]
+                          - cell "Can rotate to the most-available key automatically" [ref=e289]
+                        - row "Cost dashboards Manual screenshots from web UI Real-time monitoring" [ref=e290]:
+                          - cell "Cost dashboards" [ref=e291]
+                          - cell "Manual screenshots from web UI" [ref=e292]
+                          - cell "Real-time monitoring" [ref=e293]
+                        - row "CI/CD jobs Job fails mid-run when quota hits Job can fail fast or fall back" [ref=e294]:
+                          - cell "CI/CD jobs" [ref=e295]
+                          - cell "Job fails mid-run when quota hits" [ref=e296]
+                          - cell "Job can fail fast or fall back" [ref=e297]
+                        - row "IDE integrations No usage signal In-line usage indicator" [ref=e298]:
+                          - cell "IDE integrations" [ref=e299]
+                          - cell "No usage signal" [ref=e300]
+                          - cell "In-line usage indicator" [ref=e301]
+                    - heading "Comparison With Other Providers" [level=2] [ref=e302]
+                    - table [ref=e304]:
+                      - rowgroup [ref=e305]:
+                        - row "Provider Exposes quota in API? How" [ref=e306]:
+                          - columnheader "Provider" [ref=e307]
+                          - columnheader "Exposes quota in API?" [ref=e308]
+                          - columnheader "How" [ref=e309]
+                      - rowgroup [ref=e310]:
+                        - row "OpenAI ✅ x-ratelimit-limit-*, x-ratelimit-remaining-*, x-ratelimit-reset-* headers" [ref=e311]:
+                          - cell "OpenAI" [ref=e312]
+                          - cell "✅" [ref=e313]
+                          - cell "x-ratelimit-limit-*, x-ratelimit-remaining-*, x-ratelimit-reset-* headers" [ref=e314]:
+                            - code [ref=e315]: x-ratelimit-limit-*
+                            - text: ","
+                            - code [ref=e316]: x-ratelimit-remaining-*
+                            - text: ","
+                            - code [ref=e317]: x-ratelimit-reset-*
+                            - text: headers
+                        - row "Anthropic ✅ anthropic-ratelimit-* headers" [ref=e318]:
+                          - cell "Anthropic" [ref=e319]
+                          - cell "✅" [ref=e320]
+                          - cell "anthropic-ratelimit-* headers" [ref=e321]:
+                            - code [ref=e322]: anthropic-ratelimit-*
+                            - text: headers
+                        - row "Google Gemini ✅ Quota visible via Cloud Quotas API" [ref=e323]:
+                          - cell "Google Gemini" [ref=e324]
+                          - cell "✅" [ref=e325]
+                          - cell "Quota visible via Cloud Quotas API" [ref=e326]
+                        - row "GitHub API ✅ x-ratelimit-* headers (industry standard)" [ref=e327]:
+                          - cell "GitHub API" [ref=e328]
+                          - cell "✅" [ref=e329]
+                          - cell "x-ratelimit-* headers (industry standard)" [ref=e330]:
+                            - code [ref=e331]: x-ratelimit-*
+                            - text: headers (industry standard)
+                        - row "Ollama Cloud ❌ Dashboard + email only" [ref=e332]:
+                          - cell "Ollama Cloud" [ref=e333]:
+                            - strong [ref=e334]: Ollama Cloud
+                          - cell "❌" [ref=e335]
+                          - cell "Dashboard + email only" [ref=e336]
+                    - paragraph [ref=e337]: Ollama is currently the outlier here.
+                    - heading "Acceptance Criteria" [level=2] [ref=e338]
+                    - list [ref=e339]:
+                      - listitem [ref=e340]:
+                        - generic [ref=e342]:
+                          - generic [ref=e348]:
+                            - checkbox "At least one Cloud endpoint returns quota information (headers or body) in production. checklist item" [disabled] [ref=e349]
+                            - generic [ref=e350]: At least one Cloud endpoint returns quota information (headers or body) in production.
+                          - generic [ref=e357]:
+                            - 'checkbox "The fields cover: limit, used, remaining, reset timestamp, period. checklist item" [disabled] [ref=e358]'
+                            - generic [ref=e359]: "The fields cover: limit, used, remaining, reset timestamp, period."
+                          - generic [ref=e366]:
+                            - checkbox "The behavior is documented at https://docs.ollama.com (or the Cloud-specific docs). checklist item" [disabled] [ref=e367]
+                            - generic [ref=e368]:
+                              - text: The behavior is documented at
+                              - link "https://docs.ollama.com" [ref=e369] [cursor=pointer]:
+                                - /url: https://docs.ollama.com
+                              - text: (or the Cloud-specific docs).
+                          - generic [ref=e376]:
+                            - 'checkbox "Behavior is consistent across `/api/chat`, `/api/generate`, and `/api/embed`. checklist item" [disabled] [ref=e377]'
+                            - generic [ref=e378]:
+                              - text: Behavior is consistent across
+                              - code [ref=e379]: /api/chat
+                              - text: ","
+                              - code [ref=e380]: /api/generate
+                              - text: ", and"
+                              - code [ref=e381]: /api/embed
+                              - text: .
+                          - generic [ref=e388]:
+                            - checkbox "No regression for self-hosted Ollama (these fields should simply be absent when not running against the Cloud). checklist item" [disabled] [ref=e389]
+                            - generic [ref=e390]: No regression for self-hosted Ollama (these fields should simply be absent when not running against the Cloud).
+                        - status [ref=e392]
+                    - heading "Workarounds I'm Using Today" [level=2] [ref=e393]
+                    - list [ref=e394]:
+                      - listitem [ref=e395]: Manually opening the dashboard.
+                      - listitem [ref=e396]:
+                        - text: Tracking
+                        - code [ref=e397]: prompt_eval_count + eval_count
+                        - text: locally and comparing against a hand-copied limit.
+                      - listitem [ref=e398]: Rotating between 10 API keys and waiting for Ollama's email to tell me which account is near its cap (this is the literal trigger for filing this issue — it's an absurd UX).
+                    - heading "Related" [level=2] [ref=e399]
+                    - list [ref=e400]:
+                      - listitem [ref=e401]: Ollama Cloud docs do not currently document any usage/quota endpoint.
+                      - listitem [ref=e402]:
+                        - text: Discussions in the Ollama Discord
+                        - code [ref=e403]: "#feature-requests"
+                        - text: channel have raised similar asks.
+                    - heading "Willing To Help" [level=2] [ref=e404]
+                    - paragraph [ref=e405]: Happy to test a beta of any of the three options above against my account, and happy to provide feedback from the perspective of a CLI/agent tooling author.
+                    - separator [ref=e406]
+                    - paragraph [ref=e407]: Thanks for considering — this is a small change with a big DX payoff. 🙏
+                  - toolbar "Reactions" [ref=e409]:
+                    - switch "👍 8 reactions" [ref=e410]:
+                      - generic [ref=e411]:
+                        - generic: 👍
+                        - generic [ref=e412]:
+                          - generic [ref=e413]: React with 👍
+                          - text: "8"
+          - generic [ref=e415]:
+            - generic [ref=e416]:
+              - heading "Activity" [level=2] [ref=e417]
+              - generic [ref=e418]:
+                - region "Events" [ref=e419]:
+                  - generic [ref=e426]:
+                    - img [ref=e430]
+                    - generic [ref=e434]:
+                      - link "TH33ORACL3" [ref=e436] [cursor=pointer]:
+                        - /url: /TH33ORACL3
+                        - generic [ref=e437]: TH33ORACL3
+                      - text: changed the title
+                      - deletion [ref=e439]:
+                        - generic [ref=e440]: "[-]"
+                        - text: "Feature Request: Expose account quota/usage details via Ollama Cloud API"
+                        - generic [ref=e441]: "[/-]"
+                      - insertion [ref=e443]:
+                        - generic [ref=e444]: "[+]"
+                        - text: "Feature Request: Expose account quota/usage details via Ollama Cloud API (headers and/or response body)"
+                        - generic [ref=e445]: "[/+]"
+                      - link "on Apr 18, 2026last week" [ref=e446] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15663#event-24634412462
+                        - generic "Apr 18, 2026, 5:50 PM GMT+9" [ref=e447]: on Apr 18, 2026last week
+                - generic [ref=e448]:
+                  - link "@PureBlissAK's profile" [ref=e449] [cursor=pointer]:
+                    - /url: https://github.com/PureBlissAK
+                    - img "PureBlissAK" [ref=e450]
+                  - generic [ref=e457]:
+                    - generic [ref=e459]:
+                      - heading "PureBlissAK commented on Apr 19, 2026 last week" [level=3] [ref=e460]:
+                        - text: PureBlissAK commented
+                        - generic "Apr 19, 2026, 3:13 AM GMT+9" [ref=e461]: on Apr 19, 2026 last week
+                      - generic [ref=e462]:
+                        - link "PureBlissAK" [ref=e464] [cursor=pointer]:
+                          - /url: /PureBlissAK
+                        - link "on Apr 19, 2026last week" [ref=e467] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15663#issuecomment-4274294903
+                          - generic "Apr 19, 2026, 3:13 AM GMT+9" [ref=e468]: on Apr 19, 2026last week
+                      - button "Actions for PureBlissAK's comment, 3:13 AM on April 19" [ref=e472] [cursor=pointer]:
+                        - img [ref=e473]
+                    - generic [ref=e475]:
+                      - generic [ref=e477]:
+                        - heading "🤖 Automated Triage & Analysis Report" [level=2] [ref=e478]
+                        - paragraph [ref=e479]:
+                          - strong [ref=e480]: Issue
+                          - text: ":"
+                          - link "#15663" [ref=e481] [cursor=pointer]:
+                            - /url: https://github.com/ollama/ollama/issues/15663
+                          - strong [ref=e482]: Analyzed
+                          - text: ": 2026-04-18T18:13:46.423309"
+                        - heading "Analysis" [level=3] [ref=e483]
+                        - list [ref=e484]:
+                          - listitem [ref=e485]:
+                            - strong [ref=e486]: Type
+                            - text: ": unknown"
+                          - listitem [ref=e487]:
+                            - strong [ref=e488]: Severity
+                            - text: ": medium"
+                          - listitem [ref=e489]:
+                            - strong [ref=e490]: Components
+                            - text: ": unknown"
+                        - heading "Implementation Plan" [level=3] [ref=e491]
+                        - list [ref=e492]:
+                          - listitem [ref=e493]:
+                            - strong [ref=e494]: Effort
+                            - text: ": medium"
+                          - listitem [ref=e495]:
+                            - strong [ref=e496]: Steps
+                            - text: ":"
+                        - paragraph [ref=e497]:
+                          - emphasis [ref=e498]: This issue has been triaged and marked for implementation.
+                      - toolbar "Reactions"
+                - generic [ref=e499]:
+                  - link "@ben-vargas's profile" [ref=e500] [cursor=pointer]:
+                    - /url: https://github.com/ben-vargas
+                    - img "ben-vargas" [ref=e501]
+                  - generic [ref=e508]:
+                    - generic [ref=e510]:
+                      - heading "ben-vargas commented on Apr 22, 2026 5 days ago" [level=3] [ref=e511]:
+                        - text: ben-vargas commented
+                        - generic "Apr 22, 2026, 2:38 AM GMT+9" [ref=e512]: on Apr 22, 2026 5 days ago
+                      - generic [ref=e513]:
+                        - link "ben-vargas" [ref=e515] [cursor=pointer]:
+                          - /url: /ben-vargas
+                        - link "on Apr 22, 20265 days ago" [ref=e518] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15663#issuecomment-4290599432
+                          - generic "Apr 22, 2026, 2:38 AM GMT+9" [ref=e519]: on Apr 22, 20265 days ago
+                      - button "Actions for ben-vargas's comment, 2:38 AM on April 22" [ref=e523] [cursor=pointer]:
+                        - img [ref=e524]
+                    - generic [ref=e526]:
+                      - paragraph [ref=e529]: Agreed, this is a real gap for ollama cloud users and when signing up I expected an endpoint would be available enabling to monitor quota without having to login to browser page and constantly click refresh.
+                      - toolbar "Reactions" [ref=e530]:
+                        - switch "❤️ 3 reactions" [ref=e531]:
+                          - generic [ref=e532]:
+                            - generic: ❤️
+                            - generic [ref=e533]:
+                              - generic [ref=e534]: React with ❤️
+                              - text: "3"
+            - generic [ref=e535]:
+              - link "Sign up for free" [ref=e536] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ollama/ollama/issues/15663
+                - generic [ref=e538]: Sign up for free
+              - generic [ref=e539]:
+                - strong [ref=e540]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e541] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ollama/ollama/issues/15663
+        - generic [ref=e543]:
+          - heading "Metadata" [level=2] [ref=e544]
+          - generic [ref=e546]:
+            - generic [ref=e548]:
+              - generic [ref=e549]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e550]: No one assigned
+            - generic [ref=e552]:
+              - generic [ref=e553]:
+                - heading "Labels" [level=3]
+              - generic [ref=e554]: No labels
+            - generic [ref=e556]:
+              - generic [ref=e557]:
+                - heading "Type" [level=3]
+              - generic [ref=e558]: No type
+            - generic [ref=e560]:
+              - generic [ref=e561]:
+                - heading "Projects" [level=3]
+              - generic [ref=e562]: No projects
+            - generic [ref=e564]:
+              - generic [ref=e565]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e566]: No milestone
+            - generic [ref=e568]:
+              - generic [ref=e569]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e570]: None yet
+            - generic [ref=e572]:
+              - generic [ref=e573]:
+                - heading "Development" [level=3]
+              - generic [ref=e574]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e575]
+            - list
+  - contentinfo [ref=e576]:
+    - heading "Footer" [level=2] [ref=e577]
+    - generic [ref=e578]:
+      - generic [ref=e579]:
+        - link "GitHub Homepage" [ref=e580] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e581]
+        - generic [ref=e583]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e584]:
+        - heading "Footer navigation" [level=3] [ref=e585]
+        - list "Footer navigation" [ref=e586]:
+          - listitem [ref=e587]:
+            - link "Terms" [ref=e588] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e589]:
+            - link "Privacy" [ref=e590] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e591]:
+            - link "Security" [ref=e592] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e593]:
+            - link "Status" [ref=e594] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e595]:
+            - link "Community" [ref=e596] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e597]:
+            - link "Docs" [ref=e598] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e599]:
+            - link "Contact" [ref=e600] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e601]:
+            - button "Manage cookies" [ref=e603] [cursor=pointer]
+          - listitem [ref=e604]:
+            - button "Do not share my personal information" [ref=e606] [cursor=pointer]

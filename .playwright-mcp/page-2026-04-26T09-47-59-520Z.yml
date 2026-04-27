@@ -1,0 +1,910 @@
+- generic [ref=e2]:
+  - region:
+    - generic:
+      - tooltip "This user has previously committed to the ollama repository."
+    - generic:
+      - tooltip "This user is a member of the ollama organization."
+    - generic:
+      - tooltip "This user is the author of this issue"
+    - generic:
+      - tooltip "This user has previously committed to the ollama repository."
+    - generic:
+      - tooltip "This user has previously committed to the ollama repository."
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%2F15453
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e133]:
+      - region "Header" [ref=e135]:
+        - generic [ref=e136]:
+          - 'heading "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable #15453" [level=1] [ref=e138]'
+          - generic [ref=e140]:
+            - button "New issue" [ref=e142] [cursor=pointer]:
+              - generic [ref=e144]: New issue
+            - button "Copy link" [ref=e145] [cursor=pointer]:
+              - img [ref=e146]
+      - generic [ref=e154]:
+        - img "Issue" [ref=e155]
+        - text: Open
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - generic [ref=e162]:
+            - link "@KUANKEI21's profile" [ref=e163] [cursor=pointer]:
+              - /url: https://github.com/KUANKEI21
+              - img "@KUANKEI21" [ref=e164]
+            - generic [ref=e165]:
+              - heading "Description" [level=2] [ref=e166]
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - link "KUANKEI21" [ref=e173] [cursor=pointer]:
+                      - /url: https://github.com/KUANKEI21
+                    - generic [ref=e174]:
+                      - text: opened
+                      - link "on Apr 9, 20262 weeks ago" [ref=e175] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15453#issue-4233275997
+                        - generic "Apr 10, 2026, 12:23 AM GMT+9" [ref=e176]: on Apr 9, 20262 weeks ago
+                  - button "Issue body actions" [ref=e180] [cursor=pointer]:
+                    - img [ref=e181]
+                - generic [ref=e183]:
+                  - generic [ref=e185]:
+                    - heading "Environment" [level=2] [ref=e186]
+                    - list [ref=e187]:
+                      - listitem [ref=e188]:
+                        - strong [ref=e189]: Plan
+                        - text: ": Ollama Pro ($20/month, subscribed 2026-04-09)"
+                      - listitem [ref=e190]:
+                        - strong [ref=e191]: OS
+                        - text: ": macOS (Darwin 25.4.0)"
+                      - listitem [ref=e192]:
+                        - strong [ref=e193]: Ollama version
+                        - text: ": Latest (via"
+                        - code [ref=e194]: brew
+                        - text: )
+                      - listitem [ref=e195]:
+                        - strong [ref=e196]: Connection
+                        - text: ": Stable internet, 0% packet loss to ollama.com"
+                      - listitem [ref=e197]:
+                        - strong [ref=e198]: Models tested
+                        - text: ":"
+                        - code [ref=e199]: glm-5.1:cloud
+                        - text: ","
+                        - code [ref=e200]: kimi-k2.5:cloud
+                        - text: ","
+                        - code [ref=e201]: qwen3.5:cloud
+                        - text: ","
+                        - code [ref=e202]: deepseek-v3.2:cloud
+                    - heading "Problem" [level=2] [ref=e203]
+                    - paragraph [ref=e204]:
+                      - text: Ollama Cloud is effectively unusable. Both
+                      - code [ref=e205]: /api/chat
+                      - text: and
+                      - code [ref=e206]: /api/generate
+                      - text: endpoints return
+                      - strong [ref=e207]: empty responses or timeout
+                      - text: for all cloud models. This is not model-specific — every single cloud model exhibits the same behavior.
+                    - heading "Reproduction" [level=2] [ref=e208]
+                    - paragraph [ref=e209]: "Simple test — 5 sequential requests per model, 20-second timeout:"
+                    - generic [ref=e210]:
+                      - generic [ref=e211]:
+                        - text: for model in glm-5.1:cloud kimi-k2.5:cloud qwen3.5:cloud deepseek-v3.2:cloud; do echo
+                        - generic [ref=e212]: "\"=== $model ===\""
+                        - text: for i in 1 2 3 4 5; do curl -s --max-time 20 http://localhost:11434/api/chat \ -d
+                        - generic [ref=e213]: "\"{\\\"model\\\":\\\"$model\\\",\\\"messages\\\":[{\\\"role\\\":\\\"user\\\",\\\"content\\\":\\\"hi\\\"}],\\\"stream\\\":false}\""
+                        - text: \ | python3 -c
+                        - generic [ref=e214]: "\"import sys,json; d=json.load(sys.stdin); print(f'#{'\""
+                        - text: $i
+                        - generic [ref=e215]: "\"'} OK {d[\\\"total_duration\\\"]/1e9:.1f}s')\""
+                        - text: 2>/dev/null \ || echo
+                        - generic [ref=e216]: "\"#$i FAIL (empty/timeout)\""
+                        - text: done done
+                      - button "Copy" [ref=e218] [cursor=pointer]:
+                        - img [ref=e219]
+                    - heading "Results (2026-04-09, ~21:00 UTC+8)" [level=3] [ref=e222]
+                    - table [ref=e224]:
+                      - rowgroup [ref=e225]:
+                        - row "Model Success Rate Notes" [ref=e226]:
+                          - columnheader "Model" [ref=e227]
+                          - columnheader "Success Rate" [ref=e228]
+                          - columnheader "Notes" [ref=e229]
+                      - rowgroup [ref=e230]:
+                        - row "glm-5.1:cloud 0/5 All empty/timeout" [ref=e231]:
+                          - cell "glm-5.1:cloud" [ref=e232]:
+                            - code [ref=e233]: glm-5.1:cloud
+                          - cell "0/5" [ref=e234]:
+                            - strong [ref=e235]: 0/5
+                          - cell "All empty/timeout" [ref=e236]
+                        - row "kimi-k2.5:cloud 1/5 1 success (2.6s), 4 failures" [ref=e237]:
+                          - cell "kimi-k2.5:cloud" [ref=e238]:
+                            - code [ref=e239]: kimi-k2.5:cloud
+                          - cell "1/5" [ref=e240]:
+                            - strong [ref=e241]: 1/5
+                          - cell "1 success (2.6s), 4 failures" [ref=e242]
+                        - row "qwen3.5:cloud 0/5 All empty/timeout" [ref=e243]:
+                          - cell "qwen3.5:cloud" [ref=e244]:
+                            - code [ref=e245]: qwen3.5:cloud
+                          - cell "0/5" [ref=e246]:
+                            - strong [ref=e247]: 0/5
+                          - cell "All empty/timeout" [ref=e248]
+                        - row "deepseek-v3.2:cloud 0/5 All empty/timeout" [ref=e249]:
+                          - cell "deepseek-v3.2:cloud" [ref=e250]:
+                            - code [ref=e251]: deepseek-v3.2:cloud
+                          - cell "0/5" [ref=e252]:
+                            - strong [ref=e253]: 0/5
+                          - cell "All empty/timeout" [ref=e254]
+                        - row "Total 1/20 (5%)" [ref=e255]:
+                          - cell "Total" [ref=e256]:
+                            - strong [ref=e257]: Total
+                          - cell "1/20 (5%)" [ref=e258]:
+                            - strong [ref=e259]: 1/20 (5%)
+                          - cell [ref=e260]
+                    - paragraph [ref=e261]:
+                      - text: Earlier in the day,
+                      - code [ref=e262]: glm-5.1:cloud
+                      - text: worked intermittently (2/3 success), so this appears to be a degrading situation.
+                    - heading "Both endpoints affected" [level=3] [ref=e263]
+                    - paragraph [ref=e264]:
+                      - text: Tested
+                      - code [ref=e265]: /api/generate
+                      - text: as well — same 0/5 failure rate for
+                      - code [ref=e266]: glm-5.1:cloud
+                      - text: . This rules out a
+                      - code [ref=e267]: /api/chat
+                      - text: "-specific bug."
+                    - heading "Expected behavior" [level=2] [ref=e268]
+                    - paragraph [ref=e269]:
+                      - text: As a paying Pro subscriber ($20/month), I expect a reasonable success rate (>95%) for cloud model inference. A
+                      - strong [ref=e270]: 5% success rate
+                      - text: is not a degraded service — it is a broken service.
+                    - heading "What I've ruled out" [level=2] [ref=e271]
+                    - list [ref=e272]:
+                      - listitem [ref=e273]:
+                        - text: ✅ Local Ollama service is running (
+                        - code [ref=e274]: localhost:11434
+                        - text: responds,
+                        - code [ref=e275]: ollama list
+                        - text: shows all cloud models)
+                      - listitem [ref=e276]: ✅ Network is stable (non-cloud local models work fine)
+                      - listitem [ref=e277]: ✅ Not a single-model issue (all 4 cloud models fail)
+                      - listitem [ref=e278]:
+                        - text: ✅ Not an endpoint issue (
+                        - code [ref=e279]: /api/chat
+                        - text: and
+                        - code [ref=e280]: /api/generate
+                        - text: both fail)
+                      - listitem [ref=e281]:
+                        - text: ✅ Tested with minimal payloads (
+                        - code [ref=e282]: "\"hi\""
+                        - text: ) — not a token limit issue
+                    - heading "Related issues" [level=2] [ref=e283]
+                    - paragraph [ref=e284]: "This aligns with multiple existing reports:"
+                    - list [ref=e285]:
+                      - listitem [ref=e286]:
+                        - generic [ref=e287]:
+                          - img [ref=e288]
+                          - 'link "Ollama Cloud: Frequent 503 errors making cloud models unreliable #15419" [ref=e291] [cursor=pointer]':
+                            - /url: https://github.com/ollama/ollama/issues/15419
+                        - text: — Frequent 503 errors on cloud models (2026-04-08, 7+ confirmations)
+                      - listitem [ref=e292]:
+                        - generic [ref=e293]:
+                          - img [ref=e294]
+                          - 'link "Service reliability degradation: High timeout rates and repeated failures on Ollama Cloud (2026-03-06) #14673" [ref=e297] [cursor=pointer]':
+                            - /url: https://github.com/ollama/ollama/issues/14673
+                        - text: — 29.7% failure rate documented, support tickets ignored 2+ weeks
+                      - listitem [ref=e298]:
+                        - generic [ref=e299]:
+                          - img [ref=e300]
+                          - 'link "I''m having an issue when using the Ollama cloud model, especially when generating large outputs. #15290" [ref=e303] [cursor=pointer]':
+                            - /url: https://github.com/ollama/ollama/issues/15290
+                        - text: — EOF errors and socket closures on cloud models
+                    - heading "Requests" [level=2] [ref=e304]
+                    - list [ref=e305]:
+                      - listitem [ref=e306]:
+                        - strong [ref=e307]: Acknowledge the outage
+                        - text: — There is no status page, no incident communication, and no response on existing issues
+                      - listitem [ref=e308]:
+                        - strong [ref=e309]: Provide a status page
+                        - text: for Ollama Cloud service health
+                      - listitem [ref=e310]:
+                        - strong [ref=e311]:
+                          - text: Add
+                          - code [ref=e312]: Retry-After
+                          - text: headers
+                        - text: on 503/502 responses so clients can implement proper backoff
+                      - listitem [ref=e313]:
+                        - strong [ref=e314]: Consider pro-rating or extending subscriptions
+                        - text: for periods of sustained outage — charging $20/month for a 5% success rate is not acceptable
+                  - toolbar "Reactions" [ref=e316]:
+                    - switch "👍 9 reactions" [ref=e317]:
+                      - generic [ref=e318]:
+                        - generic: 👍
+                        - generic [ref=e319]:
+                          - generic [ref=e320]: React with 👍
+                          - text: "9"
+                    - switch "👀 2 reactions" [ref=e321]:
+                      - generic [ref=e322]:
+                        - generic: 👀
+                        - generic [ref=e323]:
+                          - generic [ref=e324]: React with 👀
+                          - text: "2"
+          - generic [ref=e326]:
+            - generic [ref=e327]:
+              - heading "Activity" [level=2] [ref=e328]
+              - generic [ref=e329]:
+                - generic [ref=e330]:
+                  - link "@bartlomiejwolk's profile" [ref=e331] [cursor=pointer]:
+                    - /url: https://github.com/bartlomiejwolk
+                    - img "bartlomiejwolk" [ref=e332]
+                  - generic [ref=e339]:
+                    - generic [ref=e341]:
+                      - heading "bartlomiejwolk commented on Apr 10, 2026 2 weeks ago" [level=3] [ref=e342]:
+                        - text: bartlomiejwolk commented
+                        - generic "Apr 10, 2026, 12:30 AM GMT+9" [ref=e343]: on Apr 10, 2026 2 weeks ago
+                      - generic [ref=e344]:
+                        - link "bartlomiejwolk" [ref=e346] [cursor=pointer]:
+                          - /url: /bartlomiejwolk
+                        - link "on Apr 10, 20262 weeks ago" [ref=e349] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4215448317
+                          - generic "Apr 10, 2026, 12:30 AM GMT+9" [ref=e350]: on Apr 10, 20262 weeks ago
+                      - button "Actions for bartlomiejwolk's comment, 12:30 AM on April 10" [ref=e354] [cursor=pointer]:
+                        - img [ref=e355]
+                    - generic [ref=e357]:
+                      - paragraph [ref=e360]: Same for me. I'm a new Ollama Pro user and I started thinking that this is the normal. I'm glad it's not.
+                      - toolbar "Reactions" [ref=e361]:
+                        - switch "👍 4 reactions" [ref=e362]:
+                          - generic [ref=e363]:
+                            - generic: 👍
+                            - generic [ref=e364]:
+                              - generic [ref=e365]: React with 👍
+                              - text: "4"
+                        - switch "❤️ 1 reaction" [ref=e366]:
+                          - generic [ref=e367]:
+                            - generic: ❤️
+                            - generic [ref=e368]:
+                              - generic [ref=e369]: React with ❤️
+                              - text: "1"
+                - region "Events" [ref=e370]:
+                  - generic [ref=e377]:
+                    - img [ref=e381]
+                    - generic [ref=e385]:
+                      - link "rick-github" [ref=e387] [cursor=pointer]:
+                        - /url: /rick-github
+                        - generic [ref=e388]: rick-github
+                      - text: added
+                      - link "cloud" [ref=e390] [cursor=pointer]:
+                        - /url: /ollama/ollama/issues?q=state%3Aopen%20label%3A%22cloud%22
+                        - generic [ref=e392]: cloud
+                      - link "on Apr 10, 20262 weeks ago" [ref=e394] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15453#event-24347749196
+                        - generic "Apr 10, 2026, 3:46 AM GMT+9" [ref=e395]: on Apr 10, 20262 weeks ago
+                - generic [ref=e396]:
+                  - link "@dongluochen's profile" [ref=e397] [cursor=pointer]:
+                    - /url: https://github.com/dongluochen
+                    - img "dongluochen" [ref=e398]
+                  - generic [ref=e405]:
+                    - generic [ref=e407]:
+                      - heading "dongluochen commented on Apr 10, 2026 2 weeks ago" [level=3] [ref=e408]:
+                        - text: dongluochen commented
+                        - generic "Apr 10, 2026, 9:18 AM GMT+9" [ref=e409]: on Apr 10, 2026 2 weeks ago
+                      - generic [ref=e410]:
+                        - link "dongluochen" [ref=e412] [cursor=pointer]:
+                          - /url: /dongluochen
+                        - link "on Apr 10, 20262 weeks ago" [ref=e415] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4218782831
+                          - generic "Apr 10, 2026, 9:18 AM GMT+9" [ref=e416]: on Apr 10, 20262 weeks ago
+                      - generic [ref=e418]:
+                        - generic "This user has previously committed to the ollama repository." [ref=e420]: Contributor
+                        - button "Actions for dongluochen's comment, 9:18 AM on April 10" [ref=e422] [cursor=pointer]:
+                          - img [ref=e423]
+                    - generic [ref=e425]:
+                      - generic [ref=e427]:
+                        - paragraph [ref=e428]: "@KUANKEI721 thanks for reporting the issues. Sorry about the experiences. Can you re-run your requests and provide the time and request ids (like below) for us to investigate."
+                        - generic [ref=e429]:
+                          - code [ref=e431]: "Internal Server Error (ref: 4f8b6a2c-a0ec-474e-b37a-6542b4ea732e)"
+                          - button "Copy" [ref=e433] [cursor=pointer]:
+                            - img [ref=e434]
+                      - toolbar "Reactions"
+                - generic [ref=e437]:
+                  - link "@jmorganca's profile" [ref=e438] [cursor=pointer]:
+                    - /url: https://github.com/jmorganca
+                    - img "jmorganca" [ref=e439]
+                  - generic [ref=e446]:
+                    - generic [ref=e448]:
+                      - heading "jmorganca commented on Apr 10, 2026 2 weeks ago" [level=3] [ref=e449]:
+                        - text: jmorganca commented
+                        - generic "Apr 10, 2026, 9:29 AM GMT+9" [ref=e450]: on Apr 10, 2026 2 weeks ago
+                      - generic [ref=e451]:
+                        - link "jmorganca" [ref=e453] [cursor=pointer]:
+                          - /url: /jmorganca
+                        - link "on Apr 10, 20262 weeks ago" [ref=e456] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4218854979
+                          - generic "Apr 10, 2026, 9:29 AM GMT+9" [ref=e457]: on Apr 10, 20262 weeks ago
+                      - generic [ref=e459]:
+                        - generic "This user is a member of the ollama organization." [ref=e461]: Member
+                        - button "Actions for jmorganca's comment, 9:29 AM on April 10" [ref=e463] [cursor=pointer]:
+                          - img [ref=e464]
+                    - generic [ref=e466]:
+                      - paragraph [ref=e469]: Hi all I'm sorry for the issues with Ollama's cloud this morning. We've been working hard to increase capacity. It should be improving now and we'll continue to monitor it.
+                      - toolbar "Reactions"
+                - generic [ref=e470]:
+                  - link "@KUANKEI21's profile" [ref=e471] [cursor=pointer]:
+                    - /url: https://github.com/KUANKEI21
+                    - img "KUANKEI21" [ref=e472]
+                  - generic [ref=e479]:
+                    - generic [ref=e481]:
+                      - heading "KUANKEI21 commented on Apr 10, 2026 2 weeks ago" [level=3] [ref=e482]:
+                        - text: KUANKEI21 commented
+                        - generic "Apr 10, 2026, 3:22 PM GMT+9" [ref=e483]: on Apr 10, 2026 2 weeks ago
+                      - generic [ref=e484]:
+                        - link "KUANKEI21" [ref=e486] [cursor=pointer]:
+                          - /url: /KUANKEI21
+                        - link "on Apr 10, 20262 weeks ago" [ref=e489] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4221506658
+                          - generic "Apr 10, 2026, 3:22 PM GMT+9" [ref=e490]: on Apr 10, 20262 weeks ago
+                      - generic [ref=e492]:
+                        - generic "This user is the author of this issue" [ref=e494]: Author
+                        - button "Actions for KUANKEI21's comment, 3:22 PM on April 10" [ref=e496] [cursor=pointer]:
+                          - img [ref=e497]
+                    - generic [ref=e499]:
+                      - generic [ref=e501]:
+                        - paragraph [ref=e502]:
+                          - link "@dongluochen" [ref=e503] [cursor=pointer]:
+                            - /url: https://github.com/dongluochen
+                          - text: Thanks for the quick response and for looking into this.
+                        - paragraph [ref=e504]:
+                          - text: We don't have a
+                          - code [ref=e505]: ref
+                          - text: because these failures are
+                          - strong [ref=e506]: not
+                          - code [ref=e507]: 500 Internal Server Error
+                          - text: — they are
+                          - code [ref=e508]: 502 Bad Gateway
+                          - text: with an
+                          - strong [ref=e509]: empty response body
+                          - text: ", so no app-level error UUID is returned."
+                        - paragraph [ref=e510]:
+                          - text: Per your own
+                          - link "API error documentation" [ref=e511] [cursor=pointer]:
+                            - /url: https://github.com/ollama/ollama/blob/main/docs/api/errors.mdx
+                          - text: ","
+                          - code [ref=e512]: "502"
+                          - text: "is defined as:"
+                        - blockquote [ref=e513]:
+                          - paragraph [ref=e514]:
+                            - strong [ref=e515]: "502"
+                            - text: ": Bad Gateway (e.g. when a cloud model cannot be reached)"
+                        - paragraph [ref=e516]:
+                          - text: This is a server-side cloud routing issue, not a client-side problem. The requests never reached the application layer that generates
+                          - code [ref=e517]: ref
+                          - text: UUIDs — they failed at the gateway.
+                        - separator [ref=e518]
+                        - heading "Representative failed samples" [level=3] [ref=e519]
+                        - paragraph [ref=e520]:
+                          - text: From our local
+                          - code [ref=e521]: ~/.ollama/logs/server.log
+                          - text: (all times UTC+8,
+                          - strong [ref=e522]: all requests were sequential — one at a time, no concurrency
+                          - text: "):"
+                        - table [ref=e524]:
+                          - rowgroup [ref=e525]:
+                            - row "# Time (UTC+8) Endpoint Status Latency" [ref=e526]:
+                              - columnheader "#" [ref=e527]
+                              - columnheader "Time (UTC+8)" [ref=e528]
+                              - columnheader "Endpoint" [ref=e529]
+                              - columnheader "Status" [ref=e530]
+                              - columnheader "Latency" [ref=e531]
+                          - rowgroup [ref=e532]:
+                            - row "1 2026-04-09 17:29:14 /v1/chat/completions 502 5m0s" [ref=e533]:
+                              - cell "1" [ref=e534]
+                              - cell "2026-04-09 17:29:14" [ref=e535]
+                              - cell "/v1/chat/completions" [ref=e536]:
+                                - code [ref=e537]: /v1/chat/completions
+                              - cell "502" [ref=e538]
+                              - cell "5m0s" [ref=e539]
+                            - row "2 2026-04-09 21:35:21 /api/chat 502 20.0s" [ref=e540]:
+                              - cell "2" [ref=e541]
+                              - cell "2026-04-09 21:35:21" [ref=e542]
+                              - cell "/api/chat" [ref=e543]:
+                                - code [ref=e544]: /api/chat
+                              - cell "502" [ref=e545]
+                              - cell "20.0s" [ref=e546]
+                            - row "3 2026-04-09 22:09:35 /api/chat 502 20.0s" [ref=e547]:
+                              - cell "3" [ref=e548]
+                              - cell "2026-04-09 22:09:35" [ref=e549]
+                              - cell "/api/chat" [ref=e550]:
+                                - code [ref=e551]: /api/chat
+                              - cell "502" [ref=e552]
+                              - cell "20.0s" [ref=e553]
+                            - row "4 2026-04-09 22:10:44 /api/generate 502 2m0s" [ref=e554]:
+                              - cell "4" [ref=e555]
+                              - cell "2026-04-09 22:10:44" [ref=e556]
+                              - cell "/api/generate" [ref=e557]:
+                                - code [ref=e558]: /api/generate
+                              - cell "502" [ref=e559]
+                              - cell "2m0s" [ref=e560]
+                            - row "5 2026-04-10 02:11:42 /v1/chat/completions 502 5.0s" [ref=e561]:
+                              - cell "5" [ref=e562]
+                              - cell "2026-04-10 02:11:42" [ref=e563]
+                              - cell "/v1/chat/completions" [ref=e564]:
+                                - code [ref=e565]: /v1/chat/completions
+                              - cell "502" [ref=e566]
+                              - cell "5.0s" [ref=e567]
+                        - group [ref=e568]:
+                          - 'generic "Full list: 48 total 502s (39 on 04-09, 9 on 04-10)" [ref=e569] [cursor=pointer]'
+                        - heading "What the 502 responses look like vs. successful ones" [level=3] [ref=e570]
+                        - paragraph [ref=e571]: "Successful requests return rich tracing headers:"
+                        - generic [ref=e572]:
+                          - code [ref=e574]: "Server: Google Frontend X-Request-Id: 39a39f87-d82e-45dd-8408-0d95692b876e Traceparent: 00-86d89d6bfb1481d41f5799ef8470d8b6-a91d7a5e4b265d16-00 X-Cloud-Trace-Context: 86d89d6bfb1481d41f5799ef8470d8b6/12186030712140750102"
+                          - button "Copy" [ref=e576] [cursor=pointer]:
+                            - img [ref=e577]
+                        - paragraph [ref=e580]:
+                          - text: The 502 failures return
+                          - strong [ref=e581]: empty body, no headers
+                          - text: — there is nothing client-side to provide beyond the timestamps above.
+                        - separator [ref=e582]
+                        - paragraph [ref=e583]:
+                          - text: As of 2026-04-10 ~05:30 UTC, the issue is no longer reproducing after the capacity improvements
+                          - link "@jmorganca" [ref=e584] [cursor=pointer]:
+                            - /url: https://github.com/jmorganca
+                          - text: mentioned. This is consistent with a transient capacity/routing incident on the cloud backend.
+                        - paragraph [ref=e585]: Could you investigate the 502s using these UTC+8 timestamps against your edge/gateway logs? Happy to provide our account email privately if that helps correlate.
+                      - toolbar "Reactions"
+                - generic [ref=e586]:
+                  - link "@matholland618's profile" [ref=e587] [cursor=pointer]:
+                    - /url: https://github.com/matholland618
+                    - img "matholland618" [ref=e588]
+                  - generic [ref=e595]:
+                    - generic [ref=e597]:
+                      - heading "matholland618 commented on Apr 11, 2026 2 weeks ago" [level=3] [ref=e598]:
+                        - text: matholland618 commented
+                        - generic "Apr 11, 2026, 2:53 PM GMT+9" [ref=e599]: on Apr 11, 2026 2 weeks ago
+                      - generic [ref=e600]:
+                        - link "matholland618" [ref=e602] [cursor=pointer]:
+                          - /url: /matholland618
+                        - link "on Apr 11, 20262 weeks ago" [ref=e605] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4228298203
+                          - generic "Apr 11, 2026, 2:53 PM GMT+9" [ref=e606]: on Apr 11, 20262 weeks ago
+                      - button "Actions for matholland618's comment, 2:53 PM on April 11" [ref=e610] [cursor=pointer]:
+                        - img [ref=e611]
+                    - generic [ref=e613]:
+                      - paragraph [ref=e616]: same for me....I noticed this yesterday, maybe late wed. evening. I noticed it when I changed my hermes model to glm 5.1 cloud...thought it was an issue with that model, it would just freeze up during tasks, or not respond at all....then I went back to qwen 3.5, and it's doing the same thing..
+                      - toolbar "Reactions"
+                - region "Events" [ref=e617]:
+                  - generic [ref=e624]:
+                    - img [ref=e628]
+                    - generic [ref=e632]:
+                      - link "jmorganca" [ref=e634] [cursor=pointer]:
+                        - /url: /jmorganca
+                        - generic [ref=e635]: jmorganca
+                      - generic [ref=e636]: self-assigned this
+                      - link "on Apr 12, 20262 weeks ago" [ref=e637] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15453#event-24413200871
+                        - generic "Apr 12, 2026, 7:37 AM GMT+9" [ref=e638]: on Apr 12, 20262 weeks ago
+                - generic [ref=e639]:
+                  - link "@orrinwitt's profile" [ref=e640] [cursor=pointer]:
+                    - /url: https://github.com/orrinwitt
+                    - img "orrinwitt" [ref=e641]
+                  - generic [ref=e648]:
+                    - generic [ref=e650]:
+                      - heading "orrinwitt commented on Apr 13, 2026 2 weeks ago" [level=3] [ref=e651]:
+                        - text: orrinwitt commented
+                        - generic "Apr 13, 2026, 5:03 AM GMT+9" [ref=e652]: on Apr 13, 2026 2 weeks ago
+                      - generic [ref=e653]:
+                        - link "orrinwitt" [ref=e655] [cursor=pointer]:
+                          - /url: /orrinwitt
+                        - link "on Apr 13, 20262 weeks ago" [ref=e658] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4232639237
+                          - generic "Apr 13, 2026, 5:03 AM GMT+9" [ref=e659]: on Apr 13, 20262 weeks ago
+                      - button "Actions for orrinwitt's comment, 5:03 AM on April 13" [ref=e663] [cursor=pointer]:
+                        - img [ref=e664]
+                    - generic [ref=e666]:
+                      - paragraph [ref=e669]: I just switched my nanobot using glm-5.1 from ollama cloud to openrouter and still got the error. maybe it's the upstream providers?
+                      - toolbar "Reactions"
+                - generic [ref=e670]:
+                  - link "@stanleyma610's profile" [ref=e671] [cursor=pointer]:
+                    - /url: https://github.com/stanleyma610
+                    - img "stanleyma610" [ref=e672]
+                  - generic [ref=e679]:
+                    - generic [ref=e681]:
+                      - heading "stanleyma610 commented on Apr 13, 2026 2 weeks ago" [level=3] [ref=e682]:
+                        - text: stanleyma610 commented
+                        - generic "Apr 13, 2026, 5:15 PM GMT+9" [ref=e683]: on Apr 13, 2026 2 weeks ago
+                      - generic [ref=e684]:
+                        - link "stanleyma610" [ref=e686] [cursor=pointer]:
+                          - /url: /stanleyma610
+                        - link "on Apr 13, 20262 weeks ago" [ref=e689] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4234863441
+                          - generic "Apr 13, 2026, 5:15 PM GMT+9" [ref=e690]: on Apr 13, 20262 weeks ago
+                      - button "Actions for stanleyma610's comment, 5:15 PM on April 13" [ref=e694] [cursor=pointer]:
+                        - img [ref=e695]
+                    - generic [ref=e697]:
+                      - paragraph [ref=e700]: same for me, all ollama cloud models got 502
+                      - toolbar "Reactions"
+                - generic [ref=e701]:
+                  - link "@coleman399's profile" [ref=e702] [cursor=pointer]:
+                    - /url: https://github.com/coleman399
+                    - img "coleman399" [ref=e703]
+                  - generic [ref=e710]:
+                    - generic [ref=e712]:
+                      - heading "coleman399 commented on Apr 14, 2026 2 weeks ago" [level=3] [ref=e713]:
+                        - text: coleman399 commented
+                        - generic "Apr 14, 2026, 3:24 AM GMT+9" [ref=e714]: on Apr 14, 2026 2 weeks ago
+                      - generic [ref=e715]:
+                        - link "coleman399" [ref=e717] [cursor=pointer]:
+                          - /url: /coleman399
+                        - link "on Apr 14, 20262 weeks ago" [ref=e720] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4238674266
+                          - generic "Apr 14, 2026, 3:24 AM GMT+9" [ref=e721]: on Apr 14, 20262 weeks ago
+                      - button "Actions for coleman399's comment, 3:24 AM on April 14" [ref=e725] [cursor=pointer]:
+                        - img [ref=e726]
+                    - generic [ref=e728]:
+                      - paragraph [ref=e731]: same for me
+                      - toolbar "Reactions"
+                - generic [ref=e732]:
+                  - link "@jackluo923's profile" [ref=e733] [cursor=pointer]:
+                    - /url: https://github.com/jackluo923
+                    - img "jackluo923" [ref=e734]
+                  - generic [ref=e741]:
+                    - generic [ref=e743]:
+                      - heading "jackluo923 commented on Apr 14, 2026 2 weeks ago" [level=3] [ref=e744]:
+                        - text: jackluo923 commented
+                        - generic "Apr 14, 2026, 5:18 AM GMT+9" [ref=e745]: on Apr 14, 2026 2 weeks ago
+                      - generic [ref=e746]:
+                        - link "jackluo923" [ref=e748] [cursor=pointer]:
+                          - /url: /jackluo923
+                        - link "on Apr 14, 20262 weeks ago" [ref=e751] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4239358611
+                          - generic "Apr 14, 2026, 5:18 AM GMT+9" [ref=e752]: on Apr 14, 20262 weeks ago
+                      - button "Actions for jackluo923's comment, 5:18 AM on April 14" [ref=e756] [cursor=pointer]:
+                        - img [ref=e757]
+                    - generic [ref=e759]:
+                      - paragraph [ref=e762]: same for me
+                      - toolbar "Reactions"
+                - generic [ref=e763]:
+                  - link "@dongluochen's profile" [ref=e764] [cursor=pointer]:
+                    - /url: https://github.com/dongluochen
+                    - img "dongluochen" [ref=e765]
+                  - generic [ref=e772]:
+                    - generic [ref=e774]:
+                      - heading "dongluochen commented on Apr 14, 2026 2 weeks ago" [level=3] [ref=e775]:
+                        - text: dongluochen commented
+                        - generic "Apr 14, 2026, 6:51 AM GMT+9" [ref=e776]: on Apr 14, 2026 2 weeks ago
+                      - generic [ref=e777]:
+                        - link "dongluochen" [ref=e779] [cursor=pointer]:
+                          - /url: /dongluochen
+                        - link "on Apr 14, 20262 weeks ago" [ref=e782] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4239864638
+                          - generic "Apr 14, 2026, 6:51 AM GMT+9" [ref=e783]: on Apr 14, 20262 weeks ago
+                      - generic [ref=e785]:
+                        - generic "This user has previously committed to the ollama repository." [ref=e787]: Contributor
+                        - button "Actions for dongluochen's comment, 6:51 AM on April 14" [ref=e789] [cursor=pointer]:
+                          - img [ref=e790]
+                    - generic [ref=e792]:
+                      - generic [ref=e794]:
+                        - paragraph [ref=e795]: "@KUANKEI721 thanks a lot for the detailed info. It's helpful! It looks you use ollama-cloud through local ollama which doesn't log request ids."
+                        - paragraph [ref=e796]: Looking at your table, I guess you may use a client with timeouts. What models do you use? The 5s and 20s are relatively short in LLM world. Requests may take more than 20s to complete, especially for large model and large prompts. If you set a short timeout some of the requests would fail even the backend is responding.
+                        - table [ref=e798]:
+                          - rowgroup [ref=e799]:
+                            - row "# Time (UTC+8) Endpoint Status Latency" [ref=e800]:
+                              - columnheader "#" [ref=e801]
+                              - columnheader "Time (UTC+8)" [ref=e802]
+                              - columnheader "Endpoint" [ref=e803]
+                              - columnheader "Status" [ref=e804]
+                              - columnheader "Latency" [ref=e805]
+                          - rowgroup [ref=e806]:
+                            - row "1 2026-04-09 17:29:14 /v1/chat/completions 502 5m0s" [ref=e807]:
+                              - cell "1" [ref=e808]
+                              - cell "2026-04-09 17:29:14" [ref=e809]
+                              - cell "/v1/chat/completions" [ref=e810]:
+                                - code [ref=e811]: /v1/chat/completions
+                              - cell "502" [ref=e812]
+                              - cell "5m0s" [ref=e813]
+                            - row "2 2026-04-09 21:35:21 /api/chat 502 20.0s" [ref=e814]:
+                              - cell "2" [ref=e815]
+                              - cell "2026-04-09 21:35:21" [ref=e816]
+                              - cell "/api/chat" [ref=e817]:
+                                - code [ref=e818]: /api/chat
+                              - cell "502" [ref=e819]
+                              - cell "20.0s" [ref=e820]
+                            - row "3 2026-04-09 22:09:35 /api/chat 502 20.0s" [ref=e821]:
+                              - cell "3" [ref=e822]
+                              - cell "2026-04-09 22:09:35" [ref=e823]
+                              - cell "/api/chat" [ref=e824]:
+                                - code [ref=e825]: /api/chat
+                              - cell "502" [ref=e826]
+                              - cell "20.0s" [ref=e827]
+                            - row "4 2026-04-09 22:10:44 /api/generate 502 2m0s" [ref=e828]:
+                              - cell "4" [ref=e829]
+                              - cell "2026-04-09 22:10:44" [ref=e830]
+                              - cell "/api/generate" [ref=e831]:
+                                - code [ref=e832]: /api/generate
+                              - cell "502" [ref=e833]
+                              - cell "2m0s" [ref=e834]
+                            - row "5 2026-04-10 02:11:42 /v1/chat/completions 502 5.0s" [ref=e835]:
+                              - cell "5" [ref=e836]
+                              - cell "2026-04-10 02:11:42" [ref=e837]
+                              - cell "/v1/chat/completions" [ref=e838]:
+                                - code [ref=e839]: /v1/chat/completions
+                              - cell "502" [ref=e840]
+                              - cell "5.0s" [ref=e841]
+                        - paragraph [ref=e842]: If you continue to see failures, it'd be great you can run some tests with curl and share the responses, e.g.,
+                        - generic [ref=e843]:
+                          - code [ref=e845]: "curl -s -X POST \"https://ollama.com/api/chat\" \\ -H \"Authorization: Bearer $API_KEY\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"model\": \"qwen3.5\", \"messages\": [{\"role\": \"user\", \"content\": \"What is the weather in Tokyo and Paris?\"}], \"tools\": [ { \"type\": \"function\", \"function\": { \"name\": \"get_weather\", \"description\": \"Get the current weather for a location\", \"parameters\": { \"type\": \"object\", \"properties\": { \"location\": {\"type\": \"string\"} }, \"required\": [\"location\"] } } } ], \"stream\": false }'"
+                          - button "Copy" [ref=e847] [cursor=pointer]:
+                            - img [ref=e848]
+                      - toolbar "Reactions"
+                - generic [ref=e851]:
+                  - link "@GrigoriyNestsiarovich's profile" [ref=e852] [cursor=pointer]:
+                    - /url: https://github.com/GrigoriyNestsiarovich
+                    - img "GrigoriyNestsiarovich" [ref=e853]
+                  - generic [ref=e860]:
+                    - generic [ref=e862]:
+                      - heading "GrigoriyNestsiarovich commented on Apr 14, 2026 2 weeks ago" [level=3] [ref=e863]:
+                        - text: GrigoriyNestsiarovich commented
+                        - generic "Apr 14, 2026, 6:05 PM GMT+9" [ref=e864]: on Apr 14, 2026 2 weeks ago
+                      - generic [ref=e865]:
+                        - link "GrigoriyNestsiarovich" [ref=e867] [cursor=pointer]:
+                          - /url: /GrigoriyNestsiarovich
+                        - link "on Apr 14, 20262 weeks ago" [ref=e870] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4242654794
+                          - generic "Apr 14, 2026, 6:05 PM GMT+9" [ref=e871]: on Apr 14, 20262 weeks ago
+                      - button "Actions for GrigoriyNestsiarovich's comment, 6:05 PM on April 14" [ref=e875] [cursor=pointer]:
+                        - img [ref=e876]
+                    - generic [ref=e878]:
+                      - paragraph [ref=e881]:
+                        - text: Same for me
+                        - text: "\"Service Temporarily Unavailable (ref: e1a9b1fd-dd4b-4b03-83b6-e9daefce4b6b) (status code: 503)\""
+                      - toolbar "Reactions"
+                - generic [ref=e882]:
+                  - link "@dongluochen's profile" [ref=e883] [cursor=pointer]:
+                    - /url: https://github.com/dongluochen
+                    - img "dongluochen" [ref=e884]
+                  - generic [ref=e891]:
+                    - generic [ref=e893]:
+                      - heading "dongluochen commented on Apr 15, 2026 2 weeks ago" [level=3] [ref=e894]:
+                        - text: dongluochen commented
+                        - generic "Apr 15, 2026, 4:59 AM GMT+9" [ref=e895]: on Apr 15, 2026 2 weeks ago
+                      - generic [ref=e896]:
+                        - link "dongluochen" [ref=e898] [cursor=pointer]:
+                          - /url: /dongluochen
+                        - link "on Apr 15, 20262 weeks ago" [ref=e901] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4246750214
+                          - generic "Apr 15, 2026, 4:59 AM GMT+9" [ref=e902]: on Apr 15, 20262 weeks ago
+                      - generic [ref=e904]:
+                        - generic "This user has previously committed to the ollama repository." [ref=e906]: Contributor
+                        - button "Actions for dongluochen's comment, 4:59 AM on April 15" [ref=e908] [cursor=pointer]:
+                          - img [ref=e909]
+                    - generic [ref=e911]:
+                      - paragraph [ref=e914]:
+                        - link "@GrigoriyNestsiarovich" [ref=e915] [cursor=pointer]:
+                          - /url: https://github.com/GrigoriyNestsiarovich
+                        - text: thanks for providing the ref id. This request failed due to capacity constraints. At the top of each hour there are bursty traffic due to cron jobs. The request around 2:02am PT failed because of that. Retry a bit later might go through. Sorry about that. We are working to improve system performance.
+                      - toolbar "Reactions" [ref=e916]:
+                        - switch "👍 1 reaction" [ref=e917]:
+                          - generic [ref=e918]:
+                            - generic: 👍
+                            - generic [ref=e919]:
+                              - generic [ref=e920]: React with 👍
+                              - text: "1"
+                - generic [ref=e921]:
+                  - link "@ghostmodel's profile" [ref=e922] [cursor=pointer]:
+                    - /url: https://github.com/ghostmodel
+                    - img "ghostmodel" [ref=e923]
+                  - generic [ref=e930]:
+                    - generic [ref=e932]:
+                      - heading "ghostmodel commented on Apr 17, 2026 last week" [level=3] [ref=e933]:
+                        - text: ghostmodel commented
+                        - generic "Apr 17, 2026, 5:39 AM GMT+9" [ref=e934]: on Apr 17, 2026 last week
+                      - generic [ref=e935]:
+                        - link "ghostmodel" [ref=e937] [cursor=pointer]:
+                          - /url: /ghostmodel
+                        - link "on Apr 17, 2026last week" [ref=e940] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15453#issuecomment-4263263540
+                          - generic "Apr 17, 2026, 5:39 AM GMT+9" [ref=e941]: on Apr 17, 2026last week
+                      - button "Actions for ghostmodel's comment, 5:39 AM on April 17" [ref=e945] [cursor=pointer]:
+                        - img [ref=e946]
+                    - generic [ref=e948]:
+                      - paragraph [ref=e951]: I get unauthorised 403 , the 1st request goes thru but all other attempts after that error
+                      - toolbar "Reactions"
+                - generic [ref=e954]:
+                  - generic [ref=e960]:
+                    - heading "12 remaining items" [level=3] [ref=e962]:
+                      - text: "12"
+                      - generic [ref=e963]: remaining items
+                    - button "Load more" [ref=e965] [cursor=pointer]:
+                      - generic [ref=e968]: Load more
+                  - generic [ref=e970]:
+                    - img [ref=e971]
+                    - generic [ref=e974]: Loading
+            - generic [ref=e975]:
+              - link "Sign up for free" [ref=e976] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ollama/ollama/issues/15453
+                - generic [ref=e978]: Sign up for free
+              - generic [ref=e979]:
+                - strong [ref=e980]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e981] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ollama/ollama/issues/15453
+        - generic [ref=e983]:
+          - heading "Metadata" [level=2] [ref=e984]
+          - generic [ref=e986]:
+            - generic [ref=e987]:
+              - generic [ref=e989]:
+                - heading "Assignees" [level=3]
+              - list [ref=e991]:
+                - listitem [ref=e992]:
+                  - link "jmorganca" [ref=e993] [cursor=pointer]:
+                    - /url: /jmorganca
+                    - generic:
+                      - img "@jmorganca"
+                    - generic [ref=e996]: jmorganca
+            - generic [ref=e997]:
+              - generic [ref=e999]:
+                - heading "Labels" [level=3]
+              - link "cloud" [ref=e1002] [cursor=pointer]:
+                - /url: https://github.com/ollama/ollama/issues?q=state%3Aopen%20label%3A%22cloud%22
+                - generic [ref=e1004]: cloud
+            - generic [ref=e1007]:
+              - generic [ref=e1008]:
+                - heading "Type" [level=3]
+              - generic [ref=e1009]: No type
+            - generic [ref=e1011]:
+              - generic [ref=e1012]:
+                - heading "Projects" [level=3]
+              - generic [ref=e1013]: No projects
+            - generic [ref=e1015]:
+              - generic [ref=e1016]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e1017]: No milestone
+            - generic [ref=e1019]:
+              - generic [ref=e1020]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e1021]: None yet
+            - generic [ref=e1023]:
+              - generic [ref=e1024]:
+                - heading "Development" [level=3]
+              - generic [ref=e1025]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e1026]
+            - list
+  - contentinfo [ref=e1027]:
+    - heading "Footer" [level=2] [ref=e1028]
+    - generic [ref=e1029]:
+      - generic [ref=e1030]:
+        - link "GitHub Homepage" [ref=e1031] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1032]
+        - generic [ref=e1034]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1035]:
+        - heading "Footer navigation" [level=3] [ref=e1036]
+        - list "Footer navigation" [ref=e1037]:
+          - listitem [ref=e1038]:
+            - link "Terms" [ref=e1039] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1040]:
+            - link "Privacy" [ref=e1041] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1042]:
+            - link "Security" [ref=e1043] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1044]:
+            - link "Status" [ref=e1045] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1046]:
+            - link "Community" [ref=e1047] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1048]:
+            - link "Docs" [ref=e1049] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1050]:
+            - link "Contact" [ref=e1051] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1052]:
+            - button "Manage cookies" [ref=e1054] [cursor=pointer]
+          - listitem [ref=e1055]:
+            - button "Do not share my personal information" [ref=e1057] [cursor=pointer]

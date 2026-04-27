@@ -1,0 +1,654 @@
+- generic [active] [ref=e1]:
+  - link "콘텐츠로 이동" [ref=e2] [cursor=pointer]:
+    - /url: "#_top"
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "OpenCode" [ref=e7] [cursor=pointer]:
+          - /url: /docs/ko
+          - generic [ref=e8]: OpenCode
+        - generic [ref=e9]:
+          - generic [ref=e10]:
+            - link [ref=e11] [cursor=pointer]:
+              - /url: https://github.com/anomalyco/opencode
+              - img [ref=e12]
+            - link [ref=e14] [cursor=pointer]:
+              - /url: https://opencode.ai/discord
+              - img [ref=e15]
+          - button "검색" [ref=e18] [cursor=pointer]:
+            - generic [ref=e19]: 검색
+            - generic [ref=e20]:
+              - generic [ref=e21]: ⌘
+              - generic [ref=e22]: K
+    - navigation "메인":
+      - list [ref=e26]:
+        - listitem [ref=e27]:
+          - link "소개" [ref=e28] [cursor=pointer]:
+            - /url: /docs/ko/
+        - listitem [ref=e29]:
+          - link "Config" [ref=e30] [cursor=pointer]:
+            - /url: /docs/ko/config/
+        - listitem [ref=e31]:
+          - link "공급자" [ref=e32] [cursor=pointer]:
+            - /url: /docs/ko/providers/
+        - listitem [ref=e33]:
+          - link "네트워크" [ref=e34] [cursor=pointer]:
+            - /url: /docs/ko/network/
+        - listitem [ref=e35]:
+          - link "엔터프라이즈" [ref=e36] [cursor=pointer]:
+            - /url: /docs/ko/enterprise/
+        - listitem [ref=e37]:
+          - link "문제 해결" [ref=e38] [cursor=pointer]:
+            - /url: /docs/ko/troubleshooting/
+        - listitem [ref=e39]:
+          - link "Windows" [ref=e40] [cursor=pointer]:
+            - /url: /docs/ko/windows-wsl
+        - listitem [ref=e41]:
+          - group [ref=e42]:
+            - generic "사용" [ref=e43] [cursor=pointer]:
+              - generic [ref=e44]: 사용
+              - img [ref=e45]
+            - list [ref=e47]:
+              - listitem [ref=e48]:
+                - link "Go" [ref=e49] [cursor=pointer]:
+                  - /url: /docs/ko/go/
+              - listitem [ref=e50]:
+                - link "TUI" [ref=e51] [cursor=pointer]:
+                  - /url: /docs/ko/tui/
+              - listitem [ref=e52]:
+                - link "CLI" [ref=e53] [cursor=pointer]:
+                  - /url: /docs/ko/cli/
+              - listitem [ref=e54]:
+                - link "Web" [ref=e55] [cursor=pointer]:
+                  - /url: /docs/ko/web/
+              - listitem [ref=e56]:
+                - link "IDE" [ref=e57] [cursor=pointer]:
+                  - /url: /docs/ko/ide/
+              - listitem [ref=e58]:
+                - link "Zen" [ref=e59] [cursor=pointer]:
+                  - /url: /docs/ko/zen/
+              - listitem [ref=e60]:
+                - link "공유" [ref=e61] [cursor=pointer]:
+                  - /url: /docs/ko/share/
+              - listitem [ref=e62]:
+                - link "GitHub" [ref=e63] [cursor=pointer]:
+                  - /url: /docs/ko/github/
+              - listitem [ref=e64]:
+                - link "GitLab" [ref=e65] [cursor=pointer]:
+                  - /url: /docs/ko/gitlab/
+        - listitem [ref=e66]:
+          - group [ref=e67]:
+            - generic "구성" [ref=e68] [cursor=pointer]:
+              - generic [ref=e69]: 구성
+              - img [ref=e70]
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - link "도구" [ref=e74] [cursor=pointer]:
+                  - /url: /docs/ko/tools/
+              - listitem [ref=e75]:
+                - link "규칙" [ref=e76] [cursor=pointer]:
+                  - /url: /docs/ko/rules/
+              - listitem [ref=e77]:
+                - link "Agents" [ref=e78] [cursor=pointer]:
+                  - /url: /docs/ko/agents/
+              - listitem [ref=e79]:
+                - link "모델" [ref=e80] [cursor=pointer]:
+                  - /url: /docs/ko/models/
+              - listitem [ref=e81]:
+                - link "테마" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/ko/themes/
+              - listitem [ref=e83]:
+                - link "키바인드" [ref=e84] [cursor=pointer]:
+                  - /url: /docs/ko/keybinds/
+              - listitem [ref=e85]:
+                - link "명령어" [ref=e86] [cursor=pointer]:
+                  - /url: /docs/ko/commands/
+              - listitem [ref=e87]:
+                - link "포매터" [ref=e88] [cursor=pointer]:
+                  - /url: /docs/ko/formatters/
+              - listitem [ref=e89]:
+                - link "권한" [ref=e90] [cursor=pointer]:
+                  - /url: /docs/ko/permissions/
+              - listitem [ref=e91]:
+                - link "LSP 서버" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/ko/lsp/
+              - listitem [ref=e93]:
+                - link "MCP 서버" [ref=e94] [cursor=pointer]:
+                  - /url: /docs/ko/mcp-servers/
+              - listitem [ref=e95]:
+                - link "ACP Support" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/ko/acp/
+              - listitem [ref=e97]:
+                - link "에이전트 스킬" [ref=e98] [cursor=pointer]:
+                  - /url: /docs/ko/skills/
+              - listitem [ref=e99]:
+                - link "Custom Tools" [ref=e100] [cursor=pointer]:
+                  - /url: /docs/ko/custom-tools/
+        - listitem [ref=e101]:
+          - group [ref=e102]:
+            - generic "개발" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: 개발
+              - img [ref=e105]
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "SDK" [ref=e109] [cursor=pointer]:
+                  - /url: /docs/ko/sdk/
+              - listitem [ref=e110]:
+                - link "서버" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/ko/server/
+              - listitem [ref=e112]:
+                - link "플러그인" [ref=e113] [cursor=pointer]:
+                  - /url: /docs/ko/plugins/
+              - listitem [ref=e114]:
+                - link "생태계" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/ko/ecosystem/
+    - generic [ref=e117]:
+      - complementary [ref=e118]:
+        - navigation "목차" [ref=e123]:
+          - heading "목차" [level=2] [ref=e124]
+          - list [ref=e125]:
+            - listitem [ref=e126]:
+              - link "개요" [ref=e127] [cursor=pointer]:
+                - /url: "#_top"
+            - listitem [ref=e128]:
+              - link "설치" [ref=e129] [cursor=pointer]:
+                - /url: "#설치"
+            - listitem [ref=e130]:
+              - link "구성" [ref=e131] [cursor=pointer]:
+                - /url: "#구성"
+            - listitem [ref=e132]:
+              - link "초기화" [ref=e133] [cursor=pointer]:
+                - /url: "#초기화"
+            - listitem [ref=e134]:
+              - link "사용법" [ref=e135] [cursor=pointer]:
+                - /url: "#사용법"
+              - list [ref=e136]:
+                - listitem [ref=e137]:
+                  - link "질문하기" [ref=e138] [cursor=pointer]:
+                    - /url: "#질문하기"
+                - listitem [ref=e139]:
+                  - link "기능 추가" [ref=e140] [cursor=pointer]:
+                    - /url: "#기능-추가"
+                - listitem [ref=e141]:
+                  - link "바로 변경하기" [ref=e142] [cursor=pointer]:
+                    - /url: "#바로-변경하기"
+                - listitem [ref=e143]:
+                  - link "변경 되돌리기" [ref=e144] [cursor=pointer]:
+                    - /url: "#변경-되돌리기"
+            - listitem [ref=e145]:
+              - link "공유" [ref=e146] [cursor=pointer]:
+                - /url: "#공유"
+            - listitem [ref=e147]:
+              - link "사용자 지정" [ref=e148] [cursor=pointer]:
+                - /url: "#사용자-지정"
+      - main [ref=e150]:
+        - generic [ref=e152]:
+          - heading "소개" [level=1] [ref=e153]
+          - paragraph [ref=e154]: OpenCode를 시작해 보세요.
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - paragraph [ref=e158]:
+              - link "OpenCode" [ref=e159] [cursor=pointer]:
+                - /url: /
+                - strong [ref=e160]: OpenCode
+              - text: 는 오픈 소스 AI coding agent입니다. 터미널 기반 인터페이스, 데스크톱 앱, IDE 확장으로 사용할 수 있습니다.
+            - paragraph [ref=e161]:
+              - img "opencode TUI with the opencode theme" [ref=e162]
+            - paragraph [ref=e163]: 바로 시작해 보겠습니다.
+            - separator [ref=e164]
+            - heading "사전 준비" [level=4] [ref=e165]:
+              - link "사전 준비" [ref=e166]:
+                - /url: "#사전-준비"
+            - paragraph [ref=e167]: 터미널에서 OpenCode를 사용하려면 다음이 필요합니다.
+            - list [ref=e168]:
+              - listitem [ref=e169]:
+                - paragraph [ref=e170]: 다음과 같은 최신 터미널 에뮬레이터
+                - list [ref=e171]:
+                  - listitem [ref=e172]:
+                    - link "WezTerm" [ref=e173] [cursor=pointer]:
+                      - /url: https://wezterm.org
+                    - text: ", 크로스 플랫폼"
+                  - listitem [ref=e174]:
+                    - link "Alacritty" [ref=e175] [cursor=pointer]:
+                      - /url: https://alacritty.org
+                    - text: ", 크로스 플랫폼"
+                  - listitem [ref=e176]:
+                    - link "Ghostty" [ref=e177] [cursor=pointer]:
+                      - /url: https://ghostty.org
+                    - text: ", Linux 및 macOS"
+                  - listitem [ref=e178]:
+                    - link "Kitty" [ref=e179] [cursor=pointer]:
+                      - /url: https://sw.kovidgoyal.net/kitty/
+                    - text: ", Linux 및 macOS"
+              - listitem [ref=e180]:
+                - paragraph [ref=e181]: 사용할 LLM 제공자의 API 키
+            - separator [ref=e182]
+            - heading "설치" [level=2] [ref=e183]:
+              - link "설치" [ref=e184]:
+                - /url: "#설치"
+            - paragraph [ref=e185]: OpenCode를 설치하는 가장 쉬운 방법은 설치 스크립트를 사용하는 것입니다.
+            - figure "Terminal window" [ref=e187]:
+              - generic [ref=e190]: Terminal window
+              - code [ref=e192]:
+                - generic [ref=e194]: curl -fsSL https://opencode.ai/install | bash
+              - button "Copy to clipboard" [ref=e196] [cursor=pointer]
+            - paragraph [ref=e198]: 다음 명령으로도 설치할 수 있습니다.
+            - list [ref=e199]:
+              - listitem [ref=e200]:
+                - paragraph [ref=e201]:
+                  - strong [ref=e202]: Node.js 사용
+                - generic [ref=e203]:
+                  - tablist [ref=e205]:
+                    - tab "npm" [selected] [ref=e206] [cursor=pointer]
+                    - tab "Bun" [ref=e207] [cursor=pointer]
+                    - tab "pnpm" [ref=e208] [cursor=pointer]
+                    - tab "Yarn" [ref=e209] [cursor=pointer]
+                  - tabpanel "npm" [ref=e210]:
+                    - figure "Terminal window" [ref=e212]:
+                      - generic [ref=e215]: Terminal window
+                      - code [ref=e217]:
+                        - generic [ref=e219]: npm install -g opencode-ai
+                      - button "Copy to clipboard" [ref=e221] [cursor=pointer]
+              - listitem [ref=e223]:
+                - paragraph [ref=e224]:
+                  - strong [ref=e225]: macOS/Linux에서 Homebrew 사용
+                - figure "Terminal window" [ref=e227]:
+                  - generic [ref=e230]: Terminal window
+                  - code [ref=e232]:
+                    - generic [ref=e234]: brew install anomalyco/tap/opencode
+                  - button "Copy to clipboard" [ref=e236] [cursor=pointer]
+                - blockquote [ref=e238]:
+                  - paragraph [ref=e239]:
+                    - text: 최신 릴리스를 사용하려면 OpenCode tap 사용을 권장합니다. 공식
+                    - code [ref=e240]: "`brew install opencode`"
+                    - text: formula는 Homebrew 팀이 관리하며 업데이트 주기가 더 깁니다.
+              - listitem [ref=e241]:
+                - paragraph [ref=e242]:
+                  - strong [ref=e243]: Arch Linux에 설치
+                - figure "Terminal window" [ref=e245]:
+                  - generic [ref=e248]: Terminal window
+                  - code [ref=e250]:
+                    - generic [ref=e252]: "sudo pacman -S opencode # Arch Linux (Stable)"
+                    - generic [ref=e254]: "paru -S opencode-bin # Arch Linux (Latest from AUR)"
+                  - button "Copy to clipboard" [ref=e256] [cursor=pointer]
+            - heading "Windows" [level=4] [ref=e258]:
+              - link "Windows" [ref=e259]:
+                - /url: "#windows"
+            - 'complementary "권장: WSL 사용" [ref=e260]':
+              - paragraph [ref=e261]:
+                - img [ref=e262]
+                - text: "권장: WSL 사용"
+              - paragraph [ref=e266]:
+                - text: Windows에서는
+                - link "Windows Subsystem for Linux (WSL)" [ref=e267] [cursor=pointer]:
+                  - /url: /docs/windows-wsl
+                - text: 사용을 권장합니다. 성능이 더 좋고 OpenCode 기능과의 완전한 호환성을 제공합니다.
+            - list [ref=e268]:
+              - listitem [ref=e269]:
+                - paragraph [ref=e270]:
+                  - strong [ref=e271]: Chocolatey 사용
+                - figure "Terminal window" [ref=e273]:
+                  - generic [ref=e276]: Terminal window
+                  - code [ref=e278]:
+                    - generic [ref=e280]: choco install opencode
+                  - button "Copy to clipboard" [ref=e282] [cursor=pointer]
+              - listitem [ref=e284]:
+                - paragraph [ref=e285]:
+                  - strong [ref=e286]: Scoop 사용
+                - figure "Terminal window" [ref=e288]:
+                  - generic [ref=e291]: Terminal window
+                  - code [ref=e293]:
+                    - generic [ref=e295]: scoop install opencode
+                  - button "Copy to clipboard" [ref=e297] [cursor=pointer]
+              - listitem [ref=e299]:
+                - paragraph [ref=e300]:
+                  - strong [ref=e301]: NPM 사용
+                - figure "Terminal window" [ref=e303]:
+                  - generic [ref=e306]: Terminal window
+                  - code [ref=e308]:
+                    - generic [ref=e310]: npm install -g opencode-ai
+                  - button "Copy to clipboard" [ref=e312] [cursor=pointer]
+              - listitem [ref=e314]:
+                - paragraph [ref=e315]:
+                  - strong [ref=e316]: Mise 사용
+                - figure "Terminal window" [ref=e318]:
+                  - generic [ref=e321]: Terminal window
+                  - code [ref=e323]:
+                    - generic [ref=e325]: mise use -g github:anomalyco/opencode
+                  - button "Copy to clipboard" [ref=e327] [cursor=pointer]
+              - listitem [ref=e329]:
+                - paragraph [ref=e330]:
+                  - strong [ref=e331]: Docker 사용
+                - figure "Terminal window" [ref=e333]:
+                  - generic [ref=e336]: Terminal window
+                  - code [ref=e338]:
+                    - generic [ref=e340]: docker run -it --rm ghcr.io/anomalyco/opencode
+                  - button "Copy to clipboard" [ref=e342] [cursor=pointer]
+            - paragraph [ref=e344]: 현재 Windows에서 Bun을 사용한 OpenCode 설치 지원은 준비 중입니다.
+            - paragraph [ref=e345]:
+              - link "Releases" [ref=e346] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/releases
+              - text: 에서 바이너리를 직접 받아 설치할 수도 있습니다.
+            - separator [ref=e347]
+            - heading "구성" [level=2] [ref=e348]:
+              - link "구성" [ref=e349]:
+                - /url: "#구성"
+            - paragraph [ref=e350]: OpenCode는 API 키를 설정하면 원하는 LLM 제공자를 사용할 수 있습니다.
+            - paragraph [ref=e351]:
+              - text: LLM 제공자를 처음 사용한다면
+              - link "OpenCode Zen" [ref=e352] [cursor=pointer]:
+                - /url: /docs/zen
+              - text: 사용을 권장합니다. OpenCode 팀이 테스트하고 검증한 모델 목록입니다.
+            - list [ref=e353]:
+              - listitem [ref=e354]:
+                - paragraph [ref=e355]:
+                  - text: TUI에서
+                  - code [ref=e356]: "`/connect`"
+                  - text: 명령을 실행하고
+                  - code [ref=e357]: "`opencode`"
+                  - text: 를 선택한 다음
+                  - link "opencode.ai/auth" [ref=e358] [cursor=pointer]:
+                    - /url: https://opencode.ai/auth
+                  - text: 로 이동합니다.
+                - figure [ref=e360]:
+                  - code [ref=e362]:
+                    - generic [ref=e364]: /connect
+                  - button "Copy to clipboard" [ref=e366] [cursor=pointer]
+              - listitem [ref=e368]:
+                - paragraph [ref=e369]: 로그인하고 결제 정보를 추가한 뒤 API 키를 복사합니다.
+              - listitem [ref=e370]:
+                - paragraph [ref=e371]: API 키를 붙여 넣습니다.
+                - figure [ref=e373]:
+                  - code [ref=e375]:
+                    - generic [ref=e377]: ┌ API key
+                    - generic [ref=e379]: │
+                    - generic [ref=e381]: │
+                    - generic [ref=e383]: └ enter
+                  - button "Copy to clipboard" [ref=e385] [cursor=pointer]
+            - paragraph [ref=e387]:
+              - text: 또는 다른 제공자 중 하나를 선택할 수도 있습니다.
+              - link "더 알아보기" [ref=e388] [cursor=pointer]:
+                - /url: /docs/providers#directory
+              - text: .
+            - separator [ref=e389]
+            - heading "초기화" [level=2] [ref=e390]:
+              - link "초기화" [ref=e391]:
+                - /url: "#초기화"
+            - paragraph [ref=e392]: 이제 제공자 구성을 마쳤으니 작업하려는 프로젝트로 이동합니다.
+            - figure "Terminal window" [ref=e394]:
+              - generic [ref=e397]: Terminal window
+              - code [ref=e399]:
+                - generic [ref=e401]: cd /path/to/project
+              - button "Copy to clipboard" [ref=e403] [cursor=pointer]
+            - paragraph [ref=e405]: 그리고 OpenCode를 실행합니다.
+            - figure "Terminal window" [ref=e407]:
+              - generic [ref=e410]: Terminal window
+              - code [ref=e412]:
+                - generic [ref=e414]: opencode
+              - button "Copy to clipboard" [ref=e416] [cursor=pointer]
+            - paragraph [ref=e418]: 다음 명령을 실행해 프로젝트에서 OpenCode를 초기화합니다.
+            - figure [ref=e420]:
+              - code [ref=e422]:
+                - generic [ref=e424]: /init
+              - button "Copy to clipboard" [ref=e426] [cursor=pointer]
+            - paragraph [ref=e428]:
+              - text: 이 명령을 실행하면 OpenCode가 프로젝트를 분석하고 프로젝트 루트에
+              - code [ref=e429]: "`AGENTS.md`"
+              - text: 파일을 생성합니다.
+            - complementary "팁" [ref=e430]:
+              - paragraph [ref=e431]:
+                - img [ref=e432]
+                - text: 팁
+              - paragraph [ref=e436]:
+                - text: 프로젝트의
+                - code [ref=e437]: "`AGENTS.md`"
+                - text: 파일은 Git에 커밋하는 것을 권장합니다.
+            - paragraph [ref=e438]: 이렇게 하면 OpenCode가 프로젝트 구조와 사용 중인 코딩 패턴을 더 잘 이해할 수 있습니다.
+            - separator [ref=e439]
+            - heading "사용법" [level=2] [ref=e440]:
+              - link "사용법" [ref=e441]:
+                - /url: "#사용법"
+            - paragraph [ref=e442]: 이제 OpenCode로 프로젝트 작업을 시작할 준비가 되었습니다. 무엇이든 물어보세요.
+            - paragraph [ref=e443]: AI coding agent를 처음 사용한다면 도움이 될 수 있는 예시를 소개합니다.
+            - separator [ref=e444]
+            - heading "질문하기" [level=3] [ref=e445]:
+              - link "질문하기" [ref=e446]:
+                - /url: "#질문하기"
+            - paragraph [ref=e447]: OpenCode에 코드베이스 설명을 요청할 수 있습니다.
+            - complementary "팁" [ref=e448]:
+              - paragraph [ref=e449]:
+                - img [ref=e450]
+                - text: 팁
+              - paragraph [ref=e454]:
+                - text: 프로젝트 파일은
+                - code [ref=e455]: "`@`"
+                - text: 키로 퍼지 검색할 수 있습니다.
+            - figure [ref=e457]:
+              - code [ref=e459]:
+                - generic [ref=e461]:
+                  - text: How is authentication handled in
+                  - mark [ref=e462]: "@packages/functions/src/api/index.ts"
+              - button "Copy to clipboard" [ref=e464] [cursor=pointer]
+            - paragraph [ref=e466]: 이 방법은 직접 작업하지 않은 코드 영역을 이해할 때 유용합니다.
+            - separator [ref=e467]
+            - heading "기능 추가" [level=3] [ref=e468]:
+              - link "기능 추가" [ref=e469]:
+                - /url: "#기능-추가"
+            - paragraph [ref=e470]: OpenCode에 프로젝트의 새 기능 추가를 요청할 수 있습니다. 다만 먼저 계획을 만들도록 요청하는 것을 권장합니다.
+            - list [ref=e471]:
+              - listitem [ref=e472]:
+                - paragraph [ref=e473]:
+                  - strong [ref=e474]: 계획 만들기
+                - paragraph [ref=e475]:
+                  - text: OpenCode에는 변경 작업 기능을 비활성화하고 기능을 구현할 방법만 제안하는
+                  - emphasis [ref=e476]: Plan mode
+                  - text: 가 있습니다.
+                - paragraph [ref=e477]:
+                  - strong [ref=e478]: Tab
+                  - text: 키를 눌러 전환하세요. 화면 오른쪽 아래에서 모드 표시를 확인할 수 있습니다.
+                - figure [ref=e480]:
+                  - code [ref=e482]:
+                    - generic [ref=e484]: <TAB>
+                  - button "Copy to clipboard" [ref=e486] [cursor=pointer]
+                - paragraph [ref=e488]: 이제 수행하길 원하는 작업을 설명해 보겠습니다.
+                - figure [ref=e490]:
+                  - code [ref=e492]:
+                    - generic [ref=e494]: When a user deletes a note, we'd like to flag it as deleted in the database.
+                    - generic [ref=e496]: Then create a screen that shows all the recently deleted notes.
+                    - generic [ref=e498]: From this screen, the user can undelete a note or permanently delete it.
+                  - button "Copy to clipboard" [ref=e500] [cursor=pointer]
+                - paragraph [ref=e502]: OpenCode가 원하는 작업을 이해할 수 있도록 충분한 세부 정보를 제공해야 합니다. 팀의 주니어 개발자에게 말하듯이 설명하면 도움이 됩니다.
+                - complementary "팁" [ref=e503]:
+                  - paragraph [ref=e504]:
+                    - img [ref=e505]
+                    - text: 팁
+                  - paragraph [ref=e509]: OpenCode가 원하는 작업을 이해하도록 충분한 맥락과 예시를 제공하세요.
+              - listitem [ref=e510]:
+                - paragraph [ref=e511]:
+                  - strong [ref=e512]: 계획 다듬기
+                - paragraph [ref=e513]: 계획이 나오면 피드백을 주거나 세부 사항을 더 추가할 수 있습니다.
+                - figure [ref=e515]:
+                  - code [ref=e517]:
+                    - generic [ref=e519]: We'd like to design this new screen using a design I've used before.
+                    - generic [ref=e521]: "[Image #1] Take a look at this image and use it as a reference."
+                  - button "Copy to clipboard" [ref=e523] [cursor=pointer]
+                - complementary "팁" [ref=e525]:
+                  - paragraph [ref=e526]:
+                    - img [ref=e527]
+                    - text: 팁
+                  - paragraph [ref=e531]: 이미지를 터미널에 드래그 앤 드롭해 prompt에 추가하세요.
+                - paragraph [ref=e532]: OpenCode는 제공한 이미지를 스캔해 prompt에 추가할 수 있습니다. 이미지를 터미널에 드래그 앤 드롭하면 됩니다.
+              - listitem [ref=e533]:
+                - paragraph [ref=e534]:
+                  - strong [ref=e535]: 기능 구현
+                - paragraph [ref=e536]:
+                  - text: 계획이 충분히 마음에 들면
+                  - strong [ref=e537]: Tab
+                  - text: 키를 다시 눌러
+                  - emphasis [ref=e538]: Build mode
+                  - text: 로 전환하세요.
+                - figure [ref=e540]:
+                  - code [ref=e542]:
+                    - generic [ref=e544]: <TAB>
+                  - button "Copy to clipboard" [ref=e546] [cursor=pointer]
+                - paragraph [ref=e548]: 그리고 변경을 적용해 달라고 요청하세요.
+                - figure [ref=e550]:
+                  - code [ref=e552]:
+                    - generic [ref=e554]: Sounds good! Go ahead and make the changes.
+                  - button "Copy to clipboard" [ref=e556] [cursor=pointer]
+            - separator [ref=e558]
+            - heading "바로 변경하기" [level=3] [ref=e559]:
+              - link "바로 변경하기" [ref=e560]:
+                - /url: "#바로-변경하기"
+            - paragraph [ref=e561]: 비교적 간단한 변경은 계획을 먼저 검토하지 않고 바로 구현하도록 요청할 수 있습니다.
+            - figure [ref=e563]:
+              - code [ref=e565]:
+                - generic [ref=e567]: We need to add authentication to the /settings route. Take a look at how this is
+                - generic [ref=e569]:
+                  - text: handled in the /notes route in
+                  - mark [ref=e570]: "@packages/functions/src/notes.ts"
+                  - text: and implement
+                - generic [ref=e572]:
+                  - text: the same logic in
+                  - mark [ref=e573]: "@packages/functions/src/settings.ts"
+              - button "Copy to clipboard" [ref=e575] [cursor=pointer]
+            - paragraph [ref=e577]: OpenCode가 올바른 변경을 하도록 충분한 세부 정보를 제공해야 합니다.
+            - separator [ref=e578]
+            - heading "변경 되돌리기" [level=3] [ref=e579]:
+              - link "변경 되돌리기" [ref=e580]:
+                - /url: "#변경-되돌리기"
+            - paragraph [ref=e581]: 예를 들어 OpenCode에 변경을 요청했다고 해보겠습니다.
+            - figure [ref=e583]:
+              - code [ref=e585]:
+                - generic [ref=e587]:
+                  - text: Can you refactor the function in
+                  - mark [ref=e588]: "@packages/functions/src/api/index.ts"
+                  - text: "?"
+              - button "Copy to clipboard" [ref=e590] [cursor=pointer]
+            - paragraph [ref=e592]:
+              - text: 그런데 원하는 결과가 아니었다면
+              - code [ref=e593]: "`/undo`"
+              - text: 명령으로 변경을
+              - strong [ref=e594]: 되돌릴 수
+              - text: 있습니다.
+            - figure [ref=e596]:
+              - code [ref=e598]:
+                - generic [ref=e600]: /undo
+              - button "Copy to clipboard" [ref=e602] [cursor=pointer]
+            - paragraph [ref=e604]: OpenCode가 방금 적용한 변경을 되돌리고 원래 메시지를 다시 보여줍니다.
+            - figure [ref=e606]:
+              - code [ref=e608]:
+                - generic [ref=e610]:
+                  - text: Can you refactor the function in
+                  - mark [ref=e611]: "@packages/functions/src/api/index.ts"
+                  - text: "?"
+              - button "Copy to clipboard" [ref=e613] [cursor=pointer]
+            - paragraph [ref=e615]: 여기에서 prompt를 수정해 다시 요청할 수 있습니다.
+            - complementary "팁" [ref=e616]:
+              - paragraph [ref=e617]:
+                - img [ref=e618]
+                - text: 팁
+              - paragraph [ref=e622]:
+                - code [ref=e623]: "`/undo`"
+                - text: 는 여러 번 연속으로 실행할 수 있습니다.
+            - paragraph [ref=e624]:
+              - text: 또는
+              - code [ref=e625]: "`/redo`"
+              - text: 명령으로 변경을
+              - strong [ref=e626]: 다시 적용
+              - text: 할 수 있습니다.
+            - figure [ref=e628]:
+              - code [ref=e630]:
+                - generic [ref=e632]: /redo
+              - button "Copy to clipboard" [ref=e634] [cursor=pointer]
+            - separator [ref=e636]
+            - heading "공유" [level=2] [ref=e637]:
+              - link "공유" [ref=e638]:
+                - /url: "#공유"
+            - paragraph [ref=e639]:
+              - text: OpenCode와의 대화는
+              - link "팀과 공유" [ref=e640] [cursor=pointer]:
+                - /url: /docs/share
+              - text: 할 수 있습니다.
+            - figure [ref=e642]:
+              - code [ref=e644]:
+                - generic [ref=e646]: /share
+              - button "Copy to clipboard" [ref=e648] [cursor=pointer]
+            - paragraph [ref=e650]: 이 명령을 실행하면 현재 대화 링크를 생성하고 클립보드에 복사합니다.
+            - complementary "참고" [ref=e651]:
+              - paragraph [ref=e652]:
+                - img [ref=e653]
+                - text: 참고
+              - paragraph [ref=e656]: 대화는 기본값으로 공유되지 않습니다.
+            - paragraph [ref=e657]:
+              - text: 다음은 OpenCode
+              - link "대화 예시" [ref=e658] [cursor=pointer]:
+                - /url: https://opencode.ai/s/4XP1fce5
+              - text: 입니다.
+            - separator [ref=e659]
+            - heading "사용자 지정" [level=2] [ref=e660]:
+              - link "사용자 지정" [ref=e661]:
+                - /url: "#사용자-지정"
+            - paragraph [ref=e662]: 이제 OpenCode 사용법을 익혔습니다.
+            - paragraph [ref=e663]:
+              - text: 원하는 방식에 맞추려면
+              - link "테마 선택" [ref=e664] [cursor=pointer]:
+                - /url: /docs/themes
+              - text: ","
+              - link "키바인드 사용자 지정" [ref=e665] [cursor=pointer]:
+                - /url: /docs/keybinds
+              - text: ","
+              - link "코드 formatter 설정" [ref=e666] [cursor=pointer]:
+                - /url: /docs/formatters
+              - text: ","
+              - link "custom command 만들기" [ref=e667] [cursor=pointer]:
+                - /url: /docs/commands
+              - text: ","
+              - link "OpenCode config 설정" [ref=e668] [cursor=pointer]:
+                - /url: /docs/config
+              - text: 을 권장합니다.
+          - generic [ref=e670]:
+            - generic [ref=e671]:
+              - link "페이지 편집" [ref=e672] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/edit/dev/packages/web/src/content/docs/ko/index.mdx
+                - img [ref=e673]
+                - text: 페이지 편집
+              - link "Found a bug? Open an issue" [ref=e675] [cursor=pointer]:
+                - /url: https://github.com/anomalyco/opencode/issues/new
+                - img [ref=e676]
+                - text: Found a bug? Open an issue
+              - link "Join our Discord community" [ref=e678] [cursor=pointer]:
+                - /url: https://opencode.ai/discord
+                - img [ref=e679]
+                - text: Join our Discord community
+              - generic [ref=e682]:
+                - generic [ref=e683]: 언어 선택
+                - img
+                - combobox "언어 선택" [ref=e684] [cursor=pointer]:
+                  - option "English"
+                  - option "العربية"
+                  - option "Bosanski"
+                  - option "Dansk"
+                  - option "Deutsch"
+                  - option "Español"
+                  - option "Français"
+                  - option "Italiano"
+                  - option "日本語"
+                  - option "한국어" [selected]
+                  - option "Norsk Bokmål"
+                  - option "Polski"
+                  - option "Português (Brasil)"
+                  - option "Русский"
+                  - option "ไทย"
+                  - option "Türkçe"
+                  - option "简体中文"
+                  - option "繁體中文"
+                - img
+            - generic [ref=e685]:
+              - paragraph [ref=e686]:
+                - text: ©
+                - link "Anomaly" [ref=e687] [cursor=pointer]:
+                  - /url: https://anoma.ly
+              - paragraph [ref=e688]:
+                - text: "마지막 업데이트:"
+                - time [ref=e689]: 2026. 4. 26.

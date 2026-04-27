@@ -1,0 +1,376 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Ollama" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Ollama" [ref=e5]
+      - generic [ref=e6]:
+        - link "Models" [ref=e7] [cursor=pointer]:
+          - /url: /search
+        - link "Docs" [ref=e8] [cursor=pointer]:
+          - /url: /docs
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e13]:
+        - img [ref=e15]
+        - textbox "Search models" [ref=e17]
+      - generic [ref=e18]:
+        - link "Sign in" [ref=e19] [cursor=pointer]:
+          - /url: /signin
+        - link "Download" [ref=e20] [cursor=pointer]:
+          - /url: /download
+  - generic [ref=e21]:
+    - generic [ref=e22]:
+      - link "glm-5.1" [ref=e27] [cursor=pointer]:
+        - /url: /library/glm-5.1
+      - generic [ref=e28]:
+        - paragraph [ref=e30]:
+          - generic [ref=e31]:
+            - img [ref=e32]
+            - generic [ref=e34]: 113.4K
+            - generic [ref=e35]: Downloads
+          - generic "Apr 7, 2026 3:00 PM UTC" [ref=e36]:
+            - img [ref=e37]
+            - generic [ref=e39]: Updated
+            - generic [ref=e40]: 2 weeks ago
+        - heading "GLM-5.1 is our next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin." [level=2] [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]: tools
+          - generic [ref=e45]: thinking
+          - generic [ref=e46]: cloud
+    - generic [ref=e47]:
+      - generic [ref=e49]:
+        - generic [ref=e51]:
+          - button "CLI" [ref=e52] [cursor=pointer]
+          - button "cURL" [ref=e53] [cursor=pointer]
+          - button "Python" [ref=e54] [cursor=pointer]
+          - button "JavaScript" [ref=e55] [cursor=pointer]
+        - generic [ref=e56]:
+          - button "Copy" [ref=e58] [cursor=pointer]:
+            - img [ref=e59]
+          - generic [ref=e62]: ollama run glm-5.1:cloud
+      - generic [ref=e63]:
+        - heading "Applications" [level=2] [ref=e64]
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - img "Claude Code" [ref=e69]
+              - generic [ref=e70]:
+                - generic [ref=e71]: Claude Code
+                - code [ref=e72]: ollama launch claude --model glm-5.1:cloud
+            - button "Copy" [ref=e73] [cursor=pointer]:
+              - img [ref=e74]
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - img "Codex" [ref=e78]
+              - generic [ref=e79]:
+                - generic [ref=e80]: Codex
+                - code [ref=e81]: ollama launch codex --model glm-5.1:cloud
+            - button "Copy" [ref=e82] [cursor=pointer]:
+              - img [ref=e83]
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - img "OpenCode" [ref=e87]
+              - generic [ref=e88]:
+                - generic [ref=e89]: OpenCode
+                - code [ref=e90]: ollama launch opencode --model glm-5.1:cloud
+            - button "Copy" [ref=e91] [cursor=pointer]:
+              - img [ref=e92]
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - img "OpenClaw" [ref=e96]
+              - generic [ref=e97]:
+                - generic [ref=e98]: OpenClaw
+                - code [ref=e99]: ollama launch openclaw --model glm-5.1:cloud
+            - button "Copy" [ref=e100] [cursor=pointer]:
+              - img [ref=e101]
+          - generic [ref=e103]:
+            - generic [ref=e104]:
+              - img "Hermes Agent" [ref=e105]
+              - generic [ref=e106]:
+                - generic [ref=e107]: Hermes Agent
+                - code [ref=e108]: ollama launch hermes --model glm-5.1:cloud
+            - button "Copy" [ref=e109] [cursor=pointer]:
+              - img [ref=e110]
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - heading "Models" [level=2] [ref=e114]
+          - link "View all →" [ref=e115] [cursor=pointer]:
+            - /url: /library/glm-5.1/tags
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - paragraph [ref=e119]: Name
+            - paragraph [ref=e120]: Size
+            - paragraph [ref=e121]: Context
+            - paragraph [ref=e122]: Input
+          - generic [ref=e123]:
+            - link "glm-5.1:cloud" [ref=e125] [cursor=pointer]:
+              - /url: /library/glm-5.1:cloud
+            - paragraph [ref=e126]: "-"
+            - paragraph [ref=e127]: 198K
+            - paragraph [ref=e128]: Text
+    - generic [ref=e129]:
+      - heading "Readme" [level=2] [ref=e131]
+      - generic [ref=e133]:
+        - paragraph [ref=e134]:
+          - img [ref=e135]
+        - paragraph [ref=e136]: GLM-5.1 is Z.AI’s next-generation flagship model for agentic engineering, with significantly stronger coding capabilities than its predecessor. It achieves state-of-the-art performance on SWE-Bench Pro and leads GLM-5 by a wide margin on NL2Repo (repo generation) and Terminal-Bench 2.0 (real-world terminal tasks).
+        - paragraph [ref=e137]:
+          - img "Coding eval" [ref=e138]
+        - paragraph [ref=e139]: "But the most meaningful leap goes beyond first-pass performance. Previous models—including GLM-5—tend to exhaust their repertoire early: they apply familiar techniques for quick initial gains, then plateau. Giving them more time doesn’t help."
+        - paragraph [ref=e140]: GLM-5.1, by contrast, is built to stay effective on agentic tasks over much longer horizons. We’ve found that the model handles ambiguous problems with better judgment and stays productive over longer sessions. It breaks complex problems down, runs experiments, reads results, and identifies blockers with real precision. By revisiting its reasoning and revising its strategy through repeated iteration, GLM-5.1 sustains optimization over hundreds of rounds and thousands of tool calls. The longer it runs, the better the result.
+        - heading "Benchmark" [level=2] [ref=e141]
+        - table [ref=e142]:
+          - rowgroup [ref=e143]:
+            - row "GLM-5.1 GLM-5 Qwen3.6-Plus Minimax M2.7 DeepSeek-V3.2 Kimi K2.5 Claude Opus 4.6 Gemini 3.1 Pro GPT-5.4" [ref=e144]:
+              - columnheader [ref=e145]
+              - columnheader "GLM-5.1" [ref=e146]
+              - columnheader "GLM-5" [ref=e147]
+              - columnheader "Qwen3.6-Plus" [ref=e148]
+              - columnheader "Minimax M2.7" [ref=e149]
+              - columnheader "DeepSeek-V3.2" [ref=e150]
+              - columnheader "Kimi K2.5" [ref=e151]
+              - columnheader "Claude Opus 4.6" [ref=e152]
+              - columnheader "Gemini 3.1 Pro" [ref=e153]
+              - columnheader "GPT-5.4" [ref=e154]
+          - rowgroup [ref=e155]:
+            - row "HLE 31.0 30.5 28.8 28.0 25.1 31.5 36.7 45.0 39.8" [ref=e156]:
+              - cell "HLE" [ref=e157]
+              - cell "31.0" [ref=e158]
+              - cell "30.5" [ref=e159]
+              - cell "28.8" [ref=e160]
+              - cell "28.0" [ref=e161]
+              - cell "25.1" [ref=e162]
+              - cell "31.5" [ref=e163]
+              - cell "36.7" [ref=e164]
+              - cell "45.0" [ref=e165]:
+                - strong [ref=e166]: "45.0"
+              - cell "39.8" [ref=e167]
+            - row "HLE (w/ Tools) 52.3 50.4 50.6 - 40.8 51.8 53.1* 51.4* 52.1*" [ref=e168]:
+              - cell "HLE (w/ Tools)" [ref=e169]
+              - cell "52.3" [ref=e170]
+              - cell "50.4" [ref=e171]
+              - cell "50.6" [ref=e172]
+              - cell "-" [ref=e173]
+              - cell "40.8" [ref=e174]
+              - cell "51.8" [ref=e175]
+              - cell "53.1*" [ref=e176]:
+                - strong [ref=e177]: "53.1"
+                - text: "*"
+              - cell "51.4*" [ref=e178]
+              - cell "52.1*" [ref=e179]
+            - row "AIME 2026 95.3 95.4 95.1 89.8 95.1 94.5 95.6 98.2 98.7" [ref=e180]:
+              - cell "AIME 2026" [ref=e181]
+              - cell "95.3" [ref=e182]
+              - cell "95.4" [ref=e183]
+              - cell "95.1" [ref=e184]
+              - cell "89.8" [ref=e185]
+              - cell "95.1" [ref=e186]
+              - cell "94.5" [ref=e187]
+              - cell "95.6" [ref=e188]
+              - cell "98.2" [ref=e189]
+              - cell "98.7" [ref=e190]:
+                - strong [ref=e191]: "98.7"
+            - row "HMMT Nov. 2025 94.0 96.9 94.6 81.0 90.2 91.1 96.3 94.8 95.8" [ref=e192]:
+              - cell "HMMT Nov. 2025" [ref=e193]
+              - cell "94.0" [ref=e194]
+              - cell "96.9" [ref=e195]:
+                - strong [ref=e196]: "96.9"
+              - cell "94.6" [ref=e197]
+              - cell "81.0" [ref=e198]
+              - cell "90.2" [ref=e199]
+              - cell "91.1" [ref=e200]
+              - cell "96.3" [ref=e201]
+              - cell "94.8" [ref=e202]
+              - cell "95.8" [ref=e203]
+            - row "HMMT Feb. 2026 82.6 82.8 87.8 72.7 79.9 81.3 84.3 87.3 91.8" [ref=e204]:
+              - cell "HMMT Feb. 2026" [ref=e205]
+              - cell "82.6" [ref=e206]
+              - cell "82.8" [ref=e207]
+              - cell "87.8" [ref=e208]
+              - cell "72.7" [ref=e209]
+              - cell "79.9" [ref=e210]
+              - cell "81.3" [ref=e211]
+              - cell "84.3" [ref=e212]
+              - cell "87.3" [ref=e213]
+              - cell "91.8" [ref=e214]:
+                - strong [ref=e215]: "91.8"
+            - row "IMOAnswerBench 83.8 82.5 83.8 66.3 78.3 81.8 75.3 81.0 91.4" [ref=e216]:
+              - cell "IMOAnswerBench" [ref=e217]
+              - cell "83.8" [ref=e218]
+              - cell "82.5" [ref=e219]
+              - cell "83.8" [ref=e220]
+              - cell "66.3" [ref=e221]
+              - cell "78.3" [ref=e222]
+              - cell "81.8" [ref=e223]
+              - cell "75.3" [ref=e224]
+              - cell "81.0" [ref=e225]
+              - cell "91.4" [ref=e226]:
+                - strong [ref=e227]: "91.4"
+            - row "GPQA-Diamond 86.2 86.0 90.4 87.0 82.4 87.6 91.3 94.3 92.0" [ref=e228]:
+              - cell "GPQA-Diamond" [ref=e229]
+              - cell "86.2" [ref=e230]
+              - cell "86.0" [ref=e231]
+              - cell "90.4" [ref=e232]
+              - cell "87.0" [ref=e233]
+              - cell "82.4" [ref=e234]
+              - cell "87.6" [ref=e235]
+              - cell "91.3" [ref=e236]
+              - cell "94.3" [ref=e237]:
+                - strong [ref=e238]: "94.3"
+              - cell "92.0" [ref=e239]
+            - row "SWE-Bench Pro 58.4 55.1 56.6 56.2 - 53.8 57.3 54.2 57.7" [ref=e240]:
+              - cell "SWE-Bench Pro" [ref=e241]
+              - cell "58.4" [ref=e242]:
+                - strong [ref=e243]: "58.4"
+              - cell "55.1" [ref=e244]
+              - cell "56.6" [ref=e245]
+              - cell "56.2" [ref=e246]
+              - cell "-" [ref=e247]
+              - cell "53.8" [ref=e248]
+              - cell "57.3" [ref=e249]
+              - cell "54.2" [ref=e250]
+              - cell "57.7" [ref=e251]
+            - row "NL2Repo 42.7 35.9 37.9 39.8 - 32.0 49.8 33.4 41.3" [ref=e252]:
+              - cell "NL2Repo" [ref=e253]
+              - cell "42.7" [ref=e254]
+              - cell "35.9" [ref=e255]
+              - cell "37.9" [ref=e256]
+              - cell "39.8" [ref=e257]
+              - cell "-" [ref=e258]
+              - cell "32.0" [ref=e259]
+              - cell "49.8" [ref=e260]:
+                - strong [ref=e261]: "49.8"
+              - cell "33.4" [ref=e262]
+              - cell "41.3" [ref=e263]
+            - row "Terminal-Bench 2.0 (Terminus-2) 63.5 56.2 61.6 - 39.3 50.8 65.4 68.5 -" [ref=e264]:
+              - cell "Terminal-Bench 2.0 (Terminus-2)" [ref=e265]
+              - cell "63.5" [ref=e266]
+              - cell "56.2" [ref=e267]
+              - cell "61.6" [ref=e268]
+              - cell "-" [ref=e269]
+              - cell "39.3" [ref=e270]
+              - cell "50.8" [ref=e271]
+              - cell "65.4" [ref=e272]
+              - cell "68.5" [ref=e273]:
+                - strong [ref=e274]: "68.5"
+              - cell "-" [ref=e275]
+            - row "Terminal-Bench 2.0 (Best self-reported) 66.5 (Claude Code) 56.2 (Claude Code) - 57.0 (Claude Code) 46.4 (Claude Code) - - - 75.1 (Codex)" [ref=e276]:
+              - cell "Terminal-Bench 2.0 (Best self-reported)" [ref=e277]
+              - cell "66.5 (Claude Code)" [ref=e278]
+              - cell "56.2 (Claude Code)" [ref=e279]
+              - cell "-" [ref=e280]
+              - cell "57.0 (Claude Code)" [ref=e281]
+              - cell "46.4 (Claude Code)" [ref=e282]
+              - cell "-" [ref=e283]
+              - cell "-" [ref=e284]
+              - cell "-" [ref=e285]
+              - cell "75.1 (Codex)" [ref=e286]:
+                - strong [ref=e287]: "75.1"
+                - text: (Codex)
+            - row "CyberGym 68.7 48.3 - - 17.3 41.3 66.6 - -" [ref=e288]:
+              - cell "CyberGym" [ref=e289]
+              - cell "68.7" [ref=e290]:
+                - strong [ref=e291]: "68.7"
+              - cell "48.3" [ref=e292]
+              - cell "-" [ref=e293]
+              - cell "-" [ref=e294]
+              - cell "17.3" [ref=e295]
+              - cell "41.3" [ref=e296]
+              - cell "66.6" [ref=e297]
+              - cell "-" [ref=e298]
+              - cell "-" [ref=e299]
+            - row "BrowseComp 68.0 62.0 - - 51.4 60.6 - - -" [ref=e300]:
+              - cell "BrowseComp" [ref=e301]
+              - cell "68.0" [ref=e302]:
+                - strong [ref=e303]: "68.0"
+              - cell "62.0" [ref=e304]
+              - cell "-" [ref=e305]
+              - cell "-" [ref=e306]
+              - cell "51.4" [ref=e307]
+              - cell "60.6" [ref=e308]
+              - cell "-" [ref=e309]
+              - cell "-" [ref=e310]
+              - cell "-" [ref=e311]
+            - row "BrowseComp (w/ Context Manage) 79.3 75.9 - - 67.6 74.9 84.0 85.9 82.7" [ref=e312]:
+              - cell "BrowseComp (w/ Context Manage)" [ref=e313]
+              - cell "79.3" [ref=e314]
+              - cell "75.9" [ref=e315]
+              - cell "-" [ref=e316]
+              - cell "-" [ref=e317]
+              - cell "67.6" [ref=e318]
+              - cell "74.9" [ref=e319]
+              - cell "84.0" [ref=e320]
+              - cell "85.9" [ref=e321]:
+                - strong [ref=e322]: "85.9"
+              - cell "82.7" [ref=e323]
+            - row "τ³-Bench 70.6 69.2 70.7 67.6 69.2 66.0 72.4 67.1 72.9" [ref=e324]:
+              - cell "τ³-Bench" [ref=e325]
+              - cell "70.6" [ref=e326]
+              - cell "69.2" [ref=e327]
+              - cell "70.7" [ref=e328]
+              - cell "67.6" [ref=e329]
+              - cell "69.2" [ref=e330]
+              - cell "66.0" [ref=e331]
+              - cell "72.4" [ref=e332]
+              - cell "67.1" [ref=e333]
+              - cell "72.9" [ref=e334]:
+                - strong [ref=e335]: "72.9"
+            - row "MCP-Atlas (Public Set) 71.8 69.2 74.1 48.8 62.2 63.8 73.8 69.2 67.2" [ref=e336]:
+              - cell "MCP-Atlas (Public Set)" [ref=e337]
+              - cell "71.8" [ref=e338]
+              - cell "69.2" [ref=e339]
+              - cell "74.1" [ref=e340]:
+                - strong [ref=e341]: "74.1"
+              - cell "48.8" [ref=e342]
+              - cell "62.2" [ref=e343]
+              - cell "63.8" [ref=e344]
+              - cell "73.8" [ref=e345]
+              - cell "69.2" [ref=e346]
+              - cell "67.2" [ref=e347]
+            - row "Tool-Decathlon 40.7 38.0 39.8 46.3 35.2 27.8 47.2 48.8 54.6" [ref=e348]:
+              - cell "Tool-Decathlon" [ref=e349]
+              - cell "40.7" [ref=e350]
+              - cell "38.0" [ref=e351]
+              - cell "39.8" [ref=e352]
+              - cell "46.3" [ref=e353]
+              - cell "35.2" [ref=e354]
+              - cell "27.8" [ref=e355]
+              - cell "47.2" [ref=e356]
+              - cell "48.8" [ref=e357]
+              - cell "54.6" [ref=e358]:
+                - strong [ref=e359]: "54.6"
+            - row "Vending Bench 2 $5,634.00 $4,432.12 $5,114.87 - $1,034.00 $1,198.46 $8,017.59 $911.21 $6,144.18" [ref=e360]:
+              - cell "Vending Bench 2" [ref=e361]
+              - cell "$5,634.00" [ref=e362]
+              - cell "$4,432.12" [ref=e363]
+              - cell "$5,114.87" [ref=e364]
+              - cell "-" [ref=e365]
+              - cell "$1,034.00" [ref=e366]
+              - cell "$1,198.46" [ref=e367]
+              - cell "$8,017.59" [ref=e368]:
+                - strong [ref=e369]: $8,017.59
+              - cell "$911.21" [ref=e370]
+              - cell "$6,144.18" [ref=e371]
+  - contentinfo [ref=e372]:
+    - generic [ref=e374]:
+      - generic [ref=e375]: © 2026 Ollama
+      - generic [ref=e376]:
+        - link "Download" [ref=e377] [cursor=pointer]:
+          - /url: /download
+        - link "Blog" [ref=e378] [cursor=pointer]:
+          - /url: /blog
+        - link "Docs" [ref=e379] [cursor=pointer]:
+          - /url: https://docs.ollama.com
+        - link "GitHub" [ref=e380] [cursor=pointer]:
+          - /url: https://github.com/ollama/ollama
+        - link "Discord" [ref=e381] [cursor=pointer]:
+          - /url: https://discord.com/invite/ollama
+        - link "X (Twitter)" [ref=e382] [cursor=pointer]:
+          - /url: https://twitter.com/ollama
+        - link "Contact" [ref=e383] [cursor=pointer]:
+          - /url: mailto:hello@ollama.com
+        - link "Privacy" [ref=e384] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=e385] [cursor=pointer]:
+          - /url: /terms

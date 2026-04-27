@@ -1,0 +1,466 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e12]:
+          - generic [ref=e13]:
+            - link "Overview - Z.AI DEVELOPER DOCUMENT home page dark logo" [ref=e14] [cursor=pointer]:
+              - /url: https://z.ai/model-api
+              - generic [ref=e15]: Overview - Z.AI DEVELOPER DOCUMENT home page
+              - img "dark logo" [ref=e16]
+            - button "English" [ref=e18] [cursor=pointer]:
+              - generic [ref=e19]: English
+              - img [ref=e20]
+          - button "Open search" [ref=e23] [cursor=pointer]:
+            - generic [ref=e24]:
+              - img [ref=e25]
+              - generic [ref=e28]: Search...
+            - generic [ref=e29]: ⌘K
+          - generic [ref=e30]:
+            - navigation [ref=e31]:
+              - list [ref=e32]:
+                - listitem [ref=e33]:
+                  - link "API Keys" [ref=e34] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/apikey-list
+                - listitem [ref=e35]:
+                  - link "Payment Method" [ref=e36] [cursor=pointer]:
+                    - /url: https://z.ai/manage-apikey/billing
+            - button "Toggle dark mode" [ref=e38] [cursor=pointer]:
+              - img [ref=e39]
+        - generic [ref=e42]:
+          - link "Guides" [ref=e43] [cursor=pointer]:
+            - /url: /guides/overview/quick-start
+            - text: Guides
+          - link "API Reference" [ref=e45] [cursor=pointer]:
+            - /url: /api-reference/introduction
+            - text: API Reference
+          - link "Scenario Example" [ref=e47] [cursor=pointer]:
+            - /url: /scenario-example/develop-tools/claude
+            - text: Scenario Example
+          - link "Coding Plan" [ref=e49] [cursor=pointer]:
+            - /url: /devpack/overview
+            - text: Coding Plan
+          - link "Released Notes" [ref=e51] [cursor=pointer]:
+            - /url: /release-notes/new-released
+            - text: Released Notes
+          - link "Terms and Policy" [ref=e53] [cursor=pointer]:
+            - /url: /legal-agreement/privacy-policy
+            - text: Terms and Policy
+          - link "Help Center" [ref=e55] [cursor=pointer]:
+            - /url: /help/faq
+            - text: Help Center
+      - generic [ref=e57]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "GLM Coding Plan" [level=5] [ref=e64]
+            - list [ref=e65]:
+              - listitem [ref=e66]:
+                - link "Overview" [ref=e67] [cursor=pointer]:
+                  - /url: /devpack/overview
+                  - generic [ref=e70]: Overview
+              - listitem [ref=e71]:
+                - link "Usage Policy" [ref=e72] [cursor=pointer]:
+                  - /url: /devpack/usage-policy
+                  - generic [ref=e75]: Usage Policy
+              - listitem [ref=e76]:
+                - link "FAQ" [ref=e77] [cursor=pointer]:
+                  - /url: /devpack/faq
+                  - generic [ref=e80]: FAQ
+              - listitem [ref=e81]:
+                - link "Legacy Plan Migration Notice" [ref=e82] [cursor=pointer]:
+                  - /url: /devpack/transition
+                  - generic [ref=e85]: Legacy Plan Migration Notice
+          - generic [ref=e86]:
+            - heading "Guide" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quick Start" [ref=e91] [cursor=pointer]:
+                  - /url: /devpack/quick-start
+                  - generic [ref=e94]: Quick Start
+              - listitem [ref=e95]:
+                - link "Coding Tool Helper" [ref=e96] [cursor=pointer]:
+                  - /url: /devpack/extension/coding-tool-helper
+                  - generic [ref=e99]: Coding Tool Helper
+              - listitem [ref=e100]:
+                - link "Tool Integration" [ref=e101] [cursor=pointer]:
+                  - /url: /devpack/tool/others
+                  - generic [ref=e104]: Tool Integration
+              - listitem [ref=e105]:
+                - link "How to Switch Models" [ref=e106] [cursor=pointer]:
+                  - /url: /devpack/using5.1
+                  - generic [ref=e109]: How to Switch Models
+              - listitem [ref=e110]:
+                - button "Toggle MCP Integration section" [ref=e111] [cursor=pointer]:
+                  - generic [ref=e112]: MCP Integration
+                  - img [ref=e114]
+          - generic [ref=e116]:
+            - heading "Learning Resources" [level=5] [ref=e118]
+            - list [ref=e119]:
+              - listitem [ref=e120]:
+                - link "Best Practice" [ref=e121] [cursor=pointer]:
+                  - /url: /devpack/resources/best-practice
+                  - generic [ref=e124]: Best Practice
+              - listitem [ref=e125]:
+                - link "Memory-mechanism" [ref=e126] [cursor=pointer]:
+                  - /url: /devpack/resources/memory-mechanism
+                  - generic [ref=e129]: Memory-mechanism
+          - generic [ref=e130]:
+            - heading "Campaign Rules" [level=5] [ref=e132]
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Invite Friends, Get Credits" [ref=e135] [cursor=pointer]:
+                  - /url: /devpack/credit-campaign-rules
+                  - generic [ref=e138]: Invite Friends, Get Credits
+        - generic [ref=e140]:
+          - generic [ref=e143]:
+            - button "On this page" [ref=e144] [cursor=pointer]:
+              - img [ref=e145]
+              - generic [ref=e146]: On this page
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - link "Usage" [ref=e150] [cursor=pointer]:
+                  - /url: "#usage"
+              - listitem [ref=e151]:
+                - link "Advantages" [ref=e152] [cursor=pointer]:
+                  - /url: "#advantages"
+              - listitem [ref=e153]:
+                - link "Benefits" [ref=e154] [cursor=pointer]:
+                  - /url: "#benefits"
+              - listitem [ref=e155]:
+                - link "Supported Models" [ref=e156] [cursor=pointer]:
+                  - /url: "#supported-models"
+              - listitem [ref=e157]:
+                - link "Usage Instruction" [ref=e158] [cursor=pointer]:
+                  - /url: "#usage-instruction"
+              - listitem [ref=e159]:
+                - link "Exclusive MCP Access" [ref=e160] [cursor=pointer]:
+                  - /url: "#exclusive-mcp-access"
+              - listitem [ref=e161]:
+                - link "How to Switch Models" [ref=e162] [cursor=pointer]:
+                  - /url: "#how-to-switch-models"
+              - listitem [ref=e163]:
+                - link "How to Integrate with Coding Tools" [ref=e164] [cursor=pointer]:
+                  - /url: "#how-to-integrate-with-coding-tools"
+              - listitem [ref=e165]:
+                - link "Next Steps" [ref=e166] [cursor=pointer]:
+                  - /url: "#next-steps"
+          - generic [ref=e167]:
+            - banner [ref=e168]:
+              - generic [ref=e169]:
+                - generic [ref=e170]: GLM Coding Plan
+                - generic [ref=e171]:
+                  - heading "Overview" [level=1] [ref=e172]
+                  - generic [ref=e173]:
+                    - button "Copy page" [ref=e174] [cursor=pointer]:
+                      - generic [ref=e175]:
+                        - img [ref=e176]
+                        - generic [ref=e179]: Copy page
+                    - button "More actions" [ref=e180] [cursor=pointer]:
+                      - img [ref=e181]
+            - generic [ref=e183]:
+              - generic [ref=e184]: The GLM Coding Plan is a subscription package designed specifically for AI-powered coding.
+              - generic [ref=e185]:
+                - img "Note" [ref=e187]
+                - generic [ref=e189]:
+                  - generic [ref=e190]:
+                    - text: The GLM Coding Plan is strictly limited to use within officially
+                    - link "supported tools and products" [ref=e191] [cursor=pointer]:
+                      - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                    - text: . The subscriber shall not use the subscription benefits in any unsupported tools or scenarios.
+                  - generic [ref=e192]: If the system detects usage through unauthorized or unsupported tools (such as SDK-based access or other third-party integrations), some subscription benefits may be restricted to ensure fairness and service stability.
+              - heading "Navigate to header Usage" [level=2] [ref=e193]:
+                - link "Navigate to header" [ref=e194] [cursor=pointer]:
+                  - /url: "#usage"
+                  - img [ref=e196]
+                - generic [ref=e198] [cursor=pointer]:
+                  - img [ref=e199]
+                  - text: Usage
+              - generic [ref=e200]: "The plan can be applied to coding tools such as Claude Code, Cline, and OpenCode, covering a wide range of development scenarios:"
+              - generic [ref=e201]:
+                - group [ref=e202]:
+                  - generic "Natural Language Programming" [ref=e203] [cursor=pointer]:
+                    - img [ref=e205]
+                    - paragraph [ref=e207]: Natural Language Programming
+                - group [ref=e208]:
+                  - generic "Intelligent Code Completion" [ref=e209] [cursor=pointer]:
+                    - img [ref=e211]
+                    - paragraph [ref=e213]: Intelligent Code Completion
+                - group [ref=e214]:
+                  - generic "Code Debugging & Repair" [ref=e215] [cursor=pointer]:
+                    - img [ref=e217]
+                    - paragraph [ref=e219]: Code Debugging & Repair
+                - group [ref=e220]:
+                  - generic "Codebase Q&A" [ref=e221] [cursor=pointer]:
+                    - img [ref=e223]
+                    - paragraph [ref=e225]: Codebase Q&A
+                - group [ref=e226]:
+                  - generic "Automated Task Handling" [ref=e227] [cursor=pointer]:
+                    - img [ref=e229]
+                    - paragraph [ref=e231]: Automated Task Handling
+              - heading "Navigate to header Advantages" [level=2] [ref=e232]:
+                - link "Navigate to header" [ref=e233] [cursor=pointer]:
+                  - /url: "#advantages"
+                  - img [ref=e235]
+                - generic [ref=e237] [cursor=pointer]:
+                  - img [ref=e238]
+                  - text: Advantages
+              - list [ref=e239]:
+                - listitem [ref=e240]:
+                  - strong [ref=e241]: "Access to high-intelligence Coding Model:"
+                  - text: Upon release, the GLM series achieved SOTA performance among open-source models in reasoning, coding, and agent capabilities, delivering outstanding results in tool use and complex task execution.
+                - listitem [ref=e242]:
+                  - strong [ref=e243]: "Works with Multiple Tools:"
+                  - text: Beyond Claude Code, it also supports Cline, OpenCode, and some
+                  - link "specific tools" [ref=e244] [cursor=pointer]:
+                    - /url: https://docs.z.ai/devpack/tool/others#step-1-supported-tools
+                  - text: ", giving you flexibility across development workflows."
+                - listitem [ref=e245]:
+                  - strong [ref=e246]: "Generous Usage at a Fair Price:"
+                  - text: Get higher call limits than standard plans. Starting at just 18 USD per month, with Pro and Max plans designed for high-frequency, complex projects.
+                - listitem [ref=e247]:
+                  - strong [ref=e248]: "Expanded Capabilities:"
+                  - text: All plans support Vision Understanding, Web Search MCP， Web Reader MCP and Zread MCP helping you tackle a wider range of development tasks.
+              - heading "Navigate to header Benefits" [level=2] [ref=e249]:
+                - link "Navigate to header" [ref=e250] [cursor=pointer]:
+                  - /url: "#benefits"
+                  - img [ref=e252]
+                - generic [ref=e254] [cursor=pointer]:
+                  - img [ref=e255]
+                  - text: Benefits
+              - heading "Navigate to header Supported Models" [level=3] [ref=e256]:
+                - link "Navigate to header" [ref=e257] [cursor=pointer]:
+                  - /url: "#supported-models"
+                  - img [ref=e259]
+                - generic [ref=e261] [cursor=pointer]: Supported Models
+              - generic [ref=e262]:
+                - img "Tip" [ref=e264]
+                - generic [ref=e267]:
+                  - text: All plans support
+                  - strong [ref=e268]: GLM-5.1
+                  - text: ", GLM-5-Turbo, GLM-4.7 and GLM-4.5-Air."
+              - heading "Navigate to header Usage Instruction" [level=3] [ref=e269]:
+                - link "Navigate to header" [ref=e270] [cursor=pointer]:
+                  - /url: "#usage-instruction"
+                  - img [ref=e272]
+                - generic [ref=e274] [cursor=pointer]: Usage Instruction
+              - generic [ref=e275]:
+                - text: To manage resources and ensure fair access for all users, we apply usage limits on a 5-hour and weekly basis. You can check your quota consumption progress in
+                - link "Usage Statistics" [ref=e276] [cursor=pointer]:
+                  - /url: https://z.ai/manage-apikey/subscription
+                - text: .
+              - generic [ref=e277]: One prompt refers to one query. Each prompt is estimated to invoke the model 15–20 times.
+              - strong [ref=e279]: The monthly available quota is converted based on API pricing, equivalent to approximately 15–30× the monthly subscription fee (weekly caps already factored in).
+              - table [ref=e282]:
+                - rowgroup [ref=e283]:
+                  - row "Plan Type 5-Hour Limit (Dynamically refreshed; quota resets 5 hours after consumption) Weekly Limit (Activated upon subscription; resets every 7 days)" [ref=e284]:
+                    - columnheader "Plan Type" [ref=e285]
+                    - columnheader "5-Hour Limit (Dynamically refreshed; quota resets 5 hours after consumption)" [ref=e286]
+                    - columnheader "Weekly Limit (Activated upon subscription; resets every 7 days)" [ref=e287]
+                - rowgroup [ref=e288]:
+                  - row "Lite Plan Up to approx. 80 prompts Up to approx. 400 prompts" [ref=e289]:
+                    - cell "Lite Plan" [ref=e290]
+                    - cell "Up to approx. 80 prompts" [ref=e291]
+                    - cell "Up to approx. 400 prompts" [ref=e292]
+                  - row "Pro Plan Up to approx. 400 prompts Up to approx. 2,000 prompts" [ref=e293]:
+                    - cell "Pro Plan" [ref=e294]
+                    - cell "Up to approx. 400 prompts" [ref=e295]
+                    - cell "Up to approx. 2,000 prompts" [ref=e296]
+                  - row "Max Plan Up to approx. 1,600 prompts Up to approx. 8,000 prompts" [ref=e297]:
+                    - cell "Max Plan" [ref=e298]
+                    - cell "Up to approx. 1,600 prompts" [ref=e299]
+                    - cell "Up to approx. 8,000 prompts" [ref=e300]
+              - generic [ref=e301]:
+                - img "Check" [ref=e303]
+                - generic [ref=e305]:
+                  - generic [ref=e306]: The above figures are estimates. Actual available usage may vary depending on project complexity, repository size, and whether auto-accept is enabled.
+                  - generic [ref=e307]:
+                    - strong [ref=e308]: GLM-5.1
+                    - text: and
+                    - strong [ref=e309]: GLM-5-Turbo
+                    - text: are advanced models designed to rival Claude Opus model. Its usage will be deducted at
+                    - strong [ref=e310]: 3 × during peak hours
+                    - text: and
+                    - strong [ref=e311]: 2 × during off-peak hours
+                    - text: . We recommend switching to GLM-5.1 for complex tasks and continuing to use GLM-4.7 for routine tasks to avoid rapid quota consumption.
+                  - strong [ref=e313]: As a limited-time benefit, GLM-5.1 and GLM-5-Turbo will only consume 1× quota during off-peak hours, valid through the end of April.
+              - generic [ref=e314]:
+                - img "Info" [ref=e316]
+                - generic [ref=e319]: Peak hours are 14:00–18:00 (UTC+8).
+              - heading "Navigate to header Exclusive MCP Access" [level=3] [ref=e320]:
+                - link "Navigate to header" [ref=e321] [cursor=pointer]:
+                  - /url: "#exclusive-mcp-access"
+                  - img [ref=e323]
+                - generic [ref=e325] [cursor=pointer]: Exclusive MCP Access
+              - generic [ref=e326]:
+                - link [ref=e327] [cursor=pointer]:
+                  - link [ref=e329]:
+                    - /url: /devpack/mcp/vision-mcp-server
+                    - img [ref=e331]
+                    - heading [level=2] [ref=e333]: Vision Understanding
+                - link [ref=e334] [cursor=pointer]:
+                  - link [ref=e336]:
+                    - /url: /devpack/mcp/search-mcp-server
+                    - img [ref=e338]
+                    - heading [level=2] [ref=e340]: Web Search
+                - link [ref=e341] [cursor=pointer]:
+                  - link [ref=e343]:
+                    - /url: /devpack/mcp/reader-mcp-server
+                    - img [ref=e345]
+                    - heading [level=2] [ref=e347]: Web Reader
+                - link [ref=e348] [cursor=pointer]:
+                  - link [ref=e350]:
+                    - /url: /devpack/mcp/zread-mcp-server
+                    - img [ref=e352]
+                    - heading [level=2] [ref=e354]: Zread
+              - generic [ref=e355]:
+                - img "Tip" [ref=e357]
+                - generic [ref=e359]:
+                  - strong [ref=e361]: MCP Usage Limits
+                  - list [ref=e362]:
+                    - listitem [ref=e363]:
+                      - strong [ref=e364]: Lite Plan
+                      - text: ": Include a total of 100 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+                    - listitem [ref=e365]:
+                      - strong [ref=e366]: Pro Plan
+                      - text: ": Include a total of 1,000 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+                    - listitem [ref=e367]:
+                      - strong [ref=e368]: Max Plan
+                      - text: ": Include a total of 4,000 web searches and web readers per month, along with the 5-hour maximum prompt resource pool of the package for vision understanding."
+                  - generic [ref=e369]: Once the monthly quota is reached, these MCP tools will be unavailable until the next billing cycle.
+              - generic [ref=e370]:
+                - img "Info" [ref=e372]
+                - generic [ref=e374]:
+                  - generic [ref=e375]:
+                    - strong [ref=e376]: For Vision Understanding MCP
+                    - text: ", all plans share a 5-hour maximum prompt resource pool with the underlying model."
+                  - generic [ref=e377]: Once the limit is reached, the quota will automatically reset after a 5-hour window.
+              - heading "Navigate to header How to Switch Models" [level=3] [ref=e378]:
+                - link "Navigate to header" [ref=e379] [cursor=pointer]:
+                  - /url: "#how-to-switch-models"
+                  - img [ref=e381]
+                - generic [ref=e383] [cursor=pointer]: How to Switch Models
+              - generic [ref=e384]: "Mapping between Claude Code internal model environment variables and GLM models, with the default configuration as follows:"
+              - list [ref=e385]:
+                - listitem [ref=e386]:
+                  - code [ref=e387]: ANTHROPIC_DEFAULT_OPUS_MODEL
+                  - text: ":"
+                  - code [ref=e388]: GLM-4.7
+                - listitem [ref=e389]:
+                  - code [ref=e390]: ANTHROPIC_DEFAULT_SONNET_MODEL
+                  - text: ":"
+                  - code [ref=e391]: GLM-4.7
+                - listitem [ref=e392]:
+                  - code [ref=e393]: ANTHROPIC_DEFAULT_HAIKU_MODEL
+                  - text: ":"
+                  - code [ref=e394]: GLM-4.5-Air
+              - generic [ref=e395]:
+                - text: If adjustments are needed, you can directly modify the configuration file (for example,
+                - code [ref=e396]: ~/.claude/settings.json
+                - text: in Claude Code) to switch to GLM-4.5 or other models.
+              - heading "Navigate to header How to Integrate with Coding Tools" [level=2] [ref=e397]:
+                - link "Navigate to header" [ref=e398] [cursor=pointer]:
+                  - /url: "#how-to-integrate-with-coding-tools"
+                  - img [ref=e400]
+                - generic [ref=e402] [cursor=pointer]:
+                  - img [ref=e403]
+                  - text: How to Integrate with Coding Tools
+              - generic [ref=e404]:
+                - link [ref=e405] [cursor=pointer]:
+                  - link [ref=e407]:
+                    - /url: https://docs.z.ai/devpack/tool/claude
+                    - heading [level=2] [ref=e409]: Claude Code
+                - link [ref=e410] [cursor=pointer]:
+                  - link [ref=e412]:
+                    - /url: https://docs.z.ai/devpack/tool/roo
+                    - heading [level=2] [ref=e414]: Roo Code
+                - link [ref=e415] [cursor=pointer]:
+                  - link [ref=e417]:
+                    - /url: https://docs.z.ai/devpack/tool/openclaw
+                    - heading [level=2] [ref=e419]: OpenClaw
+                - link [ref=e420] [cursor=pointer]:
+                  - link [ref=e422]:
+                    - /url: https://docs.z.ai/devpack/tool/kilo
+                    - heading [level=2] [ref=e424]: Kilo Code
+                - link [ref=e425] [cursor=pointer]:
+                  - link [ref=e427]:
+                    - /url: https://docs.z.ai/devpack/tool/cline
+                    - heading [level=2] [ref=e429]: Cline
+                - link [ref=e430] [cursor=pointer]:
+                  - link [ref=e432]:
+                    - /url: https://docs.z.ai/devpack/tool/opencode
+                    - heading [level=2] [ref=e434]: OpenCode
+                - link [ref=e435] [cursor=pointer]:
+                  - link [ref=e437]:
+                    - /url: https://docs.z.ai/devpack/tool/crush
+                    - heading [level=2] [ref=e439]: Crush
+                - link [ref=e440] [cursor=pointer]:
+                  - link [ref=e442]:
+                    - /url: https://docs.z.ai/devpack/tool/goose
+                    - heading [level=2] [ref=e444]: Goose
+                - link [ref=e445] [cursor=pointer]:
+                  - link [ref=e447]:
+                    - /url: https://docs.z.ai/devpack/tool/others
+                    - heading [level=2] [ref=e449]: Other Tools
+              - heading "Navigate to header Next Steps" [level=2] [ref=e450]:
+                - link "Navigate to header" [ref=e451] [cursor=pointer]:
+                  - /url: "#next-steps"
+                  - img [ref=e453]
+                - generic [ref=e455] [cursor=pointer]:
+                  - img [ref=e456]
+                  - text: Next Steps
+              - generic [ref=e457]:
+                - link [ref=e458] [cursor=pointer]:
+                  - link [ref=e460]:
+                    - /url: /devpack/quick-start
+                    - img [ref=e462]
+                    - generic [ref=e463]:
+                      - heading [level=2] [ref=e464]: Quick Start
+                      - generic [ref=e466]: Get up and running in minutes — from subscribing to the plan to using it in your coding tools.
+                - link [ref=e467] [cursor=pointer]:
+                  - link [ref=e469]:
+                    - /url: /devpack/usage-policy
+                    - img [ref=e471]
+                    - generic [ref=e472]:
+                      - heading [level=2] [ref=e473]: Usage Policy
+                      - generic [ref=e475]: Learn about account usage rules, rate limits, refund policies, and other important guidelines.
+                - link [ref=e476] [cursor=pointer]:
+                  - link [ref=e478]:
+                    - /url: /devpack/faq
+                    - img [ref=e480]
+                    - generic [ref=e481]:
+                      - heading [level=2] [ref=e482]: FAQ
+                      - generic [ref=e484]: Find answers to common questions about subscriptions, promotions, and using the plan.
+            - generic [ref=e486]:
+              - paragraph [ref=e487]: Was this page helpful?
+              - generic [ref=e489]:
+                - button "Yes" [ref=e490] [cursor=pointer]:
+                  - img [ref=e491]
+                  - generic [ref=e493]: "Yes"
+                - button "No" [ref=e494] [cursor=pointer]:
+                  - img [ref=e495]
+                  - generic [ref=e497]: "No"
+            - link "Usage Policy" [ref=e499] [cursor=pointer]:
+              - /url: /devpack/usage-policy
+              - generic [ref=e500]: Usage Policy
+              - img [ref=e501]
+            - contentinfo [ref=e503]:
+              - generic [ref=e504]:
+                - link "x" [ref=e505] [cursor=pointer]:
+                  - /url: https://x.com/Zai_org
+                  - generic [ref=e506]: x
+                  - img [ref=e507]
+                - link "github" [ref=e508] [cursor=pointer]:
+                  - /url: https://github.com/zai-org
+                  - generic [ref=e509]: github
+                  - img [ref=e510]
+                - link "discord" [ref=e511] [cursor=pointer]:
+                  - /url: https://discord.gg/QR7SARHRxK
+                  - generic [ref=e512]: discord
+                  - img [ref=e513]
+                - link "linkedin" [ref=e514] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/zdotai
+                  - generic [ref=e515]: linkedin
+                  - img [ref=e516]
+  - alert [ref=e517]

@@ -1,0 +1,217 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Ollama" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Ollama" [ref=e5]
+      - generic [ref=e6]:
+        - link "Models" [ref=e7] [cursor=pointer]:
+          - /url: /search
+        - link "Docs" [ref=e8] [cursor=pointer]:
+          - /url: /docs
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e13]:
+        - img [ref=e15]
+        - textbox "Search models" [ref=e17]
+      - generic [ref=e18]:
+        - link "Sign in" [ref=e19] [cursor=pointer]:
+          - /url: /signin
+        - link "Download" [ref=e20] [cursor=pointer]:
+          - /url: /download
+  - main [ref=e21]:
+    - heading "Pricing" [level=1] [ref=e23]
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - img "Ollama" [ref=e26]
+        - heading "Free" [level=2] [ref=e27]
+        - paragraph [ref=e28]: Get started with Ollama
+        - generic [ref=e30]: $0
+        - link "Download" [ref=e31] [cursor=pointer]:
+          - /url: /download
+        - list [ref=e32]:
+          - listitem [ref=e33]:
+            - img [ref=e34]
+            - generic [ref=e36]: Automate coding, document analysis, and other tasks with open models
+          - listitem [ref=e37]:
+            - img [ref=e38]
+            - generic [ref=e40]: Keep your data private
+          - listitem [ref=e41]:
+            - img [ref=e42]
+            - generic [ref=e44]: Run models on your hardware
+          - listitem [ref=e45]:
+            - img [ref=e46]
+            - generic [ref=e48]: Access cloud models
+          - listitem [ref=e49]:
+            - img [ref=e50]
+            - generic [ref=e52]: CLI, API, and desktop apps
+          - listitem [ref=e53]:
+            - img [ref=e54]
+            - generic [ref=e56]: 40,000+ community integrations
+          - listitem [ref=e57]:
+            - img [ref=e58]
+            - generic [ref=e60]: Unlimited public models
+      - generic [ref=e61]:
+        - img "Ollama" [ref=e62]
+        - heading "Pro" [level=2] [ref=e63]
+        - paragraph [ref=e64]: Solve harder tasks, faster
+        - generic [ref=e65]:
+          - generic [ref=e66]: $20 / mo
+          - paragraph [ref=e67]:
+            - text: or $200/yr billed
+            - link "annually" [ref=e68] [cursor=pointer]:
+              - /url: /upgrade?plan=pro&interval=year
+        - link "Get Pro" [ref=e69] [cursor=pointer]:
+          - /url: /upgrade?plan=pro
+        - generic [ref=e70]: "Everything in Free, plus:"
+        - list [ref=e71]:
+          - listitem [ref=e72]:
+            - img [ref=e73]
+            - generic [ref=e75]: Run 3 cloud models at a time
+          - listitem [ref=e76]:
+            - img [ref=e77]
+            - generic [ref=e79]: 50x more cloud usage than Free
+          - listitem [ref=e80]:
+            - img [ref=e81]
+            - generic [ref=e83]: Upload and share private models
+      - generic [ref=e84]:
+        - img "Ollama" [ref=e85]
+        - heading "Max" [level=2] [ref=e86]
+        - paragraph [ref=e87]: For your most demanding work
+        - generic [ref=e89]: $100 / mo
+        - link "Get Max" [ref=e90] [cursor=pointer]:
+          - /url: /upgrade?plan=max
+        - generic [ref=e91]: "Everything in Pro, plus:"
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - img [ref=e94]
+            - generic [ref=e96]: Run 10 cloud models at a time
+          - listitem [ref=e97]:
+            - img [ref=e98]
+            - generic [ref=e100]: 5x more usage than Pro
+    - generic [ref=e101]:
+      - heading "Frequently asked questions" [level=2] [ref=e102]
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - heading "Models" [level=3] [ref=e105]
+          - list [ref=e106]:
+            - listitem [ref=e107]:
+              - heading "Which models are available?" [level=4] [ref=e108]
+              - paragraph [ref=e109]:
+                - text: See the full list of cloud-enabled models
+                - link "here" [ref=e110] [cursor=pointer]:
+                  - /url: /search?c=cloud
+                - text: .
+            - listitem [ref=e111]:
+              - heading "Do models support tool calling?" [level=4] [ref=e112]
+              - paragraph [ref=e113]:
+                - text: Yes. Cloud models that are trained to support tools are tested for tool calling and with real agent workflows before they go live. If something isn't working, let us know at
+                - link "hello@ollama.com" [ref=e114] [cursor=pointer]:
+                  - /url: mailto:hello@ollama.com
+                - text: .
+            - listitem [ref=e115]:
+              - heading "What quantization or data format do cloud models use?" [level=4] [ref=e116]
+              - paragraph [ref=e117]: Native weights, as released by the model provider. On modern NVIDIA hardware, models may use accelerated data formats supported by Blackwell and Vera Rubin architectures (e.g. NVFP4).
+            - listitem [ref=e118]:
+              - heading "How fast is Ollama?" [level=4] [ref=e119]
+              - paragraph [ref=e120]: Speed depends on model size, architecture, and hardware optimization. We target and monitor for low time-to-first-token and high throughput across all cloud models. Priority tiers with faster performance may be available in the future.
+        - generic [ref=e121]:
+          - heading "Usage" [level=3] [ref=e122]
+          - list [ref=e123]:
+            - listitem [ref=e124]:
+              - heading "What are the usage limits for each plan?" [level=4] [ref=e125]
+              - paragraph [ref=e126]: "Running models on your own hardware is always unlimited. Cloud usage varies by plan:"
+              - table [ref=e128]:
+                - rowgroup [ref=e129]:
+                  - row "Plan Usage Example use cases" [ref=e130]:
+                    - columnheader "Plan" [ref=e131]
+                    - columnheader "Usage" [ref=e132]
+                    - columnheader "Example use cases" [ref=e133]
+                - rowgroup [ref=e134]:
+                  - row "Free Light usage Chatting with models, evaluating larger models, coding and AI assistants with smaller models" [ref=e135]:
+                    - cell "Free" [ref=e136]
+                    - cell "Light usage" [ref=e137]
+                    - cell "Chatting with models, evaluating larger models, coding and AI assistants with smaller models" [ref=e138]
+                  - row "Pro Day-to-day work Larger models, coding automation, deep research" [ref=e139]:
+                    - cell "Pro" [ref=e140]
+                    - cell "Day-to-day work" [ref=e141]
+                    - cell "Larger models, coding automation, deep research" [ref=e142]
+                  - row "Max Heavy, sustained usage Continuous agent tasks, multiple concurrent agents, large models over extended sessions" [ref=e143]:
+                    - cell "Max" [ref=e144]
+                    - cell "Heavy, sustained usage" [ref=e145]
+                    - cell "Continuous agent tasks, multiple concurrent agents, large models over extended sessions" [ref=e146]
+              - paragraph [ref=e147]: Each plan has session limits that reset every 5 hours and weekly limits that reset every 7 days.
+            - listitem [ref=e148]:
+              - heading "How is usage measured?" [level=4] [ref=e149]
+              - paragraph [ref=e150]: Usage reflects actual utilization of Ollama's cloud infrastructure - primarily GPU time, which depends on model size and request duration. Shorter requests and prompts that share cached context use less.
+              - paragraph [ref=e151]: This is different from fixed token or request-based plans. Ollama doesn't cap you at a set number of tokens. As hardware and model architectures get more efficient, you'll get more out of your plan over time.
+            - listitem [ref=e152]:
+              - heading "Can I purchase additional usage?" [level=4] [ref=e153]
+              - paragraph [ref=e154]: Soon. Additional usage at competitive per-token rates, including cache-aware pricing, is coming.
+            - listitem [ref=e155]:
+              - heading "How much more usage does Pro include?" [level=4] [ref=e156]
+              - paragraph [ref=e157]: 50x more than Free.
+            - listitem [ref=e158]:
+              - heading "How much more usage does Max include?" [level=4] [ref=e159]
+              - paragraph [ref=e160]: 5x more than Pro.
+            - listitem [ref=e161]:
+              - heading "How do I know when I've hit my limit?" [level=4] [ref=e162]
+              - paragraph [ref=e163]:
+                - text: Check your usage
+                - link "here" [ref=e164] [cursor=pointer]:
+                  - /url: /settings
+                - text: anytime. At 90% of your plan's limit, Ollama sends an email reminder. You can turn this off in settings.
+            - listitem [ref=e165]:
+              - heading "How many cloud models can I run at once?" [level=4] [ref=e166]
+              - paragraph [ref=e167]: "Concurrency limits ensure dedicated capacity for workflows that need multiple models running simultaneously:"
+              - table [ref=e169]:
+                - rowgroup [ref=e170]:
+                  - row "Plan Concurrent models" [ref=e171]:
+                    - columnheader "Plan" [ref=e172]
+                    - columnheader "Concurrent models" [ref=e173]
+                - rowgroup [ref=e174]:
+                  - row "Free 1" [ref=e175]:
+                    - cell "Free" [ref=e176]
+                    - cell "1" [ref=e177]
+                  - row "Pro 3" [ref=e178]:
+                    - cell "Pro" [ref=e179]
+                    - cell "3" [ref=e180]
+                  - row "Max 10" [ref=e181]:
+                    - cell "Max" [ref=e182]
+                    - cell "10" [ref=e183]
+              - paragraph [ref=e184]: Requests beyond your plan's concurrency limit are queued and processed as soon as a slot is available. Queued requests are held up to a fixed limit - if the queue is full, the request will be rejected until one of your concurrency slots opens.
+        - generic [ref=e185]:
+          - heading "Privacy" [level=3] [ref=e186]
+          - list [ref=e187]:
+            - listitem [ref=e188]:
+              - heading "Where are models hosted?" [level=4] [ref=e189]
+              - paragraph [ref=e190]: Ollama hosts models and compute resources primarily in the United States. To serve global demand, we may route to Europe and Singapore for additional capacity.
+            - listitem [ref=e191]:
+              - heading "Is my prompt or response data trained on?" [level=4] [ref=e192]
+              - paragraph [ref=e193]: Prompt or response data is never logged or trained on.
+            - listitem [ref=e194]:
+              - heading "Who does Ollama partner with to host models?" [level=4] [ref=e195]
+              - paragraph [ref=e196]: Ollama collaborates with NVIDIA Cloud Providers (NCPs) to host open models.
+              - paragraph [ref=e197]: When Ollama partners with providers, we require no logging, no training, and zero data retention policies in place.
+  - contentinfo [ref=e198]:
+    - generic [ref=e200]:
+      - generic [ref=e201]: © 2026 Ollama
+      - generic [ref=e202]:
+        - link "Download" [ref=e203] [cursor=pointer]:
+          - /url: /download
+        - link "Blog" [ref=e204] [cursor=pointer]:
+          - /url: /blog
+        - link "Docs" [ref=e205] [cursor=pointer]:
+          - /url: https://docs.ollama.com
+        - link "GitHub" [ref=e206] [cursor=pointer]:
+          - /url: https://github.com/ollama/ollama
+        - link "Discord" [ref=e207] [cursor=pointer]:
+          - /url: https://discord.com/invite/ollama
+        - link "X (Twitter)" [ref=e208] [cursor=pointer]:
+          - /url: https://twitter.com/ollama
+        - link "Contact" [ref=e209] [cursor=pointer]:
+          - /url: mailto:hello@ollama.com
+        - link "Privacy" [ref=e210] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=e211] [cursor=pointer]:
+          - /url: /terms

@@ -1,0 +1,673 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%3Fq%3Dglm-5.1
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fissues%2Findex&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e138]:
+      - heading "Issues" [level=1] [ref=e139]
+      - generic [ref=e140]:
+        - generic [ref=e142]:
+          - form "Search Issues" [ref=e144]:
+            - generic [ref=e145]: Search Issues
+            - generic [ref=e147]:
+              - generic [ref=e149]:
+                - generic [ref=e151]: glm-5.1
+                - combobox "Search Issues" [ref=e153]: glm-5.1
+              - button "Search" [ref=e154] [cursor=pointer]:
+                - img [ref=e155]
+          - generic [ref=e157]:
+            - link "Labels" [ref=e158] [cursor=pointer]:
+              - /url: /ollama/ollama/labels
+              - generic [ref=e159]:
+                - generic:
+                  - img
+                - generic [ref=e160]: Labels
+            - link "Milestones" [ref=e161] [cursor=pointer]:
+              - /url: /ollama/ollama/milestones
+              - generic [ref=e162]:
+                - generic:
+                  - img
+                - generic [ref=e163]: Milestones
+            - link "New issue" [ref=e164] [cursor=pointer]:
+              - /url: /login?return_to=https://github.com/ollama/ollama/issues?q=glm-5.1
+              - generic [ref=e166]: New issue
+        - generic [ref=e170]:
+          - heading "Search results" [level=2] [ref=e171]
+          - generic [ref=e172]:
+            - generic [ref=e173]:
+              - link "Open" [ref=e174] [cursor=pointer]:
+                - /url: ""
+                - generic [ref=e175]: Open
+              - link "Closed" [ref=e177] [cursor=pointer]:
+                - /url: ""
+                - generic [ref=e178]: Closed
+            - toolbar "Actions" [ref=e180]:
+              - generic [ref=e181]:
+                - button "Filter by author" [ref=e183] [cursor=pointer]:
+                  - generic [ref=e184]:
+                    - generic [ref=e185]: Author
+                    - generic:
+                      - img
+                - button "Filter by label" [ref=e187] [cursor=pointer]:
+                  - generic [ref=e188]:
+                    - generic [ref=e189]: Labels
+                    - generic:
+                      - img
+                - button "Filter by project" [ref=e191] [cursor=pointer]:
+                  - generic [ref=e192]:
+                    - generic [ref=e193]: Projects
+                    - generic:
+                      - img
+                - button "Filter by milestone" [ref=e195] [cursor=pointer]:
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: Milestones
+                    - generic:
+                      - img
+                - button "Filter by assignees" [ref=e199] [cursor=pointer]:
+                  - generic [ref=e200]:
+                    - generic [ref=e201]: Assignees
+                    - generic:
+                      - img
+                - button "Filter by issue type" [ref=e203] [cursor=pointer]:
+                  - generic [ref=e204]:
+                    - generic [ref=e205]: Types
+                    - generic:
+                      - img
+                - button "Sort by Newest , descending" [ref=e207] [cursor=pointer]:
+                  - generic [ref=e208]:
+                    - generic:
+                      - img
+                    - generic [ref=e209]:
+                      - generic [ref=e210]: Sort by
+                      - text: Newest
+                      - generic [ref=e211]: ", descending"
+                  - generic:
+                    - img
+          - list "Search results" [ref=e212]:
+            - 'listitem "Skills not working: Status: Open. #15820 In ollama/ollama;· Bazmundi opened on Apr 26, 2026. More information available below." [ref=e215]':
+              - heading "Skills not working" [level=3] [ref=e217]:
+                - link "Skills not working" [ref=e218] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues/15820
+                  - generic [ref=e219]: Skills not working
+              - generic [ref=e224]:
+                - img [ref=e226]
+                - generic [ref=e229]: "Status: Open."
+              - generic [ref=e233]:
+                - generic [ref=e234]:
+                  - generic [ref=e235]: "#15820"
+                  - generic [ref=e236]: In ollama/ollama;
+                - generic [ref=e237]:
+                  - text: ·
+                  - link "Bazmundi" [ref=e238] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3ABazmundi
+                  - text: opened
+                  - generic "Apr 26, 2026, 2:30 PM GMT+9" [ref=e239]: on Apr 26, 20264 hours ago
+            - 'listitem "runner: expose prompt cache hit count in completion response: Status: Open (in progress). ollama/ollamanumber 15768 #15768 In ollama/ollama;· anishesg opened on Apr 23, 2026. More information available below." [ref=e243]':
+              - 'heading "runner: expose prompt cache hit count in completion response" [level=3] [ref=e245]':
+                - 'link "runner: expose prompt cache hit count in completion response" [ref=e246] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15768
+                  - generic [ref=e247]: "runner: expose prompt cache hit count in completion response"
+              - generic [ref=e252]:
+                - img [ref=e254]
+                - generic [ref=e256]: "Status: Open (in progress)."
+              - generic [ref=e260]:
+                - generic [ref=e261]:
+                  - text: ollama/ollama
+                  - generic [ref=e262]: number 15768
+                - generic [ref=e263]:
+                  - generic [ref=e264]: "#15768"
+                  - generic [ref=e265]: In ollama/ollama;
+                - generic [ref=e266]:
+                  - text: ·
+                  - link "anishesg" [ref=e267] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Aanishesg
+                  - text: opened
+                  - generic "Apr 23, 2026, 3:47 PM GMT+9" [ref=e268]: on Apr 23, 20263 days ago
+            - 'listitem "launch: keep launch recommended models in a fixed canonical order: Status: Merged (completed). ollama/ollamanumber 15750 #15750 In ollama/ollama;· by hoyyeva was closed on Apr 24, 2026. More information available below." [ref=e276]':
+              - 'heading "launch: keep launch recommended models in a fixed canonical order" [level=3] [ref=e278]':
+                - 'link "launch: keep launch recommended models in a fixed canonical order" [ref=e279] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15750
+                  - generic [ref=e280]: "launch: keep launch recommended models in a fixed canonical order"
+              - generic [ref=e285]:
+                - img [ref=e287]
+                - generic [ref=e289]: "Status: Merged (completed)."
+              - generic [ref=e293]:
+                - generic [ref=e294]:
+                  - text: ollama/ollama
+                  - generic [ref=e295]: number 15750
+                - generic [ref=e296]:
+                  - generic [ref=e297]: "#15750"
+                  - generic [ref=e298]: In ollama/ollama;
+                - generic [ref=e299]:
+                  - text: · by
+                  - link "hoyyeva" [ref=e300] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Ahoyyeva
+                  - text: was closed
+                  - generic "Apr 24, 2026, 5:33 AM GMT+9" [ref=e301]: on Apr 24, 20263 days ago
+            - 'listitem "Kimi models require pro ?: Status: Open. #15741 In ollama/ollama;· Azecko opened on Apr 22, 2026. More information available below." [ref=e309]':
+              - generic [ref=e310]:
+                - heading "Kimi models require pro ?" [level=3] [ref=e311]:
+                  - link "Kimi models require pro ?" [ref=e312] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15741
+                    - generic [ref=e313]: Kimi models require pro ?
+                - link "bug Something isn't working" [ref=e317] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Abug
+                  - generic [ref=e319]: bug
+                  - generic [ref=e320]: Something isn't working
+              - generic [ref=e324]:
+                - img [ref=e326]
+                - generic [ref=e329]: "Status: Open."
+              - generic [ref=e333]:
+                - generic [ref=e334]:
+                  - generic [ref=e335]: "#15741"
+                  - generic [ref=e336]: In ollama/ollama;
+                - generic [ref=e337]:
+                  - text: ·
+                  - link "Azecko" [ref=e338] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AAzecko
+                  - text: opened
+                  - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e339]: on Apr 22, 20264 days ago
+            - 'listitem "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work: Status: Closed (completed). #15707 In ollama/ollama;· by jonathanGGa was closed on Apr 20, 2026. More information available below." [ref=e343]':
+              - generic [ref=e344]:
+                - heading "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work" [level=3] [ref=e345]:
+                  - link "glm-5.1:cloud model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work" [ref=e346] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15707
+                    - generic [ref=e348]:
+                      - code [ref=e349]: glm-5.1:cloud
+                      - text: model returns 403 authentication error with GitHub Copilot (CLI & VSCode) while other models work
+                - link "bug Something isn't working" [ref=e353] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Abug
+                  - generic [ref=e355]: bug
+                  - generic [ref=e356]: Something isn't working
+              - generic [ref=e360]:
+                - img [ref=e362]
+                - generic [ref=e365]: "Status: Closed (completed)."
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - generic [ref=e371]: "#15707"
+                  - generic [ref=e372]: In ollama/ollama;
+                - generic [ref=e373]:
+                  - text: · by
+                  - link "jonathanGGa" [ref=e374] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AjonathanGGa
+                  - text: was closed
+                  - generic "Apr 20, 2026, 11:36 PM GMT+9" [ref=e375]: on Apr 20, 2026last week
+            - 'listitem "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API: Status: Open. #15647 In ollama/ollama;· ruhtraxjj opened on Apr 17, 2026. More information available below." [ref=e379]':
+              - generic [ref=e380]:
+                - heading "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API" [level=3] [ref=e381]:
+                  - link "tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API" [ref=e382] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15647
+                    - generic [ref=e383]: tool_call.arguments truncated to exactly 214 chars on Ollama Cloud API
+                - link "cloud" [ref=e387] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Acloud
+                  - generic [ref=e389]: cloud
+              - generic [ref=e394]:
+                - img [ref=e396]
+                - generic [ref=e399]: "Status: Open."
+              - generic [ref=e403]:
+                - generic [ref=e404]:
+                  - generic [ref=e405]: "#15647"
+                  - generic [ref=e406]: In ollama/ollama;
+                - generic [ref=e407]:
+                  - text: ·
+                  - link "ruhtraxjj" [ref=e408] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Aruhtraxjj
+                  - text: opened
+                  - generic "Apr 17, 2026, 9:06 PM GMT+9" [ref=e409]: on Apr 17, 2026last week
+            - 'listitem "v1/messages :cloud — Kimi K2.5 native tokens leak, nested objects stringified on Qwen/GLM: Status: Open. #15645 In ollama/ollama;· john-savepoint opened on Apr 17, 2026. More information available below." [ref=e413]':
+              - generic [ref=e414]:
+                - heading "v1/messages :cloud — Kimi K2.5 native tokens leak, nested objects stringified on Qwen/GLM" [level=3] [ref=e415]:
+                  - link "v1/messages :cloud — Kimi K2.5 native tokens leak, nested objects stringified on Qwen/GLM" [ref=e416] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15645
+                    - generic [ref=e417]: v1/messages :cloud — Kimi K2.5 native tokens leak, nested objects stringified on Qwen/GLM
+                - link "cloud" [ref=e421] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Acloud
+                  - generic [ref=e423]: cloud
+              - generic [ref=e428]:
+                - img [ref=e430]
+                - generic [ref=e433]: "Status: Open."
+              - generic [ref=e437]:
+                - generic [ref=e438]:
+                  - generic [ref=e439]: "#15645"
+                  - generic [ref=e440]: In ollama/ollama;
+                - generic [ref=e441]:
+                  - text: ·
+                  - link "john-savepoint" [ref=e442] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Ajohn-savepoint
+                  - text: opened
+                  - generic "Apr 17, 2026, 6:34 PM GMT+9" [ref=e443]: on Apr 17, 2026last week
+            - 'listitem "cmd/launch: add OpenClaude integration: Status: Open (in progress). ollama/ollamanumber 15618 #15618 In ollama/ollama;· jfxdev01 opened on Apr 16, 2026. More information available below." [ref=e447]':
+              - 'heading "cmd/launch: add OpenClaude integration" [level=3] [ref=e449]':
+                - 'link "cmd/launch: add OpenClaude integration" [ref=e450] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15618
+                  - generic [ref=e451]: "cmd/launch: add OpenClaude integration"
+              - generic [ref=e456]:
+                - img [ref=e458]
+                - generic [ref=e460]: "Status: Open (in progress)."
+              - generic [ref=e464]:
+                - generic [ref=e465]:
+                  - text: ollama/ollama
+                  - generic [ref=e466]: number 15618
+                - generic [ref=e467]:
+                  - generic [ref=e468]: "#15618"
+                  - generic [ref=e469]: In ollama/ollama;
+                - generic [ref=e470]:
+                  - text: ·
+                  - link "jfxdev01" [ref=e471] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Ajfxdev01
+                  - text: opened
+                  - generic "Apr 16, 2026, 11:53 AM GMT+9" [ref=e472]: on Apr 16, 2026last week
+            - 'listitem "app/ui: feature glm-5.1:cloud instead of glm-5:cloud: Status: Open (in progress). ollama/ollamanumber 15544 #15544 In ollama/ollama;· hvbhanot opened on Apr 13, 2026. More information available below." [ref=e480]':
+              - 'heading "app/ui: feature glm-5.1:cloud instead of glm-5:cloud" [level=3] [ref=e482]':
+                - 'link "app/ui: feature glm-5.1:cloud instead of glm-5:cloud" [ref=e483] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15544
+                  - generic [ref=e484]: "app/ui: feature glm-5.1:cloud instead of glm-5:cloud"
+              - generic [ref=e489]:
+                - img [ref=e491]
+                - generic [ref=e493]: "Status: Open (in progress)."
+              - generic [ref=e497]:
+                - generic [ref=e498]:
+                  - text: ollama/ollama
+                  - generic [ref=e499]: number 15544
+                - generic [ref=e500]:
+                  - generic [ref=e501]: "#15544"
+                  - generic [ref=e502]: In ollama/ollama;
+                - generic [ref=e503]:
+                  - text: ·
+                  - link "hvbhanot" [ref=e504] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Ahvbhanot
+                  - text: opened
+                  - generic "Apr 13, 2026, 11:47 PM GMT+9" [ref=e505]: on Apr 13, 20262 weeks ago
+            - 'listitem "docs: add hermes agent integration guide: Status: Merged (completed). ollama/ollamanumber 15488 #15488 In ollama/ollama;· by BruceMacD was closed on Apr 11, 2026. More information available below." [ref=e513]':
+              - 'heading "docs: add hermes agent integration guide" [level=3] [ref=e515]':
+                - 'link "docs: add hermes agent integration guide" [ref=e516] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15488
+                  - generic [ref=e517]: "docs: add hermes agent integration guide"
+              - generic [ref=e522]:
+                - img [ref=e524]
+                - generic [ref=e526]: "Status: Merged (completed)."
+              - generic [ref=e530]:
+                - generic [ref=e531]:
+                  - text: ollama/ollama
+                  - generic [ref=e532]: number 15488
+                - generic [ref=e533]:
+                  - generic [ref=e534]: "#15488"
+                  - generic [ref=e535]: In ollama/ollama;
+                - generic [ref=e536]:
+                  - text: · by
+                  - link "BruceMacD" [ref=e537] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3ABruceMacD
+                  - text: was closed
+                  - generic "Apr 11, 2026, 5:13 AM GMT+9" [ref=e538]: on Apr 11, 20262 weeks ago
+            - 'listitem "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable: Status: Open. #15453 In ollama/ollama;· KUANKEI21 opened on Apr 10, 2026. More information available below." [ref=e546]':
+              - generic [ref=e547]:
+                - 'heading "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [level=3] [ref=e548]':
+                  - 'link "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable" [ref=e549] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/15453
+                    - generic [ref=e550]: "Ollama Cloud Pro: 95% failure rate across all cloud models — service is unusable"
+                - link "cloud" [ref=e554] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Acloud
+                  - generic [ref=e556]: cloud
+              - generic [ref=e561]:
+                - img [ref=e563]
+                - generic [ref=e566]: "Status: Open."
+              - generic [ref=e570]:
+                - generic [ref=e571]:
+                  - generic [ref=e572]: "#15453"
+                  - generic [ref=e573]: In ollama/ollama;
+                - generic [ref=e574]:
+                  - text: ·
+                  - link "KUANKEI21" [ref=e575] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AKUANKEI21
+                  - text: opened
+                  - generic "Apr 10, 2026, 12:23 AM GMT+9" [ref=e576]: on Apr 10, 20262 weeks ago
+            - 'listitem "Ollama Cloud: Frequent 503 errors making cloud models unreliable: Status: Open. #15419 In ollama/ollama;· oggixx opened on Apr 8, 2026. More information available below." [ref=e580]':
+              - generic [ref=e581]:
+                - 'heading "Ollama Cloud: Frequent 503 errors making cloud models unreliable" [level=3] [ref=e582]':
+                  - 'link "Ollama Cloud: Frequent 503 errors making cloud models unreliable" [ref=e583] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/15419
+                    - generic [ref=e584]: "Ollama Cloud: Frequent 503 errors making cloud models unreliable"
+                - link "cloud" [ref=e588] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Acloud
+                  - generic [ref=e590]: cloud
+              - generic [ref=e595]:
+                - img [ref=e597]
+                - generic [ref=e600]: "Status: Open."
+              - generic [ref=e604]:
+                - generic [ref=e605]:
+                  - generic [ref=e606]: "#15419"
+                  - generic [ref=e607]: In ollama/ollama;
+                - generic [ref=e608]:
+                  - text: ·
+                  - link "oggixx" [ref=e609] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Aoggixx
+                  - text: opened
+                  - generic "Apr 8, 2026, 8:28 PM GMT+9" [ref=e610]: on Apr 8, 20263 weeks ago
+            - 'listitem "Model files for glm-5.1 for downloading and offline usage: Status: Open. #15412 In ollama/ollama;· thermalWinds opened on Apr 8, 2026. More information available below." [ref=e614]':
+              - generic [ref=e615]:
+                - heading "Model files for glm-5.1 for downloading and offline usage" [level=3] [ref=e616]:
+                  - link "Model files for glm-5.1 for downloading and offline usage" [ref=e617] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15412
+                    - generic [ref=e618]: Model files for glm-5.1 for downloading and offline usage
+                - link "feature request New feature or request" [ref=e622] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3A%22feature%20request%22
+                  - generic [ref=e624]: feature request
+                  - generic [ref=e625]: New feature or request
+              - generic [ref=e629]:
+                - img [ref=e631]
+                - generic [ref=e634]: "Status: Open."
+              - generic [ref=e638]:
+                - generic [ref=e639]:
+                  - generic [ref=e640]: "#15412"
+                  - generic [ref=e641]: In ollama/ollama;
+                - generic [ref=e642]:
+                  - text: ·
+                  - link "thermalWinds" [ref=e643] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AthermalWinds
+                  - text: opened
+                  - generic "Apr 8, 2026, 10:48 AM GMT+9" [ref=e644]: on Apr 8, 20263 weeks ago
+            - 'listitem "launch: update ctx length for glm-5.1 and gemma4: Status: Merged (completed). ollama/ollamanumber 15411 #15411 In ollama/ollama;· by ParthSareen was closed on Apr 9, 2026. More information available below." [ref=e648]':
+              - 'heading "launch: update ctx length for glm-5.1 and gemma4" [level=3] [ref=e650]':
+                - 'link "launch: update ctx length for glm-5.1 and gemma4" [ref=e651] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15411
+                  - generic [ref=e652]: "launch: update ctx length for glm-5.1 and gemma4"
+              - generic [ref=e657]:
+                - img [ref=e659]
+                - generic [ref=e661]: "Status: Merged (completed)."
+              - generic [ref=e665]:
+                - generic [ref=e666]:
+                  - text: ollama/ollama
+                  - generic [ref=e667]: number 15411
+                - generic [ref=e668]:
+                  - generic [ref=e669]: "#15411"
+                  - generic [ref=e670]: In ollama/ollama;
+                - generic [ref=e671]:
+                  - text: · by
+                  - link "ParthSareen" [ref=e672] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AParthSareen
+                  - text: was closed
+                  - generic "Apr 9, 2026, 4:11 AM GMT+9" [ref=e673]: on Apr 9, 20263 weeks ago
+            - 'listitem "launch: add openclaw channels setup: Status: Merged (completed). ollama/ollamanumber 15407 #15407 In ollama/ollama;· by ParthSareen was closed on Apr 9, 2026. More information available below." [ref=e681]':
+              - 'heading "launch: add openclaw channels setup" [level=3] [ref=e683]':
+                - 'link "launch: add openclaw channels setup" [ref=e684] [cursor=pointer]':
+                  - /url: /ollama/ollama/pull/15407
+                  - generic [ref=e685]: "launch: add openclaw channels setup"
+              - generic [ref=e690]:
+                - img [ref=e692]
+                - generic [ref=e694]: "Status: Merged (completed)."
+              - generic [ref=e698]:
+                - generic [ref=e699]:
+                  - text: ollama/ollama
+                  - generic [ref=e700]: number 15407
+                - generic [ref=e701]:
+                  - generic [ref=e702]: "#15407"
+                  - generic [ref=e703]: In ollama/ollama;
+                - generic [ref=e704]:
+                  - text: · by
+                  - link "ParthSareen" [ref=e705] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AParthSareen
+                  - text: was closed
+                  - generic "Apr 9, 2026, 5:25 AM GMT+9" [ref=e706]: on Apr 9, 20263 weeks ago
+            - 'listitem "I''m having an issue when using the Ollama cloud model, especially when generating large outputs.: Status: Open. #15290 In ollama/ollama;· Hevoon opened on Apr 3, 2026. More information available below." [ref=e714]':
+              - generic [ref=e715]:
+                - heading "I'm having an issue when using the Ollama cloud model, especially when generating large outputs." [level=3] [ref=e716]:
+                  - link "I'm having an issue when using the Ollama cloud model, especially when generating large outputs." [ref=e717] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15290
+                    - generic [ref=e718]: I'm having an issue when using the Ollama cloud model, especially when generating large outputs.
+                - link "bug Something isn't working" [ref=e722] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Abug
+                  - generic [ref=e724]: bug
+                  - generic [ref=e725]: Something isn't working
+              - generic [ref=e729]:
+                - img [ref=e731]
+                - generic [ref=e734]: "Status: Open."
+              - generic [ref=e738]:
+                - generic [ref=e739]:
+                  - generic [ref=e740]: "#15290"
+                  - generic [ref=e741]: In ollama/ollama;
+                - generic [ref=e742]:
+                  - text: ·
+                  - link "Hevoon" [ref=e743] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AHevoon
+                  - text: opened
+                  - generic "Apr 3, 2026, 11:40 PM GMT+9" [ref=e744]: on Apr 3, 20263 weeks ago
+            - 'listitem "GLM 5.1 Cloud model request: Status: Closed (completed). #15111 In ollama/ollama;· by matbgn was closed on Apr 8, 2026. More information available below." [ref=e748]':
+              - generic [ref=e749]:
+                - heading "GLM 5.1 Cloud model request" [level=3] [ref=e750]:
+                  - link "GLM 5.1 Cloud model request" [ref=e751] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/15111
+                    - generic [ref=e752]: GLM 5.1 Cloud model request
+                - link "model Model requests" [ref=e756] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Amodel
+                  - generic [ref=e758]: model
+                  - generic [ref=e759]: Model requests
+              - generic [ref=e763]:
+                - img [ref=e765]
+                - generic [ref=e768]: "Status: Closed (completed)."
+              - generic [ref=e772]:
+                - generic [ref=e773]:
+                  - generic [ref=e774]: "#15111"
+                  - generic [ref=e775]: In ollama/ollama;
+                - generic [ref=e776]:
+                  - text: · by
+                  - link "matbgn" [ref=e777] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Amatbgn
+                  - text: was closed
+                  - generic "Apr 8, 2026, 6:02 PM GMT+9" [ref=e778]: on Apr 8, 20263 weeks ago
+            - 'listitem "huihui_ai abliterated models crash with CUDA error: out of memory: Status: Closed (completed). #14044 In ollama/ollama;· by Johnreidsilver was closed on Feb 4, 2026. More information available below." [ref=e782]':
+              - generic [ref=e783]:
+                - 'heading "huihui_ai abliterated models crash with CUDA error: out of memory" [level=3] [ref=e784]':
+                  - 'link "huihui_ai abliterated models crash with CUDA error: out of memory" [ref=e785] [cursor=pointer]':
+                    - /url: /ollama/ollama/issues/14044
+                    - generic [ref=e786]: "huihui_ai abliterated models crash with CUDA error: out of memory"
+                - link "bug Something isn't working" [ref=e790] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Abug
+                  - generic [ref=e792]: bug
+                  - generic [ref=e793]: Something isn't working
+              - generic [ref=e797]:
+                - img [ref=e799]
+                - generic [ref=e802]: "Status: Closed (completed)."
+              - generic [ref=e806]:
+                - generic [ref=e807]:
+                  - generic [ref=e808]: "#14044"
+                  - generic [ref=e809]: In ollama/ollama;
+                - generic [ref=e810]:
+                  - text: · by
+                  - link "Johnreidsilver" [ref=e811] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AJohnreidsilver
+                  - text: was closed
+                  - generic "Feb 4, 2026, 7:51 PM GMT+9" [ref=e812]: on Feb 4, 2026on Feb 4
+            - 'listitem "which quantization ollama cloud models use: Status: Closed (completed). #13157 In ollama/ollama;· by MertcanTekin was closed on Nov 28, 2025. More information available below." [ref=e816]':
+              - generic [ref=e817]:
+                - heading "which quantization ollama cloud models use" [level=3] [ref=e818]:
+                  - link "which quantization ollama cloud models use" [ref=e819] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/13157
+                    - generic [ref=e820]: which quantization ollama cloud models use
+                - link "feature request New feature or request" [ref=e824] [cursor=pointer]:
+                  - /url: /ollama/ollama/issues?q=glm-5.1%20label%3A%22feature%20request%22
+                  - generic [ref=e826]: feature request
+                  - generic [ref=e827]: New feature or request
+              - generic [ref=e831]:
+                - img [ref=e833]
+                - generic [ref=e836]: "Status: Closed (completed)."
+              - generic [ref=e840]:
+                - generic [ref=e841]:
+                  - generic [ref=e842]: "#13157"
+                  - generic [ref=e843]: In ollama/ollama;
+                - generic [ref=e844]:
+                  - text: · by
+                  - link "MertcanTekin" [ref=e845] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3AMertcanTekin
+                  - text: was closed
+                  - generic "Nov 28, 2025, 7:34 PM GMT+9" [ref=e846]: on Nov 28, 2025on Nov 28, 2025
+            - 'listitem "Unable to recognize the long text content.: Status: Closed (completed). #7146 In ollama/ollama;· by goactiongo was closed on Nov 17, 2024. More information available below." [ref=e850]':
+              - generic [ref=e851]:
+                - heading "Unable to recognize the long text content." [level=3] [ref=e852]:
+                  - link "Unable to recognize the long text content." [ref=e853] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues/7146
+                    - generic [ref=e854]: Unable to recognize the long text content.
+                - generic [ref=e856]:
+                  - link "bug Something isn't working" [ref=e858] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Abug
+                    - generic [ref=e860]: bug
+                    - generic [ref=e861]: Something isn't working
+                  - link "nvidia Issues relating to Nvidia GPUs and CUDA" [ref=e863] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20label%3Anvidia
+                    - generic [ref=e865]: nvidia
+                    - generic [ref=e866]: Issues relating to Nvidia GPUs and CUDA
+              - generic [ref=e870]:
+                - img [ref=e872]
+                - generic [ref=e875]: "Status: Closed (completed)."
+              - generic [ref=e879]:
+                - generic [ref=e880]:
+                  - generic [ref=e881]: "#7146"
+                  - generic [ref=e882]: In ollama/ollama;
+                - generic [ref=e883]:
+                  - text: · by
+                  - link "goactiongo" [ref=e884] [cursor=pointer]:
+                    - /url: /ollama/ollama/issues?q=glm-5.1%20author%3Agoactiongo
+                  - text: was closed
+                  - generic "Nov 17, 2024, 11:37 PM GMT+9" [ref=e885]: on Nov 17, 2024on Nov 17, 2024
+  - contentinfo [ref=e887]:
+    - heading "Footer" [level=2] [ref=e888]
+    - generic [ref=e889]:
+      - generic [ref=e890]:
+        - link "GitHub Homepage" [ref=e891] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e892]
+        - generic [ref=e894]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e895]:
+        - heading "Footer navigation" [level=3] [ref=e896]
+        - list "Footer navigation" [ref=e897]:
+          - listitem [ref=e898]:
+            - link "Terms" [ref=e899] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e900]:
+            - link "Privacy" [ref=e901] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e902]:
+            - link "Security" [ref=e903] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e904]:
+            - link "Status" [ref=e905] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e906]:
+            - link "Community" [ref=e907] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e908]:
+            - link "Docs" [ref=e909] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e910]:
+            - link "Contact" [ref=e911] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e912]:
+            - button "Manage cookies" [ref=e914] [cursor=pointer]
+          - listitem [ref=e915]:
+            - button "Do not share my personal information" [ref=e917] [cursor=pointer]

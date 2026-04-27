@@ -1,0 +1,580 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - navigation [ref=e3]:
+      - generic [ref=e4]:
+        - link "Skip to content" [ref=e6] [cursor=pointer]:
+          - /url: "#skip"
+        - generic [ref=e7]:
+          - link "Logo OpenRouter" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - button "Logo OpenRouter" [ref=e9]:
+              - generic [ref=e10]:
+                - img "Logo" [ref=e11]
+                - text: OpenRouter
+          - combobox [ref=e19]:
+            - generic [ref=e20]:
+              - img [ref=e21]
+              - combobox [expanded] [ref=e23]
+            - generic: /
+          - generic [ref=e24]:
+            - link "Fusion" [ref=e25] [cursor=pointer]:
+              - /url: /labs/fusion
+              - button "Fusion" [ref=e26]
+            - link "Models" [ref=e27] [cursor=pointer]:
+              - /url: /models
+              - button "Models" [ref=e28]
+            - link "Chat" [ref=e29] [cursor=pointer]:
+              - /url: /chat
+              - button "Chat" [ref=e30]
+            - link "Rankings" [ref=e31] [cursor=pointer]:
+              - /url: /rankings
+              - button "Rankings" [ref=e32]
+            - link "Apps" [ref=e33] [cursor=pointer]:
+              - /url: /apps
+              - button "Apps" [ref=e34]
+            - link "Enterprise" [ref=e35] [cursor=pointer]:
+              - /url: /enterprise
+              - button "Enterprise" [ref=e36]
+            - link "Pricing" [ref=e37] [cursor=pointer]:
+              - /url: /pricing
+              - button "Pricing" [ref=e38]
+            - link "Docs" [ref=e39] [cursor=pointer]:
+              - /url: /docs/quickstart
+              - button "Docs" [ref=e40]
+            - button "Sign Up" [ref=e42] [cursor=pointer]
+    - generic [ref=e43]:
+      - generic [ref=e45]:
+        - generic [ref=e50]:
+          - generic [ref=e52]:
+            - heading "Input Modalities" [level=3] [ref=e53]:
+              - button "Input Modalities" [expanded] [ref=e54] [cursor=pointer]:
+                - generic [ref=e55]:
+                  - img [ref=e56]
+                  - generic [ref=e58]: Input Modalities
+                - img [ref=e59]
+            - region "Input Modalities" [ref=e61]:
+              - generic [ref=e65]:
+                - link "Text" [ref=e68] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?order=newest&fmt=cards&input_modalities=text
+                  - button "Text" [ref=e69]:
+                    - generic [ref=e70]: Text
+                - link "Image" [ref=e73] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?order=newest&fmt=cards&input_modalities=image
+                  - button "Image" [ref=e74]:
+                    - generic [ref=e75]: Image
+                - link "File" [ref=e78] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?order=newest&fmt=cards&input_modalities=file
+                  - button "File" [ref=e79]:
+                    - generic [ref=e80]: File
+                - link "Audio" [ref=e83] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?order=newest&fmt=cards&input_modalities=audio
+                  - button "Audio" [ref=e84]:
+                    - generic [ref=e85]: Audio
+                - link "Video" [ref=e88] [cursor=pointer]:
+                  - /url: https://openrouter.ai/models?order=newest&fmt=cards&input_modalities=video
+                  - button "Video" [ref=e89]:
+                    - generic [ref=e90]: Video
+          - heading "Context length" [level=3] [ref=e93]:
+            - button "Context length" [ref=e94] [cursor=pointer]:
+              - generic [ref=e95]:
+                - img [ref=e96]
+                - generic [ref=e98]: Context length
+              - img [ref=e99]
+          - heading "Prompt pricing" [level=3] [ref=e103]:
+            - button "Prompt pricing" [ref=e104] [cursor=pointer]:
+              - generic [ref=e105]:
+                - img [ref=e106]
+                - generic [ref=e108]: Prompt pricing
+              - img [ref=e109]
+          - heading "Series" [level=3] [ref=e113]:
+            - button "Series" [ref=e114] [cursor=pointer]:
+              - generic [ref=e115]:
+                - img [ref=e116]
+                - generic [ref=e118]: Series
+              - img [ref=e119]
+          - heading "Categories" [level=3] [ref=e123]:
+            - button "Categories" [ref=e124] [cursor=pointer]:
+              - generic [ref=e125]:
+                - img [ref=e126]
+                - generic [ref=e129]: Categories
+              - img [ref=e130]
+          - heading "Supported Parameters" [level=3] [ref=e134]:
+            - button "Supported Parameters" [ref=e135] [cursor=pointer]:
+              - generic [ref=e136]:
+                - img [ref=e137]
+                - generic [ref=e139]: Supported Parameters
+              - img [ref=e140]
+          - heading "Distillable" [level=3] [ref=e144]:
+            - button "Distillable" [ref=e145] [cursor=pointer]:
+              - generic [ref=e146]:
+                - img [ref=e147]
+                - generic [ref=e149]: Distillable
+              - img [ref=e150]
+          - heading "Zero Data Retention" [level=3] [ref=e154]:
+            - button "Zero Data Retention" [ref=e155] [cursor=pointer]:
+              - generic [ref=e156]:
+                - img [ref=e157]
+                - generic [ref=e159]: Zero Data Retention
+              - img [ref=e160]
+          - heading "Providers" [level=3] [ref=e164]:
+            - button "Providers" [ref=e165] [cursor=pointer]:
+              - generic [ref=e166]:
+                - img [ref=e167]
+                - text: Providers
+              - img [ref=e169]
+          - heading "Model Authors" [level=3] [ref=e173]:
+            - button "Model Authors" [ref=e174] [cursor=pointer]:
+              - generic [ref=e175]:
+                - img [ref=e176]
+                - text: Model Authors
+              - img [ref=e178]
+        - generic [ref=e180]:
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - heading "Models" [level=1] [ref=e183]
+              - generic [ref=e184]:
+                - img [ref=e185]
+                - textbox "Search models..." [ref=e187]
+              - link "Compare" [ref=e188] [cursor=pointer]:
+                - /url: /compare
+                - button "Compare" [ref=e189]:
+                  - img [ref=e190]
+                  - generic [ref=e192]: Compare
+              - generic [ref=e193]:
+                - button "Newest" [expanded] [ref=e194] [cursor=pointer]:
+                  - img [ref=e195]
+                  - text: Newest
+                  - img [ref=e198]
+                - list "Newest":
+                  - menuitem "Most Popular"
+                  - menuitem "Newest"
+                  - menuitem "Top Weekly"
+                  - 'menuitem "Pricing: Low to High"'
+                  - 'menuitem "Pricing: High to Low"'
+                  - 'menuitem "Context: High to Low"'
+                  - 'menuitem "Throughput: High to Low"'
+                  - 'menuitem "Latency: Low to High"'
+              - tablist [ref=e206]:
+                - tab [ref=e207] [cursor=pointer]:
+                  - img [ref=e208]
+                - tab [selected] [ref=e210] [cursor=pointer]:
+                  - img [ref=e211]
+            - generic [ref=e213]:
+              - button "Text 647" [ref=e214] [cursor=pointer]:
+                - img [ref=e215]
+                - generic [ref=e217]: Text
+                - generic [ref=e218]: "647"
+              - button "Image 18" [ref=e219] [cursor=pointer]:
+                - img [ref=e220]
+                - generic [ref=e224]: Image
+                - generic [ref=e225]: "18"
+              - button "Embeddings 26" [ref=e226] [cursor=pointer]:
+                - img [ref=e227]
+                - generic [ref=e237]: Embeddings
+                - generic [ref=e238]: "26"
+              - button "Audio 5" [ref=e239] [cursor=pointer]:
+                - img [ref=e240]
+                - generic [ref=e241]: Audio
+                - generic [ref=e242]: "5"
+              - button "Video 11" [ref=e243] [cursor=pointer]:
+                - img [ref=e244]
+                - generic [ref=e247]: Video
+                - generic [ref=e248]: "11"
+              - button "Rerank 3" [ref=e249] [cursor=pointer]:
+                - img [ref=e250]
+                - generic [ref=e253]: Rerank
+                - generic [ref=e254]: "3"
+              - button "Speech 8" [ref=e255] [cursor=pointer]:
+                - img [ref=e256]
+                - generic [ref=e260]: Speech
+                - generic [ref=e261]: "8"
+          - list [ref=e264]:
+            - listitem [ref=e265]:
+              - generic [ref=e269]:
+                - generic [ref=e270]:
+                  - generic [ref=e271]:
+                    - link "Favicon for openai" [ref=e272] [cursor=pointer]:
+                      - /url: /openai
+                      - img "Favicon for openai" [ref=e276]
+                    - 'link "OpenAI: GPT-5.5 Pro" [ref=e277] [cursor=pointer]':
+                      - /url: /openai/gpt-5.5-pro
+                      - generic [ref=e278]: "OpenAI: GPT-5.5 Pro"
+                    - img [ref=e281]
+                    - button "Copy to clipboard" [ref=e283] [cursor=pointer]:
+                      - img [ref=e284]
+                  - generic [ref=e287]:
+                    - generic [ref=e289]: 486M tokens
+                    - img [ref=e290]
+                - link "GPT-5.5 Pro is OpenAI’s high-capability model optimized for deep reasoning and accuracy on complex, high-stakes workloads. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, and is designed for long-horizon problem solving, agentic coding, and precise execution across multi-step workflows." [ref=e292] [cursor=pointer]:
+                  - /url: /openai/gpt-5.5-pro
+                  - paragraph [ref=e294]: GPT-5.5 Pro is OpenAI’s high-capability model optimized for deep reasoning and accuracy on complex, high-stakes workloads. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, and is designed for long-horizon problem solving, agentic coding, and precise execution across multi-step workflows.
+                - generic [ref=e295]:
+                  - generic [ref=e296]:
+                    - text: by
+                    - link "openai" [ref=e297] [cursor=pointer]:
+                      - /url: /openai
+                  - generic [ref=e299]: Apr 25, 2026
+                  - generic [ref=e301]: 1.05M context
+                  - generic [ref=e302]: $30/M input tokens
+                  - generic [ref=e303]: $180/M output tokens
+            - listitem [ref=e304]:
+              - generic [ref=e308]:
+                - generic [ref=e309]:
+                  - generic [ref=e310]:
+                    - link "Favicon for openai" [ref=e311] [cursor=pointer]:
+                      - /url: /openai
+                      - img "Favicon for openai" [ref=e315]
+                    - 'link "OpenAI: GPT-5.5" [ref=e316] [cursor=pointer]':
+                      - /url: /openai/gpt-5.5
+                      - generic [ref=e317]: "OpenAI: GPT-5.5"
+                    - img [ref=e320]
+                    - button "Copy to clipboard" [ref=e322] [cursor=pointer]:
+                      - img [ref=e323]
+                  - generic [ref=e326]:
+                    - generic [ref=e328]: 28.8B tokens
+                    - img [ref=e329]
+                - link "GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads, building on GPT-5.4 with stronger reasoning, higher reliability, and improved token efficiency on hard tasks. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system." [ref=e331] [cursor=pointer]:
+                  - /url: /openai/gpt-5.5
+                  - paragraph [ref=e333]: GPT-5.5 is OpenAI’s frontier model designed for complex professional workloads, building on GPT-5.4 with stronger reasoning, higher reliability, and improved token efficiency on hard tasks. It features a 1M+ token context window (922K input, 128K output) with support for text and image inputs, enabling large-scale reasoning, coding, and multimodal workflows within a single system.
+                - generic [ref=e334]:
+                  - generic [ref=e335]:
+                    - text: by
+                    - link "openai" [ref=e336] [cursor=pointer]:
+                      - /url: /openai
+                  - generic [ref=e338]: Apr 25, 2026
+                  - generic [ref=e340]: 1.05M context
+                  - generic [ref=e341]: $5/M input tokens
+                  - generic [ref=e342]: $30/M output tokens
+            - listitem [ref=e343]:
+              - generic [ref=e347]:
+                - generic [ref=e348]:
+                  - generic [ref=e349]:
+                    - link "Favicon for deepseek" [ref=e350] [cursor=pointer]:
+                      - /url: /deepseek
+                      - img "Favicon for deepseek" [ref=e354]
+                    - 'link "DeepSeek: DeepSeek V4 Pro" [ref=e355] [cursor=pointer]':
+                      - /url: /deepseek/deepseek-v4-pro
+                      - generic [ref=e356]: "DeepSeek: DeepSeek V4 Pro"
+                    - img [ref=e359]
+                    - button "Copy to clipboard" [ref=e361] [cursor=pointer]:
+                      - img [ref=e362]
+                  - generic [ref=e365]:
+                    - generic [ref=e367]: 24B tokens
+                    - img [ref=e368]
+                - link "DeepSeek V4 Pro is a large-scale Mixture-of-Experts model from DeepSeek with 1.6T total parameters and 49B activated parameters, supporting a 1M-token context window. It is designed for advanced reasoning, coding, and long-horizon agent workflows, with strong performance across knowledge, math, and software engineering benchmarks. Built on the same architecture as DeepSeek V4 Flash, it introduces a hybrid attention system for efficient long-context processing and supports multiple reasoning modes to balance speed and depth depending on the task. It is well suited for complex workloads such as full-codebase analysis, multi-step automation, and large-scale information synthesis, where both capability and efficiency are critical." [ref=e370] [cursor=pointer]:
+                  - /url: /deepseek/deepseek-v4-pro
+                  - paragraph [ref=e372]: DeepSeek V4 Pro is a large-scale Mixture-of-Experts model from DeepSeek with 1.6T total parameters and 49B activated parameters, supporting a 1M-token context window. It is designed for advanced reasoning, coding, and long-horizon agent workflows, with strong performance across knowledge, math, and software engineering benchmarks. Built on the same architecture as DeepSeek V4 Flash, it introduces a hybrid attention system for efficient long-context processing and supports multiple reasoning modes to balance speed and depth depending on the task. It is well suited for complex workloads such as full-codebase analysis, multi-step automation, and large-scale information synthesis, where both capability and efficiency are critical.
+                - generic [ref=e373]:
+                  - generic [ref=e374]:
+                    - text: by
+                    - link "deepseek" [ref=e375] [cursor=pointer]:
+                      - /url: /deepseek
+                  - generic [ref=e377]: Apr 24, 2026
+                  - generic [ref=e379]: 1.05M context
+                  - generic [ref=e380]: $0.435/M input tokens
+                  - generic [ref=e381]: $0.87/M output tokens
+            - listitem [ref=e382]:
+              - generic [ref=e386]:
+                - generic [ref=e387]:
+                  - generic [ref=e388]:
+                    - link "Favicon for deepseek" [ref=e389] [cursor=pointer]:
+                      - /url: /deepseek
+                      - img "Favicon for deepseek" [ref=e393]
+                    - 'link "DeepSeek: DeepSeek V4 Flash" [ref=e394] [cursor=pointer]':
+                      - /url: /deepseek/deepseek-v4-flash
+                      - generic [ref=e395]: "DeepSeek: DeepSeek V4 Flash"
+                    - img [ref=e398]
+                    - button "Copy to clipboard" [ref=e400] [cursor=pointer]:
+                      - img [ref=e401]
+                  - generic [ref=e404]:
+                    - generic [ref=e406]: 120B tokens
+                    - img [ref=e407]
+                - generic [ref=e410]:
+                  - button "Academia (#32)" [ref=e411] [cursor=pointer]:
+                    - 'generic "Ranked at #32 in Academia category" [ref=e412]': Academia (#32)
+                  - button "Health (#41)" [ref=e414] [cursor=pointer]:
+                    - 'generic "Ranked at #41 in Health category" [ref=e415]': Health (#41)
+                  - button "Programming (#49)" [ref=e417] [cursor=pointer]:
+                    - 'generic "Ranked at #49 in Programming category" [ref=e418]': Programming (#49)
+                  - button "Roleplay (#8)" [ref=e420] [cursor=pointer]:
+                    - 'generic "Ranked at #8 in Roleplay category" [ref=e421]': Roleplay (#8)
+                  - button "Science (#47)" [ref=e423] [cursor=pointer]:
+                    - 'generic "Ranked at #47 in Science category" [ref=e424]': Science (#47)
+                - link "DeepSeek V4 Flash is an efficiency-optimized Mixture-of-Experts model from DeepSeek with 284B total parameters and 13B activated parameters, supporting a 1M-token context window. It is designed for fast inference and high-throughput workloads, while maintaining strong reasoning and coding performance. The model includes hybrid attention for efficient long-context processing and supports configurable reasoning modes. It is well suited for applications such as coding assistants, chat systems, and agent workflows where responsiveness and cost efficiency are important." [ref=e426] [cursor=pointer]:
+                  - /url: /deepseek/deepseek-v4-flash
+                  - paragraph [ref=e428]: DeepSeek V4 Flash is an efficiency-optimized Mixture-of-Experts model from DeepSeek with 284B total parameters and 13B activated parameters, supporting a 1M-token context window. It is designed for fast inference and high-throughput workloads, while maintaining strong reasoning and coding performance. The model includes hybrid attention for efficient long-context processing and supports configurable reasoning modes. It is well suited for applications such as coding assistants, chat systems, and agent workflows where responsiveness and cost efficiency are important.
+                - generic [ref=e429]:
+                  - generic [ref=e430]:
+                    - text: by
+                    - link "deepseek" [ref=e431] [cursor=pointer]:
+                      - /url: /deepseek
+                  - generic [ref=e433]: Apr 24, 2026
+                  - generic [ref=e435]: 1.05M context
+                  - generic [ref=e436]: $0.14/M input tokens
+                  - generic [ref=e437]: $0.28/M output tokens
+            - listitem [ref=e438]:
+              - generic [ref=e442]:
+                - generic [ref=e443]:
+                  - generic [ref=e444]:
+                    - link "Favicon for google" [ref=e445] [cursor=pointer]:
+                      - /url: /google
+                      - img "Favicon for google" [ref=e449]
+                    - 'link "Google: Gemini 3.1 Flash TTS Preview" [ref=e450] [cursor=pointer]':
+                      - /url: /google/gemini-3.1-flash-tts-preview
+                      - generic [ref=e451]: "Google: Gemini 3.1 Flash TTS Preview"
+                    - img [ref=e454]
+                    - button "Copy to clipboard" [ref=e458] [cursor=pointer]:
+                      - img [ref=e459]
+                  - generic [ref=e462]:
+                    - generic [ref=e464]: 4.63M tokens
+                    - img [ref=e465]
+                - link "Gemini 3.1 Flash TTS Preview is a text-to-speech model from Google, and a substantial generational step up from Gemini 2.5 Flash TTS. It takes text input and produces audio output across 70+ languages — nearly 3× the language coverage of its predecessor. The headline addition is a system of 200+ inline audio tags (e.g. [whispers], [laughs], [excited]) that let developers steer delivery, emotion, and pacing mid-sentence, alongside a \"director's chair\" workflow in Google AI Studio for defining per-character Audio Profiles and scene-level context. It supports up to two speakers with independent voice and style configuration per speaker, outputs PCM audio at 24 kHz / 16-bit mono, and automatically watermarks all output with SynthID. Context window is 32k tokens." [ref=e467] [cursor=pointer]:
+                  - /url: /google/gemini-3.1-flash-tts-preview
+                  - paragraph [ref=e469]:
+                    - text: Gemini 3.1 Flash TTS Preview is a text-to-speech model from Google, and a substantial generational step up from Gemini 2.5 Flash TTS. It takes text input and produces audio output across 70+ languages — nearly 3× the language coverage of its predecessor. The headline addition is a system of 200+ inline audio tags (e.g.
+                    - code [ref=e470]: "[whispers]"
+                    - text: ","
+                    - code [ref=e471]: "[laughs]"
+                    - text: ","
+                    - code [ref=e472]: "[excited]"
+                    - text: ) that let developers steer delivery, emotion, and pacing mid-sentence, alongside a "director's chair" workflow in Google AI Studio for defining per-character Audio Profiles and scene-level context. It supports up to two speakers with independent voice and style configuration per speaker, outputs PCM audio at 24 kHz / 16-bit mono, and automatically watermarks all output with SynthID. Context window is 32k tokens.
+                - generic [ref=e473]:
+                  - generic [ref=e474]:
+                    - text: by
+                    - link "google" [ref=e475] [cursor=pointer]:
+                      - /url: /google
+                  - generic [ref=e477]: Apr 24, 2026
+                  - generic [ref=e479]: 8K context
+                  - generic [ref=e480]: $1/M input tokens
+                  - generic [ref=e481]: $20/M output tokens
+            - listitem [ref=e482]:
+              - generic [ref=e486]:
+                - generic [ref=e488]:
+                  - link "Favicon for google" [ref=e489] [cursor=pointer]:
+                    - /url: /google
+                    - img "Favicon for google" [ref=e493]
+                  - 'link "Google: Veo 3.1 Fast" [ref=e494] [cursor=pointer]':
+                    - /url: /google/veo-3.1-fast
+                    - generic [ref=e495]: "Google: Veo 3.1 Fast"
+                  - img [ref=e498]
+                  - button "Copy to clipboard" [ref=e501] [cursor=pointer]:
+                    - img [ref=e502]
+                - link "Google's mid-tier video generation model balancing speed and quality. Veo 3.1 Fast generates high-quality video from text or image prompts with native synchronized audio, offering faster turnaround than Veo 3.1 at lower cost. Supports first-frame and last-frame conditioning, multiple resolutions and aspect ratios, and SynthID watermarking." [ref=e505] [cursor=pointer]:
+                  - /url: /google/veo-3.1-fast
+                  - paragraph [ref=e507]: Google's mid-tier video generation model balancing speed and quality. Veo 3.1 Fast generates high-quality video from text or image prompts with native synchronized audio, offering faster turnaround than Veo 3.1 at lower cost. Supports first-frame and last-frame conditioning, multiple resolutions and aspect ratios, and SynthID watermarking.
+                - generic [ref=e508]:
+                  - generic [ref=e509]:
+                    - text: by
+                    - link "google" [ref=e510] [cursor=pointer]:
+                      - /url: /google
+                  - generic [ref=e512]: Apr 24, 2026
+                  - generic [ref=e513]: from $0.10 per second
+            - listitem [ref=e514]:
+              - generic [ref=e518]:
+                - generic [ref=e519]:
+                  - generic [ref=e520]:
+                    - link "Favicon for zyphra" [ref=e521] [cursor=pointer]:
+                      - /url: /zyphra
+                      - img "Favicon for zyphra" [ref=e525]
+                    - 'link "Zyphra: Zonos v0.1 Transformer" [ref=e526] [cursor=pointer]':
+                      - /url: /zyphra/zonos-v0.1-transformer
+                      - generic [ref=e527]: "Zyphra: Zonos v0.1 Transformer"
+                    - img [ref=e530]
+                    - button "Copy to clipboard" [ref=e534] [cursor=pointer]:
+                      - img [ref=e535]
+                  - generic [ref=e538]:
+                    - generic [ref=e540]: 2K tokens
+                    - img [ref=e541]
+                - link "Zonos v0.1 Transformer is a text-to-speech model from Zyphra built on a pure transformer architecture. It offers the same American and British English voice coverage as the Hybrid variant, and is suited for deployments where a transformer-only inference stack is preferred." [ref=e543] [cursor=pointer]:
+                  - /url: /zyphra/zonos-v0.1-transformer
+                  - paragraph [ref=e545]: Zonos v0.1 Transformer is a text-to-speech model from Zyphra built on a pure transformer architecture. It offers the same American and British English voice coverage as the Hybrid variant, and is suited for deployments where a transformer-only inference stack is preferred.
+                - generic [ref=e546]:
+                  - generic [ref=e547]:
+                    - text: by
+                    - link "zyphra" [ref=e548] [cursor=pointer]:
+                      - /url: /zyphra
+                  - generic [ref=e550]: Apr 24, 2026
+                  - generic [ref=e552]: 4K context
+                  - generic [ref=e553]: $7 per 1M characters
+            - listitem [ref=e554]:
+              - generic [ref=e558]:
+                - generic [ref=e559]:
+                  - generic [ref=e560]:
+                    - link "Favicon for zyphra" [ref=e561] [cursor=pointer]:
+                      - /url: /zyphra
+                      - img "Favicon for zyphra" [ref=e565]
+                    - 'link "Zyphra: Zonos v0.1 Hybrid" [ref=e566] [cursor=pointer]':
+                      - /url: /zyphra/zonos-v0.1-hybrid
+                      - generic [ref=e567]: "Zyphra: Zonos v0.1 Hybrid"
+                    - img [ref=e570]
+                    - button "Copy to clipboard" [ref=e574] [cursor=pointer]:
+                      - img [ref=e575]
+                  - generic [ref=e578]:
+                    - generic [ref=e580]: 2K tokens
+                    - img [ref=e581]
+                - link "Zonos v0.1 Hybrid is a text-to-speech model from Zyphra built on a hybrid architecture. It produces English speech output with coverage across American and British accents in male and female voices. It is suited for English-language voice applications requiring accent and gender variety." [ref=e583] [cursor=pointer]:
+                  - /url: /zyphra/zonos-v0.1-hybrid
+                  - paragraph [ref=e585]: Zonos v0.1 Hybrid is a text-to-speech model from Zyphra built on a hybrid architecture. It produces English speech output with coverage across American and British accents in male and female voices. It is suited for English-language voice applications requiring accent and gender variety.
+                - generic [ref=e586]:
+                  - generic [ref=e587]:
+                    - text: by
+                    - link "zyphra" [ref=e588] [cursor=pointer]:
+                      - /url: /zyphra
+                  - generic [ref=e590]: Apr 24, 2026
+                  - generic [ref=e592]: 4K context
+                  - generic [ref=e593]: $7 per 1M characters
+            - listitem [ref=e594]:
+              - generic [ref=e598]:
+                - generic [ref=e599]:
+                  - generic [ref=e600]:
+                    - link "Favicon for sesame" [ref=e601] [cursor=pointer]:
+                      - /url: /sesame
+                      - img "Favicon for sesame" [ref=e605]
+                    - 'link "Sesame: CSM 1B" [ref=e606] [cursor=pointer]':
+                      - /url: /sesame/csm-1b
+                      - generic [ref=e607]: "Sesame: CSM 1B"
+                    - img [ref=e610]
+                    - button "Copy to clipboard" [ref=e614] [cursor=pointer]:
+                      - img [ref=e615]
+                  - generic [ref=e618]:
+                    - generic [ref=e620]: 14K tokens
+                    - img [ref=e621]
+                - link "CSM 1B is a conversational speech model from Sesame. It accepts text input and produces English speech output, with voice options spanning conversational and read-speech styles. At 1B parameters, it is suited for dialogue-oriented applications such as voice assistants and interactive agents." [ref=e623] [cursor=pointer]:
+                  - /url: /sesame/csm-1b
+                  - paragraph [ref=e625]: CSM 1B is a conversational speech model from Sesame. It accepts text input and produces English speech output, with voice options spanning conversational and read-speech styles. At 1B parameters, it is suited for dialogue-oriented applications such as voice assistants and interactive agents.
+                - generic [ref=e626]:
+                  - generic [ref=e627]:
+                    - text: by
+                    - link "sesame" [ref=e628] [cursor=pointer]:
+                      - /url: /sesame
+                  - generic [ref=e630]: Apr 24, 2026
+                  - generic [ref=e632]: 4K context
+                  - generic [ref=e633]: $7 per 1M characters
+            - listitem [ref=e634]:
+              - generic [ref=e638]:
+                - generic [ref=e639]:
+                  - generic [ref=e640]:
+                    - link "Favicon for canopylabs" [ref=e641] [cursor=pointer]:
+                      - /url: /canopylabs
+                      - img "Favicon for canopylabs" [ref=e645]
+                    - 'link "Canopy Labs: Orpheus 3B" [ref=e646] [cursor=pointer]':
+                      - /url: /canopylabs/orpheus-3b-0.1-ft
+                      - generic [ref=e647]: "Canopy Labs: Orpheus 3B"
+                    - img [ref=e650]
+                    - button "Copy to clipboard" [ref=e654] [cursor=pointer]:
+                      - img [ref=e655]
+                  - generic [ref=e658]:
+                    - generic [ref=e660]: 36K tokens
+                    - img [ref=e661]
+                - link "Orpheus 3B is an English text-to-speech model from Canopy Labs, fine-tuned for natural prosody and expressive delivery. It offers 7 preset voices and is suited for narration, voice assistants, and interactive applications where naturalistic speech is a priority." [ref=e663] [cursor=pointer]:
+                  - /url: /canopylabs/orpheus-3b-0.1-ft
+                  - paragraph [ref=e665]: Orpheus 3B is an English text-to-speech model from Canopy Labs, fine-tuned for natural prosody and expressive delivery. It offers 7 preset voices and is suited for narration, voice assistants, and interactive applications where naturalistic speech is a priority.
+                - generic [ref=e666]:
+                  - generic [ref=e667]:
+                    - text: by
+                    - link "canopylabs" [ref=e668] [cursor=pointer]:
+                      - /url: /canopylabs
+                  - generic [ref=e670]: Apr 24, 2026
+                  - generic [ref=e672]: 4K context
+                  - generic [ref=e673]: $7 per 1M characters
+      - generic [ref=e676]:
+        - generic [ref=e677]:
+          - link "OpenRouter Logo OpenRouter" [ref=e679] [cursor=pointer]:
+            - /url: /
+            - img "OpenRouter Logo" [ref=e680]
+            - generic [ref=e685]: OpenRouter
+          - generic [ref=e686]: © 2026 OpenRouter, Inc
+        - generic [ref=e687]:
+          - heading "Product" [level=3] [ref=e688]
+          - list [ref=e689]:
+            - listitem [ref=e690]:
+              - link "Chat" [ref=e691] [cursor=pointer]:
+                - /url: /chat
+            - listitem [ref=e692]:
+              - link "Rankings" [ref=e693] [cursor=pointer]:
+                - /url: /rankings
+            - listitem [ref=e694]:
+              - link "Apps" [ref=e695] [cursor=pointer]:
+                - /url: /apps
+            - listitem [ref=e696]:
+              - link "Models" [ref=e697] [cursor=pointer]:
+                - /url: /models
+            - listitem [ref=e698]:
+              - link "Providers" [ref=e699] [cursor=pointer]:
+                - /url: /providers
+            - listitem [ref=e700]:
+              - link "Pricing" [ref=e701] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e702]:
+              - link "Enterprise" [ref=e703] [cursor=pointer]:
+                - /url: /enterprise
+            - listitem [ref=e704]:
+              - link "Labs" [ref=e705] [cursor=pointer]:
+                - /url: /labs
+        - generic [ref=e706]:
+          - heading "Company" [level=3] [ref=e707]
+          - list [ref=e708]:
+            - listitem [ref=e709]:
+              - link "About" [ref=e710] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e711]:
+              - link "Announcements" [ref=e712] [cursor=pointer]:
+                - /url: /announcements
+            - listitem [ref=e713]:
+              - link "Careers Hiring" [ref=e714] [cursor=pointer]:
+                - /url: /careers
+                - text: Careers
+                - generic [ref=e715]: Hiring
+            - listitem [ref=e716]:
+              - link "Privacy" [ref=e717] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e718]:
+              - link "Terms of Service" [ref=e719] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e720]:
+              - link "Support" [ref=e721] [cursor=pointer]:
+                - /url: /support
+            - listitem [ref=e722]:
+              - link "State of AI" [ref=e723] [cursor=pointer]:
+                - /url: /state-of-ai
+            - listitem [ref=e724]:
+              - link "Works With OR" [ref=e725] [cursor=pointer]:
+                - /url: /works-with-openrouter
+            - listitem [ref=e726]:
+              - link "Data" [ref=e727] [cursor=pointer]:
+                - /url: /data
+        - generic [ref=e728]:
+          - heading "Developer" [level=3] [ref=e729]
+          - list [ref=e730]:
+            - listitem [ref=e731]:
+              - link "Documentation" [ref=e732] [cursor=pointer]:
+                - /url: /docs
+            - listitem [ref=e733]:
+              - link "API Reference" [ref=e734] [cursor=pointer]:
+                - /url: /docs/api-reference
+            - listitem [ref=e735]:
+              - link "SDK" [ref=e736] [cursor=pointer]:
+                - /url: /sdk
+            - listitem [ref=e737]:
+              - link "Status" [ref=e738] [cursor=pointer]:
+                - /url: https://status.openrouter.ai
+        - generic [ref=e739]:
+          - heading "Connect" [level=3] [ref=e740]
+          - list [ref=e741]:
+            - listitem [ref=e742]:
+              - link "Discord" [ref=e743] [cursor=pointer]:
+                - /url: https://discord.gg/fVyRaUDgxW
+            - listitem [ref=e744]:
+              - link "GitHub" [ref=e745] [cursor=pointer]:
+                - /url: https://github.com/OpenRouterTeam
+            - listitem [ref=e746]:
+              - link "LinkedIn" [ref=e747] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/104068329
+            - listitem [ref=e748]:
+              - link "X" [ref=e749] [cursor=pointer]:
+                - /url: https://twitter.com/openrouter
+            - listitem [ref=e750]:
+              - link "YouTube" [ref=e751] [cursor=pointer]:
+                - /url: https://www.youtube.com/@OpenRouterAI
+  - region "Notifications alt+T"
+  - alert [ref=e752]

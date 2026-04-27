@@ -1,0 +1,610 @@
+- generic [ref=e2]:
+  - region:
+    - generic:
+      - tooltip "This user is the author of this issue"
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Follama%2Follama%2Fissues%2F15741
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Fvoltron%2Fissues_fragments%2Fissue_layout&source=header-repo&source_repo=ollama%2Follama
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "ollama" [ref=e70] [cursor=pointer]:
+            - /url: /ollama
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "ollama" [ref=e73] [cursor=pointer]:
+              - /url: /ollama/ollama
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 15.8k" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e82]
+                - text: Fork
+                - generic "15,807" [ref=e84]: 15.8k
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Follama%2Follama
+                - img [ref=e88]
+                - text: Star
+                - generic "170027 users starred this repository" [ref=e90]: 170k
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /ollama/ollama
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 2.2k" [ref=e99] [cursor=pointer]:
+              - /url: /ollama/ollama/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "2,242" [ref=e104]: 2.2k
+          - listitem [ref=e105]:
+            - link "Pull requests 823" [ref=e106] [cursor=pointer]:
+              - /url: /ollama/ollama/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+              - generic "823" [ref=e110]
+          - listitem [ref=e111]:
+            - link "Actions" [ref=e112] [cursor=pointer]:
+              - /url: /ollama/ollama/actions
+              - img [ref=e113]
+              - generic [ref=e115]: Actions
+          - listitem [ref=e116]:
+            - link "Security and quality" [ref=e117] [cursor=pointer]:
+              - /url: /ollama/ollama/security
+              - img [ref=e118]
+              - generic [ref=e120]: Security and quality
+          - listitem [ref=e121]:
+            - link "Insights" [ref=e122] [cursor=pointer]:
+              - /url: /ollama/ollama/pulse
+              - img [ref=e123]
+              - generic [ref=e125]: Insights
+    - generic [ref=e133]:
+      - region "Header" [ref=e135]:
+        - generic [ref=e136]:
+          - 'heading "Kimi models require pro ? #15741" [level=1] [ref=e138]'
+          - generic [ref=e140]:
+            - button "New issue" [ref=e142] [cursor=pointer]:
+              - generic [ref=e144]: New issue
+            - button "Copy link" [ref=e145] [cursor=pointer]:
+              - img [ref=e146]
+      - generic [ref=e154]:
+        - img "Issue" [ref=e155]
+        - text: Open
+      - generic [ref=e159]:
+        - generic [ref=e160]:
+          - generic [ref=e162]:
+            - link "@Azecko's profile" [ref=e163] [cursor=pointer]:
+              - /url: https://github.com/Azecko
+              - img "@Azecko" [ref=e164]
+            - generic [ref=e165]:
+              - heading "Description" [level=2] [ref=e166]
+              - generic [ref=e168]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]:
+                    - link "Azecko" [ref=e173] [cursor=pointer]:
+                      - /url: https://github.com/Azecko
+                    - generic [ref=e174]:
+                      - text: opened
+                      - link "on Apr 22, 20264 days ago" [ref=e175] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15741#issue-4307722595
+                        - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e176]: on Apr 22, 20264 days ago
+                  - button "Issue body actions" [ref=e180] [cursor=pointer]:
+                    - img [ref=e181]
+                - generic [ref=e183]:
+                  - generic [ref=e185]:
+                    - heading "What is the issue?" [level=3] [ref=e186]
+                    - paragraph [ref=e187]:
+                      - text: I've always used
+                      - code [ref=e188]: kimi-k2.5:cloud
+                      - text: for Ollama. Mainly with the Hermes Agent.
+                    - paragraph [ref=e189]:
+                      - text: Today, when I tried to message my Hermes, I got the error
+                      - code [ref=e190]: "HTTP 403: Error code: 403 - {'error': 'this model requires a subscription, upgrade for access: https://ollama.com/upgrade"
+                      - text: .
+                    - paragraph [ref=e191]:
+                      - text: I tried to prompt kimi using just
+                      - code [ref=e192]: ollama run
+                      - text: ", same thing."
+                      - text: Using the new Kimi CLI from
+                      - code [ref=e193]: v0.21.1
+                      - text: (because I also tried to update Ollama), same thing.
+                      - text: With
+                      - code [ref=e194]: kimi-k2.6:cloud
+                      - text: ", I also get the same error."
+                      - text: But I do not get this error when I try with other cloud models, like gemma.
+                    - paragraph [ref=e195]:
+                      - text: I'm correctly signed in when I run
+                      - code [ref=e196]: ollama signin
+                      - text: .
+                    - paragraph [ref=e197]: My Cloud usage for this week is at 37%, and 0% for the session at the time I write this issue.
+                    - paragraph [ref=e198]: Am I the only one who get this error ? Is there something that I missed and now Kimi models require Ollama pro ?
+                    - heading "Relevant log output" [level=3] [ref=e199]
+                    - generic [ref=e200]:
+                      - generic [ref=e201]: "Error: 403 Forbidden: this model requires a subscription, upgrade for access: https://ollama.com/upgrade"
+                      - button "Copy" [ref=e203] [cursor=pointer]:
+                        - img [ref=e204]
+                    - heading "OS" [level=3] [ref=e207]
+                    - paragraph [ref=e208]: Linux
+                    - heading "GPU" [level=3] [ref=e209]
+                    - paragraph [ref=e210]:
+                      - emphasis [ref=e211]: No response
+                    - heading "CPU" [level=3] [ref=e212]
+                    - paragraph [ref=e213]: Intel
+                    - heading "Ollama version" [level=3] [ref=e214]
+                    - paragraph [ref=e215]: 0.21.1
+                  - toolbar "Reactions" [ref=e217]:
+                    - switch "👍 3 reactions" [ref=e218]:
+                      - generic [ref=e219]:
+                        - generic: 👍
+                        - generic [ref=e220]:
+                          - generic [ref=e221]: React with 👍
+                          - text: "3"
+          - generic [ref=e223]:
+            - generic [ref=e224]:
+              - heading "Activity" [level=2] [ref=e225]
+              - generic [ref=e226]:
+                - region "Events" [ref=e227]:
+                  - generic [ref=e234]:
+                    - img [ref=e238]
+                    - generic [ref=e242]:
+                      - link "Azecko" [ref=e244] [cursor=pointer]:
+                        - /url: /Azecko
+                        - generic [ref=e245]: Azecko
+                      - text: added
+                      - link "bug Something isn't working" [ref=e247] [cursor=pointer]:
+                        - /url: /ollama/ollama/issues?q=state%3Aopen%20label%3A%22bug%22
+                        - generic [ref=e249]: bug
+                        - generic [ref=e250]: Something isn't working
+                      - link "on Apr 22, 20264 days ago" [ref=e251] [cursor=pointer]:
+                        - /url: https://github.com/ollama/ollama/issues/15741#event-24747709092
+                        - generic "Apr 22, 2026, 5:31 PM GMT+9" [ref=e252]: on Apr 22, 20264 days ago
+                - generic [ref=e253]:
+                  - link "@sruizcarmona's profile" [ref=e254] [cursor=pointer]:
+                    - /url: https://github.com/sruizcarmona
+                    - img "sruizcarmona" [ref=e255]
+                  - generic [ref=e262]:
+                    - generic [ref=e264]:
+                      - heading "sruizcarmona commented on Apr 22, 2026 4 days ago" [level=3] [ref=e265]:
+                        - text: sruizcarmona commented
+                        - generic "Apr 22, 2026, 10:12 PM GMT+9" [ref=e266]: on Apr 22, 2026 4 days ago
+                      - generic [ref=e267]:
+                        - link "sruizcarmona" [ref=e269] [cursor=pointer]:
+                          - /url: /sruizcarmona
+                        - link "on Apr 22, 20264 days ago" [ref=e272] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4296487030
+                          - generic "Apr 22, 2026, 10:12 PM GMT+9" [ref=e273]: on Apr 22, 20264 days ago
+                      - button "Actions for sruizcarmona's comment, 10:12 PM on April 22" [ref=e277] [cursor=pointer]:
+                        - img [ref=e278]
+                    - generic [ref=e280]:
+                      - paragraph [ref=e283]: Same here, no updates from ollama anywhere...
+                      - toolbar "Reactions"
+                - generic [ref=e284]:
+                  - link "@AngelSanchezB's profile" [ref=e285] [cursor=pointer]:
+                    - /url: https://github.com/AngelSanchezB
+                    - img "AngelSanchezB" [ref=e286]
+                  - generic [ref=e293]:
+                    - generic [ref=e295]:
+                      - heading "AngelSanchezB commented on Apr 23, 2026 4 days ago" [level=3] [ref=e296]:
+                        - text: AngelSanchezB commented
+                        - generic "Apr 23, 2026, 12:16 AM GMT+9" [ref=e297]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e298]:
+                        - link "AngelSanchezB" [ref=e300] [cursor=pointer]:
+                          - /url: /AngelSanchezB
+                        - link "on Apr 23, 20264 days ago" [ref=e303] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4297472028
+                          - generic "Apr 23, 2026, 12:16 AM GMT+9" [ref=e304]: on Apr 23, 20264 days ago
+                      - button "Actions for AngelSanchezB's comment, 12:16 AM on April 23" [ref=e308] [cursor=pointer]:
+                        - img [ref=e309]
+                    - generic [ref=e311]:
+                      - paragraph [ref=e314]: Same here since last night...
+                      - toolbar "Reactions"
+                - generic [ref=e315]:
+                  - link "@ACheshirov's profile" [ref=e316] [cursor=pointer]:
+                    - /url: https://github.com/ACheshirov
+                    - img "ACheshirov" [ref=e317]
+                  - generic [ref=e324]:
+                    - generic [ref=e326]:
+                      - heading "ACheshirov commented on Apr 23, 2026 4 days ago" [level=3] [ref=e327]:
+                        - text: ACheshirov commented
+                        - generic "Apr 23, 2026, 12:20 AM GMT+9" [ref=e328]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e329]:
+                        - link "ACheshirov" [ref=e331] [cursor=pointer]:
+                          - /url: /ACheshirov
+                        - link "on Apr 23, 20264 days ago" [ref=e334] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4297502872
+                          - generic "Apr 23, 2026, 12:20 AM GMT+9" [ref=e335]: on Apr 23, 20264 days ago
+                      - button "Actions for ACheshirov's comment, 12:20 AM on April 23" [ref=e339] [cursor=pointer]:
+                        - img [ref=e340]
+                    - generic [ref=e342]:
+                      - paragraph [ref=e345]: They disabled for free users almost all big models.
+                      - toolbar "Reactions"
+                - generic [ref=e346]:
+                  - link "@LeoLP1's profile" [ref=e347] [cursor=pointer]:
+                    - /url: https://github.com/LeoLP1
+                    - img "LeoLP1" [ref=e348]
+                  - generic [ref=e355]:
+                    - generic [ref=e357]:
+                      - heading "LeoLP1 commented on Apr 23, 2026 4 days ago" [level=3] [ref=e358]:
+                        - text: LeoLP1 commented
+                        - generic "Apr 23, 2026, 12:47 AM GMT+9" [ref=e359]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e360]:
+                        - link "LeoLP1" [ref=e362] [cursor=pointer]:
+                          - /url: /LeoLP1
+                        - link "on Apr 23, 20264 days ago" [ref=e365] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4297696517
+                          - generic "Apr 23, 2026, 12:47 AM GMT+9" [ref=e366]: on Apr 23, 20264 days ago
+                      - button "Actions for LeoLP1's comment, 12:47 AM on April 23" [ref=e370] [cursor=pointer]:
+                        - img [ref=e371]
+                    - generic [ref=e373]:
+                      - paragraph [ref=e376]:
+                        - link "@ACheshirov" [ref=e377] [cursor=pointer]:
+                          - /url: https://github.com/ACheshirov
+                        - text: Is that something you think, or did you read it somewhere?
+                      - toolbar "Reactions"
+                - generic [ref=e378]:
+                  - link "@ACheshirov's profile" [ref=e379] [cursor=pointer]:
+                    - /url: https://github.com/ACheshirov
+                    - img "ACheshirov" [ref=e380]
+                  - generic [ref=e387]:
+                    - generic [ref=e389]:
+                      - heading "ACheshirov commented on Apr 23, 2026 4 days ago" [level=3] [ref=e390]:
+                        - text: ACheshirov commented
+                        - generic "Apr 23, 2026, 2:03 AM GMT+9" [ref=e391]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e392]:
+                        - link "ACheshirov" [ref=e394] [cursor=pointer]:
+                          - /url: /ACheshirov
+                        - link "on Apr 23, 20264 days ago" [ref=e397] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4298304095
+                          - generic "Apr 23, 2026, 2:03 AM GMT+9" [ref=e398]: on Apr 23, 20264 days ago
+                      - button "Actions for ACheshirov's comment, 2:03 AM on April 23" [ref=e402] [cursor=pointer]:
+                        - img [ref=e403]
+                    - generic [ref=e405]:
+                      - generic [ref=e407]:
+                        - paragraph [ref=e408]:
+                          - link "@LeoLP1" [ref=e409] [cursor=pointer]:
+                            - /url: https://github.com/LeoLP1
+                          - text: I tried a lot of their large cloud models - all of them are disabled for free users.
+                        - paragraph [ref=e410]:
+                          - text: People on their Discord server says that it's not confirmed that the restrictions are permanent...
+                          - text: However, considering the number of people with paid subscriptions who have complained about interruptions and very slow responses from the models, this free tier restriction was expected...
+                        - paragraph [ref=e411]: More likely, they will think of another way to give access to free users that is more difficult to abuse.
+                      - toolbar "Reactions"
+                - generic [ref=e412]:
+                  - link "@geerdwedda-create's profile" [ref=e413] [cursor=pointer]:
+                    - /url: https://github.com/geerdwedda-create
+                    - img "geerdwedda-create" [ref=e414]
+                  - generic [ref=e421]:
+                    - generic [ref=e423]:
+                      - heading "geerdwedda-create commented on Apr 23, 2026 4 days ago" [level=3] [ref=e424]:
+                        - text: geerdwedda-create commented
+                        - generic "Apr 23, 2026, 2:58 AM GMT+9" [ref=e425]: on Apr 23, 2026 4 days ago
+                      - generic [ref=e426]:
+                        - link "geerdwedda-create" [ref=e428] [cursor=pointer]:
+                          - /url: /geerdwedda-create
+                        - link "on Apr 23, 20264 days ago" [ref=e431] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4298755540
+                          - generic "Apr 23, 2026, 2:58 AM GMT+9" [ref=e432]: on Apr 23, 20264 days ago
+                      - button "Actions for geerdwedda-create's comment, 2:58 AM on April 23" [ref=e436] [cursor=pointer]:
+                        - img [ref=e437]
+                    - generic [ref=e439]:
+                      - paragraph [ref=e442]: Even me still as pro user, non stop disconnecting, time outs, model wont do anything, Ollama sucks
+                      - toolbar "Reactions" [ref=e443]:
+                        - switch "👎 1 reaction" [ref=e444]:
+                          - generic [ref=e445]:
+                            - generic: 👎
+                            - generic [ref=e446]:
+                              - generic [ref=e447]: React with 👎
+                              - text: "1"
+                - generic [ref=e448]:
+                  - link "@asahu's profile" [ref=e449] [cursor=pointer]:
+                    - /url: https://github.com/asahu
+                    - img "asahu" [ref=e450]
+                  - generic [ref=e457]:
+                    - generic [ref=e459]:
+                      - heading "asahu commented on Apr 23, 2026 3 days ago" [level=3] [ref=e460]:
+                        - text: asahu commented
+                        - generic "Apr 23, 2026, 12:31 PM GMT+9" [ref=e461]: on Apr 23, 2026 3 days ago
+                      - generic [ref=e462]:
+                        - link "asahu" [ref=e464] [cursor=pointer]:
+                          - /url: /asahu
+                        - link "on Apr 23, 20263 days ago" [ref=e467] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4301552518
+                          - generic "Apr 23, 2026, 12:31 PM GMT+9" [ref=e468]: on Apr 23, 20263 days ago
+                      - button "Actions for asahu's comment, 12:31 PM on April 23" [ref=e472] [cursor=pointer]:
+                        - img [ref=e473]
+                    - generic [ref=e475]:
+                      - paragraph [ref=e478]: Same here :(
+                      - toolbar "Reactions"
+                - generic [ref=e479]:
+                  - link "@Azecko's profile" [ref=e480] [cursor=pointer]:
+                    - /url: https://github.com/Azecko
+                    - img "Azecko" [ref=e481]
+                  - generic [ref=e488]:
+                    - generic [ref=e490]:
+                      - heading "Azecko commented on Apr 23, 2026 3 days ago" [level=3] [ref=e491]:
+                        - text: Azecko commented
+                        - generic "Apr 23, 2026, 3:41 PM GMT+9" [ref=e492]: on Apr 23, 2026 3 days ago
+                      - generic [ref=e493]:
+                        - link "Azecko" [ref=e495] [cursor=pointer]:
+                          - /url: /Azecko
+                        - link "on Apr 23, 20263 days ago" [ref=e498] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4302244544
+                          - generic "Apr 23, 2026, 3:41 PM GMT+9" [ref=e499]: on Apr 23, 20263 days ago
+                      - generic [ref=e501]:
+                        - generic "This user is the author of this issue" [ref=e503]: Author
+                        - button "Actions for Azecko's comment, 3:41 PM on April 23" [ref=e505] [cursor=pointer]:
+                          - img [ref=e506]
+                    - generic [ref=e508]:
+                      - paragraph [ref=e511]:
+                        - text: I'm glad to see that I'm not the only one encountering this issue.
+                        - text: I hope that we will have a communication asap about the situation from the Ollama team, because this is really weird.
+                      - toolbar "Reactions"
+                - generic [ref=e512]:
+                  - link "@25kgozon's profile" [ref=e513] [cursor=pointer]:
+                    - /url: https://github.com/25kgozon
+                    - img "25kgozon" [ref=e514]
+                  - generic [ref=e521]:
+                    - generic [ref=e523]:
+                      - heading "25kgozon commented on Apr 23, 2026 3 days ago" [level=3] [ref=e524]:
+                        - text: 25kgozon commented
+                        - generic "Apr 23, 2026, 10:26 PM GMT+9" [ref=e525]: on Apr 23, 2026 3 days ago
+                      - generic [ref=e526]:
+                        - link "25kgozon" [ref=e528] [cursor=pointer]:
+                          - /url: /25kgozon
+                        - link "on Apr 23, 20263 days ago" [ref=e531] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4304746801
+                          - generic "Apr 23, 2026, 10:26 PM GMT+9" [ref=e532]: on Apr 23, 20263 days ago
+                      - button "Actions for 25kgozon's comment, 10:26 PM on April 23" [ref=e536] [cursor=pointer]:
+                        - img [ref=e537]
+                    - generic [ref=e539]:
+                      - paragraph [ref=e542]: Free models got pay walled bc some users were abusing them too much apparently. I'm having the same 403 issue still too
+                      - toolbar "Reactions"
+                - generic [ref=e543]:
+                  - link "@MCOoost's profile" [ref=e544] [cursor=pointer]:
+                    - /url: https://github.com/MCOoost
+                    - img "MCOoost" [ref=e545]
+                  - generic [ref=e552]:
+                    - generic [ref=e554]:
+                      - heading "MCOoost commented on Apr 24, 2026 3 days ago" [level=3] [ref=e555]:
+                        - text: MCOoost commented
+                        - generic "Apr 24, 2026, 12:26 AM GMT+9" [ref=e556]: on Apr 24, 2026 3 days ago
+                      - generic [ref=e557]:
+                        - link "MCOoost" [ref=e559] [cursor=pointer]:
+                          - /url: /MCOoost
+                        - link "on Apr 24, 20263 days ago" [ref=e562] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4305672276
+                          - generic "Apr 24, 2026, 12:26 AM GMT+9" [ref=e563]: on Apr 24, 20263 days ago
+                      - button "Actions for MCOoost's comment, 12:26 AM on April 24" [ref=e567] [cursor=pointer]:
+                        - img [ref=e568]
+                    - generic [ref=e570]:
+                      - generic [ref=e572]:
+                        - paragraph [ref=e573]: "Same issue here. Both kimi-k2.5:cloud and kimi-k2.6:cloud were working perfectly fine for me yesterday (April 22), and today they both return:"
+                        - paragraph [ref=e574]:
+                          - code [ref=e575]: "Error: this model requires a subscription, upgrade for access"
+                        - paragraph [ref=e576]: I'm still well within my free cloud usage limits, and other cloud models (e.g., Gemma) continue to work without any issues on the same account.
+                        - paragraph [ref=e577]: I completely understand that business models evolve, but the lack of transparency here is disappointing. A silent, unannounced paywall on models that were freely accessible 24 hours ago creates a frustrating experience for users who have come to rely on them. If a subscription is now required, that is fair, but some advance notice or a clear changelog would have been greatly appreciated.
+                        - paragraph [ref=e578]: "Could the team please clarify:"
+                        - list [ref=e579]:
+                          - listitem [ref=e580]: Was this an intentional change for Kimi models specifically?
+                          - listitem [ref=e581]: Is this a temporary issue or a permanent requirement going forward?
+                        - paragraph [ref=e582]: Thank you for the otherwise excellent work on Ollama.
+                      - toolbar "Reactions"
+                - generic [ref=e583]:
+                  - link "@siathalysedI's profile" [ref=e584] [cursor=pointer]:
+                    - /url: https://github.com/siathalysedI
+                    - img "siathalysedI" [ref=e585]
+                  - generic [ref=e592]:
+                    - generic [ref=e594]:
+                      - heading "siathalysedI commented on Apr 24, 2026 3 days ago" [level=3] [ref=e595]:
+                        - text: siathalysedI commented
+                        - generic "Apr 24, 2026, 2:32 AM GMT+9" [ref=e596]: on Apr 24, 2026 3 days ago
+                      - generic [ref=e597]:
+                        - link "siathalysedI" [ref=e599] [cursor=pointer]:
+                          - /url: /siathalysedI
+                        - link "on Apr 24, 20263 days ago" [ref=e602] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4306469178
+                          - generic "Apr 24, 2026, 2:32 AM GMT+9" [ref=e603]: on Apr 24, 20263 days ago
+                      - button "Actions for siathalysedI's comment, 2:32 AM on April 24" [ref=e607] [cursor=pointer]:
+                        - img [ref=e608]
+                    - generic [ref=e610]:
+                      - generic [ref=e612]:
+                        - paragraph [ref=e613]:
+                          - text: "Same issue here, kimi-k2.6-cloud and I got:"
+                          - code [ref=e614]: "Error code: 403 - {'error': 'this model requires a subscription, upgrade for access: https://ollama.com/upgrade (ref: 9d6c4cd4-b628-4882-b652-f71f638e117c)'}"
+                        - paragraph [ref=e615]: I can't understand why this happens and with no further notice and such obscured information about it.
+                      - toolbar "Reactions"
+                - generic [ref=e616]:
+                  - link "@dnky-1's profile" [ref=e617] [cursor=pointer]:
+                    - /url: https://github.com/dnky-1
+                    - img "dnky-1" [ref=e618]
+                  - generic [ref=e625]:
+                    - generic [ref=e627]:
+                      - heading "dnky-1 commented on Apr 25, 2026 2 days ago" [level=3] [ref=e628]:
+                        - text: dnky-1 commented
+                        - generic "Apr 25, 2026, 4:23 AM GMT+9" [ref=e629]: on Apr 25, 2026 2 days ago
+                      - generic [ref=e630]:
+                        - link "dnky-1" [ref=e632] [cursor=pointer]:
+                          - /url: /dnky-1
+                        - link "on Apr 25, 20262 days ago" [ref=e635] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4315712302
+                          - generic "Apr 25, 2026, 4:23 AM GMT+9" [ref=e636]: on Apr 25, 20262 days ago
+                      - button "Actions for dnky-1's comment, 4:23 AM yesterday" [ref=e640] [cursor=pointer]:
+                        - img [ref=e641]
+                    - generic [ref=e643]:
+                      - paragraph [ref=e646]: same here trying to use glm-5.1 model
+                      - toolbar "Reactions"
+                - generic [ref=e647]:
+                  - link "@FALLEN-01's profile" [ref=e648] [cursor=pointer]:
+                    - /url: https://github.com/FALLEN-01
+                    - img "FALLEN-01" [ref=e649]
+                  - generic [ref=e656]:
+                    - generic [ref=e658]:
+                      - heading "FALLEN-01 commented on Apr 26, 2026 16 hours ago" [level=3] [ref=e659]:
+                        - text: FALLEN-01 commented
+                        - generic "Apr 26, 2026, 2:24 AM GMT+9" [ref=e660]: on Apr 26, 2026 16 hours ago
+                      - generic [ref=e661]:
+                        - link "FALLEN-01" [ref=e663] [cursor=pointer]:
+                          - /url: /FALLEN-01
+                        - link "on Apr 26, 202616 hours ago" [ref=e666] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4320164129
+                          - generic "Apr 26, 2026, 2:24 AM GMT+9" [ref=e667]: on Apr 26, 202616 hours ago
+                      - button "Actions for FALLEN-01's comment, 2:24 AM today" [ref=e671] [cursor=pointer]:
+                        - img [ref=e672]
+                    - generic [ref=e674]:
+                      - paragraph [ref=e677]: I am facing the same issues
+                      - toolbar "Reactions"
+                - generic [ref=e678]:
+                  - link "@mahiarirani's profile" [ref=e679] [cursor=pointer]:
+                    - /url: https://github.com/mahiarirani
+                    - img "mahiarirani" [ref=e680]
+                  - generic [ref=e687]:
+                    - generic [ref=e689]:
+                      - heading "mahiarirani commented on Apr 26, 2026 12 hours ago" [level=3] [ref=e690]:
+                        - text: mahiarirani commented
+                        - generic "Apr 26, 2026, 6:28 AM GMT+9" [ref=e691]: on Apr 26, 2026 12 hours ago
+                      - generic [ref=e692]:
+                        - link "mahiarirani" [ref=e694] [cursor=pointer]:
+                          - /url: /mahiarirani
+                        - link "on Apr 26, 202612 hours ago" [ref=e697] [cursor=pointer]:
+                          - /url: https://github.com/ollama/ollama/issues/15741#issuecomment-4320598123
+                          - generic "Apr 26, 2026, 6:28 AM GMT+9" [ref=e698]: on Apr 26, 202612 hours ago
+                      - button "Actions for mahiarirani's comment, 6:28 AM today" [ref=e702] [cursor=pointer]:
+                        - img [ref=e703]
+                    - generic [ref=e705]:
+                      - paragraph [ref=e708]: same issue trying to use kimi-k2.6:cloud
+                      - toolbar "Reactions"
+            - generic [ref=e709]:
+              - link "Sign up for free" [ref=e710] [cursor=pointer]:
+                - /url: /signup?return_to=https://github.com/ollama/ollama/issues/15741
+                - generic [ref=e712]: Sign up for free
+              - generic [ref=e713]:
+                - strong [ref=e714]: to join this conversation on GitHub.
+                - text: Already have an account?
+              - link "Sign in to comment" [ref=e715] [cursor=pointer]:
+                - /url: /login?return_to=https://github.com/ollama/ollama/issues/15741
+        - generic [ref=e717]:
+          - heading "Metadata" [level=2] [ref=e718]
+          - generic [ref=e720]:
+            - generic [ref=e722]:
+              - generic [ref=e723]:
+                - heading "Assignees" [level=3]
+              - generic [ref=e724]: No one assigned
+            - generic [ref=e725]:
+              - generic [ref=e727]:
+                - heading "Labels" [level=3]
+              - link "bug Something isn't working" [ref=e730] [cursor=pointer]:
+                - /url: https://github.com/ollama/ollama/issues?q=state%3Aopen%20label%3A%22bug%22
+                - generic [ref=e732]: bug
+                - generic [ref=e733]: Something isn't working
+            - generic [ref=e735]:
+              - generic [ref=e736]:
+                - heading "Type" [level=3]
+              - generic [ref=e737]: No type
+            - generic [ref=e739]:
+              - generic [ref=e740]:
+                - heading "Projects" [level=3]
+              - generic [ref=e741]: No projects
+            - generic [ref=e743]:
+              - generic [ref=e744]:
+                - heading "Milestone" [level=3]
+              - generic [ref=e745]: No milestone
+            - generic [ref=e747]:
+              - generic [ref=e748]:
+                - heading "Relationships" [level=3]
+              - generic [ref=e749]: None yet
+            - generic [ref=e751]:
+              - generic [ref=e752]:
+                - heading "Development" [level=3]
+              - generic [ref=e753]: No branches or pull requests
+            - heading "Issue actions" [level=2] [ref=e754]
+            - list
+  - contentinfo [ref=e755]:
+    - heading "Footer" [level=2] [ref=e756]
+    - generic [ref=e757]:
+      - generic [ref=e758]:
+        - link "GitHub Homepage" [ref=e759] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e760]
+        - generic [ref=e762]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e763]:
+        - heading "Footer navigation" [level=3] [ref=e764]
+        - list "Footer navigation" [ref=e765]:
+          - listitem [ref=e766]:
+            - link "Terms" [ref=e767] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e768]:
+            - link "Privacy" [ref=e769] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e770]:
+            - link "Security" [ref=e771] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e772]:
+            - link "Status" [ref=e773] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e774]:
+            - link "Community" [ref=e775] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e776]:
+            - link "Docs" [ref=e777] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e778]:
+            - link "Contact" [ref=e779] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e780]:
+            - button "Manage cookies" [ref=e782] [cursor=pointer]
+          - listitem [ref=e783]:
+            - button "Do not share my personal information" [ref=e785] [cursor=pointer]

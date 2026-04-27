@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Ollama" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Ollama" [ref=e5]
+      - generic [ref=e6]:
+        - link "Models" [ref=e7] [cursor=pointer]:
+          - /url: /search
+        - link "Docs" [ref=e8] [cursor=pointer]:
+          - /url: /docs
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: /pricing
+      - generic [ref=e13]:
+        - img [ref=e15]
+        - textbox "Search models" [ref=e17]
+      - generic [ref=e18]:
+        - link "Sign in" [ref=e19] [cursor=pointer]:
+          - /url: /signin
+        - link "Download" [ref=e20] [cursor=pointer]:
+          - /url: /download
+  - article [ref=e21]:
+    - heading "Cloud models" [level=1] [ref=e22]
+    - heading "September 19, 2025" [level=2] [ref=e23]
+    - generic [ref=e24]:
+      - paragraph [ref=e25]:
+        - link "Ollama’s cloud" [ref=e26] [cursor=pointer]:
+          - /url: https://ollama.com/cloud
+          - img "Ollama’s cloud" [ref=e27]
+      - paragraph [ref=e28]:
+        - link "Cloud models" [ref=e29] [cursor=pointer]:
+          - /url: https://ollama.com/cloud
+        - text: are now in preview, letting you run larger models with fast, datacenter-grade hardware. You can keep using your local tools while running larger models that wouldn’t fit on a personal computer. Ollama’s cloud does not retain your data to ensure privacy and security.
+      - paragraph [ref=e30]:
+        - text: The same Ollama experience is now seamless across both local and in the cloud, integrating with the existing tools you already use. Ollama’s cloud models also work via Ollama’s
+        - link "OpenAI-compatible API" [ref=e31] [cursor=pointer]:
+          - /url: https://docs.ollama.com/openai
+        - text: .
+      - paragraph [ref=e32]:
+        - img "Ollama cloud" [ref=e33]
+      - heading "Get started" [level=3] [ref=e34]
+      - paragraph [ref=e35]:
+        - text: Download
+        - link "Ollama v0.12" [ref=e36] [cursor=pointer]:
+          - /url: https://ollama.com/download
+        - text: ", then open a terminal and run a cloud model:"
+      - code [ref=e38]: ollama run qwen3-coder:480b-cloud
+      - heading "Available models" [level=3] [ref=e39]
+      - list [ref=e40]:
+        - listitem [ref=e41]:
+          - code [ref=e42]: qwen3-coder:480b-cloud
+        - listitem [ref=e43]:
+          - code [ref=e44]: gpt-oss:120b-cloud
+        - listitem [ref=e45]:
+          - code [ref=e46]: gpt-oss:20b-cloud
+        - listitem [ref=e47]:
+          - code [ref=e48]: deepseek-v3.1:671b-cloud
+      - heading "Usage" [level=3] [ref=e49]
+      - paragraph [ref=e50]:
+        - text: Cloud models behave like regular models. For example, you can
+        - code [ref=e51]: ls
+        - text: ","
+        - code [ref=e52]: run
+        - text: ","
+        - code [ref=e53]: pull
+        - text: ", and"
+        - code [ref=e54]: cp
+        - text: "them as needed:"
+      - code [ref=e56]: "% ollama ls NAME ID SIZE MODIFIED gpt-oss:120b-cloud 569662207105 - 5 seconds ago gpt-oss:20b-cloud 875e8e3a629a - 1 day ago deepseek-v3.1:671-cloud d3749919e45f - 2 days ago qwen3-coder:480b-cloud 11483b8f8765 - 2 days ago"
+      - heading "Usage in Ollama’s API" [level=3] [ref=e57]
+      - heading "JavaScript" [level=4] [ref=e58]
+      - paragraph [ref=e59]: "First, install Ollama’s JavaScript library:"
+      - code [ref=e61]: npm install ollama
+      - paragraph [ref=e62]: "Next, pull a cloud model:"
+      - code [ref=e64]: ollama pull gpt-oss:120b-cloud
+      - paragraph [ref=e65]: "Once the model is available locally, run it using JavaScript:"
+      - code [ref=e67]: "import ollama from \"ollama\"; const response = await ollama.chat({ model: \"gpt-oss:120b-cloud\", messages: [{ role: \"user\", content: \"Why is the sky blue?\" }], }); console.log(response.message.content);"
+      - heading "Python" [level=4] [ref=e68]
+      - paragraph [ref=e69]: Download Ollama’s Python library
+      - code [ref=e71]: pip install ollama
+      - paragraph [ref=e72]: "Next, pull a cloud model:"
+      - code [ref=e74]: ollama pull gpt-oss:120b-cloud
+      - paragraph [ref=e75]: "Once the model is available locally, run it using Python:"
+      - code [ref=e77]: "import ollama response = ollama.chat(model='gpt-oss:120b-cloud', messages=[ { 'role': 'user', 'content': 'Why is the sky blue?', }, ]) print(response['message']['content'])"
+      - heading "cURL" [level=4] [ref=e78]
+      - paragraph [ref=e79]: "Pull a cloud model:"
+      - code [ref=e81]: ollama pull gpt-oss:120b-cloud
+      - paragraph [ref=e82]: Next, call Ollama’s API to run the model
+      - code [ref=e84]: "curl http://localhost:11434/api/chat -d '{ \"model\": \"gpt-oss:120b-cloud\", \"messages\": [{ \"role\": \"user\", \"content\": \"Why is the sky blue?\" }], \"stream\": false }'"
+      - heading "Signing in and out" [level=3] [ref=e85]
+      - paragraph [ref=e86]: "Cloud models use inference compute on ollama.com and require being signed in to ollama.com:"
+      - code [ref=e88]: ollama signin
+      - paragraph [ref=e89]: "To stay signed out, run:"
+      - code [ref=e91]: ollama signout
+      - heading "Cloud API access" [level=3] [ref=e92]
+      - paragraph [ref=e93]:
+        - text: Cloud models can also be accessed directly via
+        - link "ollama.com’s API" [ref=e94] [cursor=pointer]:
+          - /url: https://docs.ollama.com/cloud#cloud-api-access
+        - text: .
+  - contentinfo [ref=e95]:
+    - generic [ref=e97]:
+      - generic [ref=e98]: © 2026 Ollama
+      - generic [ref=e99]:
+        - link "Download" [ref=e100] [cursor=pointer]:
+          - /url: /download
+        - link "Blog" [ref=e101] [cursor=pointer]:
+          - /url: /blog
+        - link "Docs" [ref=e102] [cursor=pointer]:
+          - /url: https://docs.ollama.com
+        - link "GitHub" [ref=e103] [cursor=pointer]:
+          - /url: https://github.com/ollama/ollama
+        - link "Discord" [ref=e104] [cursor=pointer]:
+          - /url: https://discord.com/invite/ollama
+        - link "X (Twitter)" [ref=e105] [cursor=pointer]:
+          - /url: https://twitter.com/ollama
+        - link "Contact" [ref=e106] [cursor=pointer]:
+          - /url: mailto:hello@ollama.com
+        - link "Privacy" [ref=e107] [cursor=pointer]:
+          - /url: /privacy
+        - link "Terms" [ref=e108] [cursor=pointer]:
+          - /url: /terms

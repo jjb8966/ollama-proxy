@@ -4,6 +4,8 @@ from src.utils.model_limits import get_model_limits, reset_model_limits_cache
 EXPECTED_CONTEXT_LENGTH = 256000
 EXPECTED_CODEX_CONTEXT_LENGTH = 400000
 EXPECTED_CODEX_MAX_OUTPUT_TOKENS = 128000
+EXPECTED_DEEPSEEK_V4_CONTEXT_LENGTH = 1000000
+EXPECTED_DEEPSEEK_V4_MAX_OUTPUT_TOKENS = 384000
 
 
 def test_ollama_cloud_gemma4_31b_model_limits_are_loaded() -> None:
@@ -54,3 +56,23 @@ def test_gpt_5_3_codex_xhigh_model_limits_are_loaded() -> None:
     assert limits is not None
     assert limits.context_length == EXPECTED_CODEX_CONTEXT_LENGTH
     assert limits.max_output_tokens == EXPECTED_CODEX_MAX_OUTPUT_TOKENS
+
+
+def test_opencode_deepseek_v4_pro_model_limits_are_loaded() -> None:
+    reset_model_limits_cache()
+
+    limits = get_model_limits("opencode:deepseek-v4-pro")
+
+    assert limits is not None
+    assert limits.context_length == EXPECTED_DEEPSEEK_V4_CONTEXT_LENGTH
+    assert limits.max_output_tokens == EXPECTED_DEEPSEEK_V4_MAX_OUTPUT_TOKENS
+
+
+def test_opencode_deepseek_v4_flash_model_limits_are_loaded() -> None:
+    reset_model_limits_cache()
+
+    limits = get_model_limits("opencode:deepseek-v4-flash")
+
+    assert limits is not None
+    assert limits.context_length == EXPECTED_DEEPSEEK_V4_CONTEXT_LENGTH
+    assert limits.max_output_tokens == EXPECTED_DEEPSEEK_V4_MAX_OUTPUT_TOKENS

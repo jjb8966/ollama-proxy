@@ -1,0 +1,794 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e10]:
+          - text: 🎉 Kimi K2.6 has been released with improved long-context coding stability.
+          - link "Top-up bonus event in progress 🔗" [ref=e11] [cursor=pointer]:
+            - /url: /docs/pricing/promotion
+        - generic [ref=e14]:
+          - generic [ref=e17]:
+            - link "Kimi API Platform home page light logo" [ref=e19] [cursor=pointer]:
+              - /url: https://platform.kimi.ai
+              - generic [ref=e20]: Kimi API Platform home page
+              - img "light logo" [ref=e21]
+            - button "Open search" [ref=e23] [cursor=pointer]:
+              - generic [ref=e24]:
+                - img [ref=e25]
+                - generic [ref=e28]: Search...
+              - generic [ref=e29]: ⌘K
+            - generic [ref=e30]:
+              - navigation [ref=e31]:
+                - list [ref=e32]:
+                  - listitem [ref=e33]:
+                    - link "Contact Sales" [ref=e34] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/contact-sales
+                  - listitem [ref=e35]:
+                    - link "Blog" [ref=e36] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/blog
+                  - listitem [ref=e37]:
+                    - link "Playground" [ref=e38] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/playground
+                  - listitem [ref=e39]:
+                    - link "User Center" [ref=e40] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/console/account
+              - button "Toggle dark mode" [ref=e42] [cursor=pointer]:
+                - img [ref=e43]
+          - generic [ref=e51]:
+            - link "Get Started" [ref=e52] [cursor=pointer]:
+              - /url: /docs/overview
+              - text: Get Started
+            - link "Guides" [ref=e54] [cursor=pointer]:
+              - /url: /docs/guide/utilize-the-streaming-output-feature-of-kimi-api
+              - text: Guides
+            - link "API Reference" [ref=e56] [cursor=pointer]:
+              - /url: /docs/api/overview
+              - text: API Reference
+            - link "Pricing" [ref=e58] [cursor=pointer]:
+              - /url: /docs/pricing/chat
+              - text: Pricing
+            - link "Resources" [ref=e60] [cursor=pointer]:
+              - /url: /docs/guide/prompt-best-practice
+              - text: Resources
+      - generic [ref=e62]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "Overview" [level=5] [ref=e69]
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - link "Welcome" [ref=e72] [cursor=pointer]:
+                  - /url: /docs/overview
+                  - generic [ref=e75]: Welcome
+              - listitem [ref=e76]:
+                - link "User Manual" [ref=e77] [cursor=pointer]:
+                  - /url: /docs/introduction
+                  - generic [ref=e80]: User Manual
+              - listitem [ref=e81]:
+                - link "Model List" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/models
+                  - generic [ref=e85]: Model List
+          - generic [ref=e86]:
+            - heading "Quickstart" [level=5] [ref=e88]
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - link "Quickstart with Kimi API" [ref=e91] [cursor=pointer]:
+                  - /url: /docs/guide/start-using-kimi-api
+                  - generic [ref=e94]: Quickstart with Kimi API
+              - listitem [ref=e95]:
+                - link "Kimi K2.6 Multi-modal Model" [ref=e96] [cursor=pointer]:
+                  - /url: /docs/guide/kimi-k2-6-quickstart
+                  - generic [ref=e99]: Kimi K2.6 Multi-modal Model
+              - listitem [ref=e100]:
+                - link "Kimi K2" [ref=e101] [cursor=pointer]:
+                  - /url: /docs/guide/kimi-k2-quickstart
+                  - generic [ref=e104]: Kimi K2
+          - generic [ref=e105]:
+            - heading "Next steps" [level=5] [ref=e107]
+            - list [ref=e108]:
+              - listitem [ref=e109]:
+                - link "Using Thinking Models" [ref=e110] [cursor=pointer]:
+                  - /url: /docs/guide/use-kimi-k2-thinking-model
+                  - generic [ref=e113]: Using Thinking Models
+              - listitem [ref=e114]:
+                - link "Conduct Multi-turn Chat with Kimi API" [ref=e115] [cursor=pointer]:
+                  - /url: /docs/guide/engage-in-multi-turn-conversations-using-kimi-api
+                  - generic [ref=e118]: Conduct Multi-turn Chat with Kimi API
+              - listitem [ref=e119]:
+                - link "Use the Kimi Vision Model" [ref=e120] [cursor=pointer]:
+                  - /url: /docs/guide/use-kimi-vision-model
+                  - generic [ref=e123]: Use the Kimi Vision Model
+        - generic [ref=e125]:
+          - generic [ref=e128]:
+            - button "On this page" [ref=e129] [cursor=pointer]:
+              - img [ref=e130]
+              - generic [ref=e131]: On this page
+            - list [ref=e133]:
+              - listitem [ref=e134]:
+                - link "Overview of Kimi K2.6 Model" [ref=e135] [cursor=pointer]:
+                  - /url: "#overview-of-kimi-k2-6-model"
+              - listitem [ref=e136]:
+                - link "Long-horizon coding capability breakthrough" [ref=e137] [cursor=pointer]:
+                  - /url: "#long-horizon-coding-capability-breakthrough"
+              - listitem [ref=e138]:
+                - link "Ultra-Long Context Support" [ref=e139] [cursor=pointer]:
+                  - /url: "#ultra-long-context-support"
+              - listitem [ref=e140]:
+                - link "Long-Thinking Capabilities" [ref=e141] [cursor=pointer]:
+                  - /url: "#long-thinking-capabilities"
+              - listitem [ref=e142]:
+                - link "Example Usage" [ref=e143] [cursor=pointer]:
+                  - /url: "#example-usage"
+              - listitem [ref=e144]:
+                - link "Install the OpenAI SDK" [ref=e145] [cursor=pointer]:
+                  - /url: "#install-the-openai-sdk"
+              - listitem [ref=e146]:
+                - link "Verify the Installation" [ref=e147] [cursor=pointer]:
+                  - /url: "#verify-the-installation"
+              - listitem [ref=e148]:
+                - link "Quick Start" [ref=e149] [cursor=pointer]:
+                  - /url: "#quick-start"
+              - listitem [ref=e150]:
+                - link "Image Understanding Code Example" [ref=e151] [cursor=pointer]:
+                  - /url: "#image-understanding-code-example"
+              - listitem [ref=e152]:
+                - link "Video Understanding Code Example" [ref=e153] [cursor=pointer]:
+                  - /url: "#video-understanding-code-example"
+              - listitem [ref=e154]:
+                - link "Multimodal Tool Capability Example" [ref=e155] [cursor=pointer]:
+                  - /url: "#multimodal-tool-capability-example"
+              - listitem [ref=e156]:
+                - link "Best Practices" [ref=e157] [cursor=pointer]:
+                  - /url: "#best-practices"
+              - listitem [ref=e158]:
+                - link "Supported Formats" [ref=e159] [cursor=pointer]:
+                  - /url: "#supported-formats"
+              - listitem [ref=e160]:
+                - link "Token Calculation and Billing" [ref=e161] [cursor=pointer]:
+                  - /url: "#token-calculation-and-billing"
+              - listitem [ref=e162]:
+                - link "Recommended Resolution" [ref=e163] [cursor=pointer]:
+                  - /url: "#recommended-resolution"
+              - listitem [ref=e164]:
+                - link "Upload File or Base64?" [ref=e165] [cursor=pointer]:
+                  - /url: "#upload-file-or-base64"
+              - listitem [ref=e166]:
+                - link "Parameters Differences in Request Body" [ref=e167] [cursor=pointer]:
+                  - /url: "#parameters-differences-in-request-body"
+              - listitem [ref=e168]:
+                - link "Tool Use Compatibility" [ref=e169] [cursor=pointer]:
+                  - /url: "#tool-use-compatibility"
+              - listitem [ref=e170]:
+                - link "Disable Thinking Capability Example" [ref=e171] [cursor=pointer]:
+                  - /url: "#disable-thinking-capability-example"
+              - listitem [ref=e172]:
+                - link "Model Pricing" [ref=e173] [cursor=pointer]:
+                  - /url: "#model-pricing"
+              - listitem [ref=e174]:
+                - link "Learn More" [ref=e175] [cursor=pointer]:
+                  - /url: "#learn-more"
+          - generic [ref=e176]:
+            - banner [ref=e177]:
+              - generic [ref=e178]:
+                - link "Quickstart" [ref=e181] [cursor=pointer]:
+                  - /url: /docs/guide/start-using-kimi-api
+                - generic [ref=e182]:
+                  - heading "Kimi K2.6" [level=1] [ref=e183]
+                  - generic [ref=e184]:
+                    - button "Copy page" [ref=e185] [cursor=pointer]:
+                      - generic [ref=e186]:
+                        - img [ref=e187]
+                        - generic [ref=e190]: Copy page
+                    - button "More actions" [ref=e191] [cursor=pointer]:
+                      - img [ref=e192]
+            - generic [ref=e194]:
+              - heading "Navigate to header Overview of Kimi K2.6 Model" [level=2] [ref=e195]:
+                - link "Navigate to header" [ref=e196] [cursor=pointer]:
+                  - /url: "#overview-of-kimi-k2-6-model"
+                  - img [ref=e198]
+                - generic [ref=e200] [cursor=pointer]: Overview of Kimi K2.6 Model
+              - generic [ref=e201]:
+                - text: Kimi K2.6 is Kimi’s latest and most intelligent model, possessing stronger and more stable long-term code writing capabilities, significantly improved instruction compliance and self-correction capabilities, and the ability to handle more complex software engineering tasks. It also significantly enhances the autonomous execution capabilities of the Agent. It features a native multimodal architecture that supports text, image, and video input, thinking and non-thinking modes, and dialogue and Agent tasks.
+                - link "Tech Blog" [ref=e202] [cursor=pointer]:
+                  - /url: https://www.kimi.com/blog/kimi-k2-6
+              - img "kimi-k2.6" [ref=e206]
+              - heading "Navigate to header Long-horizon coding capability breakthrough" [level=3] [ref=e207]:
+                - link "Navigate to header" [ref=e208] [cursor=pointer]:
+                  - /url: "#long-horizon-coding-capability-breakthrough"
+                  - img [ref=e210]
+                - generic [ref=e212] [cursor=pointer]: Long-horizon coding capability breakthrough
+              - list [ref=e213]:
+                - listitem [ref=e214]: K2.6 has achieved a breakthrough in long-horizon coding tasks, demonstrating more reliable generalization across diverse programming languages (such as Rust, Go, and Python) and task scenarios (including frontend development, DevOps, and performance optimization).
+              - heading "Navigate to header Ultra-Long Context Support" [level=3] [ref=e215]:
+                - link "Navigate to header" [ref=e216] [cursor=pointer]:
+                  - /url: "#ultra-long-context-support"
+                  - img [ref=e218]
+                - generic [ref=e220] [cursor=pointer]: Ultra-Long Context Support
+              - list [ref=e221]:
+                - listitem [ref=e222]:
+                  - code [ref=e223]: kimi-k2.6
+                  - text: ","
+                  - code [ref=e224]: kimi-k2.5
+                  - text: ","
+                  - code [ref=e225]: kimi-k2-0905-preview
+                  - text: ","
+                  - code [ref=e226]: kimi-k2-turbo-preview
+                  - text: ","
+                  - code [ref=e227]: kimi-k2-thinking
+                  - text: ", and"
+                  - code [ref=e228]: kimi-k2-thinking-turbo
+                  - text: models all provide a 256K context window.
+              - heading "Navigate to header Long-Thinking Capabilities" [level=3] [ref=e229]:
+                - link "Navigate to header" [ref=e230] [cursor=pointer]:
+                  - /url: "#long-thinking-capabilities"
+                  - img [ref=e232]
+                - generic [ref=e234] [cursor=pointer]: Long-Thinking Capabilities
+              - list [ref=e235]:
+                - listitem [ref=e236]: Kimi K2.6 still has strong reasoning capabilities, supporting multi-step tool invocation and reasoning, excelling at solving complex problems, such as complex logical reasoning, mathematical problems, and code writing.
+              - heading "Navigate to header Example Usage" [level=2] [ref=e237]:
+                - link "Navigate to header" [ref=e238] [cursor=pointer]:
+                  - /url: "#example-usage"
+                  - img [ref=e240]
+                - generic [ref=e242] [cursor=pointer]: Example Usage
+              - generic [ref=e243]: Here is a complete usage example to help you quickly get started with the Kimi K2.6 model.
+              - heading "Navigate to header Install the OpenAI SDK" [level=3] [ref=e244]:
+                - link "Navigate to header" [ref=e245] [cursor=pointer]:
+                  - /url: "#install-the-openai-sdk"
+                  - img [ref=e247]
+                - generic [ref=e249] [cursor=pointer]: Install the OpenAI SDK
+              - generic [ref=e250]: "Kimi API is fully compatible with OpenAI’s API format. You can install the OpenAI SDK as follows:"
+              - generic [ref=e251]:
+                - generic [ref=e252]:
+                  - button "Report incorrect code" [ref=e254] [cursor=pointer]:
+                    - img [ref=e255]
+                  - button "Copy the contents from the code block" [ref=e258] [cursor=pointer]:
+                    - img [ref=e259]
+                - code [ref=e265]:
+                  - generic [ref=e266]: pip install --upgrade 'openai>=1.0'
+              - heading "Navigate to header Verify the Installation" [level=3] [ref=e267]:
+                - link "Navigate to header" [ref=e268] [cursor=pointer]:
+                  - /url: "#verify-the-installation"
+                  - img [ref=e270]
+                - generic [ref=e272] [cursor=pointer]: Verify the Installation
+              - generic [ref=e273]:
+                - generic [ref=e274]:
+                  - button "Report incorrect code" [ref=e276] [cursor=pointer]:
+                    - img [ref=e277]
+                  - button "Copy the contents from the code block" [ref=e280] [cursor=pointer]:
+                    - img [ref=e281]
+                - code [ref=e287]:
+                  - generic [ref=e288]: python -c 'import openai; print("version =",openai.__version__)'
+                  - generic [ref=e289]: "# The output may be version = 1.10.0, indicating the OpenAI SDK was installed successfully and your Python environment is using OpenAI SDK v1.10.0."
+              - heading "Navigate to header Quick Start" [level=2] [ref=e290]:
+                - link "Navigate to header" [ref=e291] [cursor=pointer]:
+                  - /url: "#quick-start"
+                  - img [ref=e293]
+                - generic [ref=e295] [cursor=pointer]: Quick Start
+              - list [ref=e296]:
+                - listitem [ref=e297]:
+                  - link "Try it now" [ref=e298] [cursor=pointer]:
+                    - /url: https://platform.kimi.ai/playground
+                  - text: ": Test model performance in your business scenarios through interactive operations in the Dev Workbench"
+                - listitem [ref=e299]:
+                  - link "Apply for API Key" [ref=e300] [cursor=pointer]:
+                    - /url: https://platform.kimi.ai/console/api-keys
+                  - text: ": Test via API call immediately"
+              - heading "Navigate to header Image Understanding Code Example" [level=3] [ref=e301]:
+                - link "Navigate to header" [ref=e302] [cursor=pointer]:
+                  - /url: "#image-understanding-code-example"
+                  - img [ref=e304]
+                - generic [ref=e306] [cursor=pointer]: Image Understanding Code Example
+              - generic [ref=e307]:
+                - generic [ref=e308]:
+                  - button "Report incorrect code" [ref=e310] [cursor=pointer]:
+                    - img [ref=e311]
+                  - button "Copy the contents from the code block" [ref=e314] [cursor=pointer]:
+                    - img [ref=e315]
+                - code [ref=e321]:
+                  - generic [ref=e322]: import os
+                  - generic [ref=e323]: import base64
+                  - generic [ref=e324]: from openai import OpenAI
+                  - generic [ref=e325]: client = OpenAI(
+                  - generic [ref=e326]: api_key=os.environ.get("MOONSHOT_API_KEY"),
+                  - generic [ref=e327]: base_url="https://api.moonshot.ai/v1",
+                  - generic [ref=e328]: )
+                  - generic [ref=e329]: "# Replace kimi.png with the path to the image you want Kimi to analyze"
+                  - generic [ref=e330]: image_path = "kimi.png"
+                  - generic [ref=e331]: "with open(image_path, \"rb\") as f:"
+                  - generic [ref=e332]: image_data = f.read()
+                  - generic [ref=e333]: "# Use the standard library base64.b64encode function to encode the image into base64 format"
+                  - generic [ref=e334]: "image_url = f\"data:image/{os.path.splitext(image_path)[1].lstrip('.')};base64,{base64.b64encode(image_data).decode('utf-8')}\""
+                  - generic [ref=e335]: completion = client.chat.completions.create(
+                  - generic [ref=e336]: model="kimi-k2.6",
+                  - generic [ref=e337]: messages=[
+                  - generic [ref=e338]: "{\"role\": \"system\", \"content\": \"You are Kimi.\"},"
+                  - generic [ref=e339]: "{"
+                  - generic [ref=e340]: "\"role\": \"user\","
+                  - generic [ref=e341]: "# Note: content is changed from str type to a list containing multiple content parts."
+                  - generic [ref=e342]: "# Image (image_url) is one part, and text is another part."
+                  - generic [ref=e343]: "\"content\": ["
+                  - generic [ref=e344]: "{"
+                  - generic [ref=e345]: "\"type\": \"image_url\", # <-- Use image_url type to upload images, with content as base64-encoded image data"
+                  - generic [ref=e346]: "\"image_url\": {"
+                  - generic [ref=e347]: "\"url\": image_url,"
+                  - generic [ref=e348]: "},"
+                  - generic [ref=e349]: "},"
+                  - generic [ref=e350]: "{"
+                  - generic [ref=e351]: "\"type\": \"text\","
+                  - generic [ref=e352]: "\"text\": \"Please describe the content of the image.\", # <-- Use text type to provide text instructions"
+                  - generic [ref=e353]: "},"
+                  - generic [ref=e354]: "],"
+                  - generic [ref=e355]: "},"
+                  - generic [ref=e356]: "],"
+                  - generic [ref=e357]: )
+                  - generic [ref=e358]: print(completion.choices[0].message.content)
+              - generic [ref=e359]: "If your code runs successfully with no errors, you will see output similar to the following:"
+              - generic [ref=e360]:
+                - generic [ref=e361]:
+                  - button "Report incorrect code" [ref=e363] [cursor=pointer]:
+                    - img [ref=e364]
+                  - button "Copy the contents from the code block" [ref=e367] [cursor=pointer]:
+                    - img [ref=e368]
+                - code [ref=e374]:
+                  - generic [ref=e375]: "[Image description output]"
+              - heading "Navigate to header Video Understanding Code Example" [level=3] [ref=e376]:
+                - link "Navigate to header" [ref=e377] [cursor=pointer]:
+                  - /url: "#video-understanding-code-example"
+                  - img [ref=e379]
+                - generic [ref=e381] [cursor=pointer]: Video Understanding Code Example
+              - generic [ref=e382]:
+                - generic [ref=e383]:
+                  - button "Report incorrect code" [ref=e385] [cursor=pointer]:
+                    - img [ref=e386]
+                  - button "Copy the contents from the code block" [ref=e389] [cursor=pointer]:
+                    - img [ref=e390]
+                - code [ref=e396]:
+                  - generic [ref=e397]: import os
+                  - generic [ref=e398]: import base64
+                  - generic [ref=e399]: from openai import OpenAI
+                  - generic [ref=e400]: client = OpenAI(
+                  - generic [ref=e401]: api_key=os.environ.get("MOONSHOT_API_KEY"),
+                  - generic [ref=e402]: base_url="https://api.moonshot.ai/v1",
+                  - generic [ref=e403]: )
+                  - generic [ref=e404]: "# Replace kimi.mp4 with the path to the video you want Kimi to analyze"
+                  - generic [ref=e405]: video_path = "kimi.mp4"
+                  - generic [ref=e406]: "with open(video_path, \"rb\") as f:"
+                  - generic [ref=e407]: video_data = f.read()
+                  - generic [ref=e408]: "# Use the standard library base64.b64encode function to encode the video into base64 format"
+                  - generic [ref=e409]: "video_url = f\"data:video/{os.path.splitext(video_path)[1].lstrip('.')};base64,{base64.b64encode(video_data).decode('utf-8')}\""
+                  - generic [ref=e410]: completion = client.chat.completions.create(
+                  - generic [ref=e411]: model="kimi-k2.6",
+                  - generic [ref=e412]: messages=[
+                  - generic [ref=e413]: "{\"role\": \"system\", \"content\": \"You are Kimi.\"},"
+                  - generic [ref=e414]: "{"
+                  - generic [ref=e415]: "\"role\": \"user\","
+                  - generic [ref=e416]: "# Note: content is changed from str type to a list containing multiple content parts."
+                  - generic [ref=e417]: "# Video (video_url) is one part, and text is another part."
+                  - generic [ref=e418]: "\"content\": ["
+                  - generic [ref=e419]: "{"
+                  - generic [ref=e420]: "\"type\": \"video_url\", # <-- Use video_url type to upload videos, with content as base64-encoded video data"
+                  - generic [ref=e421]: "\"video_url\": {"
+                  - generic [ref=e422]: "\"url\": video_url,"
+                  - generic [ref=e423]: "},"
+                  - generic [ref=e424]: "},"
+                  - generic [ref=e425]: "{"
+                  - generic [ref=e426]: "\"type\": \"text\","
+                  - generic [ref=e427]: "\"text\": \"Please describe the content of the video.\", # <-- Use text type to provide text instructions"
+                  - generic [ref=e428]: "},"
+                  - generic [ref=e429]: "],"
+                  - generic [ref=e430]: "},"
+                  - generic [ref=e431]: "],"
+                  - generic [ref=e432]: )
+                  - generic [ref=e433]: print(completion.choices[0].message.content)
+              - heading "Navigate to header Multimodal Tool Capability Example" [level=3] [ref=e434]:
+                - link "Navigate to header" [ref=e435] [cursor=pointer]:
+                  - /url: "#multimodal-tool-capability-example"
+                  - img [ref=e437]
+                - generic [ref=e439] [cursor=pointer]: Multimodal Tool Capability Example
+              - generic [ref=e440]: Kimi K2.6 model combines multiple capabilities. The following example demonstrates K2.6’s visual understanding + tool calling capabilities.
+              - generic [ref=e441]:
+                - text: First, download this sample video to your local machine, such as
+                - code [ref=e442]: ~/Download/test_video.mp4
+              - generic [ref=e448]: "Then run the following code:"
+              - generic [ref=e449]:
+                - generic [ref=e450]:
+                  - button "Report incorrect code" [ref=e452] [cursor=pointer]:
+                    - img [ref=e453]
+                  - button "Copy the contents from the code block" [ref=e456] [cursor=pointer]:
+                    - img [ref=e457]
+                - code [ref=e463]:
+                  - generic [ref=e464]: import base64
+                  - generic [ref=e465]: import json
+                  - generic [ref=e466]: import os
+                  - generic [ref=e467]: import subprocess
+                  - generic [ref=e468]: import tempfile
+                  - generic [ref=e469]: from pathlib import Path
+                  - generic [ref=e470]: from openai import OpenAI
+                  - generic [ref=e471]: "tools = [{"
+                  - generic [ref=e472]: "\"type\": \"function\","
+                  - generic [ref=e473]: "\"function\": {"
+                  - generic [ref=e474]: "\"name\": \"watch_video_clip\","
+                  - generic [ref=e475]: "\"description\": \"Watch a video file or a sub-clip of it. If start_time and end_time are not provided, the entire video will be returned.\","
+                  - generic [ref=e476]: "\"parameters\": {"
+                  - generic [ref=e477]: "\"type\": \"object\","
+                  - generic [ref=e478]: "\"properties\": {"
+                  - generic [ref=e479]: "\"path\": {"
+                  - generic [ref=e480]: "\"type\": \"string\","
+                  - generic [ref=e481]: "\"description\": \"The path to the video file to watch\""
+                  - generic [ref=e482]: "},"
+                  - generic [ref=e483]: "\"start_time\": {"
+                  - generic [ref=e484]: "\"type\": \"number\","
+                  - generic [ref=e485]: "\"description\": \"The start time of the clip in seconds (optional, defaults to 0)\""
+                  - generic [ref=e486]: "},"
+                  - generic [ref=e487]: "\"end_time\": {"
+                  - generic [ref=e488]: "\"type\": \"number\","
+                  - generic [ref=e489]: "\"description\": \"The end time of the clip in seconds (optional, defaults to end of video)\""
+                  - generic [ref=e490]: "}"
+                  - generic [ref=e491]: "},"
+                  - generic [ref=e492]: "\"required\": [\"path\"]"
+                  - generic [ref=e493]: "}"
+                  - generic [ref=e494]: "}"
+                  - generic [ref=e495]: "}]"
+                  - generic [ref=e496]: "def watch_video_clip(path: str, start_time: float | None = None, end_time: float | None = None) -> list[dict]:"
+                  - generic [ref=e497]: "\"\"\""
+                  - generic [ref=e498]: Watch a video file or a sub-clip of it.
+                  - generic [ref=e499]: "Args:"
+                  - generic [ref=e500]: "path: The path to the video file to watch"
+                  - generic [ref=e501]: "start_time: The start time in seconds (optional, defaults to 0)"
+                  - generic [ref=e502]: "end_time: The end time in seconds (optional, defaults to end of video)"
+                  - generic [ref=e503]: "Returns:"
+                  - generic [ref=e504]: A list of content blocks in MultiModal Tool API format
+                  - generic [ref=e505]: "\"\"\""
+                  - generic [ref=e506]: video_path = Path(path)
+                  - generic [ref=e507]: "if not video_path.exists():"
+                  - generic [ref=e508]: "raise FileNotFoundError(f\"Video file not found: {path}\")"
+                  - generic [ref=e509]: "# Get video duration if needed"
+                  - generic [ref=e510]: "if start_time is None and end_time is None:"
+                  - generic [ref=e511]: "# Return entire video"
+                  - generic [ref=e512]: "with open(path, \"rb\") as f:"
+                  - generic [ref=e513]: video_base64 = base64.b64encode(f.read()).decode("utf-8")
+                  - generic [ref=e514]: return [
+                  - generic [ref=e515]: "{\"type\": \"video_url\", \"video_url\": {\"url\": f\"data:video/mp4;base64,{video_base64}\"}},"
+                  - generic [ref=e516]: "{\"type\": \"text\", \"text\": f\"Full video: {video_path.name}\"}"
+                  - generic [ref=e517]: "]"
+                  - generic [ref=e518]: "# Get video duration for defaults"
+                  - generic [ref=e519]: probe = subprocess.run(
+                  - generic [ref=e520]: "[\"ffprobe\", \"-v\", \"quiet\", \"-print_format\", \"json\", \"-show_format\", path],"
+                  - generic [ref=e521]: capture_output=True, text=True
+                  - generic [ref=e522]: )
+                  - generic [ref=e523]: duration = float(json.loads(probe.stdout)["format"]["duration"])
+                  - generic [ref=e524]: start_time = start_time or 0
+                  - generic [ref=e525]: end_time = end_time or duration
+                  - generic [ref=e526]: clip_duration = end_time - start_time
+                  - generic [ref=e527]: "# Extract clip"
+                  - generic [ref=e528]: "with tempfile.NamedTemporaryFile(suffix=\".mp4\", delete=False) as tmp:"
+                  - generic [ref=e529]: tmp_path = tmp.name
+                  - generic [ref=e530]: "try:"
+                  - generic [ref=e531]: subprocess.run([
+                  - generic [ref=e532]: "\"ffmpeg\", \"-y\", \"-ss\", str(start_time), \"-i\", path,"
+                  - generic [ref=e533]: "\"-t\", str(clip_duration), \"-c:v\", \"libx264\", \"-c:a\", \"aac\","
+                  - generic [ref=e534]: "\"-preset\", \"fast\", \"-crf\", \"23\", \"-movflags\", \"+faststart\","
+                  - generic [ref=e535]: "\"-loglevel\", \"error\", tmp_path"
+                  - generic [ref=e536]: "], check=True)"
+                  - generic [ref=e537]: "with open(tmp_path, \"rb\") as f:"
+                  - generic [ref=e538]: video_base64 = base64.b64encode(f.read()).decode("utf-8")
+                  - generic [ref=e539]: return [
+                  - generic [ref=e540]: "{\"type\": \"video_url\", \"video_url\": {\"url\": f\"data:video/mp4;base64,{video_base64}\"}},"
+                  - generic [ref=e541]: "{\"type\": \"text\", \"text\": f\"Clip from {video_path.name}: {start_time}s - {end_time}s\"}"
+                  - generic [ref=e542]: "]"
+                  - generic [ref=e543]: "finally:"
+                  - generic [ref=e544]: "if os.path.exists(tmp_path):"
+                  - generic [ref=e545]: os.unlink(tmp_path)
+                  - generic [ref=e546]: client = OpenAI(
+                  - generic [ref=e547]: api_key=os.environ.get("MOONSHOT_API_KEY"),
+                  - generic [ref=e548]: base_url="https://api.moonshot.ai/v1"
+                  - generic [ref=e549]: )
+                  - generic [ref=e550]: "def agent_loop(user_message: str):"
+                  - generic [ref=e551]: "\"\"\"Simple agent loop with multimodal tool support.\"\"\""
+                  - generic [ref=e552]: messages = [
+                  - generic [ref=e553]: "{\"role\": \"system\", \"content\": \"You are a video analysis assistant. Use watch_video_clip to examine specific portions of videos.\"},"
+                  - generic [ref=e554]: "{\"role\": \"user\", \"content\": user_message}"
+                  - generic [ref=e555]: "]"
+                  - generic [ref=e556]: "while True:"
+                  - generic [ref=e557]: response = client.chat.completions.create(
+                  - generic [ref=e558]: model="kimi-k2.6",
+                  - generic [ref=e559]: messages=messages,
+                  - generic [ref=e560]: tools=tools,
+                  - generic [ref=e561]: tool_choice="auto"
+                  - generic [ref=e562]: )
+                  - generic [ref=e563]: message = response.choices[0].message
+                  - generic [ref=e564]: messages.append(message.model_dump())
+                  - generic [ref=e565]: "# No tool calls = done"
+                  - generic [ref=e566]: "if not message.tool_calls:"
+                  - generic [ref=e567]: return message.content
+                  - generic [ref=e568]: "# Execute tool calls"
+                  - generic [ref=e569]: "for tool_call in message.tool_calls:"
+                  - generic [ref=e570]: "if tool_call.function.name == \"watch_video_clip\":"
+                  - generic [ref=e571]: args = json.loads(tool_call.function.arguments)
+                  - generic [ref=e572]: result = watch_video_clip(
+                  - generic [ref=e573]: path=args["path"],
+                  - generic [ref=e574]: start_time=args.get("start_time"),
+                  - generic [ref=e575]: end_time=args.get("end_time")
+                  - generic [ref=e576]: )
+                  - generic [ref=e577]: "# Multimodal tool result"
+                  - generic [ref=e578]: "messages.append({"
+                  - generic [ref=e579]: "\"role\": \"tool\","
+                  - generic [ref=e580]: "\"tool_call_id\": tool_call.id,"
+                  - generic [ref=e581]: "\"content\": result"
+                  - generic [ref=e582]: "})"
+                  - generic [ref=e583]: "# Usage"
+                  - generic [ref=e584]: answer = agent_loop("Analyze what happens between seconds 8-13 in ~/Download/test_video.mp4")
+                  - generic [ref=e585]: print(answer)
+              - heading "Navigate to header Best Practices" [level=2] [ref=e586]:
+                - link "Navigate to header" [ref=e587] [cursor=pointer]:
+                  - /url: "#best-practices"
+                  - img [ref=e589]
+                - generic [ref=e591] [cursor=pointer]: Best Practices
+              - heading "Navigate to header Supported Formats" [level=3] [ref=e592]:
+                - link "Navigate to header" [ref=e593] [cursor=pointer]:
+                  - /url: "#supported-formats"
+                  - img [ref=e595]
+                - generic [ref=e597] [cursor=pointer]: Supported Formats
+              - generic [ref=e598]:
+                - text: "Images are supported in formats: png, jpeg, webp, gif."
+                - text: "Videos are supported in formats: mp4, mpeg, mov, avi, x-flv, mpg, webm, wmv, 3gpp."
+              - heading "Navigate to header Token Calculation and Billing" [level=3] [ref=e599]:
+                - link "Navigate to header" [ref=e600] [cursor=pointer]:
+                  - /url: "#token-calculation-and-billing"
+                  - img [ref=e602]
+                - generic [ref=e604] [cursor=pointer]: Token Calculation and Billing
+              - generic [ref=e605]:
+                - text: Image and video token usage is dynamically calculated. You can use the
+                - link "token estimation API" [ref=e606] [cursor=pointer]:
+                  - /url: /docs/api/estimate
+                - text: to check the expected token consumption for a request containing images or video before processing.
+              - generic [ref=e607]: Generally, the higher the resolution of an image, the more tokens it will consume. For videos, the number of tokens depends on the number of keyframes and their resolution—the more keyframes and the higher their resolution, the greater the token consumption.
+              - generic [ref=e608]:
+                - text: The Vision model uses the same billing method as the
+                - code [ref=e609]: moonshot-v1
+                - text: "model series, with charges based on the total number of tokens processed. For more information, see:"
+              - generic [ref=e610]:
+                - text: For token pricing details, refer to
+                - link "Model Pricing" [ref=e611] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k26
+                - text: .
+              - heading "Navigate to header Recommended Resolution" [level=3] [ref=e612]:
+                - link "Navigate to header" [ref=e613] [cursor=pointer]:
+                  - /url: "#recommended-resolution"
+                  - img [ref=e615]
+                - generic [ref=e617] [cursor=pointer]: Recommended Resolution
+              - generic [ref=e618]: We recommend that image resolution should not exceed 4k (4096×2160), and video resolution should not exceed 2k (2048×1080). Higher resolutions will only increase processing time and will not improve the model’s understanding.
+              - heading "Navigate to header Upload File or Base64?" [level=3] [ref=e619]:
+                - link "Navigate to header" [ref=e620] [cursor=pointer]:
+                  - /url: "#upload-file-or-base64"
+                  - img [ref=e622]
+                - generic [ref=e624] [cursor=pointer]: Upload File or Base64?
+              - generic [ref=e625]:
+                - text: Due to the limitation on the overall size of the request body, for very large videos you
+                - strong [ref=e626]: must
+                - text: use the file upload method to utilize vision capabilities.For images or videos that will be referenced multiple times, it is recommended to use the file upload method. Regarding file upload limitations, please refer to the
+                - link "File Upload documentation" [ref=e627] [cursor=pointer]:
+                  - /url: /docs/api/files-upload
+                - text: .
+              - generic [ref=e628]: "Image quantity limit: The Vision model has no limit on the number of images, but ensure that the request body size does not exceed 100M"
+              - generic [ref=e629]: "URL-formatted images: Not supported, currently only supports base64-encoded image content"
+              - heading "Navigate to header Parameters Differences in Request Body" [level=2] [ref=e630]:
+                - link "Navigate to header" [ref=e631] [cursor=pointer]:
+                  - /url: "#parameters-differences-in-request-body"
+                  - img [ref=e633]
+                - generic [ref=e635] [cursor=pointer]: Parameters Differences in Request Body
+              - generic [ref=e636]:
+                - text: Parameters are listed in
+                - link "chat" [ref=e637] [cursor=pointer]:
+                  - /url: /docs/api/chat
+                - text: . However, behaviour of some parameters may be different in k2.6/k2.5 models.
+              - strong [ref=e639]: We recommend using the default values instead of manually configuring these parameters.
+              - generic [ref=e640]: Differences are listed below.
+              - table [ref=e643]:
+                - rowgroup [ref=e644]:
+                  - row "Field Required Description Type Values" [ref=e645]:
+                    - columnheader "Field" [ref=e646]
+                    - columnheader "Required" [ref=e647]
+                    - columnheader "Description" [ref=e648]
+                    - columnheader "Type" [ref=e649]
+                    - columnheader "Values" [ref=e650]
+                - rowgroup [ref=e651]:
+                  - row "max_tokens optional The maximum number of tokens to generate for the chat completion. int Default to be 32k aka 32768" [ref=e652]:
+                    - cell "max_tokens" [ref=e653]
+                    - cell "optional" [ref=e654]
+                    - cell "The maximum number of tokens to generate for the chat completion." [ref=e655]
+                    - cell "int" [ref=e656]
+                    - cell "Default to be 32k aka 32768" [ref=e657]
+                  - 'row "thinking optional New! This parameter controls if the thinking is enabled for this request object Default to be {\"type\": \"enabled\"}. Value can only be one of {\"type\": \"enabled\"} or {\"type\": \"disabled\"}" [ref=e658]':
+                    - cell "thinking" [ref=e659]
+                    - cell "optional" [ref=e660]
+                    - cell "New! This parameter controls if the thinking is enabled for this request" [ref=e661]:
+                      - strong [ref=e662]: New!
+                      - text: This parameter controls if the thinking is enabled for this request
+                    - cell "object" [ref=e663]
+                    - 'cell "Default to be {\"type\": \"enabled\"}. Value can only be one of {\"type\": \"enabled\"} or {\"type\": \"disabled\"}" [ref=e664]':
+                      - text: Default to be
+                      - code [ref=e665]: "{\"type\": \"enabled\"}"
+                      - text: . Value can only be one of
+                      - code [ref=e666]: "{\"type\": \"enabled\"}"
+                      - text: or
+                      - code [ref=e667]: "{\"type\": \"disabled\"}"
+                  - row "temperature optional The sampling temperature to use float k2.6/k2.5 model will use a fixed value 1.0, non-thinking mode will use a fixed value 0.6. Any other value will result in an error" [ref=e668]:
+                    - cell "temperature" [ref=e669]
+                    - cell "optional" [ref=e670]
+                    - cell "The sampling temperature to use" [ref=e671]
+                    - cell "float" [ref=e672]
+                    - cell "k2.6/k2.5 model will use a fixed value 1.0, non-thinking mode will use a fixed value 0.6. Any other value will result in an error" [ref=e673]
+                  - row "top_p optional A sampling method float k2.6/k2.5 model will use a fixed value 0.95. Any other value will result in an error" [ref=e674]:
+                    - cell "top_p" [ref=e675]
+                    - cell "optional" [ref=e676]
+                    - cell "A sampling method" [ref=e677]
+                    - cell "float" [ref=e678]
+                    - cell "k2.6/k2.5 model will use a fixed value 0.95. Any other value will result in an error" [ref=e679]
+                  - row "n optional The number of results to generate for each input message int k2.6/k2.5 model will use a fixed value 1. Any other value will result in an error" [ref=e680]:
+                    - cell "n" [ref=e681]
+                    - cell "optional" [ref=e682]
+                    - cell "The number of results to generate for each input message" [ref=e683]
+                    - cell "int" [ref=e684]
+                    - cell "k2.6/k2.5 model will use a fixed value 1. Any other value will result in an error" [ref=e685]
+                  - row "presence_penalty optional Penalizing new tokens based on whether they appear in the text float k2.6/k2.5 model will use a fixed value 0.0. Any other value will result in an error" [ref=e686]:
+                    - cell "presence_penalty" [ref=e687]
+                    - cell "optional" [ref=e688]
+                    - cell "Penalizing new tokens based on whether they appear in the text" [ref=e689]
+                    - cell "float" [ref=e690]
+                    - cell "k2.6/k2.5 model will use a fixed value 0.0. Any other value will result in an error" [ref=e691]
+                  - row "frequency_penalty optional Penalizing new tokens based on their existing frequency in the text float k2.6/k2.5 model will use a fixed value 0.0. Any other value will result in an error" [ref=e692]:
+                    - cell "frequency_penalty" [ref=e693]
+                    - cell "optional" [ref=e694]
+                    - cell "Penalizing new tokens based on their existing frequency in the text" [ref=e695]
+                    - cell "float" [ref=e696]
+                    - cell "k2.6/k2.5 model will use a fixed value 0.0. Any other value will result in an error" [ref=e697]
+              - heading "Navigate to header Tool Use Compatibility" [level=2] [ref=e698]:
+                - link "Navigate to header" [ref=e699] [cursor=pointer]:
+                  - /url: "#tool-use-compatibility"
+                  - img [ref=e701]
+                - generic [ref=e703] [cursor=pointer]: Tool Use Compatibility
+              - generic [ref=e704]:
+                - text: When using tools, if the thinking parameter is set to
+                - code [ref=e705]: "{\"type\": \"enabled\"}"
+                - text: ", please note the following constraints to ensure model performance:"
+              - list [ref=e706]:
+                - listitem [ref=e707]:
+                  - code [ref=e708]: tool_choice
+                  - text: can only be set to “auto” or “none” (default is “auto”) to avoid conflicts between reasoning content and the specified tool_choice. Any other value will result in an error;
+                - listitem [ref=e709]:
+                  - text: During multi-step tool calling, you must keep the
+                  - code [ref=e710]: reasoning_content
+                  - text: from the assistant message in the current turn’s tool call within the context, otherwise an error will be thrown;
+                - listitem [ref=e711]:
+                  - text: The official builtin
+                  - code [ref=e712]: $web_search
+                  - text: tool is temporarily incompatible with Kimi K2.6/Kimi K2.5 thinking mode, you can choose to disable thinking mode first and then use the
+                  - code [ref=e713]: $web_search
+                  - text: tool.
+              - generic [ref=e714]:
+                - text: You can refer to
+                - link "Use Thinking Models" [ref=e715] [cursor=pointer]:
+                  - /url: /docs/guide/use-kimi-k2-thinking-model
+                - text: for correct usage of tool calling.
+              - heading "Navigate to header Disable Thinking Capability Example" [level=3] [ref=e716]:
+                - link "Navigate to header" [ref=e717] [cursor=pointer]:
+                  - /url: "#disable-thinking-capability-example"
+                  - img [ref=e719]
+                - generic [ref=e721] [cursor=pointer]: Disable Thinking Capability Example
+              - generic [ref=e722]:
+                - text: For the
+                - code [ref=e723]: kimi-k2.6
+                - text: ","
+                - code [ref=e724]: kimi-k2.5
+                - text: model, you can disable thinking by specifying
+                - code [ref=e725]: "\"thinking\": {\"type\": \"disabled\"}"
+                - text: "in the request body:"
+              - generic [ref=e726]:
+                - tablist [ref=e727]:
+                  - tab "curl" [selected] [ref=e728] [cursor=pointer]:
+                    - generic [ref=e729]: curl
+                  - tab "python" [ref=e730] [cursor=pointer]:
+                    - generic [ref=e731]: python
+                - 'tabpanel "curl python Report incorrect code Copy the contents from the code block $ curl https://api.moonshot.ai/v1/chat/completions \\ -H \"Content-Type: application/json\" \\ -H \"Authorization: Bearer $MOONSHOT_API_KEY\" \\ -d ''{ \"model\": \"kimi-k2.6\", \"messages\": [ {\"role\": \"user\", \"content\": \"hello\"} ], \"thinking\": {\"type\": \"disabled\"} }''" [ref=e733]':
+                  - generic [ref=e734]:
+                    - generic [ref=e735]:
+                      - button "Report incorrect code" [ref=e737] [cursor=pointer]:
+                        - img [ref=e738]
+                      - button "Copy the contents from the code block" [ref=e741] [cursor=pointer]:
+                        - img [ref=e742]
+                    - code [ref=e748]:
+                      - generic [ref=e749]: $ curl https://api.moonshot.ai/v1/chat/completions \
+                      - generic [ref=e750]: "-H \"Content-Type: application/json\" \\"
+                      - generic [ref=e751]: "-H \"Authorization: Bearer $MOONSHOT_API_KEY\" \\"
+                      - generic [ref=e752]: "-d '{"
+                      - generic [ref=e753]: "\"model\": \"kimi-k2.6\","
+                      - generic [ref=e754]: "\"messages\": ["
+                      - generic [ref=e755]: "{\"role\": \"user\", \"content\": \"hello\"}"
+                      - generic [ref=e756]: "],"
+                      - generic [ref=e757]: "\"thinking\": {\"type\": \"disabled\"}"
+                      - generic [ref=e758]: "}'"
+              - heading "Navigate to header Model Pricing" [level=2] [ref=e759]:
+                - link "Navigate to header" [ref=e760] [cursor=pointer]:
+                  - /url: "#model-pricing"
+                  - img [ref=e762]
+                - generic [ref=e764] [cursor=pointer]: Model Pricing
+              - generic [ref=e765]:
+                - text: For token pricing details, refer to
+                - link "Model Pricing" [ref=e766] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k26
+                - text: .
+              - heading "Navigate to header Learn More" [level=2] [ref=e767]:
+                - link "Navigate to header" [ref=e768] [cursor=pointer]:
+                  - /url: "#learn-more"
+                  - img [ref=e770]
+                - generic [ref=e772] [cursor=pointer]: Learn More
+              - list [ref=e773]:
+                - listitem [ref=e774]:
+                  - text: For the benchmark testing with Kimi K2.6, please refer to this
+                  - link "benchmark best practice" [ref=e775] [cursor=pointer]:
+                    - /url: /docs/guide/benchmark-best-practice
+                - listitem [ref=e776]:
+                  - text: "For the most detailed API usage example of Kimi K2.6, see:"
+                  - link "How to Use Kimi Vision Model" [ref=e777] [cursor=pointer]:
+                    - /url: /docs/guide/use-kimi-vision-model
+                - listitem [ref=e778]:
+                  - text: See
+                  - link "How to Use Kimi K2 in Claude Code, Roo Code, and Cline" [ref=e779] [cursor=pointer]:
+                    - /url: /docs/guide/agent-support
+                - listitem [ref=e780]:
+                  - text: Learn how to configure and use the
+                  - link "Thinking Model" [ref=e781] [cursor=pointer]:
+                    - /url: /docs/guide/use-kimi-k2-thinking-model
+                - listitem [ref=e782]:
+                  - text: Web search is a powerful official tool provided by the Kimi API. See how to use
+                  - link "Web Search" [ref=e783] [cursor=pointer]:
+                    - /url: /docs/guide/use-web-search
+                  - text: and other
+                  - link "official tools" [ref=e784] [cursor=pointer]:
+                    - /url: /docs/guide/use-official-tools
+                  - text: .
+                - listitem [ref=e785]:
+                  - text: For all model pricing see
+                  - link "here" [ref=e786] [cursor=pointer]:
+                    - /url: /docs/pricing/chat
+                  - text: ","
+                  - link "Billing & Rate Limit details" [ref=e787] [cursor=pointer]:
+                    - /url: /docs/pricing/limits
+                  - text: ", and"
+                  - link "Web Search Pricing" [ref=e788] [cursor=pointer]:
+                    - /url: /docs/pricing/tools
+            - generic [ref=e790]:
+              - paragraph [ref=e791]: Was this page helpful?
+              - generic [ref=e793]:
+                - button "Yes" [ref=e794] [cursor=pointer]:
+                  - img [ref=e795]
+                  - generic [ref=e797]: "Yes"
+                - button "No" [ref=e798] [cursor=pointer]:
+                  - img [ref=e799]
+                  - generic [ref=e801]: "No"
+            - generic [ref=e802]:
+              - link "Quickstart with Kimi API" [ref=e803] [cursor=pointer]:
+                - /url: /docs/guide/start-using-kimi-api
+                - img [ref=e804]
+                - generic [ref=e806]: Quickstart with Kimi API
+              - link "Kimi K2" [ref=e807] [cursor=pointer]:
+                - /url: /docs/guide/kimi-k2-quickstart
+                - generic [ref=e808]: Kimi K2
+                - img [ref=e809]
+            - contentinfo [ref=e811]:
+              - generic [ref=e812]:
+                - link "x" [ref=e813] [cursor=pointer]:
+                  - /url: https://x.com/Kimi_Moonshot
+                  - generic [ref=e814]: x
+                  - img [ref=e815]
+                - link "github" [ref=e816] [cursor=pointer]:
+                  - /url: https://github.com/MoonshotAI
+                  - generic [ref=e817]: github
+                  - img [ref=e818]
+                - link "linkedin" [ref=e819] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/kimi-ai-linkedin
+                  - generic [ref=e820]: linkedin
+                  - img [ref=e821]
+  - alert [ref=e822]

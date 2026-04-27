@@ -1,0 +1,221 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to main content" [ref=e3] [cursor=pointer]:
+      - /url: "#content-area"
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - paragraph [ref=e10]:
+          - text: 🎉 Kimi K2.6 has been released with improved long-context coding stability.
+          - link "Top-up bonus event in progress 🔗" [ref=e11] [cursor=pointer]:
+            - /url: /docs/pricing/promotion
+        - generic [ref=e14]:
+          - generic [ref=e17]:
+            - link "Kimi API Platform home page light logo" [ref=e19] [cursor=pointer]:
+              - /url: https://platform.kimi.ai
+              - generic [ref=e20]: Kimi API Platform home page
+              - img "light logo" [ref=e21]
+            - button "Open search" [ref=e23] [cursor=pointer]:
+              - generic [ref=e24]:
+                - img [ref=e25]
+                - generic [ref=e28]: Search...
+              - generic [ref=e29]: ⌘K
+            - generic [ref=e30]:
+              - navigation [ref=e31]:
+                - list [ref=e32]:
+                  - listitem [ref=e33]:
+                    - link "Contact Sales" [ref=e34] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/contact-sales
+                  - listitem [ref=e35]:
+                    - link "Blog" [ref=e36] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/blog
+                  - listitem [ref=e37]:
+                    - link "Playground" [ref=e38] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/playground
+                  - listitem [ref=e39]:
+                    - link "User Center" [ref=e40] [cursor=pointer]:
+                      - /url: https://platform.kimi.ai/console/account
+              - button "Toggle dark mode" [ref=e42] [cursor=pointer]:
+                - img [ref=e43]
+          - generic [ref=e51]:
+            - link "Get Started" [ref=e52] [cursor=pointer]:
+              - /url: /docs/overview
+              - text: Get Started
+            - link "Guides" [ref=e54] [cursor=pointer]:
+              - /url: /docs/guide/utilize-the-streaming-output-feature-of-kimi-api
+              - text: Guides
+            - link "API Reference" [ref=e56] [cursor=pointer]:
+              - /url: /docs/api/overview
+              - text: API Reference
+            - link "Pricing" [ref=e58] [cursor=pointer]:
+              - /url: /docs/pricing/chat
+              - text: Pricing
+            - link "Resources" [ref=e60] [cursor=pointer]:
+              - /url: /docs/guide/prompt-best-practice
+              - text: Resources
+      - generic [ref=e62]:
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - heading "Model Pricing" [level=5] [ref=e69]
+            - list [ref=e70]:
+              - listitem [ref=e71]:
+                - link "Overview" [ref=e72] [cursor=pointer]:
+                  - /url: /docs/pricing/chat
+                  - generic [ref=e75]: Overview
+              - listitem [ref=e76]:
+                - link "Kimi K2.6" [ref=e77] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k26
+                  - generic [ref=e80]: Kimi K2.6
+              - listitem [ref=e81]:
+                - link "Kimi K2.5" [ref=e82] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k25
+                  - generic [ref=e85]: Kimi K2.5
+              - listitem [ref=e86]:
+                - link "Kimi K2" [ref=e87] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-k2
+                  - generic [ref=e90]: Kimi K2
+              - listitem [ref=e91]:
+                - link "Moonshot V1" [ref=e92] [cursor=pointer]:
+                  - /url: /docs/pricing/chat-v1
+                  - generic [ref=e95]: Moonshot V1
+          - generic [ref=e96]:
+            - heading "Other" [level=5] [ref=e98]
+            - list [ref=e99]:
+              - listitem [ref=e100]:
+                - link "BatchJob Pricing" [ref=e101] [cursor=pointer]:
+                  - /url: /docs/pricing/batch
+                  - generic [ref=e104]: BatchJob Pricing
+              - listitem [ref=e105]:
+                - link "WebSearch Pricing" [ref=e106] [cursor=pointer]:
+                  - /url: /docs/pricing/tools
+                  - generic [ref=e109]: WebSearch Pricing
+              - listitem [ref=e110]:
+                - link "Recharge and Rate Limiting" [ref=e111] [cursor=pointer]:
+                  - /url: /docs/pricing/limits
+                  - generic [ref=e114]: Recharge and Rate Limiting
+          - generic [ref=e115]:
+            - heading "Promotions" [level=5] [ref=e117]
+            - list [ref=e118]:
+              - listitem [ref=e119]:
+                - link "Limited Time Offers" [ref=e120] [cursor=pointer]:
+                  - /url: /docs/pricing/promotion
+                  - generic [ref=e123]: Limited Time Offers
+          - generic [ref=e124]:
+            - heading "Support" [level=5] [ref=e126]
+            - list [ref=e127]:
+              - listitem [ref=e128]:
+                - link "FAQ" [ref=e129] [cursor=pointer]:
+                  - /url: /docs/pricing/faq
+                  - generic [ref=e132]: FAQ
+        - generic [ref=e134]:
+          - generic [ref=e137]:
+            - button "On this page" [ref=e138] [cursor=pointer]:
+              - img [ref=e139]
+              - generic [ref=e140]: On this page
+            - list [ref=e142]:
+              - listitem [ref=e143]:
+                - link "Concepts" [ref=e144] [cursor=pointer]:
+                  - /url: "#concepts"
+              - listitem [ref=e145]:
+                - link "Billing Unit" [ref=e146] [cursor=pointer]:
+                  - /url: "#billing-unit"
+              - listitem [ref=e147]:
+                - link "Billing Logic" [ref=e148] [cursor=pointer]:
+                  - /url: "#billing-logic"
+              - listitem [ref=e149]:
+                - link "Model Pricing" [ref=e150] [cursor=pointer]:
+                  - /url: "#model-pricing"
+          - generic [ref=e151]:
+            - banner [ref=e152]:
+              - generic [ref=e153]:
+                - link "Model Pricing" [ref=e156] [cursor=pointer]:
+                  - /url: /docs/pricing/chat
+                - generic [ref=e157]:
+                  - heading "Model Inference Pricing Explanation" [level=1] [ref=e158]
+                  - generic [ref=e159]:
+                    - button "Copy page" [ref=e160] [cursor=pointer]:
+                      - generic [ref=e161]:
+                        - img [ref=e162]
+                        - generic [ref=e165]: Copy page
+                    - button "More actions" [ref=e166] [cursor=pointer]:
+                      - img [ref=e167]
+            - generic [ref=e169]:
+              - heading "Navigate to header Concepts" [level=2] [ref=e170]:
+                - link "Navigate to header" [ref=e171] [cursor=pointer]:
+                  - /url: "#concepts"
+                  - img [ref=e173]
+                - generic [ref=e175] [cursor=pointer]: Concepts
+              - heading "Navigate to header Billing Unit" [level=3] [ref=e176]:
+                - link "Navigate to header" [ref=e177] [cursor=pointer]:
+                  - /url: "#billing-unit"
+                  - img [ref=e179]
+                - generic [ref=e181] [cursor=pointer]: Billing Unit
+              - generic [ref=e182]:
+                - text: "Token: A token represents a common sequence of characters. The number of tokens used for each English character may vary. For example, a single character like “antidisestablishmentarianism” might be broken down into several tokens, while a short and common phrase like “word” might use just one token. Generally speaking, for a typical English text, 1 token is roughly equivalent to 3-4 English characters. The exact number of tokens generated by each call can be obtained through the"
+                - link "Token Calculation API" [ref=e183] [cursor=pointer]:
+                  - /url: /docs/api/estimate
+                - text: .
+              - heading "Navigate to header Billing Logic" [level=4] [ref=e184]:
+                - link "Navigate to header" [ref=e185] [cursor=pointer]:
+                  - /url: "#billing-logic"
+                  - img [ref=e187]
+                - generic [ref=e189] [cursor=pointer]: Billing Logic
+              - generic [ref=e190]:
+                - text: "Chat Completion API charges: We bill both the Input and Output based on usage. If you upload and extract content from a document and then pass the extracted content as Input to the model, the document content will also be billed based on usage. File-related interfaces (file content extraction/file storage) are"
+                - strong [ref=e191]: temporarily free
+                - text: . In other words, if you only upload and extract a document, this API itself will not incur any charges.
+              - heading "Navigate to header Model Pricing" [level=2] [ref=e192]:
+                - link "Navigate to header" [ref=e193] [cursor=pointer]:
+                  - /url: "#model-pricing"
+                  - img [ref=e195]
+                - generic [ref=e197] [cursor=pointer]: Model Pricing
+              - generic [ref=e198]: "See detailed pricing for each model:"
+              - generic [ref=e199]:
+                - link [ref=e200] [cursor=pointer]:
+                  - link [ref=e202]:
+                    - /url: /docs/pricing/chat-k26
+                    - img [ref=e204]
+                    - generic [ref=e205]:
+                      - heading [level=2] [ref=e206]: Kimi K2.6
+                      - generic [ref=e208]: Multi-modal model with visual and text input
+                - link [ref=e209] [cursor=pointer]:
+                  - link [ref=e211]:
+                    - /url: /docs/pricing/chat-k2
+                    - img [ref=e213]
+                    - generic [ref=e214]:
+                      - heading [level=2] [ref=e215]: Kimi K2
+                      - generic [ref=e217]: MoE model with exceptional code and agent capabilities
+                - link [ref=e218] [cursor=pointer]:
+                  - link [ref=e220]:
+                    - /url: /docs/pricing/chat-v1
+                    - img [ref=e222]
+                    - generic [ref=e223]:
+                      - heading [level=2] [ref=e224]: Moonshot V1
+                      - generic [ref=e226]: Generation model series
+            - generic [ref=e228]:
+              - paragraph [ref=e229]: Was this page helpful?
+              - generic [ref=e231]:
+                - button "Yes" [ref=e232] [cursor=pointer]:
+                  - img [ref=e233]
+                  - generic [ref=e235]: "Yes"
+                - button "No" [ref=e236] [cursor=pointer]:
+                  - img [ref=e237]
+                  - generic [ref=e239]: "No"
+            - link "Kimi K2.6" [ref=e241] [cursor=pointer]:
+              - /url: /docs/pricing/chat-k26
+              - generic [ref=e242]: Kimi K2.6
+              - img [ref=e243]
+            - contentinfo [ref=e245]:
+              - generic [ref=e246]:
+                - link "x" [ref=e247] [cursor=pointer]:
+                  - /url: https://x.com/Kimi_Moonshot
+                  - generic [ref=e248]: x
+                  - img [ref=e249]
+                - link "github" [ref=e250] [cursor=pointer]:
+                  - /url: https://github.com/MoonshotAI
+                  - generic [ref=e251]: github
+                  - img [ref=e252]
+                - link "linkedin" [ref=e253] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/kimi-ai-linkedin
+                  - generic [ref=e254]: linkedin
+                  - img [ref=e255]
+  - alert [ref=e256]
