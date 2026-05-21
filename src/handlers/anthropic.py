@@ -560,8 +560,28 @@ class AnthropicHandler:
             content_blocks.append({"type": "thinking", "thinking": reasoning_content})
 
         text_content = message.get("content")
-        if isinstance(text_content, str) and text_content:
-            content_blocks.append({"type": "text", "text": text_content})
+        if isinstance(text_content, str):
+            if text_content:
+                content_blocks.append({"type": "text", "text": text_content})
+        elif isinstance(text_content, list):
+            thinking_parts: List[str] = []
+            text_parts: List[str] = []
+            for block in text_content:
+                if not isinstance(block, dict):
+                    continue
+                block_type = block.get("type")
+                if block_type == "thinking":
+                    thinking = block.get("thinking", "")
+                    if isinstance(thinking, str) and thinking:
+                        thinking_parts.append(thinking)
+                elif block_type == "text":
+                    text = block.get("text", "")
+                    if isinstance(text, str) and text:
+                        text_parts.append(text)
+            if thinking_parts and not content_blocks:
+                content_blocks.append({"type": "thinking", "thinking": "\n".join(thinking_parts)})
+            if text_parts:
+                content_blocks.append({"type": "text", "text": "\n".join(text_parts)})
 
         tool_calls = self._normalize_tool_calls(message.get("tool_calls"))
         for tool_call in tool_calls:

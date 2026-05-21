@@ -265,6 +265,108 @@
       "model": "opencode:qwen3.5-plus",
       "context_length": 1000000,
       "max_output_tokens": 81920
+    },
+    {
+      "name": "cursor:composer-2.5",
+      "model": "cursor:composer-2.5",
+      "context_length": 200000,
+      "max_output_tokens": 32000
+    },
+    {
+      "name": "cursor:composer-2.5-fast",
+      "model": "cursor:composer-2.5-fast",
+      "context_length": 200000,
+      "max_output_tokens": 32000
+    },
+    {
+      "name": "cursor:gpt-5.5-medium",
+      "model": "cursor:gpt-5.5-medium",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gpt-5.5-medium-fast",
+      "model": "cursor:gpt-5.5-medium-fast",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gpt-5.5-high",
+      "model": "cursor:gpt-5.5-high",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gpt-5.5-high-fast",
+      "model": "cursor:gpt-5.5-high-fast",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gpt-5.5-extra-high",
+      "model": "cursor:gpt-5.5-extra-high",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gpt-5.5-extra-high-fast",
+      "model": "cursor:gpt-5.5-extra-high-fast",
+      "context_length": 1050000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-medium",
+      "model": "cursor:claude-opus-4-7-thinking-medium",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-medium-fast",
+      "model": "cursor:claude-opus-4-7-thinking-medium-fast",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-high",
+      "model": "cursor:claude-opus-4-7-thinking-high",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-high-fast",
+      "model": "cursor:claude-opus-4-7-thinking-high-fast",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-xhigh",
+      "model": "cursor:claude-opus-4-7-thinking-xhigh",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-xhigh-fast",
+      "model": "cursor:claude-opus-4-7-thinking-xhigh-fast",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-max",
+      "model": "cursor:claude-opus-4-7-thinking-max",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:claude-opus-4-7-thinking-max-fast",
+      "model": "cursor:claude-opus-4-7-thinking-max-fast",
+      "context_length": 200000,
+      "max_output_tokens": 128000
+    },
+    {
+      "name": "cursor:gemini-3.5-flash",
+      "model": "cursor:gemini-3.5-flash",
+      "context_length": 1048576,
+      "max_output_tokens": 65536
     }
   ]
 }

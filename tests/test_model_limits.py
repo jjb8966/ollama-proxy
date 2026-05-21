@@ -76,3 +76,23 @@ def test_opencode_deepseek_v4_flash_model_limits_are_loaded() -> None:
     assert limits is not None
     assert limits.context_length == EXPECTED_DEEPSEEK_V4_CONTEXT_LENGTH
     assert limits.max_output_tokens == EXPECTED_DEEPSEEK_V4_MAX_OUTPUT_TOKENS
+
+
+def test_cursor_composer_2_5_model_limits_are_loaded() -> None:
+    reset_model_limits_cache()
+
+    limits = get_model_limits("cursor:composer-2.5")
+
+    assert limits is not None
+    assert limits.context_length == 200000
+    assert limits.max_output_tokens == 32000
+
+
+def test_cursor_gpt_5_5_high_model_limits_are_loaded() -> None:
+    reset_model_limits_cache()
+
+    limits = get_model_limits("cursor:gpt-5.5-high")
+
+    assert limits is not None
+    assert limits.context_length == 1050000
+    assert limits.max_output_tokens == 128000

@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Tuple
 
 
 CONTENT_TEXT_KEYS: Tuple[str, ...] = (
-    "content", "text", "value", "reasoning_content", "reasoning",
+    "content", "text", "value", "reasoning_content", "reasoning", "thinking",
 )
 
 ANTHROPIC_TEXT_KEYS: Tuple[str, ...] = (

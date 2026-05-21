@@ -38,7 +38,8 @@ def get_keys_status():
             api_config.qwen_oauth_manager,
             api_config.antigravity_rotator,
             api_config.nvidia_nim_rotator,
-            api_config.cli_proxy_api_rotator
+            api_config.cli_proxy_api_rotator,
+            api_config.cursor_rotator,
         ]
         
         providers_status = []

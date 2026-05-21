@@ -57,6 +57,10 @@ class ApiConfig:
         self.cli_proxy_api_rotator = KeyRotator("CLIProxyAPI", "CLI_PROXY_API_KEYS")
         self.cli_proxy_api_rotator.log_key_count()
 
+        # Cursor API Proxy (cursor-api-proxy, OpenAI 호환)
+        self.cursor_rotator = KeyRotator("Cursor", "CURSOR_API_KEYS")
+        self.cursor_rotator.log_key_count()
+
         # CLI Proxy API GPT (OpenAI 호환, 외부)
         self.cli_proxy_api_gpt_rotator = KeyRotator("CLIProxyAPI_GPT", "CLI_PROXY_API_GPT_KEYS")
         self.cli_proxy_api_gpt_rotator.log_key_count()

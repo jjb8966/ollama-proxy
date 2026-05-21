@@ -88,6 +88,10 @@ class ChatHandler:
             'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
         },
+        'cursor': {
+            'base_url': _strip_quotes(os.getenv('CURSOR_API_BASE_URL', 'http://host.docker.internal:8765/v1')),
+            'client_attr': 'cursor_client'
+        },
         # Primary: ollama-cloud
         'ollama-cloud': {
             'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
@@ -122,6 +126,7 @@ class ChatHandler:
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
         self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
+        self.cursor_client = StandardApiClient(api_config.cursor_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
         self.opencode_client = StandardApiClient(api_config.opencode_rotator)
 
@@ -426,12 +431,22 @@ class ChatHandler:
             "model": model,
             "stream": stream
         }
-        if max_tokens is not None:
-            payload["max_tokens"] = max_tokens
+
+        effective_max_tokens = max_tokens
+        if effective_max_tokens is None:
+            limits = get_model_limits(requested_model)
+            if limits is not None and limits.max_output_tokens is not None:
+                effective_max_tokens = limits.max_output_tokens
+        if effective_max_tokens is not None:
+            payload["max_tokens"] = effective_max_tokens
         if req.get('tools') is not None:
             payload['tools'] = req.get('tools')
         if req.get('tool_choice') is not None:
             payload['tool_choice'] = req.get('tool_choice')
+        if provider == 'opencode':
+            thinking_level = req.get('thinking_level')
+            if thinking_level:
+                payload['reasoning_effort'] = thinking_level
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
