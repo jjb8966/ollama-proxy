@@ -24,7 +24,7 @@ class BaseApiClient(ABC):
     """
     
     # API 요청 타임아웃 설정 (연결 타임아웃, 읽기 타임아웃)
-    REQUEST_TIMEOUT = (50, 300)
+    REQUEST_TIMEOUT = (50, 600)
     
     def __init__(self, provider_name: str):
         """
@@ -162,6 +162,20 @@ class BaseApiClient(ABC):
                         status_code=400,
                         error_type="invalid_request_error",
                         error_code="context_length_exceeded"
+                    )
+
+                if ErrorHandler.is_non_retryable_400(resp.status_code, response_body):
+                    message = ErrorHandler.extract_error_message(response_body)
+                    logging.error(
+                        f"[{self.provider_name}] 재시도 불가 400 에러 - 즉시 실패 처리 | "
+                        f"message={message}{context_suffix}"
+                    )
+                    return ProxyRequestError(
+                        model=str(payload.get("model", "unknown")),
+                        message=message,
+                        status_code=400,
+                        error_type="invalid_request_error",
+                        error_code="non_retryable_400"
                     )
 
                 passthrough_error = self._build_upstream_proxy_error(

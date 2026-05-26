@@ -15,6 +15,12 @@ from typing import Optional
 class ErrorHandler:
     """API 에러 처리를 위한 유틸리티 클래스"""
 
+    NON_RETRYABLE_400_PATTERNS = [
+        re.compile(r"too many images", re.IGNORECASE),
+        re.compile(r"unknown variant `image_url`", re.IGNORECASE),
+        re.compile(r"image_url.*expected `text`", re.IGNORECASE),
+    ]
+
     CONTEXT_OVERFLOW_PATTERNS = [
         re.compile(r"prompt is too long", re.IGNORECASE),
         re.compile(r"prompt too long", re.IGNORECASE),
@@ -161,6 +167,16 @@ class ErrorHandler:
         if not message:
             return False
         return any(pattern.search(message) for pattern in cls.CONTEXT_OVERFLOW_PATTERNS)
+
+    @classmethod
+    def is_non_retryable_400(cls, status_code: Optional[int], response_body: str) -> bool:
+        """재시도해도 절대 성공하지 않는 400 에러인지 확인합니다."""
+        if status_code != 400:
+            return False
+        message = cls.extract_error_message(response_body)
+        if not message:
+            return False
+        return any(pattern.search(message) for pattern in cls.NON_RETRYABLE_400_PATTERNS)
 
     @classmethod
     def is_context_overflow_response(cls, status_code: Optional[int], response_body: str) -> bool:

@@ -132,7 +132,84 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         normalized = self.handler._normalize_messages(messages)
 
         self.assertEqual(
-            normalized, [{"role": "user", "content": "안녕하세요.계속 진행해 주세요."}]
+            normalized,
+            [{"role": "user", "content": "안녕하세요.\n계속 진행해 주세요."}],
+        )
+
+    def test_user_text_before_and_after_tool_result_are_split_into_separate_messages(
+        self,
+    ) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "before"},
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": "toolu_1",
+                        "content": "done",
+                    },
+                    {"type": "text", "text": "after"},
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(
+            normalized,
+            [
+                {"role": "user", "content": "before"},
+                {"role": "tool", "tool_call_id": "toolu_1", "content": "done"},
+                {"role": "user", "content": "after"},
+            ],
+        )
+
+    def test_tool_use_missing_id_gets_deterministic_fallback(self) -> None:
+        messages = [
+            {
+                "role": "assistant",
+                "content": [
+                    {"type": "tool_use", "name": "search", "input": {"q": "x"}},
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(
+            normalized[0]["tool_calls"][0]["id"],
+            "toolu_ollama_fallback_0_0",
+        )
+
+    def test_tool_result_unserializable_content_fallback(self) -> None:
+        circular: dict = {}
+        circular["self"] = circular
+
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": "toolu_1",
+                        "content": circular,
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(
+            normalized,
+            [
+                {
+                    "role": "tool",
+                    "tool_call_id": "toolu_1",
+                    "content": "[unserializable content]",
+                }
+            ],
         )
 
     def test_user_base64_image_block_converts_to_image_url_content(self) -> None:
@@ -571,6 +648,45 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         self.assertEqual(params["properties"]["p"]["type"], "string")
 
 
+class AnthropicHandlerThinkingMappingTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.handler = AnthropicHandler()
+
+    def test_map_thinking_enabled_high_budget(self) -> None:
+        effort = self.handler._map_anthropic_thinking_to_reasoning_effort(
+            {"thinking": {"type": "enabled", "budget_tokens": 9000}}
+        )
+        self.assertEqual(effort, "high")
+
+    def test_map_thinking_adaptive_xhigh(self) -> None:
+        effort = self.handler._map_anthropic_thinking_to_reasoning_effort(
+            {
+                "thinking": {"type": "adaptive"},
+                "output_config": {"effort": "xhigh"},
+            }
+        )
+        self.assertEqual(effort, "high")
+
+    def test_map_thinking_disabled(self) -> None:
+        effort = self.handler._map_anthropic_thinking_to_reasoning_effort(
+            {"thinking": {"type": "disabled"}}
+        )
+        self.assertIsNone(effort)
+
+    def test_build_proxy_request_includes_reasoning_effort(self) -> None:
+        proxied = self.handler.build_proxy_request(
+            {
+                "model": "cursor:composer-2.5",
+                "stream": True,
+                "thinking": {"type": "enabled", "budget_tokens": 9000},
+                "messages": [{"role": "user", "content": "hello"}],
+            }
+        )
+
+        self.assertEqual(proxied.get("reasoning_effort"), "high")
+        self.assertIn("_tools_contract", proxied)
+
+
 class AnthropicHandlerStreamingTests(unittest.TestCase):
     def setUp(self) -> None:
         self.handler = AnthropicHandler()
@@ -579,6 +695,26 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
     def _stream(lines):
         for line in lines:
             yield line
+
+    @staticmethod
+    def _sse_events(chunks):
+        events = []
+        for chunk in chunks:
+            for packet in chunk.split("\n\n"):
+                for line in packet.splitlines():
+                    if line.startswith("data: "):
+                        events.append(json.loads(line[6:]))
+        return events
+
+    @staticmethod
+    def _tool_input_json(events, block_index):
+        return "".join(
+            event["delta"]["partial_json"]
+            for event in events
+            if event.get("type") == "content_block_delta"
+            and event.get("index") == block_index
+            and event.get("delta", {}).get("type") == "input_json_delta"
+        )
 
     def test_stream_uses_delta_text_when_content_is_missing(self) -> None:
         resp = self._stream(
@@ -722,6 +858,37 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
         self.assertIn("안녕하세요", joined)
         self.assertIn("event: message_stop", joined)
 
+    def test_stream_keeps_tool_arguments_on_same_openai_index(self) -> None:
+        args = json.dumps({"search_term": "gpt-5.5 pricing benchmark"}, ensure_ascii=False)
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"role":"assistant","tool_calls":[{"index":0,"id":"call_1","type":"function","function":{"name":"WebSearch","arguments":""}}]},"finish_reason":null}]}\n\n',
+                f'data: {{"choices":[{{"delta":{{"tool_calls":[{{"index":0,"function":{{"arguments":{json.dumps(args)}}}}}]}},"finish_reason":null}}]}}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cursor:composer-2.5",
+                "req_tool_args_same_index",
+            )
+        )
+
+        events = self._sse_events(chunks)
+        tool_start = next(
+            event
+            for event in events
+            if event.get("type") == "content_block_start"
+            and event.get("content_block", {}).get("type") == "tool_use"
+        )
+        tool_input = json.loads(self._tool_input_json(events, tool_start["index"]))
+
+        self.assertEqual(tool_start["content_block"]["name"], "WebSearch")
+        self.assertEqual(tool_input, {"search_term": "gpt-5.5 pricing benchmark"})
+
     def test_stream_prunes_optional_empty_tool_fields_before_flushing_json(self) -> None:
         tools_contract = {
             "Read": {
@@ -786,11 +953,18 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
             )
         )
 
-        joined = "".join(chunks)
-        self.assertIn('"name": "Read"', joined)
-        self.assertIn('\\"file_path\\": \\"/tmp/a.txt\\"', joined)
-        self.assertNotIn('\\"pages\\": \\"\\"', joined)
-        self.assertIn("event: message_stop", joined)
+        events = self._sse_events(chunks)
+        tool_start = next(
+            event
+            for event in events
+            if event.get("type") == "content_block_start"
+            and event.get("content_block", {}).get("type") == "tool_use"
+        )
+        tool_input = json.loads(self._tool_input_json(events, tool_start["index"]))
+
+        self.assertEqual(tool_start["content_block"]["name"], "Read")
+        self.assertEqual(tool_input, {"file_path": "/tmp/a.txt"})
+        self.assertTrue(any(event.get("type") == "message_stop" for event in events))
 
 
 if __name__ == "__main__":

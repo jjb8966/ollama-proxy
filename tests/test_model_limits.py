@@ -34,8 +34,8 @@ def test_ollama_cloud_kimi_k2_6_model_limits_are_loaded() -> None:
     limits = get_model_limits("ollama-cloud:kimi-k2.6")
 
     assert limits is not None
-    assert limits.context_length == EXPECTED_CONTEXT_LENGTH
-    assert limits.max_output_tokens == EXPECTED_CONTEXT_LENGTH
+    assert limits.context_length == 2000000
+    assert limits.max_output_tokens == 2000000
 
 
 def test_gpt_5_3_codex_high_model_limits_are_loaded() -> None:

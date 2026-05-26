@@ -9,6 +9,7 @@ Claude Code 등 Anthropic Messages API 클라이언트와의 호환을 위해
 import inspect
 import json
 import logging
+import os
 import re
 import time
 import uuid
@@ -21,6 +22,41 @@ from src.utils.text_extraction import ANTHROPIC_TEXT_KEYS, extract_text_from_con
 
 logger = logging.getLogger(__name__)
 
+# #region agent log
+_DEBUG_LOG_PATH = os.environ.get(
+    "DEBUG_NDJSON_LOG",
+    "/Users/jbj/Desktop/work/my/project/.cursor/debug-dfc5c9.log",
+)
+
+
+def _agent_debug_log(
+    location: str,
+    message: str,
+    data: Dict[str, Any],
+    hypothesis_id: str,
+    run_id: str = "pre-fix",
+) -> None:
+    try:
+        payload = {
+            "sessionId": "dfc5c9",
+            "runId": run_id,
+            "hypothesisId": hypothesis_id,
+            "location": location,
+            "message": message,
+            "data": data,
+            "timestamp": int(time.time() * 1000),
+        }
+        with open(_DEBUG_LOG_PATH, "a", encoding="utf-8") as log_file:
+            log_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+
+
+# #endregion
+
+TOOL_RESULT_SERIALIZATION_FALLBACK = "[unserializable content]"
+TOOL_USE_ARGUMENTS_FALLBACK = "{}"
+
 
 def _is_empty_value(value: Any) -> bool:
     """값이 empty string, None, 또는 whitespace-only string인지 확인합니다."""
@@ -29,6 +65,14 @@ def _is_empty_value(value: Any) -> bool:
     if isinstance(value, str) and not value.strip():
         return True
     return False
+
+
+def safe_json_dumps(value: Any, fallback: str) -> str:
+    try:
+        serialized = json.dumps(value, ensure_ascii=False)
+        return serialized if isinstance(serialized, str) else fallback
+    except (TypeError, ValueError):
+        return fallback
 
 
 class AnthropicHandler:
@@ -118,11 +162,71 @@ class AnthropicHandler:
 
     @staticmethod
     def _sanitize_tool_id(raw_id: Any) -> str:
-        candidate = str(raw_id or "")
-        candidate = re.sub(r"[^a-zA-Z0-9_-]", "_", candidate)
+        candidate = str(raw_id or "").strip().split("\n", maxsplit=1)[0]
         if not candidate:
-            candidate = f"toolu_{uuid.uuid4().hex[:24]}"
-        return candidate
+            return ""
+        if candidate.startswith("call_"):
+            candidate = f"toolu_{candidate[5:]}"
+        if re.fullmatch(r"[a-zA-Z0-9_-]+", candidate):
+            return candidate
+        sanitized = re.sub(r"[^a-zA-Z0-9_-]", "_", candidate)
+        if sanitized.startswith("call_"):
+            sanitized = f"toolu_{sanitized[5:]}"
+        return sanitized
+
+    @staticmethod
+    def _create_fallback_tool_id(message_index: int, block_index: int) -> str:
+        return f"toolu_ollama_fallback_{message_index}_{block_index}"
+
+    @classmethod
+    def _resolve_request_tool_use_id(
+        cls, raw_id: Any, message_index: int, block_index: int
+    ) -> str:
+        if isinstance(raw_id, str) and raw_id.strip():
+            return cls._sanitize_tool_id(raw_id)
+        return cls._create_fallback_tool_id(message_index, block_index)
+
+    @staticmethod
+    def _map_adaptive_effort_to_reasoning_effort(effort: Any) -> str:
+        normalized = str(effort or "").strip().lower()
+        if not normalized or normalized == "auto":
+            return "high"
+        if normalized in ("minimal", "low", "medium"):
+            return "medium"
+        return "high"
+
+    @classmethod
+    def _map_anthropic_thinking_to_reasoning_effort(cls, req: Dict[str, Any]) -> Optional[str]:
+        thinking = req.get("thinking")
+        if not isinstance(thinking, dict):
+            return None
+        thinking_type = thinking.get("type")
+        if thinking_type == "disabled":
+            return None
+        if thinking_type == "adaptive":
+            output_config = req.get("output_config")
+            effort = (
+                output_config.get("effort")
+                if isinstance(output_config, dict)
+                else None
+            )
+            return cls._map_adaptive_effort_to_reasoning_effort(effort)
+        if thinking_type != "enabled":
+            return None
+        budget_tokens = thinking.get("budget_tokens")
+        if isinstance(budget_tokens, (int, float)) and budget_tokens >= 8192:
+            return "high"
+        return "medium"
+
+    @staticmethod
+    def _tool_result_content_to_text(content: Any) -> str:
+        if content is None:
+            return ""
+        if isinstance(content, str):
+            return content
+        if isinstance(content, list):
+            return AnthropicHandler._content_blocks_to_text(content)
+        return safe_json_dumps(content, TOOL_RESULT_SERIALIZATION_FALLBACK)
 
     @staticmethod
     def _normalize_tool_calls(tool_calls_value: Any) -> List[Dict[str, Any]]:
@@ -145,7 +249,7 @@ class AnthropicHandler:
                 continue
             if block.get("type") == "text":
                 text_parts.append(str(block.get("text", "")))
-        return "".join(text_parts)
+        return "\n".join(text_parts)
 
     @staticmethod
     def _normalize_image_block(block: Any) -> Optional[Dict[str, Any]]:
@@ -174,6 +278,45 @@ class AnthropicHandler:
 
         return None
 
+    @staticmethod
+    def _trim_excess_images(
+        messages: List[Dict[str, Any]], max_images: int
+    ) -> List[Dict[str, Any]]:
+        total_images = sum(
+            1
+            for msg in messages
+            if isinstance(msg.get("content"), list)
+            for block in msg["content"]
+            if isinstance(block, dict) and block.get("type") == "image_url"
+        )
+        if total_images <= max_images:
+            return messages
+
+        removed = total_images - max_images
+        logging.warning(
+            f"[AnthropicHandler] 이미지 {total_images}개 > 최대 {max_images}개, "
+            f"오래된 메시지에서 {removed}개 제거"
+        )
+        remaining = removed
+        trimmed = []
+        for msg in messages:
+            content = msg.get("content")
+            if not isinstance(content, list) or remaining <= 0:
+                trimmed.append(msg)
+                continue
+            new_blocks = []
+            for block in content:
+                if (
+                    isinstance(block, dict)
+                    and block.get("type") == "image_url"
+                    and remaining > 0
+                ):
+                    remaining -= 1
+                    continue
+                new_blocks.append(block)
+            trimmed.append({**msg, "content": new_blocks})
+        return trimmed
+
     def _normalize_system_messages(self, system_value: Any) -> List[Dict[str, Any]]:
         if system_value is None:
             return []
@@ -193,7 +336,7 @@ class AnthropicHandler:
         if not isinstance(messages, list):
             return normalized
 
-        for message in messages:
+        for message_index, message in enumerate(messages):
             if not isinstance(message, dict):
                 continue
 
@@ -215,7 +358,7 @@ class AnthropicHandler:
                 reasoning_parts: List[str] = []
                 assistant_tool_calls: List[Dict[str, Any]] = []
 
-                for block in content:
+                for block_index, block in enumerate(content):
                     if not isinstance(block, dict):
                         continue
                     block_type = block.get("type")
@@ -233,7 +376,9 @@ class AnthropicHandler:
                     if block_type != "tool_use":
                         continue
 
-                    tool_id = self._sanitize_tool_id(block.get("id"))
+                    tool_id = self._resolve_request_tool_use_id(
+                        block.get("id"), message_index, block_index
+                    )
                     tool_name = str(block.get("name", ""))
                     tool_input = block.get("input", {})
                     if not isinstance(tool_input, dict):
@@ -244,14 +389,16 @@ class AnthropicHandler:
                             "type": "function",
                             "function": {
                                 "name": tool_name,
-                                "arguments": json.dumps(tool_input, ensure_ascii=False),
+                                "arguments": safe_json_dumps(
+                                    tool_input, TOOL_USE_ARGUMENTS_FALLBACK
+                                ),
                             },
                         }
                     )
 
                 assistant_message: Dict[str, Any] = {
                     "role": "assistant",
-                    "content": "".join(text_parts),
+                    "content": "\n".join(text_parts),
                 }
                 if reasoning_parts:
                     assistant_message["reasoning_content"] = "\n".join(reasoning_parts)
@@ -273,7 +420,7 @@ class AnthropicHandler:
                         normalized.append(
                             {
                                 "role": "user",
-                                "content": "".join(
+                                "content": "\n".join(
                                     str(block.get("text", ""))
                                     for block in pending_content_blocks
                                 ),
@@ -310,14 +457,15 @@ class AnthropicHandler:
 
                     flush_user_content()
 
-                    tool_id = self._sanitize_tool_id(block.get("tool_use_id"))
-                    tool_content = block.get("content", "")
-                    if isinstance(tool_content, list):
-                        tool_text = self._content_blocks_to_text(tool_content)
-                    elif isinstance(tool_content, str):
-                        tool_text = tool_content
-                    else:
-                        tool_text = json.dumps(tool_content, ensure_ascii=False)
+                    raw_tool_use_id = block.get("tool_use_id")
+                    tool_id = (
+                        self._sanitize_tool_id(raw_tool_use_id)
+                        if isinstance(raw_tool_use_id, str) and raw_tool_use_id.strip()
+                        else ""
+                    )
+                    if not tool_id:
+                        continue
+                    tool_text = self._tool_result_content_to_text(block.get("content"))
                     normalized.append(
                         {"role": "tool", "tool_call_id": tool_id, "content": tool_text}
                     )
@@ -395,6 +543,21 @@ class AnthropicHandler:
 
         if not tool_contract:
             return tool_input
+
+        properties = tool_contract.get("properties", {})
+        if isinstance(properties, dict) and isinstance(tool_input, dict):
+            aliased = dict(tool_input)
+            if "query" in properties:
+                if "search_term" in aliased and "query" not in aliased:
+                    aliased["query"] = aliased.pop("search_term")
+                elif "search_term" in aliased and "query" in aliased:
+                    aliased.pop("search_term", None)
+            if "file_path" in properties:
+                if "path" in aliased and "file_path" not in aliased:
+                    aliased["file_path"] = aliased.pop("path")
+                elif "path" in aliased and "file_path" in aliased:
+                    aliased.pop("path", None)
+            tool_input = aliased
 
         def normalize_value(
             value: Any,
@@ -520,23 +683,63 @@ class AnthropicHandler:
                 return {"type": "function", "function": {"name": name}}
         return tool_choice
 
+    MAX_IMAGES_PER_REQUEST = 30
+
     def build_proxy_request(self, req: Dict[str, Any]) -> Dict[str, Any]:
         system_messages = self._normalize_system_messages(req.get("system"))
         chat_messages = self._normalize_messages(req.get("messages"))
         request_tools = req.get("tools")
         normalized_tools = self._normalize_tools(request_tools)
 
+        final_messages = self._trim_excess_images(
+            system_messages + chat_messages, self.MAX_IMAGES_PER_REQUEST
+        )
+
         result: Dict[str, Any] = {
             "model": self.normalize_model_name(req.get("model")),
-            "messages": system_messages + chat_messages,
+            "messages": final_messages,
             "stream": bool(req.get("stream", False)),
             "max_tokens": req.get("max_tokens"),
             "thinking_level": req.get("thinking_level", "minimal"),
             "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
             "_tools_contract": self._extract_tools_contract(request_tools),
+            "_skip_compaction": True,
         }
         if normalized_tools:
             result["tools"] = normalized_tools
+        reasoning_effort = self._map_anthropic_thinking_to_reasoning_effort(req)
+        if reasoning_effort:
+            result["reasoning_effort"] = reasoning_effort
+        # #region agent log
+        message_roles = [
+            str(message.get("role", ""))
+            for message in result.get("messages", [])
+            if isinstance(message, dict)
+        ]
+        tool_call_messages = sum(
+            1
+            for message in result.get("messages", [])
+            if isinstance(message, dict) and message.get("tool_calls")
+        )
+        tool_result_messages = sum(
+            1
+            for message in result.get("messages", [])
+            if isinstance(message, dict) and message.get("role") == "tool"
+        )
+        _agent_debug_log(
+            "anthropic.py:build_proxy_request",
+            "built proxied anthropic request",
+            {
+                "model": result.get("model"),
+                "tools_count": len(normalized_tools),
+                "message_count": len(result.get("messages", [])),
+                "message_roles": message_roles[-8:],
+                "tool_call_messages": tool_call_messages,
+                "tool_result_messages": tool_result_messages,
+            },
+            "H3",
+        )
+        # #endregion
         return result
 
     @staticmethod
@@ -633,6 +836,25 @@ class AnthropicHandler:
             finish_reason = choices[0].get("finish_reason")
             message = choices[0].get("message", {})
 
+        # #region agent log
+        upstream_tool_calls = self._normalize_tool_calls(message.get("tool_calls"))
+        _agent_debug_log(
+            "anthropic.py:handle_non_streaming_response",
+            "upstream openai response summary",
+            {
+                "requested_model": requested_model,
+                "finish_reason": finish_reason,
+                "upstream_tool_calls": len(upstream_tool_calls),
+                "upstream_tool_names": [
+                    str(tool_call.get("function", {}).get("name", ""))
+                    for tool_call in upstream_tool_calls
+                ],
+                "content_chars": len(str(message.get("content", ""))),
+            },
+            "H5",
+        )
+        # #endregion
+
         response_model = str(data.get("model", requested_model))
         return {
             "id": f"msg_{uuid.uuid4().hex}",
@@ -685,6 +907,7 @@ class AnthropicHandler:
         thinking_block_open = False
         text_block_open = False
         tool_block_state: Dict[int, Dict[str, Any]] = {}
+        tool_openai_index_to_block: Dict[int, int] = {}
         stream_id = request_id or message_id
         start_time = time.time()
         first_chunk_time: Optional[float] = None
@@ -751,27 +974,35 @@ class AnthropicHandler:
             if not pending_json:
                 return []
 
+            arg_sse_chunk = 4
+            events: List[str] = []
+            offset = 0
+            while offset < len(pending_json):
+                piece = pending_json[offset : offset + arg_sse_chunk]
+                offset += len(piece)
+                events.append(
+                    sse(
+                        "content_block_delta",
+                        {
+                            "type": "content_block_delta",
+                            "index": block_index,
+                            "delta": {
+                                "type": "input_json_delta",
+                                "partial_json": piece,
+                            },
+                        },
+                    )
+                )
+            state["emitted_argument_length"] = len(arguments)
             logger.debug(
-                "[AnthropicStream] tool delta flush | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                "[AnthropicStream] tool delta flush | request_id=%s | index=%s | tool=%s | arg_chars=%s | pieces=%s",
                 stream_id,
                 block_index,
                 state.get("name", "unknown"),
                 len(pending_json),
+                len(events),
             )
-            state["emitted_argument_length"] = len(arguments)
-            return [
-                sse(
-                    "content_block_delta",
-                    {
-                        "type": "content_block_delta",
-                        "index": block_index,
-                        "delta": {
-                            "type": "input_json_delta",
-                            "partial_json": pending_json,
-                        },
-                    },
-                )
-            ]
+            return events
 
         def close_open_blocks() -> List[str]:
             """모든 열린 content block을 닫습니다. 멱등 함수입니다."""
@@ -807,8 +1038,17 @@ class AnthropicHandler:
                                     normalized_args, ensure_ascii=False
                                 )
                                 if normalized_json != state["arguments"]:
+                                    prev_args = state["arguments"]
+                                    prev_emitted = int(
+                                        state.get("emitted_argument_length", 0)
+                                    )
                                     state["arguments"] = normalized_json
-                                    state["emitted_argument_length"] = 0
+                                    if prev_emitted >= len(prev_args) and prev_args:
+                                        state["emitted_argument_length"] = len(
+                                            normalized_json
+                                        )
+                                    else:
+                                        state["emitted_argument_length"] = 0
                         except json.JSONDecodeError:
                             pass
 
@@ -1049,8 +1289,41 @@ class AnthropicHandler:
 
                 tool_calls = self._normalize_tool_calls(delta.get("tool_calls"))
                 for tc_idx, tool_call in enumerate(tool_calls):
-                    tc_index = tool_call.get("index", tc_idx)
-                    block_index = current_index + 1 + tc_index
+                    tc_index = int(tool_call.get("index", tc_idx))
+                    function_info = tool_call.get("function", {})
+                    tool_name = str(function_info.get("name") or "").strip()
+
+                    if tool_name and text_block_open:
+                        logger.info(
+                            "[AnthropicStream] text 블록 종료 (tool 시작) | request_id=%s | index=%s",
+                            stream_id,
+                            current_index,
+                        )
+                        yield sse(
+                            "content_block_stop",
+                            {"type": "content_block_stop", "index": current_index},
+                        )
+                        text_block_open = False
+                        current_index += 1
+
+                    if tc_index not in tool_openai_index_to_block:
+                        if tool_name or tool_call.get("id"):
+                            block_index = current_index
+                            tool_openai_index_to_block[tc_index] = block_index
+                            current_index += 1
+                        elif len(tool_openai_index_to_block) == 1:
+                            block_index = next(iter(tool_openai_index_to_block.values()))
+                        else:
+                            logger.warning(
+                                "[AnthropicStream] 이름 없는 tool arguments 폐기 | request_id=%s | openai_index=%s | arg_chars=%s",
+                                stream_id,
+                                tc_index,
+                                len(str(function_info.get("arguments", ""))),
+                            )
+                            continue
+                    else:
+                        block_index = tool_openai_index_to_block[tc_index]
+
                     state = tool_block_state.setdefault(
                         block_index,
                         {
@@ -1065,18 +1338,14 @@ class AnthropicHandler:
 
                     if tool_call.get("id"):
                         state["id"] = self._sanitize_tool_id(tool_call.get("id"))
-                    function_info = tool_call.get("function", {})
-                    if function_info.get("name"):
-                        state["name"] = str(function_info.get("name"))
+                    if tool_name:
+                        state["name"] = tool_name
                     if function_info.get("arguments"):
                         state["arguments"] += str(function_info.get("arguments"))
                         tool_delta_count += 1
 
                     for event in ensure_tool_block_started(block_index, state):
                         yield event
-                    if not tools_contract:
-                        for event in flush_pending_tool_delta(block_index, state):
-                            yield event
 
                 if (
                     not text
@@ -1111,6 +1380,25 @@ class AnthropicHandler:
 
             for event in close_open_blocks():
                 yield event
+
+            # #region agent log
+            _agent_debug_log(
+                "anthropic.py:stream_anthropic_response",
+                "stream completed",
+                {
+                    "request_id": stream_id,
+                    "stop_reason": stop_reason,
+                    "text_char_count": text_char_count,
+                    "tool_delta_count": tool_delta_count,
+                    "tool_blocks": len(tool_block_state),
+                    "tool_block_names": [
+                        str(state.get("name", ""))
+                        for state in tool_block_state.values()
+                    ],
+                },
+                "H5",
+            )
+            # #endregion
 
             if (
                 stop_reason == "end_turn"

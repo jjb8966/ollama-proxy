@@ -46,8 +46,8 @@ def create_app() -> Flask:
     # Flask 앱 생성
     app = Flask(__name__)
     
-    # 업로드 파일 크기 제한 (50MB)
-    app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
+    # 업로드 파일 크기 제한 (1GB)
+    app.config['MAX_CONTENT_LENGTH'] = 1 * 1024 * 1024 * 1024
     
     proxy_api_token = os.environ.get("PROXY_API_TOKEN", "")
     app.config['PROXY_API_TOKEN'] = proxy_api_token

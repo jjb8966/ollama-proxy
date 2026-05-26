@@ -6,7 +6,11 @@
 """
 
 import json
+import json
 import logging
+import os
+import re
+import time
 import os
 import time
 from typing import Dict, Any, List, Optional
@@ -25,6 +29,39 @@ def _strip_quotes(value: str) -> str:
     if not value:
         return value
     return value.strip('"\'')
+
+
+# #region agent log
+_DEBUG_LOG_PATH = os.environ.get(
+    "DEBUG_NDJSON_LOG",
+    "/Users/jbj/Desktop/work/my/project/.cursor/debug-dfc5c9.log",
+)
+
+
+def _agent_debug_log(
+    location: str,
+    message: str,
+    data: dict,
+    hypothesis_id: str,
+    run_id: str = "pre-fix",
+) -> None:
+    try:
+        payload = {
+            "sessionId": "dfc5c9",
+            "runId": run_id,
+            "hypothesisId": hypothesis_id,
+            "location": location,
+            "message": message,
+            "data": data,
+            "timestamp": int(time.time() * 1000),
+        }
+        with open(_DEBUG_LOG_PATH, "a", encoding="utf-8") as log_file:
+            log_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+
+
+# #endregion
 
 
 class ChatHandler:
@@ -49,6 +86,8 @@ class ChatHandler:
         "gcli-gemini-3.1-pro-preview",
         "gcli-gemini-3.1-pro-preview-customtools",
     }
+
+    COMPACTION_ENABLED = os.environ.get("ENABLE_COMPACTION", "true").lower() != "false"
 
     # 제공업체별 prefix와 base_url 매핑
     PROVIDER_CONFIG = {
@@ -140,8 +179,20 @@ class ChatHandler:
             "max_tokens": req.get("max_tokens"),
         }
         serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), default=str)
-        compacted = serialized.replace(" ", "")
-        return max(1, int(len(compacted) / 3))
+        # JSON 이스케이프 시퀀스(\n, \", \\ 등)는 실제 토크나이저에게 1문자임
+        effective_chars = 0
+        i = 0
+        s = serialized
+        while i < len(s):
+            if s[i] == '\\' and i + 1 < len(s):
+                i += 2  # 이스케이프 시퀀스는 1문자로 계산
+            elif s[i] == ' ':
+                i += 1
+                continue
+            else:
+                i += 1
+            effective_chars += 1
+        return max(1, int(effective_chars / 4))
 
     def _build_compaction_notice_content(
         self,
@@ -240,6 +291,9 @@ class ChatHandler:
         req: Dict[str, Any]
     ) -> Optional[requests.Response | Dict[str, Any] | ProxyRequestError]:
         if req.get("_skip_compaction"):
+            return None
+
+        if not self.COMPACTION_ENABLED:
             return None
 
         requested_model = req.get("model")
@@ -344,6 +398,236 @@ class ChatHandler:
             except (IndexError, KeyError) as e:
                 logging.warning(f"이미지 처리 실패: {e}")
 
+    @staticmethod
+    def _escape_cursor_xml(text: str) -> str:
+        return (
+            text.replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+        )
+
+    @classmethod
+    def _sanitize_cursor_tool_call_id(cls, raw_id: Any) -> str:
+        candidate = str(raw_id or "").strip().split("\n", maxsplit=1)[0]
+        if not candidate:
+            return ""
+        if candidate.startswith("call_"):
+            candidate = f"toolu_{candidate[5:]}"
+        if re.fullmatch(r"[a-zA-Z0-9_-]+", candidate):
+            return candidate
+        sanitized = re.sub(r"[^a-zA-Z0-9_-]", "_", candidate)
+        return sanitized if sanitized else ""
+
+    @classmethod
+    def _build_cursor_tool_result_block(
+        cls, tool_name: str, tool_call_id: str, result_text: str
+    ) -> str:
+        clean_result = cls._escape_cursor_xml(result_text)
+        return "\n".join(
+            [
+                "<tool_result>",
+                f"<tool_name>{cls._escape_cursor_xml(tool_name or 'tool')}</tool_name>",
+                f"<tool_call_id>{cls._escape_cursor_xml(tool_call_id)}</tool_call_id>",
+                f"<result>{clean_result}</result>",
+                "</tool_result>",
+            ]
+        )
+
+    @staticmethod
+    def _extract_openai_function_tool(tool: Any) -> Optional[Dict[str, Any]]:
+        if not isinstance(tool, dict):
+            return None
+        if tool.get("type") == "function" and isinstance(tool.get("function"), dict):
+            return tool["function"]
+        if isinstance(tool.get("name"), str):
+            return tool
+        return None
+
+    @classmethod
+    def _build_compact_tools_system_text(cls, tools: Any) -> Optional[str]:
+        """cursor-api-proxy toolsToSystemText 대신 짧은 도구 목록을 만듭니다 (E2BIG 방지)."""
+        if not isinstance(tools, list) or not tools:
+            return None
+
+        lines = [
+            "Claude Code tool bridge instructions:",
+            "- Emit tool calls for Claude Code to execute. Claude Code runs the tools.",
+            "- Ignore Cursor CLI Ask/Agent mode. Never tell the user to switch modes.",
+            "- Never use WebSearch. For HTTP(S) pages use WebFetch with a url only.",
+            "- Never claim WebFetch, Bash, Read, or Grep are unavailable if listed below.",
+            "- To call a tool, reply with ONLY one JSON object: "
+            '{"name":"ToolName","arguments":{...}}',
+            "- Do not answer from memory when a WebFetch url is available in the conversation.",
+            "",
+            "Available tools (respond with a JSON object to call one):",
+            "",
+        ]
+        for tool in tools:
+            function_info = cls._extract_openai_function_tool(tool)
+            if not function_info:
+                continue
+            name = str(function_info.get("name", "")).strip()
+            if not name:
+                continue
+            description = str(function_info.get("description", "")).strip()
+            if len(description) > 120:
+                description = f"{description[:117]}..."
+
+            schema = function_info.get("parameters", {})
+            properties = schema.get("properties", {}) if isinstance(schema, dict) else {}
+            if not isinstance(properties, dict):
+                properties = {}
+            required = schema.get("required", []) if isinstance(schema, dict) else []
+            if not isinstance(required, (list, tuple, set)):
+                required = []
+            required_names = {item for item in required if isinstance(item, str)}
+
+            param_parts: List[str] = []
+            for prop_name in properties:
+                marker = "*" if prop_name in required_names else ""
+                param_parts.append(f"{prop_name}{marker}")
+            params_display = ", ".join(param_parts)
+
+            if params_display:
+                lines.append(f"Function: {name}({params_display})")
+            else:
+                lines.append(f"Function: {name}")
+            if description:
+                lines.append(f"Description: {description}")
+            lines.append("")
+
+        if len(lines) <= 2:
+            return None
+        return "\n".join(lines).strip()
+
+    @classmethod
+    def _inject_compact_tools_for_cursor(
+        cls, messages: List[Dict[str, Any]], tools: Any
+    ) -> List[Dict[str, Any]]:
+        tools_text = cls._build_compact_tools_system_text(tools)
+        if not tools_text:
+            return messages
+        return [{"role": "system", "content": tools_text}, *messages]
+
+    @classmethod
+    def _extract_openai_message_text(cls, content: Any) -> str:
+        if isinstance(content, str):
+            return content
+        if not isinstance(content, list):
+            return ""
+        parts: List[str] = []
+        for block in content:
+            if not isinstance(block, dict):
+                continue
+            if block.get("type") == "text":
+                parts.append(str(block.get("text", "")))
+        return "\n".join(parts)
+
+    @classmethod
+    def _convert_messages_for_cursor_provider(
+        cls, messages: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """ccs cursor-translator와 동일한 tool/system 메시지 평탄화."""
+        tool_call_meta: Dict[str, str] = {}
+        for message_index, message in enumerate(messages):
+            if not isinstance(message, dict) or message.get("role") != "assistant":
+                continue
+            tool_calls = message.get("tool_calls")
+            if not isinstance(tool_calls, list):
+                continue
+            for tool_call_index, tool_call in enumerate(tool_calls):
+                if not isinstance(tool_call, dict):
+                    continue
+                tool_call_id = cls._sanitize_cursor_tool_call_id(tool_call.get("id"))
+                if not tool_call_id:
+                    tool_call_id = (
+                        f"toolu_ollama_fallback_{message_index}_{tool_call_index}"
+                    )
+                function_info = tool_call.get("function", {})
+                tool_name = (
+                    str(function_info.get("name", "")).strip()
+                    if isinstance(function_info, dict)
+                    else ""
+                ) or "tool"
+                tool_call_meta[tool_call_id] = tool_name
+
+        converted: List[Dict[str, Any]] = []
+        for message in messages:
+            if not isinstance(message, dict):
+                continue
+
+            role = str(message.get("role", ""))
+            if role == "system":
+                system_text = cls._extract_openai_message_text(message.get("content"))
+                if not system_text:
+                    continue
+                if system_text.startswith("Claude Code tool bridge instructions:"):
+                    converted.append({"role": "system", "content": system_text})
+                else:
+                    converted.append(
+                        {
+                            "role": "user",
+                            "content": f"[System Instructions]\n{system_text}",
+                        }
+                    )
+                continue
+
+            if role == "tool":
+                tool_call_id = cls._sanitize_cursor_tool_call_id(
+                    message.get("tool_call_id")
+                )
+                if not tool_call_id:
+                    continue
+                tool_name = (
+                    str(message.get("name", "")).strip()
+                    or tool_call_meta.get(tool_call_id, "tool")
+                )
+                converted.append(
+                    {
+                        "role": "user",
+                        "content": cls._build_cursor_tool_result_block(
+                            tool_name,
+                            tool_call_id,
+                            cls._extract_openai_message_text(message.get("content")),
+                        ),
+                    }
+                )
+                continue
+
+            if role == "assistant":
+                assistant_text = cls._extract_openai_message_text(message.get("content"))
+                tool_calls = message.get("tool_calls")
+                tool_call_lines: List[str] = []
+                if isinstance(tool_calls, list):
+                    for tool_call in tool_calls:
+                        if not isinstance(tool_call, dict):
+                            continue
+                        function_info = tool_call.get("function", {})
+                        if not isinstance(function_info, dict):
+                            function_info = {}
+                        tool_call_lines.append(
+                            "[tool_use {name} {args}]".format(
+                                name=function_info.get("name", "tool"),
+                                args=function_info.get("arguments", "{}"),
+                            )
+                        )
+                merged_content = "\n".join(
+                    part for part in [assistant_text, *tool_call_lines] if part
+                )
+                assistant_message: Dict[str, Any] = {
+                    "role": "assistant",
+                    "content": merged_content,
+                }
+                if isinstance(tool_calls, list) and tool_calls:
+                    assistant_message["tool_calls"] = tool_calls
+                if merged_content or assistant_message.get("tool_calls"):
+                    converted.append(assistant_message)
+                continue
+
+            converted.append(message)
+
+        return converted
+
     def _normalize_ollama_cloud_image_content(self, messages: List[Dict]) -> None:
         """ollama-cloud 업스트림 호환 형식으로 image_url 블록을 정규화합니다."""
         if not messages:
@@ -415,6 +699,17 @@ class ChatHandler:
         if provider == 'ollama-cloud':
             self._normalize_ollama_cloud_image_content(messages)
 
+        cursor_request_tools = req.get("tools")
+        cursor_has_tools = (
+            isinstance(cursor_request_tools, list) and len(cursor_request_tools) > 0
+        )
+        if provider == "cursor" and messages:
+            if cursor_has_tools:
+                messages = self._inject_compact_tools_for_cursor(
+                    messages, cursor_request_tools
+                )
+            messages = self._convert_messages_for_cursor_provider(messages)
+
         if provider == 'google':
             return self.google_client.post_request(
                 model=model,
@@ -439,17 +734,69 @@ class ChatHandler:
                 effective_max_tokens = limits.max_output_tokens
         if effective_max_tokens is not None:
             payload["max_tokens"] = effective_max_tokens
-        if req.get('tools') is not None:
-            payload['tools'] = req.get('tools')
-        if req.get('tool_choice') is not None:
-            payload['tool_choice'] = req.get('tool_choice')
+        if provider != "cursor":
+            if req.get("tools") is not None:
+                payload["tools"] = req.get("tools")
+            if req.get("tool_choice") is not None:
+                payload["tool_choice"] = req.get("tool_choice")
         if provider == 'opencode':
             thinking_level = req.get('thinking_level')
             if thinking_level:
-                payload['reasoning_effort'] = thinking_level
+                # - minimal일 시 low로 매핑
+                if thinking_level == 'minimal':
+                    payload['reasoning_effort'] = 'low'
+                else:
+                    payload['reasoning_effort'] = thinking_level
+        if provider == 'cursor':
+            reasoning_effort = req.get('reasoning_effort')
+            if reasoning_effort:
+                payload['reasoning_effort'] = reasoning_effort
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
+        if provider == "cursor":
+            headers["X-Cursor-Mode"] = "ask" if cursor_has_tools else "agent"
+
+        # #region agent log
+        if provider == "cursor":
+            messages_json_size = len(
+                json.dumps(messages, ensure_ascii=False, default=str)
+            )
+            _agent_debug_log(
+                "chat.py:handle_chat_request",
+                "cursor upstream payload",
+                {
+                    "model": requested_model,
+                    "payload_has_tools": "tools" in payload,
+                    "payload_tools_count": len(payload.get("tools", []))
+                    if isinstance(payload.get("tools"), list)
+                    else 0,
+                    "req_tools_count": len(cursor_request_tools)
+                    if isinstance(cursor_request_tools, list)
+                    else 0,
+                    "cursor_mode_header": headers.get("X-Cursor-Mode"),
+                    "compact_tools_injected": cursor_has_tools,
+                    "messages_json_size": messages_json_size,
+                    "message_roles": [
+                        str(message.get("role", ""))
+                        for message in messages[-8:]
+                        if isinstance(message, dict)
+                    ],
+                    "assistant_tool_call_messages": sum(
+                        1
+                        for message in messages
+                        if isinstance(message, dict) and message.get("tool_calls")
+                    ),
+                    "tool_result_messages": sum(
+                        1
+                        for message in messages
+                        if isinstance(message, dict) and message.get("role") == "tool"
+                    ),
+                },
+                "H6",
+                run_id="post-fix-e2big",
+            )
+        # #endregion
 
         client = self._get_client(provider)
         return client.post_request(

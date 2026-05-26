@@ -17,4 +17,4 @@ EXPOSE 5002
 
 # 컨테이너 실행 시 gunicorn을 사용하여 Flask 애플리케이션 실행
 # app:app - app.py 파일의 Flask 앱 인스턴스(app)를 지정
-CMD ["gunicorn", "--workers=10", "--preload", "--bind", "0.0.0.0:5002", "--timeout=300", "app:app"]
+CMD ["gunicorn", "--workers=10", "--preload", "--bind", "0.0.0.0:5002", "--timeout=600", "app:app"]

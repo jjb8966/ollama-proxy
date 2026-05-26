@@ -28,8 +28,10 @@ services:
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
       - OPENCODE_API_KEYS=${OPENCODE_API_KEYS}
       - OPENCODE_BASE_URL=${OPENCODE_BASE_URL:-https://opencode.ai/zen/go/v1}
+      - DEBUG_NDJSON_LOG=/debug-logs/debug-dfc5c9.log
     volumes:
       - ~/.qwen:/root/.qwen:ro
+      - /Users/jbj/Desktop/work/my/project/.cursor:/debug-logs
     restart: always
     container_name: ollama-proxy
     depends_on:

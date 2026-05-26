@@ -147,6 +147,81 @@ class ChatHandlerLimitTests(unittest.TestCase):
             },
         )
 
+    def test_cursor_provider_uses_ask_mode_and_injects_compact_tools_without_payload_tools(
+        self,
+    ) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.cursor_client = client
+
+        self.handler.handle_chat_request(
+            {
+                "model": "cursor:composer-2.5",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": True,
+                "tools": [
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "Read",
+                            "description": "Read a file",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {"file_path": {"type": "string"}},
+                                "required": ["file_path"],
+                            },
+                        },
+                    }
+                ],
+                "tool_choice": "auto",
+            }
+        )
+
+        payload = client.post_request.call_args.kwargs["payload"]
+        headers = client.post_request.call_args.kwargs["headers"]
+        self.assertNotIn("tools", payload)
+        self.assertNotIn("tool_choice", payload)
+        self.assertEqual(headers["X-Cursor-Mode"], "ask")
+        first_message = payload["messages"][0]
+        self.assertEqual(first_message["role"], "system")
+        self.assertIn("Claude Code tool bridge instructions", first_message["content"])
+        self.assertIn("Read(file_path*)", first_message["content"])
+
+    def test_cursor_provider_uses_agent_mode_without_tools(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.cursor_client = client
+
+        self.handler.handle_chat_request(
+            {
+                "model": "cursor:composer-2.5",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": True,
+            }
+        )
+
+        payload = client.post_request.call_args.kwargs["payload"]
+        headers = client.post_request.call_args.kwargs["headers"]
+        self.assertNotIn("tools", payload)
+        self.assertEqual(headers["X-Cursor-Mode"], "agent")
+
+    def test_cursor_provider_forwards_reasoning_effort(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.cursor_client = client
+
+        self.handler.handle_chat_request(
+            {
+                "model": "cursor:composer-2.5",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": True,
+                "reasoning_effort": "high",
+            }
+        )
+
+        payload = client.post_request.call_args.kwargs["payload"]
+        self.assertEqual(payload.get("reasoning_effort"), "high")
+
     def test_request_over_eighty_percent_of_context_uses_compaction_model(self) -> None:
         self.handler._estimate_request_tokens = Mock(return_value=204801)
 
