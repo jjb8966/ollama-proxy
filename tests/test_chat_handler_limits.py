@@ -41,6 +41,7 @@ class _DummyApiConfig:
         self.antigravity_rotator = _DummyRotator("Antigravity")
         self.nvidia_nim_rotator = _DummyRotator("NvidiaNIM")
         self.cli_proxy_api_rotator = _DummyRotator("CLIProxyAPI")
+        self.cli_proxy_api_plus_rotator = _DummyRotator("CLIProxyAPIPlus")
         self.cli_proxy_api_gpt_rotator = _DummyRotator("CLIProxyAPI_GPT")
         self.cursor_rotator = _DummyRotator("Cursor")
         self.ollama_cloud_rotator = _DummyRotator("OllamaCloud")
@@ -68,6 +69,27 @@ class ChatHandlerLimitTests(unittest.TestCase):
         self.assertEqual(result, {"choices": []})
         payload = client.post_request.call_args.kwargs["payload"]
         self.assertEqual(payload["max_tokens"], 2048)
+
+    def test_cli_proxy_api_plus_routes_to_plus_client(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.cli_proxy_api_plus_client = client
+
+        result = self.handler.handle_chat_request(
+            {
+                "model": "cli-proxy-api-plus:gpt-5.5-high",
+                "messages": [{"role": "user", "content": "hello"}],
+                "stream": False,
+            }
+        )
+
+        self.assertEqual(result, {"choices": []})
+        self.assertEqual(
+            client.post_request.call_args.kwargs["url"],
+            "http://cli-proxy-api-plus:8317/v1/chat/completions",
+        )
+        payload = client.post_request.call_args.kwargs["payload"]
+        self.assertEqual(payload["model"], "gpt-5.5-high")
 
     def test_ollama_cloud_image_url_blocks_are_normalized_before_forwarding(self) -> None:
         client = Mock()
@@ -171,6 +193,30 @@ class ChatHandlerLimitTests(unittest.TestCase):
                                 "required": ["file_path"],
                             },
                         },
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "WebSearch",
+                            "description": "Search the web",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {"search_term": {"type": "string"}},
+                                "required": ["search_term"],
+                            },
+                        },
+                    },
+                    {
+                        "type": "function",
+                        "function": {
+                            "name": "WebFetch",
+                            "description": "Fetch a URL",
+                            "parameters": {
+                                "type": "object",
+                                "properties": {"url": {"type": "string"}},
+                                "required": ["url"],
+                            },
+                        },
                     }
                 ],
                 "tool_choice": "auto",
@@ -186,6 +232,11 @@ class ChatHandlerLimitTests(unittest.TestCase):
         self.assertEqual(first_message["role"], "system")
         self.assertIn("Claude Code tool bridge instructions", first_message["content"])
         self.assertIn("Read(file_path*)", first_message["content"])
+        self.assertIn("WebSearch(search_term*)", first_message["content"])
+        self.assertIn("WebFetch(url*)", first_message["content"])
+        self.assertIn("Use WebSearch for general web searches", first_message["content"])
+        self.assertIn("Use WebFetch when a concrete HTTP(S) URL", first_message["content"])
+        self.assertNotIn("Never use WebSearch", first_message["content"])
 
     def test_cursor_provider_uses_agent_mode_without_tools(self) -> None:
         client = Mock()

@@ -15,6 +15,7 @@
 | Antigravity | `antigravity:` | 자체 프록시 토큰 | 내부 프록시 컨테이너 |
 | Nvidia NIM | `nvidia-nim:` | API Key (Bearer) | `https://integrate.api.nvidia.com/v1` |
 | CLI Proxy API | `cli-proxy-api:` | API Key (Bearer) | 로컬 CLI 프록시 |
+| CLI Proxy API Plus | `cli-proxy-api-plus:` | API Key (Bearer) | 로컬 CLI 프록시 Plus |
 | Cursor | `cursor:` | API Key (Bearer, 기본 `unused`) | `cursor-api-proxy` (`CURSOR_API_BASE_URL`) |
 | Ollama Cloud | `ollama-cloud:` | API Key (Bearer) | `https://ollama.com/v1` |
 | OpenCode Go | `opencode:` | API Key (Bearer) | `https://opencode.ai/zen/go/v1` |
@@ -178,6 +179,9 @@ CLI_PROXY_API_KEYS="key1"
 CLI_PROXY_API_GPT_KEYS="key1"
 # CLI Proxy API Base URL (선택, 기본값: http://cli-proxy-api:8317/v1)
 CLI_PROXY_API_BASE_URL="http://cli-proxy-api:8317/v1"
+# CLI Proxy API Plus Base URL (선택, 기본값: http://cli-proxy-api-plus:8317/v1)
+# API 키는 CLI_PROXY_API_KEYS를 함께 사용
+CLI_PROXY_API_PLUS_BASE_URL="http://cli-proxy-api-plus:8317/v1"
 
 # Cursor API Proxy (cursor-api-proxy, 호스트에서 8765 실행 시)
 CURSOR_API_KEYS="unused"

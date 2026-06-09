@@ -21,6 +21,7 @@ services:
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
       - CLI_PROXY_API_KEYS=${CLI_PROXY_API_KEYS}
       - CLI_PROXY_API_BASE_URL=${CLI_PROXY_API_BASE_URL:-http://cli-proxy-api:8317/v1}
+      - CLI_PROXY_API_PLUS_BASE_URL=${CLI_PROXY_API_PLUS_BASE_URL:-http://cli-proxy-api-plus:8317/v1}
       - CURSOR_API_KEYS=${CURSOR_API_KEYS:-unused}
       - CURSOR_API_BASE_URL=${CURSOR_API_BASE_URL:-http://host.docker.internal:8765/v1}
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}

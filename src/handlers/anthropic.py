@@ -56,6 +56,18 @@ def _agent_debug_log(
 
 TOOL_RESULT_SERIALIZATION_FALLBACK = "[unserializable content]"
 TOOL_USE_ARGUMENTS_FALLBACK = "{}"
+WEB_SEARCH_TOOL_NAME = "WebSearch"
+WEB_SEARCH_ALIASES = {"web_search", "websearch", WEB_SEARCH_TOOL_NAME}
+WEB_SEARCH_DEFAULT_SCHEMA: Dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "query": {
+            "type": "string",
+            "description": "검색어",
+        },
+    },
+    "required": ["query"],
+}
 
 
 def _is_empty_value(value: Any) -> bool:
@@ -65,6 +77,20 @@ def _is_empty_value(value: Any) -> bool:
     if isinstance(value, str) and not value.strip():
         return True
     return False
+
+
+def _is_web_search_tool_name(name: str) -> bool:
+    return name.lower() in {alias.lower() for alias in WEB_SEARCH_ALIASES}
+
+
+def _is_web_search_tool_type(tool_type: str) -> bool:
+    return tool_type.lower().startswith("web_search")
+
+
+def _canonical_tool_name(name: str, tool_type: str = "") -> str:
+    if _is_web_search_tool_name(name) or _is_web_search_tool_type(tool_type):
+        return WEB_SEARCH_TOOL_NAME
+    return name
 
 
 def safe_json_dumps(value: Any, fallback: str) -> str:
@@ -225,7 +251,10 @@ class AnthropicHandler:
         if isinstance(content, str):
             return content
         if isinstance(content, list):
-            return AnthropicHandler._content_blocks_to_text(content)
+            text = AnthropicHandler._content_blocks_to_text(content)
+            if text:
+                return text
+            return safe_json_dumps(content, TOOL_RESULT_SERIALIZATION_FALLBACK)
         return safe_json_dumps(content, TOOL_RESULT_SERIALIZATION_FALLBACK)
 
     @staticmethod
@@ -373,13 +402,15 @@ class AnthropicHandler:
                         text_parts.append(str(block.get("text", "")))
                         continue
 
-                    if block_type != "tool_use":
+                    if block_type not in ("tool_use", "server_tool_use"):
                         continue
 
                     tool_id = self._resolve_request_tool_use_id(
                         block.get("id"), message_index, block_index
                     )
-                    tool_name = str(block.get("name", ""))
+                    tool_name = _canonical_tool_name(
+                        str(block.get("name", "")), str(block_type or "")
+                    )
                     tool_input = block.get("input", {})
                     if not isinstance(tool_input, dict):
                         tool_input = {"input": tool_input}
@@ -452,7 +483,7 @@ class AnthropicHandler:
                             pending_content_blocks.append(normalized_image_block)
                         continue
 
-                    if block_type != "tool_result":
+                    if block_type not in ("tool_result", "web_search_tool_result"):
                         continue
 
                     flush_user_content()
@@ -466,6 +497,10 @@ class AnthropicHandler:
                     if not tool_id:
                         continue
                     tool_text = self._tool_result_content_to_text(block.get("content"))
+                    if not tool_text and block_type == "web_search_tool_result":
+                        tool_text = safe_json_dumps(
+                            block, TOOL_RESULT_SERIALIZATION_FALLBACK
+                        )
                     normalized.append(
                         {"role": "tool", "tool_call_id": tool_id, "content": tool_text}
                     )
@@ -498,12 +533,16 @@ class AnthropicHandler:
         for tool in tools:
             if not isinstance(tool, dict):
                 continue
-            name = str(tool.get("name", "")).strip()
+            raw_name = str(tool.get("name", "")).strip()
+            tool_type = str(tool.get("type", "")).strip()
+            name = _canonical_tool_name(raw_name, tool_type)
             if not name:
                 continue
             schema = tool.get("input_schema", {})
             if not isinstance(schema, dict):
-                schema = {}
+                schema = WEB_SEARCH_DEFAULT_SCHEMA if name == WEB_SEARCH_TOOL_NAME else {}
+            if name == WEB_SEARCH_TOOL_NAME and not schema:
+                schema = WEB_SEARCH_DEFAULT_SCHEMA
             raw_required = schema.get("required", [])
             if not isinstance(raw_required, (list, tuple, set)):
                 required = set()
@@ -547,11 +586,26 @@ class AnthropicHandler:
         properties = tool_contract.get("properties", {})
         if isinstance(properties, dict) and isinstance(tool_input, dict):
             aliased = dict(tool_input)
-            if "query" in properties:
-                if "search_term" in aliased and "query" not in aliased:
-                    aliased["query"] = aliased.pop("search_term")
-                elif "search_term" in aliased and "query" in aliased:
-                    aliased.pop("search_term", None)
+            web_search_fields = ("query", "search_term", "searchTerm")
+            target_field = next(
+                (field for field in web_search_fields if field in properties),
+                None,
+            )
+            if target_field:
+                for source_field in web_search_fields:
+                    if source_field == target_field:
+                        continue
+                    if source_field not in aliased:
+                        continue
+                    if target_field not in aliased:
+                        aliased[target_field] = aliased.pop(source_field)
+                    else:
+                        aliased.pop(source_field, None)
+                for domain_field in ("allowed_domains", "blocked_domains"):
+                    if aliased.get(domain_field) == []:
+                        aliased.pop(domain_field, None)
+                if "allowed_domains" in aliased and "blocked_domains" in aliased:
+                    aliased.pop("blocked_domains", None)
             if "file_path" in properties:
                 if "path" in aliased and "file_path" not in aliased:
                     aliased["file_path"] = aliased.pop("path")
@@ -646,15 +700,23 @@ class AnthropicHandler:
         if not isinstance(tools, list):
             return normalized
 
+        seen_names: set[str] = set()
         for tool in tools:
             if not isinstance(tool, dict):
                 continue
-            name = str(tool.get("name", "")).strip()
-            if not name:
+            raw_name = str(tool.get("name", "")).strip()
+            tool_type = str(tool.get("type", "")).strip()
+            name = _canonical_tool_name(raw_name, tool_type)
+            if not name or name in seen_names:
                 continue
-            input_schema = AnthropicHandler._sanitize_tool_input_schema(
-                tool.get("input_schema", {"type": "object", "properties": {}})
-            )
+            schema = tool.get("input_schema")
+            if name == WEB_SEARCH_TOOL_NAME and not isinstance(schema, dict):
+                schema = WEB_SEARCH_DEFAULT_SCHEMA
+            elif not isinstance(schema, dict):
+                schema = {"type": "object", "properties": {}}
+            if name == WEB_SEARCH_TOOL_NAME and not schema:
+                schema = WEB_SEARCH_DEFAULT_SCHEMA
+            input_schema = AnthropicHandler._sanitize_tool_input_schema(schema)
             normalized.append(
                 {
                     "type": "function",
@@ -665,6 +727,7 @@ class AnthropicHandler:
                     },
                 }
             )
+            seen_names.add(name)
         return normalized
 
     @staticmethod
@@ -678,9 +741,9 @@ class AnthropicHandler:
         if choice_type == "any":
             return "required"
         if choice_type == "tool":
-            name = tool_choice.get("name")
+            name = str(tool_choice.get("name", "")).strip()
             if name:
-                return {"type": "function", "function": {"name": name}}
+                return {"type": "function", "function": {"name": _canonical_tool_name(name)}}
         return tool_choice
 
     MAX_IMAGES_PER_REQUEST = 30
@@ -746,7 +809,7 @@ class AnthropicHandler:
     def _map_stop_reason(openai_reason: Optional[str]) -> str:
         if openai_reason == "length":
             return "max_tokens"
-        if openai_reason == "tool_calls":
+        if openai_reason in ("tool_calls", "tool_call", "function_call", "tool_use"):
             return "tool_use"
         return "end_turn"
 
@@ -800,7 +863,7 @@ class AnthropicHandler:
                 tool_input = {"input": tool_input}
 
             # tools_contract가 있으면 tool_input 정규화
-            tool_name = str(function_info.get("name", ""))
+            tool_name = _canonical_tool_name(str(function_info.get("name", "")))
             if tools_contract and tool_name in tools_contract:
                 tool_contract = tools_contract[tool_name]
                 tool_input = self._normalize_tool_input(tool_input, tool_contract)
@@ -1023,16 +1086,17 @@ class AnthropicHandler:
                 for block_index in sorted(tool_block_state.keys()):
                     state = tool_block_state[block_index]
                     tool_name = state.get("name", "")
+                    contract_name = _canonical_tool_name(str(tool_name))
                     if (
-                        tool_name
-                        and tool_name in tools_contract
+                        contract_name
+                        and contract_name in tools_contract
                         and state.get("arguments")
                     ):
                         try:
                             parsed_args = json.loads(state["arguments"])
                             if isinstance(parsed_args, dict):
                                 normalized_args = self._normalize_tool_input(
-                                    parsed_args, tools_contract[tool_name]
+                                    parsed_args, tools_contract[contract_name]
                                 )
                                 normalized_json = json.dumps(
                                     normalized_args, ensure_ascii=False
@@ -1291,7 +1355,9 @@ class AnthropicHandler:
                 for tc_idx, tool_call in enumerate(tool_calls):
                     tc_index = int(tool_call.get("index", tc_idx))
                     function_info = tool_call.get("function", {})
-                    tool_name = str(function_info.get("name") or "").strip()
+                    tool_name = _canonical_tool_name(
+                        str(function_info.get("name") or "").strip()
+                    )
 
                     if tool_name and text_block_open:
                         logger.info(

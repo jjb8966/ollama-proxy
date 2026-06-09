@@ -212,6 +212,83 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
             ],
         )
 
+    def test_tool_result_preserves_non_text_result_blocks(self) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": "toolu_search_1",
+                        "content": [
+                            {
+                                "type": "web_search_result",
+                                "title": "OpenAI",
+                                "url": "https://openai.com/",
+                            }
+                        ],
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertIn("web_search_result", normalized[0]["content"])
+        self.assertIn("https://openai.com/", normalized[0]["content"])
+
+    def test_server_tool_use_is_preserved_as_tool_call(self) -> None:
+        messages = [
+            {
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "server_tool_use",
+                        "id": "toolu_server_search_1",
+                        "name": "web_search",
+                        "input": {"query": "Claude Code WebSearch"},
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        tool_call = normalized[0]["tool_calls"][0]
+        self.assertEqual(tool_call["id"], "toolu_server_search_1")
+        self.assertEqual(tool_call["function"]["name"], "WebSearch")
+        self.assertEqual(
+            json.loads(tool_call["function"]["arguments"]),
+            {"query": "Claude Code WebSearch"},
+        )
+
+    def test_web_search_tool_result_is_preserved_as_tool_message(self) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "web_search_tool_result",
+                        "tool_use_id": "toolu_server_search_1",
+                        "content": [
+                            {
+                                "type": "web_search_result",
+                                "title": "Claude Code",
+                                "url": "https://claude.com/code",
+                            }
+                        ],
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(normalized[0]["role"], "tool")
+        self.assertEqual(normalized[0]["tool_call_id"], "toolu_server_search_1")
+        self.assertIn("Claude Code", normalized[0]["content"])
+        self.assertIn("https://claude.com/code", normalized[0]["content"])
+
     def test_user_base64_image_block_converts_to_image_url_content(self) -> None:
         messages = [
             {
@@ -647,6 +724,191 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         self.assertNotIn("format", params["properties"]["p"])
         self.assertEqual(params["properties"]["p"]["type"], "string")
 
+    def test_normalize_tools_maps_server_web_search_to_function_tool(self) -> None:
+        normalized = self.handler._normalize_tools(
+            [
+                {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {"query": {"type": "string"}},
+                        "required": ["query"],
+                    },
+                }
+            ]
+        )
+
+        self.assertEqual(len(normalized), 1)
+        self.assertEqual(normalized[0]["type"], "function")
+        self.assertEqual(normalized[0]["function"]["name"], "WebSearch")
+        self.assertEqual(
+            normalized[0]["function"]["parameters"],
+            {
+                "type": "object",
+                "properties": {"query": {"type": "string"}},
+                "required": ["query"],
+            },
+        )
+
+    def test_normalize_tools_deduplicates_web_search_aliases(self) -> None:
+        normalized = self.handler._normalize_tools(
+            [
+                {
+                    "name": "WebSearch",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {"query": {"type": "string"}},
+                    },
+                },
+                {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                },
+            ]
+        )
+
+        self.assertEqual(
+            [tool["function"]["name"] for tool in normalized],
+            ["WebSearch"],
+        )
+
+    def test_extract_tools_contract_uses_web_search_canonical_name(self) -> None:
+        contracts = self.handler._extract_tools_contract(
+            [
+                {
+                    "type": "web_search_20250305",
+                    "name": "web_search",
+                    "input_schema": {
+                        "type": "object",
+                        "properties": {"query": {"type": "string"}},
+                        "required": ["query"],
+                    },
+                }
+            ]
+        )
+
+        self.assertIn("WebSearch", contracts)
+        self.assertNotIn("web_search", contracts)
+        self.assertEqual(contracts["WebSearch"]["required"], {"query"})
+
+    def test_normalize_tool_choice_maps_web_search_alias(self) -> None:
+        normalized = self.handler._normalize_tool_choice(
+            {"type": "tool", "name": "web_search"}
+        )
+
+        self.assertEqual(
+            normalized,
+            {"type": "function", "function": {"name": "WebSearch"}},
+        )
+
+    def test_normalize_tool_input_maps_web_search_aliases_to_contract_field(self) -> None:
+        search_term_contract = {
+            "schema": {
+                "type": "object",
+                "properties": {"search_term": {"type": "string"}},
+                "required": ["search_term"],
+            },
+            "required": {"search_term"},
+            "properties": {"search_term": {"type": "string"}},
+        }
+        search_term_input = self.handler._normalize_tool_input(
+            {"query": "gpt-5.5 latest", "searchTerm": "duplicate"},
+            search_term_contract,
+        )
+
+        search_term_camel_contract = {
+            "schema": {
+                "type": "object",
+                "properties": {"searchTerm": {"type": "string"}},
+                "required": ["searchTerm"],
+            },
+            "required": {"searchTerm"},
+            "properties": {"searchTerm": {"type": "string"}},
+        }
+        search_term_camel_input = self.handler._normalize_tool_input(
+            {"query": "gpt-5.5 latest", "search_term": "duplicate"},
+            search_term_camel_contract,
+        )
+
+        self.assertEqual(search_term_input, {"search_term": "gpt-5.5 latest"})
+        self.assertEqual(search_term_camel_input, {"searchTerm": "gpt-5.5 latest"})
+
+    def test_normalize_tool_input_prunes_empty_web_search_domains(self) -> None:
+        tool_contract = {
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string"},
+                    "allowed_domains": {"type": "array", "items": {"type": "string"}},
+                    "blocked_domains": {"type": "array", "items": {"type": "string"}},
+                },
+                "required": ["query"],
+            },
+            "required": {"query"},
+            "properties": {
+                "query": {"type": "string"},
+                "allowed_domains": {"type": "array", "items": {"type": "string"}},
+                "blocked_domains": {"type": "array", "items": {"type": "string"}},
+            },
+        }
+
+        normalized = self.handler._normalize_tool_input(
+            {
+                "query": "OpenAI official website",
+                "allowed_domains": ["openai.com"],
+                "blocked_domains": [],
+            },
+            tool_contract,
+        )
+
+        self.assertEqual(
+            normalized,
+            {
+                "query": "OpenAI official website",
+                "allowed_domains": ["openai.com"],
+            },
+        )
+
+    def test_non_streaming_response_maps_web_search_alias_to_websearch(self) -> None:
+        response = self.handler.handle_non_streaming_response(
+            {
+                "model": "cli-proxy-api:gpt-5.5",
+                "choices": [
+                    {
+                        "finish_reason": "tool_calls",
+                        "message": {
+                            "role": "assistant",
+                            "content": "",
+                            "tool_calls": [
+                                {
+                                    "id": "call_search_1",
+                                    "type": "function",
+                                    "function": {
+                                        "name": "web_search",
+                                        "arguments": json.dumps(
+                                            {"query": "gpt-5.5 latest"},
+                                            ensure_ascii=False,
+                                        ),
+                                    },
+                                }
+                            ],
+                        },
+                    }
+                ],
+                "usage": {"prompt_tokens": 10, "completion_tokens": 5},
+            },
+            "cli-proxy-api:gpt-5.5",
+        )
+
+        self.assertEqual(response["stop_reason"], "tool_use")
+        self.assertEqual(response["content"][0]["name"], "WebSearch")
+        self.assertEqual(response["content"][0]["input"], {"query": "gpt-5.5 latest"})
+
+    def test_map_stop_reason_accepts_tool_reason_aliases(self) -> None:
+        for finish_reason in ("tool_calls", "tool_call", "function_call", "tool_use"):
+            self.assertEqual(self.handler._map_stop_reason(finish_reason), "tool_use")
+
 
 class AnthropicHandlerThinkingMappingTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -888,6 +1150,84 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
 
         self.assertEqual(tool_start["content_block"]["name"], "WebSearch")
         self.assertEqual(tool_input, {"search_term": "gpt-5.5 pricing benchmark"})
+
+    def test_stream_maps_web_search_alias_to_websearch_tool_block(self) -> None:
+        args = json.dumps({"query": "gpt-5.5 latest"}, ensure_ascii=False)
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"call_search_1","type":"function","function":{"name":"web_search","arguments":""}}]},"finish_reason":null}]}\n\n',
+                f'data: {{"choices":[{{"delta":{{"tool_calls":[{{"index":0,"function":{{"arguments":{json.dumps(args)}}}}}]}}}}]}}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_use"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cli-proxy-api:gpt-5.5",
+                "req_web_search_alias",
+            )
+        )
+
+        events = self._sse_events(chunks)
+        tool_start = next(
+            event
+            for event in events
+            if event.get("type") == "content_block_start"
+            and event.get("content_block", {}).get("type") == "tool_use"
+        )
+        tool_input = json.loads(self._tool_input_json(events, tool_start["index"]))
+        message_delta = next(
+            event for event in events if event.get("type") == "message_delta"
+        )
+
+        self.assertEqual(tool_start["content_block"]["name"], "WebSearch")
+        self.assertEqual(tool_input, {"query": "gpt-5.5 latest"})
+        self.assertEqual(message_delta["delta"]["stop_reason"], "tool_use")
+
+    def test_stream_maps_query_to_search_term_with_websearch_contract(self) -> None:
+        args = json.dumps({"query": "Claude Code WebSearch"}, ensure_ascii=False)
+        tools_contract = {
+            "WebSearch": {
+                "schema": {
+                    "type": "object",
+                    "properties": {"search_term": {"type": "string"}},
+                    "required": ["search_term"],
+                },
+                "required": {"search_term"},
+                "properties": {"search_term": {"type": "string"}},
+            }
+        }
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"call_search_1","type":"function","function":{"name":"web_search","arguments":""}}]},"finish_reason":null}]}\n\n',
+                f'data: {{"choices":[{{"delta":{{"tool_calls":[{{"index":0,"function":{{"arguments":{json.dumps(args)}}}}}]}}}}]}}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cli-proxy-api:gpt-5.5",
+                "req_web_search_contract",
+                tools_contract=tools_contract,
+            )
+        )
+
+        events = self._sse_events(chunks)
+        tool_start = next(
+            event
+            for event in events
+            if event.get("type") == "content_block_start"
+            and event.get("content_block", {}).get("type") == "tool_use"
+        )
+        tool_input = json.loads(self._tool_input_json(events, tool_start["index"]))
+
+        self.assertEqual(tool_start["content_block"]["name"], "WebSearch")
+        self.assertEqual(tool_input, {"search_term": "Claude Code WebSearch"})
 
     def test_stream_prunes_optional_empty_tool_fields_before_flushing_json(self) -> None:
         tools_contract = {

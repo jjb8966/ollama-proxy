@@ -22,6 +22,12 @@ from src.providers.standard import StandardApiClient
 from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
 from src.utils.model_limits import get_model_limits
+from src.utils.opencode_anthropic import (
+    anthropic_response_to_openai,
+    build_anthropic_payload,
+    stream_anthropic_sse_to_openai,
+    uses_opencode_anthropic_messages,
+)
 
 
 def _strip_quotes(value: str) -> str:
@@ -127,6 +133,10 @@ class ChatHandler:
             'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
             'client_attr': 'cli_proxy_api_client'
         },
+        'cli-proxy-api-plus': {
+            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_PLUS_BASE_URL', 'http://cli-proxy-api-plus:8317/v1')),
+            'client_attr': 'cli_proxy_api_plus_client'
+        },
         'cursor': {
             'base_url': _strip_quotes(os.getenv('CURSOR_API_BASE_URL', 'http://host.docker.internal:8765/v1')),
             'client_attr': 'cursor_client'
@@ -164,6 +174,7 @@ class ChatHandler:
         self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
+        self.cli_proxy_api_plus_client = StandardApiClient(api_config.cli_proxy_api_plus_rotator)
         self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
         self.cursor_client = StandardApiClient(api_config.cursor_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
@@ -346,6 +357,58 @@ class ChatHandler:
         client_attr = self.PROVIDER_CONFIG[provider]['client_attr']
         return getattr(self, client_attr)
 
+    def _handle_opencode_anthropic_messages_request(
+        self,
+        *,
+        base_url: str,
+        model: str,
+        requested_model: str,
+        messages: List[Dict[str, Any]],
+        stream: bool,
+        max_tokens: Optional[int],
+        tools: Any = None,
+    ):
+        payload = build_anthropic_payload(
+            model=model,
+            messages=messages,
+            stream=stream,
+            max_tokens=max_tokens,
+            tools=tools,
+        )
+        endpoint = f"{base_url}/messages"
+        headers = {"Content-Type": "application/json"}
+        client = self.opencode_client
+        api_key = client._get_api_key()
+        if not api_key:
+            logging.error("[OpenCode] Anthropic Messages API 키를 가져올 수 없습니다.")
+            return None
+        headers["x-api-key"] = api_key
+
+        resp = client.post_request(
+            url=endpoint,
+            payload=payload,
+            headers=headers,
+            stream=stream,
+        )
+        if resp is None or isinstance(resp, ProxyRequestError):
+            return resp
+
+        if stream:
+            def generate():
+                try:
+                    for chunk in stream_anthropic_sse_to_openai(
+                        resp.iter_lines(decode_unicode=True),
+                        requested_model,
+                    ):
+                        yield chunk
+                finally:
+                    resp.close()
+
+            return generate()
+
+        data = resp if isinstance(resp, dict) else resp.json()
+        return anthropic_response_to_openai(data, requested_model)
+
     def _validate_provider_model(
         self,
         provider: Optional[str],
@@ -453,8 +516,9 @@ class ChatHandler:
             "Claude Code tool bridge instructions:",
             "- Emit tool calls for Claude Code to execute. Claude Code runs the tools.",
             "- Ignore Cursor CLI Ask/Agent mode. Never tell the user to switch modes.",
-            "- Never use WebSearch. For HTTP(S) pages use WebFetch with a url only.",
-            "- Never claim WebFetch, Bash, Read, or Grep are unavailable if listed below.",
+            "- Use WebSearch for general web searches or recent information requests.",
+            "- Use WebFetch when a concrete HTTP(S) URL is available in the conversation.",
+            "- Never claim WebSearch, WebFetch, Bash, Read, or Grep are unavailable if listed below.",
             "- To call a tool, reply with ONLY one JSON object: "
             '{"name":"ToolName","arguments":{...}}',
             "- Do not answer from memory when a WebFetch url is available in the conversation.",
@@ -721,17 +785,29 @@ class ChatHandler:
                 tool_choice=req.get('tool_choice')
             )
 
+        effective_max_tokens = max_tokens
+        if effective_max_tokens is None:
+            limits = get_model_limits(requested_model)
+            if limits is not None and limits.max_output_tokens is not None:
+                effective_max_tokens = limits.max_output_tokens
+
+        if provider == "opencode" and uses_opencode_anthropic_messages(model):
+            return self._handle_opencode_anthropic_messages_request(
+                base_url=base_url,
+                model=model,
+                requested_model=requested_model,
+                messages=messages,
+                stream=stream,
+                max_tokens=effective_max_tokens,
+                tools=req.get("tools"),
+            )
+
         payload = {
             "messages": messages,
             "model": model,
             "stream": stream
         }
 
-        effective_max_tokens = max_tokens
-        if effective_max_tokens is None:
-            limits = get_model_limits(requested_model)
-            if limits is not None and limits.max_output_tokens is not None:
-                effective_max_tokens = limits.max_output_tokens
         if effective_max_tokens is not None:
             payload["max_tokens"] = effective_max_tokens
         if provider != "cursor":
