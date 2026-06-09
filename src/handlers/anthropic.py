@@ -19,6 +19,11 @@ from requests import Response
 
 from src.utils.schema_sanitizer import SCHEMA_ALLOWED_KEYS, sanitize_schema
 from src.utils.text_extraction import ANTHROPIC_TEXT_KEYS, extract_text_from_content_value
+from src.utils.opencode_anthropic import (
+    AnthropicMessagePassthrough,
+    AnthropicSsePassthrough,
+    uses_opencode_anthropic_messages,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -770,6 +775,13 @@ class AnthropicHandler:
         }
         if normalized_tools:
             result["tools"] = normalized_tools
+        model_name = result.get("model")
+        if (
+            isinstance(model_name, str)
+            and model_name.startswith("opencode:")
+            and uses_opencode_anthropic_messages(model_name.replace("opencode:", "", 1))
+        ):
+            result["_anthropic_passthrough"] = True
         reasoning_effort = self._map_anthropic_thinking_to_reasoning_effort(req)
         if reasoning_effort:
             result["reasoning_effort"] = reasoning_effort

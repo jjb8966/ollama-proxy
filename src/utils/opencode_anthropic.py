@@ -15,6 +15,27 @@ from typing import Any, Dict, Generator, Iterable, List, Optional
 OPENCODE_ANTHROPIC_MESSAGES_MODELS = frozenset({"qwen3.7-max"})
 
 
+class AnthropicSsePassthrough:
+    """OpenCode Messages API의 Anthropic SSE 스트림을 그대로 전달합니다."""
+
+    def __init__(self, resp) -> None:
+        self._resp = resp
+
+    def __iter__(self) -> Generator[str, None, None]:
+        try:
+            for line in iter_utf8_response_lines(self._resp):
+                yield f"{line}\n"
+        finally:
+            self._resp.close()
+
+
+class AnthropicMessagePassthrough:
+    """OpenCode Messages API의 Anthropic message 응답을 그대로 전달합니다."""
+
+    def __init__(self, data: Dict[str, Any]) -> None:
+        self.data = data
+
+
 def iter_utf8_response_lines(resp) -> Generator[str, None, None]:
     """업스트림 응답을 UTF-8로 안전하게 한 줄씩 읽습니다."""
     for raw_line in resp.iter_lines(decode_unicode=False):
@@ -54,6 +75,27 @@ def _extract_openai_text(content: Any) -> str:
     return "\n".join(part for part in parts if part)
 
 
+def _append_user_blocks(
+    anthropic_messages: List[Dict[str, Any]],
+    blocks: List[Dict[str, Any]],
+) -> None:
+    """연속 user 출력을 하나의 Anthropic user 메시지로 병합합니다."""
+    if not blocks:
+        return
+    if anthropic_messages and anthropic_messages[-1].get("role") == "user":
+        existing = anthropic_messages[-1]["content"]
+        if isinstance(existing, str):
+            existing_blocks: List[Dict[str, Any]] = [{"type": "text", "text": existing}]
+        elif isinstance(existing, list):
+            existing_blocks = list(existing)
+        else:
+            existing_blocks = []
+        existing_blocks.extend(blocks)
+        anthropic_messages[-1]["content"] = existing_blocks
+    else:
+        anthropic_messages.append({"role": "user", "content": blocks})
+
+
 def build_anthropic_payload(
     *,
     model: str,
@@ -61,6 +103,7 @@ def build_anthropic_payload(
     stream: bool,
     max_tokens: Optional[int],
     tools: Any = None,
+    tool_choice: Any = None,
 ) -> Dict[str, Any]:
     system_parts: List[str] = []
     anthropic_messages: List[Dict[str, Any]] = []
@@ -99,11 +142,14 @@ def build_anthropic_payload(
                                 }
                             )
                 if blocks:
-                    anthropic_messages.append({"role": "user", "content": blocks})
+                    _append_user_blocks(anthropic_messages, blocks)
             else:
                 text = _extract_openai_text(content)
                 if text:
-                    anthropic_messages.append({"role": "user", "content": text})
+                    if anthropic_messages and anthropic_messages[-1].get("role") == "user":
+                        _append_user_blocks(anthropic_messages, [{"type": "text", "text": text}])
+                    else:
+                        anthropic_messages.append({"role": "user", "content": text})
             continue
 
         if role == "assistant":
@@ -145,17 +191,15 @@ def build_anthropic_payload(
             tool_call_id = str(message.get("tool_call_id", "")).strip()
             if not tool_call_id:
                 continue
-            anthropic_messages.append(
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "tool_result",
-                            "tool_use_id": tool_call_id,
-                            "content": _extract_openai_text(message.get("content")),
-                        }
-                    ],
-                }
+            _append_user_blocks(
+                anthropic_messages,
+                [
+                    {
+                        "type": "tool_result",
+                        "tool_use_id": tool_call_id,
+                        "content": _extract_openai_text(message.get("content")),
+                    }
+                ],
             )
 
     payload: Dict[str, Any] = {
@@ -189,6 +233,22 @@ def build_anthropic_payload(
             )
         if anthropic_tools:
             payload["tools"] = anthropic_tools
+    if tool_choice is not None:
+        if tool_choice == "auto":
+            payload["tool_choice"] = {"type": "auto"}
+        elif tool_choice == "required":
+            payload["tool_choice"] = {"type": "any"}
+        elif tool_choice == "none":
+            payload["tool_choice"] = {"type": "none"}
+        elif isinstance(tool_choice, dict):
+            if tool_choice.get("type") == "function":
+                function_info = tool_choice.get("function", {})
+                if isinstance(function_info, dict):
+                    name = str(function_info.get("name", "")).strip()
+                    if name:
+                        payload["tool_choice"] = {"type": "tool", "name": name}
+            else:
+                payload["tool_choice"] = tool_choice
     return payload
 
 
@@ -293,6 +353,7 @@ def stream_anthropic_sse_to_openai(
     completion_id = f"chatcmpl-{uuid.uuid4().hex}"
     role_sent = False
     finish_reason: Optional[str] = None
+    tool_blocks: Dict[int, Dict[str, Any]] = {}
 
     for raw_line in lines:
         line = raw_line.strip()
@@ -317,11 +378,76 @@ def stream_anthropic_sse_to_openai(
                 role_sent = True
             continue
 
+        if event_type == "content_block_start":
+            content_block = event.get("content_block", {})
+            if isinstance(content_block, dict) and content_block.get("type") == "tool_use":
+                anthropic_index = int(event.get("index", 0))
+                if anthropic_index not in tool_blocks:
+                    tool_blocks[anthropic_index] = {
+                        "openai_index": len(tool_blocks),
+                        "id": str(content_block.get("id", "")),
+                        "name": str(content_block.get("name", "")),
+                        "started": False,
+                    }
+                state = tool_blocks[anthropic_index]
+                if not state["started"] and state["name"]:
+                    state["started"] = True
+                    if not role_sent:
+                        yield _emit_openai_chunk(
+                            completion_id,
+                            requested_model,
+                            {"role": "assistant"},
+                        )
+                        role_sent = True
+                    yield _emit_openai_chunk(
+                        completion_id,
+                        requested_model,
+                        {
+                            "tool_calls": [
+                                {
+                                    "index": state["openai_index"],
+                                    "id": state["id"],
+                                    "type": "function",
+                                    "function": {
+                                        "name": state["name"],
+                                        "arguments": "",
+                                    },
+                                }
+                            ]
+                        },
+                    )
+            continue
+
         if event_type == "content_block_delta":
             delta = event.get("delta", {})
             if not isinstance(delta, dict):
                 continue
             delta_type = delta.get("type")
+            if delta_type == "input_json_delta":
+                anthropic_index = int(event.get("index", 0))
+                state = tool_blocks.get(anthropic_index)
+                partial_json = delta.get("partial_json")
+                if state and isinstance(partial_json, str) and partial_json:
+                    if not role_sent:
+                        yield _emit_openai_chunk(
+                            completion_id,
+                            requested_model,
+                            {"role": "assistant"},
+                        )
+                        role_sent = True
+                    yield _emit_openai_chunk(
+                        completion_id,
+                        requested_model,
+                        {
+                            "tool_calls": [
+                                {
+                                    "index": state["openai_index"],
+                                    "function": {"arguments": partial_json},
+                                }
+                            ]
+                        },
+                    )
+                continue
             if delta_type == "text_delta":
                 text = delta.get("text")
                 if isinstance(text, str) and text:

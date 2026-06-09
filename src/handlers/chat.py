@@ -23,6 +23,8 @@ from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
 from src.utils.model_limits import get_model_limits
 from src.utils.opencode_anthropic import (
+    AnthropicMessagePassthrough,
+    AnthropicSsePassthrough,
     anthropic_response_to_openai,
     build_anthropic_payload,
     iter_utf8_response_lines,
@@ -369,6 +371,8 @@ class ChatHandler:
         stream: bool,
         max_tokens: Optional[int],
         tools: Any = None,
+        tool_choice: Any = None,
+        anthropic_passthrough: bool = False,
     ):
         payload = build_anthropic_payload(
             model=model,
@@ -376,6 +380,7 @@ class ChatHandler:
             stream=stream,
             max_tokens=max_tokens,
             tools=tools,
+            tool_choice=tool_choice,
         )
         endpoint = f"{base_url}/messages"
         headers = {"Content-Type": "application/json"}
@@ -396,6 +401,9 @@ class ChatHandler:
             return resp
 
         if stream:
+            if anthropic_passthrough:
+                return AnthropicSsePassthrough(resp)
+
             def generate():
                 try:
                     for chunk in stream_anthropic_sse_to_openai(
@@ -409,6 +417,8 @@ class ChatHandler:
             return generate()
 
         data = resp if isinstance(resp, dict) else read_utf8_response_json(resp)
+        if anthropic_passthrough:
+            return AnthropicMessagePassthrough(data)
         return anthropic_response_to_openai(data, requested_model)
 
     def _validate_provider_model(
@@ -802,6 +812,8 @@ class ChatHandler:
                 stream=stream,
                 max_tokens=effective_max_tokens,
                 tools=req.get("tools"),
+                tool_choice=req.get("tool_choice"),
+                anthropic_passthrough=bool(req.get("_anthropic_passthrough")),
             )
 
         payload = {

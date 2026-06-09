@@ -20,6 +20,7 @@ from flask import Blueprint, Response, current_app, request, stream_with_context
 
 from src.core.errors import ProxyRequestError
 from src.handlers import AnthropicHandler, ChatHandler
+from src.utils.opencode_anthropic import AnthropicMessagePassthrough, AnthropicSsePassthrough
 
 
 logger = logging.getLogger(__name__)
@@ -341,11 +342,35 @@ def messages():
             mimetype='application/json'
         )
 
-    if proxied_req['stream'] and (inspect.isgenerator(resp) or hasattr(resp, 'iter_lines')):
-        logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)
+    if proxied_req['stream']:
+        if isinstance(resp, AnthropicSsePassthrough):
+            logger.info(
+                "Anthropic streaming passthrough start: request_id=%s model=%s",
+                request_id,
+                requested_model,
+            )
+
+            def generate_passthrough():
+                for chunk in resp:
+                    yield chunk
+
+            return Response(
+                stream_with_context(generate_passthrough()),
+                mimetype='text/event-stream',
+            )
+        if inspect.isgenerator(resp) or hasattr(resp, 'iter_lines'):
+            logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)
+            return Response(
+                stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id, tools_contract=tools_contract)),
+                mimetype='text/event-stream'
+            )
+
+    if isinstance(resp, AnthropicMessagePassthrough):
+        logger.info("Anthropic non-streaming passthrough success: request_id=%s model=%s", request_id, requested_model)
         return Response(
-            stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id, tools_contract=tools_contract)),
-            mimetype='text/event-stream'
+            json.dumps(resp.data, ensure_ascii=False),
+            status=200,
+            mimetype='application/json',
         )
 
     try:
