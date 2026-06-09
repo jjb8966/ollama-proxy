@@ -39,7 +39,7 @@ class OpenCodeAnthropicUtilityTests(unittest.TestCase):
                 "model": "qwen3.7-max",
                 "content": [
                     {"type": "thinking", "thinking": "reason"},
-                    {"type": "text", "text": "Hi"},
+                    {"type": "text", "text": "안녕하세요"},
                 ],
                 "stop_reason": "end_turn",
                 "usage": {"input_tokens": 10, "output_tokens": 5},
@@ -48,10 +48,19 @@ class OpenCodeAnthropicUtilityTests(unittest.TestCase):
         )
 
         message = converted["choices"][0]["message"]
-        self.assertEqual(message["content"], "Hi")
+        self.assertEqual(message["content"], "안녕하세요")
         self.assertEqual(message["reasoning_content"], "reason")
         self.assertEqual(converted["model"], "opencode:qwen3.7-max")
         self.assertEqual(converted["usage"]["total_tokens"], 15)
+
+    def test_stream_anthropic_sse_to_openai_preserves_korean(self) -> None:
+        from src.utils.opencode_anthropic import stream_anthropic_sse_to_openai
+
+        lines = [
+            'data: {"type":"content_block_delta","delta":{"type":"text_delta","text":"모델"}}',
+        ]
+        chunks = list(stream_anthropic_sse_to_openai(lines, "opencode:qwen3.7-max"))
+        self.assertTrue(any("모델" in chunk for chunk in chunks))
 
 
 class ChatHandlerOpenCodeAnthropicTests(unittest.TestCase):

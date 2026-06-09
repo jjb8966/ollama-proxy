@@ -25,6 +25,8 @@ from src.utils.model_limits import get_model_limits
 from src.utils.opencode_anthropic import (
     anthropic_response_to_openai,
     build_anthropic_payload,
+    iter_utf8_response_lines,
+    read_utf8_response_json,
     stream_anthropic_sse_to_openai,
     uses_opencode_anthropic_messages,
 )
@@ -397,7 +399,7 @@ class ChatHandler:
             def generate():
                 try:
                     for chunk in stream_anthropic_sse_to_openai(
-                        resp.iter_lines(decode_unicode=True),
+                        iter_utf8_response_lines(resp),
                         requested_model,
                     ):
                         yield chunk
@@ -406,7 +408,7 @@ class ChatHandler:
 
             return generate()
 
-        data = resp if isinstance(resp, dict) else resp.json()
+        data = resp if isinstance(resp, dict) else read_utf8_response_json(resp)
         return anthropic_response_to_openai(data, requested_model)
 
     def _validate_provider_model(

@@ -15,6 +15,27 @@ from typing import Any, Dict, Generator, Iterable, List, Optional
 OPENCODE_ANTHROPIC_MESSAGES_MODELS = frozenset({"qwen3.7-max"})
 
 
+def iter_utf8_response_lines(resp) -> Generator[str, None, None]:
+    """업스트림 응답을 UTF-8로 안전하게 한 줄씩 읽습니다."""
+    for raw_line in resp.iter_lines(decode_unicode=False):
+        if not raw_line:
+            continue
+        if isinstance(raw_line, str):
+            yield raw_line
+            continue
+        yield raw_line.decode("utf-8")
+
+
+def read_utf8_response_json(resp) -> Dict[str, Any]:
+    """업스트림 JSON 응답을 UTF-8로 안전하게 파싱합니다."""
+    raw = resp.content
+    if isinstance(raw, bytes):
+        return json.loads(raw.decode("utf-8"))
+    if isinstance(raw, str):
+        return json.loads(raw)
+    return resp.json()
+
+
 def uses_opencode_anthropic_messages(model: str) -> bool:
     return model in OPENCODE_ANTHROPIC_MESSAGES_MODELS
 
