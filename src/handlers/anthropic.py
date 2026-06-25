@@ -251,15 +251,11 @@ class AnthropicHandler:
 
     @staticmethod
     def _tool_result_content_to_text(content: Any) -> str:
+        # CCR-style: string이면 그대로, 아니면 JSON.stringify
         if content is None:
             return ""
         if isinstance(content, str):
             return content
-        if isinstance(content, list):
-            text = AnthropicHandler._content_blocks_to_text(content)
-            if text:
-                return text
-            return safe_json_dumps(content, TOOL_RESULT_SERIALIZATION_FALLBACK)
         return safe_json_dumps(content, TOOL_RESULT_SERIALIZATION_FALLBACK)
 
     @staticmethod
@@ -771,7 +767,6 @@ class AnthropicHandler:
             "thinking_level": req.get("thinking_level", "minimal"),
             "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
             "_tools_contract": self._extract_tools_contract(request_tools),
-            "_skip_compaction": True,
         }
         if normalized_tools:
             result["tools"] = normalized_tools

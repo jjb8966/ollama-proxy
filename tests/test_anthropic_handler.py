@@ -109,7 +109,11 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
                 {
                     "role": "tool",
                     "tool_call_id": "toolu_789",
-                    "content": "command output",
+                    # CCR-style: list content는 JSON.stringify로 직렬화됨
+                    "content": json.dumps(
+                        [{"type": "text", "text": "command output"}],
+                        ensure_ascii=False,
+                    ),
                 },
                 {
                     "role": "user",

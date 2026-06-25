@@ -17,11 +17,11 @@ from typing import Dict, Any, List, Optional
 
 import requests
 
-from src.core.errors import ProxyRequestError
+from src.core.errors import ProxyRequestError, ErrorHandler
 from src.providers.standard import StandardApiClient
 from src.providers.qwen import QwenApiClient
 from src.providers.google import GoogleApiClient
-from src.utils.model_limits import get_model_limits
+from src.utils.model_limits import get_model_limits, load_model_limits
 from src.utils.opencode_anthropic import (
     AnthropicMessagePassthrough,
     AnthropicSsePassthrough,
@@ -186,28 +186,44 @@ class ChatHandler:
 
     @staticmethod
     def _estimate_request_tokens(req: Dict[str, Any]) -> int:
-        payload = {
-            "model": req.get("model"),
-            "messages": req.get("messages"),
-            "tools": req.get("tools"),
-            "tool_choice": req.get("tool_choice"),
-            "max_tokens": req.get("max_tokens"),
-        }
-        serialized = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), default=str)
-        # JSON 이스케이프 시퀀스(\n, \", \\ 등)는 실제 토크나이저에게 1문자임
-        effective_chars = 0
-        i = 0
-        s = serialized
-        while i < len(s):
-            if s[i] == '\\' and i + 1 < len(s):
-                i += 2  # 이스케이프 시퀀스는 1문자로 계산
-            elif s[i] == ' ':
-                i += 1
+        messages = req.get("messages", [])
+        total_chars = 0
+
+        for msg in messages:
+            if not isinstance(msg, dict):
                 continue
-            else:
-                i += 1
-            effective_chars += 1
-        return max(1, int(effective_chars / 4))
+            content = msg.get("content", "")
+            if isinstance(content, str):
+                total_chars += len(content)
+            elif isinstance(content, list):
+                for block in content:
+                    if not isinstance(block, dict):
+                        continue
+                    if block.get("type") == "text":
+                        total_chars += len(str(block.get("text", "")))
+                    elif block.get("type") == "image_url":
+                        # base64 이미지는 실제 토큰화 시 약 85 토큰만 사용
+                        # 과대추정 방지를 위해 작은 고정값 사용
+                        total_chars += 340  # 약 85 tokens × 4 chars
+                    else:
+                        # tool_result 등 기타 블록
+                        total_chars += len(
+                            json.dumps(block, ensure_ascii=False, default=str)
+                        )
+            elif isinstance(content, dict):
+                total_chars += len(
+                    json.dumps(content, ensure_ascii=False, default=str)
+                )
+
+        # tools, tool_choice
+        tools = req.get("tools")
+        if isinstance(tools, list):
+            total_chars += len(json.dumps(tools, ensure_ascii=False, default=str))
+        tool_choice = req.get("tool_choice")
+        if tool_choice is not None:
+            total_chars += len(json.dumps(tool_choice, ensure_ascii=False, default=str))
+
+        return max(1, int(total_chars / 3.5))  # chars/3.5가 chars/4보다 정확
 
     def _build_compaction_notice_content(
         self,
@@ -301,13 +317,70 @@ class ChatHandler:
         yield f"data: {json.dumps(final_chunk, ensure_ascii=False)}\n\n"
         yield "data: [DONE]\n\n"
 
-    def _maybe_compact_request(
-        self,
-        req: Dict[str, Any]
-    ) -> Optional[requests.Response | Dict[str, Any] | ProxyRequestError]:
-        if req.get("_skip_compaction"):
+    def _find_long_context_model(self, requested_model: str) -> Optional[str]:
+        """현재 모델보다 context_length가 더 큰 같은 provider의 fallback 모델을 찾는다."""
+        if not isinstance(requested_model, str) or not requested_model:
             return None
 
+        current_limits = get_model_limits(requested_model)
+        if not current_limits or not current_limits.context_length:
+            return None
+
+        provider, model, _ = self._parse_model(requested_model)
+        if not provider:
+            return None
+
+        all_limits = load_model_limits()
+        best_model = None
+        best_length = current_limits.context_length
+
+        for model_name, limits in all_limits.items():
+            if not limits.context_length or limits.context_length <= best_length:
+                continue
+            p, _, _ = self._parse_model(model_name)
+            if p == provider:
+                best_length = limits.context_length
+                best_model = model_name
+
+        return best_model
+
+    def _handle_context_overflow_fallback(
+        self,
+        req: Dict[str, Any],
+        error: Any,
+    ) -> Optional[Any]:
+        """CCR-style: context overflow 발생 시 long-context 모델로 자동 재시도"""
+        requested_model = req.get("model", "")
+        error_msg = ""
+        if isinstance(error, str):
+            error_msg = error
+        elif hasattr(error, 'text'):
+            error_msg = error.text
+        elif isinstance(error, Exception):
+            error_msg = str(error)
+
+        if not ErrorHandler.is_context_overflow_message(error_msg):
+            return None  # context overflow가 아니면 재시도 안 함
+
+        long_context_model = self._find_long_context_model(requested_model)
+        if not long_context_model or long_context_model == requested_model:
+            return None  # 재시도할 모델이 없음
+
+        logging.warning(
+            "[ContextOverflowFallback] %s → %s 재시도",
+            requested_model, long_context_model
+        )
+
+        retry_req = dict(req)
+        retry_req["model"] = long_context_model
+        return self.handle_chat_request(retry_req)
+
+    def _maybe_route_long_context(
+        self,
+        req: Dict[str, Any]
+    ) -> Optional[Any]:
+        # Returns: dict (routed req), generator (compaction notice stream),
+        # or dict (compaction notice response)
         if not self.COMPACTION_ENABLED:
             return None
 
@@ -324,12 +397,20 @@ class ChatHandler:
         if estimated_tokens <= threshold_tokens:
             return None
 
-        logging.info(
-            "[Compaction] 요청 페이로드가 임계값 초과 | model=%s | estimated=%s | threshold=%s | context=%s",
-            requested_model,
-            estimated_tokens,
-            threshold_tokens,
-            limits.context_length,
+        long_context_model = self._find_long_context_model(requested_model)
+        if long_context_model:
+            logging.info(
+                "[LongContextRouting] %s → %s (tokens: %d, threshold: %d)",
+                requested_model, long_context_model, estimated_tokens, threshold_tokens
+            )
+            req = dict(req)
+            req["model"] = long_context_model
+            return req
+
+        # fallback 없으면 에러 반환 (기존 compaction 동작 유지)
+        logging.warning(
+            "[LongContextRouting] fallback 모델 없음, compaction 필요: model=%s tokens=%d",
+            requested_model, estimated_tokens
         )
         if req.get("stream", True):
             return self._build_compaction_notice_stream(req, estimated_tokens, limits.context_length)
@@ -757,9 +838,15 @@ class ChatHandler:
             logging.warning("요청에 messages가 없습니다.")
             return None
 
-        compacted = self._maybe_compact_request(req)
-        if compacted is not None:
-            return compacted
+        routed = self._maybe_route_long_context(req)
+        if routed is not None:
+            if isinstance(routed, dict) and "model" in routed and "messages" in routed:
+                # long-context 모델로 라우팅된 경우 req 교체
+                req = routed
+                requested_model = req.get("model", requested_model)
+            else:
+                # compaction notice 응답인 경우 그대로 반환
+                return routed
 
         provider, model, base_url = self._parse_model(requested_model)
 
