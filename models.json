@@ -151,6 +151,18 @@
       "max_output_tokens": 128000
     },
     {
+      "name": "ccs:composer-2.5",
+      "model": "ccs:composer-2.5",
+      "context_length": 200000,
+      "max_output_tokens": 32000
+    },
+    {
+      "name": "ccs:composer-2.5-fast",
+      "model": "ccs:composer-2.5-fast",
+      "context_length": 200000,
+      "max_output_tokens": 32000
+    },
+    {
       "name": "codestral:codestral-2508",
       "model": "codestral:codestral-2508",
       "context_length": 128000
@@ -297,6 +309,12 @@
       "max_output_tokens": 131072
     },
     {
+      "name": "opencode:kimi-k2.7",
+      "model": "opencode:kimi-k2.7",
+      "context_length": 262144,
+      "max_output_tokens": 16384
+    },
+    {
       "name": "opencode:deepseek-v4-pro",
       "model": "opencode:deepseek-v4-pro",
       "context_length": 1000000,
@@ -305,7 +323,7 @@
     {
       "name": "opencode:deepseek-v4-flash",
       "model": "opencode:deepseek-v4-flash",
-      "context_length": 1000000,
+      "context_length": 1048576,
       "max_output_tokens": 384000
     },
     {

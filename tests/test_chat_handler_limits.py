@@ -42,6 +42,7 @@ class _DummyApiConfig:
         self.nvidia_nim_rotator = _DummyRotator("NvidiaNIM")
         self.cli_proxy_api_rotator = _DummyRotator("CLIProxyAPI")
         self.cli_proxy_api_plus_rotator = _DummyRotator("CLIProxyAPIPlus")
+        self.ccs_rotator = _DummyRotator("CCS")
         self.cli_proxy_api_gpt_rotator = _DummyRotator("CLIProxyAPI_GPT")
         self.cursor_rotator = _DummyRotator("Cursor")
         self.ollama_cloud_rotator = _DummyRotator("OllamaCloud")

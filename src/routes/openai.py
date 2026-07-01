@@ -102,7 +102,7 @@ def chat_completions():
         "messages": req.get('messages'),
         "stream": stream,
         "max_tokens": req.get('max_tokens'),
-        "thinking_level": req.get('thinking_level', 'minimal'),
+        "thinking_level": req.get('thinking_level'),
         "tools": req.get('tools'),
         "tool_choice": req.get('tool_choice')
     }
@@ -146,7 +146,11 @@ def chat_completions():
 
         return Response(
             stream_with_context(passthrough_generator()),
-            mimetype='text/event-stream'
+            mimetype='text/event-stream',
+            headers={
+                'Cache-Control': 'no-cache',
+                'X-Accel-Buffering': 'no',
+            },
         )
 
     if stream:
@@ -160,7 +164,11 @@ def chat_completions():
 
         return Response(
             stream_with_context(generate()),
-            mimetype=resp.headers.get('Content-Type', 'text/event-stream')
+            mimetype=resp.headers.get('Content-Type', 'text/event-stream'),
+            headers={
+                'Cache-Control': 'no-cache',
+                'X-Accel-Buffering': 'no',
+            },
         )
     else:
         return Response(

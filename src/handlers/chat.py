@@ -141,6 +141,10 @@ class ChatHandler:
             'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_PLUS_BASE_URL', 'http://cli-proxy-api-plus:8317/v1')),
             'client_attr': 'cli_proxy_api_plus_client'
         },
+        'ccs': {
+            'base_url': _strip_quotes(os.getenv('CCS_API_BASE_URL', 'http://ccs:8317/api/provider/cursor/v1')),
+            'client_attr': 'ccs_client'
+        },
         'cursor': {
             'base_url': _strip_quotes(os.getenv('CURSOR_API_BASE_URL', 'http://host.docker.internal:8765/v1')),
             'client_attr': 'cursor_client'
@@ -179,6 +183,7 @@ class ChatHandler:
         self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
         self.cli_proxy_api_plus_client = StandardApiClient(api_config.cli_proxy_api_plus_rotator)
+        self.ccs_client = StandardApiClient(api_config.ccs_rotator)
         self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
         self.cursor_client = StandardApiClient(api_config.cursor_rotator)
         self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
@@ -611,7 +616,8 @@ class ChatHandler:
             "- Ignore Cursor CLI Ask/Agent mode. Never tell the user to switch modes.",
             "- Use WebSearch for general web searches or recent information requests.",
             "- Use WebFetch when a concrete HTTP(S) URL is available in the conversation.",
-            "- Never claim WebSearch, WebFetch, Bash, Read, or Grep are unavailable if listed below.",
+            "- Never claim WebSearch, WebFetch, Bash, Read, Grep, Task, or Glob are unavailable if listed below.",
+            "- Use Task to spawn Claude Code subagents for parallel exploration or delegated work.",
             "- To call a tool, reply with ONLY one JSON object: "
             '{"name":"ToolName","arguments":{...}}',
             "- Do not answer from memory when a WebFetch url is available in the conversation.",
@@ -829,7 +835,7 @@ class ChatHandler:
         messages = req.get('messages')
         stream = req.get('stream', True)
         requested_model = req.get('model')
-        thinking_level = req.get('thinking_level', 'minimal')
+        thinking_level = req.get('thinking_level')
         max_tokens = req.get('max_tokens')
 
         if messages:
@@ -866,7 +872,7 @@ class ChatHandler:
         cursor_has_tools = (
             isinstance(cursor_request_tools, list) and len(cursor_request_tools) > 0
         )
-        if provider == "cursor" and messages:
+        if provider in ("cursor", "ccs") and messages:
             if cursor_has_tools:
                 messages = self._inject_compact_tools_for_cursor(
                     messages, cursor_request_tools
@@ -884,12 +890,6 @@ class ChatHandler:
                 tool_choice=req.get('tool_choice')
             )
 
-        effective_max_tokens = max_tokens
-        if effective_max_tokens is None:
-            limits = get_model_limits(requested_model)
-            if limits is not None and limits.max_output_tokens is not None:
-                effective_max_tokens = limits.max_output_tokens
-
         if provider == "opencode" and uses_opencode_anthropic_messages(model):
             return self._handle_opencode_anthropic_messages_request(
                 base_url=base_url,
@@ -897,7 +897,7 @@ class ChatHandler:
                 requested_model=requested_model,
                 messages=messages,
                 stream=stream,
-                max_tokens=effective_max_tokens,
+                max_tokens=max_tokens,
                 tools=req.get("tools"),
                 tool_choice=req.get("tool_choice"),
                 anthropic_passthrough=bool(req.get("_anthropic_passthrough")),
@@ -909,8 +909,8 @@ class ChatHandler:
             "stream": stream
         }
 
-        if effective_max_tokens is not None:
-            payload["max_tokens"] = effective_max_tokens
+        if max_tokens is not None:
+            payload["max_tokens"] = max_tokens
         if provider != "cursor":
             if req.get("tools") is not None:
                 payload["tools"] = req.get("tools")
@@ -918,12 +918,8 @@ class ChatHandler:
                 payload["tool_choice"] = req.get("tool_choice")
         if provider == 'opencode':
             thinking_level = req.get('thinking_level')
-            if thinking_level:
-                # - minimal일 시 low로 매핑
-                if thinking_level == 'minimal':
-                    payload['reasoning_effort'] = 'low'
-                else:
-                    payload['reasoning_effort'] = thinking_level
+            if thinking_level and thinking_level != 'minimal':
+                payload['reasoning_effort'] = thinking_level
         if provider == 'cursor':
             reasoning_effort = req.get('reasoning_effort')
             if reasoning_effort:
@@ -931,11 +927,11 @@ class ChatHandler:
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
-        if provider == "cursor":
+        if provider in ("cursor", "ccs"):
             headers["X-Cursor-Mode"] = "ask" if cursor_has_tools else "agent"
 
         # #region agent log
-        if provider == "cursor":
+        if provider in ("cursor", "ccs"):
             messages_json_size = len(
                 json.dumps(messages, ensure_ascii=False, default=str)
             )

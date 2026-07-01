@@ -203,6 +203,13 @@ class BaseApiClient(ABC):
                         f"remaining={x_ratelimit_remaining}{context_suffix}"
                     )
                     logging.debug(f"[HTTP] Rate Limit 헤더: {dict(resp.headers)}")
+                    message = ErrorHandler.extract_error_message(response_body)
+                    return ProxyRequestError(
+                        model=str(payload.get("model", "unknown")),
+                        message=message or "Rate limit exceeded",
+                        status_code=429,
+                        error_type="rate_limit_error",
+                    )
                 
                 # 5xx 서버 오류 로깅
                 if 500 <= resp.status_code < 600:

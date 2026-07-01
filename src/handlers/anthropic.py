@@ -74,6 +74,90 @@ WEB_SEARCH_DEFAULT_SCHEMA: Dict[str, Any] = {
     "required": ["query"],
 }
 
+CURSOR_INTERNAL_TOOL_ALIASES = {
+    "list_dir": "Glob",
+    "glob_file_search": "Glob",
+    "read_file": "Read",
+    "run_terminal_cmd": "Bash",
+    "grep": "Grep",
+    "ripgrep_search": "Grep",
+    "codebase_search": "Grep",
+    "file_search": "Grep",
+    "search_replace": "Edit",
+    "edit_file": "Edit",
+    "write": "Write",
+    "task": "Task",
+    "run_task": "Task",
+    "Agent": "Task",
+}
+
+
+_REDACTED_TOOL_MARKER_PATTERN = re.compile(
+    r"<\|redacted[^>|]*[>|]?",
+    re.IGNORECASE,
+)
+_BRACKET_TOOL_USE_CAPTURE_PATTERN = re.compile(
+    r"\[tool_use\s+([A-Za-z0-9_-]+)\s+(\{[\s\S]*?\})\]",
+    re.IGNORECASE,
+)
+_BRACKET_TOOL_USE_PATTERN = re.compile(
+    r"\[tool_use\s+[A-Za-z0-9_-]+\s+\{[\s\S]*?\}\]",
+    re.IGNORECASE,
+)
+
+
+def _extract_bracket_tool_calls_from_text(text: str) -> tuple[str, List[Dict[str, Any]]]:
+    """Split leaked bracket-style tool_use text into visible text and OpenAI tool_calls."""
+    if not text:
+        return "", []
+
+    tool_calls: List[Dict[str, Any]] = []
+    for index, match in enumerate(_BRACKET_TOOL_USE_CAPTURE_PATTERN.finditer(text)):
+        name = str(match.group(1) or "").strip()
+        args_raw = str(match.group(2) or "").strip()
+        if not name or not args_raw:
+            continue
+        try:
+            args = json.loads(args_raw)
+        except json.JSONDecodeError:
+            continue
+        if not isinstance(args, dict):
+            args = {"input": args}
+
+        tool_calls.append(
+            {
+                "index": index,
+                "id": f"toolu_ollama_bracket_{int(time.time() * 1000)}_{index}",
+                "type": "function",
+                "function": {
+                    "name": _canonical_tool_name(name),
+                    "arguments": json.dumps(args, ensure_ascii=False),
+                },
+            }
+        )
+
+    visible = _BRACKET_TOOL_USE_PATTERN.sub("", text)
+    return _strip_leaked_tool_markup(visible), tool_calls
+
+
+def _strip_leaked_tool_markup(text: str) -> str:
+    if not text:
+        return ""
+    cleaned = text
+    for marker in (
+        "<｜tool▁calls▁begin｜>",
+        "<｜tool▁calls▁end｜>",
+        "<｜tool▁call▁begin｜>",
+        "<｜tool▁call▁end｜>",
+        "<｜tool▁sep｜>",
+        "<think>",
+        "</think>",
+    ):
+        cleaned = cleaned.replace(marker, "")
+    cleaned = _REDACTED_TOOL_MARKER_PATTERN.sub("", cleaned)
+    cleaned = _BRACKET_TOOL_USE_PATTERN.sub("", cleaned)
+    return cleaned
+
 
 def _is_empty_value(value: Any) -> bool:
     """값이 empty string, None, 또는 whitespace-only string인지 확인합니다."""
@@ -95,7 +179,7 @@ def _is_web_search_tool_type(tool_type: str) -> bool:
 def _canonical_tool_name(name: str, tool_type: str = "") -> str:
     if _is_web_search_tool_name(name) or _is_web_search_tool_type(tool_type):
         return WEB_SEARCH_TOOL_NAME
-    return name
+    return CURSOR_INTERNAL_TOOL_ALIASES.get(name, name)
 
 
 def safe_json_dumps(value: Any, fallback: str) -> str:
@@ -142,7 +226,7 @@ class AnthropicHandler:
                     return extracted
         return ""
 
-    def _extract_stream_text(self, choice: Dict[str, Any]) -> str:
+    def _extract_stream_text_raw(self, choice: Dict[str, Any]) -> str:
         if not isinstance(choice, dict):
             return ""
 
@@ -161,6 +245,9 @@ class AnthropicHandler:
                     return extracted
 
         return self._extract_text_from_content_value(choice.get("text"))
+
+    def _extract_stream_text(self, choice: Dict[str, Any]) -> str:
+        return _strip_leaked_tool_markup(self._extract_stream_text_raw(choice))
 
     def _summarize_stream_choice(self, choice: Any) -> str:
         if not isinstance(choice, dict):
@@ -764,7 +851,7 @@ class AnthropicHandler:
             "messages": final_messages,
             "stream": bool(req.get("stream", False)),
             "max_tokens": req.get("max_tokens"),
-            "thinking_level": req.get("thinking_level", "minimal"),
+            "thinking_level": req.get("thinking_level"),
             "tool_choice": self._normalize_tool_choice(req.get("tool_choice")),
             "_tools_contract": self._extract_tools_contract(request_tools),
         }
@@ -1324,8 +1411,75 @@ class AnthropicHandler:
                         },
                     )
 
-                text = self._extract_stream_text(choice)
-                if text:
+                raw_text = self._extract_stream_text_raw(choice)
+                if raw_text:
+                    visible_text, bracket_tool_calls = _extract_bracket_tool_calls_from_text(raw_text)
+                    if bracket_tool_calls:
+                        if visible_text:
+                            if thinking_block_open:
+                                yield sse(
+                                    "content_block_stop",
+                                    {"type": "content_block_stop", "index": current_index},
+                                )
+                                thinking_block_open = False
+                                current_index += 1
+                            text_char_count += len(visible_text)
+                            if not text_block_open:
+                                yield sse(
+                                    "content_block_start",
+                                    {
+                                        "type": "content_block_start",
+                                        "index": current_index,
+                                        "content_block": {"type": "text", "text": ""},
+                                    },
+                                )
+                                text_block_open = True
+                            yield sse(
+                                "content_block_delta",
+                                {
+                                    "type": "content_block_delta",
+                                    "index": current_index,
+                                    "delta": {"type": "text_delta", "text": visible_text},
+                                },
+                            )
+                        if text_block_open:
+                            yield sse(
+                                "content_block_stop",
+                                {"type": "content_block_stop", "index": current_index},
+                            )
+                            text_block_open = False
+                            current_index += 1
+                        for tc_idx, tool_call in enumerate(bracket_tool_calls):
+                            tc_index = int(tool_call.get("index", tc_idx))
+                            function_info = tool_call.get("function", {})
+                            tool_name = _canonical_tool_name(
+                                str(function_info.get("name") or "").strip()
+                            )
+                            block_index = current_index
+                            tool_openai_index_to_block[tc_index] = block_index
+                            current_index += 1
+                            state = tool_block_state.setdefault(
+                                block_index,
+                                {
+                                    "id": self._sanitize_tool_id(tool_call.get("id")),
+                                    "name": tool_name,
+                                    "arguments": str(function_info.get("arguments", "")),
+                                    "started": False,
+                                    "stopped": False,
+                                    "emitted_argument_length": 0,
+                                },
+                            )
+                            for event in ensure_tool_block_started(block_index, state):
+                                yield event
+                            for event in flush_pending_tool_delta(block_index, state):
+                                yield event
+                        stop_reason = "tool_use"
+                        continue
+
+                    text = _strip_leaked_tool_markup(raw_text)
+                    if not text:
+                        continue
+
                     if thinking_block_open:
                         yield sse(
                             "content_block_stop",

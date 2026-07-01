@@ -40,6 +40,7 @@ def get_keys_status():
             api_config.nvidia_nim_rotator,
             api_config.cli_proxy_api_rotator,
             api_config.cli_proxy_api_plus_rotator,
+            api_config.ccs_rotator,
             api_config.cursor_rotator,
         ]
         
