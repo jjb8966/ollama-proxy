@@ -9,7 +9,6 @@ Claude Code 등 Anthropic Messages API 클라이언트와의 호환을 위해
 import inspect
 import json
 import logging
-import os
 import re
 import time
 import uuid
@@ -27,37 +26,10 @@ from src.utils.opencode_anthropic import (
 
 logger = logging.getLogger(__name__)
 
-# #region agent log
-_DEBUG_LOG_PATH = os.environ.get(
-    "DEBUG_NDJSON_LOG",
-    "/Users/jbj/Desktop/work/my/project/.cursor/debug-dfc5c9.log",
-)
-
-
-def _agent_debug_log(
-    location: str,
-    message: str,
-    data: Dict[str, Any],
-    hypothesis_id: str,
-    run_id: str = "pre-fix",
-) -> None:
-    try:
-        payload = {
-            "sessionId": "dfc5c9",
-            "runId": run_id,
-            "hypothesisId": hypothesis_id,
-            "location": location,
-            "message": message,
-            "data": data,
-            "timestamp": int(time.time() * 1000),
-        }
-        with open(_DEBUG_LOG_PATH, "a", encoding="utf-8") as log_file:
-            log_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
-    except OSError:
-        pass
-
-
-# #endregion
+# Tool argument SSE chunk size (Claude Code UI animation; 4 was too chatty)
+TOOL_ARG_SSE_CHUNK = 32
+# Emit Anthropic-compatible ping when upstream is silent (Claude Code stream watchdog)
+STREAM_PING_INTERVAL_SEC = 15.0
 
 TOOL_RESULT_SERIALIZATION_FALLBACK = "[unserializable content]"
 TOOL_USE_ARGUMENTS_FALLBACK = "{}"
@@ -490,6 +462,14 @@ class AnthropicHandler:
                         text_parts.append(str(block.get("text", "")))
                         continue
 
+                    if block_type in ("advisor_tool_result", "advisor_tool_result_error"):
+                        from src.utils.advisor_emulation import advisor_tool_result_text
+
+                        advisor_text = advisor_tool_result_text(block)
+                        if advisor_text:
+                            text_parts.append(advisor_text)
+                        continue
+
                     if block_type not in ("tool_use", "server_tool_use"):
                         continue
 
@@ -569,6 +549,27 @@ class AnthropicHandler:
                         normalized_image_block = self._normalize_image_block(block)
                         if normalized_image_block is not None:
                             pending_content_blocks.append(normalized_image_block)
+                        continue
+
+                    if block_type in ("advisor_tool_result", "advisor_tool_result_error"):
+                        flush_user_content()
+                        advisor_tool_use_id = block.get("tool_use_id")
+                        tool_id = (
+                            self._sanitize_tool_id(advisor_tool_use_id)
+                            if isinstance(advisor_tool_use_id, str)
+                            and advisor_tool_use_id.strip()
+                            else ""
+                        )
+                        if tool_id:
+                            from src.utils.advisor_emulation import advisor_tool_result_text
+
+                            normalized.append(
+                                {
+                                    "role": "tool",
+                                    "tool_call_id": tool_id,
+                                    "content": advisor_tool_result_text(block),
+                                }
+                            )
                         continue
 
                     if block_type not in ("tool_result", "web_search_tool_result"):
@@ -867,36 +868,6 @@ class AnthropicHandler:
         reasoning_effort = self._map_anthropic_thinking_to_reasoning_effort(req)
         if reasoning_effort:
             result["reasoning_effort"] = reasoning_effort
-        # #region agent log
-        message_roles = [
-            str(message.get("role", ""))
-            for message in result.get("messages", [])
-            if isinstance(message, dict)
-        ]
-        tool_call_messages = sum(
-            1
-            for message in result.get("messages", [])
-            if isinstance(message, dict) and message.get("tool_calls")
-        )
-        tool_result_messages = sum(
-            1
-            for message in result.get("messages", [])
-            if isinstance(message, dict) and message.get("role") == "tool"
-        )
-        _agent_debug_log(
-            "anthropic.py:build_proxy_request",
-            "built proxied anthropic request",
-            {
-                "model": result.get("model"),
-                "tools_count": len(normalized_tools),
-                "message_count": len(result.get("messages", [])),
-                "message_roles": message_roles[-8:],
-                "tool_call_messages": tool_call_messages,
-                "tool_result_messages": tool_result_messages,
-            },
-            "H3",
-        )
-        # #endregion
         return result
 
     @staticmethod
@@ -993,25 +964,6 @@ class AnthropicHandler:
             finish_reason = choices[0].get("finish_reason")
             message = choices[0].get("message", {})
 
-        # #region agent log
-        upstream_tool_calls = self._normalize_tool_calls(message.get("tool_calls"))
-        _agent_debug_log(
-            "anthropic.py:handle_non_streaming_response",
-            "upstream openai response summary",
-            {
-                "requested_model": requested_model,
-                "finish_reason": finish_reason,
-                "upstream_tool_calls": len(upstream_tool_calls),
-                "upstream_tool_names": [
-                    str(tool_call.get("function", {}).get("name", ""))
-                    for tool_call in upstream_tool_calls
-                ],
-                "content_chars": len(str(message.get("content", ""))),
-            },
-            "H5",
-        )
-        # #endregion
-
         response_model = str(data.get("model", requested_model))
         return {
             "id": f"msg_{uuid.uuid4().hex}",
@@ -1094,7 +1046,7 @@ class AnthropicHandler:
             if state.get("started") or not state.get("name"):
                 return []
 
-            logger.info(
+            logger.debug(
                 "[AnthropicStream] tool 블록 시작 | request_id=%s | index=%s | tool=%s | tool_id=%s",
                 stream_id,
                 block_index,
@@ -1131,7 +1083,7 @@ class AnthropicHandler:
             if not pending_json:
                 return []
 
-            arg_sse_chunk = 4
+            arg_sse_chunk = TOOL_ARG_SSE_CHUNK
             events: List[str] = []
             offset = 0
             while offset < len(pending_json):
@@ -1161,6 +1113,41 @@ class AnthropicHandler:
             )
             return events
 
+        def normalize_tool_arguments_if_ready(state: Dict[str, Any]) -> None:
+            if not tools_contract or not state.get("arguments"):
+                return
+            tool_name = state.get("name", "")
+            contract_name = _canonical_tool_name(str(tool_name))
+            if not contract_name or contract_name not in tools_contract:
+                return
+            try:
+                parsed_args = json.loads(state["arguments"])
+            except json.JSONDecodeError:
+                return
+            if not isinstance(parsed_args, dict):
+                return
+            normalized_args = self._normalize_tool_input(
+                parsed_args, tools_contract[contract_name]
+            )
+            normalized_json = json.dumps(normalized_args, ensure_ascii=False)
+            if normalized_json != state["arguments"]:
+                state["arguments"] = normalized_json
+                state["emitted_argument_length"] = 0
+
+        def emit_tool_argument_events(
+            block_index: int, state: Dict[str, Any]
+        ) -> List[str]:
+            events = ensure_tool_block_started(block_index, state)
+            if tools_contract:
+                normalize_tool_arguments_if_ready(state)
+                if state.get("arguments"):
+                    try:
+                        json.loads(state["arguments"])
+                    except json.JSONDecodeError:
+                        return events
+            events.extend(flush_pending_tool_delta(block_index, state))
+            return events
+
         def close_open_blocks() -> List[str]:
             """모든 열린 content block을 닫습니다. 멱등 함수입니다."""
             nonlocal thinking_block_open, text_block_open, current_index, stop_reason, blocks_closed
@@ -1175,40 +1162,9 @@ class AnthropicHandler:
                 if not state.get("started") and state.get("name"):
                     events.extend(ensure_tool_block_started(block_index, state))
 
-            # tools_contract가 있으면 tool arguments 정규화
-            if tools_contract:
-                for block_index in sorted(tool_block_state.keys()):
-                    state = tool_block_state[block_index]
-                    tool_name = state.get("name", "")
-                    contract_name = _canonical_tool_name(str(tool_name))
-                    if (
-                        contract_name
-                        and contract_name in tools_contract
-                        and state.get("arguments")
-                    ):
-                        try:
-                            parsed_args = json.loads(state["arguments"])
-                            if isinstance(parsed_args, dict):
-                                normalized_args = self._normalize_tool_input(
-                                    parsed_args, tools_contract[contract_name]
-                                )
-                                normalized_json = json.dumps(
-                                    normalized_args, ensure_ascii=False
-                                )
-                                if normalized_json != state["arguments"]:
-                                    prev_args = state["arguments"]
-                                    prev_emitted = int(
-                                        state.get("emitted_argument_length", 0)
-                                    )
-                                    state["arguments"] = normalized_json
-                                    if prev_emitted >= len(prev_args) and prev_args:
-                                        state["emitted_argument_length"] = len(
-                                            normalized_json
-                                        )
-                                    else:
-                                        state["emitted_argument_length"] = 0
-                        except json.JSONDecodeError:
-                            pass
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                normalize_tool_arguments_if_ready(state)
 
             # 남은 tool argument delta 플러시
             for block_index in sorted(tool_block_state.keys()):
@@ -1237,7 +1193,7 @@ class AnthropicHandler:
 
             # text block 종료
             if text_block_open:
-                logger.info(
+                logger.debug(
                     "[AnthropicStream] text 블록 종료 | request_id=%s | index=%s | text_chars=%s",
                     stream_id,
                     current_index,
@@ -1255,7 +1211,7 @@ class AnthropicHandler:
             for block_index in sorted(tool_block_state.keys()):
                 state = tool_block_state[block_index]
                 if state.get("started") and not state.get("stopped"):
-                    logger.info(
+                    logger.debug(
                         "[AnthropicStream] tool 블록 종료 | request_id=%s | index=%s | tool=%s | arg_chars=%s",
                         stream_id,
                         block_index,
@@ -1308,6 +1264,9 @@ class AnthropicHandler:
                 now = time.time()
                 line_count += 1
                 gap = now - last_chunk_time
+                if gap > STREAM_PING_INTERVAL_SEC:
+                    yield sse("ping", {"type": "ping"})
+                    last_chunk_time = now
                 if gap > 5.0:
                     logger.warning(
                         "[AnthropicStream] ⚠️ 청크 지연 | request_id=%s | model=%s | gap=%.3fs | elapsed=%.3fs",
@@ -1411,6 +1370,7 @@ class AnthropicHandler:
                         },
                     )
 
+                text = ""
                 raw_text = self._extract_stream_text_raw(choice)
                 if raw_text:
                     visible_text, bracket_tool_calls = _extract_bracket_tool_calls_from_text(raw_text)
@@ -1469,9 +1429,7 @@ class AnthropicHandler:
                                     "emitted_argument_length": 0,
                                 },
                             )
-                            for event in ensure_tool_block_started(block_index, state):
-                                yield event
-                            for event in flush_pending_tool_delta(block_index, state):
+                            for event in emit_tool_argument_events(block_index, state):
                                 yield event
                         stop_reason = "tool_use"
                         continue
@@ -1489,7 +1447,7 @@ class AnthropicHandler:
                         current_index += 1
                     text_char_count += len(text)
                     if not text_block_open:
-                        logger.info(
+                        logger.debug(
                             "[AnthropicStream] text 블록 시작 | request_id=%s | index=%s",
                             stream_id,
                             current_index,
@@ -1521,7 +1479,7 @@ class AnthropicHandler:
                     )
 
                     if tool_name and text_block_open:
-                        logger.info(
+                        logger.debug(
                             "[AnthropicStream] text 블록 종료 (tool 시작) | request_id=%s | index=%s",
                             stream_id,
                             current_index,
@@ -1571,7 +1529,7 @@ class AnthropicHandler:
                         state["arguments"] += str(function_info.get("arguments"))
                         tool_delta_count += 1
 
-                    for event in ensure_tool_block_started(block_index, state):
+                    for event in emit_tool_argument_events(block_index, state):
                         yield event
 
                 if (
@@ -1607,25 +1565,6 @@ class AnthropicHandler:
 
             for event in close_open_blocks():
                 yield event
-
-            # #region agent log
-            _agent_debug_log(
-                "anthropic.py:stream_anthropic_response",
-                "stream completed",
-                {
-                    "request_id": stream_id,
-                    "stop_reason": stop_reason,
-                    "text_char_count": text_char_count,
-                    "tool_delta_count": tool_delta_count,
-                    "tool_blocks": len(tool_block_state),
-                    "tool_block_names": [
-                        str(state.get("name", ""))
-                        for state in tool_block_state.values()
-                    ],
-                },
-                "H5",
-            )
-            # #endregion
 
             if (
                 stop_reason == "end_turn"

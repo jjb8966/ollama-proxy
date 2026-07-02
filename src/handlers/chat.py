@@ -6,12 +6,9 @@
 """
 
 import json
-import json
 import logging
 import os
 import re
-import time
-import os
 import time
 from typing import Dict, Any, List, Optional
 
@@ -41,37 +38,8 @@ def _strip_quotes(value: str) -> str:
     return value.strip('"\'')
 
 
-# #region agent log
-_DEBUG_LOG_PATH = os.environ.get(
-    "DEBUG_NDJSON_LOG",
-    "/Users/jbj/Desktop/work/my/project/.cursor/debug-dfc5c9.log",
-)
-
-
-def _agent_debug_log(
-    location: str,
-    message: str,
-    data: dict,
-    hypothesis_id: str,
-    run_id: str = "pre-fix",
-) -> None:
-    try:
-        payload = {
-            "sessionId": "dfc5c9",
-            "runId": run_id,
-            "hypothesisId": hypothesis_id,
-            "location": location,
-            "message": message,
-            "data": data,
-            "timestamp": int(time.time() * 1000),
-        }
-        with open(_DEBUG_LOG_PATH, "a", encoding="utf-8") as log_file:
-            log_file.write(json.dumps(payload, ensure_ascii=False) + "\n")
-    except OSError:
-        pass
-
-
-# #endregion
+# Claude Code tool bridge: compact system prompt instead of full tools payload
+CURSOR_BRIDGE_PROVIDERS = frozenset({"cursor", "ccs"})
 
 
 class ChatHandler:
@@ -872,7 +840,7 @@ class ChatHandler:
         cursor_has_tools = (
             isinstance(cursor_request_tools, list) and len(cursor_request_tools) > 0
         )
-        if provider in ("cursor", "ccs") and messages:
+        if provider in CURSOR_BRIDGE_PROVIDERS and messages:
             if cursor_has_tools:
                 messages = self._inject_compact_tools_for_cursor(
                     messages, cursor_request_tools
@@ -911,7 +879,7 @@ class ChatHandler:
 
         if max_tokens is not None:
             payload["max_tokens"] = max_tokens
-        if provider != "cursor":
+        if provider not in CURSOR_BRIDGE_PROVIDERS:
             if req.get("tools") is not None:
                 payload["tools"] = req.get("tools")
             if req.get("tool_choice") is not None:
@@ -927,49 +895,8 @@ class ChatHandler:
 
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
-        if provider in ("cursor", "ccs"):
-            headers["X-Cursor-Mode"] = "ask" if cursor_has_tools else "agent"
-
-        # #region agent log
-        if provider in ("cursor", "ccs"):
-            messages_json_size = len(
-                json.dumps(messages, ensure_ascii=False, default=str)
-            )
-            _agent_debug_log(
-                "chat.py:handle_chat_request",
-                "cursor upstream payload",
-                {
-                    "model": requested_model,
-                    "payload_has_tools": "tools" in payload,
-                    "payload_tools_count": len(payload.get("tools", []))
-                    if isinstance(payload.get("tools"), list)
-                    else 0,
-                    "req_tools_count": len(cursor_request_tools)
-                    if isinstance(cursor_request_tools, list)
-                    else 0,
-                    "cursor_mode_header": headers.get("X-Cursor-Mode"),
-                    "compact_tools_injected": cursor_has_tools,
-                    "messages_json_size": messages_json_size,
-                    "message_roles": [
-                        str(message.get("role", ""))
-                        for message in messages[-8:]
-                        if isinstance(message, dict)
-                    ],
-                    "assistant_tool_call_messages": sum(
-                        1
-                        for message in messages
-                        if isinstance(message, dict) and message.get("tool_calls")
-                    ),
-                    "tool_result_messages": sum(
-                        1
-                        for message in messages
-                        if isinstance(message, dict) and message.get("role") == "tool"
-                    ),
-                },
-                "H6",
-                run_id="post-fix-e2big",
-            )
-        # #endregion
+        if provider in CURSOR_BRIDGE_PROVIDERS:
+            headers["X-Cursor-Mode"] = "agent"
 
         client = self._get_client(provider)
         return client.post_request(

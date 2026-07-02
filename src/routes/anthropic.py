@@ -20,12 +20,26 @@ from flask import Blueprint, Response, current_app, request, stream_with_context
 
 from src.core.errors import ProxyRequestError
 from src.handlers import AnthropicHandler, ChatHandler
+from src.utils.advisor_emulation import (
+    build_advisor_error_block,
+    build_advisor_result_block,
+    extract_openai_completion_text,
+    find_advisor_tool_use_id,
+    is_advisor_forced_request,
+    resolve_advisor_model,
+)
 from src.utils.opencode_anthropic import AnthropicMessagePassthrough, AnthropicSsePassthrough
 
 
 logger = logging.getLogger(__name__)
 
 anthropic_bp = Blueprint('anthropic', __name__, url_prefix='/v1')
+
+SSE_STREAM_HEADERS = {
+    "Cache-Control": "no-cache",
+    "Connection": "keep-alive",
+    "X-Accel-Buffering": "no",
+}
 
 
 def _extract_text_content(content: Any) -> str:
@@ -255,7 +269,7 @@ def _handle_local_web_search(req: Dict[str, Any]) -> Response | None:
             ),
             sse("message_stop", {"type": "message_stop"}),
         ]
-        return Response("".join(chunks), status=200, mimetype="text/event-stream")
+        return Response("".join(chunks), status=200, mimetype="text/event-stream", headers=SSE_STREAM_HEADERS)
 
     body = {
         "id": message_id,
@@ -263,6 +277,109 @@ def _handle_local_web_search(req: Dict[str, Any]) -> Response | None:
         "role": "assistant",
         "model": response_model,
         "content": content,
+        "stop_reason": "end_turn",
+        "stop_sequence": None,
+        "usage": usage,
+    }
+    return Response(json.dumps(body, ensure_ascii=False), status=200, mimetype="application/json")
+
+
+def _handle_local_advisor(req: Dict[str, Any], api_config: Any) -> Response | None:
+    """advisor 강제 호출 요청을 ADVISOR_MODEL로 별도 처리"""
+    if not is_advisor_forced_request(req):
+        return None
+
+    request_model = req.get("model")
+    response_model = request_model if isinstance(request_model, str) else "unknown"
+    tool_use_id = find_advisor_tool_use_id(req.get("messages"))
+    advisor_model = resolve_advisor_model()
+
+    anthropic_handler = AnthropicHandler()
+    chat_handler = ChatHandler(api_config)
+
+    # 1. advisor 모델 호출용 payload 빌드 (tools/tool_choice 제외)
+    proxied = anthropic_handler.build_proxy_request({
+        "model": advisor_model,
+        "stream": False,
+        "max_tokens": req.get("max_tokens"),
+        "messages": req.get("messages"),
+        "system": req.get("system"),
+    })
+    proxied.pop("_tools_contract", None)
+    proxied.pop("tools", None)
+    proxied.pop("tool_choice", None)
+    proxied["stream"] = False
+    proxied["model"] = advisor_model
+
+    # 2. advisor 모델 호출
+    resp = chat_handler.handle_chat_request(proxied)
+    if isinstance(resp, ProxyRequestError):
+        result_block = build_advisor_error_block(tool_use_id, resp.message)
+    else:
+        text = extract_openai_completion_text(resp)
+        if not text.strip():
+            result_block = build_advisor_error_block(tool_use_id, "empty advisor response")
+        else:
+            result_block = build_advisor_result_block(tool_use_id, text)
+
+    # 3. Anthropic SSE 또는 JSON 응답 조립
+    message_id = f"msg_{uuid.uuid4().hex}"
+    usage = {"input_tokens": 0, "output_tokens": 0}
+
+    if req.get("stream"):
+
+        def sse(event: str, data: Dict[str, Any]) -> str:
+            return f"event: {event}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n"
+
+        chunks = [
+            sse(
+                "message_start",
+                {
+                    "type": "message_start",
+                    "message": {
+                        "id": message_id,
+                        "type": "message",
+                        "role": "assistant",
+                        "model": response_model,
+                        "content": [],
+                        "stop_reason": None,
+                        "stop_sequence": None,
+                        "usage": usage,
+                    },
+                },
+            ),
+            sse(
+                "content_block_start",
+                {
+                    "type": "content_block_start",
+                    "index": 0,
+                    "content_block": result_block,
+                },
+            ),
+            sse("content_block_stop", {"type": "content_block_stop", "index": 0}),
+            sse(
+                "message_delta",
+                {
+                    "type": "message_delta",
+                    "delta": {"stop_reason": "end_turn", "stop_sequence": None},
+                    "usage": {"output_tokens": 0},
+                },
+            ),
+            sse("message_stop", {"type": "message_stop"}),
+        ]
+        return Response(
+            "".join(chunks),
+            status=200,
+            mimetype="text/event-stream",
+            headers=SSE_STREAM_HEADERS,
+        )
+
+    body = {
+        "id": message_id,
+        "type": "message",
+        "role": "assistant",
+        "model": response_model,
+        "content": [result_block],
         "stop_reason": "end_turn",
         "stop_sequence": None,
         "usage": usage,
@@ -281,6 +398,10 @@ def messages():
         return local_web_search_response
 
     api_config = current_app.config['api_config']
+    local_advisor_response = _handle_local_advisor(req, api_config)
+    if local_advisor_response is not None:
+        return local_advisor_response
+
     chat_handler = ChatHandler(api_config)
     anthropic_handler = AnthropicHandler()
 
@@ -357,12 +478,14 @@ def messages():
             return Response(
                 stream_with_context(generate_passthrough()),
                 mimetype='text/event-stream',
+                headers=SSE_STREAM_HEADERS,
             )
         if inspect.isgenerator(resp) or hasattr(resp, 'iter_lines'):
             logger.info("Anthropic streaming response start: request_id=%s model=%s", request_id, requested_model)
             return Response(
                 stream_with_context(anthropic_handler.stream_anthropic_response(resp, requested_model, request_id=request_id, tools_contract=tools_contract)),
-                mimetype='text/event-stream'
+                mimetype='text/event-stream',
+                headers=SSE_STREAM_HEADERS,
             )
 
     if isinstance(resp, AnthropicMessagePassthrough):

@@ -293,6 +293,64 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         self.assertIn("Claude Code", normalized[0]["content"])
         self.assertIn("https://claude.com/code", normalized[0]["content"])
 
+    def test_assistant_advisor_tool_result_preserved_as_text(self) -> None:
+        messages = [
+            {
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "advisor_tool_result",
+                        "tool_use_id": "toolu_a1",
+                        "content": {"type": "advisor_result", "text": "prior advice"},
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(normalized[0]["role"], "assistant")
+        self.assertIn("prior advice", normalized[0]["content"])
+
+    def test_user_advisor_tool_result_becomes_tool_message(self) -> None:
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "advisor_tool_result",
+                        "tool_use_id": "toolu_a1",
+                        "content": {"type": "advisor_result", "text": "advice text"},
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(normalized[0]["role"], "tool")
+        self.assertEqual(normalized[0]["tool_call_id"], "toolu_a1")
+        self.assertEqual(normalized[0]["content"], "advice text")
+
+    def test_assistant_advisor_tool_result_error_preserved_as_text(self) -> None:
+        messages = [
+            {
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "advisor_tool_result_error",
+                        "tool_use_id": "toolu_err",
+                        "content": {"type": "advisor_error", "message": "upstream failed"},
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(normalized[0]["role"], "assistant")
+        self.assertIn("upstream failed", normalized[0]["content"])
+
     def test_user_base64_image_block_converts_to_image_url_content(self) -> None:
         messages = [
             {
@@ -1309,6 +1367,74 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
         self.assertEqual(tool_start["content_block"]["name"], "Read")
         self.assertEqual(tool_input, {"file_path": "/tmp/a.txt"})
         self.assertTrue(any(event.get("type") == "message_stop" for event in events))
+
+    def test_stream_flushes_tool_arguments_before_stream_end(self) -> None:
+        args_part1 = '{"file_path":'
+        args_part2 = '"/tmp/a.txt"}'
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"call_1","type":"function","function":{"name":"Read","arguments":""}}]},"finish_reason":null}]}\n\n',
+                "data: "
+                + json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "delta": {
+                                    "tool_calls": [
+                                        {
+                                            "index": 0,
+                                            "function": {"arguments": args_part1},
+                                        }
+                                    ]
+                                },
+                                "finish_reason": None,
+                            }
+                        ]
+                    }
+                )
+                + "\n\n",
+                "data: "
+                + json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "delta": {
+                                    "tool_calls": [
+                                        {
+                                            "index": 0,
+                                            "function": {"arguments": args_part2},
+                                        }
+                                    ]
+                                },
+                                "finish_reason": None,
+                            }
+                        ]
+                    }
+                )
+                + "\n\n",
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        stream = self.handler.stream_anthropic_response(
+            resp,
+            "cursor:composer-2.5",
+            "req_incremental_tool_args",
+        )
+        saw_partial_args = False
+        all_chunks = []
+        for chunk in stream:
+            all_chunks.append(chunk)
+            joined = "".join(all_chunks)
+            if "input_json_delta" in chunk and "message_stop" not in joined:
+                saw_partial_args = True
+                break
+
+        self.assertTrue(
+            saw_partial_args,
+            "tool argument deltas should stream before message_stop",
+        )
 
 
 if __name__ == "__main__":

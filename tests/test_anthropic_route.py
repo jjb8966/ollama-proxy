@@ -371,6 +371,121 @@ class AnthropicRouteErrorHandlingTests(unittest.TestCase):
             ],
         )
 
+    def test_advisor_forced_non_stream_returns_advisor_tool_result(self) -> None:
+        with patch("src.routes.anthropic.ChatHandler") as mock_chat_handler:
+            mock_chat_handler.return_value.handle_chat_request.return_value = {
+                "choices": [
+                    {
+                        "message": {
+                            "role": "assistant",
+                            "content": "advisor says hello",
+                        }
+                    }
+                ]
+            }
+            response = self.client.post(
+                "/v1/messages",
+                json={
+                    "model": "cli-proxy-api-plus:gpt-5.5",
+                    "stream": False,
+                    "messages": [
+                        {
+                            "role": "assistant",
+                            "content": [
+                                {
+                                    "type": "tool_use",
+                                    "id": "toolu_adv_1",
+                                    "name": "advisor",
+                                    "input": {},
+                                }
+                            ],
+                        }
+                    ],
+                    "tools": [
+                        {"name": "advisor", "input_schema": {"type": "object"}}
+                    ],
+                    "tool_choice": {"type": "tool", "name": "advisor"},
+                },
+            )
+
+        self.assertEqual(response.status_code, 200)
+        body = response.get_json()
+        self.assertEqual(body["content"][0]["type"], "advisor_tool_result")
+        self.assertEqual(body["content"][0]["tool_use_id"], "toolu_adv_1")
+        self.assertEqual(
+            body["content"][0]["content"],
+            {"type": "advisor_result", "text": "advisor says hello"},
+        )
+        proxied = mock_chat_handler.return_value.handle_chat_request.call_args.args[0]
+        self.assertEqual(proxied["model"], "cli-proxy-api-plus:gpt-5.5-high")
+        self.assertNotIn("tools", proxied)
+        self.assertNotIn("tool_choice", proxied)
+        self.assertFalse(proxied["stream"])
+
+    def test_advisor_stream_has_advisor_tool_result_content_block(self) -> None:
+        with patch("src.routes.anthropic.ChatHandler") as mock_chat_handler:
+            mock_chat_handler.return_value.handle_chat_request.return_value = {
+                "choices": [
+                    {"message": {"role": "assistant", "content": "advisor streaming"}}
+                ]
+            }
+            response = self.client.post(
+                "/v1/messages",
+                json={
+                    "model": "cli-proxy-api-plus:gpt-5.5",
+                    "stream": True,
+                    "messages": [{"role": "user", "content": "x"}],
+                    "tools": [
+                        {"name": "advisor", "input_schema": {"type": "object"}}
+                    ],
+                    "tool_choice": {"type": "tool", "name": "advisor"},
+                },
+            )
+
+        self.assertEqual(response.status_code, 200)
+        events = []
+        for chunk in response.get_data(as_text=True).split("\n\n"):
+            data_line = next(
+                (line for line in chunk.splitlines() if line.startswith("data: ")),
+                None,
+            )
+            if data_line is not None:
+                events.append(json.loads(data_line.removeprefix("data: ")))
+
+        content_block = next(
+            e
+            for e in events
+            if e.get("type") == "content_block_start"
+            and e.get("content_block", {}).get("type") == "advisor_tool_result"
+        )
+        self.assertEqual(
+            content_block["content_block"]["content"]["text"], "advisor streaming"
+        )
+
+    def test_advisor_forced_request_skipped_when_no_tools(self) -> None:
+        with patch("src.routes.anthropic.ChatHandler") as mock_chat_handler:
+            mock_chat_handler.return_value.handle_chat_request.return_value = (
+                ProxyRequestError(
+                    model="ollama-cloud:kimi-k2.5",
+                    message="no advisor tool",
+                    status_code=400,
+                    error_type="invalid_request_error",
+                )
+            )
+            response = self.client.post(
+                "/v1/messages",
+                json={
+                    "model": "ollama-cloud:kimi-k2.5",
+                    "stream": False,
+                    "messages": [{"role": "user", "content": "hi"}],
+                },
+            )
+
+        # no advisor tool이므로 일반 처리 경로를 탔어야 함
+        self.assertEqual(response.status_code, 400)
+        proxied = mock_chat_handler.return_value.handle_chat_request.call_args.args[0]
+        self.assertEqual(proxied["model"], "ollama-cloud:kimi-k2.5")
+
 
 if __name__ == "__main__":
     unittest.main()
