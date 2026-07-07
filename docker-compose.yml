@@ -6,6 +6,8 @@ services:
     image: jjb000000/ollama-proxy:latest
     ports:
       - "5002:5002"
+    env_file:
+      - .env
     networks:
       - default
       - nginx-network
@@ -16,7 +18,7 @@ services:
       - CLI_PROXY_API_BASE_URL=${CLI_PROXY_API_BASE_URL:-http://cli-proxy-api:8317/v1}
       - CLI_PROXY_API_PLUS_BASE_URL=${CLI_PROXY_API_PLUS_BASE_URL:-http://cli-proxy-api-plus:8317/v1}
       - CCS_API_KEYS=${CCS_API_KEYS}
-      - CCS_API_BASE_URL=${CCS_API_BASE_URL:-http://ccs:20129/v1}
+      - CCS_API_BASE_URL=${CCS_API_BASE_URL:-http://host.docker.internal:20129/v1}
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}
       - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}

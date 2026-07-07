@@ -8,7 +8,6 @@
 import json
 import logging
 import re
-import time
 from typing import Dict, Any, List, Optional
 
 import requests
@@ -16,7 +15,7 @@ import requests
 from src.core.errors import ProxyRequestError, ErrorHandler
 from src.providers.provider_config import PROVIDER_CONFIG, parse_provider_model
 from src.providers.standard import StandardApiClient
-from src.utils.model_limits import get_model_limits, load_model_limits
+from src.utils.message_compaction import build_compacted_request
 from src.utils.opencode_anthropic import (
     AnthropicMessagePassthrough,
     AnthropicSsePassthrough,
@@ -41,11 +40,6 @@ class ChatHandler:
     이미지 처리, 메시지 정규화 등의 전처리도 수행합니다.
     """
 
-    COMPACTION_THRESHOLD_RATIO = 0.8
-    COMPACTION_REQUIRED_MESSAGE = (
-        "현재 요청 페이로드가 모델의 최대 컨텍스트 임계값을 초과했습니다. "
-        "사용자가 직접 대화 또는 입력을 compact한 뒤 다시 시도해 주세요."
-    )
     REMOVED_ANTIGRAVITY_MODELS = {
         "claude-opus-4-6-thinking",
         "claude-sonnet-4-6",
@@ -56,7 +50,12 @@ class ChatHandler:
         "gcli-gemini-3.1-pro-preview-customtools",
     }
 
-    COMPACTION_ENABLED = __import__("os").environ.get("ENABLE_COMPACTION", "true").lower() != "false"
+    AUTO_COMPACTION_ENABLED = (
+        __import__("os").environ.get("ENABLE_AUTO_COMPACTION", "true").lower() != "false"
+    )
+    MAX_COMPACTION_ATTEMPTS = max(
+        1, int(__import__("os").environ.get("MAX_COMPACTION_ATTEMPTS", "5"))
+    )
 
     PROVIDER_CONFIG = PROVIDER_CONFIG
 
@@ -75,236 +74,68 @@ class ChatHandler:
         self.opencode_client = StandardApiClient(api_config.opencode_rotator)
 
     @staticmethod
-    def _estimate_request_tokens(req: Dict[str, Any]) -> int:
-        messages = req.get("messages", [])
-        total_chars = 0
+    def _is_context_overflow_result(result: Any) -> bool:
+        if isinstance(result, ProxyRequestError):
+            if result.error_code == "context_length_exceeded":
+                return True
+            return ErrorHandler.is_context_overflow_message(result.message)
 
-        for msg in messages:
-            if not isinstance(msg, dict):
-                continue
-            content = msg.get("content", "")
-            if isinstance(content, str):
-                total_chars += len(content)
-            elif isinstance(content, list):
-                for block in content:
-                    if not isinstance(block, dict):
-                        continue
-                    if block.get("type") == "text":
-                        total_chars += len(str(block.get("text", "")))
-                    elif block.get("type") == "image_url":
-                        # base64 이미지는 실제 토큰화 시 약 85 토큰만 사용
-                        # 과대추정 방지를 위해 작은 고정값 사용
-                        total_chars += 340  # 약 85 tokens × 4 chars
-                    else:
-                        # tool_result 등 기타 블록
-                        total_chars += len(
-                            json.dumps(block, ensure_ascii=False, default=str)
-                        )
-            elif isinstance(content, dict):
-                total_chars += len(
-                    json.dumps(content, ensure_ascii=False, default=str)
-                )
-
-        # tools, tool_choice
-        tools = req.get("tools")
-        if isinstance(tools, list):
-            total_chars += len(json.dumps(tools, ensure_ascii=False, default=str))
-        tool_choice = req.get("tool_choice")
-        if tool_choice is not None:
-            total_chars += len(json.dumps(tool_choice, ensure_ascii=False, default=str))
-
-        return max(1, int(total_chars / 3.5))  # chars/3.5가 chars/4보다 정확
-
-    def _build_compaction_notice_content(
-        self,
-        requested_model: str,
-        estimated_tokens: int,
-        context_length: int
-    ) -> str:
-        threshold_tokens = int(context_length * self.COMPACTION_THRESHOLD_RATIO)
-        return (
-            f"{self.COMPACTION_REQUIRED_MESSAGE}\n\n"
-            f"- model: {requested_model}\n"
-            f"- estimated_tokens: {estimated_tokens}\n"
-            f"- context_length: {context_length}\n"
-            f"- compaction_threshold_tokens: {threshold_tokens}"
-        )
-
-    def _build_compaction_notice_response(
-        self,
-        req: Dict[str, Any],
-        estimated_tokens: int,
-        context_length: int
-    ) -> Dict[str, Any]:
-        requested_model = req.get("model", "unknown")
-        content = self._build_compaction_notice_content(
-            requested_model=requested_model,
-            estimated_tokens=estimated_tokens,
-            context_length=context_length,
-        )
-        return {
-            "id": f"chatcmpl-compaction-{int(time.time() * 1000)}",
-            "object": "chat.completion",
-            "created": int(time.time()),
-            "model": requested_model,
-            "choices": [
-                {
-                    "index": 0,
-                    "message": {
-                        "role": "assistant",
-                        "content": content,
-                    },
-                    "finish_reason": "stop",
-                }
-            ],
-        }
-
-    def _build_compaction_notice_stream(
-        self,
-        req: Dict[str, Any],
-        estimated_tokens: int,
-        context_length: int
-    ):
-        requested_model = req.get("model", "unknown")
-        created = int(time.time())
-        content = self._build_compaction_notice_content(
-            requested_model=requested_model,
-            estimated_tokens=estimated_tokens,
-            context_length=context_length,
-        )
-
-        chunk = {
-            "id": f"chatcmpl-compaction-{created}",
-            "object": "chat.completion.chunk",
-            "created": created,
-            "model": requested_model,
-            "choices": [
-                {
-                    "index": 0,
-                    "delta": {
-                        "role": "assistant",
-                        "content": content,
-                    },
-                    "finish_reason": None,
-                }
-            ],
-        }
-        yield f"data: {json.dumps(chunk, ensure_ascii=False)}\n\n"
-
-        final_chunk = {
-            "id": f"chatcmpl-compaction-{created}",
-            "object": "chat.completion.chunk",
-            "created": created,
-            "model": requested_model,
-            "choices": [
-                {
-                    "index": 0,
-                    "delta": {},
-                    "finish_reason": "stop",
-                }
-            ],
-        }
-        yield f"data: {json.dumps(final_chunk, ensure_ascii=False)}\n\n"
-        yield "data: [DONE]\n\n"
-
-    def _find_long_context_model(self, requested_model: str) -> Optional[str]:
-        """현재 모델보다 context_length가 더 큰 같은 provider의 fallback 모델을 찾는다."""
-        if not isinstance(requested_model, str) or not requested_model:
-            return None
-
-        current_limits = get_model_limits(requested_model)
-        if not current_limits or not current_limits.context_length:
-            return None
-
-        provider, model, _ = self._parse_model(requested_model)
-        if not provider:
-            return None
-
-        all_limits = load_model_limits()
-        best_model = None
-        best_length = current_limits.context_length
-
-        for model_name, limits in all_limits.items():
-            if not limits.context_length or limits.context_length <= best_length:
-                continue
-            p, _, _ = self._parse_model(model_name)
-            if p == provider:
-                best_length = limits.context_length
-                best_model = model_name
-
-        return best_model
-
-    def _handle_context_overflow_fallback(
-        self,
-        req: Dict[str, Any],
-        error: Any,
-    ) -> Optional[Any]:
-        """CCR-style: context overflow 발생 시 long-context 모델로 자동 재시도"""
-        requested_model = req.get("model", "")
-        error_msg = ""
-        if isinstance(error, str):
-            error_msg = error
-        elif hasattr(error, 'text'):
-            error_msg = error.text
-        elif isinstance(error, Exception):
-            error_msg = str(error)
-
-        if not ErrorHandler.is_context_overflow_message(error_msg):
-            return None  # context overflow가 아니면 재시도 안 함
-
-        long_context_model = self._find_long_context_model(requested_model)
-        if not long_context_model or long_context_model == requested_model:
-            return None  # 재시도할 모델이 없음
-
-        logging.warning(
-            "[ContextOverflowFallback] %s → %s 재시도",
-            requested_model, long_context_model
-        )
-
-        retry_req = dict(req)
-        retry_req["model"] = long_context_model
-        return self.handle_chat_request(retry_req)
-
-    def _maybe_route_long_context(
-        self,
-        req: Dict[str, Any]
-    ) -> Optional[Any]:
-        # Returns: dict (routed req), generator (compaction notice stream),
-        # or dict (compaction notice response)
-        if not self.COMPACTION_ENABLED:
-            return None
-
-        requested_model = req.get("model")
-        if not isinstance(requested_model, str) or not requested_model:
-            return None
-
-        limits = get_model_limits(requested_model)
-        if limits is None or limits.context_length is None or limits.context_length <= 0:
-            return None
-
-        estimated_tokens = self._estimate_request_tokens(req)
-        threshold_tokens = int(limits.context_length * self.COMPACTION_THRESHOLD_RATIO)
-        if estimated_tokens <= threshold_tokens:
-            return None
-
-        long_context_model = self._find_long_context_model(requested_model)
-        if long_context_model:
-            logging.info(
-                "[LongContextRouting] %s → %s (tokens: %d, threshold: %d)",
-                requested_model, long_context_model, estimated_tokens, threshold_tokens
+        if isinstance(result, dict):
+            choices = result.get("choices")
+            if not isinstance(choices, list) or not choices:
+                return False
+            first_choice = choices[0]
+            if not isinstance(first_choice, dict):
+                return False
+            message = first_choice.get("message", {})
+            if not isinstance(message, dict):
+                return False
+            content = message.get("content", "")
+            if not isinstance(content, str):
+                return False
+            return (
+                ErrorHandler.is_context_overflow_message(content)
+                or "[Context Window Exceeded]" in content
             )
-            req = dict(req)
-            req["model"] = long_context_model
-            return req
 
-        # fallback 없으면 에러 반환 (기존 compaction 동작 유지)
+        return False
+
+    def _maybe_retry_after_context_overflow(
+        self,
+        req: Dict[str, Any],
+        result: Any,
+    ) -> Any:
+        if not self.AUTO_COMPACTION_ENABLED:
+            return result
+        if not self._is_context_overflow_result(result):
+            return result
+
+        round_index = int(req.get("_compaction_round", 0))
+        if round_index >= self.MAX_COMPACTION_ATTEMPTS:
+            logging.warning(
+                "[AutoCompaction] 최대 재시도 횟수 도달 | model=%s | attempts=%s",
+                req.get("model"),
+                round_index,
+            )
+            return result
+
+        compacted_req = build_compacted_request(req, round_index)
+        if compacted_req is None:
+            logging.warning(
+                "[AutoCompaction] 더 이상 compact할 수 없음 | model=%s | round=%s",
+                req.get("model"),
+                round_index,
+            )
+            return result
+
         logging.warning(
-            "[LongContextRouting] fallback 모델 없음, compaction 필요: model=%s tokens=%d",
-            requested_model, estimated_tokens
+            "[AutoCompaction] context overflow 후 재시도 | model=%s | round=%s | messages=%s→%s",
+            req.get("model"),
+            round_index + 1,
+            len(req.get("messages", [])),
+            len(compacted_req.get("messages", [])),
         )
-        if req.get("stream", True):
-            return self._build_compaction_notice_stream(req, estimated_tokens, limits.context_length)
-        return self._build_compaction_notice_response(req, estimated_tokens, limits.context_length)
+        return self.handle_chat_request(compacted_req)
 
     def _parse_model(self, requested_model: str) -> tuple:
         """
@@ -723,16 +554,6 @@ class ChatHandler:
             logging.warning("요청에 messages가 없습니다.")
             return None
 
-        routed = self._maybe_route_long_context(req)
-        if routed is not None:
-            if isinstance(routed, dict) and "model" in routed and "messages" in routed:
-                # long-context 모델로 라우팅된 경우 req 교체
-                req = routed
-                requested_model = req.get("model", requested_model)
-            else:
-                # compaction notice 응답인 경우 그대로 반환
-                return routed
-
         provider, model, base_url = self._parse_model(requested_model)
 
         if not provider:
@@ -756,7 +577,7 @@ class ChatHandler:
             messages = self._convert_messages_for_cursor_provider(messages)
 
         if provider == "opencode" and uses_opencode_anthropic_messages(model):
-            return self._handle_opencode_anthropic_messages_request(
+            result = self._handle_opencode_anthropic_messages_request(
                 base_url=base_url,
                 model=model,
                 requested_model=requested_model,
@@ -767,6 +588,7 @@ class ChatHandler:
                 tool_choice=req.get("tool_choice"),
                 anthropic_passthrough=bool(req.get("_anthropic_passthrough")),
             )
+            return self._maybe_retry_after_context_overflow(req, result)
 
         payload = {
             "messages": messages,
@@ -791,9 +613,10 @@ class ChatHandler:
             headers["X-Cursor-Mode"] = "agent"
 
         client = self._get_client(provider)
-        return client.post_request(
+        result = client.post_request(
             url=endpoint,
             payload=payload,
             headers=headers,
             stream=stream
         )
+        return self._maybe_retry_after_context_overflow(req, result)

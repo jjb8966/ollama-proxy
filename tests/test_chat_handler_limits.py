@@ -1,7 +1,7 @@
 import unittest
-from types import GeneratorType
 from unittest.mock import Mock
 
+from src.core.errors import ProxyRequestError
 from src.handlers.chat import ChatHandler
 
 
@@ -113,53 +113,80 @@ class ChatHandlerLimitTests(unittest.TestCase):
             payload["messages"][0]["content"],
         )
 
-    def test_request_over_eighty_percent_of_context_uses_compaction_model(self) -> None:
-        self.handler._estimate_request_tokens = Mock(return_value=1640001)
+    def test_context_overflow_retries_with_compacted_messages(self) -> None:
+        client = Mock()
+        client.post_request.side_effect = [
+            ProxyRequestError(
+                model="glm-5.2",
+                message="prompt too long",
+                status_code=400,
+                error_type="invalid_request_error",
+                error_code="context_length_exceeded",
+            ),
+            {"choices": [{"message": {"role": "assistant", "content": "ok"}}]},
+        ]
+        self.handler.opencode_client = client
 
+        messages = [
+            {"role": "user", "content": "first"},
+            {"role": "tool", "tool_call_id": "call_1", "content": "x" * 12000},
+            {"role": "user", "content": "latest"},
+        ]
         result = self.handler.handle_chat_request(
             {
-                "model": "opencode:kimi-k2.6",
-                "messages": [{"role": "user", "content": "hello"}],
+                "model": "opencode:glm-5.2",
+                "messages": messages,
                 "stream": False,
             }
         )
 
-        self.assertIn("사용자가 직접", result["choices"][0]["message"]["content"])
-        self.assertEqual(result["model"], "opencode:kimi-k2.6")
+        self.assertEqual(
+            result,
+            {"choices": [{"message": {"role": "assistant", "content": "ok"}}]},
+        )
+        self.assertEqual(client.post_request.call_count, 2)
+        first_payload = client.post_request.call_args_list[0].kwargs["payload"]
+        second_payload = client.post_request.call_args_list[1].kwargs["payload"]
+        self.assertEqual(len(first_payload["messages"]), 3)
+        self.assertLess(len(second_payload["messages"][1]["content"]), 12000)
 
-    def test_request_under_threshold_does_not_use_compaction_model(self) -> None:
-        normal_client = Mock()
-        normal_client.post_request.return_value = {"choices": []}
-        self.handler.opencode_client = normal_client
-        self.handler._estimate_request_tokens = Mock(return_value=1000)
+    def test_context_overflow_without_further_compaction_returns_error(self) -> None:
+        client = Mock()
+        client.post_request.return_value = ProxyRequestError(
+            model="glm-5.2",
+            message="prompt too long",
+            status_code=400,
+            error_type="invalid_request_error",
+            error_code="context_length_exceeded",
+        )
+        self.handler.opencode_client = client
 
-        self.handler.handle_chat_request(
+        result = self.handler.handle_chat_request(
             {
-                "model": "opencode:kimi-k2.6",
-                "messages": [{"role": "user", "content": "hello"}],
+                "model": "opencode:glm-5.2",
+                "messages": [{"role": "user", "content": "only"}],
                 "stream": False,
             }
         )
 
-        self.assertTrue(normal_client.post_request.called)
+        self.assertIsInstance(result, ProxyRequestError)
+        self.assertEqual(client.post_request.call_count, 1)
 
-    def test_streaming_request_over_threshold_returns_compaction_notice_stream(
-        self,
-    ) -> None:
-        self.handler._estimate_request_tokens = Mock(return_value=1640001)
+    def test_large_request_is_forwarded_without_proactive_blocking(self) -> None:
+        client = Mock()
+        client.post_request.return_value = {"choices": []}
+        self.handler.opencode_client = client
 
         result = self.handler.handle_chat_request(
             {
                 "model": "opencode:kimi-k2.6",
-                "messages": [{"role": "user", "content": "hello"}],
-                "stream": True,
+                "messages": [{"role": "user", "content": "x" * 200000}],
+                "stream": False,
             }
         )
 
-        self.assertIsInstance(result, GeneratorType)
-        chunks = list(result)
-        self.assertIn("사용자가 직접", chunks[0])
-        self.assertEqual(chunks[-1], "data: [DONE]\n\n")
+        self.assertEqual(result, {"choices": []})
+        self.assertTrue(client.post_request.called)
 
     def test_removed_antigravity_legacy_model_is_rejected(self) -> None:
         client = Mock()
