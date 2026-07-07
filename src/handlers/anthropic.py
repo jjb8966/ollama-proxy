@@ -470,7 +470,19 @@ class AnthropicHandler:
                             text_parts.append(advisor_text)
                         continue
 
-                    if block_type not in ("tool_use", "server_tool_use"):
+                    if block_type == "server_tool_use":
+                        tool_text = self._tool_result_content_to_text(block)
+                        if tool_text:
+                            text_parts.append(tool_text)
+                        continue
+
+                    if block_type == "web_search_tool_result":
+                        tool_text = self._tool_result_content_to_text(block.get("content"))
+                        if tool_text:
+                            text_parts.append(tool_text)
+                        continue
+
+                    if block_type != "tool_use":
                         continue
 
                     tool_id = self._resolve_request_tool_use_id(

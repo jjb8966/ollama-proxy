@@ -241,7 +241,7 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
         self.assertIn("web_search_result", normalized[0]["content"])
         self.assertIn("https://openai.com/", normalized[0]["content"])
 
-    def test_server_tool_use_is_preserved_as_tool_call(self) -> None:
+    def test_server_tool_use_is_preserved_as_assistant_text(self) -> None:
         messages = [
             {
                 "role": "assistant",
@@ -258,13 +258,10 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
 
         normalized = self.handler._normalize_messages(messages)
 
-        tool_call = normalized[0]["tool_calls"][0]
-        self.assertEqual(tool_call["id"], "toolu_server_search_1")
-        self.assertEqual(tool_call["function"]["name"], "WebSearch")
-        self.assertEqual(
-            json.loads(tool_call["function"]["arguments"]),
-            {"query": "Claude Code WebSearch"},
-        )
+        self.assertEqual(normalized[0]["role"], "assistant")
+        self.assertNotIn("tool_calls", normalized[0])
+        self.assertIn("server_tool_use", normalized[0]["content"])
+        self.assertIn("Claude Code WebSearch", normalized[0]["content"])
 
     def test_web_search_tool_result_is_preserved_as_tool_message(self) -> None:
         messages = [
@@ -290,6 +287,33 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
 
         self.assertEqual(normalized[0]["role"], "tool")
         self.assertEqual(normalized[0]["tool_call_id"], "toolu_server_search_1")
+        self.assertIn("Claude Code", normalized[0]["content"])
+        self.assertIn("https://claude.com/code", normalized[0]["content"])
+
+    def test_assistant_web_search_tool_result_is_preserved_as_text(self) -> None:
+        messages = [
+            {
+                "role": "assistant",
+                "content": [
+                    {
+                        "type": "web_search_tool_result",
+                        "tool_use_id": "srvtoolu_search_1",
+                        "content": [
+                            {
+                                "type": "web_search_result",
+                                "title": "Claude Code",
+                                "url": "https://claude.com/code",
+                            }
+                        ],
+                    }
+                ],
+            }
+        ]
+
+        normalized = self.handler._normalize_messages(messages)
+
+        self.assertEqual(normalized[0]["role"], "assistant")
+        self.assertNotIn("tool_calls", normalized[0])
         self.assertIn("Claude Code", normalized[0]["content"])
         self.assertIn("https://claude.com/code", normalized[0]["content"])
 

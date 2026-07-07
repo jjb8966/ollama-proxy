@@ -139,6 +139,27 @@ def _is_web_search_tool_sampling_request(req: Dict[str, Any]) -> bool:
     )
 
 
+def _is_explicit_web_search_request(req: Dict[str, Any]) -> bool:
+    if _is_web_search_tool_sampling_request(req):
+        return True
+    if not _has_web_search_tool(req):
+        return False
+
+    text = _latest_user_text(req.get("messages")).strip()
+    if not text:
+        return False
+    if re.search(r"<query>.*?</query>", text, flags=re.DOTALL):
+        return True
+    for pattern in (
+        r"perform a web search for the query:",
+        r"web search(?: for)?[:\s]+",
+        r"search(?: for)?[:\s]+",
+    ):
+        if re.search(pattern, text, flags=re.IGNORECASE):
+            return True
+    return False
+
+
 def _local_web_search_content(
     query: str,
     results: List[Dict[str, str]],
@@ -169,10 +190,7 @@ def _local_web_search_content(
 
 def _handle_local_web_search(req: Dict[str, Any]) -> Response | None:
     request_model = req.get("model")
-    is_sampling_request = _is_web_search_tool_sampling_request(req)
-    if not is_sampling_request and request_model != "cli-proxy-api-plus:gpt-5.5":
-        return None
-    if not is_sampling_request and not _has_web_search_tool(req):
+    if not _is_explicit_web_search_request(req):
         return None
     response_model = request_model if isinstance(request_model, str) else "cli-proxy-api-plus:gpt-5.5"
 

@@ -191,6 +191,30 @@ class AnthropicRouteErrorHandlingTests(unittest.TestCase):
         self.assertEqual(system_messages, [])
         self.assertEqual(proxied_request["tools"][0]["function"]["name"], "WebSearch")
 
+    def test_plus_web_search_tool_request_is_proxied_without_explicit_search(self) -> None:
+        with patch("src.routes.anthropic.ChatHandler") as mock_chat_handler:
+            mock_chat_handler.return_value.handle_chat_request.return_value = ProxyRequestError(
+                model="cli-proxy-api-plus:gpt-5.5",
+                message="stop after inspecting proxied request",
+                status_code=400,
+                error_type="invalid_request_error",
+            )
+            response = self.client.post(
+                "/v1/messages",
+                json={
+                    "model": "cli-proxy-api-plus:gpt-5.5",
+                    "stream": False,
+                    "messages": [{"role": "user", "content": "hi"}],
+                    "tools": [{"type": "web_search_20250305", "name": "web_search"}],
+                },
+            )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(
+            mock_chat_handler.return_value.handle_chat_request.call_count,
+            1,
+        )
+
     def test_plus_web_search_tool_request_returns_local_search_results(self) -> None:
         mock_response = patch("src.routes.anthropic.requests.get").start()
         self.addCleanup(patch.stopall)
