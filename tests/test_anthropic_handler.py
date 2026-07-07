@@ -603,6 +603,26 @@ class AnthropicHandlerNormalizeMessagesTests(unittest.TestCase):
 
         self.assertEqual(normalized, {"prompt": ""})
 
+    def test_normalize_tool_input_without_contract_prunes_read_empty_pages(self) -> None:
+        normalized = self.handler._normalize_tool_input(
+            {
+                "path": "/tmp/a.txt",
+                "pages": "",
+                "offset": 0,
+                "limit": 20,
+            },
+            None,
+        )
+
+        self.assertEqual(
+            normalized,
+            {
+                "file_path": "/tmp/a.txt",
+                "offset": 0,
+                "limit": 20,
+            },
+        )
+
     def test_normalize_tools_adds_empty_properties_for_object_schema(self) -> None:
         normalized = self.handler._normalize_tools(
             [
@@ -1435,6 +1455,145 @@ class AnthropicHandlerStreamingTests(unittest.TestCase):
             saw_partial_args,
             "tool argument deltas should stream before message_stop",
         )
+
+    def test_iter_stream_lines_reassembles_split_generator_chunks(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"text":"안녕',
+                '하세요"},"finish_reason":null}]}\n\n',
+                'data: {"choices":[{"delta":{},"finish_reason":"stop"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cli-proxy-api:gpt-5.5",
+                "req_split_chunks",
+            )
+        )
+
+        joined = "".join(chunks)
+        self.assertIn("안녕하세요", joined)
+        self.assertIn("event: message_stop", joined)
+
+    def test_stream_waits_for_complete_tool_json_before_delta(self) -> None:
+        args_part1 = '{"file_path":'
+        args_part2 = '"/tmp/a.txt"}'
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"call_1","type":"function","function":{"name":"Read","arguments":""}}]},"finish_reason":null}]}\n\n',
+                "data: "
+                + json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "delta": {
+                                    "tool_calls": [
+                                        {
+                                            "index": 0,
+                                            "function": {"arguments": args_part1},
+                                        }
+                                    ]
+                                },
+                                "finish_reason": None,
+                            }
+                        ]
+                    }
+                )
+                + "\n\n",
+                "data: "
+                + json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "delta": {
+                                    "tool_calls": [
+                                        {
+                                            "index": 0,
+                                            "function": {"arguments": args_part2},
+                                        }
+                                    ]
+                                },
+                                "finish_reason": None,
+                            }
+                        ]
+                    }
+                )
+                + "\n\n",
+                'data: {"choices":[{"delta":{},"finish_reason":"tool_calls"}]}\n\n',
+                "data: [DONE]\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cursor:composer-2.5",
+                "req_complete_json_before_delta",
+            )
+        )
+        events = self._sse_events(chunks)
+        tool_start = next(
+            event
+            for event in events
+            if event.get("type") == "content_block_start"
+            and event.get("content_block", {}).get("type") == "tool_use"
+        )
+        tool_input = json.loads(self._tool_input_json(events, tool_start["index"]))
+        start_position = next(
+            index
+            for index, event in enumerate(events)
+            if event is tool_start
+        )
+        first_tool_delta_position = next(
+            index
+            for index, event in enumerate(events)
+            if event.get("type") == "content_block_delta"
+            and event.get("index") == tool_start["index"]
+        )
+
+        self.assertLess(start_position, first_tool_delta_position)
+        self.assertEqual(tool_input, {"file_path": "/tmp/a.txt"})
+
+    def test_stream_emits_error_for_incomplete_tool_json_without_done(self) -> None:
+        resp = self._stream(
+            [
+                'data: {"choices":[{"delta":{"tool_calls":[{"index":0,"id":"call_1","type":"function","function":{"name":"Read","arguments":""}}]},"finish_reason":null}]}\n\n',
+                "data: "
+                + json.dumps(
+                    {
+                        "choices": [
+                            {
+                                "delta": {
+                                    "tool_calls": [
+                                        {
+                                            "index": 0,
+                                            "function": {"arguments": '{"file_path":'},
+                                        }
+                                    ]
+                                },
+                                "finish_reason": None,
+                            }
+                        ]
+                    }
+                )
+                + "\n\n",
+            ]
+        )
+
+        chunks = list(
+            self.handler.stream_anthropic_response(
+                resp,
+                "cursor:composer-2.5",
+                "req_incomplete_tool_no_done",
+            )
+        )
+        joined = "".join(chunks)
+
+        self.assertIn("event: error", joined)
+        self.assertNotIn("event: message_stop", joined)
 
 
 if __name__ == "__main__":

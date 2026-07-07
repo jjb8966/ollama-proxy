@@ -654,6 +654,28 @@ class AnthropicHandler:
         return contracts
 
     @staticmethod
+    def _normalize_tool_input_without_contract(tool_input: Dict[str, Any]) -> Dict[str, Any]:
+        if not isinstance(tool_input, dict):
+            return tool_input
+
+        normalized = dict(tool_input)
+        if "path" in normalized and "file_path" not in normalized:
+            normalized["file_path"] = normalized.pop("path")
+        elif "path" in normalized and "file_path" in normalized:
+            normalized.pop("path", None)
+
+        if _is_empty_value(normalized.get("pages")):
+            normalized.pop("pages", None)
+
+        for domain_field in ("allowed_domains", "blocked_domains"):
+            if normalized.get(domain_field) == []:
+                normalized.pop(domain_field, None)
+        if "allowed_domains" in normalized and "blocked_domains" in normalized:
+            normalized.pop("blocked_domains", None)
+
+        return normalized
+
+    @staticmethod
     def _normalize_tool_input(
         tool_input: Dict[str, Any],
         tool_contract: Optional[Dict[str, Any]],
@@ -670,7 +692,7 @@ class AnthropicHandler:
             return tool_input
 
         if not tool_contract:
-            return tool_input
+            return AnthropicHandler._normalize_tool_input_without_contract(tool_input)
 
         properties = tool_contract.get("properties", {})
         if isinstance(properties, dict) and isinstance(tool_input, dict):
@@ -984,6 +1006,7 @@ class AnthropicHandler:
         resp: Union[Generator[str, None, None], Response],
     ) -> Iterable[str]:
         if inspect.isgenerator(resp):
+            buffer = ""
             for chunk in resp:
                 if chunk is None:
                     continue
@@ -992,8 +1015,18 @@ class AnthropicHandler:
                     if isinstance(chunk, bytes)
                     else str(chunk)
                 )
-                for line in text.splitlines():
+                buffer += text
+
+                while "\n" in buffer:
+                    line, buffer = buffer.split("\n", maxsplit=1)
+                    if line.endswith("\r"):
+                        line = line[:-1]
                     yield line
+
+            if buffer:
+                if buffer.endswith("\r"):
+                    buffer = buffer[:-1]
+                yield buffer
             return
 
         for line in resp.iter_lines():
@@ -1113,38 +1146,46 @@ class AnthropicHandler:
             )
             return events
 
-        def normalize_tool_arguments_if_ready(state: Dict[str, Any]) -> None:
-            if not tools_contract or not state.get("arguments"):
-                return
+        def normalize_tool_arguments_if_ready(state: Dict[str, Any]) -> bool:
+            arguments = str(state.get("arguments", ""))
+            if not arguments:
+                return True
+            try:
+                parsed_args = json.loads(arguments)
+            except json.JSONDecodeError:
+                return False
+            if not isinstance(parsed_args, dict):
+                parsed_args = {"input": parsed_args}
+
             tool_name = state.get("name", "")
             contract_name = _canonical_tool_name(str(tool_name))
-            if not contract_name or contract_name not in tools_contract:
-                return
-            try:
-                parsed_args = json.loads(state["arguments"])
-            except json.JSONDecodeError:
-                return
-            if not isinstance(parsed_args, dict):
-                return
-            normalized_args = self._normalize_tool_input(
-                parsed_args, tools_contract[contract_name]
-            )
-            normalized_json = json.dumps(normalized_args, ensure_ascii=False)
-            if normalized_json != state["arguments"]:
+            if tools_contract and contract_name in tools_contract:
+                parsed_args = self._normalize_tool_input(
+                    parsed_args, tools_contract[contract_name]
+                )
+
+            normalized_json = json.dumps(parsed_args, ensure_ascii=False)
+            if normalized_json != arguments:
                 state["arguments"] = normalized_json
                 state["emitted_argument_length"] = 0
+            return True
+
+        def has_incomplete_tool_arguments() -> bool:
+            for state in tool_block_state.values():
+                if not state.get("arguments"):
+                    continue
+                if not normalize_tool_arguments_if_ready(state):
+                    return True
+            return False
 
         def emit_tool_argument_events(
             block_index: int, state: Dict[str, Any]
         ) -> List[str]:
+            if not state.get("name"):
+                return []
+            if not normalize_tool_arguments_if_ready(state):
+                return []
             events = ensure_tool_block_started(block_index, state)
-            if tools_contract:
-                normalize_tool_arguments_if_ready(state)
-                if state.get("arguments"):
-                    try:
-                        json.loads(state["arguments"])
-                    except json.JSONDecodeError:
-                        return events
             events.extend(flush_pending_tool_delta(block_index, state))
             return events
 
@@ -1156,19 +1197,33 @@ class AnthropicHandler:
 
             events: List[str] = []
 
-            # 먼저 모든 tool block을 시작 (arguments가 name보다 먼저 왔을 경우)
+            # 먼저 모든 tool arguments 정규화 가능 여부 확인
+            incomplete_tool_blocks: set[int] = set()
             for block_index in sorted(tool_block_state.keys()):
                 state = tool_block_state[block_index]
+                if not normalize_tool_arguments_if_ready(state):
+                    incomplete_tool_blocks.add(block_index)
+                    logger.warning(
+                        "[AnthropicStream] 미완성 tool arguments 폐기 | request_id=%s | index=%s | tool=%s | arg_chars=%s",
+                        stream_id,
+                        block_index,
+                        state.get("name", "unknown"),
+                        len(state.get("arguments", "")),
+                    )
+
+            # arguments가 name보다 먼저 왔더라도 완성 JSON일 때만 tool block 시작
+            for block_index in sorted(tool_block_state.keys()):
+                state = tool_block_state[block_index]
+                if block_index in incomplete_tool_blocks:
+                    continue
                 if not state.get("started") and state.get("name"):
                     events.extend(ensure_tool_block_started(block_index, state))
-
-            for block_index in sorted(tool_block_state.keys()):
-                state = tool_block_state[block_index]
-                normalize_tool_arguments_if_ready(state)
 
             # 남은 tool argument delta 플러시
             for block_index in sorted(tool_block_state.keys()):
                 state = tool_block_state[block_index]
+                if block_index in incomplete_tool_blocks:
+                    continue
                 if state.get("started"):
                     events.extend(flush_pending_tool_delta(block_index, state))
 
@@ -1562,6 +1617,24 @@ class AnthropicHandler:
                         last_payload_sample,
                         last_choice_summary,
                     )
+                    if has_incomplete_tool_arguments():
+                        logger.error(
+                            "[AnthropicStream] 미완성 tool stream 비정상 종료 | request_id=%s | message_id=%s | model=%s",
+                            stream_id,
+                            message_id,
+                            response_model,
+                        )
+                        yield sse(
+                            "error",
+                            {
+                                "type": "error",
+                                "error": {
+                                    "type": "api_error",
+                                    "message": "Upstream stream ended before tool input JSON completed",
+                                },
+                            },
+                        )
+                        return
 
             for event in close_open_blocks():
                 yield event
