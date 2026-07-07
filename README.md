@@ -6,21 +6,13 @@
 
 | 제공업체 | Prefix | 인증 방식 | Base URL |
 |----------|--------|-----------|----------|
-| Google (Gemini) | `google:` | API Key + `x-goog-api-key` 헤더 | Gemini 네이티브 API |
-| OpenRouter | `openrouter:` | API Key (Bearer) | `https://openrouter.ai/api/v1` |
-| Akash | `akash:` | API Key (Bearer) | `https://chatapi.akash.network/api/v1` |
-| Cohere | `cohere:` | API Key (Bearer) | `https://api.cohere.ai/compatibility/v1` |
-| Codestral (Mistral) | `codestral:` | API Key (Bearer) | `https://codestral.mistral.ai/v1` |
-| Qwen | `qwen:` | OAuth 2.0 (access/refresh token) | `https://portal.qwen.ai/v1` |
 | Antigravity | `antigravity:` | 자체 프록시 토큰 | 내부 프록시 컨테이너 |
-| Nvidia NIM | `nvidia-nim:` | API Key (Bearer) | `https://integrate.api.nvidia.com/v1` |
 | CLI Proxy API | `cli-proxy-api:` | API Key (Bearer) | 로컬 CLI 프록시 |
 | CLI Proxy API Plus | `cli-proxy-api-plus:` | API Key (Bearer) | 로컬 CLI 프록시 Plus |
-| Cursor | `cursor:` | API Key (Bearer, 기본 `unused`) | `cursor-api-proxy` (`CURSOR_API_BASE_URL`) |
-| Ollama Cloud | `ollama-cloud:` | API Key (Bearer) | `https://ollama.com/v1` |
+| CCS | `ccs:` | API Key (Bearer) | CCS Cursor provider |
 | OpenCode Go | `opencode:` | API Key (Bearer) | `https://opencode.ai/zen/go/v1` |
 
-전체 모델 목록은 `models.json` 파일 또는 `GET /api/tags` 엔드포인트에서 확인할 수 있습니다.
+전체 모델 목록은 `GET /api/tags` 또는 `GET /v1/models`에서 프로바이더별 `/models` API를 통해 동적으로 조회합니다. `models.json`은 컨텍스트 길이 등 한도 메타데이터 보조용입니다.
 
 ## 주요 기능
 
@@ -30,10 +22,8 @@
 | **API 키 자동 순환** | 파일 락 기반 멀티 프로세스 안전 키 순환 (Round-Robin + 쿼터-Aware) |
 | **Rate Limit 핸들링** | 429 응답 감지 시 해당 키 일시 차단 및 자동 복구 |
 | **키 건강도 모니터링** | 키별 사용 횟수, 실패율, 건강도 점수 추적 |
-| **OAuth 토큰 관리** | Qwen access token 만료 시 refresh token으로 자동 갱신 |
 | **컨텍스트 초과 감지** | 요청 토큰 추정 후 모델 컨텍스트 윈도우의 80% 초과 시 사전 차단 (Compaction 안내) |
-| **Google Thinking 모드** | Gemini Thinking 모델의 `<thought>` 태그 실시간 필터링 |
-| **스트리밍 지원** | SSE → NDJSON 변환, Google 네이티브 SSE → Ollama NDJSON 변환 |
+| **스트리밍 지원** | SSE → NDJSON 변환 |
 | **이미지 처리** | Cline 확장 이미지 형식을 OpenAI Vision API 형식으로 자동 변환 |
 | **쿼터 조회 API** | Antigravity 계정별 Claude/Gemini 잔여 쿼터 확인 |
 
@@ -89,7 +79,7 @@ x-api-key: <PROXY_API_TOKEN>
 ollama-proxy/
 ├── app.py                     # Flask 애플리케이션 팩토리 및 진입점
 ├── config.py                  # API 설정 (KeyRotator, OAuthManager 초기화)
-├── models.json                # 지원 모델 목록 (컨텍스트 길이, 최대 출력 토큰 포함)
+├── models.json                # 모델 한도 메타데이터 (컨텍스트 길이, 최대 출력 토큰, 선택)
 ├── src/
 │   ├── routes/                # API 라우트 (Blueprint)
 │   │   ├── ollama.py          # Ollama 호환 엔드포인트 (/api/*)
@@ -149,26 +139,6 @@ pip install -r requirements.txt
 # 프록시 서버 자체 인증 토큰 (필수)
 PROXY_API_TOKEN="your-proxy-token-here"
 
-# Google Gemini API 키 (쉼표 또는 개행으로 구분, 여러 개 가능)
-GOOGLE_API_KEYS="key1,key2,key3"
-
-# OpenRouter API 키
-OPENROUTER_API_KEYS="key1,key2"
-
-# Akash API 키
-AKASH_API_KEYS="key1"
-
-# Cohere API 키
-COHERE_API_KEYS="key1,key2"
-
-# Codestral (Mistral) API 키
-CODESTRAL_API_KEYS="key1"
-
-# Nvidia NIM API 키
-NVIDIA_NIM_API_KEYS="key1"
-# Nvidia NIM Base URL (선택, 기본값: https://integrate.api.nvidia.com/v1)
-NVIDIA_NIM_BASE_URL="https://integrate.api.nvidia.com/v1"
-
 # Antigravity 프록시 토큰
 ANTIGRAVITY_API_KEYS="token1,token2"
 # Antigravity 프록시 URL (선택, 기본값: http://antigravity-proxy:5010/v1)
@@ -183,13 +153,8 @@ CLI_PROXY_API_BASE_URL="http://cli-proxy-api:8317/v1"
 # API 키는 CLI_PROXY_API_KEYS를 함께 사용
 CLI_PROXY_API_PLUS_BASE_URL="http://cli-proxy-api-plus:8317/v1"
 
-# Cursor API Proxy (cursor-api-proxy, 호스트에서 8765 실행 시)
-CURSOR_API_KEYS="unused"
-CURSOR_API_BASE_URL="http://host.docker.internal:8765/v1"
-
-# Ollama Cloud API 키 (환경 변수명은 OLLAMA_API_KEYS 사용)
-OLLAMA_API_KEYS="key1,key2"
-OLLAMA_BASE_URL="https://ollama.com/v1"
+# CCS API 키
+CCS_API_KEYS="key1"
 
 # OpenCode Go API 키
 OPENCODE_API_KEYS="key1,key2"
@@ -199,16 +164,6 @@ OPENCODE_BASE_URL="https://opencode.ai/zen/go/v1"
 PORT=5005
 LOG_LEVEL=INFO
 FLASK_DEBUG=false
-```
-
-Qwen은 OAuth 2.0 인증을 사용하므로 `~/.qwen/oauth_creds.json` 파일이 필요합니다.
-
-```json
-{
-  "access_token": "your_access_token",
-  "refresh_token": "your_refresh_token",
-  "expires_at": 1711234567
-}
 ```
 
 ### 3. 서버 실행
@@ -240,7 +195,7 @@ curl -X POST http://localhost:5005/api/chat \
   -H "Authorization: Bearer $PROXY_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "google:gemini-3-flash-preview",
+    "model": "opencode:glm-5.2",
     "messages": [{"role": "user", "content": "안녕하세요!"}],
     "stream": false
   }'
@@ -300,7 +255,7 @@ curl -H "Authorization: Bearer $PROXY_API_TOKEN" http://localhost:5005/v1/keys/s
 {
   "providers": [
     {
-      "provider": "OllamaCloud",
+      "provider": "Antigravity",
       "total_keys": 3,
       "available_keys": 2,
       "rate_limited_keys": 1,
@@ -327,8 +282,7 @@ curl -H "Authorization: Bearer $PROXY_API_TOKEN" http://localhost:5005/v1/keys/s
 ```
 클라이언트 → [인증] → [라우트] → [ChatHandler] → [Provider Client] → Upstream API
                 │          │              │
-                │          │              ├─ google: → GoogleApiClient (Gemini 네이티브 API)
-                │          │              ├─ qwen:   → QwenApiClient (OAuth)
+                │          │              ├─ opencode: (일부 모델) → Anthropic Messages 경로
                 │          │              └─ 그 외:   → StandardApiClient (OpenAI 호환)
                 │          │
                 │          └─ Ollama 형식: ResponseHandler로 응답 변환 (SSE → NDJSON)
@@ -353,4 +307,4 @@ curl -H "Authorization: Bearer $PROXY_API_TOKEN" http://localhost:5005/v1/keys/s
 - API 호출은 각 제공업체의 요금 정책과 사용 제한에 따릅니다.
 - API 키는 반드시 환경 변수나 `.env` 파일로 관리하고, 코드에 하드코딩하지 마십시오.
 - 프로덕션 환경에서는 반드시 gunicorn 등 WSGI 서버를 사용하십시오.
-- `.env` 파일과 `~/.qwen/oauth_creds.json` 파일은 `.gitignore`에 등록되어 Git에 커밋되지 않도록 되어 있습니다.
+- `.env` 파일은 `.gitignore`에 등록되어 Git에 커밋되지 않도록 되어 있습니다.

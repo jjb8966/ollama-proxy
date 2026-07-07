@@ -5,13 +5,11 @@ Ollama Proxy Server - 메인 애플리케이션
 여러 LLM 제공업체의 OpenAI 호환 API를 Ollama 및 OpenAI 형식으로 제공하는 프록시 서버입니다.
 
 지원 제공업체:
-- Google (Gemini)
-- OpenRouter
-- Akash
-- Cohere
-- Codestral (Mistral)
-- Qwen (OAuth)
-- Perplexity
+- Antigravity
+- CLI Proxy API / Plus
+- CCS
+- Ollama Cloud
+- OpenCode Go
 """
 
 import os

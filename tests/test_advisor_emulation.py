@@ -59,8 +59,8 @@ class AdvisorEmulationTests(unittest.TestCase):
             self.assertEqual(resolve_advisor_model(), DEFAULT_ADVISOR_MODEL)
 
     def test_resolve_advisor_model_from_env(self) -> None:
-        with patch.dict(os.environ, {"ADVISOR_MODEL": "cursor:composer-2.5"}):
-            self.assertEqual(resolve_advisor_model(), "cursor:composer-2.5")
+        with patch.dict(os.environ, {"ADVISOR_MODEL": "ccs:composer-2.5"}):
+            self.assertEqual(resolve_advisor_model(), "ccs:composer-2.5")
 
     def test_find_advisor_tool_use_id_from_assistant_blocks(self) -> None:
         messages = [

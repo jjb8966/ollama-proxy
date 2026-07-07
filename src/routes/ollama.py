@@ -25,17 +25,15 @@ ollama_bp = Blueprint("ollama", __name__)
 
 
 def _load_models() -> list:
-    """models.json 파일에서 모델 목록을 로드합니다."""
-    models_path = os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "models.json"
-    )
-    try:
-        with open(models_path, "r") as f:
-            data = json.load(f)
-            return data.get("models", [])
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.warning(f"models.json 로드 실패, 기본 목록 사용: {e}")
+    """프로바이더 base_url /models에서 동적으로 모델 목록을 로드합니다."""
+    from src.utils.model_catalog import list_model_entries_for_tags
+
+    api_config = current_app.config.get("api_config")
+    if api_config is None:
+        logger.warning("api_config 없음, 모델 목록을 비워 반환합니다.")
         return []
+
+    return list_model_entries_for_tags(api_config)
 
 
 @ollama_bp.route("/", methods=["GET"])
@@ -59,25 +57,9 @@ def get_tags():
     사용 가능한 모델 목록을 반환합니다.
 
     Ollama의 /api/tags 엔드포인트를 모방합니다.
-    models.json 파일에서 모델 목록을 로드합니다.
+    각 프로바이더의 /models 응답을 조합해 모델 목록을 반환합니다.
     """
     models = _load_models()
-
-    # models.json이 없으면 기본 목록 반환
-    if not models:
-        models = [
-            {
-                "name": "google:gemini-3.1-flash-lite-preview",
-                "model": "google:gemini-3.1-flash-lite-preview",
-            },
-            {"name": "google:gemini-2.5-flash", "model": "google:gemini-2.5-flash"},
-            {
-                "name": "openrouter:mistralai/devstral-2512:free",
-                "model": "openrouter:mistralai/devstral-2512:free",
-            },
-            {"name": "cohere:command-a-03-2025", "model": "cohere:command-a-03-2025"},
-            {"name": "qwen:qwen3-coder-plus", "model": "qwen:qwen3-coder-plus"},
-        ]
 
     response = {"models": models}
     return Response(json.dumps(response), status=200, mimetype="application/json")

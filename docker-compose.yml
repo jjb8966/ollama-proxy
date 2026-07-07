@@ -10,13 +10,6 @@ services:
       - default
       - nginx-network
     environment:
-      - GOOGLE_API_KEYS=${GOOGLE_API_KEYS}
-      - OPENROUTER_API_KEYS=${OPENROUTER_API_KEYS}
-      - AKASH_API_KEYS=${AKASH_API_KEYS}
-      - COHERE_API_KEYS=${COHERE_API_KEYS}
-      - CODESTRAL_API_KEYS=${CODESTRAL_API_KEYS}
-      - NVIDIA_NIM_API_KEYS=${NVIDIA_NIM_API_KEYS}
-      - NVIDIA_NIM_BASE_URL=${NVIDIA_NIM_BASE_URL:-https://integrate.api.nvidia.com/v1}
       - ANTIGRAVITY_API_KEYS=${ANTIGRAVITY_API_KEYS}
       - ANTIGRAVITY_PROXY_URL=http://antigravity-proxy:5010/v1
       - CLI_PROXY_API_KEYS=${CLI_PROXY_API_KEYS}
@@ -24,8 +17,6 @@ services:
       - CLI_PROXY_API_PLUS_BASE_URL=${CLI_PROXY_API_PLUS_BASE_URL:-http://cli-proxy-api-plus:8317/v1}
       - CCS_API_KEYS=${CCS_API_KEYS}
       - CCS_API_BASE_URL=${CCS_API_BASE_URL:-http://ccs:20129/v1}
-      - CURSOR_API_KEYS=${CURSOR_API_KEYS:-unused}
-      - CURSOR_API_BASE_URL=${CURSOR_API_BASE_URL:-http://host.docker.internal:8765/v1}
       - PROXY_API_TOKEN=${PROXY_API_TOKEN}
       - OLLAMA_API_KEYS=${OLLAMA_API_KEYS}
       - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
@@ -33,7 +24,6 @@ services:
       - OPENCODE_BASE_URL=${OPENCODE_BASE_URL:-https://opencode.ai/zen/go/v1}
       - DEBUG_NDJSON_LOG=/debug-logs/debug-dfc5c9.log
     volumes:
-      - ~/.qwen:/root/.qwen:ro
       - /Users/jbj/Desktop/work/my/project/.cursor:/debug-logs
     restart: always
     container_name: ollama-proxy

@@ -29,19 +29,11 @@ def get_keys_status():
             
         # 추적할 제공업체의 KeyRotator 목록 추출
         rotators = [
-            api_config.ollama_cloud_rotator,
-            api_config.google_rotator,
-            api_config.openrouter_rotator,
-            api_config.akash_rotator,
-            api_config.cohere_rotator,
-            api_config.codestral_rotator,
-            api_config.qwen_oauth_manager,
             api_config.antigravity_rotator,
-            api_config.nvidia_nim_rotator,
             api_config.cli_proxy_api_rotator,
             api_config.cli_proxy_api_plus_rotator,
             api_config.ccs_rotator,
-            api_config.cursor_rotator,
+            api_config.opencode_rotator,
         ]
         
         providers_status = []

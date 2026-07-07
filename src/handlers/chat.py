@@ -7,7 +7,6 @@
 
 import json
 import logging
-import os
 import re
 import time
 from typing import Dict, Any, List, Optional
@@ -15,9 +14,8 @@ from typing import Dict, Any, List, Optional
 import requests
 
 from src.core.errors import ProxyRequestError, ErrorHandler
+from src.providers.provider_config import PROVIDER_CONFIG, parse_provider_model
 from src.providers.standard import StandardApiClient
-from src.providers.qwen import QwenApiClient
-from src.providers.google import GoogleApiClient
 from src.utils.model_limits import get_model_limits, load_model_limits
 from src.utils.opencode_anthropic import (
     AnthropicMessagePassthrough,
@@ -31,15 +29,8 @@ from src.utils.opencode_anthropic import (
 )
 
 
-def _strip_quotes(value: str) -> str:
-    """문자열 값에서 양쪽 따옴표를 제거합니다."""
-    if not value:
-        return value
-    return value.strip('"\'')
-
-
 # Claude Code tool bridge: compact system prompt instead of full tools payload
-CURSOR_BRIDGE_PROVIDERS = frozenset({"cursor", "ccs"})
+CURSOR_BRIDGE_PROVIDERS = frozenset({"ccs"})
 
 
 class ChatHandler:
@@ -65,73 +56,9 @@ class ChatHandler:
         "gcli-gemini-3.1-pro-preview-customtools",
     }
 
-    COMPACTION_ENABLED = os.environ.get("ENABLE_COMPACTION", "true").lower() != "false"
+    COMPACTION_ENABLED = __import__("os").environ.get("ENABLE_COMPACTION", "true").lower() != "false"
 
-    # 제공업체별 prefix와 base_url 매핑
-    PROVIDER_CONFIG = {
-        'google': {
-            'base_url': None,
-            'client_attr': 'google_client'
-        },
-        'openrouter': {
-            'base_url': 'https://openrouter.ai/api/v1',
-            'client_attr': 'openrouter_client'
-        },
-        'akash': {
-            'base_url': 'https://chatapi.akash.network/api/v1',
-            'client_attr': 'akash_client'
-        },
-        'cohere': {
-            'base_url': 'https://api.cohere.ai/compatibility/v1',
-            'client_attr': 'cohere_client'
-        },
-        'codestral': {
-            'base_url': 'https://codestral.mistral.ai/v1',
-            'client_attr': 'codestral_client'
-        },
-        'qwen': {
-            'base_url': 'https://portal.qwen.ai/v1',
-            'client_attr': 'qwen_client'
-        },
-        'antigravity': {
-            'base_url': _strip_quotes(os.getenv('ANTIGRAVITY_PROXY_URL', 'http://antigravity-proxy:5010/v1')),
-            'client_attr': 'antigravity_client'
-        },
-        'nvidia-nim': {
-            'base_url': _strip_quotes(os.getenv('NVIDIA_NIM_BASE_URL', 'https://integrate.api.nvidia.com/v1')),
-            'client_attr': 'nvidia_nim_client'
-        },
-        'cli-proxy-api': {
-            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_BASE_URL', 'http://cli-proxy-api:8317/v1')),
-            'client_attr': 'cli_proxy_api_client'
-        },
-        'cli-proxy-api-plus': {
-            'base_url': _strip_quotes(os.getenv('CLI_PROXY_API_PLUS_BASE_URL', 'http://cli-proxy-api-plus:8317/v1')),
-            'client_attr': 'cli_proxy_api_plus_client'
-        },
-        'ccs': {
-            'base_url': _strip_quotes(os.getenv('CCS_API_BASE_URL', 'http://ccs:8317/api/provider/cursor/v1')),
-            'client_attr': 'ccs_client'
-        },
-        'cursor': {
-            'base_url': _strip_quotes(os.getenv('CURSOR_API_BASE_URL', 'http://host.docker.internal:8765/v1')),
-            'client_attr': 'cursor_client'
-        },
-        # Primary: ollama-cloud
-        'ollama-cloud': {
-            'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
-            'client_attr': 'ollama_cloud_client'
-        },
-        # Backward-compatible alias
-        'ollama': {
-            'base_url': _strip_quotes(os.getenv('OLLAMA_BASE_URL', 'https://ollama.com/v1')),
-            'client_attr': 'ollama_cloud_client'
-        },
-        'opencode': {
-            'base_url': _strip_quotes(os.getenv('OPENCODE_BASE_URL', 'https://opencode.ai/zen/go/v1')),
-            'client_attr': 'opencode_client'
-        }
-    }
+    PROVIDER_CONFIG = PROVIDER_CONFIG
 
     def __init__(self, api_config):
         """
@@ -141,20 +68,10 @@ class ChatHandler:
         self.api_config = api_config
 
         # 각 제공업체별 클라이언트 생성
-        self.google_client = GoogleApiClient(api_config.google_rotator)
-        self.openrouter_client = StandardApiClient(api_config.openrouter_rotator)
-        self.akash_client = StandardApiClient(api_config.akash_rotator)
-        self.cohere_client = StandardApiClient(api_config.cohere_rotator)
-        self.codestral_client = StandardApiClient(api_config.codestral_rotator)
-        self.qwen_client = QwenApiClient(api_config.qwen_oauth_manager)
         self.antigravity_client = StandardApiClient(api_config.antigravity_rotator)
-        self.nvidia_nim_client = StandardApiClient(api_config.nvidia_nim_rotator)
         self.cli_proxy_api_client = StandardApiClient(api_config.cli_proxy_api_rotator)
         self.cli_proxy_api_plus_client = StandardApiClient(api_config.cli_proxy_api_plus_rotator)
         self.ccs_client = StandardApiClient(api_config.ccs_rotator)
-        self.cli_proxy_api_gpt_client = StandardApiClient(api_config.cli_proxy_api_gpt_rotator)
-        self.cursor_client = StandardApiClient(api_config.cursor_rotator)
-        self.ollama_cloud_client = StandardApiClient(api_config.ollama_cloud_rotator)
         self.opencode_client = StandardApiClient(api_config.opencode_rotator)
 
     @staticmethod
@@ -399,13 +316,7 @@ class ChatHandler:
         Returns:
             (제공업체, 모델명, base_url) 튜플
         """
-        for prefix, config in self.PROVIDER_CONFIG.items():
-            if requested_model.startswith(f"{prefix}:"):
-                model = requested_model.replace(f'{prefix}:', '')
-                return prefix, model, config['base_url']
-
-        # 매칭되는 제공업체가 없는 경우
-        return None, requested_model, None
+        return parse_provider_model(requested_model)
 
     def _get_client(self, provider: str):
         """제공업체에 해당하는 API 클라이언트를 반환합니다."""
@@ -833,9 +744,6 @@ class ChatHandler:
             logging.warning("비활성화된 모델 요청 차단: %s", requested_model)
             return removed_model_error
 
-        if provider == 'ollama-cloud':
-            self._normalize_ollama_cloud_image_content(messages)
-
         cursor_request_tools = req.get("tools")
         cursor_has_tools = (
             isinstance(cursor_request_tools, list) and len(cursor_request_tools) > 0
@@ -846,17 +754,6 @@ class ChatHandler:
                     messages, cursor_request_tools
                 )
             messages = self._convert_messages_for_cursor_provider(messages)
-
-        if provider == 'google':
-            return self.google_client.post_request(
-                model=model,
-                messages=messages,
-                thinking_level=thinking_level,
-                stream=stream,
-                max_tokens=req.get('max_tokens'),
-                tools=req.get('tools'),
-                tool_choice=req.get('tool_choice')
-            )
 
         if provider == "opencode" and uses_opencode_anthropic_messages(model):
             return self._handle_opencode_anthropic_messages_request(
@@ -888,11 +785,6 @@ class ChatHandler:
             thinking_level = req.get('thinking_level')
             if thinking_level and thinking_level != 'minimal':
                 payload['reasoning_effort'] = thinking_level
-        if provider == 'cursor':
-            reasoning_effort = req.get('reasoning_effort')
-            if reasoning_effort:
-                payload['reasoning_effort'] = reasoning_effort
-
         endpoint = f"{base_url}/chat/completions"
         headers = {'Content-Type': 'application/json'}
         if provider in CURSOR_BRIDGE_PROVIDERS:
